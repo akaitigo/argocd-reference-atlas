@@ -29,7 +29,7 @@ Argo Project公式Source（v3.5.2 tag）
 | 層 | 正本 | 責任 |
 |---|---|---|
 | Identity | `atlas.yaml` | ID、Version境界、言語、Status、完成Profile |
-| Authority | `sources.lock.yaml` | 公式一次資料のURL、Version、取得日、Digest |
+| Authority | `sources.lock.yaml`、`authority/` | 公式一次資料のURL、Version、Digest、本文非保存raw anchor、提案専用人手Review Queue、Decision ledger |
 | Mastery | `mastery.yaml` | 8 Outcome、14 Surface、Audience、既存Target Setへの接続 |
 | Coverage | `coverage.yaml` | 有限Target、必須度、状態、Claim／Evidence接続 |
 | Definitive inventory | `definitive/` | 公式Surface、bounded Evidence binding、未実行Scenario |

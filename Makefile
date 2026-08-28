@@ -31,10 +31,13 @@ definitive-validate:
 authority-locators:
 	python3 scripts/generate_authority_locators.py --source-tree /private/tmp/argo-cd-v3.5.2-source
 	python3 scripts/generate_authority_body_inventory.py --source-tree /private/tmp/argo-cd-v3.5.2-source
+	python3 scripts/generate_authority_review_queue.py
 
 authority-validate:
 	python3 scripts/validate_authority_locators.py
 	python3 scripts/validate_authority_body_inventory.py
+	python3 scripts/validate_authority_review_queue.py
+	python3 scripts/test_authority_review_queue.py
 
 non-regression-validate:
 	python3 scripts/validate_non_regression.py

@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "queue_id": "authority-review-4899835d8716e9eb45f6",
+  "batch_id": "review-p0-git-regular-file-0e",
+  "status": "pending-human",
+  "machine_assistance": "priority-cluster-and-batch-proposals-only",
+  "semantic_decisions": "none",
+  "items": [
+    {
+      "anchor_id": "anchor-0489e214d5cf2edd4230",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:9110ce5406c6abcd4e6be3dae9c70a2d3cd733ccd8551ae168f761e94cfd5681",
+      "review_queue_tool_digest": "sha256:6b18a72b9fa68a14240891367c11f81ebf909f8932ba3b4324b12114c4ddae60",
+      "locator": "tar-entry:applicationset/generators/matrix.go",
+      "locator_kind": "git-tree-entry",
+      "selector": "git-tar-regular-file",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 1157120,
+      "context_end": 1162791,
+      "context_unit": "byte",
+      "context_digest": "sha256:edd4b8c1400ffeafc9c037f79dc1f6adaddfac605e0bcd81c8e737c34202e124",
+      "label_digest": "sha256:99d6df693709d2292a3d3b70f9f1c1416e7f09498e370b420524239e28c7edcb",
+      "existing_reference_edge_ids": [
+        "edge.applicationset.generator.matrix.argocd-source-tree"
+      ],
+      "suggested_priority": 0,
+      "priority_reasons": [
+        "existing-domain-reference-locator-match"
+      ],
+      "suggested_cluster_id": null,
+      "suggested_batch_id": "review-p0-git-regular-file-0e",
+      "state": "pending-human"
+    }
+  ]
+}

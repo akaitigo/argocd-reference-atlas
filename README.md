@@ -39,6 +39,8 @@ sources.lock.yaml
   -> definitive/surface-inventory.yaml
   -> authority/extraction.snapshot.json
   -> authority/body-inventory.snapshot.json
+  -> authority/review-queue.snapshot.json
+  -> authority/reviews/decisions.json
   -> definitive/gap-ledger.yaml
   -> definitive/argocd-depth-parity.json
   -> definitive/fe-parity-matrix.json
@@ -53,6 +55,7 @@ sources.lock.yaml
 - Authority Lock: `sources.lock.yaml`
 - Authority locator監査: `authority/extraction.snapshot.json`
 - Authority raw anchor母集団と非後退baseline: `authority/body-inventory.snapshot.json`、`baselines/authority-body-inventory-v1.json`
+- Authority人手Review QueueとDecision ledger: `authority/review-queue.snapshot.json`、`authority/reviews/decisions.json`
 - 8 Outcome／14 Surface: `mastery.yaml`
 - 有限のCoverage: `coverage.yaml`
 - Agent Router Package: `skill.package.yaml`

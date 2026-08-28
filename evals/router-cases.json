@@ -434,8 +434,8 @@
         "requires_coverage_check": true,
         "requires_execution_evidence": false,
         "permission": "read-only",
-        "pass_conditions": ["既存Feature/Source edgeとraw anchor候補母集団を分ける", "全raw anchorがpending-humanでSemantic/Depth credit 0と返す", "stable ID、tool/source digest、stale境界、専用baselineを確認する", "人手decisionとController/behavior Surfaceへの昇格をGapとして返す"],
-        "hard_fail_conditions": ["raw anchor件数をSurfaceまたはDepth達成件数へ加える", "固定selector内の列挙をAuthority意味論の網羅とみなす"]
+        "pass_conditions": ["既存Feature/Source edgeとraw anchor候補母集団を分ける", "全raw anchorが提案専用Queueでpending-human、Semantic/Depth credit 0と返す", "priority/cluster/batchをDecisionではなく提案として扱う", "stable ID、tool/source/context digest、locator offset、stale hold、専用baselineを確認する", "reviewer/time/reason/digest/locator/mapping/resultが整合する人手一次資料decisionだけをController/behavior itemへの昇格入力にできると返す"],
+        "hard_fail_conditions": ["raw anchorまたはQueue件数をSurfaceまたはDepth達成件数へ加える", "固定selector内の列挙または機械提案をAuthority意味論の網羅・分類Decisionとみなす"]
       }
     }
   ]

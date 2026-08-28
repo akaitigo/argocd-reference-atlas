@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "queue_id": "authority-review-4899835d8716e9eb45f6",
+  "batch_id": "review-p1-markdown-atx-heading-21",
+  "status": "pending-human",
+  "machine_assistance": "priority-cluster-and-batch-proposals-only",
+  "semantic_decisions": "none",
+  "items": [
+    {
+      "anchor_id": "anchor-8317e61c67525769bb0f",
+      "document_id": "document-argocd-reconcile-optimization",
+      "document_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/operator-manual/reconcile.md",
+      "source_ids": [
+        "argocd-reconcile-optimization"
+      ],
+      "locked_source_digest": "sha256:c4fc17fb8be192dda4cf7fc49a48b3b10a53a15014a2b5ccc0bc53c4e2b5f061",
+      "inventory_tool_digest": "sha256:9110ce5406c6abcd4e6be3dae9c70a2d3cd733ccd8551ae168f761e94cfd5681",
+      "review_queue_tool_digest": "sha256:6b18a72b9fa68a14240891367c11f81ebf909f8932ba3b4324b12114c4ddae60",
+      "locator": "line:95",
+      "locator_kind": "locked-body-offset",
+      "selector": "markdown-atx-heading-line",
+      "parent_anchor_id": "anchor-e6132a02abf461e273ed",
+      "context_start": 4288,
+      "context_end": 4337,
+      "context_unit": "byte",
+      "context_digest": "sha256:fc87760d07b5bd5bec4f60d6f7a9a00a97e10aa7042e9d831d5bc7ea3968086b",
+      "label_digest": "sha256:48967955f24edd36bf79d625a6721d60da2232ab57202ec17ddcd8804eb4b726",
+      "existing_reference_edge_ids": [],
+      "suggested_priority": 1,
+      "priority_reasons": [
+        "semantic-label-anchor-candidate"
+      ],
+      "suggested_cluster_id": null,
+      "suggested_batch_id": "review-p1-markdown-atx-heading-21",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-bad1152cb43ed3e940d6",
+      "document_id": "document-argocd-disaster-recovery",
+      "document_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/operator-manual/disaster_recovery.md",
+      "source_ids": [
+        "argocd-disaster-recovery"
+      ],
+      "locked_source_digest": "sha256:855491cfd926034d230bafe4eb79faff40847a55e97515f22fccf4dcf1878bc2",
+      "inventory_tool_digest": "sha256:9110ce5406c6abcd4e6be3dae9c70a2d3cd733ccd8551ae168f761e94cfd5681",
+      "review_queue_tool_digest": "sha256:6b18a72b9fa68a14240891367c11f81ebf909f8932ba3b4324b12114c4ddae60",
+      "locator": "line:1",
+      "locator_kind": "locked-body-offset",
+      "selector": "markdown-atx-heading-line",
+      "parent_anchor_id": "anchor-f53a91ddce4ca9dfa918",
+      "context_start": 0,
+      "context_end": 20,
+      "context_unit": "byte",
+      "context_digest": "sha256:5bf602f1eedb24a1e32630c148ebe55dc45bc197d1336564551cd27394f47990",
+      "label_digest": "sha256:543bc1500c824b3d603db761a0916359ccd1c70e7c4446b37c797fc803b035b4",
+      "existing_reference_edge_ids": [],
+      "suggested_priority": 1,
+      "priority_reasons": [
+        "semantic-label-anchor-candidate"
+      ],
+      "suggested_cluster_id": null,
+      "suggested_batch_id": "review-p1-markdown-atx-heading-21",
+      "state": "pending-human"
+    }
+  ]
+}

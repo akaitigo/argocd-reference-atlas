@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "queue_id": "authority-review-4899835d8716e9eb45f6",
+  "batch_id": "review-p0-git-regular-file-29",
+  "status": "pending-human",
+  "machine_assistance": "priority-cluster-and-batch-proposals-only",
+  "semantic_decisions": "none",
+  "items": [
+    {
+      "anchor_id": "anchor-0538fa42a7cf1b5ffb2f",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:9110ce5406c6abcd4e6be3dae9c70a2d3cd733ccd8551ae168f761e94cfd5681",
+      "review_queue_tool_digest": "sha256:6b18a72b9fa68a14240891367c11f81ebf909f8932ba3b4324b12114c4ddae60",
+      "locator": "tar-entry:applicationset/generators/scm_provider.go",
+      "locator_kind": "git-tree-entry",
+      "selector": "git-tar-regular-file",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 1285120,
+      "context_end": 1298278,
+      "context_unit": "byte",
+      "context_digest": "sha256:9c9fbe052e0a9f807289007ebe4164b1dc0ac406972a61741df99cfb6e9bf826",
+      "label_digest": "sha256:4f1f5129ecf6ad6b059185ac3286d327300697778ca465b602dfd211d876a8e2",
+      "existing_reference_edge_ids": [
+        "edge.applicationset.generator.scm-provider.argocd-source-tree"
+      ],
+      "suggested_priority": 0,
+      "priority_reasons": [
+        "existing-domain-reference-locator-match"
+      ],
+      "suggested_cluster_id": null,
+      "suggested_batch_id": "review-p0-git-regular-file-29",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-e299f4f5c2ebcd6caac5",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:9110ce5406c6abcd4e6be3dae9c70a2d3cd733ccd8551ae168f761e94cfd5681",
+      "review_queue_tool_digest": "sha256:6b18a72b9fa68a14240891367c11f81ebf909f8932ba3b4324b12114c4ddae60",
+      "locator": "tar-entry:cmd/argocd/commands/cluster.go",
+      "locator_kind": "git-tree-entry",
+      "selector": "git-tar-regular-file",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 3893760,
+      "context_end": 3914851,
+      "context_unit": "byte",
+      "context_digest": "sha256:7b191c813077b96ba0c8f4bbdd27c5e5c51209f31ab335f378f2a80a28945775",
+      "label_digest": "sha256:e889aeb2d068fa6f4a7d9deee7bf7638ea4a914a7fc1944cf55da93f42625bac",
+      "existing_reference_edge_ids": [
+        "edge.connection.cluster-auth-rotation.argocd-source-tree"
+      ],
+      "suggested_priority": 0,
+      "priority_reasons": [
+        "existing-domain-reference-locator-match"
+      ],
+      "suggested_cluster_id": null,
+      "suggested_batch_id": "review-p0-git-regular-file-29",
+      "state": "pending-human"
+    }
+  ]
+}

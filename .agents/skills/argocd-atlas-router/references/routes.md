@@ -102,7 +102,7 @@ Mastery Outcome/Surface -> Coverage Target Set -> Coverage Target
 - 成功、拒否、障害、復旧のObservable Outcomeが区別されているか。
 - Secret、権限、公開の境界を越えていないか。
 - `status: complete`をGate通過前に宣言していないか。
-- `authority/body-inventory.snapshot.json`のraw anchorが人手decisionなしにSemantic Surface／Depth達成へ算入されていないか。stable IDの縮小は専用baselineとMigration Mappingで検査する。
+- `authority/body-inventory.snapshot.json`の全raw anchorが`authority/review-queue.snapshot.json`へ欠落なく入り、priority／cluster／batchが提案だけに留まるか。`authority/reviews/decisions.json`に人の一次資料確認、reviewer／time／reason、source/tool/context digest、locator offset、旧anchor→新Controller／Behavior item Mapping、resultの整合がなければ昇格を認めない。staleはholdし、Queue件数をSemantic Surface／Depth達成へ算入しない。stable IDの縮小は専用baselineとMigration Mappingで検査する。
 - `skill.router-evaluation`が独立Agentの採点Evidenceへ接続されているか。
 - `observability.distributed-trace-incident-capacity`がOTLP、Incident rehearsal、SLO、Retention、Cardinality、RedactionのArtifact Evidenceを持つか。
 

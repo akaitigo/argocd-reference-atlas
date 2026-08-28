@@ -23,6 +23,8 @@ Argo Projectが管理するArgo CD公式Repositoryと公式文書だけを一次
 
 `authority/body-inventory.snapshot.json`は同じ26 unique documentを固定selectorで列挙した63,889件のraw anchor候補を別母集団として保持します。全件を`pending-human`から開始し、human reviewed、Controller／behavior Surfaceへの昇格、Semantic Surface credit、Depth axis creditはいずれも0です。`stale=0`、`failed=0`、`deferred=0`を隠さず、固定selector内の列挙をAuthority意味論の網羅とは扱いません。初回ID集合は`baselines/authority-body-inventory-v1.json`へ固定し、削除・置換は専用MappingとProofを要求します。
 
+`authority/review-queue.snapshot.json`は全63,889 anchorをstable IDのまま251 batchへ投影します。priority、candidate cluster、batchは機械提案に限定し、Semantic分類へ使いません。`authority/reviews/decisions.json`の各昇格は、人による一次資料確認、reviewer、time、reason、source/tool/context digest、locator offset、旧anchor→新Controller／Behavior item Mapping、resultの完全一致を要求します。Source digestがstaleならQueue投入と昇格をholdします。現状は全件`pending-human`、Decision 0、昇格0で、Queue件数のSemantic Surface／Coverage／Depth creditは0です。
+
 ## Target状態
 
 | State | 本Atlasでの意味 |

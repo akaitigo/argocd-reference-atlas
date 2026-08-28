@@ -11,7 +11,7 @@
 
 ## Definitive Completionを阻止する必須Gap
 
-- 63,889件のraw Authority anchorに対する人手decisionと、Controller／behavior Surfaceへの根拠付き昇格
+- 提案専用Queueにある63,889件のraw Authority anchorに対する人手一次資料decisionと、digest／locator／Mapping／resultを束縛したController／behavior Surfaceへの昇格（現在Decision 0、昇格0）
 - Performance／Capacity／CostのBenchmarkと回帰基準
 - 対応Kubernetes Version、Source generator、CLI／APIのCompatibility Evidence
 - v3.3、v3.4系の追加patch、複数Kubernetes Versionを横断するUpgrade／Rollback実行Matrix

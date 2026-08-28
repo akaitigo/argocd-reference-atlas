@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "queue_id": "authority-review-4899835d8716e9eb45f6",
+  "batch_id": "review-p1-markdown-atx-heading-23",
+  "status": "pending-human",
+  "machine_assistance": "priority-cluster-and-batch-proposals-only",
+  "semantic_decisions": "none",
+  "items": [
+    {
+      "anchor_id": "anchor-2cf975385659590dcd74",
+      "document_id": "document-argocd-private-repositories",
+      "document_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/user-guide/private-repositories.md",
+      "source_ids": [
+        "argocd-private-repositories"
+      ],
+      "locked_source_digest": "sha256:86352c01bba413368cb53bb76105ff20550c6a5dd7bae546edd6d2fcef2cda38",
+      "inventory_tool_digest": "sha256:9110ce5406c6abcd4e6be3dae9c70a2d3cd733ccd8551ae168f761e94cfd5681",
+      "review_queue_tool_digest": "sha256:6b18a72b9fa68a14240891367c11f81ebf909f8932ba3b4324b12114c4ddae60",
+      "locator": "line:74",
+      "locator_kind": "locked-body-offset",
+      "selector": "markdown-atx-heading-line",
+      "parent_anchor_id": "anchor-846386250a00c3e83fb1",
+      "context_start": 3720,
+      "context_end": 3751,
+      "context_unit": "byte",
+      "context_digest": "sha256:a20eb36d8b35cd168aab8d441012b40edd6c16383e8b6f24355f95997e4bbf29",
+      "label_digest": "sha256:e83fa03c14a7649da1dffd613e3248ed0bda8ac6909ba8c90dba04ed2850a67a",
+      "existing_reference_edge_ids": [],
+      "suggested_priority": 1,
+      "priority_reasons": [
+        "semantic-label-anchor-candidate"
+      ],
+      "suggested_cluster_id": null,
+      "suggested_batch_id": "review-p1-markdown-atx-heading-23",
+      "state": "pending-human"
+    }
+  ]
+}

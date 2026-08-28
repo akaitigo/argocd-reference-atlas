@@ -28,6 +28,13 @@
     "migration_artifact": "migrations/authority-body-inventory-v1.json",
     "rule": "第三者本文を保存せずmetadata、digest、locator offsetだけを保持する。既知Source edge分類とraw anchor候補母集団を分離し、全anchorをpending-humanから開始する。人手decision前のanchor件数はSemantic SurfaceまたはDepth達成へ算入しない。"
   },
+  "authority_review_queue_reference": {
+    "repository": "frontend-behavior-atlas",
+    "commit": "de2f016b8b44ea67afdb08c0552044807505984e",
+    "queue_artifact": "authority/review-queue.snapshot.json",
+    "decision_ledger": "authority/reviews/decisions.json",
+    "rule": "priority、candidate cluster、batchは機械提案に限定する。人が固定一次資料を確認し、reviewer、reviewed_at、reason、source/tool/context digest、locator offset、旧anchorから新Controller/Behavior itemへのmapping、resultを整合させたDecisionだけを昇格入力にできる。stale documentはholdし、Queue件数をSemantic Surface、Coverage、Depth達成へ算入しない。"
+  },
   "denominator_policy": {
     "source": "authority-derived-argocd-surface-inventory",
     "absolute_frontend_counts_are_thresholds": false,
@@ -49,7 +56,7 @@
       "id": "authority-body-digestion",
       "status": "partial",
       "portable_meaning": "一次資料本文または固定Surface Artifactから母集団を導き、本文digestとlocator単位で分類する。",
-      "argocd_denominator": {"expression": "26 unique locked authority documents x fixed-selector raw anchors x human classification decisions", "source": ["sources.lock.yaml", "authority/extraction.snapshot.json", "authority/body-inventory.snapshot.json", "baselines/authority-body-inventory-v1.json", "definitive/surface-inventory.yaml"], "current_observation": "26/26 unique documents matched; 63889 raw anchors enumerated; 63889 pending-human; human-reviewed=0; promoted controller/behavior surfaces=0; semantic/depth credit=0; 83 known authority reference edges and 17 non-authority runtime obligations remain separate; exhaustive=false", "closure": "open"},
+      "argocd_denominator": {"expression": "26 unique locked authority documents x fixed-selector raw anchors x human classification decisions", "source": ["sources.lock.yaml", "authority/extraction.snapshot.json", "authority/body-inventory.snapshot.json", "authority/review-queue.snapshot.json", "authority/reviews/decisions.json", "baselines/authority-body-inventory-v1.json", "definitive/surface-inventory.yaml"], "current_observation": "26/26 unique documents matched; 63889 raw anchors enumerated and queued in 251 proposal-only batches; 63889 pending-human; human-reviewed decisions=0; stale holds=0; promoted controller/behavior items=0; semantic/depth credit=0; 83 known authority reference edges and 17 non-authority runtime obligations remain separate; exhaustive=false", "closure": "open"},
       "proof_unit": "one locked authority body locator x one reviewed surface classification",
       "bounded_evidence_ids": ["evidence.architecture.v3-5-2"],
       "gap_ids": ["gap.core-v2-domain-neutral-authority-contract"]

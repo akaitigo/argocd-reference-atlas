@@ -177,6 +177,15 @@ def main() -> None:
     }
     if any(locator_reference.get(key) != value for key, value in expected_authority_artifacts.items()):
         raise ValueError("Authority locator artifact参照が不正です")
+    queue_reference = depth.get("authority_review_queue_reference", {})
+    expected_queue_reference = {
+        "repository": "frontend-behavior-atlas",
+        "commit": "de2f016b8b44ea67afdb08c0552044807505984e",
+        "queue_artifact": "authority/review-queue.snapshot.json",
+        "decision_ledger": "authority/reviews/decisions.json",
+    }
+    if any(queue_reference.get(key) != value for key, value in expected_queue_reference.items()) or not queue_reference.get("rule"):
+        raise ValueError("FE Authority Review Queue正本または昇格境界がDepth parityへ接続されていません")
     if depth.get("denominator_policy", {}).get("absolute_frontend_counts_are_thresholds") is not False:
         raise ValueError("FE絶対件数をArgo CD thresholdに転用できません")
     if depth.get("proof_contract", {}).get("aggregate_evidence_is_completion_proof") is not False:
