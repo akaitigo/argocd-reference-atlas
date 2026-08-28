@@ -2,7 +2,7 @@
 
 `argocd-reference-atlas`は、Argo CD **v3.5.2**の主要な挙動を、固定した一次資料、反証可能なClaim、ローカルクラスタで再実行できるLab、Digestで束縛したEvidenceとして扱うProduct Atlasです。
 
-現在の状態は固定Epoch `2026-08-28`に対して`complete`です。21 TargetのLab／Eval Evidence、6 Targetの明示的除外、Core v1の8 ClosureをCompletion Certificateへ固定します。これはArgo CD全Versionや大規模本番環境の一般保証ではありません。境界は[`docs/MASTERY_GAPS.md`](docs/MASTERY_GAPS.md)に明示します。
+現在のDefinitive状態は`incomplete`です。公開済みv0.1.0のCompletion Certificateは、2026-08-28時点の限定FixtureとCore v1 Gateだけを証明するbounded historical recordとして保持します。Performance、広域互換、実IdP、Host／Network障害、Rollback Matrix、Trace／Incidentを必須Gapへ戻し、文書とCoverageの矛盾を解消中です。詳細は[`docs/MASTERY_GAPS.md`](docs/MASTERY_GAPS.md)に示します。
 
 ## 対象
 
@@ -25,7 +25,7 @@
 - v3.4.8からv3.5.2へのUpgrade／Migration
 - bounded OperationsとRouter Skill Eval
 
-対象Version、Coverage Epoch、明示的除外は[`atlas.yaml`](atlas.yaml)に、採用した公式一次資料とContent Digestは[`sources.lock.yaml`](sources.lock.yaml)に固定しています。GitOps一般、外部Secret製品、CI製品、公開Cloud上の障害注入は対象外です。
+対象Version、Coverage Epoch、未Closure Targetは[`atlas.yaml`](atlas.yaml)と[`coverage.yaml`](coverage.yaml)に、採用した公式一次資料とContent Digestは[`sources.lock.yaml`](sources.lock.yaml)に固定しています。GitOps一般と外部製品は境界を明示しつつ、Argo CD本体のDefinitiveに必要な面を除外で閉じません。
 
 ## 正本
 
@@ -65,4 +65,4 @@ Labはローカルの専用Kindクラスタだけを対象にします。各Lab�
 
 ## 公開状態
 
-Repository URLは共通Schema上の正式な公開予定地を表しますが、この作業ではGitHub Repositoryの作成、Push、Releaseを行いません。権利、秘密、第三者素材、SBOM、Skill Evalを含む全Gate通過後にのみ公開可能性を判断します。
+RepositoryはGitHubで公開済みですが、`main`のv0.1.0 CertificateをDefinitive完成の根拠にはしません。このfeature branchでCore v2 Gateと実行Evidenceを閉じるまで、新しいCompletion CertificateやDefinitive Releaseを発行しません。

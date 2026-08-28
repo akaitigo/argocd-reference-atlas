@@ -36,4 +36,4 @@
 - Access Boundaryは固定Fixture Identity、RBAC、OIDC discovery／outageを対象とし、実IdPとの対話Login、MFA、Group変更は未実施です。
 - Upgradeは固定Fixtureのv3.4.8からv3.5.2への正方向実行です。Rollback判断点は記録しましたが、全Version／ExtensionのRollback Matrixではありません。
 - Performance、Capacity、Cost、複数Kubernetes Version、全Generator／Plugin互換性は未証明です。
-- GitHub上のCI、Release、署名、Completion Certificate、公開は実施していません。
+- GitHub Repositoryとv0.1.0 Completion Certificateは公開済みですが、限定FixtureとCore v1 Gateに対するbounded historical recordであり、Definitive完成を証明しません。
