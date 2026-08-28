@@ -2,7 +2,7 @@
 
 ## 目的と境界
 
-本AtlasはArgo CD v3.5.2を単一のProduct Versionとして固定し、30件のrequired Targetと100件の細粒度Surfaceを仕様Graphにします。現状は8件`covered`、13件`partial`、9件`missing`です。100 Surfaceは暫定母集団であり、Authority本文からの抽出が閉じるまで有限性を主張しません。Definitiveに重要な面を除外で閉じず、`2026-08-28`のCoverage Epochと`sources.lock.yaml`のAuthority Corpusに限定して未Closureを追跡します。
+本AtlasはArgo CD v3.5.2を単一のProduct Versionとして固定し、30件のrequired Targetと100件の細粒度Surfaceを仕様Graphにします。現状は8件`covered`、14件`partial`、8件`missing`です。100 Surfaceは暫定母集団であり、Authority本文からの抽出が閉じるまで有限性を主張しません。Definitiveに重要な面を除外で閉じず、`2026-08-28`のCoverage Epochと`sources.lock.yaml`のAuthority Corpusに限定して未Closureを追跡します。
 
 共通Contractは`reference-atlas-core` v1.0.0 commit `cf9e6e2`です。共通Schemaを製品固有Fieldで拡張せず、Argo CD固有情報は`atlas/`、`labs/`、`evidence/`に保持します。`mastery.yaml`は分野を増やさず、既存Coverageを8 Outcomeと14 Surfaceから辿る上位契約です。
 

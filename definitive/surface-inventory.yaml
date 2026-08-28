@@ -115,11 +115,11 @@ items:
   - {id: performance.repository-scale, area: performance, title: repository/monorepo generation capacity, kind: benchmark-obligation, locator: definitive/gap-ledger.yaml, target_id: performance.capacity-cost-baseline, state: missing}
   - {id: performance.cluster-shard-scale, area: performance, title: cluster/shard queueとmemory capacity, kind: benchmark-obligation, locator: definitive/gap-ledger.yaml, target_id: performance.capacity-cost-baseline, state: missing}
   - {id: performance.cost-baseline, area: performance, title: CPU/memory/storage/network cost baseline, kind: benchmark-obligation, locator: definitive/gap-ledger.yaml, target_id: performance.capacity-cost-baseline, state: missing}
-  - {id: notifications.controller, area: notifications, title: Notification controller reconciliation, kind: source-runtime, locator: notification_controller/controller/controller.go, target_id: operations.notifications-delivery, state: missing}
-  - {id: notifications.trigger-template, area: notifications, title: TriggerとTemplate evaluation, kind: docs-source, locator: docs/operator-manual/notifications/triggers.md, target_id: operations.notifications-delivery, state: missing}
-  - {id: notifications.subscription, area: notifications, title: Global/Application subscription, kind: docs-source, locator: docs/operator-manual/notifications/subscriptions.md, target_id: operations.notifications-delivery, state: missing}
-  - {id: notifications.service-delivery, area: notifications, title: Service deliveryとsecret boundary, kind: docs-source, locator: docs/operator-manual/notifications/services/overview.md, target_id: operations.notifications-delivery, state: missing}
-  - {id: notifications.failure-metrics, area: notifications, title: Delivery failure/retry/metrics, kind: docs-runtime, locator: docs/operator-manual/notifications/monitoring.md, target_id: operations.notifications-delivery, state: missing}
+  - {id: notifications.controller, area: notifications, title: Notification controller reconciliation, kind: source-runtime, locator: notification_controller/controller/controller.go, target_id: operations.notifications-delivery, state: partial}
+  - {id: notifications.trigger-template, area: notifications, title: TriggerとTemplate evaluation, kind: docs-source, locator: docs/operator-manual/notifications/triggers.md, target_id: operations.notifications-delivery, state: partial}
+  - {id: notifications.subscription, area: notifications, title: Global/Application subscription, kind: docs-source, locator: docs/operator-manual/notifications/subscriptions.md, target_id: operations.notifications-delivery, state: partial}
+  - {id: notifications.service-delivery, area: notifications, title: Service deliveryとsecret boundary, kind: docs-source, locator: docs/operator-manual/notifications/services/overview.md, target_id: operations.notifications-delivery, state: partial}
+  - {id: notifications.failure-metrics, area: notifications, title: Delivery failure/retry/metrics, kind: docs-runtime, locator: docs/operator-manual/notifications/monitoring.md, target_id: operations.notifications-delivery, state: partial}
   - {id: system.integrated-reference, area: system, title: Cross-surface Reference GitOps System, kind: runtime-obligation, locator: definitive/fe-parity-matrix.json, target_id: system.integrated-reference-gitops, state: missing}
   - {id: comparison.runtime-options, area: comparison, title: Evidence-backed architecture and operation comparison, kind: comparison-obligation, locator: definitive/fe-parity-matrix.json, target_id: architecture.evidence-backed-comparison, state: missing}
 evidence_bindings:
@@ -174,3 +174,6 @@ evidence_bindings:
   - evidence_id: evidence.upgrade-migration.v3-5-2
     item_ids: [migration.preflight-backup, migration.forward-3.4-3.5]
     bounded_scope: Kind v1.34.0上のv3.4.8からv3.5.2への正方向Upgrade。実Rollbackは含まない。
+  - evidence_id: evidence.notifications.v3-5-2
+    item_ids: [notifications.controller, notifications.trigger-template, notifications.subscription, notifications.service-delivery, notifications.failure-metrics]
+    bounded_scope: Application annotation subscription、local HTTP webhook、正常配信、HTTP 503 retry、endpoint修復後配信、trigger/delivery metric。Global subscription、provider固有認証、rate limit、controller再起動deduplication、全Serviceは含まない。

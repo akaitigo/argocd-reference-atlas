@@ -49,7 +49,7 @@
 - `promotion.git-mediated-change`: Environment差分をGit上の変更として実装する。
 - `security.secret-boundary`: 実Credentialを記録せずSecret参照境界を実装する。
 - `recovery.automated-resynchronization`: Automated sync、prune、selfHeal、retryの明示Policyを構成する。
-- `operations.notifications-delivery`: Notification Trigger、Template、Subscription、local receiver deliveryのmissing Gapへ案内する。
+- `operations.notifications-delivery`: Notification Trigger、Template、Subscription、local receiver deliveryのpartial Evidenceと、global subscription、外部provider認証、rate limit、controller再起動時deduplication、全Serviceの未証明Gapへ案内する。
 
 利用可能なLabの`setup`から`cleanup`までを一つのHarnessとして扱い、途中のコマンドだけを成功証拠にしません。
 
@@ -102,6 +102,7 @@ Mastery Outcome/Surface -> Coverage Target Set -> Coverage Target
 - 成功、拒否、障害、復旧のObservable Outcomeが区別されているか。
 - Secret、権限、公開の境界を越えていないか。
 - `status: complete`をGate通過前に宣言していないか。
+- `authority/body-inventory.snapshot.json`のraw anchorが人手decisionなしにSemantic Surface／Depth達成へ算入されていないか。stable IDの縮小は専用baselineとMigration Mappingで検査する。
 - `skill.router-evaluation`が独立Agentの採点Evidenceへ接続されているか。
 - `observability.distributed-trace-incident-capacity`がOTLP、Incident rehearsal、SLO、Retention、Cardinality、RedactionのArtifact Evidenceを持つか。
 

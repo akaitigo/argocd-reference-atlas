@@ -308,10 +308,10 @@ targets:
     target_set: operations
     kind: operation
     requirement: required
-    state: missing
-    rationale: Notification controller、Trigger、Template、Subscription、Service delivery、retry、metricを実Controllerと無害なlocal receiverで検証する必要がある。
-    claim_ids: []
-    evidence_ids: []
+    state: partial
+    rationale: Application annotation、local webhook、HTTP 5xx retry、endpoint回復、delivery/trigger metricは実Controllerで検証する。Global subscription、provider固有認証、rate limit、controller再起動をまたぐdeduplication、全Serviceは未検証である。
+    claim_ids: [claim.notifications.local-webhook-delivery]
+    evidence_ids: [evidence.notifications.v3-5-2]
   - id: system.integrated-reference-gitops
     title: 統合Reference GitOps System
     target_set: platform-surface

@@ -40,6 +40,8 @@ jobs:
         run: |
           python3 scripts/validate_graph.py
           python3 scripts/validate_definitive_inventory.py
+          python3 scripts/validate_authority_locators.py
+          python3 scripts/validate_authority_body_inventory.py
           python3 scripts/validate_non_regression.py
           python3 scripts/validate_evidence_artifacts.py
           scripts/environment.sh dry-run

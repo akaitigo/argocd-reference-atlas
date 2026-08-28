@@ -180,7 +180,7 @@
 
 ## Notification
 
-**Anchor:** `operations.notifications-delivery`はmissingです。`observability.metrics-logs`と`security.secret-boundary`が隣接します。
+**Anchor:** `operations.notifications-delivery`はpartialです。`evidence.notifications.v3-5-2`がlocal receiverの正常配信、HTTP 503 retry、回復後配信、metricを固定し、`observability.metrics-logs`と`security.secret-boundary`が隣接します。
 
 1. Trigger、Template、Subscription、Service、対象Application、local receiverを固定する。
 2. Notification controllerのreconciliation、delivery result、retry、metricを同一時系列で取得する。

@@ -1,0 +1,396 @@
+{
+  "schema_version": 1,
+  "atlas_id": "argocd-reference-atlas",
+  "generated_at": "2026-08-28T00:00:00+09:00",
+  "status": "incomplete-human-review-required",
+  "reference": {
+    "repository": "frontend-behavior-atlas",
+    "commit": "841ec2fa399606a10305021a8bcd396713b8cee5",
+    "files": [
+      {
+        "path": "scripts/lib/authority-body-inventory.ts",
+        "sha256": "04f62a0b63981c62a7ab90f39637c71745642e84a3bdd4404ce715a0163ebe76"
+      },
+      {
+        "path": "scripts/extract-authority-body-inventory.ts",
+        "sha256": "1ce38aae8e9adf2c8095310bf54348eacc482cb19f5edbd7c013a4bf55e6d38c"
+      },
+      {
+        "path": "scripts/verify-authority-body-inventory.ts",
+        "sha256": "5ba278737bfedae54b3c3b92fdf16a9ecf6b914bcaf0ab2cd04ff0d6ef24884a"
+      },
+      {
+        "path": "scripts/lib/authority-body-baseline.ts",
+        "sha256": "0dc48dc9e62fdc9cd8493e9b5827b4cf5948c4b72df3374d5ebcc73ac344009c"
+      },
+      {
+        "path": "scripts/verify-authority-body-baseline.ts",
+        "sha256": "599d6dee6d34b10f8496309c68e5cd3b8752366238311ecfbda4e2a23a8be897"
+      }
+    ]
+  },
+  "input_digest": "sha256:77a20144d281eacf72bc731bea2fa964577a96968e670740a55450a6a3c5bb8e",
+  "tool_digest": "sha256:9110ce5406c6abcd4e6be3dae9c70a2d3cd733ccd8551ae168f761e94cfd5681",
+  "body_storage": "digest-locator-and-offset-only",
+  "selector_contract": [
+    "document-root",
+    "git-tar-regular-file",
+    "markdown-atx-heading-line",
+    "yaml-mapping-key-line",
+    "plain-nonempty-line"
+  ],
+  "promotion_contract": {
+    "initial_status": "pending-human",
+    "raw_anchor_semantic_surface_credit": 0,
+    "raw_anchor_depth_axis_credit": 0,
+    "promotion_requires": [
+      "human-decision",
+      "stable-controller-or-behavior-surface-id",
+      "source-edge",
+      "proof-obligation"
+    ],
+    "rule": "人手decision前のraw anchor件数をSemantic Surface、Coverage、Depth axisの達成へ算入しない。"
+  },
+  "stale_boundary": {
+    "rule": "取得digestがSource lockと不一致のdocumentはstaleとし、anchorを生成または昇格しない。Source lock更新は別Epochと人手Reviewを要求する。",
+    "matched_required_for_selector_exhaustive": true
+  },
+  "summary": {
+    "source_entries": 26,
+    "unique_documents": 26,
+    "matched_documents": 26,
+    "stale_documents": 0,
+    "failed_documents": 0,
+    "selector_exhaustive_documents": 26,
+    "raw_anchors": 63889,
+    "anchors_by_selector": {
+      "document-root": 26,
+      "git-tar-regular-file": 5405,
+      "markdown-atx-heading-line": 293,
+      "plain-nonempty-line": 1,
+      "yaml-mapping-key-line": 58164
+    },
+    "classified_anchors": 0,
+    "unclassified_anchors": 63889,
+    "human_reviewed_anchors": 0,
+    "promoted_controller_behavior_surfaces": 0,
+    "core_v2_eligible_artifacts": 0,
+    "semantic_surface_credit": 0,
+    "depth_axis_credit": 0,
+    "authority_semantics_exhaustive": false
+  },
+  "documents": [
+    {
+      "id": "document-argocd-application-crd",
+      "path": "authority/body-inventory-draft/document-argocd-application-crd.json",
+      "digest": "sha256:c8b69e1755bc5d36921776097022db5d5109aadecfd43d592928b623d337e3c2",
+      "fetch_status": "matched",
+      "source_entries": 1,
+      "anchors": 5403,
+      "anchors_by_selector": {
+        "document-root": 1,
+        "yaml-mapping-key-line": 5402
+      }
+    },
+    {
+      "id": "document-argocd-application-specification",
+      "path": "authority/body-inventory-draft/document-argocd-application-specification.json",
+      "digest": "sha256:8bda2bdef01631b1b1d3d1d4fcc5c494f93aed32b92d1a74e5de075430bf82ee",
+      "fetch_status": "matched",
+      "source_entries": 1,
+      "anchors": 2,
+      "anchors_by_selector": {
+        "document-root": 1,
+        "markdown-atx-heading-line": 1
+      }
+    },
+    {
+      "id": "document-argocd-applicationset-crd",
+      "path": "authority/body-inventory-draft/document-argocd-applicationset-crd.json",
+      "digest": "sha256:556f18205c45cf359a40e95834b3f8cc95d679791b034e53520238088df8fc98",
+      "fetch_status": "matched",
+      "source_entries": 1,
+      "anchors": 22069,
+      "anchors_by_selector": {
+        "document-root": 1,
+        "yaml-mapping-key-line": 22068
+      }
+    },
+    {
+      "id": "document-argocd-applicationset-introduction",
+      "path": "authority/body-inventory-draft/document-argocd-applicationset-introduction.json",
+      "digest": "sha256:03418852701e722a3c39e4b59f90a32730df936d5bdd001b469412dd5f1859fa",
+      "fetch_status": "matched",
+      "source_entries": 1,
+      "anchors": 5,
+      "anchors_by_selector": {
+        "document-root": 1,
+        "markdown-atx-heading-line": 4
+      }
+    },
+    {
+      "id": "document-argocd-applicationset-specification",
+      "path": "authority/body-inventory-draft/document-argocd-applicationset-specification.json",
+      "digest": "sha256:a72f752c1611be7a7c330715732d92ae9a6a5699d0d528075e0154121f8db1ef",
+      "fetch_status": "matched",
+      "source_entries": 1,
+      "anchors": 2,
+      "anchors_by_selector": {
+        "document-root": 1,
+        "markdown-atx-heading-line": 1
+      }
+    },
+    {
+      "id": "document-argocd-appproject-crd",
+      "path": "authority/body-inventory-draft/document-argocd-appproject-crd.json",
+      "digest": "sha256:21974670cc016a099cb05ff0ac8b6ec69856d40338790998f430b4297294e2ca",
+      "fetch_status": "matched",
+      "source_entries": 1,
+      "anchors": 324,
+      "anchors_by_selector": {
+        "document-root": 1,
+        "yaml-mapping-key-line": 323
+      }
+    },
+    {
+      "id": "document-argocd-architecture",
+      "path": "authority/body-inventory-draft/document-argocd-architecture.json",
+      "digest": "sha256:8eaba9b1af7af0f783959b5ca4dfb9e6434d98477f9aae199c2c0833f5634443",
+      "fetch_status": "matched",
+      "source_entries": 1,
+      "anchors": 6,
+      "anchors_by_selector": {
+        "document-root": 1,
+        "markdown-atx-heading-line": 5
+      }
+    },
+    {
+      "id": "document-argocd-automated-sync",
+      "path": "authority/body-inventory-draft/document-argocd-automated-sync.json",
+      "digest": "sha256:cdff1731b3a1645629e9a74f213713d9611ec9b3e3fa48bae03a4f4c9133407b",
+      "fetch_status": "matched",
+      "source_entries": 1,
+      "anchors": 9,
+      "anchors_by_selector": {
+        "document-root": 1,
+        "markdown-atx-heading-line": 8
+      }
+    },
+    {
+      "id": "document-argocd-cluster-management",
+      "path": "authority/body-inventory-draft/document-argocd-cluster-management.json",
+      "digest": "sha256:e7759956a2c675e556b986da0f7c81f24a2c9d2e86eb73c7ef0124639805c82d",
+      "fetch_status": "matched",
+      "source_entries": 1,
+      "anchors": 5,
+      "anchors_by_selector": {
+        "document-root": 1,
+        "markdown-atx-heading-line": 4
+      }
+    },
+    {
+      "id": "document-argocd-diffing",
+      "path": "authority/body-inventory-draft/document-argocd-diffing.json",
+      "digest": "sha256:fdb8177a72d9ee24e8ab0939596de355017475735b569300f64e83f6db8c620a",
+      "fetch_status": "matched",
+      "source_entries": 1,
+      "anchors": 7,
+      "anchors_by_selector": {
+        "document-root": 1,
+        "markdown-atx-heading-line": 6
+      }
+    },
+    {
+      "id": "document-argocd-disaster-recovery",
+      "path": "authority/body-inventory-draft/document-argocd-disaster-recovery.json",
+      "digest": "sha256:f0a41119a0b00fea49f2d1c47d9203e8f42de8dc78a658ae9626f600c8d17409",
+      "fetch_status": "matched",
+      "source_entries": 1,
+      "anchors": 3,
+      "anchors_by_selector": {
+        "document-root": 1,
+        "markdown-atx-heading-line": 2
+      }
+    },
+    {
+      "id": "document-argocd-health",
+      "path": "authority/body-inventory-draft/document-argocd-health.json",
+      "digest": "sha256:07f941a872ead944def2c5a1509d39f7641e95b1abb44a076bf0a670977780fa",
+      "fetch_status": "matched",
+      "source_entries": 1,
+      "anchors": 24,
+      "anchors_by_selector": {
+        "document-root": 1,
+        "markdown-atx-heading-line": 23
+      }
+    },
+    {
+      "id": "document-argocd-high-availability",
+      "path": "authority/body-inventory-draft/document-argocd-high-availability.json",
+      "digest": "sha256:275cca6782271e9daec8a5d1fc8661be0fbdc0618e36b7e51212c967d0769f28",
+      "fetch_status": "matched",
+      "source_entries": 1,
+      "anchors": 35,
+      "anchors_by_selector": {
+        "document-root": 1,
+        "markdown-atx-heading-line": 34
+      }
+    },
+    {
+      "id": "document-argocd-install-manifest",
+      "path": "authority/body-inventory-draft/document-argocd-install-manifest.json",
+      "digest": "sha256:468435ee46de5d689b8f4da16f426e8f0b438274f154c6ece1030446b8dd76b8",
+      "fetch_status": "matched",
+      "source_entries": 1,
+      "anchors": 30372,
+      "anchors_by_selector": {
+        "document-root": 1,
+        "yaml-mapping-key-line": 30371
+      }
+    },
+    {
+      "id": "document-argocd-metrics",
+      "path": "authority/body-inventory-draft/document-argocd-metrics.json",
+      "digest": "sha256:f6e1dbdd6dbd83caba2a33b8e5d69d725ff388d60572391976c36a13d4d7850c",
+      "fetch_status": "matched",
+      "source_entries": 1,
+      "anchors": 19,
+      "anchors_by_selector": {
+        "document-root": 1,
+        "markdown-atx-heading-line": 18
+      }
+    },
+    {
+      "id": "document-argocd-private-repositories",
+      "path": "authority/body-inventory-draft/document-argocd-private-repositories.json",
+      "digest": "sha256:e4da0c92fede4d23a8ca6eb4121e67e6faf0a54440bd3bac94406ee45d0eefd0",
+      "fetch_status": "matched",
+      "source_entries": 1,
+      "anchors": 30,
+      "anchors_by_selector": {
+        "document-root": 1,
+        "markdown-atx-heading-line": 29
+      }
+    },
+    {
+      "id": "document-argocd-rbac",
+      "path": "authority/body-inventory-draft/document-argocd-rbac.json",
+      "digest": "sha256:b048cba94dee28db305403d4720c6ad61282dd77a0cf38cccc3ccefc854e4a8f",
+      "fetch_status": "matched",
+      "source_entries": 1,
+      "anchors": 25,
+      "anchors_by_selector": {
+        "document-root": 1,
+        "markdown-atx-heading-line": 24
+      }
+    },
+    {
+      "id": "document-argocd-reconcile-optimization",
+      "path": "authority/body-inventory-draft/document-argocd-reconcile-optimization.json",
+      "digest": "sha256:cf0ee69207fa02960e7f954bebb2305fce7865d9e75febb8aa01e44599bc322e",
+      "fetch_status": "matched",
+      "source_entries": 1,
+      "anchors": 13,
+      "anchors_by_selector": {
+        "document-root": 1,
+        "markdown-atx-heading-line": 12
+      }
+    },
+    {
+      "id": "document-argocd-resource-tracking",
+      "path": "authority/body-inventory-draft/document-argocd-resource-tracking.json",
+      "digest": "sha256:8184e480ae3b9f1cf053894692df8b439830a40c12c57500ade16a409ccb4a63",
+      "fetch_status": "matched",
+      "source_entries": 1,
+      "anchors": 8,
+      "anchors_by_selector": {
+        "document-root": 1,
+        "markdown-atx-heading-line": 7
+      }
+    },
+    {
+      "id": "document-argocd-secret-management",
+      "path": "authority/body-inventory-draft/document-argocd-secret-management.json",
+      "digest": "sha256:86f5b705f0c6c2f596a7a7ade6ed13979486943f9699a6e4705b943eebf3c997",
+      "fetch_status": "matched",
+      "source_entries": 1,
+      "anchors": 5,
+      "anchors_by_selector": {
+        "document-root": 1,
+        "markdown-atx-heading-line": 4
+      }
+    },
+    {
+      "id": "document-argocd-source-tree",
+      "path": "authority/body-inventory-draft/document-argocd-source-tree.json",
+      "digest": "sha256:89b0bcf66f571de1edcea4abd4129af68c6f906d0e34c3df39c2c4f1448252cd",
+      "fetch_status": "matched",
+      "source_entries": 1,
+      "anchors": 5406,
+      "anchors_by_selector": {
+        "document-root": 1,
+        "git-tar-regular-file": 5405
+      }
+    },
+    {
+      "id": "document-argocd-sync-options",
+      "path": "authority/body-inventory-draft/document-argocd-sync-options.json",
+      "digest": "sha256:51a55f579d4a93e527e2de71d406671528ca3fce145ec7c0e7be1b71d802f0eb",
+      "fetch_status": "matched",
+      "source_entries": 1,
+      "anchors": 20,
+      "anchors_by_selector": {
+        "document-root": 1,
+        "markdown-atx-heading-line": 19
+      }
+    },
+    {
+      "id": "document-argocd-sync-waves",
+      "path": "authority/body-inventory-draft/document-argocd-sync-waves.json",
+      "digest": "sha256:acfb52dbbe4bf07d6d1e6ecd8c6cfc74d66b0733b999c8503dafb3c4dce5a25a",
+      "fetch_status": "matched",
+      "source_entries": 1,
+      "anchors": 15,
+      "anchors_by_selector": {
+        "document-root": 1,
+        "markdown-atx-heading-line": 14
+      }
+    },
+    {
+      "id": "document-argocd-upgrade-3-4-to-3-5",
+      "path": "authority/body-inventory-draft/document-argocd-upgrade-3-4-to-3-5.json",
+      "digest": "sha256:010f301e659041230250a5e584df4640e5cef029ddfc22cae689daf2042de6cf",
+      "fetch_status": "matched",
+      "source_entries": 1,
+      "anchors": 39,
+      "anchors_by_selector": {
+        "document-root": 1,
+        "markdown-atx-heading-line": 38
+      }
+    },
+    {
+      "id": "document-argocd-user-management",
+      "path": "authority/body-inventory-draft/document-argocd-user-management.json",
+      "digest": "sha256:6fa7cb5b872fe3ba3f04ae6180b51d2a8232da64ad985415ad016d6738769471",
+      "fetch_status": "matched",
+      "source_entries": 1,
+      "anchors": 41,
+      "anchors_by_selector": {
+        "document-root": 1,
+        "markdown-atx-heading-line": 40
+      }
+    },
+    {
+      "id": "document-argocd-version",
+      "path": "authority/body-inventory-draft/document-argocd-version.json",
+      "digest": "sha256:23571dc9b5019d377782e0a8507c7feed3738ba97412206b43f8ccdb8df7e40e",
+      "fetch_status": "matched",
+      "source_entries": 1,
+      "anchors": 2,
+      "anchors_by_selector": {
+        "document-root": 1,
+        "plain-nonempty-line": 1
+      }
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+schema_version: 1
+id: lab.notifications
+target_id: operations.notifications-delivery
+claim_id: claim.notifications.local-webhook-delivery
+title: Notification local webhook配信と失敗回復
+evidence_id: evidence.notifications.v3-5-2
+environment: kind-argocd-atlas-v3-5-2
+phases:
+  setup: scripts/extended/run.sh notifications setup
+  execute: scripts/extended/run.sh notifications execute
+  verify: scripts/extended/run.sh notifications verify
+  cleanup: scripts/extended/run.sh notifications cleanup
+acceptance: 実Notification controllerがApplication subscriptionを評価してlocal receiverへ配信し、HTTP 5xxを再試行し、endpoint回復後に成功をmetric、controller log、receiver artifactで検証する。

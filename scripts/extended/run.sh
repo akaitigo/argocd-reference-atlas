@@ -5,7 +5,7 @@ set -euo pipefail
 lab=${1:-}
 phase=${2:-}
 dry_run=${3:-}
-case "$lab" in architecture|applicationset|connection|hook-wave|access-boundary|high-availability|observability|drift|auto-recovery|upgrade-migration|operations) ;;
+case "$lab" in architecture|applicationset|connection|hook-wave|access-boundary|high-availability|observability|drift|auto-recovery|upgrade-migration|operations|notifications) ;;
   *) die "未知のextended Labです: ${lab}" ;;
 esac
 case "$phase" in setup|execute|verify|cleanup) ;; *) die 'usage: scripts/extended/run.sh LAB {setup|execute|verify|cleanup} [--dry-run]' ;; esac

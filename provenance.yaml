@@ -102,6 +102,13 @@ artifacts:
   - argocd-sync-waves
   - argocd-sync-options
   generated_by: make extended-lab-hook-wave
+- path: evidence/raw/evidence.notifications.v3-5-2/result.json
+  digest: sha256:25af7045326cb82ff7c5556f12840183b443e49a2d1a14200661a250a7eb6550
+  kind: capture
+  license: Apache-2.0
+  source_ids:
+  - argocd-source-tree
+  generated_by: make extended-lab-notifications
 - path: evidence/raw/evidence.observability.v3-5-2/result.json
   digest: sha256:098cf152a2c95f7c82311a6e2d29b0f46da85e267bccd03cc6bb1399e9e454d1
   kind: capture
@@ -189,7 +196,7 @@ artifacts:
   - argocd-architecture
   generated_by: scripts/generate_core_v1_metadata.py graph
 - path: sbom.spdx.json
-  digest: sha256:4af616178289570c1f618d1f6247ca9ebb23efd1ea6532a1e08a5abbda47a63b
+  digest: sha256:5449390c16de9f5be0511ad3f177819ad6144ff52eedd08a88f5c444393d4524
   kind: sbom
   license: CC0-1.0
   source_ids: []

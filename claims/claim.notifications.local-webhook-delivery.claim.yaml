@@ -1,0 +1,18 @@
+schema_version: 1
+id: claim.notifications.local-webhook-delivery
+atlas_id: argocd-reference-atlas
+capability_id: capability.notifications.local-webhook-delivery
+statement: Argo CD v3.5.2のNotification controllerは固定Application subscriptionとTemplateを評価し、専用Cluster内のlocal webhookへ配信し、HTTP
+  5xxを再試行してendpoint修復後に成功する。
+status: accepted
+source_ids:
+- argocd-source-tree
+proof_obligations:
+- id: proof.notifications.local-webhook-delivery
+  statement: Application状態、ReceiverのHTTP 200/503 event列、Notification controller logとdelivery/trigger metricを同一attemptで照合する。
+  acceptance_criteria:
+  - 正常配信のApplication名、Sync、Health、Revisionがreceiver artifactと一致する。
+  - retryMax 2のServiceがHTTP 5xxに対して初回を含む3回以上のattemptを行う。
+  - 同じ失敗Subscriptionがendpoint修復後にHTTP 200で配信される。
+  - Trigger評価とDeliveryのMetric、Controller log digest、receiver eventを同じArtifactへ記録する。
+  - Secret値と外部宛先を使用またはCaptureしない。

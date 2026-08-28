@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "document_id": "document-argocd-cluster-management",
+  "source_ids": [
+    "argocd-cluster-management"
+  ],
+  "source_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/operator-manual/cluster-management.md",
+  "authority_family": "argocd-documentation",
+  "locked_body_digest": "sha256:371c75bdc483062d34e3c5835ce925f1927e0e7d2d04af121425f3c8ef73e74a",
+  "fetch": {
+    "status": "matched",
+    "observed_digest": "sha256:371c75bdc483062d34e3c5835ce925f1927e0e7d2d04af121425f3c8ef73e74a",
+    "locked_digest_match": true,
+    "observed_bytes": 1698,
+    "error_digest": null
+  },
+  "extraction": {
+    "method": "fixed-selector-raw-anchor-v1",
+    "tool": "argocd-reference-atlas-authority-body-inventory-v1",
+    "tool_digest": "sha256:9110ce5406c6abcd4e6be3dae9c70a2d3cd733ccd8551ae168f761e94cfd5681",
+    "selector_contract": [
+      "document-root",
+      "git-tar-regular-file",
+      "markdown-atx-heading-line",
+      "yaml-mapping-key-line",
+      "plain-nonempty-line"
+    ],
+    "selector_exhaustive_for_locked_body": true,
+    "authority_semantics_exhaustive": false,
+    "review_status": "automated-unreviewed",
+    "body_storage": "digest-locator-and-offset-only"
+  },
+  "anchors": [
+    {
+      "id": "anchor-811e5ed128ed135a5491",
+      "locator": "document-root",
+      "locator_kind": "document-root",
+      "selector": "document-root",
+      "parent_anchor_id": null,
+      "context_start": 0,
+      "context_end": 1698,
+      "context_unit": "byte",
+      "context_digest": "sha256:371c75bdc483062d34e3c5835ce925f1927e0e7d2d04af121425f3c8ef73e74a",
+      "label_digest": null,
+      "classification_status": "pending-human",
+      "surface_ids": []
+    },
+    {
+      "id": "anchor-6b5894c61c5e77bf75d7",
+      "locator": "line:1",
+      "locator_kind": "locked-body-offset",
+      "selector": "markdown-atx-heading-line",
+      "parent_anchor_id": "anchor-811e5ed128ed135a5491",
+      "context_start": 0,
+      "context_end": 21,
+      "context_unit": "byte",
+      "context_digest": "sha256:0b741e20079e8931aa1d0b3a8ef706dbb3a2a938294c9307df75d8616c82bae9",
+      "label_digest": "sha256:c370098615c3e370e10b21988815f38c5b2a74e5bf1ef8a9bd39a4213747b85a",
+      "classification_status": "pending-human",
+      "surface_ids": []
+    },
+    {
+      "id": "anchor-56f364a39005492abc63",
+      "locator": "line:7",
+      "locator_kind": "locked-body-offset",
+      "selector": "markdown-atx-heading-line",
+      "parent_anchor_id": "anchor-811e5ed128ed135a5491",
+      "context_start": 355,
+      "context_end": 375,
+      "context_unit": "byte",
+      "context_digest": "sha256:8960f98a2639ba5b8ceed8477023179dba99f4871d3e89dca1f8bbefa0702196",
+      "label_digest": "sha256:a5367823fc84afd509178997193fca515f251440a5f55445c879abff66c0f4b5",
+      "classification_status": "pending-human",
+      "surface_ids": []
+    },
+    {
+      "id": "anchor-d009dfd8d5fa96ae6283",
+      "locator": "line:16",
+      "locator_kind": "locked-body-offset",
+      "selector": "markdown-atx-heading-line",
+      "parent_anchor_id": "anchor-811e5ed128ed135a5491",
+      "context_start": 674,
+      "context_end": 709,
+      "context_unit": "byte",
+      "context_digest": "sha256:9da7dd138be3c3645e6a8654933ead3280baf20ef5b3e9870551f5ba6478995d",
+      "label_digest": "sha256:5c245c9655ebdbc1f81166e40e3e7a3414d4e10652e17dd65cdac33962d107a3",
+      "classification_status": "pending-human",
+      "surface_ids": []
+    },
+    {
+      "id": "anchor-4bba3f574d8d6f5edf98",
+      "locator": "line:33",
+      "locator_kind": "locked-body-offset",
+      "selector": "markdown-atx-heading-line",
+      "parent_anchor_id": "anchor-811e5ed128ed135a5491",
+      "context_start": 1313,
+      "context_end": 1335,
+      "context_unit": "byte",
+      "context_digest": "sha256:29af4bbec486c2fb3b1c124acf0c8ccb3923180c12b5bd4f33e276da4f80fae9",
+      "label_digest": "sha256:309062b05f23024f1c20cbf08e5ae1b47cd18a1033f279f84ad35328c36d1475",
+      "classification_status": "pending-human",
+      "surface_ids": []
+    }
+  ]
+}

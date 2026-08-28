@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "source_id": "argocd-applicationset-specification",
+  "source_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/operator-manual/applicationset/applicationset-specification.md",
+  "locked_source_digest": "sha256:7a549b3fc929d57a0408d35659e03dd57bde0aaf1a32956a806990bafd1dc946",
+  "fetch": {
+    "status": "matched",
+    "observed_digest": "sha256:7a549b3fc929d57a0408d35659e03dd57bde0aaf1a32956a806990bafd1dc946",
+    "locked_digest_match": true,
+    "observed_bytes": 161,
+    "content_type": "text/markdown; charset=utf-8",
+    "error_digest": null
+  },
+  "extraction": {
+    "method": "locked-body-file-locator-digest",
+    "tool": "argocd-reference-atlas-authority-locator-v1",
+    "review_status": "automated-unreviewed",
+    "body_storage": "metadata-digest-locator-offset-only"
+  },
+  "document_locator": {
+    "locator": "document-root",
+    "locator_kind": "file-root",
+    "locator_status": "root-document",
+    "context_digest": "sha256:7a549b3fc929d57a0408d35659e03dd57bde0aaf1a32956a806990bafd1dc946",
+    "context_start": 0,
+    "context_end": 161,
+    "context_unit": "byte"
+  },
+  "candidate_surfaces": []
+}

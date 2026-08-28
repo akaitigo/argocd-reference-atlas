@@ -71,7 +71,7 @@ gaps:
   - id: gap.notifications-delivery
     target_ids: [operations.notifications-delivery]
     required_scenarios: [normal, boundary, rejection, failure, recovery, operations, security, performance, compatibility]
-    missing: Trigger、Template、Global/Application subscription、local receiver delivery、Secret redaction、provider outage、retry、deduplication、metricを実Notification controllerで実証する。
+    missing: Application annotation、local receiver正常配信、HTTP 503 retry、endpoint修復後配信、trigger/delivery metricは実証済み。Global subscription、provider固有認証、Secret参照/redaction、rate limit、controller再起動をまたぐdeduplication、全Service互換を追加実証する。
   - id: gap.integrated-reference-system
     target_ids: [system.integrated-reference-gitops]
     required_scenarios: [normal, boundary, rejection, failure, recovery, migration, operations, security, performance, compatibility]

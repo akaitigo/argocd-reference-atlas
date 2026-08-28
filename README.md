@@ -37,6 +37,8 @@ sources.lock.yaml
   -> mastery.yaml
   -> coverage.yaml
   -> definitive/surface-inventory.yaml
+  -> authority/extraction.snapshot.json
+  -> authority/body-inventory.snapshot.json
   -> definitive/gap-ledger.yaml
   -> definitive/argocd-depth-parity.json
   -> definitive/fe-parity-matrix.json
@@ -49,6 +51,8 @@ sources.lock.yaml
 
 - 共通Identityと完成条件: `atlas.yaml`
 - Authority Lock: `sources.lock.yaml`
+- Authority locator監査: `authority/extraction.snapshot.json`
+- Authority raw anchor母集団と非後退baseline: `authority/body-inventory.snapshot.json`、`baselines/authority-body-inventory-v1.json`
 - 8 Outcome／14 Surface: `mastery.yaml`
 - 有限のCoverage: `coverage.yaml`
 - Agent Router Package: `skill.package.yaml`

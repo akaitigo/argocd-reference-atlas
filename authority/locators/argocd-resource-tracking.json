@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "source_id": "argocd-resource-tracking",
+  "source_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/user-guide/resource_tracking.md",
+  "locked_source_digest": "sha256:eb1aed4af06710dc2ca7401a9322c909dce6b55b2d1b300b174fb98daaf6cb4a",
+  "fetch": {
+    "status": "matched",
+    "observed_digest": "sha256:eb1aed4af06710dc2ca7401a9322c909dce6b55b2d1b300b174fb98daaf6cb4a",
+    "locked_digest_match": true,
+    "observed_bytes": 5037,
+    "content_type": "text/markdown; charset=utf-8",
+    "error_digest": null
+  },
+  "extraction": {
+    "method": "locked-body-file-locator-digest",
+    "tool": "argocd-reference-atlas-authority-locator-v1",
+    "review_status": "automated-unreviewed",
+    "body_storage": "metadata-digest-locator-offset-only"
+  },
+  "document_locator": {
+    "locator": "document-root",
+    "locator_kind": "file-root",
+    "locator_status": "root-document",
+    "context_digest": "sha256:eb1aed4af06710dc2ca7401a9322c909dce6b55b2d1b300b174fb98daaf6cb4a",
+    "context_start": 0,
+    "context_end": 5037,
+    "context_unit": "byte"
+  },
+  "candidate_surfaces": [
+    {
+      "edge_id": "edge.tracking.methods.argocd-resource-tracking",
+      "source_id": "argocd-resource-tracking",
+      "inventory_item_id": "tracking.methods",
+      "area": "drift",
+      "target_id": "drift.tracking-and-refresh",
+      "locator": "docs/user-guide/resource_tracking.md",
+      "locator_status": "file-found",
+      "context_digest": "sha256:eb1aed4af06710dc2ca7401a9322c909dce6b55b2d1b300b174fb98daaf6cb4a",
+      "context_start": 0,
+      "context_end": 5037,
+      "context_unit": "byte",
+      "heading_digest": null,
+      "classification_basis": "domain-inventory-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:80b3cd9d5d0a337f6ff493836479ef1a7783d34f508ae9000a699422ca949364",
+      "classification": "candidate-included-unreviewed"
+    }
+  ]
+}

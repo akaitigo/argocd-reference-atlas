@@ -1,4 +1,41 @@
 {
   "schema_version": 1,
-  "artifacts": []
+  "artifacts": [
+    {
+      "id": "authority-body-inventory-applicationset-crd-v1",
+      "name": "ApplicationSet CRD raw anchor inventory",
+      "kind": "generated-artifact",
+      "source_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/manifests/crds/applicationset-crd.yaml",
+      "version": "v3.5.2 / selector-v1",
+      "retrieved_at": "2026-08-28",
+      "license": "Apache-2.0",
+      "copyright_holder": "Argo Project authors and Nakayama Ryusei",
+      "redistribution": "allowed",
+      "modified": true,
+      "files": [
+        "authority/body-inventory-draft/document-argocd-applicationset-crd.json"
+      ],
+      "digest": "sha256:556f18205c45cf359a40e95834b3f8cc95d679791b034e53520238088df8fc98",
+      "size_bytes": 12998782,
+      "notes": "第三者本文を含まず、固定selectorのURL、digest、locator、byte offset、pending-human状態だけを保持する。"
+    },
+    {
+      "id": "authority-body-inventory-install-manifest-v1",
+      "name": "Argo CD install manifest raw anchor inventory",
+      "kind": "generated-artifact",
+      "source_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/manifests/install.yaml",
+      "version": "v3.5.2 / selector-v1",
+      "retrieved_at": "2026-08-28",
+      "license": "Apache-2.0",
+      "copyright_holder": "Argo Project authors and Nakayama Ryusei",
+      "redistribution": "allowed",
+      "modified": true,
+      "files": [
+        "authority/body-inventory-draft/document-argocd-install-manifest.json"
+      ],
+      "digest": "sha256:468435ee46de5d689b8f4da16f426e8f0b438274f154c6ece1030446b8dd76b8",
+      "size_bytes": 17909283,
+      "notes": "第三者本文を含まず、固定selectorのURL、digest、locator、byte offset、pending-human状態だけを保持する。"
+    }
+  ]
 }

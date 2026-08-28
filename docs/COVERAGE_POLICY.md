@@ -19,6 +19,10 @@ Argo Projectが管理するArgo CD公式Repositoryと公式文書だけを一次
 
 同じ事項について一次資料が不足する場合、推測でClaimを完成させず、Targetを`partial`または`missing`に維持します。
 
+`authority/extraction.snapshot.json`は、第三者本文を保存せず、URL、metadata、digest、locator offsetだけで既存Feature／Source edgeを記録します。現時点では26 Sourceがすべて照合済みで、83件のAuthority edgeと17件のlocal runtime／benchmark／comparison obligationを分離しています。
+
+`authority/body-inventory.snapshot.json`は同じ26 unique documentを固定selectorで列挙した63,889件のraw anchor候補を別母集団として保持します。全件を`pending-human`から開始し、human reviewed、Controller／behavior Surfaceへの昇格、Semantic Surface credit、Depth axis creditはいずれも0です。`stale=0`、`failed=0`、`deferred=0`を隠さず、固定selector内の列挙をAuthority意味論の網羅とは扱いません。初回ID集合は`baselines/authority-body-inventory-v1.json`へ固定し、削除・置換は専用MappingとProofを要求します。
+
 ## Target状態
 
 | State | 本Atlasでの意味 |
@@ -35,7 +39,7 @@ Argo Projectが管理するArgo CD公式Repositoryと公式文書だけを一次
 
 ## 必須Target
 
-30件はすべて`required`です。現状は8件`covered`、13件`partial`、9件`missing`であり、22件が未Closureです。Performance／Capacity、広域互換、実IdP、Host／Network RTO-RPO、複数Version Rollback、Trace／Incident、Notifications、統合Reference System、Evidence比較はDefinitiveに必要なため`excluded`で閉じません。100件の細粒度Surface、21件のGap、Argo CD機能20軸のParity Matrix、FE Depth Reference由来18軸の`argocd-depth-parity`は`definitive/`で追跡します。18軸は現状1件`satisfied`、15件`partial`、2件`missing`です。PromotionはGitを介したDesired state変更という境界で扱い、Argo CD固有の直接Promotion機能としては扱いません。
+30件はすべて`required`です。現状は8件`covered`、14件`partial`、8件`missing`であり、22件が未Closureです。Performance／Capacity、広域互換、実IdP、Host／Network RTO-RPO、複数Version Rollback、Trace／Incident、Notifications、統合Reference System、Evidence比較はDefinitiveに必要なため`excluded`で閉じません。100件の細粒度Surface、21件のGap、Argo CD機能20軸のParity Matrix、FE Depth Reference由来18軸の`argocd-depth-parity`は`definitive/`で追跡します。18軸は現状1件`satisfied`、15件`partial`、2件`missing`です。PromotionはGitを介したDesired state変更という境界で扱い、Argo CD固有の直接Promotion機能としては扱いません。
 
 ## Evidence規則
 

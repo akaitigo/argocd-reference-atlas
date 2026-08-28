@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "source_id": "argocd-metrics",
+  "source_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/operator-manual/metrics.md",
+  "locked_source_digest": "sha256:1db168b65650393e587a7bbdd1254c8c1e5f7b08b28323f2bbf3fb073b195c38",
+  "fetch": {
+    "status": "matched",
+    "observed_digest": "sha256:1db168b65650393e587a7bbdd1254c8c1e5f7b08b28323f2bbf3fb073b195c38",
+    "locked_digest_match": true,
+    "observed_bytes": 45399,
+    "content_type": "text/markdown; charset=utf-8",
+    "error_digest": null
+  },
+  "extraction": {
+    "method": "locked-body-file-locator-digest",
+    "tool": "argocd-reference-atlas-authority-locator-v1",
+    "review_status": "automated-unreviewed",
+    "body_storage": "metadata-digest-locator-offset-only"
+  },
+  "document_locator": {
+    "locator": "document-root",
+    "locator_kind": "file-root",
+    "locator_status": "root-document",
+    "context_digest": "sha256:1db168b65650393e587a7bbdd1254c8c1e5f7b08b28323f2bbf3fb073b195c38",
+    "context_start": 0,
+    "context_end": 45399,
+    "context_unit": "byte"
+  },
+  "candidate_surfaces": [
+    {
+      "edge_id": "edge.observe.metrics.applicationset.argocd-metrics",
+      "source_id": "argocd-metrics",
+      "inventory_item_id": "observe.metrics.applicationset",
+      "area": "observability",
+      "target_id": "observability.metrics-logs",
+      "locator": "docs/operator-manual/metrics.md",
+      "locator_status": "file-found",
+      "context_digest": "sha256:1db168b65650393e587a7bbdd1254c8c1e5f7b08b28323f2bbf3fb073b195c38",
+      "context_start": 0,
+      "context_end": 45399,
+      "context_unit": "byte",
+      "heading_digest": null,
+      "classification_basis": "domain-inventory-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:93cc37981306f9efc6cab687584734e6cd578aa211b29b2281a2675cb41bfdc9",
+      "classification": "candidate-included-unreviewed"
+    },
+    {
+      "edge_id": "edge.observe.metrics.controller.argocd-metrics",
+      "source_id": "argocd-metrics",
+      "inventory_item_id": "observe.metrics.controller",
+      "area": "observability",
+      "target_id": "observability.metrics-logs",
+      "locator": "docs/operator-manual/metrics.md",
+      "locator_status": "file-found",
+      "context_digest": "sha256:1db168b65650393e587a7bbdd1254c8c1e5f7b08b28323f2bbf3fb073b195c38",
+      "context_start": 0,
+      "context_end": 45399,
+      "context_unit": "byte",
+      "heading_digest": null,
+      "classification_basis": "domain-inventory-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:89a6ca97160aa9197c18c8ecf28722a3d00a277df2bef6238d1892b3dd783a1b",
+      "classification": "candidate-included-unreviewed"
+    },
+    {
+      "edge_id": "edge.observe.metrics.repo-server.argocd-metrics",
+      "source_id": "argocd-metrics",
+      "inventory_item_id": "observe.metrics.repo-server",
+      "area": "observability",
+      "target_id": "observability.metrics-logs",
+      "locator": "docs/operator-manual/metrics.md",
+      "locator_status": "file-found",
+      "context_digest": "sha256:1db168b65650393e587a7bbdd1254c8c1e5f7b08b28323f2bbf3fb073b195c38",
+      "context_start": 0,
+      "context_end": 45399,
+      "context_unit": "byte",
+      "heading_digest": null,
+      "classification_basis": "domain-inventory-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:90c7f5adb1ddc5a9a2a0c5cca1facd27b428a54fc33206de55de580bd3bfa79c",
+      "classification": "candidate-included-unreviewed"
+    },
+    {
+      "edge_id": "edge.observe.metrics.server.argocd-metrics",
+      "source_id": "argocd-metrics",
+      "inventory_item_id": "observe.metrics.server",
+      "area": "observability",
+      "target_id": "observability.metrics-logs",
+      "locator": "docs/operator-manual/metrics.md",
+      "locator_status": "file-found",
+      "context_digest": "sha256:1db168b65650393e587a7bbdd1254c8c1e5f7b08b28323f2bbf3fb073b195c38",
+      "context_start": 0,
+      "context_end": 45399,
+      "context_unit": "byte",
+      "heading_digest": null,
+      "classification_basis": "domain-inventory-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:d65a1257a0439873f67fd11b8ef674b841347068a1a16e4fc56988c99a3aa87b",
+      "classification": "candidate-included-unreviewed"
+    }
+  ]
+}

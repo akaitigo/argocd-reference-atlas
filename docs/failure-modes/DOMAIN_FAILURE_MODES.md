@@ -132,7 +132,7 @@
 - **Competing hypotheses:** Trigger、Template、Subscription、Service Secret、receiver、rate limit、controller queue。
 - **Disambiguation:** Application event、controller log、delivery metric、local receiver artifactを同一時系列で比較する。
 - **Unsafe shortcut:** 実provider credentialを表示する、第三者宛先へ試験送信する。
-- **Evidence limit:** `operations.notifications-delivery`はmissingで、設定YAMLだけではdeliveryを証明しない。
+- **Evidence limit:** `evidence.notifications.v3-5-2`はlocal receiverのHTTP 503、retry、回復後deliveryを証明するが、外部provider outage、rate limit、controller再起動時のdeduplication、全Serviceは未証明である。
 
 ### `integrated-reference-system`
 

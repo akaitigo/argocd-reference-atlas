@@ -106,10 +106,11 @@
 
 ### Notification
 
-- **Status:** missing
+- **Status:** partial
 - **Decision:** 無害なlocal receiverを使い、Notification controllerのTrigger、Template、Subscription、Delivery、retry、metricを実行証拠にする。
+- **Evidence:** `evidence.notifications.v3-5-2`は正常配信、HTTP 503による6回の試行、receiver回復後の配信、trigger／delivery metricを実Argo CD v3.5.2で記録する。
 - **Rejected:** ConfigMapの存在だけでdeliveryを保証すること、CredentialをArtifactへ保存すること。
-- **Consequence:** `operations.notifications-delivery`がmissingの間は通知経路を運用保証に含めない。
+- **Consequence:** global subscription、外部provider認証、rate limit、controller再起動時のdeduplication、全Serviceを未証明として残し、通知経路全体を運用保証に一般化しない。
 
 ### 統合Reference
 

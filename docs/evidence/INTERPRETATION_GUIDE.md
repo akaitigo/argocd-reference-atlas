@@ -102,9 +102,9 @@ Evidence Fileが存在することと、技術的主張が成立することは�
 
 ### `notifications`
 
-- **Strong for:** 現在は一次資料Surfaceと必要ScenarioのInventory。
-- **Insufficient for:** 実delivery、retry、deduplication、provider outage、receiver到達性。
-- **Corroboration needed:** Notification controller log、delivery metric、local receiver artifact、redaction結果。
+- **Strong for:** Application annotation、実Notification controllerからlocal receiverへの正常配信、HTTP 503 retry、receiver回復後の配信、trigger／delivery metric、Secret値と外部送信を含まないArtifact。
+- **Insufficient for:** global subscription、外部provider認証、rate limit、controller再起動時のdeduplication、全Service。
+- **Corroboration needed:** 対象Scopeを拡張する場合は、同じVersionと隔離環境でcontroller log、delivery metric、receiver artifact、redaction結果を再取得する。
 
 ### `integrated-reference-system`
 

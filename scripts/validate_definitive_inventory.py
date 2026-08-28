@@ -166,6 +166,17 @@ def main() -> None:
         raise ValueError("FE Depth Reference file digestが不正です")
     if depth.get("reference", {}).get("frontend_summary") != {"satisfied": 1, "partial": 17, "missing": 0}:
         raise ValueError("FE自身の1/18 satisfied境界が保持されていません")
+    locator_reference = depth.get("authority_locator_reference", {})
+    if locator_reference.get("commit") != "841ec2fa399606a10305021a8bcd396713b8cee5":
+        raise ValueError("FE copyright-safe Authority locator正本がDepth parityへ接続されていません")
+    expected_authority_artifacts = {
+        "artifact": "authority/extraction.snapshot.json",
+        "body_inventory_artifact": "authority/body-inventory.snapshot.json",
+        "baseline_artifact": "baselines/authority-body-inventory-v1.json",
+        "migration_artifact": "migrations/authority-body-inventory-v1.json",
+    }
+    if any(locator_reference.get(key) != value for key, value in expected_authority_artifacts.items()):
+        raise ValueError("Authority locator artifact参照が不正です")
     if depth.get("denominator_policy", {}).get("absolute_frontend_counts_are_thresholds") is not False:
         raise ValueError("FE絶対件数をArgo CD thresholdに転用できません")
     if depth.get("proof_contract", {}).get("aggregate_evidence_is_completion_proof") is not False:

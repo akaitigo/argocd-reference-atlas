@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "document_id": "document-argocd-applicationset-specification",
+  "source_ids": [
+    "argocd-applicationset-specification"
+  ],
+  "source_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/operator-manual/applicationset/applicationset-specification.md",
+  "authority_family": "argocd-documentation",
+  "locked_body_digest": "sha256:7a549b3fc929d57a0408d35659e03dd57bde0aaf1a32956a806990bafd1dc946",
+  "fetch": {
+    "status": "matched",
+    "observed_digest": "sha256:7a549b3fc929d57a0408d35659e03dd57bde0aaf1a32956a806990bafd1dc946",
+    "locked_digest_match": true,
+    "observed_bytes": 161,
+    "error_digest": null
+  },
+  "extraction": {
+    "method": "fixed-selector-raw-anchor-v1",
+    "tool": "argocd-reference-atlas-authority-body-inventory-v1",
+    "tool_digest": "sha256:9110ce5406c6abcd4e6be3dae9c70a2d3cd733ccd8551ae168f761e94cfd5681",
+    "selector_contract": [
+      "document-root",
+      "git-tar-regular-file",
+      "markdown-atx-heading-line",
+      "yaml-mapping-key-line",
+      "plain-nonempty-line"
+    ],
+    "selector_exhaustive_for_locked_body": true,
+    "authority_semantics_exhaustive": false,
+    "review_status": "automated-unreviewed",
+    "body_storage": "digest-locator-and-offset-only"
+  },
+  "anchors": [
+    {
+      "id": "anchor-29eeb9eb30212b67f39e",
+      "locator": "document-root",
+      "locator_kind": "document-root",
+      "selector": "document-root",
+      "parent_anchor_id": null,
+      "context_start": 0,
+      "context_end": 161,
+      "context_unit": "byte",
+      "context_digest": "sha256:7a549b3fc929d57a0408d35659e03dd57bde0aaf1a32956a806990bafd1dc946",
+      "label_digest": null,
+      "classification_status": "pending-human",
+      "surface_ids": []
+    },
+    {
+      "id": "anchor-1f2c77cc507a4c421995",
+      "locator": "line:1",
+      "locator_kind": "locked-body-offset",
+      "selector": "markdown-atx-heading-line",
+      "parent_anchor_id": "anchor-29eeb9eb30212b67f39e",
+      "context_start": 0,
+      "context_end": 31,
+      "context_unit": "byte",
+      "context_digest": "sha256:2dc4844b0be005e6dcdf7cfca79a56814c4d6e9462651d526f0f762c6d1185df",
+      "label_digest": "sha256:880b366425c07201da476efcd55fa186863b375b56c3a7bea6e66617abf09a2e",
+      "classification_status": "pending-human",
+      "surface_ids": []
+    }
+  ]
+}

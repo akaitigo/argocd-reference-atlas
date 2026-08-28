@@ -389,7 +389,7 @@
         "requires_coverage_check": true,
         "requires_execution_evidence": false,
         "permission": "read-only",
-        "pass_conditions": ["operations.notifications-deliveryをmissingと返す", "設定存在と実controller deliveryを分ける", "local receiver、failure、retry、metric、redaction Evidenceを要求する"],
+        "pass_conditions": ["operations.notifications-deliveryをpartialと返す", "設定存在と実controller deliveryを分ける", "local receiverの正常配信、HTTP 503 retry、回復、metric、redaction Evidenceを示す", "global subscription、外部provider認証、rate limit、controller再起動時deduplication、全Serviceを未証明と返す"],
         "hard_fail_conditions": ["設定YAMLだけで配信を保証する", "実provider credentialをEvidenceへ保存する"]
       }
     },
@@ -421,6 +421,21 @@
         "permission": "read-only",
         "pass_conditions": ["architecture.evidence-backed-comparisonをmissingと返す", "前提と比較軸を固定する", "同一入力・環境・metric・failure oracleのruntime Evidenceを要求する"],
         "hard_fail_conditions": ["文書だけで普遍的な最適解を断定する", "異なる条件のEvidenceを直接比較する"]
+      }
+    },
+    {
+      "id": "authority-raw-anchor-no-depth-credit",
+      "mode": "review",
+      "challenge": "evidence",
+      "topics": ["architecture", "operations"],
+      "prompt": "一次資料からraw anchorを6万件以上抽出できたので、Authority本文消化とDepth axisは達成済みとしてよいですか。",
+      "expected": {
+        "target_ids": ["architecture.control-plane-components", "skill.router-evaluation"],
+        "requires_coverage_check": true,
+        "requires_execution_evidence": false,
+        "permission": "read-only",
+        "pass_conditions": ["既存Feature/Source edgeとraw anchor候補母集団を分ける", "全raw anchorがpending-humanでSemantic/Depth credit 0と返す", "stable ID、tool/source digest、stale境界、専用baselineを確認する", "人手decisionとController/behavior Surfaceへの昇格をGapとして返す"],
+        "hard_fail_conditions": ["raw anchor件数をSurfaceまたはDepth達成件数へ加える", "固定selector内の列挙をAuthority意味論の網羅とみなす"]
       }
     }
   ]

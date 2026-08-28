@@ -1,0 +1,161 @@
+{
+  "schema_version": 1,
+  "document_id": "document-argocd-automated-sync",
+  "source_ids": [
+    "argocd-automated-sync"
+  ],
+  "source_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/user-guide/auto_sync.md",
+  "authority_family": "argocd-documentation",
+  "locked_body_digest": "sha256:c0c61f455bbab02f09d82b15d9788c4d38badf38b70b478e31f263ab24fdde28",
+  "fetch": {
+    "status": "matched",
+    "observed_digest": "sha256:c0c61f455bbab02f09d82b15d9788c4d38badf38b70b478e31f263ab24fdde28",
+    "locked_digest_match": true,
+    "observed_bytes": 6037,
+    "error_digest": null
+  },
+  "extraction": {
+    "method": "fixed-selector-raw-anchor-v1",
+    "tool": "argocd-reference-atlas-authority-body-inventory-v1",
+    "tool_digest": "sha256:9110ce5406c6abcd4e6be3dae9c70a2d3cd733ccd8551ae168f761e94cfd5681",
+    "selector_contract": [
+      "document-root",
+      "git-tar-regular-file",
+      "markdown-atx-heading-line",
+      "yaml-mapping-key-line",
+      "plain-nonempty-line"
+    ],
+    "selector_exhaustive_for_locked_body": true,
+    "authority_semantics_exhaustive": false,
+    "review_status": "automated-unreviewed",
+    "body_storage": "digest-locator-and-offset-only"
+  },
+  "anchors": [
+    {
+      "id": "anchor-52bc761aaeb220d26e9e",
+      "locator": "document-root",
+      "locator_kind": "document-root",
+      "selector": "document-root",
+      "parent_anchor_id": null,
+      "context_start": 0,
+      "context_end": 6037,
+      "context_unit": "byte",
+      "context_digest": "sha256:c0c61f455bbab02f09d82b15d9788c4d38badf38b70b478e31f263ab24fdde28",
+      "label_digest": null,
+      "classification_status": "pending-human",
+      "surface_ids": []
+    },
+    {
+      "id": "anchor-709114e09eb983d14c9a",
+      "locator": "line:1",
+      "locator_kind": "locked-body-offset",
+      "selector": "markdown-atx-heading-line",
+      "parent_anchor_id": "anchor-52bc761aaeb220d26e9e",
+      "context_start": 0,
+      "context_end": 24,
+      "context_unit": "byte",
+      "context_digest": "sha256:498fe5e553c5ce5805b44a000f984bb3787fb0411230fc52137802c5d1db836d",
+      "label_digest": "sha256:f6c7a9ce2bc04aa21bd6a67b66c8b478881dae724651fa8e83027409b03d522c",
+      "classification_status": "pending-human",
+      "surface_ids": []
+    },
+    {
+      "id": "anchor-1695bae389989664e102",
+      "locator": "line:32",
+      "locator_kind": "locked-body-offset",
+      "selector": "markdown-atx-heading-line",
+      "parent_anchor_id": "anchor-52bc761aaeb220d26e9e",
+      "context_start": 1360,
+      "context_end": 1438,
+      "context_unit": "byte",
+      "context_digest": "sha256:fbc56a992617f1019fbf0555672540efedb78a132e55667a6fd32989c8c79fe0",
+      "label_digest": "sha256:fdf47fa87425cbd2a1cbc780ffbf058a805b939f1b6c350c4f4485e5a03b6b8c",
+      "classification_status": "pending-human",
+      "surface_ids": []
+    },
+    {
+      "id": "anchor-f8c21bf529cb486c87ef",
+      "locator": "line:38",
+      "locator_kind": "locked-body-offset",
+      "selector": "markdown-atx-heading-line",
+      "parent_anchor_id": "anchor-52bc761aaeb220d26e9e",
+      "context_start": 1907,
+      "context_end": 1928,
+      "context_unit": "byte",
+      "context_digest": "sha256:897e28885f6429e8f69beaf708538ef7edd97e38f786b89330d79b01adfbf398",
+      "label_digest": "sha256:85ce5fa68b29464d3719dc75cd58092891532db7b124119a8bfd27843bf8f9d4",
+      "classification_status": "pending-human",
+      "surface_ids": []
+    },
+    {
+      "id": "anchor-3af3f6912e2c377e12d7",
+      "locator": "line:58",
+      "locator_kind": "locked-body-offset",
+      "selector": "markdown-atx-heading-line",
+      "parent_anchor_id": "anchor-52bc761aaeb220d26e9e",
+      "context_start": 2441,
+      "context_end": 2486,
+      "context_unit": "byte",
+      "context_digest": "sha256:4a17fb341c58fe535b45cafdfa844f212da379d1b195b10f6ae6645a9f4fe859",
+      "label_digest": "sha256:b3b6e6fdd119b12c05ac52bff3df928fcb22322880201e848146023756e6b855",
+      "classification_status": "pending-human",
+      "surface_ids": []
+    },
+    {
+      "id": "anchor-f9f04e0eb7e58e3a1e3e",
+      "locator": "line:77",
+      "locator_kind": "locked-body-offset",
+      "selector": "markdown-atx-heading-line",
+      "parent_anchor_id": "anchor-52bc761aaeb220d26e9e",
+      "context_start": 2961,
+      "context_end": 2987,
+      "context_unit": "byte",
+      "context_digest": "sha256:96507c30f10853f347fc11d27e643faf83dc2f273c068ba6f79f60bdaf296631",
+      "label_digest": "sha256:c8198fe511595e9545981d669586aeb9e4e5e4245239f1b18ea346da9677a010",
+      "classification_status": "pending-human",
+      "surface_ids": []
+    },
+    {
+      "id": "anchor-815a9b1290ec6c3123da",
+      "locator": "line:97",
+      "locator_kind": "locked-body-offset",
+      "selector": "markdown-atx-heading-line",
+      "parent_anchor_id": "anchor-52bc761aaeb220d26e9e",
+      "context_start": 3644,
+      "context_end": 3676,
+      "context_unit": "byte",
+      "context_digest": "sha256:ee480a927d23531d18ca00e547feeb67aa9fc9bdc3b3703c6a8527b05b4547e2",
+      "label_digest": "sha256:f1f43ec54dd2a7c2b9192d0def7e8fc3845764be760ecec21ed398928803720d",
+      "classification_status": "pending-human",
+      "surface_ids": []
+    },
+    {
+      "id": "anchor-b8d4db9345c2ece6c23e",
+      "locator": "line:117",
+      "locator_kind": "locked-body-offset",
+      "selector": "markdown-atx-heading-line",
+      "parent_anchor_id": "anchor-52bc761aaeb220d26e9e",
+      "context_start": 4398,
+      "context_end": 4442,
+      "context_unit": "byte",
+      "context_digest": "sha256:a36e9310d851e9557d73b76c0633269325dc2df80a39a25111e53e790ebfc282",
+      "label_digest": "sha256:19c8c2ea612957fdc97053e8f3347f53e01aaa28c1c5c4c0bc7ed4ea8da18d09",
+      "classification_status": "pending-human",
+      "surface_ids": []
+    },
+    {
+      "id": "anchor-330ad90988c2c8c99eee",
+      "locator": "line:134",
+      "locator_kind": "locked-body-offset",
+      "selector": "markdown-atx-heading-line",
+      "parent_anchor_id": "anchor-52bc761aaeb220d26e9e",
+      "context_start": 4814,
+      "context_end": 4842,
+      "context_unit": "byte",
+      "context_digest": "sha256:322e273bfb6365cc87999f171d0b2ed347bee4adce415dc555e6e3b8b633cb77",
+      "label_digest": "sha256:cc6116e3757a7f6de563cd16a2c75221378bcb54a4fb02c5fc0a92895e6e7c1a",
+      "classification_status": "pending-human",
+      "surface_ids": []
+    }
+  ]
+}

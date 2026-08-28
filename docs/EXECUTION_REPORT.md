@@ -13,6 +13,7 @@
 - Secret boundary、Fixture Identity、RBAC、ローカルOIDC discoveryとprovider outage
 - Dependency failure、Control Plane state restore、Operations export／import
 - Controller／API Server／Repository ServerのMetricとLog
+- Notification controllerからlocal receiverへの正常配信、HTTP 503による6回の試行、receiver回復後の配信、trigger／delivery metric
 - 3 node上のHA replica、Application Controller/repo-server/Redis master Pod UID交代、Controller復旧後Drift再収束、repo-server復旧後Hard Refresh、Redis障害窓中read/metrics、Replica回復
 - v3.4.8からv3.5.2への実Upgrade、主要CR spec、Application Sync／Health維持
 - 1 Router Skillの独立forward Eval
@@ -27,6 +28,8 @@
 - OIDC provider outageはEndpointだけでなくprovider Pod消失まで待たないとraceした。
 - RBAC deny判定のCLI exit code 1は期待する拒否として明示的に扱う必要があった。
 - 公式HA manifestの3-way anti-affinityには3つのschedulable nodeが必要だった。
+- shell文字列の`\n`はNotification ConfigMapで改行として解釈されず、YAMLを実改行で生成する必要があった。
+- v3.5.2 runtime decoderは公式文書例の`1s`をretry durationとして受理せず、nanosecond整数値を受理した。
 
 これらはHarnessを修正し、同じLabを再実行して合格した後にEvidence化しました。
 
@@ -36,4 +39,5 @@
 - Access Boundaryは固定Fixture Identity、RBAC、OIDC discovery／outageを対象とし、実IdPとの対話Login、MFA、Group変更は未実施です。
 - Upgradeは固定Fixtureのv3.4.8からv3.5.2への正方向実行です。Rollback判断点は記録しましたが、全Version／ExtensionのRollback Matrixではありません。
 - Performance、Capacity、Cost、複数Kubernetes Version、全Generator／Plugin互換性は未証明です。
+- Notification EvidenceはApplication annotationとlocal webhook serviceに限定されます。global subscription、外部provider認証、rate limit、controller再起動時のdeduplication、全Notification Serviceは未証明です。
 - GitHub Repositoryとv0.1.0 Completion Certificateは公開済みですが、限定FixtureとCore v1 Gateに対するbounded historical recordであり、Definitive完成を証明しません。

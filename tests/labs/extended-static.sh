@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 root=$(CDPATH= cd -- "$(dirname -- "$0")/../.." && pwd)
-labs=(architecture applicationset connection hook-wave access-boundary high-availability observability drift auto-recovery upgrade-migration operations)
+labs=(architecture applicationset connection hook-wave access-boundary high-availability observability drift auto-recovery upgrade-migration operations notifications)
 
 find "${root}/scripts/extended" -type f -name '*.sh' -print0 | xargs -0 -n1 bash -n
 for lab in "${labs[@]}"; do

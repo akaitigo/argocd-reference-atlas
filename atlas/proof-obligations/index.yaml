@@ -149,3 +149,10 @@ proof_obligations:
     expected_evidence_id: evidence.skill-eval.v3-5-2
     oracle: Eval入力ごとの期待Target、Source、Lab、拒否条件とRouter出力を比較して合格率を計算する。
     state: covered
+  - id: proof.notifications.local-webhook-delivery
+    claim_id: claim.notifications.local-webhook-delivery
+    required_profile: cluster
+    lab_id: lab.notifications
+    expected_evidence_id: evidence.notifications.v3-5-2
+    oracle: Application状態、ReceiverのHTTP 200/503 event列、Notification controller logとdelivery/trigger metricを同一attemptで照合する。
+    state: covered
