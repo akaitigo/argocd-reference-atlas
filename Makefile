@@ -1,8 +1,10 @@
 LABS := application reconciliation sync diff health promotion security failure recovery
+EXTENDED_LABS := architecture applicationset connection hook-wave access-boundary observability drift auto-recovery operations
+ISOLATED_LABS := high-availability upgrade-migration
 ATLAS_CORE ?= ../reference-atlas-core
 EVIDENCE_FILES := $(shell find evidence/records -type f -name '*.evidence.yaml' -print 2>/dev/null | sort)
 
-.PHONY: atlas-validate atlas-audit graph-validate skill-validate legal-validate sbom sbom-validate validate check lab-env lab-clean labs labs-dry-run labs-static $(addprefix lab-,$(LABS))
+.PHONY: atlas-validate atlas-audit graph-validate evidence-validate skill-validate legal-validate sbom sbom-validate validate check lab-env lab-clean labs labs-dry-run labs-static extended-labs isolated-labs extended-labs-dry-run skill-forward-eval $(addprefix lab-,$(LABS)) $(addprefix extended-lab-,$(EXTENDED_LABS) $(ISOLATED_LABS))
 
 atlas-validate:
 	test -f "$(ATLAS_CORE)/cmd/atlas/main.go"
@@ -19,6 +21,9 @@ atlas-audit:
 graph-validate:
 	python3 scripts/validate_graph.py
 
+evidence-validate:
+	python3 scripts/validate_evidence_artifacts.py
+
 skill-validate:
 	python3 scripts/validate_router_evals.py
 
@@ -31,7 +36,7 @@ sbom:
 sbom-validate:
 	python3 scripts/generate_sbom.py --check
 
-validate: atlas-validate atlas-audit graph-validate skill-validate legal-validate sbom-validate labs-static
+validate: atlas-validate atlas-audit graph-validate evidence-validate skill-validate legal-validate sbom-validate labs-static
 
 check: validate
 
@@ -54,3 +59,25 @@ labs-dry-run:
 
 labs-static:
 	./tests/labs/static.sh
+	./tests/labs/extended-static.sh
+
+extended-labs: lab-env
+	@set -e; for lab in $(EXTENDED_LABS); do ./scripts/extended/run-suite.sh "$$lab"; done
+
+isolated-labs:
+	@set -e; for lab in $(ISOLATED_LABS); do ./scripts/extended/run-suite.sh "$$lab"; done
+
+$(addprefix extended-lab-,$(EXTENDED_LABS)): lab-env
+	./scripts/extended/run-suite.sh "$(@:extended-lab-%=%)"
+
+$(addprefix extended-lab-,$(ISOLATED_LABS)):
+	./scripts/extended/run-suite.sh "$(@:extended-lab-%=%)"
+
+extended-labs-dry-run:
+	@set -e; for lab in $(EXTENDED_LABS) $(ISOLATED_LABS); do \
+		for phase in setup execute verify cleanup; do ./scripts/extended/run.sh "$$lab" "$$phase" --dry-run; done; \
+	done
+
+skill-forward-eval:
+	python3 scripts/grade_skill_forward_eval.py /private/tmp/argocd-atlas-independent-eval.json evidence/raw/evidence.skill-eval.v3-5-2/result.json
+	python3 scripts/evidence/record_extended.py skill-eval

@@ -23,7 +23,7 @@ mastery:
   manifest: mastery.yaml
   contract_version: 1.0.0
 scope:
-  statement: Argo CD v3.5.2のApplication、Reconciliation、Sync、Diff、Health、Promotion、Secret boundary、Failure、Recoveryを、ローカル専用クラスタで再実行可能なClaimとEvidenceとして検証する。
+  statement: Argo CD v3.5.2のArchitecture、ApplicationとApplicationSet、接続、Reconciliation、Sync、Diff、Health、Promotion、認証認可とSecret boundary、HA、Observability、Drift、自動復旧、Failure、Recovery、Upgrade、Operations、Router Skillを、ローカル専用環境で再実行可能なClaimとEvidenceとして検証する。
   exclusions:
     - GitOps一般、Kubernetes自体、外部Secret製品、CI製品の包括的な機能比較
     - 公開Cloudまたは第三者が管理するKubernetesクラスタに対する障害注入

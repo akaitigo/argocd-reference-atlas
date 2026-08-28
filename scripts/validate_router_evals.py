@@ -17,20 +17,56 @@ SKILL_PATH = ROOT / ".agents" / "skills" / "argocd-atlas-router" / "SKILL.md"
 ROUTES_PATH = SKILL_PATH.parent / "references" / "routes.md"
 OPENAI_PATH = SKILL_PATH.parent / "agents" / "openai.yaml"
 COVERAGE_PATH = ROOT / "coverage.yaml"
+ROUTER_INDEX_PATH = ROOT / "docs" / "ROUTER_INDEX.md"
+RUNBOOKS_PATH = ROOT / "docs" / "runbooks" / "DOMAIN_RUNBOOKS.md"
+DECISIONS_PATH = ROOT / "docs" / "adrs" / "DOMAIN_DECISIONS.md"
+FAILURE_MODES_PATH = ROOT / "docs" / "failure-modes" / "DOMAIN_FAILURE_MODES.md"
+EVIDENCE_GUIDE_PATH = ROOT / "docs" / "evidence" / "INTERPRETATION_GUIDE.md"
 
 REQUIRED_MODES = {"design", "implementation", "diagnosis", "recovery", "migration", "review"}
 KNOWN_TARGETS = {
     "application.declarative-model",
+    "architecture.control-plane-components",
+    "applicationset.generator-templating",
+    "connection.repository-cluster-registration",
     "reconciliation.continuous-loop",
     "sync.order-and-policy",
+    "sync.hook-wave-lifecycle",
     "diff.desired-live-comparison",
     "health.resource-assessment",
     "promotion.git-mediated-change",
     "security.secret-boundary",
+    "security.rbac-sso-access-boundary",
+    "availability.high-availability",
+    "observability.metrics-logs",
+    "drift.tracking-and-refresh",
     "failure.degraded-dependency",
     "recovery.control-plane-restore",
+    "recovery.automated-resynchronization",
+    "migration.version-upgrade",
+    "operations.routine-control",
+    "skill.router-evaluation",
 }
 PERMISSIONS = {"read-only", "local-kind-write", "denied"}
+CHALLENGES = {"direct", "ambiguous", "composite", "dangerous", "evidence"}
+REQUIRED_CHALLENGES = {"ambiguous", "composite", "dangerous", "evidence"}
+TOPIC_HEADINGS = {
+    "architecture": "ArchitectureとApplication",
+    "application-set": "ApplicationSet",
+    "repository-cluster": "Repository／Cluster",
+    "reconciliation": "Reconciliation",
+    "sync-diff-health": "Sync／Diff／Health",
+    "hook-wave": "Hook／Wave",
+    "promotion": "Promotion",
+    "rbac-sso-secret": "RBAC／SSO／Secret",
+    "high-availability": "HA",
+    "observability": "Observability",
+    "failure-recovery": "Failure／Recovery",
+    "drift": "Drift",
+    "upgrade-migration": "Upgrade／Migration",
+    "operations": "Operations",
+}
+REQUIRED_TOPICS = set(TOPIC_HEADINGS)
 CASE_ID = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 TARGET_ID = re.compile(r"^[a-z0-9]+(?:[.-][a-z0-9]+)*$")
 
@@ -68,7 +104,14 @@ def coverage_target_ids(path: Path) -> set[str]:
 
 
 def validate_skill() -> None:
-    for path in (SKILL_PATH, ROUTES_PATH, OPENAI_PATH):
+    documentation_paths = (
+        ROUTER_INDEX_PATH,
+        RUNBOOKS_PATH,
+        DECISIONS_PATH,
+        FAILURE_MODES_PATH,
+        EVIDENCE_GUIDE_PATH,
+    )
+    for path in (SKILL_PATH, ROUTES_PATH, OPENAI_PATH, *documentation_paths):
         if not path.is_file():
             fail(f"必須Skill Artifactがありません: {path.relative_to(ROOT)}")
 
@@ -86,6 +129,27 @@ def validate_skill() -> None:
     missing_targets = sorted(target for target in KNOWN_TARGETS if target not in routes)
     if missing_targets:
         fail(f"routes.mdにCapability Routeがありません: {', '.join(missing_targets)}")
+    for path in documentation_paths:
+        relative_link = path.relative_to(ROOT).as_posix()
+        if relative_link not in routes and path != ROUTER_INDEX_PATH:
+            fail(f"routes.mdからDomain文書へRouteされていません: {relative_link}")
+
+    router_index = ROUTER_INDEX_PATH.read_text(encoding="utf-8")
+    runbooks = RUNBOOKS_PATH.read_text(encoding="utf-8")
+    decisions = DECISIONS_PATH.read_text(encoding="utf-8")
+    failure_modes = FAILURE_MODES_PATH.read_text(encoding="utf-8")
+    evidence_guide = EVIDENCE_GUIDE_PATH.read_text(encoding="utf-8")
+    for topic, heading in TOPIC_HEADINGS.items():
+        if f"`{topic}`" not in router_index:
+            fail(f"Router IndexにTopicがありません: {topic}")
+        if heading not in runbooks:
+            fail(f"Domain Runbooksに領域がありません: {heading}")
+        if heading not in decisions:
+            fail(f"Domain Decisionsに領域がありません: {heading}")
+        if f"`{topic}`" not in failure_modes:
+            fail(f"Failure-mode Catalogに領域がありません: {topic}")
+        if f"`{topic}`" not in evidence_guide:
+            fail(f"Evidence Interpretation Guideに領域がありません: {topic}")
 
     metadata = OPENAI_PATH.read_text(encoding="utf-8")
     if "$argocd-atlas-router" not in metadata:
@@ -107,6 +171,8 @@ def validate_cases() -> None:
     seen_ids: set[str] = set()
     seen_modes: set[str] = set()
     seen_targets: set[str] = set()
+    seen_topics: set[str] = set()
+    seen_challenges: set[str] = set()
     for index, case in enumerate(cases):
         if not isinstance(case, dict):
             fail(f"cases[{index}]はObjectである必要があります")
@@ -120,6 +186,17 @@ def validate_cases() -> None:
         if mode not in REQUIRED_MODES:
             fail(f"{case_id}のmodeが不正です: {mode}")
         seen_modes.add(mode)
+        challenge = case.get("challenge")
+        if challenge not in CHALLENGES:
+            fail(f"{case_id}のchallengeが不正です: {challenge}")
+        seen_challenges.add(challenge)
+        topics = case.get("topics")
+        if not isinstance(topics, list) or not topics or len(topics) != len(set(topics)):
+            fail(f"{case_id}.topicsは重複のない非空Arrayである必要があります")
+        for topic in topics:
+            if topic not in REQUIRED_TOPICS:
+                fail(f"{case_id}が未知のTopicを参照しています: {topic}")
+            seen_topics.add(topic)
         if not isinstance(case.get("prompt"), str) or len(case["prompt"].strip()) < 10:
             fail(f"{case_id}のpromptが短すぎます")
 
@@ -152,6 +229,14 @@ def validate_cases() -> None:
     missing_targets = KNOWN_TARGETS - seen_targets
     if missing_targets:
         fail(f"Evalで未参照のTargetがあります: {', '.join(sorted(missing_targets))}")
+    missing_topics = REQUIRED_TOPICS - seen_topics
+    if missing_topics:
+        fail(f"Evalで未参照のDomain Topicがあります: {', '.join(sorted(missing_topics))}")
+    missing_challenges = REQUIRED_CHALLENGES - seen_challenges
+    if missing_challenges:
+        fail(f"厳格Eval Challengeが不足しています: {', '.join(sorted(missing_challenges))}")
+    if len(cases) < 18:
+        fail("Router Evalは曖昧・複合・危険操作・証拠要求を含む18件以上が必要です")
 
     if not COVERAGE_PATH.is_file():
         fail("coverage.yamlがないためEvalのTarget参照を検証できません")

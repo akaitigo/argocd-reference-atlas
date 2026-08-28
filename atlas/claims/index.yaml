@@ -74,3 +74,109 @@ claims:
       - Backup artifactとRestore入力のDigestが一致する。
       - Restore後の主要CRについて正規化したspecがBackup前と一致する。
     proof_obligation_ids: [proof.recovery.restore-state]
+  - id: claim.architecture.component-boundaries
+    capability_id: capability.architecture.component-boundaries
+    statement: Argo CD v3.5.2のAPI Server、Repository Server、Application Controllerは異なる責任を持ち、固定した入力から各Componentの境界を観測できる。
+    source_ids: [argocd-architecture, argocd-install-manifest]
+    acceptance_criteria:
+      - API操作、Manifest生成、Desired/Live比較を担当するComponentを実行環境から識別できる。
+      - ComponentごとのServiceAccount、Service、DeploymentまたはStatefulSetをCaptureできる。
+    proof_obligation_ids: [proof.architecture.component-boundaries]
+  - id: claim.applicationset.generated-applications
+    capability_id: capability.applicationset.generator-templating
+    statement: 固定したList generatorとTemplateを持つApplicationSetはparameter setに対応するApplication集合を生成し、入力変更後に集合を更新する。
+    source_ids: [argocd-applicationset-crd, argocd-applicationset-introduction, argocd-applicationset-specification]
+    acceptance_criteria:
+      - Generatorの各elementに対応するApplicationの正規化済みspecがTemplate結果と一致する。
+      - Element追加または削除後にApplication集合が宣言したPolicyどおり更新される。
+    proof_obligation_ids: [proof.applicationset.generated-applications]
+  - id: claim.connection.register-and-reject
+    capability_id: capability.connection.repository-cluster-registration
+    statement: 有効なRepositoryとCluster connectionは個別に登録・照会でき、無効な資格情報または接続先は成功として扱われない。
+    source_ids: [argocd-architecture, argocd-private-repositories, argocd-cluster-management]
+    acceptance_criteria:
+      - 有効なFixture repositoryとClusterが接続可能状態として観測される。
+      - 無効Credentialまたは到達不能Endpointが接続成功として記録されない。
+      - CaptureへCredential平文を保存しない。
+    proof_obligation_ids: [proof.connection.register-and-reject]
+  - id: claim.sync.hook-wave-lifecycle
+    capability_id: capability.sync.hook-wave-lifecycle
+    statement: 固定したHook phaseとSync waveを持つResource群はphase、wave、kind、nameの順序規則に従い、Hook削除PolicyをLifecycleへ反映する。
+    source_ids: [argocd-sync-waves, argocd-sync-options]
+    acceptance_criteria:
+      - PreSync、Sync、PostSyncの観測順序をoperation resultから復元できる。
+      - waveの小さいResourceが同一phaseの大きいwaveより先にHealthyとなる。
+      - 選択したHook削除Policyの結果が実行後のResource集合と一致する。
+    proof_obligation_ids: [proof.sync.hook-wave-lifecycle]
+  - id: claim.security.identity-authorization-boundary
+    capability_id: capability.security.identity-authorization-boundary
+    statement: SSOまたはFixture Identityから得た主体はArgo CD RBACで認可され、許可されないApplication操作とCredential参照を拒否される。
+    source_ids: [argocd-rbac, argocd-user-management, argocd-secret-management]
+    acceptance_criteria:
+      - 許可Roleの主体が対象Applicationのread操作を実行できる。
+      - 同じ主体による許可外Projectの操作が拒否される。
+      - Token、Client Secret、RepositoryまたはCluster Credentialの値をEvidenceへ保存しない。
+    proof_obligation_ids: [proof.security.identity-authorization-boundary]
+  - id: claim.availability.component-redundancy
+    capability_id: capability.availability.component-redundancy
+    statement: HA fixtureで冗長化したComponentの単一Pod停止は、定めた観測期間内にReplicaを回復し、検証対象のread経路を継続可能にする。
+    source_ids: [argocd-high-availability, argocd-architecture]
+    acceptance_criteria:
+      - 対象Componentが複数Replicaまたは文書化されたShard構成を持つ。
+      - 単一Pod停止後にControllerがDesired replica数を回復する。
+      - 障害中と復旧後の利用可能な機能および非保証範囲を区別して記録する。
+    proof_obligation_ids: [proof.availability.component-redundancy]
+  - id: claim.observability.correlate-signals
+    capability_id: capability.observability.correlate-signals
+    statement: Argo CD v3.5.2のComponent metricとLogをApplicationのSync、Health、Reconciliation eventへ時系列で相関できる。
+    source_ids: [argocd-metrics, argocd-reconcile-optimization, argocd-architecture]
+    acceptance_criteria:
+      - Application Controller、API Server、Repository ServerのMetric endpointからSampleを取得できる。
+      - 既知のSyncまたはDrift操作をApplication識別子付きの状態、MetricまたはLogへ対応付けられる。
+      - CredentialやSecret値をTelemetry artifactへ含めない。
+    proof_obligation_ids: [proof.observability.correlate-signals]
+  - id: claim.drift.classify-and-refresh
+    capability_id: capability.drift.classify-and-refresh
+    statement: 追跡対象Resourceの意味的変更はDriftとして再評価され、明示的に無視した非意味的更新だけが不要なRefreshから除外される。
+    source_ids: [argocd-resource-tracking, argocd-diffing, argocd-reconcile-optimization]
+    acceptance_criteria:
+      - 追跡対象のspec変更がApplication refreshとOutOfSync判定を発生させる。
+      - 無視規則に一致するField更新は期待した範囲だけRefreshまたはDiffから除外される。
+      - Tracking method、Diff ignore、resource update ignoreの適用点を別々にCaptureする。
+    proof_obligation_ids: [proof.drift.classify-and-refresh]
+  - id: claim.recovery.automated-self-heal
+    capability_id: capability.recovery.automated-self-heal
+    statement: Automated syncとselfHealを明示したApplicationは既知のLive Driftを自動でDesired stateへ戻し、未指定のpruneまたはallowEmptyを暗黙に有効化しない。
+    source_ids: [argocd-automated-sync, argocd-application-specification]
+    acceptance_criteria:
+      - selfHeal有効時にLive Driftが手動SyncなしでDesired stateへ戻る。
+      - prune無効時にGitから除外したFixture Resourceが自動削除されない。
+      - retry limitとbackoffを設定した場合に試行が宣言した上限を超えない。
+    proof_obligation_ids: [proof.recovery.automated-self-heal]
+  - id: claim.migration.preflight-and-verify
+    capability_id: capability.migration.preflight-and-verify
+    statement: v3.4からv3.5への移行判断は公式Upgrade GuideのBreaking ChangeとDeprecated Surfaceを事前検査し、Backupと事後検証を成功条件に含める。
+    source_ids: [argocd-upgrade-3-4-to-3-5, argocd-disaster-recovery, argocd-version]
+    acceptance_criteria:
+      - Fixture設定に対してv3.5のBreaking ChangeとMigration actionを対応付ける。
+      - Upgrade前BackupのDigestと復元手順を記録する。
+      - Upgrade後のVersion、主要CR、Application sync/healthを検証し、不一致時の停止条件を示す。
+    proof_obligation_ids: [proof.migration.preflight-and-verify]
+  - id: claim.operations.bounded-runbook
+    capability_id: capability.operations.bounded-runbook
+    statement: 日常のRefresh、Sync、Wait、診断、停止、Backupは事前条件、Timeout、観測点、終了条件を持つ境界付きRunbookとして再実行できる。
+    source_ids: [argocd-architecture, argocd-metrics, argocd-disaster-recovery, argocd-sync-options]
+    acceptance_criteria:
+      - 各操作が対象ApplicationとClusterを実行前に表示して検証する。
+      - Waitと診断に有限Timeoutがあり、失敗時に成功終了しない。
+      - Cleanup後に一時Credential、Port forward、Fixture Resourceを残さない。
+    proof_obligation_ids: [proof.operations.bounded-runbook]
+  - id: claim.skill.coverage-grounded-routing
+    capability_id: capability.skill.coverage-grounded-routing
+    statement: Router Skillはv3.5.2の代表TaskをCoverage、Claim、Lab、Evidenceへ案内し、未収録または権限外の要求をGapか安全な拒否として返す。
+    source_ids: [argocd-version, argocd-architecture]
+    acceptance_criteria:
+      - Architecture、構築、診断、運用、移行のEvalが期待するTarget IDへ到達する。
+      - v3.5.2外または未証明の質問に存在しないEvidenceを返さない。
+      - 外部環境への破壊操作やSecret開示を要求するEvalを拒否する。
+    proof_obligation_ids: [proof.skill.coverage-grounded-routing]

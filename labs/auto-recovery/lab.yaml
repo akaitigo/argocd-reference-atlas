@@ -1,0 +1,13 @@
+schema_version: 1
+id: lab.auto-recovery
+target_id: recovery.automated-resynchronization
+claim_id: claim.recovery.automated-self-heal
+title: Automated SyncとSelf Heal境界
+evidence_id: evidence.auto-recovery.v3-5-2
+environment: kind-argocd-atlas-v3-5-2
+phases:
+  setup: scripts/extended/run.sh auto-recovery setup
+  execute: scripts/extended/run.sh auto-recovery execute
+  verify: scripts/extended/run.sh auto-recovery verify
+  cleanup: scripts/extended/run.sh auto-recovery cleanup
+acceptance: selfHealが手動SyncなしでDriftを戻し、prune=false、allowEmpty=false、retry limitを越えないことを検証する。

@@ -1,0 +1,22 @@
+schema_version: 1
+id: evidence.observability.v3-5-2
+atlas_id: argocd-reference-atlas
+claim_ids: [claim.observability.correlate-signals]
+kind: measurement
+producer: argocd-atlas-kind-extended-harness
+command: make extended-lab-observability
+created_at: "2026-08-28T08:00:16Z"
+environment:
+  profile: cluster
+  manifest_digest: sha256:fba4965e0c1ef1f37c6fc36c048093d2e098ff73fbfdc1e398a05a3de348c73e
+  lab: observability
+  argocd_version: v3.5.2
+source_digest: sha256:f099c2cd82ec3cdcac8ad41b8a8499931de288637abe60b2ad73658bbfb04fc8
+harness_digest: sha256:8033c1991e73d120ebc2780700e5d419e6e9375a60aee16ccc48488b33aa6dc2
+artifact:
+  uri: evidence/raw/evidence.observability.v3-5-2/result.json
+  digest: sha256:098cf152a2c95f7c82311a6e2d29b0f46da85e267bccd03cc6bb1399e9e454d1
+  media_type: application/json
+  size_bytes: 185797
+verdict: pass
+retention: git

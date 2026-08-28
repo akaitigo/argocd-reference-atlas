@@ -1,0 +1,13 @@
+schema_version: 1
+id: lab.architecture
+target_id: architecture.control-plane-components
+claim_id: claim.architecture.component-boundaries
+title: Control Plane TopologyとTrust Boundary
+evidence_id: evidence.architecture.v3-5-2
+environment: kind-argocd-atlas-v3-5-2
+phases:
+  setup: scripts/extended/run.sh architecture setup
+  execute: scripts/extended/run.sh architecture execute
+  verify: scripts/extended/run.sh architecture verify
+  cleanup: scripts/extended/run.sh architecture cleanup
+acceptance: Argo CD component、ServiceAccount/RoleBinding、AppProject allowlist、connection Secret metadataのTopology不変条件を検証する。

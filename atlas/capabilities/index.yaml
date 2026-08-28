@@ -56,3 +56,75 @@ capabilities:
     description: Argo CD管理状態のBackupとRestoreを実行し、主要CRの意味的状態を再構成する。
     source_ids: [argocd-disaster-recovery, argocd-application-crd, argocd-appproject-crd, argocd-applicationset-crd]
     claim_ids: [claim.recovery.restore-state]
+  - id: capability.architecture.component-boundaries
+    title: Control Plane Component境界
+    coverage_target_id: architecture.control-plane-components
+    description: API Server、Repository Server、Application Controllerの責任と通信・Credential境界を分離する。
+    source_ids: [argocd-architecture, argocd-install-manifest]
+    claim_ids: [claim.architecture.component-boundaries]
+  - id: capability.applicationset.generator-templating
+    title: ApplicationSet GeneratorとTemplate
+    coverage_target_id: applicationset.generator-templating
+    description: Generatorが作るparameter setをTemplateへ適用し、対応するApplication集合を生成・更新する。
+    source_ids: [argocd-applicationset-crd, argocd-applicationset-introduction, argocd-applicationset-specification]
+    claim_ids: [claim.applicationset.generated-applications]
+  - id: capability.connection.repository-cluster-registration
+    title: RepositoryとCluster接続登録
+    coverage_target_id: connection.repository-cluster-registration
+    description: Repository credentialとCluster accessを別の登録境界として扱い、到達性と認可を検証する。
+    source_ids: [argocd-architecture, argocd-private-repositories, argocd-cluster-management]
+    claim_ids: [claim.connection.register-and-reject]
+  - id: capability.sync.hook-wave-lifecycle
+    title: HookとWaveのLifecycle
+    coverage_target_id: sync.hook-wave-lifecycle
+    description: Hook phase、削除Policy、Sync waveを組み合わせてResourceの順序とLifecycleを制御する。
+    source_ids: [argocd-sync-waves, argocd-sync-options]
+    claim_ids: [claim.sync.hook-wave-lifecycle]
+  - id: capability.security.identity-authorization-boundary
+    title: Identity・Authorization・Secret access境界
+    coverage_target_id: security.rbac-sso-access-boundary
+    description: SSOのIdentity claim、Argo CD RBAC policy、Credential Secretへの到達責任を分離する。
+    source_ids: [argocd-rbac, argocd-user-management, argocd-secret-management]
+    claim_ids: [claim.security.identity-authorization-boundary]
+  - id: capability.availability.component-redundancy
+    title: Component単位の冗長化
+    coverage_target_id: availability.high-availability
+    description: ComponentごとのReplica、Application Controller shard、Cache依存を明示して可用性を設計する。
+    source_ids: [argocd-high-availability, argocd-architecture]
+    claim_ids: [claim.availability.component-redundancy]
+  - id: capability.observability.correlate-signals
+    title: Metric・Log・状態の相関
+    coverage_target_id: observability.metrics-logs
+    description: Component metricとLogをApplicationのSync、Health、Queue、Repository状態へ相関付ける。
+    source_ids: [argocd-metrics, argocd-reconcile-optimization, argocd-architecture]
+    claim_ids: [claim.observability.correlate-signals]
+  - id: capability.drift.classify-and-refresh
+    title: Drift分類とRefresh制御
+    coverage_target_id: drift.tracking-and-refresh
+    description: Resource tracking、Desired/Live Diff、更新無視によるRefresh抑制を別の判断として扱う。
+    source_ids: [argocd-resource-tracking, argocd-diffing, argocd-reconcile-optimization]
+    claim_ids: [claim.drift.classify-and-refresh]
+  - id: capability.recovery.automated-self-heal
+    title: Automated syncとSelf-heal
+    coverage_target_id: recovery.automated-resynchronization
+    description: OutOfSync検出後のAutomated sync、prune、allowEmpty、selfHeal、retryを明示Policyで制御する。
+    source_ids: [argocd-automated-sync, argocd-application-specification]
+    claim_ids: [claim.recovery.automated-self-heal]
+  - id: capability.migration.preflight-and-verify
+    title: Minor Upgradeの事前検査と事後検証
+    coverage_target_id: migration.version-upgrade
+    description: v3.4からv3.5のBreaking ChangeとDeprecated Surfaceを確認し、Backup、移行、検証、Rollback判断を行う。
+    source_ids: [argocd-upgrade-3-4-to-3-5, argocd-disaster-recovery, argocd-version]
+    claim_ids: [claim.migration.preflight-and-verify]
+  - id: capability.operations.bounded-runbook
+    title: 境界付き日常運用Runbook
+    coverage_target_id: operations.routine-control
+    description: Refresh、Sync、Wait、診断、停止、Backupの事前条件、観測点、終了条件を固定する。
+    source_ids: [argocd-architecture, argocd-metrics, argocd-disaster-recovery, argocd-sync-options]
+    claim_ids: [claim.operations.bounded-runbook]
+  - id: capability.skill.coverage-grounded-routing
+    title: Coverageに接地したRouter Skill
+    coverage_target_id: skill.router-evaluation
+    description: v3.5.2の質問をCoverageとClaimへ分類し、根拠、Lab、EvidenceまたはGapへ案内する。
+    source_ids: [argocd-version, argocd-architecture]
+    claim_ids: [claim.skill.coverage-grounded-routing]

@@ -104,6 +104,64 @@ git -C "$work" add apps/sync
 git -C "$work" commit -q -m 'stop later sync wave after failure'
 
 git -C "$work" switch -q main
+git -C "$work" switch -q -c hook-wave
+mkdir -p "${work}/apps/hook-wave"
+cat >"${work}/apps/hook-wave/presync.yaml" <<'EOF'
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: atlas-hook-presync
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+spec:
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: hook
+          image: python:3.13.13-alpine3.23@sha256:420cd0bf0f3998275875e02ecd5808168cf0843cbb4d3c536432f729247b2acc
+          command: ["python", "-c", "print('presync')"]
+EOF
+cat >"${work}/apps/hook-wave/wave-minus-one.yaml" <<'EOF'
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: atlas-hook-wave-minus-one
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+data: {wave: minus-one}
+EOF
+cat >"${work}/apps/hook-wave/wave-one.yaml" <<'EOF'
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: atlas-hook-wave-one
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+data: {wave: one}
+EOF
+cat >"${work}/apps/hook-wave/postsync.yaml" <<'EOF'
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: atlas-hook-postsync
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+spec:
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: hook
+          image: python:3.13.13-alpine3.23@sha256:420cd0bf0f3998275875e02ecd5808168cf0843cbb4d3c536432f729247b2acc
+          command: ["python", "-c", "print('postsync')"]
+EOF
+git -C "$work" add apps/hook-wave
+git -C "$work" commit -q -m 'exercise hook phases and sync waves'
+
+git -C "$work" switch -q main
 git -C "$work" switch -q -c promotion-candidate
 write_configmap apps/promotion atlas-promotion release candidate
 git -C "$work" add apps/promotion/configmap.yaml

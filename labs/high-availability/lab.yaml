@@ -1,0 +1,13 @@
+schema_version: 1
+id: lab.high-availability
+target_id: availability.high-availability
+claim_id: claim.availability.component-redundancy
+title: HA可用性とLeader再選出
+evidence_id: evidence.high-availability.v3-5-2
+environment: kind-argocd-atlas-ha-v3-5-2
+phases:
+  setup: scripts/extended/run.sh high-availability setup
+  execute: scripts/extended/run.sh high-availability execute
+  verify: scripts/extended/run.sh high-availability verify
+  cleanup: scripts/extended/run.sh high-availability cleanup
+acceptance: 公式HA manifestの複数replicaとRedis leader再選出後のApplication可用性を検証する。

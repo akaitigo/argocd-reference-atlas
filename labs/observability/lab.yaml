@@ -1,0 +1,13 @@
+schema_version: 1
+id: lab.observability
+target_id: observability.metrics-logs
+claim_id: claim.observability.correlate-signals
+title: Observability Metrics
+evidence_id: evidence.observability.v3-5-2
+environment: kind-argocd-atlas-v3-5-2
+phases:
+  setup: scripts/extended/run.sh observability setup
+  execute: scripts/extended/run.sh observability execute
+  verify: scripts/extended/run.sh observability verify
+  cleanup: scripts/extended/run.sh observability cleanup
+acceptance: Argo CD metrics endpointからApplication情報とReconciliation metricを観測する。

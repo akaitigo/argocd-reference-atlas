@@ -1,0 +1,22 @@
+schema_version: 1
+id: evidence.skill-eval.v3-5-2
+atlas_id: argocd-reference-atlas
+claim_ids: [claim.skill.coverage-grounded-routing]
+kind: skill-eval
+producer: codex-independent-forward-evaluator
+command: make skill-forward-eval
+created_at: "2026-08-28T08:02:00Z"
+environment:
+  profile: local
+  manifest_digest: sha256:6e2b4099b7ed2bd9de6e24e2a856c4a0317a6f119fe1d4cab1e20e9ccd7cbafa
+  lab: skill-eval
+  argocd_version: v3.5.2
+source_digest: sha256:c76a2b01256195b0bdb26fa55a4498a108704ad94dd0c02ae8e724d32fffc2a1
+harness_digest: sha256:0c27fd717f26bacac88dcd41e94308e4084303537319e11a65802cac624b5b78
+artifact:
+  uri: evidence/raw/evidence.skill-eval.v3-5-2/result.json
+  digest: sha256:38ff58c91a99726f59368669cfcc607615b10b238613af33ec20d18f9d5ca0a0
+  media_type: application/json
+  size_bytes: 10994
+verdict: pass
+retention: git

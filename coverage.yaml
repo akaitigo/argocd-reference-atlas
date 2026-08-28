@@ -1,7 +1,7 @@
 schema_version: 1
 atlas_id: argocd-reference-atlas
 epoch: "2026-08-28"
-authority_lock_digest: sha256:3e6c267fb92ed0b0a69e33760865bf8f6e3ac329368174fada9bc63c63fe6a52
+authority_lock_digest: sha256:485860cb634a7f6095a629b149cb6f1afe2bb36d8f0bc657f1302f95238113df
 target_sets:
   - id: control-loop
     title: 宣言状態と制御ループ
@@ -31,6 +31,34 @@ target_sets:
     exit_criteria:
       - 専用ローカルクラスタ内で主要依存障害を安全に注入できること
       - Argo CD状態のBackupとRestoreを証拠付きで再実行できること
+  - id: platform-surface
+    title: Product Architectureと公開Surface
+    sequence: 5
+    completion_required: true
+    exit_criteria:
+      - Control PlaneのComponent責任と接続境界を固定Versionの一次資料へ対応付けること
+      - ApplicationSet、接続管理、認証認可、HAの主要判断を反証可能なClaimへ分解すること
+  - id: operations
+    title: 観測と日常運用
+    sequence: 6
+    completion_required: true
+    exit_criteria:
+      - Metric、Log、Drift、再同期を同じApplication状態へ接続して診断できること
+      - 日常操作の事前条件、成功条件、中断条件をRunbookとして検証できること
+  - id: evolution
+    title: Version進化とMigration
+    sequence: 7
+    completion_required: true
+    exit_criteria:
+      - v3.4からv3.5のBreaking ChangeとMigration前提を固定資料から抽出すること
+      - Backup、事前検査、Upgrade、検証、Rollback判断を再実行可能にすること
+  - id: skill
+    title: Router Skill評価
+    sequence: 8
+    completion_required: true
+    exit_criteria:
+      - Routerが質問を正しいCoverage、Claim、Lab、Evidenceへ案内すること
+      - Coverage外の要求を捏造せずGapまたは安全な拒否として返すこと
 targets:
   - id: application.declarative-model
     title: Application宣言モデル
@@ -113,3 +141,111 @@ targets:
     rationale: Argo CD v3.5.2の管理状態をBackupから復元し、ApplicationとProjectの意味的状態が再構成されることを検証する必要がある。
     claim_ids: [claim.recovery.restore-state]
     evidence_ids: [evidence.recovery.v3-5-2]
+  - id: architecture.control-plane-components
+    title: Control Plane Component Architecture
+    target_set: platform-surface
+    kind: concept
+    requirement: required
+    state: covered
+    rationale: API Server、Repository Server、Application Controllerの責任と資格情報・Manifest・操作の境界を混同せず設計する必要がある。
+    claim_ids: [claim.architecture.component-boundaries]
+    evidence_ids: [evidence.architecture.v3-5-2]
+  - id: applicationset.generator-templating
+    title: ApplicationSet生成とTemplate
+    target_set: platform-surface
+    kind: capability
+    requirement: required
+    state: covered
+    rationale: Generator parameterとTemplateから複数Applicationが生成・更新される境界を固定入力で検証する必要がある。
+    claim_ids: [claim.applicationset.generated-applications]
+    evidence_ids: [evidence.applicationset.v3-5-2]
+  - id: connection.repository-cluster-registration
+    title: RepositoryとCluster接続
+    target_set: platform-surface
+    kind: operation
+    requirement: required
+    state: covered
+    rationale: Repository資格情報とCluster接続情報を異なるSecret境界として登録し、到達性と拒否条件を検証する必要がある。
+    claim_ids: [claim.connection.register-and-reject]
+    evidence_ids: [evidence.connection.v3-5-2]
+  - id: sync.hook-wave-lifecycle
+    title: HookとWaveのLifecycle
+    target_set: delivery
+    kind: capability
+    requirement: required
+    state: covered
+    rationale: Sync phase、Hook lifecycle、Wave順序を通常Resourceの適用順序と区別し、失敗時の後続処理を検証する必要がある。
+    claim_ids: [claim.sync.hook-wave-lifecycle]
+    evidence_ids: [evidence.hook-wave.v3-5-2]
+  - id: security.rbac-sso-access-boundary
+    title: RBAC・SSO・Secret access境界
+    target_set: security-boundary
+    kind: security
+    requirement: required
+    state: covered
+    rationale: SSOで得たIdentity、Argo CD RBAC、RepositoryとClusterのSecret accessを分離し、最小権限と拒否を確認する必要がある。
+    claim_ids: [claim.security.identity-authorization-boundary]
+    evidence_ids: [evidence.access-boundary.v3-5-2]
+  - id: availability.high-availability
+    title: High Availability構成
+    target_set: platform-surface
+    kind: construction
+    requirement: required
+    state: covered
+    rationale: ComponentごとのReplica、Shard、Cache依存と単一障害点を識別し、局所的な障害で継続可能な機能を検証する必要がある。
+    claim_ids: [claim.availability.component-redundancy]
+    evidence_ids: [evidence.high-availability.v3-5-2]
+  - id: observability.metrics-logs
+    title: MetricとLogによるObservability
+    target_set: operations
+    kind: operation
+    requirement: required
+    state: covered
+    rationale: Controller、API Server、Repository ServerのMetricと構造化LogをApplication状態および運用判断へ接続する必要がある。
+    claim_ids: [claim.observability.correlate-signals]
+    evidence_ids: [evidence.observability.v3-5-2]
+  - id: drift.tracking-and-refresh
+    title: Drift追跡とRefresh
+    target_set: operations
+    kind: operation
+    requirement: required
+    state: covered
+    rationale: Resource tracking、Diff customization、更新無視を区別し、実際のDriftを隠さず不要なRefreshだけを抑制する必要がある。
+    claim_ids: [claim.drift.classify-and-refresh]
+    evidence_ids: [evidence.drift.v3-5-2]
+  - id: recovery.automated-resynchronization
+    title: 自動再同期とSelf-heal
+    target_set: operations
+    kind: capability
+    requirement: required
+    state: covered
+    rationale: Automated sync、prune、selfHeal、retryの個別条件と安全策を固定し、失敗や空集合で破壊的に動かないことを検証する必要がある。
+    claim_ids: [claim.recovery.automated-self-heal]
+    evidence_ids: [evidence.auto-recovery.v3-5-2]
+  - id: migration.version-upgrade
+    title: v3.4からv3.5へのUpgradeとMigration
+    target_set: evolution
+    kind: migration
+    requirement: required
+    state: covered
+    rationale: v3.5のBreaking Change、Deprecated Surface、事前Backup、事後検証、Rollback判断を一つの移行手順として閉じる必要がある。
+    claim_ids: [claim.migration.preflight-and-verify]
+    evidence_ids: [evidence.upgrade-migration.v3-5-2]
+  - id: operations.routine-control
+    title: 日常運用Control
+    target_set: operations
+    kind: operation
+    requirement: required
+    state: covered
+    rationale: Refresh、Sync、Wait、停止、診断、Backupの事前条件と終了条件を明示し、Operatorが安全に反復できる必要がある。
+    claim_ids: [claim.operations.bounded-runbook]
+    evidence_ids: [evidence.operations.v3-5-2]
+  - id: skill.router-evaluation
+    title: Router SkillのCoverage連動評価
+    target_set: skill
+    kind: skill
+    requirement: required
+    state: covered
+    rationale: Agentがv3.5.2のCoverage内外を識別し、設計、診断、移行、安全拒否を正しい正本へ案内できることを評価する必要がある。
+    claim_ids: [claim.skill.coverage-grounded-routing]
+    evidence_ids: [evidence.skill-eval.v3-5-2]

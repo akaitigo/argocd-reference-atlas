@@ -1,0 +1,13 @@
+schema_version: 1
+id: lab.access-boundary
+target_id: security.rbac-sso-access-boundary
+claim_id: claim.security.identity-authorization-boundary
+title: RBAC／OIDC Access Boundary
+evidence_id: evidence.access-boundary.v3-5-2
+environment: kind-argocd-atlas-v3-5-2
+phases:
+  setup: scripts/extended/run.sh access-boundary setup
+  execute: scripts/extended/run.sh access-boundary execute
+  verify: scripts/extended/run.sh access-boundary verify
+  cleanup: scripts/extended/run.sh access-boundary cleanup
+acceptance: RBAC allow/denyとローカルOIDC discovery/config/provider停止時のerror boundaryを検証する。

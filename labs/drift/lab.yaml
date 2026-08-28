@@ -1,0 +1,13 @@
+schema_version: 1
+id: lab.drift
+target_id: drift.tracking-and-refresh
+claim_id: claim.drift.classify-and-refresh
+title: Drift検出とSelf Heal
+evidence_id: evidence.drift.v3-5-2
+environment: kind-argocd-atlas-v3-5-2
+phases:
+  setup: scripts/extended/run.sh drift setup
+  execute: scripts/extended/run.sh drift execute
+  verify: scripts/extended/run.sh drift verify
+  cleanup: scripts/extended/run.sh drift cleanup
+acceptance: 既知driftをOutOfSyncとして検出し、selfHeal有効化後にGit値へ収束することを検証する。

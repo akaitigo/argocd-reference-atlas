@@ -1,0 +1,13 @@
+schema_version: 1
+id: lab.applicationset
+target_id: applicationset.generator-templating
+claim_id: claim.applicationset.generated-applications
+title: ApplicationSet生成と削除
+evidence_id: evidence.applicationset.v3-5-2
+environment: kind-argocd-atlas-v3-5-2
+phases:
+  setup: scripts/extended/run.sh applicationset setup
+  execute: scripts/extended/run.sh applicationset execute
+  verify: scripts/extended/run.sh applicationset verify
+  cleanup: scripts/extended/run.sh applicationset cleanup
+acceptance: 固定List generatorからApplicationを生成し、element削除後に対応Applicationが削除されることを検証する。

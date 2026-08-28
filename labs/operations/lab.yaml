@@ -1,0 +1,13 @@
+schema_version: 1
+id: lab.operations
+target_id: operations.routine-control
+claim_id: claim.operations.bounded-runbook
+title: Operations Backup／Restore
+evidence_id: evidence.operations.v3-5-2
+environment: kind-argocd-atlas-v3-5-2
+phases:
+  setup: scripts/extended/run.sh operations setup
+  execute: scripts/extended/run.sh operations execute
+  verify: scripts/extended/run.sh operations verify
+  cleanup: scripts/extended/run.sh operations cleanup
+acceptance: argocd admin export/importを使い、秘密をraw Evidenceへ出さず管理Resourceを復元する。

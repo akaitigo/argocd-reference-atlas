@@ -1,0 +1,13 @@
+schema_version: 1
+id: lab.connection
+target_id: connection.repository-cluster-registration
+claim_id: claim.connection.register-and-reject
+title: Declarative Repository／Cluster Connection
+evidence_id: evidence.connection.v3-5-2
+environment: kind-argocd-atlas-v3-5-2
+phases:
+  setup: scripts/extended/run.sh connection setup
+  execute: scripts/extended/run.sh connection execute
+  verify: scripts/extended/run.sh connection verify
+  cleanup: scripts/extended/run.sh connection cleanup
+acceptance: RepositoryとCluster connectionをSecret宣言で登録し、秘密値をEvidenceへ出さずに同期を検証する。

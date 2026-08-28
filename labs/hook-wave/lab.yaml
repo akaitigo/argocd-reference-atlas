@@ -1,0 +1,13 @@
+schema_version: 1
+id: lab.hook-wave
+target_id: sync.hook-wave-lifecycle
+claim_id: claim.sync.hook-wave-lifecycle
+title: Sync Hook／Wave停止境界
+evidence_id: evidence.hook-wave.v3-5-2
+environment: kind-argocd-atlas-v3-5-2
+phases:
+  setup: scripts/extended/run.sh hook-wave setup
+  execute: scripts/extended/run.sh hook-wave execute
+  verify: scripts/extended/run.sh hook-wave verify
+  cleanup: scripts/extended/run.sh hook-wave cleanup
+acceptance: PreSync、Sync wave、PostSyncの順序をoperation resultから復元し、HookSucceeded削除PolicyがHook Jobを削除することを検証する。

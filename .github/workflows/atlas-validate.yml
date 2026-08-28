@@ -54,8 +54,10 @@ jobs:
       - name: Validate Atlas graph and Lab contracts
         run: |
           python3 scripts/validate_graph.py
+          python3 scripts/validate_evidence_artifacts.py
           scripts/environment.sh dry-run
           tests/labs/static.sh
+          tests/labs/extended-static.sh
 
       - name: Validate Router Skill and Evals
         run: python3 scripts/validate_router_evals.py

@@ -1,0 +1,13 @@
+schema_version: 1
+id: lab.upgrade-migration
+target_id: migration.version-upgrade
+claim_id: claim.migration.preflight-and-verify
+title: v3.4.8からv3.5.2へのUpgrade
+evidence_id: evidence.upgrade-migration.v3-5-2
+environment: kind-argocd-atlas-upgrade-v3-4-8
+phases:
+  setup: scripts/extended/run.sh upgrade-migration setup
+  execute: scripts/extended/run.sh upgrade-migration execute
+  verify: scripts/extended/run.sh upgrade-migration verify
+  cleanup: scripts/extended/run.sh upgrade-migration cleanup
+acceptance: 固定manifest間のUpgrade後もApplication specと同期状態が維持されることを検証する。

@@ -1,0 +1,15 @@
+schema_version: 1
+id: skill-eval
+title: Router SkillのCoverage準拠評価
+target_id: skill.router-evaluation
+claim_id: claim.skill.coverage-grounded-routing
+evidence_id: evidence.skill-eval.v3-5-2
+environment: local-independent-agent
+source_ref: repository-head
+revision_policy: evaluate-committed-skill-and-corpus
+phases:
+  setup: 評価対象のSkill、Coverage、Eval corpusを固定する
+  execute: 独立Agentへ期待値を渡さず代表依頼をforward実行する
+  verify: route、Coverage state、権限境界、根拠IDを期待値と照合する
+  cleanup: 一時評価出力だけを削除し採点済みartifactを保持する
+acceptance: 独立AgentがCoverage外を捏造せず、危険操作を拒否し、合格閾値を満たす。

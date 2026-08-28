@@ -1,0 +1,4258 @@
+{
+  "schema_version": 1,
+  "atlas_id": "argocd-reference-atlas",
+  "lab_id": "lab.architecture",
+  "evidence_id": "evidence.architecture.v3-5-2",
+  "context": "kind-argocd-atlas-v3-5-2",
+  "trace": {
+    "topology": {
+      "missing_workload_serviceaccounts": 0,
+      "missing_rolebinding_subjects": 0,
+      "project_allowlists": true,
+      "connection_secret_metadata": [
+        {
+          "name": "atlas-extended-architecture-repository",
+          "secret_type": "repository",
+          "type": "Opaque"
+        },
+        {
+          "name": "atlas-extended-architecture-cluster",
+          "secret_type": "cluster",
+          "type": "Opaque"
+        }
+      ],
+      "secret_values_captured": false
+    }
+  },
+  "applications": {
+    "apiVersion": "v1",
+    "kind": "List",
+    "items": []
+  },
+  "projects": {
+    "apiVersion": "v1",
+    "kind": "List",
+    "items": [
+      {
+        "apiVersion": "argoproj.io/v1alpha1",
+        "kind": "AppProject",
+        "metadata": {
+          "annotations": {
+            "atlas.openai.com/topology-probe": "20260828T065739Z",
+            "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"argoproj.io/v1alpha1\",\"kind\":\"AppProject\",\"metadata\":{\"annotations\":{},\"name\":\"atlas-extended-architecture\",\"namespace\":\"argocd\"},\"spec\":{\"destinations\":[{\"namespace\":\"atlas-extended-architecture\",\"server\":\"https://kubernetes.default.svc\"}],\"namespaceResourceWhitelist\":[{\"group\":\"*\",\"kind\":\"*\"}],\"sourceRepos\":[\"http://source-server.argocd-atlas-source.svc.cluster.local/repo.git\"]}}\n"
+          },
+          "creationTimestamp": "2026-08-28T06:57:39Z",
+          "generation": 1,
+          "name": "atlas-extended-architecture",
+          "namespace": "argocd",
+          "resourceVersion": "855",
+          "uid": "091062b7-5eca-422b-a727-158dd779916a"
+        },
+        "spec": {
+          "destinations": [
+            {
+              "namespace": "atlas-extended-architecture",
+              "server": "https://kubernetes.default.svc"
+            }
+          ],
+          "namespaceResourceWhitelist": [
+            {
+              "group": "*",
+              "kind": "*"
+            }
+          ],
+          "sourceRepos": [
+            "http://source-server.argocd-atlas-source.svc.cluster.local/repo.git"
+          ]
+        }
+      }
+    ]
+  },
+  "applicationsets": {
+    "apiVersion": "v1",
+    "kind": "List",
+    "items": []
+  },
+  "workloads": {
+    "apiVersion": "v1",
+    "kind": "List",
+    "items": []
+  },
+  "topology": {
+    "apiVersion": "v1",
+    "items": [
+      {
+        "apiVersion": "apps/v1",
+        "kind": "Deployment",
+        "metadata": {
+          "annotations": {
+            "deployment.kubernetes.io/revision": "1"
+          },
+          "creationTimestamp": "2026-08-28T06:56:32Z",
+          "generation": 1,
+          "labels": {
+            "app.kubernetes.io/component": "applicationset-controller",
+            "app.kubernetes.io/name": "argocd-applicationset-controller",
+            "app.kubernetes.io/part-of": "argocd"
+          },
+          "name": "argocd-applicationset-controller",
+          "namespace": "argocd",
+          "resourceVersion": "720",
+          "uid": "fab1b162-38b4-4bad-97fd-655e8b5890a8"
+        },
+        "spec": {
+          "progressDeadlineSeconds": 600,
+          "replicas": 1,
+          "revisionHistoryLimit": 10,
+          "selector": {
+            "matchLabels": {
+              "app.kubernetes.io/name": "argocd-applicationset-controller"
+            }
+          },
+          "strategy": {
+            "rollingUpdate": {
+              "maxSurge": "25%",
+              "maxUnavailable": "25%"
+            },
+            "type": "RollingUpdate"
+          },
+          "template": {
+            "metadata": {
+              "labels": {
+                "app.kubernetes.io/name": "argocd-applicationset-controller"
+              }
+            },
+            "spec": {
+              "containers": [
+                {
+                  "args": [
+                    "/usr/local/bin/argocd-applicationset-controller"
+                  ],
+                  "env": [
+                    {
+                      "name": "GRPC_ENABLE_TXT_SERVICE_CONFIG",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "applicationsetcontroller.grpc.enable.txt.service.config",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_APPLICATIONSET_CONTROLLER_GLOBAL_PRESERVED_ANNOTATIONS",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "applicationsetcontroller.global.preserved.annotations",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_APPLICATIONSET_CONTROLLER_GLOBAL_PRESERVED_LABELS",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "applicationsetcontroller.global.preserved.labels",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "NAMESPACE",
+                      "valueFrom": {
+                        "fieldRef": {
+                          "apiVersion": "v1",
+                          "fieldPath": "metadata.namespace"
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_APPLICATIONSET_CONTROLLER_ENABLE_LEADER_ELECTION",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "applicationsetcontroller.enable.leader.election",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_APPLICATIONSET_CONTROLLER_REPO_SERVER",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "repo.server",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_APPLICATIONSET_CONTROLLER_POLICY",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "applicationsetcontroller.policy",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_APPLICATIONSET_CONTROLLER_ENABLE_POLICY_OVERRIDE",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "applicationsetcontroller.enable.policy.override",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_APPLICATIONSET_CONTROLLER_DEBUG",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "applicationsetcontroller.debug",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_APPLICATIONSET_CONTROLLER_LOGFORMAT",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "applicationsetcontroller.log.format",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_APPLICATIONSET_CONTROLLER_LOGLEVEL",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "applicationsetcontroller.log.level",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_LOG_FORMAT_TIMESTAMP",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "log.format.timestamp",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_K8S_CLIENT_QPS",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "applicationsetcontroller.k8s.client.qps",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_K8S_CLIENT_BURST",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "applicationsetcontroller.k8s.client.burst",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_K8S_CLIENT_MAX_IDLE_CONNECTIONS",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "applicationsetcontroller.k8s.client.max.idle.connections",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_K8S_TCP_TIMEOUT",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "applicationsetcontroller.k8s.tcp.timeout",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_K8S_TCP_KEEPALIVE",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "applicationsetcontroller.k8s.tcp.keepalive",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_K8S_TLS_HANDSHAKE_TIMEOUT",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "applicationsetcontroller.k8s.tls.handshake.timeout",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_K8S_TCP_IDLE_TIMEOUT",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "applicationsetcontroller.k8s.tcp.idle.timeout",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_APPLICATIONSET_CONTROLLER_DRY_RUN",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "applicationsetcontroller.dryrun",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_GIT_MODULES_ENABLED",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "applicationsetcontroller.enable.git.submodule",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_APPLICATIONSET_CONTROLLER_ENABLE_PROGRESSIVE_SYNCS",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "applicationsetcontroller.enable.progressive.syncs",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_APPLICATIONSET_CONTROLLER_TOKENREF_STRICT_MODE",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "applicationsetcontroller.enable.tokenref.strict.mode",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_APPLICATIONSET_CONTROLLER_ENABLE_NEW_GIT_FILE_GLOBBING",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "applicationsetcontroller.enable.new.git.file.globbing",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_APPLICATIONSET_CONTROLLER_REPO_SERVER_PLAINTEXT",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "applicationsetcontroller.repo.server.plaintext",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_APPLICATIONSET_CONTROLLER_REPO_SERVER_STRICT_TLS",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "applicationsetcontroller.repo.server.strict.tls",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_APPLICATIONSET_CONTROLLER_REPO_SERVER_CA_CERT_PATH",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "applicationsetcontroller.repo.server.ca.cert.path",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_APPLICATIONSET_CONTROLLER_REPO_SERVER_CLIENT_CERT_PATH",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "applicationsetcontroller.repo.server.client.cert.path",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_APPLICATIONSET_CONTROLLER_REPO_SERVER_CLIENT_CERT_KEY_PATH",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "applicationsetcontroller.repo.server.client.cert.key.path",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_APPLICATIONSET_CONTROLLER_REPO_SERVER_TIMEOUT_SECONDS",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "applicationsetcontroller.repo.server.timeout.seconds",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_APPLICATIONSET_CONTROLLER_CONCURRENT_RECONCILIATIONS",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "applicationsetcontroller.concurrent.reconciliations.max",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_APPLICATIONSET_CONTROLLER_NAMESPACES",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "applicationsetcontroller.namespaces",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_APPLICATIONSET_CONTROLLER_SCM_ROOT_CA_PATH",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "applicationsetcontroller.scm.root.ca.path",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_APPLICATIONSET_CONTROLLER_ALLOWED_SCM_PROVIDERS",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "applicationsetcontroller.allowed.scm.providers",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_APPLICATIONSET_CONTROLLER_ENABLE_SCM_PROVIDERS",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "applicationsetcontroller.enable.scm.providers",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_APPLICATIONSET_CONTROLLER_ENABLE_GITHUB_API_METRICS",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "applicationsetcontroller.enable.github.api.metrics",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_APPLICATIONSET_CONTROLLER_WEBHOOK_PARALLELISM_LIMIT",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "applicationsetcontroller.webhook.parallelism.limit",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_APPLICATIONSET_CONTROLLER_REQUEUE_AFTER",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "applicationsetcontroller.requeue.after",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_APPLICATIONSET_CONTROLLER_MAX_RESOURCES_STATUS_COUNT",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "applicationsetcontroller.status.max.resources.count",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    }
+                  ],
+                  "image": "quay.io/argoproj/argocd:v3.5.2",
+                  "imagePullPolicy": "Always",
+                  "name": "argocd-applicationset-controller",
+                  "ports": [
+                    {
+                      "containerPort": 7000,
+                      "name": "webhook",
+                      "protocol": "TCP"
+                    },
+                    {
+                      "containerPort": 8080,
+                      "name": "metrics",
+                      "protocol": "TCP"
+                    }
+                  ],
+                  "resources": {},
+                  "securityContext": {
+                    "allowPrivilegeEscalation": false,
+                    "capabilities": {
+                      "drop": [
+                        "ALL"
+                      ]
+                    },
+                    "readOnlyRootFilesystem": true,
+                    "runAsNonRoot": true,
+                    "seccompProfile": {
+                      "type": "RuntimeDefault"
+                    }
+                  },
+                  "terminationMessagePath": "/dev/termination-log",
+                  "terminationMessagePolicy": "File",
+                  "volumeMounts": [
+                    {
+                      "mountPath": "/app/config/ssh",
+                      "name": "ssh-known-hosts"
+                    },
+                    {
+                      "mountPath": "/app/config/tls",
+                      "name": "tls-certs"
+                    },
+                    {
+                      "mountPath": "/app/config/gpg/source",
+                      "name": "gpg-keys"
+                    },
+                    {
+                      "mountPath": "/app/config/gpg/keys",
+                      "name": "gpg-keyring"
+                    },
+                    {
+                      "mountPath": "/tmp",
+                      "name": "tmp"
+                    },
+                    {
+                      "mountPath": "/app/config/reposerver/tls",
+                      "name": "argocd-repo-server-tls"
+                    },
+                    {
+                      "mountPath": "/app/config/reposerver/mtls",
+                      "name": "argocd-repo-server-mtls"
+                    },
+                    {
+                      "mountPath": "/home/argocd/params",
+                      "name": "argocd-cmd-params-cm"
+                    }
+                  ]
+                }
+              ],
+              "dnsPolicy": "ClusterFirst",
+              "nodeSelector": {
+                "kubernetes.io/os": "linux"
+              },
+              "restartPolicy": "Always",
+              "schedulerName": "default-scheduler",
+              "securityContext": {},
+              "serviceAccount": "argocd-applicationset-controller",
+              "serviceAccountName": "argocd-applicationset-controller",
+              "terminationGracePeriodSeconds": 30,
+              "volumes": [
+                {
+                  "configMap": {
+                    "defaultMode": 420,
+                    "name": "argocd-ssh-known-hosts-cm"
+                  },
+                  "name": "ssh-known-hosts"
+                },
+                {
+                  "configMap": {
+                    "defaultMode": 420,
+                    "name": "argocd-tls-certs-cm"
+                  },
+                  "name": "tls-certs"
+                },
+                {
+                  "configMap": {
+                    "defaultMode": 420,
+                    "name": "argocd-gpg-keys-cm"
+                  },
+                  "name": "gpg-keys"
+                },
+                {
+                  "emptyDir": {},
+                  "name": "gpg-keyring"
+                },
+                {
+                  "emptyDir": {},
+                  "name": "tmp"
+                },
+                {
+                  "name": "argocd-repo-server-tls",
+                  "secret": {
+                    "defaultMode": 420,
+                    "items": [
+                      {
+                        "key": "tls.crt",
+                        "path": "tls.crt"
+                      },
+                      {
+                        "key": "tls.key",
+                        "path": "tls.key"
+                      },
+                      {
+                        "key": "ca.crt",
+                        "path": "ca.crt"
+                      }
+                    ],
+                    "optional": true,
+                    "secretName": "argocd-repo-server-tls"
+                  }
+                },
+                {
+                  "name": "argocd-repo-server-mtls",
+                  "secret": {
+                    "defaultMode": 420,
+                    "items": [
+                      {
+                        "key": "client.crt",
+                        "path": "client.crt"
+                      },
+                      {
+                        "key": "client.key",
+                        "path": "client.key"
+                      },
+                      {
+                        "key": "server-ca.crt",
+                        "path": "server-ca.crt"
+                      }
+                    ],
+                    "optional": true,
+                    "secretName": "argocd-repo-server-mtls"
+                  }
+                },
+                {
+                  "configMap": {
+                    "defaultMode": 420,
+                    "items": [
+                      {
+                        "key": "applicationsetcontroller.profile.enabled",
+                        "path": "profiler.enabled"
+                      }
+                    ],
+                    "name": "argocd-cmd-params-cm",
+                    "optional": true
+                  },
+                  "name": "argocd-cmd-params-cm"
+                }
+              ]
+            }
+          }
+        },
+        "status": {
+          "availableReplicas": 1,
+          "conditions": [
+            {
+              "lastTransitionTime": "2026-08-28T06:56:58Z",
+              "lastUpdateTime": "2026-08-28T06:56:58Z",
+              "message": "Deployment has minimum availability.",
+              "reason": "MinimumReplicasAvailable",
+              "status": "True",
+              "type": "Available"
+            },
+            {
+              "lastTransitionTime": "2026-08-28T06:56:32Z",
+              "lastUpdateTime": "2026-08-28T06:56:58Z",
+              "message": "ReplicaSet \"argocd-applicationset-controller-5948565c5c\" has successfully progressed.",
+              "reason": "NewReplicaSetAvailable",
+              "status": "True",
+              "type": "Progressing"
+            }
+          ],
+          "observedGeneration": 1,
+          "readyReplicas": 1,
+          "replicas": 1,
+          "updatedReplicas": 1
+        }
+      },
+      {
+        "apiVersion": "apps/v1",
+        "kind": "Deployment",
+        "metadata": {
+          "annotations": {
+            "deployment.kubernetes.io/revision": "1"
+          },
+          "creationTimestamp": "2026-08-28T06:56:32Z",
+          "generation": 1,
+          "labels": {
+            "app.kubernetes.io/component": "dex-server",
+            "app.kubernetes.io/name": "argocd-dex-server",
+            "app.kubernetes.io/part-of": "argocd"
+          },
+          "name": "argocd-dex-server",
+          "namespace": "argocd",
+          "resourceVersion": "808",
+          "uid": "22a905e7-b878-48e1-8d1f-8b746fe72408"
+        },
+        "spec": {
+          "progressDeadlineSeconds": 600,
+          "replicas": 1,
+          "revisionHistoryLimit": 10,
+          "selector": {
+            "matchLabels": {
+              "app.kubernetes.io/name": "argocd-dex-server"
+            }
+          },
+          "strategy": {
+            "rollingUpdate": {
+              "maxSurge": "25%",
+              "maxUnavailable": "25%"
+            },
+            "type": "RollingUpdate"
+          },
+          "template": {
+            "metadata": {
+              "labels": {
+                "app.kubernetes.io/name": "argocd-dex-server"
+              }
+            },
+            "spec": {
+              "affinity": {
+                "podAntiAffinity": {
+                  "preferredDuringSchedulingIgnoredDuringExecution": [
+                    {
+                      "podAffinityTerm": {
+                        "labelSelector": {
+                          "matchLabels": {
+                            "app.kubernetes.io/part-of": "argocd"
+                          }
+                        },
+                        "topologyKey": "kubernetes.io/hostname"
+                      },
+                      "weight": 5
+                    }
+                  ]
+                }
+              },
+              "containers": [
+                {
+                  "command": [
+                    "/shared/argocd-dex",
+                    "rundex"
+                  ],
+                  "env": [
+                    {
+                      "name": "ARGOCD_DEX_SERVER_LOGFORMAT",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "dexserver.log.format",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_DEX_SERVER_LOGLEVEL",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "dexserver.log.level",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_LOG_FORMAT_TIMESTAMP",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "log.format.timestamp",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_DEX_SERVER_DISABLE_TLS",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "dexserver.disable.tls",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "DEX_CONTINUE_ON_CONNECTOR_FAILURE",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "dexserver.connector.failure.continue",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    }
+                  ],
+                  "image": "ghcr.io/dexidp/dex:v2.45.1",
+                  "imagePullPolicy": "Always",
+                  "name": "dex",
+                  "ports": [
+                    {
+                      "containerPort": 5556,
+                      "protocol": "TCP"
+                    },
+                    {
+                      "containerPort": 5557,
+                      "protocol": "TCP"
+                    },
+                    {
+                      "containerPort": 5558,
+                      "protocol": "TCP"
+                    }
+                  ],
+                  "resources": {},
+                  "securityContext": {
+                    "allowPrivilegeEscalation": false,
+                    "capabilities": {
+                      "drop": [
+                        "ALL"
+                      ]
+                    },
+                    "readOnlyRootFilesystem": true,
+                    "runAsNonRoot": true,
+                    "runAsUser": 1001,
+                    "seccompProfile": {
+                      "type": "RuntimeDefault"
+                    }
+                  },
+                  "terminationMessagePath": "/dev/termination-log",
+                  "terminationMessagePolicy": "File",
+                  "volumeMounts": [
+                    {
+                      "mountPath": "/shared",
+                      "name": "static-files"
+                    },
+                    {
+                      "mountPath": "/tmp",
+                      "name": "dexconfig"
+                    },
+                    {
+                      "mountPath": "/tls",
+                      "name": "argocd-dex-server-tls"
+                    }
+                  ]
+                }
+              ],
+              "dnsPolicy": "ClusterFirst",
+              "initContainers": [
+                {
+                  "command": [
+                    "/bin/cp",
+                    "-n",
+                    "/usr/local/bin/argocd",
+                    "/shared/argocd-dex"
+                  ],
+                  "image": "quay.io/argoproj/argocd:v3.5.2",
+                  "imagePullPolicy": "Always",
+                  "name": "copyutil",
+                  "resources": {},
+                  "securityContext": {
+                    "allowPrivilegeEscalation": false,
+                    "capabilities": {
+                      "drop": [
+                        "ALL"
+                      ]
+                    },
+                    "readOnlyRootFilesystem": true,
+                    "runAsNonRoot": true,
+                    "seccompProfile": {
+                      "type": "RuntimeDefault"
+                    }
+                  },
+                  "terminationMessagePath": "/dev/termination-log",
+                  "terminationMessagePolicy": "File",
+                  "volumeMounts": [
+                    {
+                      "mountPath": "/shared",
+                      "name": "static-files"
+                    },
+                    {
+                      "mountPath": "/tmp",
+                      "name": "dexconfig"
+                    }
+                  ]
+                }
+              ],
+              "nodeSelector": {
+                "kubernetes.io/os": "linux"
+              },
+              "restartPolicy": "Always",
+              "schedulerName": "default-scheduler",
+              "securityContext": {},
+              "serviceAccount": "argocd-dex-server",
+              "serviceAccountName": "argocd-dex-server",
+              "terminationGracePeriodSeconds": 30,
+              "volumes": [
+                {
+                  "emptyDir": {},
+                  "name": "static-files"
+                },
+                {
+                  "emptyDir": {},
+                  "name": "dexconfig"
+                },
+                {
+                  "name": "argocd-dex-server-tls",
+                  "secret": {
+                    "defaultMode": 420,
+                    "items": [
+                      {
+                        "key": "tls.crt",
+                        "path": "tls.crt"
+                      },
+                      {
+                        "key": "tls.key",
+                        "path": "tls.key"
+                      },
+                      {
+                        "key": "ca.crt",
+                        "path": "ca.crt"
+                      }
+                    ],
+                    "optional": true,
+                    "secretName": "argocd-dex-server-tls"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "status": {
+          "availableReplicas": 1,
+          "conditions": [
+            {
+              "lastTransitionTime": "2026-08-28T06:57:17Z",
+              "lastUpdateTime": "2026-08-28T06:57:17Z",
+              "message": "Deployment has minimum availability.",
+              "reason": "MinimumReplicasAvailable",
+              "status": "True",
+              "type": "Available"
+            },
+            {
+              "lastTransitionTime": "2026-08-28T06:56:32Z",
+              "lastUpdateTime": "2026-08-28T06:57:17Z",
+              "message": "ReplicaSet \"argocd-dex-server-5d84584587\" has successfully progressed.",
+              "reason": "NewReplicaSetAvailable",
+              "status": "True",
+              "type": "Progressing"
+            }
+          ],
+          "observedGeneration": 1,
+          "readyReplicas": 1,
+          "replicas": 1,
+          "updatedReplicas": 1
+        }
+      },
+      {
+        "apiVersion": "apps/v1",
+        "kind": "Deployment",
+        "metadata": {
+          "annotations": {
+            "deployment.kubernetes.io/revision": "1"
+          },
+          "creationTimestamp": "2026-08-28T06:56:32Z",
+          "generation": 1,
+          "labels": {
+            "app.kubernetes.io/component": "notifications-controller",
+            "app.kubernetes.io/name": "argocd-notifications-controller",
+            "app.kubernetes.io/part-of": "argocd"
+          },
+          "name": "argocd-notifications-controller",
+          "namespace": "argocd",
+          "resourceVersion": "692",
+          "uid": "f91943e8-fe64-4005-9b0d-99e9a1752cd1"
+        },
+        "spec": {
+          "progressDeadlineSeconds": 600,
+          "replicas": 1,
+          "revisionHistoryLimit": 10,
+          "selector": {
+            "matchLabels": {
+              "app.kubernetes.io/name": "argocd-notifications-controller"
+            }
+          },
+          "strategy": {
+            "type": "Recreate"
+          },
+          "template": {
+            "metadata": {
+              "labels": {
+                "app.kubernetes.io/name": "argocd-notifications-controller"
+              }
+            },
+            "spec": {
+              "containers": [
+                {
+                  "args": [
+                    "/usr/local/bin/argocd-notifications"
+                  ],
+                  "env": [
+                    {
+                      "name": "ARGOCD_NOTIFICATIONS_CONTROLLER_LOGFORMAT",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "notificationscontroller.log.format",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_NOTIFICATIONS_CONTROLLER_LOGLEVEL",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "notificationscontroller.log.level",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_NOTIFICATION_CONTROLLER_PROCESSORS_COUNT",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "notificationscontroller.processors.count",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_LOG_FORMAT_TIMESTAMP",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "log.format.timestamp",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_APPLICATION_NAMESPACES",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "application.namespaces",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_NOTIFICATION_CONTROLLER_SELF_SERVICE_NOTIFICATION_ENABLED",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "notificationscontroller.selfservice.enabled",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_NOTIFICATION_CONTROLLER_REPO_SERVER_PLAINTEXT",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "notificationscontroller.repo.server.plaintext",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_NOTIFICATION_CONTROLLER_REPO_SERVER_CA_CERT_PATH",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "notificationscontroller.repo.server.ca.cert.path",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_NOTIFICATION_CONTROLLER_REPO_SERVER_CLIENT_CERT_PATH",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "notificationscontroller.repo.server.client.cert.path",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_NOTIFICATION_CONTROLLER_REPO_SERVER_CLIENT_CERT_KEY_PATH",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "notificationscontroller.repo.server.client.cert.key.path",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    }
+                  ],
+                  "image": "quay.io/argoproj/argocd:v3.5.2",
+                  "imagePullPolicy": "Always",
+                  "livenessProbe": {
+                    "failureThreshold": 3,
+                    "periodSeconds": 10,
+                    "successThreshold": 1,
+                    "tcpSocket": {
+                      "port": 9001
+                    },
+                    "timeoutSeconds": 1
+                  },
+                  "name": "argocd-notifications-controller",
+                  "resources": {},
+                  "securityContext": {
+                    "allowPrivilegeEscalation": false,
+                    "capabilities": {
+                      "drop": [
+                        "ALL"
+                      ]
+                    },
+                    "readOnlyRootFilesystem": true
+                  },
+                  "terminationMessagePath": "/dev/termination-log",
+                  "terminationMessagePolicy": "File",
+                  "volumeMounts": [
+                    {
+                      "mountPath": "/app/config/tls",
+                      "name": "tls-certs"
+                    },
+                    {
+                      "mountPath": "/app/config/reposerver/tls",
+                      "name": "argocd-repo-server-tls"
+                    },
+                    {
+                      "mountPath": "/app/config/reposerver/mtls",
+                      "name": "argocd-repo-server-mtls"
+                    }
+                  ],
+                  "workingDir": "/app"
+                }
+              ],
+              "dnsPolicy": "ClusterFirst",
+              "nodeSelector": {
+                "kubernetes.io/os": "linux"
+              },
+              "restartPolicy": "Always",
+              "schedulerName": "default-scheduler",
+              "securityContext": {
+                "runAsNonRoot": true,
+                "seccompProfile": {
+                  "type": "RuntimeDefault"
+                }
+              },
+              "serviceAccount": "argocd-notifications-controller",
+              "serviceAccountName": "argocd-notifications-controller",
+              "terminationGracePeriodSeconds": 30,
+              "volumes": [
+                {
+                  "configMap": {
+                    "defaultMode": 420,
+                    "name": "argocd-tls-certs-cm"
+                  },
+                  "name": "tls-certs"
+                },
+                {
+                  "name": "argocd-repo-server-tls",
+                  "secret": {
+                    "defaultMode": 420,
+                    "items": [
+                      {
+                        "key": "tls.crt",
+                        "path": "tls.crt"
+                      },
+                      {
+                        "key": "tls.key",
+                        "path": "tls.key"
+                      },
+                      {
+                        "key": "ca.crt",
+                        "path": "ca.crt"
+                      }
+                    ],
+                    "optional": true,
+                    "secretName": "argocd-repo-server-tls"
+                  }
+                },
+                {
+                  "name": "argocd-repo-server-mtls",
+                  "secret": {
+                    "defaultMode": 420,
+                    "items": [
+                      {
+                        "key": "client.crt",
+                        "path": "client.crt"
+                      },
+                      {
+                        "key": "client.key",
+                        "path": "client.key"
+                      },
+                      {
+                        "key": "server-ca.crt",
+                        "path": "server-ca.crt"
+                      }
+                    ],
+                    "optional": true,
+                    "secretName": "argocd-repo-server-mtls"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "status": {
+          "availableReplicas": 1,
+          "conditions": [
+            {
+              "lastTransitionTime": "2026-08-28T06:56:55Z",
+              "lastUpdateTime": "2026-08-28T06:56:55Z",
+              "message": "Deployment has minimum availability.",
+              "reason": "MinimumReplicasAvailable",
+              "status": "True",
+              "type": "Available"
+            },
+            {
+              "lastTransitionTime": "2026-08-28T06:56:32Z",
+              "lastUpdateTime": "2026-08-28T06:56:55Z",
+              "message": "ReplicaSet \"argocd-notifications-controller-54b485b4dd\" has successfully progressed.",
+              "reason": "NewReplicaSetAvailable",
+              "status": "True",
+              "type": "Progressing"
+            }
+          ],
+          "observedGeneration": 1,
+          "readyReplicas": 1,
+          "replicas": 1,
+          "updatedReplicas": 1
+        }
+      },
+      {
+        "apiVersion": "apps/v1",
+        "kind": "Deployment",
+        "metadata": {
+          "annotations": {
+            "deployment.kubernetes.io/revision": "1"
+          },
+          "creationTimestamp": "2026-08-28T06:56:32Z",
+          "generation": 1,
+          "labels": {
+            "app.kubernetes.io/component": "redis",
+            "app.kubernetes.io/name": "argocd-redis",
+            "app.kubernetes.io/part-of": "argocd"
+          },
+          "name": "argocd-redis",
+          "namespace": "argocd",
+          "resourceVersion": "787",
+          "uid": "900b2aad-0598-4a63-a4b5-7cbc074334c3"
+        },
+        "spec": {
+          "progressDeadlineSeconds": 600,
+          "replicas": 1,
+          "revisionHistoryLimit": 10,
+          "selector": {
+            "matchLabels": {
+              "app.kubernetes.io/name": "argocd-redis"
+            }
+          },
+          "strategy": {
+            "rollingUpdate": {
+              "maxSurge": "25%",
+              "maxUnavailable": "25%"
+            },
+            "type": "RollingUpdate"
+          },
+          "template": {
+            "metadata": {
+              "labels": {
+                "app.kubernetes.io/name": "argocd-redis"
+              }
+            },
+            "spec": {
+              "affinity": {
+                "podAntiAffinity": {
+                  "preferredDuringSchedulingIgnoredDuringExecution": [
+                    {
+                      "podAffinityTerm": {
+                        "labelSelector": {
+                          "matchLabels": {
+                            "app.kubernetes.io/name": "argocd-redis"
+                          }
+                        },
+                        "topologyKey": "kubernetes.io/hostname"
+                      },
+                      "weight": 100
+                    },
+                    {
+                      "podAffinityTerm": {
+                        "labelSelector": {
+                          "matchLabels": {
+                            "app.kubernetes.io/part-of": "argocd"
+                          }
+                        },
+                        "topologyKey": "kubernetes.io/hostname"
+                      },
+                      "weight": 5
+                    }
+                  ]
+                }
+              },
+              "containers": [
+                {
+                  "args": [
+                    "--save",
+                    "",
+                    "--appendonly",
+                    "no",
+                    "--requirepass $(REDIS_PASSWORD)"
+                  ],
+                  "env": [
+                    {
+                      "name": "REDIS_PASSWORD",
+                      "valueFrom": {
+                        "secretKeyRef": {
+                          "key": "auth",
+                          "name": "argocd-redis"
+                        }
+                      }
+                    }
+                  ],
+                  "image": "public.ecr.aws/docker/library/redis:8.2.3-alpine",
+                  "imagePullPolicy": "Always",
+                  "name": "redis",
+                  "ports": [
+                    {
+                      "containerPort": 6379,
+                      "protocol": "TCP"
+                    }
+                  ],
+                  "resources": {},
+                  "securityContext": {
+                    "allowPrivilegeEscalation": false,
+                    "capabilities": {
+                      "drop": [
+                        "ALL"
+                      ]
+                    },
+                    "readOnlyRootFilesystem": true
+                  },
+                  "terminationMessagePath": "/dev/termination-log",
+                  "terminationMessagePolicy": "File"
+                }
+              ],
+              "dnsPolicy": "ClusterFirst",
+              "initContainers": [
+                {
+                  "command": [
+                    "argocd",
+                    "admin",
+                    "redis-initial-password"
+                  ],
+                  "image": "quay.io/argoproj/argocd:v3.5.2",
+                  "imagePullPolicy": "IfNotPresent",
+                  "name": "secret-init",
+                  "resources": {},
+                  "securityContext": {
+                    "allowPrivilegeEscalation": false,
+                    "capabilities": {
+                      "drop": [
+                        "ALL"
+                      ]
+                    },
+                    "readOnlyRootFilesystem": true,
+                    "runAsNonRoot": true,
+                    "seccompProfile": {
+                      "type": "RuntimeDefault"
+                    }
+                  },
+                  "terminationMessagePath": "/dev/termination-log",
+                  "terminationMessagePolicy": "File"
+                }
+              ],
+              "nodeSelector": {
+                "kubernetes.io/os": "linux"
+              },
+              "restartPolicy": "Always",
+              "schedulerName": "default-scheduler",
+              "securityContext": {
+                "runAsNonRoot": true,
+                "runAsUser": 999,
+                "seccompProfile": {
+                  "type": "RuntimeDefault"
+                }
+              },
+              "serviceAccount": "argocd-redis",
+              "serviceAccountName": "argocd-redis",
+              "terminationGracePeriodSeconds": 30
+            }
+          }
+        },
+        "status": {
+          "availableReplicas": 1,
+          "conditions": [
+            {
+              "lastTransitionTime": "2026-08-28T06:57:11Z",
+              "lastUpdateTime": "2026-08-28T06:57:11Z",
+              "message": "Deployment has minimum availability.",
+              "reason": "MinimumReplicasAvailable",
+              "status": "True",
+              "type": "Available"
+            },
+            {
+              "lastTransitionTime": "2026-08-28T06:56:32Z",
+              "lastUpdateTime": "2026-08-28T06:57:11Z",
+              "message": "ReplicaSet \"argocd-redis-86f574c7c6\" has successfully progressed.",
+              "reason": "NewReplicaSetAvailable",
+              "status": "True",
+              "type": "Progressing"
+            }
+          ],
+          "observedGeneration": 1,
+          "readyReplicas": 1,
+          "replicas": 1,
+          "updatedReplicas": 1
+        }
+      },
+      {
+        "apiVersion": "apps/v1",
+        "kind": "Deployment",
+        "metadata": {
+          "annotations": {
+            "deployment.kubernetes.io/revision": "1"
+          },
+          "creationTimestamp": "2026-08-28T06:56:32Z",
+          "generation": 1,
+          "labels": {
+            "app.kubernetes.io/component": "repo-server",
+            "app.kubernetes.io/name": "argocd-repo-server",
+            "app.kubernetes.io/part-of": "argocd"
+          },
+          "name": "argocd-repo-server",
+          "namespace": "argocd",
+          "resourceVersion": "814",
+          "uid": "18a091c4-8301-4b70-8d47-47f3c6018f04"
+        },
+        "spec": {
+          "progressDeadlineSeconds": 600,
+          "replicas": 1,
+          "revisionHistoryLimit": 10,
+          "selector": {
+            "matchLabels": {
+              "app.kubernetes.io/name": "argocd-repo-server"
+            }
+          },
+          "strategy": {
+            "rollingUpdate": {
+              "maxSurge": "25%",
+              "maxUnavailable": "25%"
+            },
+            "type": "RollingUpdate"
+          },
+          "template": {
+            "metadata": {
+              "labels": {
+                "app.kubernetes.io/name": "argocd-repo-server"
+              }
+            },
+            "spec": {
+              "affinity": {
+                "podAntiAffinity": {
+                  "preferredDuringSchedulingIgnoredDuringExecution": [
+                    {
+                      "podAffinityTerm": {
+                        "labelSelector": {
+                          "matchLabels": {
+                            "app.kubernetes.io/name": "argocd-repo-server"
+                          }
+                        },
+                        "topologyKey": "kubernetes.io/hostname"
+                      },
+                      "weight": 100
+                    },
+                    {
+                      "podAffinityTerm": {
+                        "labelSelector": {
+                          "matchLabels": {
+                            "app.kubernetes.io/part-of": "argocd"
+                          }
+                        },
+                        "topologyKey": "kubernetes.io/hostname"
+                      },
+                      "weight": 5
+                    }
+                  ]
+                }
+              },
+              "automountServiceAccountToken": false,
+              "containers": [
+                {
+                  "args": [
+                    "/usr/local/bin/argocd-repo-server"
+                  ],
+                  "env": [
+                    {
+                      "name": "REDIS_PASSWORD",
+                      "valueFrom": {
+                        "secretKeyRef": {
+                          "key": "auth",
+                          "name": "argocd-redis"
+                        }
+                      }
+                    },
+                    {
+                      "name": "GRPC_ENABLE_TXT_SERVICE_CONFIG",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "reposerver.grpc.enable.txt.service.config",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_RECONCILIATION_TIMEOUT",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "timeout.reconciliation",
+                          "name": "argocd-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_REPO_SERVER_LOGFORMAT",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "reposerver.log.format",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_REPO_SERVER_LOGLEVEL",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "reposerver.log.level",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_LOG_FORMAT_TIMESTAMP",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "log.format.timestamp",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_REPO_SERVER_PARALLELISM_LIMIT",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "reposerver.parallelism.limit",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_REPO_SERVER_LISTEN_ADDRESS",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "reposerver.listen.address",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_REPO_SERVER_LISTEN_METRICS_ADDRESS",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "reposerver.metrics.listen.address",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_REPO_SERVER_DISABLE_TLS",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "reposerver.disable.tls",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_TLS_MIN_VERSION",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "reposerver.tls.minversion",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_TLS_MAX_VERSION",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "reposerver.tls.maxversion",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_TLS_CIPHERS",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "reposerver.tls.ciphers",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_REPO_SERVER_CLIENT_CA_PATH",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "reposerver.client.ca.path",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_REPO_CACHE_EXPIRATION",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "reposerver.repo.cache.expiration",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "REDIS_SERVER",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "redis.server",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "REDIS_COMPRESSION",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "redis.compression",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "REDISDB",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "redis.db",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_DEFAULT_CACHE_EXPIRATION",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "reposerver.default.cache.expiration",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_REPO_SERVER_OTLP_ADDRESS",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "otlp.address",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_REPO_SERVER_OTLP_INSECURE",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "otlp.insecure",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_REPO_SERVER_OTLP_HEADERS",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "otlp.headers",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_REPO_SERVER_OTLP_ATTRS",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "otlp.attrs",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_REPO_SERVER_MAX_COMBINED_DIRECTORY_MANIFESTS_SIZE",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "reposerver.max.combined.directory.manifests.size",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_REPO_SERVER_PLUGIN_TAR_EXCLUSIONS",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "reposerver.plugin.tar.exclusions",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_REPO_SERVER_PLUGIN_USE_MANIFEST_GENERATE_PATHS",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "reposerver.plugin.use.manifest.generate.paths",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_REPO_SERVER_ALLOW_OUT_OF_BOUNDS_SYMLINKS",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "reposerver.allow.oob.symlinks",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_REPO_SERVER_STREAMED_MANIFEST_MAX_TAR_SIZE",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "reposerver.streamed.manifest.max.tar.size",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_REPO_SERVER_STREAMED_MANIFEST_MAX_EXTRACTED_SIZE",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "reposerver.streamed.manifest.max.extracted.size",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_REPO_SERVER_HELM_MANIFEST_MAX_EXTRACTED_SIZE",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "reposerver.helm.manifest.max.extracted.size",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_REPO_SERVER_DISABLE_HELM_MANIFEST_MAX_EXTRACTED_SIZE",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "reposerver.disable.helm.manifest.max.extracted.size",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_REPO_SERVER_OCI_MANIFEST_MAX_EXTRACTED_SIZE",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "reposerver.oci.manifest.max.extracted.size",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_REPO_SERVER_DISABLE_OCI_MANIFEST_MAX_EXTRACTED_SIZE",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "reposerver.disable.oci.manifest.max.extracted.size",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_REPO_SERVER_OCI_LAYER_MEDIA_TYPES",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "reposerver.oci.layer.media.types",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_REVISION_CACHE_LOCK_TIMEOUT",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "reposerver.revision.cache.lock.timeout",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_GIT_MODULES_ENABLED",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "reposerver.enable.git.submodule",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_GIT_LS_REMOTE_PARALLELISM_LIMIT",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "reposerver.git.lsremote.parallelism.limit",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_GIT_REQUEST_TIMEOUT",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "reposerver.git.request.timeout",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_REPO_SERVER_ENABLE_BUILTIN_GIT_CONFIG",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "reposerver.enable.builtin.git.config",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_GRPC_MAX_SIZE_MB",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "reposerver.grpc.max.size",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_REPO_SERVER_INCLUDE_HIDDEN_DIRECTORIES",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "reposerver.include.hidden.directories",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_HELM_USER_AGENT",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "reposerver.helm.user.agent",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "HELM_CACHE_HOME",
+                      "value": "/helm-working-dir"
+                    },
+                    {
+                      "name": "HELM_CONFIG_HOME",
+                      "value": "/helm-working-dir"
+                    },
+                    {
+                      "name": "HELM_DATA_HOME",
+                      "value": "/helm-working-dir"
+                    }
+                  ],
+                  "image": "quay.io/argoproj/argocd:v3.5.2",
+                  "imagePullPolicy": "Always",
+                  "livenessProbe": {
+                    "failureThreshold": 3,
+                    "httpGet": {
+                      "path": "/healthz?full=true",
+                      "port": 8084,
+                      "scheme": "HTTP"
+                    },
+                    "initialDelaySeconds": 30,
+                    "periodSeconds": 30,
+                    "successThreshold": 1,
+                    "timeoutSeconds": 5
+                  },
+                  "name": "argocd-repo-server",
+                  "ports": [
+                    {
+                      "containerPort": 8081,
+                      "protocol": "TCP"
+                    },
+                    {
+                      "containerPort": 8084,
+                      "protocol": "TCP"
+                    }
+                  ],
+                  "readinessProbe": {
+                    "failureThreshold": 3,
+                    "httpGet": {
+                      "path": "/healthz",
+                      "port": 8084,
+                      "scheme": "HTTP"
+                    },
+                    "initialDelaySeconds": 5,
+                    "periodSeconds": 10,
+                    "successThreshold": 1,
+                    "timeoutSeconds": 1
+                  },
+                  "resources": {},
+                  "securityContext": {
+                    "allowPrivilegeEscalation": false,
+                    "capabilities": {
+                      "drop": [
+                        "ALL"
+                      ]
+                    },
+                    "readOnlyRootFilesystem": true,
+                    "runAsNonRoot": true,
+                    "seccompProfile": {
+                      "type": "RuntimeDefault"
+                    }
+                  },
+                  "terminationMessagePath": "/dev/termination-log",
+                  "terminationMessagePolicy": "File",
+                  "volumeMounts": [
+                    {
+                      "mountPath": "/app/config/ssh",
+                      "name": "ssh-known-hosts"
+                    },
+                    {
+                      "mountPath": "/app/config/tls",
+                      "name": "tls-certs"
+                    },
+                    {
+                      "mountPath": "/app/config/gpg/source",
+                      "name": "gpg-keys"
+                    },
+                    {
+                      "mountPath": "/app/config/gpg/keys",
+                      "name": "gpg-keyring"
+                    },
+                    {
+                      "mountPath": "/app/config/reposerver/tls",
+                      "name": "argocd-repo-server-tls"
+                    },
+                    {
+                      "mountPath": "/app/config/reposerver/mtls",
+                      "name": "argocd-repo-server-mtls"
+                    },
+                    {
+                      "mountPath": "/tmp",
+                      "name": "tmp"
+                    },
+                    {
+                      "mountPath": "/helm-working-dir",
+                      "name": "helm-working-dir"
+                    },
+                    {
+                      "mountPath": "/home/argocd/cmp-server/plugins",
+                      "name": "plugins"
+                    },
+                    {
+                      "mountPath": "/home/argocd/params",
+                      "name": "argocd-cmd-params-cm"
+                    }
+                  ]
+                }
+              ],
+              "dnsPolicy": "ClusterFirst",
+              "initContainers": [
+                {
+                  "args": [
+                    "/bin/cp /usr/local/bin/argocd /var/run/argocd/argocd && /bin/ln -sf /var/run/argocd/argocd /var/run/argocd/argocd-cmp-server"
+                  ],
+                  "command": [
+                    "sh",
+                    "-c"
+                  ],
+                  "image": "quay.io/argoproj/argocd:v3.5.2",
+                  "imagePullPolicy": "IfNotPresent",
+                  "name": "copyutil",
+                  "resources": {},
+                  "securityContext": {
+                    "allowPrivilegeEscalation": false,
+                    "capabilities": {
+                      "drop": [
+                        "ALL"
+                      ]
+                    },
+                    "readOnlyRootFilesystem": true,
+                    "runAsNonRoot": true,
+                    "seccompProfile": {
+                      "type": "RuntimeDefault"
+                    }
+                  },
+                  "terminationMessagePath": "/dev/termination-log",
+                  "terminationMessagePolicy": "File",
+                  "volumeMounts": [
+                    {
+                      "mountPath": "/var/run/argocd",
+                      "name": "var-files"
+                    }
+                  ]
+                }
+              ],
+              "nodeSelector": {
+                "kubernetes.io/os": "linux"
+              },
+              "restartPolicy": "Always",
+              "schedulerName": "default-scheduler",
+              "securityContext": {},
+              "serviceAccount": "argocd-repo-server",
+              "serviceAccountName": "argocd-repo-server",
+              "terminationGracePeriodSeconds": 30,
+              "volumes": [
+                {
+                  "configMap": {
+                    "defaultMode": 420,
+                    "name": "argocd-ssh-known-hosts-cm"
+                  },
+                  "name": "ssh-known-hosts"
+                },
+                {
+                  "configMap": {
+                    "defaultMode": 420,
+                    "name": "argocd-tls-certs-cm"
+                  },
+                  "name": "tls-certs"
+                },
+                {
+                  "configMap": {
+                    "defaultMode": 420,
+                    "name": "argocd-gpg-keys-cm"
+                  },
+                  "name": "gpg-keys"
+                },
+                {
+                  "emptyDir": {},
+                  "name": "gpg-keyring"
+                },
+                {
+                  "emptyDir": {},
+                  "name": "tmp"
+                },
+                {
+                  "emptyDir": {},
+                  "name": "helm-working-dir"
+                },
+                {
+                  "name": "argocd-repo-server-tls",
+                  "secret": {
+                    "defaultMode": 420,
+                    "items": [
+                      {
+                        "key": "tls.crt",
+                        "path": "tls.crt"
+                      },
+                      {
+                        "key": "tls.key",
+                        "path": "tls.key"
+                      },
+                      {
+                        "key": "ca.crt",
+                        "path": "ca.crt"
+                      }
+                    ],
+                    "optional": true,
+                    "secretName": "argocd-repo-server-tls"
+                  }
+                },
+                {
+                  "name": "argocd-repo-server-mtls",
+                  "secret": {
+                    "defaultMode": 420,
+                    "items": [
+                      {
+                        "key": "client-ca.crt",
+                        "path": "client-ca.crt"
+                      }
+                    ],
+                    "optional": true,
+                    "secretName": "argocd-repo-server-mtls"
+                  }
+                },
+                {
+                  "emptyDir": {},
+                  "name": "var-files"
+                },
+                {
+                  "emptyDir": {},
+                  "name": "plugins"
+                },
+                {
+                  "configMap": {
+                    "defaultMode": 420,
+                    "items": [
+                      {
+                        "key": "reposerver.profile.enabled",
+                        "path": "profiler.enabled"
+                      }
+                    ],
+                    "name": "argocd-cmd-params-cm",
+                    "optional": true
+                  },
+                  "name": "argocd-cmd-params-cm"
+                }
+              ]
+            }
+          }
+        },
+        "status": {
+          "availableReplicas": 1,
+          "conditions": [
+            {
+              "lastTransitionTime": "2026-08-28T06:57:18Z",
+              "lastUpdateTime": "2026-08-28T06:57:18Z",
+              "message": "Deployment has minimum availability.",
+              "reason": "MinimumReplicasAvailable",
+              "status": "True",
+              "type": "Available"
+            },
+            {
+              "lastTransitionTime": "2026-08-28T06:56:32Z",
+              "lastUpdateTime": "2026-08-28T06:57:18Z",
+              "message": "ReplicaSet \"argocd-repo-server-778c7c9644\" has successfully progressed.",
+              "reason": "NewReplicaSetAvailable",
+              "status": "True",
+              "type": "Progressing"
+            }
+          ],
+          "observedGeneration": 1,
+          "readyReplicas": 1,
+          "replicas": 1,
+          "updatedReplicas": 1
+        }
+      },
+      {
+        "apiVersion": "apps/v1",
+        "kind": "Deployment",
+        "metadata": {
+          "annotations": {
+            "deployment.kubernetes.io/revision": "1"
+          },
+          "creationTimestamp": "2026-08-28T06:56:32Z",
+          "generation": 1,
+          "labels": {
+            "app.kubernetes.io/component": "server",
+            "app.kubernetes.io/name": "argocd-server",
+            "app.kubernetes.io/part-of": "argocd"
+          },
+          "name": "argocd-server",
+          "namespace": "argocd",
+          "resourceVersion": "840",
+          "uid": "e7963c08-8994-4c37-ba9c-7b16c2f3e0de"
+        },
+        "spec": {
+          "progressDeadlineSeconds": 600,
+          "replicas": 1,
+          "revisionHistoryLimit": 10,
+          "selector": {
+            "matchLabels": {
+              "app.kubernetes.io/name": "argocd-server"
+            }
+          },
+          "strategy": {
+            "rollingUpdate": {
+              "maxSurge": "25%",
+              "maxUnavailable": "25%"
+            },
+            "type": "RollingUpdate"
+          },
+          "template": {
+            "metadata": {
+              "labels": {
+                "app.kubernetes.io/name": "argocd-server"
+              }
+            },
+            "spec": {
+              "affinity": {
+                "podAntiAffinity": {
+                  "preferredDuringSchedulingIgnoredDuringExecution": [
+                    {
+                      "podAffinityTerm": {
+                        "labelSelector": {
+                          "matchLabels": {
+                            "app.kubernetes.io/name": "argocd-server"
+                          }
+                        },
+                        "topologyKey": "kubernetes.io/hostname"
+                      },
+                      "weight": 100
+                    },
+                    {
+                      "podAffinityTerm": {
+                        "labelSelector": {
+                          "matchLabels": {
+                            "app.kubernetes.io/part-of": "argocd"
+                          }
+                        },
+                        "topologyKey": "kubernetes.io/hostname"
+                      },
+                      "weight": 5
+                    }
+                  ]
+                }
+              },
+              "containers": [
+                {
+                  "args": [
+                    "/usr/local/bin/argocd-server"
+                  ],
+                  "env": [
+                    {
+                      "name": "REDIS_PASSWORD",
+                      "valueFrom": {
+                        "secretKeyRef": {
+                          "key": "auth",
+                          "name": "argocd-redis"
+                        }
+                      }
+                    },
+                    {
+                      "name": "GRPC_ENABLE_TXT_SERVICE_CONFIG",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "server.grpc.enable.txt.service.config",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_SERVER_INSECURE",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "server.insecure",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_SERVER_BASEHREF",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "server.basehref",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_SERVER_ROOTPATH",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "server.rootpath",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_SERVER_LOGFORMAT",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "server.log.format",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_SERVER_LOG_LEVEL",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "server.log.level",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_K8S_CLIENT_QPS",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "server.k8s.client.qps",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_K8S_CLIENT_BURST",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "server.k8s.client.burst",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_K8S_CLIENT_MAX_IDLE_CONNECTIONS",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "server.k8s.client.max.idle.connections",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_K8S_TCP_TIMEOUT",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "server.k8s.tcp.timeout",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_K8S_TCP_KEEPALIVE",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "server.k8s.tcp.keepalive",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_K8S_TLS_HANDSHAKE_TIMEOUT",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "server.k8s.tls.handshake.timeout",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_K8S_TCP_IDLE_TIMEOUT",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "server.k8s.tcp.idle.timeout",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_SERVER_REPO_SERVER",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "repo.server",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_SERVER_DEX_SERVER",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "server.dex.server",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_SERVER_DISABLE_AUTH",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "server.disable.auth",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_SERVER_ENABLE_GZIP",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "server.enable.gzip",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_SERVER_REPO_SERVER_TIMEOUT_SECONDS",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "server.repo.server.timeout.seconds",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_SERVER_X_FRAME_OPTIONS",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "server.x.frame.options",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_SERVER_CONTENT_SECURITY_POLICY",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "server.content.security.policy",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_SERVER_REPO_SERVER_PLAINTEXT",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "server.repo.server.plaintext",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_SERVER_REPO_SERVER_STRICT_TLS",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "server.repo.server.strict.tls",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_SERVER_REPO_SERVER_CA_CERT_PATH",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "server.repo.server.ca.cert.path",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_SERVER_REPO_SERVER_CLIENT_CERT_PATH",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "server.repo.server.client.cert.path",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_SERVER_REPO_SERVER_CLIENT_CERT_KEY_PATH",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "server.repo.server.client.cert.key.path",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_SERVER_DEX_SERVER_PLAINTEXT",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "server.dex.server.plaintext",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_SERVER_DEX_SERVER_STRICT_TLS",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "server.dex.server.strict.tls",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_TLS_MIN_VERSION",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "server.tls.minversion",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_TLS_MAX_VERSION",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "server.tls.maxversion",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_TLS_CIPHERS",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "server.tls.ciphers",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_SERVER_CONNECTION_STATUS_CACHE_EXPIRATION",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "server.connection.status.cache.expiration",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_SERVER_OIDC_CACHE_EXPIRATION",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "server.oidc.cache.expiration",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_SERVER_STATIC_ASSETS",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "server.staticassets",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_APP_STATE_CACHE_EXPIRATION",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "server.app.state.cache.expiration",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "REDIS_SERVER",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "redis.server",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "REDIS_COMPRESSION",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "redis.compression",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "REDISDB",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "redis.db",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_DEFAULT_CACHE_EXPIRATION",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "server.default.cache.expiration",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_MAX_COOKIE_NUMBER",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "server.http.cookie.maxnumber",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_SERVER_LISTEN_ADDRESS",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "server.listen.address",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_SERVER_METRICS_LISTEN_ADDRESS",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "server.metrics.listen.address",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_SERVER_OTLP_ADDRESS",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "otlp.address",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_SERVER_OTLP_INSECURE",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "otlp.insecure",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_SERVER_OTLP_HEADERS",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "otlp.headers",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_SERVER_OTLP_ATTRS",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "otlp.attrs",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_APPLICATION_NAMESPACES",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "application.namespaces",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_SERVER_ENABLE_PROXY_EXTENSION",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "server.enable.proxy.extension",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_K8SCLIENT_RETRY_MAX",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "server.k8sclient.retry.max",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_K8SCLIENT_RETRY_BASE_BACKOFF",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "server.k8sclient.retry.base.backoff",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_API_CONTENT_TYPES",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "server.api.content.types",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_SERVER_WEBHOOK_PARALLELISM_LIMIT",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "server.webhook.parallelism.limit",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_SERVER_GLOB_CACHE_SIZE",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "server.glob.cache.size",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_SERVER_WEBHOOK_REFRESH_WORKERS",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "server.webhook.refresh.workers",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_APPLICATIONSET_CONTROLLER_ENABLE_NEW_GIT_FILE_GLOBBING",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "applicationsetcontroller.enable.new.git.file.globbing",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_APPLICATIONSET_CONTROLLER_SCM_ROOT_CA_PATH",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "applicationsetcontroller.scm.root.ca.path",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_APPLICATIONSET_CONTROLLER_ALLOWED_SCM_PROVIDERS",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "applicationsetcontroller.allowed.scm.providers",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_APPLICATIONSET_CONTROLLER_ENABLE_SCM_PROVIDERS",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "applicationsetcontroller.enable.scm.providers",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_APPLICATIONSET_CONTROLLER_ENABLE_GITHUB_API_METRICS",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "applicationsetcontroller.enable.github.api.metrics",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_HYDRATOR_ENABLED",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "hydrator.enabled",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_SYNC_WITH_REPLACE_ALLOWED",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "server.sync.replace.allowed",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    }
+                  ],
+                  "image": "quay.io/argoproj/argocd:v3.5.2",
+                  "imagePullPolicy": "Always",
+                  "livenessProbe": {
+                    "failureThreshold": 3,
+                    "httpGet": {
+                      "path": "/healthz?full=true",
+                      "port": 8080,
+                      "scheme": "HTTP"
+                    },
+                    "initialDelaySeconds": 3,
+                    "periodSeconds": 30,
+                    "successThreshold": 1,
+                    "timeoutSeconds": 5
+                  },
+                  "name": "argocd-server",
+                  "ports": [
+                    {
+                      "containerPort": 8080,
+                      "protocol": "TCP"
+                    },
+                    {
+                      "containerPort": 8083,
+                      "protocol": "TCP"
+                    }
+                  ],
+                  "readinessProbe": {
+                    "failureThreshold": 3,
+                    "httpGet": {
+                      "path": "/healthz",
+                      "port": 8080,
+                      "scheme": "HTTP"
+                    },
+                    "initialDelaySeconds": 3,
+                    "periodSeconds": 30,
+                    "successThreshold": 1,
+                    "timeoutSeconds": 1
+                  },
+                  "resources": {},
+                  "securityContext": {
+                    "allowPrivilegeEscalation": false,
+                    "capabilities": {
+                      "drop": [
+                        "ALL"
+                      ]
+                    },
+                    "readOnlyRootFilesystem": true,
+                    "runAsNonRoot": true,
+                    "seccompProfile": {
+                      "type": "RuntimeDefault"
+                    }
+                  },
+                  "terminationMessagePath": "/dev/termination-log",
+                  "terminationMessagePolicy": "File",
+                  "volumeMounts": [
+                    {
+                      "mountPath": "/app/config/ssh",
+                      "name": "ssh-known-hosts"
+                    },
+                    {
+                      "mountPath": "/app/config/tls",
+                      "name": "tls-certs"
+                    },
+                    {
+                      "mountPath": "/app/config/server/tls",
+                      "name": "argocd-repo-server-tls"
+                    },
+                    {
+                      "mountPath": "/app/config/reposerver/mtls",
+                      "name": "argocd-repo-server-mtls"
+                    },
+                    {
+                      "mountPath": "/app/config/dex/tls",
+                      "name": "argocd-dex-server-tls"
+                    },
+                    {
+                      "mountPath": "/home/argocd",
+                      "name": "plugins-home"
+                    },
+                    {
+                      "mountPath": "/tmp",
+                      "name": "tmp"
+                    },
+                    {
+                      "mountPath": "/home/argocd/params",
+                      "name": "argocd-cmd-params-cm"
+                    }
+                  ]
+                }
+              ],
+              "dnsPolicy": "ClusterFirst",
+              "nodeSelector": {
+                "kubernetes.io/os": "linux"
+              },
+              "restartPolicy": "Always",
+              "schedulerName": "default-scheduler",
+              "securityContext": {},
+              "serviceAccount": "argocd-server",
+              "serviceAccountName": "argocd-server",
+              "terminationGracePeriodSeconds": 30,
+              "volumes": [
+                {
+                  "emptyDir": {},
+                  "name": "plugins-home"
+                },
+                {
+                  "emptyDir": {},
+                  "name": "tmp"
+                },
+                {
+                  "configMap": {
+                    "defaultMode": 420,
+                    "name": "argocd-ssh-known-hosts-cm"
+                  },
+                  "name": "ssh-known-hosts"
+                },
+                {
+                  "configMap": {
+                    "defaultMode": 420,
+                    "name": "argocd-tls-certs-cm"
+                  },
+                  "name": "tls-certs"
+                },
+                {
+                  "name": "argocd-repo-server-tls",
+                  "secret": {
+                    "defaultMode": 420,
+                    "items": [
+                      {
+                        "key": "tls.crt",
+                        "path": "tls.crt"
+                      },
+                      {
+                        "key": "tls.key",
+                        "path": "tls.key"
+                      },
+                      {
+                        "key": "ca.crt",
+                        "path": "ca.crt"
+                      }
+                    ],
+                    "optional": true,
+                    "secretName": "argocd-repo-server-tls"
+                  }
+                },
+                {
+                  "name": "argocd-dex-server-tls",
+                  "secret": {
+                    "defaultMode": 420,
+                    "items": [
+                      {
+                        "key": "tls.crt",
+                        "path": "tls.crt"
+                      },
+                      {
+                        "key": "ca.crt",
+                        "path": "ca.crt"
+                      }
+                    ],
+                    "optional": true,
+                    "secretName": "argocd-dex-server-tls"
+                  }
+                },
+                {
+                  "name": "argocd-repo-server-mtls",
+                  "secret": {
+                    "defaultMode": 420,
+                    "items": [
+                      {
+                        "key": "client.crt",
+                        "path": "client.crt"
+                      },
+                      {
+                        "key": "client.key",
+                        "path": "client.key"
+                      },
+                      {
+                        "key": "server-ca.crt",
+                        "path": "server-ca.crt"
+                      }
+                    ],
+                    "optional": true,
+                    "secretName": "argocd-repo-server-mtls"
+                  }
+                },
+                {
+                  "configMap": {
+                    "defaultMode": 420,
+                    "items": [
+                      {
+                        "key": "server.profile.enabled",
+                        "path": "profiler.enabled"
+                      }
+                    ],
+                    "name": "argocd-cmd-params-cm",
+                    "optional": true
+                  },
+                  "name": "argocd-cmd-params-cm"
+                }
+              ]
+            }
+          }
+        },
+        "status": {
+          "availableReplicas": 1,
+          "conditions": [
+            {
+              "lastTransitionTime": "2026-08-28T06:57:32Z",
+              "lastUpdateTime": "2026-08-28T06:57:32Z",
+              "message": "Deployment has minimum availability.",
+              "reason": "MinimumReplicasAvailable",
+              "status": "True",
+              "type": "Available"
+            },
+            {
+              "lastTransitionTime": "2026-08-28T06:56:32Z",
+              "lastUpdateTime": "2026-08-28T06:57:32Z",
+              "message": "ReplicaSet \"argocd-server-5d7b767558\" has successfully progressed.",
+              "reason": "NewReplicaSetAvailable",
+              "status": "True",
+              "type": "Progressing"
+            }
+          ],
+          "observedGeneration": 1,
+          "readyReplicas": 1,
+          "replicas": 1,
+          "updatedReplicas": 1
+        }
+      },
+      {
+        "apiVersion": "apps/v1",
+        "kind": "StatefulSet",
+        "metadata": {
+          "creationTimestamp": "2026-08-28T06:56:32Z",
+          "generation": 1,
+          "labels": {
+            "app.kubernetes.io/component": "application-controller",
+            "app.kubernetes.io/name": "argocd-application-controller",
+            "app.kubernetes.io/part-of": "argocd"
+          },
+          "name": "argocd-application-controller",
+          "namespace": "argocd",
+          "resourceVersion": "786",
+          "uid": "e710a47d-6017-490c-b6d2-82c07b846511"
+        },
+        "spec": {
+          "persistentVolumeClaimRetentionPolicy": {
+            "whenDeleted": "Retain",
+            "whenScaled": "Retain"
+          },
+          "podManagementPolicy": "OrderedReady",
+          "replicas": 1,
+          "revisionHistoryLimit": 10,
+          "selector": {
+            "matchLabels": {
+              "app.kubernetes.io/name": "argocd-application-controller"
+            }
+          },
+          "serviceName": "argocd-application-controller",
+          "template": {
+            "metadata": {
+              "labels": {
+                "app.kubernetes.io/name": "argocd-application-controller"
+              }
+            },
+            "spec": {
+              "affinity": {
+                "podAntiAffinity": {
+                  "preferredDuringSchedulingIgnoredDuringExecution": [
+                    {
+                      "podAffinityTerm": {
+                        "labelSelector": {
+                          "matchLabels": {
+                            "app.kubernetes.io/name": "argocd-application-controller"
+                          }
+                        },
+                        "topologyKey": "kubernetes.io/hostname"
+                      },
+                      "weight": 100
+                    },
+                    {
+                      "podAffinityTerm": {
+                        "labelSelector": {
+                          "matchLabels": {
+                            "app.kubernetes.io/part-of": "argocd"
+                          }
+                        },
+                        "topologyKey": "kubernetes.io/hostname"
+                      },
+                      "weight": 5
+                    }
+                  ]
+                }
+              },
+              "containers": [
+                {
+                  "args": [
+                    "/usr/local/bin/argocd-application-controller"
+                  ],
+                  "env": [
+                    {
+                      "name": "REDIS_PASSWORD",
+                      "valueFrom": {
+                        "secretKeyRef": {
+                          "key": "auth",
+                          "name": "argocd-redis"
+                        }
+                      }
+                    },
+                    {
+                      "name": "GRPC_ENABLE_TXT_SERVICE_CONFIG",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "controller.grpc.enable.txt.service.config",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_CONTROLLER_REPLICAS",
+                      "value": "1"
+                    },
+                    {
+                      "name": "ARGOCD_RECONCILIATION_TIMEOUT",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "timeout.reconciliation",
+                          "name": "argocd-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_HARD_RECONCILIATION_TIMEOUT",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "timeout.hard.reconciliation",
+                          "name": "argocd-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_RECONCILIATION_JITTER",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "timeout.reconciliation.jitter",
+                          "name": "argocd-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_REPO_ERROR_GRACE_PERIOD_SECONDS",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "controller.repo.error.grace.period.seconds",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_APPLICATION_CONTROLLER_REPO_SERVER",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "repo.server",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_APPLICATION_CONTROLLER_REPO_SERVER_TIMEOUT_SECONDS",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "controller.repo.server.timeout.seconds",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_APPLICATION_CONTROLLER_STATUS_PROCESSORS",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "controller.status.processors",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_APPLICATION_CONTROLLER_OPERATION_PROCESSORS",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "controller.operation.processors",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_APPLICATION_CONTROLLER_HYDRATION_PROCESSORS",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "controller.hydration.processors",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_APPLICATION_CONTROLLER_LOGFORMAT",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "controller.log.format",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_APPLICATION_CONTROLLER_LOGLEVEL",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "controller.log.level",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_LOG_FORMAT_TIMESTAMP",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "log.format.timestamp",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_K8S_CLIENT_QPS",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "controller.k8s.client.qps",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_K8S_CLIENT_BURST",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "controller.k8s.client.burst",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_K8S_CLIENT_MAX_IDLE_CONNECTIONS",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "controller.k8s.client.max.idle.connections",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_K8S_TCP_TIMEOUT",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "controller.k8s.tcp.timeout",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_K8S_TCP_KEEPALIVE",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "controller.k8s.tcp.keepalive",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_K8S_TLS_HANDSHAKE_TIMEOUT",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "controller.k8s.tls.handshake.timeout",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_K8S_TCP_IDLE_TIMEOUT",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "controller.k8s.tcp.idle.timeout",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_APPLICATION_CONTROLLER_METRICS_CACHE_EXPIRATION",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "controller.metrics.cache.expiration",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_APPLICATION_CONTROLLER_SELF_HEAL_TIMEOUT_SECONDS",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "controller.self.heal.timeout.seconds",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_APPLICATION_CONTROLLER_SELF_HEAL_BACKOFF_TIMEOUT_SECONDS",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "controller.self.heal.backoff.timeout.seconds",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_APPLICATION_CONTROLLER_SELF_HEAL_BACKOFF_FACTOR",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "controller.self.heal.backoff.factor",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_APPLICATION_CONTROLLER_SELF_HEAL_BACKOFF_CAP_SECONDS",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "controller.self.heal.backoff.cap.seconds",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_APPLICATION_CONTROLLER_SELF_HEAL_BACKOFF_COOLDOWN_SECONDS",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "controller.self.heal.backoff.cooldown.seconds",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_SYNC_WAVE_DELAY",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "controller.sync.wave.delay.seconds",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_APPLICATION_CONTROLLER_SYNC_TIMEOUT",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "controller.sync.timeout.seconds",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_APPLICATION_CONTROLLER_REPO_SERVER_PLAINTEXT",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "controller.repo.server.plaintext",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_APPLICATION_CONTROLLER_REPO_SERVER_STRICT_TLS",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "controller.repo.server.strict.tls",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_APPLICATION_CONTROLLER_REPO_SERVER_CA_CERT_PATH",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "controller.repo.server.ca.cert.path",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_APPLICATION_CONTROLLER_REPO_SERVER_CLIENT_CERT_PATH",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "controller.repo.server.client.cert.path",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_APPLICATION_CONTROLLER_REPO_SERVER_CLIENT_CERT_KEY_PATH",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "controller.repo.server.client.cert.key.path",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_APPLICATION_CONTROLLER_PERSIST_RESOURCE_HEALTH",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "controller.resource.health.persist",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_APP_STATE_CACHE_EXPIRATION",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "controller.app.state.cache.expiration",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "REDIS_SERVER",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "redis.server",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "REDIS_COMPRESSION",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "redis.compression",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "REDISDB",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "redis.db",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_DEFAULT_CACHE_EXPIRATION",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "controller.default.cache.expiration",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_APPLICATION_CONTROLLER_OTLP_ADDRESS",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "otlp.address",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_APPLICATION_CONTROLLER_OTLP_INSECURE",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "otlp.insecure",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_APPLICATION_CONTROLLER_OTLP_HEADERS",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "otlp.headers",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_APPLICATION_CONTROLLER_OTLP_ATTRS",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "otlp.attrs",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_APPLICATION_NAMESPACES",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "application.namespaces",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_CONTROLLER_SHARDING_ALGORITHM",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "controller.sharding.algorithm",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_APPLICATION_CONTROLLER_KUBECTL_PARALLELISM_LIMIT",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "controller.kubectl.parallelism.limit",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_K8SCLIENT_RETRY_MAX",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "controller.k8sclient.retry.max",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_K8SCLIENT_RETRY_BASE_BACKOFF",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "controller.k8sclient.retry.base.backoff",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_APPLICATION_CONTROLLER_SERVER_SIDE_DIFF",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "controller.diff.server.side",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_IGNORE_NORMALIZER_JQ_TIMEOUT",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "controller.ignore.normalizer.jq.timeout",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_HYDRATOR_ENABLED",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "hydrator.enabled",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_CLUSTER_CACHE_BATCH_EVENTS_PROCESSING",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "controller.cluster.cache.batch.events.processing",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_CLUSTER_CACHE_EVENTS_PROCESSING_INTERVAL",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "controller.cluster.cache.events.processing.interval",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "ARGOCD_APPLICATION_CONTROLLER_COMMIT_SERVER",
+                      "valueFrom": {
+                        "configMapKeyRef": {
+                          "key": "commit.server",
+                          "name": "argocd-cmd-params-cm",
+                          "optional": true
+                        }
+                      }
+                    },
+                    {
+                      "name": "KUBECACHEDIR",
+                      "value": "/tmp/kubecache"
+                    }
+                  ],
+                  "image": "quay.io/argoproj/argocd:v3.5.2",
+                  "imagePullPolicy": "Always",
+                  "name": "argocd-application-controller",
+                  "ports": [
+                    {
+                      "containerPort": 8082,
+                      "protocol": "TCP"
+                    }
+                  ],
+                  "readinessProbe": {
+                    "failureThreshold": 3,
+                    "httpGet": {
+                      "path": "/healthz",
+                      "port": 8082,
+                      "scheme": "HTTP"
+                    },
+                    "initialDelaySeconds": 5,
+                    "periodSeconds": 10,
+                    "successThreshold": 1,
+                    "timeoutSeconds": 1
+                  },
+                  "resources": {},
+                  "securityContext": {
+                    "allowPrivilegeEscalation": false,
+                    "capabilities": {
+                      "drop": [
+                        "ALL"
+                      ]
+                    },
+                    "readOnlyRootFilesystem": true,
+                    "runAsNonRoot": true,
+                    "seccompProfile": {
+                      "type": "RuntimeDefault"
+                    }
+                  },
+                  "terminationMessagePath": "/dev/termination-log",
+                  "terminationMessagePolicy": "File",
+                  "volumeMounts": [
+                    {
+                      "mountPath": "/app/config/controller/tls",
+                      "name": "argocd-repo-server-tls"
+                    },
+                    {
+                      "mountPath": "/app/config/reposerver/mtls",
+                      "name": "argocd-repo-server-mtls"
+                    },
+                    {
+                      "mountPath": "/home/argocd",
+                      "name": "argocd-home"
+                    },
+                    {
+                      "mountPath": "/home/argocd/params",
+                      "name": "argocd-cmd-params-cm"
+                    },
+                    {
+                      "mountPath": "/tmp",
+                      "name": "argocd-application-controller-tmp"
+                    }
+                  ],
+                  "workingDir": "/home/argocd"
+                }
+              ],
+              "dnsPolicy": "ClusterFirst",
+              "nodeSelector": {
+                "kubernetes.io/os": "linux"
+              },
+              "restartPolicy": "Always",
+              "schedulerName": "default-scheduler",
+              "securityContext": {},
+              "serviceAccount": "argocd-application-controller",
+              "serviceAccountName": "argocd-application-controller",
+              "terminationGracePeriodSeconds": 30,
+              "volumes": [
+                {
+                  "emptyDir": {},
+                  "name": "argocd-home"
+                },
+                {
+                  "emptyDir": {},
+                  "name": "argocd-application-controller-tmp"
+                },
+                {
+                  "name": "argocd-repo-server-tls",
+                  "secret": {
+                    "defaultMode": 420,
+                    "items": [
+                      {
+                        "key": "tls.crt",
+                        "path": "tls.crt"
+                      },
+                      {
+                        "key": "tls.key",
+                        "path": "tls.key"
+                      },
+                      {
+                        "key": "ca.crt",
+                        "path": "ca.crt"
+                      }
+                    ],
+                    "optional": true,
+                    "secretName": "argocd-repo-server-tls"
+                  }
+                },
+                {
+                  "name": "argocd-repo-server-mtls",
+                  "secret": {
+                    "defaultMode": 420,
+                    "items": [
+                      {
+                        "key": "client.crt",
+                        "path": "client.crt"
+                      },
+                      {
+                        "key": "client.key",
+                        "path": "client.key"
+                      },
+                      {
+                        "key": "server-ca.crt",
+                        "path": "server-ca.crt"
+                      }
+                    ],
+                    "optional": true,
+                    "secretName": "argocd-repo-server-mtls"
+                  }
+                },
+                {
+                  "configMap": {
+                    "defaultMode": 420,
+                    "items": [
+                      {
+                        "key": "controller.profile.enabled",
+                        "path": "profiler.enabled"
+                      }
+                    ],
+                    "name": "argocd-cmd-params-cm",
+                    "optional": true
+                  },
+                  "name": "argocd-cmd-params-cm"
+                }
+              ]
+            }
+          },
+          "updateStrategy": {
+            "rollingUpdate": {
+              "partition": 0
+            },
+            "type": "RollingUpdate"
+          }
+        },
+        "status": {
+          "availableReplicas": 1,
+          "collisionCount": 0,
+          "currentReplicas": 1,
+          "currentRevision": "argocd-application-controller-6d48b6c98c",
+          "observedGeneration": 1,
+          "readyReplicas": 1,
+          "replicas": 1,
+          "updateRevision": "argocd-application-controller-6d48b6c98c",
+          "updatedReplicas": 1
+        }
+      },
+      {
+        "apiVersion": "v1",
+        "kind": "ServiceAccount",
+        "metadata": {
+          "creationTimestamp": "2026-08-28T06:56:31Z",
+          "labels": {
+            "app.kubernetes.io/component": "application-controller",
+            "app.kubernetes.io/name": "argocd-application-controller",
+            "app.kubernetes.io/part-of": "argocd"
+          },
+          "name": "argocd-application-controller",
+          "namespace": "argocd",
+          "resourceVersion": "322",
+          "uid": "6dac103b-f550-418c-8784-ee7dd92699fc"
+        }
+      },
+      {
+        "apiVersion": "v1",
+        "kind": "ServiceAccount",
+        "metadata": {
+          "creationTimestamp": "2026-08-28T06:56:31Z",
+          "labels": {
+            "app.kubernetes.io/component": "applicationset-controller",
+            "app.kubernetes.io/name": "argocd-applicationset-controller",
+            "app.kubernetes.io/part-of": "argocd"
+          },
+          "name": "argocd-applicationset-controller",
+          "namespace": "argocd",
+          "resourceVersion": "323",
+          "uid": "081f9107-7123-4ac9-9cc6-6121e6c7b8cc"
+        }
+      },
+      {
+        "apiVersion": "v1",
+        "kind": "ServiceAccount",
+        "metadata": {
+          "creationTimestamp": "2026-08-28T06:56:31Z",
+          "labels": {
+            "app.kubernetes.io/component": "dex-server",
+            "app.kubernetes.io/name": "argocd-dex-server",
+            "app.kubernetes.io/part-of": "argocd"
+          },
+          "name": "argocd-dex-server",
+          "namespace": "argocd",
+          "resourceVersion": "324",
+          "uid": "3a5f91a3-ee72-42c4-9b02-a3faef54dbf2"
+        }
+      },
+      {
+        "apiVersion": "v1",
+        "kind": "ServiceAccount",
+        "metadata": {
+          "creationTimestamp": "2026-08-28T06:56:31Z",
+          "labels": {
+            "app.kubernetes.io/component": "notifications-controller",
+            "app.kubernetes.io/name": "argocd-notifications-controller",
+            "app.kubernetes.io/part-of": "argocd"
+          },
+          "name": "argocd-notifications-controller",
+          "namespace": "argocd",
+          "resourceVersion": "326",
+          "uid": "a4925cbb-d458-44b9-8f55-bca0ae749b7b"
+        }
+      },
+      {
+        "apiVersion": "v1",
+        "kind": "ServiceAccount",
+        "metadata": {
+          "creationTimestamp": "2026-08-28T06:56:31Z",
+          "labels": {
+            "app.kubernetes.io/component": "redis",
+            "app.kubernetes.io/name": "argocd-redis",
+            "app.kubernetes.io/part-of": "argocd"
+          },
+          "name": "argocd-redis",
+          "namespace": "argocd",
+          "resourceVersion": "328",
+          "uid": "a8606606-7ebd-42a7-ad2b-32e8e32055de"
+        }
+      },
+      {
+        "apiVersion": "v1",
+        "kind": "ServiceAccount",
+        "metadata": {
+          "creationTimestamp": "2026-08-28T06:56:31Z",
+          "labels": {
+            "app.kubernetes.io/component": "repo-server",
+            "app.kubernetes.io/name": "argocd-repo-server",
+            "app.kubernetes.io/part-of": "argocd"
+          },
+          "name": "argocd-repo-server",
+          "namespace": "argocd",
+          "resourceVersion": "329",
+          "uid": "9f654fbd-0f48-46e4-995e-f9faa21ae6ec"
+        }
+      },
+      {
+        "apiVersion": "v1",
+        "kind": "ServiceAccount",
+        "metadata": {
+          "creationTimestamp": "2026-08-28T06:56:31Z",
+          "labels": {
+            "app.kubernetes.io/component": "server",
+            "app.kubernetes.io/name": "argocd-server",
+            "app.kubernetes.io/part-of": "argocd"
+          },
+          "name": "argocd-server",
+          "namespace": "argocd",
+          "resourceVersion": "330",
+          "uid": "b6743d14-344e-458f-899f-924fc6c91240"
+        }
+      },
+      {
+        "apiVersion": "v1",
+        "kind": "ServiceAccount",
+        "metadata": {
+          "creationTimestamp": "2026-08-28T06:56:32Z",
+          "name": "default",
+          "namespace": "argocd",
+          "resourceVersion": "381",
+          "uid": "a972a2a5-c271-4488-b2ba-6b4254253f19"
+        }
+      },
+      {
+        "apiVersion": "rbac.authorization.k8s.io/v1",
+        "kind": "RoleBinding",
+        "metadata": {
+          "creationTimestamp": "2026-08-28T06:56:32Z",
+          "labels": {
+            "app.kubernetes.io/component": "application-controller",
+            "app.kubernetes.io/name": "argocd-application-controller",
+            "app.kubernetes.io/part-of": "argocd"
+          },
+          "name": "argocd-application-controller",
+          "namespace": "argocd",
+          "resourceVersion": "340",
+          "uid": "8609fad9-d092-4b9f-bf88-54a94738dc41"
+        },
+        "roleRef": {
+          "apiGroup": "rbac.authorization.k8s.io",
+          "kind": "Role",
+          "name": "argocd-application-controller"
+        },
+        "subjects": [
+          {
+            "kind": "ServiceAccount",
+            "name": "argocd-application-controller"
+          }
+        ]
+      },
+      {
+        "apiVersion": "rbac.authorization.k8s.io/v1",
+        "kind": "RoleBinding",
+        "metadata": {
+          "creationTimestamp": "2026-08-28T06:56:32Z",
+          "labels": {
+            "app.kubernetes.io/component": "applicationset-controller",
+            "app.kubernetes.io/name": "argocd-applicationset-controller",
+            "app.kubernetes.io/part-of": "argocd"
+          },
+          "name": "argocd-applicationset-controller",
+          "namespace": "argocd",
+          "resourceVersion": "341",
+          "uid": "dd88cd9c-ea3f-41de-b118-5f27b99c05c7"
+        },
+        "roleRef": {
+          "apiGroup": "rbac.authorization.k8s.io",
+          "kind": "Role",
+          "name": "argocd-applicationset-controller"
+        },
+        "subjects": [
+          {
+            "kind": "ServiceAccount",
+            "name": "argocd-applicationset-controller"
+          }
+        ]
+      },
+      {
+        "apiVersion": "rbac.authorization.k8s.io/v1",
+        "kind": "RoleBinding",
+        "metadata": {
+          "creationTimestamp": "2026-08-28T06:56:32Z",
+          "labels": {
+            "app.kubernetes.io/component": "dex-server",
+            "app.kubernetes.io/name": "argocd-dex-server",
+            "app.kubernetes.io/part-of": "argocd"
+          },
+          "name": "argocd-dex-server",
+          "namespace": "argocd",
+          "resourceVersion": "342",
+          "uid": "eab8b3ac-21b3-4483-aa57-963f31d0a871"
+        },
+        "roleRef": {
+          "apiGroup": "rbac.authorization.k8s.io",
+          "kind": "Role",
+          "name": "argocd-dex-server"
+        },
+        "subjects": [
+          {
+            "kind": "ServiceAccount",
+            "name": "argocd-dex-server"
+          }
+        ]
+      },
+      {
+        "apiVersion": "rbac.authorization.k8s.io/v1",
+        "kind": "RoleBinding",
+        "metadata": {
+          "creationTimestamp": "2026-08-28T06:56:32Z",
+          "labels": {
+            "app.kubernetes.io/component": "notifications-controller",
+            "app.kubernetes.io/name": "argocd-notifications-controller",
+            "app.kubernetes.io/part-of": "argocd"
+          },
+          "name": "argocd-notifications-controller",
+          "namespace": "argocd",
+          "resourceVersion": "343",
+          "uid": "538cae5a-48a9-47b9-806d-1e0ad6f692af"
+        },
+        "roleRef": {
+          "apiGroup": "rbac.authorization.k8s.io",
+          "kind": "Role",
+          "name": "argocd-notifications-controller"
+        },
+        "subjects": [
+          {
+            "kind": "ServiceAccount",
+            "name": "argocd-notifications-controller"
+          }
+        ]
+      },
+      {
+        "apiVersion": "rbac.authorization.k8s.io/v1",
+        "kind": "RoleBinding",
+        "metadata": {
+          "creationTimestamp": "2026-08-28T06:56:32Z",
+          "labels": {
+            "app.kubernetes.io/component": "redis",
+            "app.kubernetes.io/name": "argocd-redis",
+            "app.kubernetes.io/part-of": "argocd"
+          },
+          "name": "argocd-redis",
+          "namespace": "argocd",
+          "resourceVersion": "345",
+          "uid": "c7358dea-236a-4cab-8212-97655bddde83"
+        },
+        "roleRef": {
+          "apiGroup": "rbac.authorization.k8s.io",
+          "kind": "Role",
+          "name": "argocd-redis"
+        },
+        "subjects": [
+          {
+            "kind": "ServiceAccount",
+            "name": "argocd-redis"
+          }
+        ]
+      },
+      {
+        "apiVersion": "rbac.authorization.k8s.io/v1",
+        "kind": "RoleBinding",
+        "metadata": {
+          "creationTimestamp": "2026-08-28T06:56:32Z",
+          "labels": {
+            "app.kubernetes.io/component": "server",
+            "app.kubernetes.io/name": "argocd-server",
+            "app.kubernetes.io/part-of": "argocd"
+          },
+          "name": "argocd-server",
+          "namespace": "argocd",
+          "resourceVersion": "348",
+          "uid": "2f2614ba-4c0d-4cb2-a466-02c9313591eb"
+        },
+        "roleRef": {
+          "apiGroup": "rbac.authorization.k8s.io",
+          "kind": "Role",
+          "name": "argocd-server"
+        },
+        "subjects": [
+          {
+            "kind": "ServiceAccount",
+            "name": "argocd-server"
+          }
+        ]
+      }
+    ],
+    "kind": "List",
+    "metadata": {
+      "resourceVersion": ""
+    }
+  },
+  "connection_secret_metadata": {
+    "apiVersion": "v1",
+    "kind": "List",
+    "items": [
+      {
+        "metadata": {
+          "name": "atlas-extended-architecture-cluster",
+          "namespace": "argocd",
+          "labels": {
+            "argocd.argoproj.io/secret-type": "cluster"
+          }
+        },
+        "type": "Opaque"
+      },
+      {
+        "metadata": {
+          "name": "atlas-extended-architecture-repository",
+          "namespace": "argocd",
+          "labels": {
+            "argocd.argoproj.io/secret-type": "repository"
+          }
+        },
+        "type": "Opaque"
+      }
+    ]
+  }
+}

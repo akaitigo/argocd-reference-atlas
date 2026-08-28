@@ -1,6 +1,6 @@
 ---
 name: argocd-atlas-router
-description: Argo CD v3.5.2の設計、実装、診断、復旧、移行、レビューを、AtlasのCoverage、Claim、Lab、Runbook、Evidenceへ根拠付きで案内する。GitOps一般論やCoverage外の機能説明には使わない。
+description: Argo CD v3.5.2のArchitecture、ApplicationSet、接続、同期、Security、HA、Observability、障害復旧、移行、運用に関する設計・実装・診断・レビューを、AtlasのCoverage、Claim、Runbook、ADR、Failure mode、Evidenceへ案内する。Coverage外の機能説明には使わない。
 ---
 
 # Argo CD Atlas Router
@@ -31,19 +31,21 @@ Argo CD v3.5.2について判断するとき、このSkillをAtlasの入口と�
 
 複数Modeにまたがる場合も、一度に必要なReferenceだけを開き、回答内でModeを区別します。
 
+Modeを選んだ後、依頼の領域を[Router Index](../../../docs/ROUTER_INDEX.md)で特定します。設計判断ならADR、手順ならRunbook、異常の切り分けならFailure-mode Catalog、証拠の評価ならEvidence Interpretationだけを追加で読みます。直接Targetがない領域は、隣接Targetを根拠の代用にせず、Router IndexのGap分類を維持します。
+
 ## 根拠を辿る手順
 
 1. `mastery.yaml`で依頼のOutcomeとSurfaceを特定し、接続先Target Setを確認します。
 2. `coverage.yaml`で対象Targetを特定し、`state`と`requirement`を確認します。
 3. そのTargetに接続されたClaimだけを`atlas/claims/`から読み、対応するSource IDを`sources.lock.yaml`で確認します。
-4. 実行や障害対応が必要なら、Targetに対応する`labs/`または`runbooks/`を読みます。存在しなければ手順を創作せず、Gapとして返します。
+4. 実行や障害対応が必要なら、Router Indexから`docs/runbooks/`または`docs/failure-modes/`を選び、その文書が指すTarget、Lab、停止条件を確認します。実行Labが存在しなければ手順を創作せず、Gapとして返します。
 5. Claimが参照するEvidenceを`evidence/`で確認し、`source_digest`、`harness_digest`、Environment Manifest Digest、`verdict`を保持したまま使います。
 6. 推奨を述べるときは、Outcome、Surface、Target ID、Coverage State、Claim ID、Evidence ID、適用Version、未検証点を示します。
 
 `rg`が使える環境では、まず次のようにIDを正確に検索します。
 
 ```sh
-rg -n 'application\.declarative-model|<target-or-claim-id>' coverage.yaml atlas/claims labs runbooks evidence
+rg -n 'application\.declarative-model|<target-or-claim-id>' coverage.yaml atlas/claims labs docs/runbooks evidence
 ```
 
 ## 停止条件
