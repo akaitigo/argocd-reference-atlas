@@ -1,0 +1,65 @@
+{
+  "atlas_id": "argocd-reference-atlas",
+  "atlas_release": "v0.1.0",
+  "authority_lock_digest": "sha256:485860cb634a7f6095a629b149cb6f1afe2bb36d8f0bc657f1302f95238113df",
+  "commit": "b16fed9291a2dfd8cc2e17e14613ff57afee152f",
+  "core_policy_version": "1.0.0",
+  "coverage_epoch": "2026-08-28",
+  "evidence_set_digest": "sha256:294663887a35e05c7fb84569432d05232088f2102873aece97fc70c9579ca79b",
+  "graph_digest": "sha256:85bf1cedae61a356df7c3590c23f7c8a2af1ee87b6444d720fa5626b4e8cdb17",
+  "issued_at": "2026-08-28T12:00:00+09:00",
+  "provenance_digest": "sha256:3b572d9b049263b6f87e88eb7a4f116f473bd882fb4ad5de83239622b7c99e2d",
+  "required_profiles": [
+    {
+      "evidence_ids": [
+        "evidence.skill-eval.v3-5-2"
+      ],
+      "profile": "local",
+      "result": "pass"
+    },
+    {
+      "evidence_ids": [
+        "evidence.architecture-container-profile.v3-5-2"
+      ],
+      "profile": "container",
+      "result": "pass"
+    },
+    {
+      "evidence_ids": [
+        "evidence.access-boundary.v3-5-2",
+        "evidence.application.v3-5-2",
+        "evidence.applicationset.v3-5-2",
+        "evidence.architecture.v3-5-2",
+        "evidence.auto-recovery.v3-5-2",
+        "evidence.connection.v3-5-2",
+        "evidence.diff.v3-5-2",
+        "evidence.drift.v3-5-2",
+        "evidence.failure.v3-5-2",
+        "evidence.health.v3-5-2",
+        "evidence.high-availability.v3-5-2",
+        "evidence.hook-wave.v3-5-2",
+        "evidence.observability.v3-5-2",
+        "evidence.operations.v3-5-2",
+        "evidence.promotion.v3-5-2",
+        "evidence.reconciliation.v3-5-2",
+        "evidence.recovery.v3-5-2",
+        "evidence.security.v3-5-2",
+        "evidence.sync.v3-5-2",
+        "evidence.upgrade-migration.v3-5-2"
+      ],
+      "profile": "cluster",
+      "result": "pass"
+    }
+  ],
+  "sbom_digest": "sha256:f03bd094c2b29f4c774f51f8d591cf2f4792694c1908a2d49843e8a12512ba27",
+  "schema_version": 1,
+  "signature": {
+    "digest": "sha256:b2d74c3fae39e478b4be73c50f39d403306dd9792f6e7dccc38e55c213440962",
+    "type": "payload-sha256"
+  },
+  "skill_eval": {
+    "digest": "sha256:8da24f44b5e6e2f01ad6bef4ef6d00e13dfa25ed6b834ca5f3141b8b0fc69b29",
+    "pass_rate": 1
+  },
+  "skill_package_digest": "sha256:922751790beeb602e2ef7858e420184b54b0f878ca5b2dc2f5c1227ed66af974"
+}
