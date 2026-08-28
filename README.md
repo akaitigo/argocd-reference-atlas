@@ -75,10 +75,10 @@ sources.lock.yaml
 
 ## 検証
 
-共通5 Manifestは`reference-atlas-core` v1.0.0の固定commit `cf9e6e2`に含まれる`atlas validate`で検証し、Repository全体は`atlas audit`で横断監査します。
+共通ManifestとCore v2契約は`reference-atlas-core`正式main／CI成功commit `072d7ca77981f51754e824d70c6d4ecd55ea67e5`に含まれる`atlas validate`で検証し、Repository全体は`atlas audit`で横断監査します。Evidenceの推移依存は[`docs/EVIDENCE_DEPENDENCY_GRAPH.md`](docs/EVIDENCE_DEPENDENCY_GRAPH.md)を正本とします。
 
 ```sh
-atlas validate atlas.yaml mastery.yaml sources.lock.yaml coverage.yaml skill.package.yaml
+atlas validate atlas.yaml mastery.yaml sources.lock.yaml coverage.yaml skill.package.yaml definitive.yaml migrations/definitive-v2.yaml evidence/dependency-graph.json
 atlas audit .
 ```
 
@@ -88,4 +88,4 @@ Labはローカルの専用Kindクラスタだけを対象にします。各Lab�
 
 ## 公開状態
 
-RepositoryはGitHubで公開済みですが、`main`のv0.1.0 CertificateをDefinitive完成の根拠にはしません。このfeature branchでCore v2 Gateと実行Evidenceを閉じるまで、新しいCompletion CertificateやDefinitive Releaseを発行しません。
+RepositoryはGitHubで公開済みですが、`main`のv0.1.0 CertificateをDefinitive完成の根拠にはしません。Core v2 Gateと実行Evidenceを閉じるまで、新しいCompletion CertificateやDefinitive Releaseを発行しません。

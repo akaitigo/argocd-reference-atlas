@@ -1,0 +1,27 @@
+schema_version: 2
+atlas_id: argocd-reference-atlas
+epoch: "2026-08-28"
+completion_class: subject-definitive
+authority_extraction: authority/extraction.snapshot.json
+authority_body_inventory: authority/body-inventory.snapshot.json
+authority_body_review: authority/review-queue.snapshot.json
+surface_inventory: surface.inventory.yaml
+verification_matrix: verification.matrix.yaml
+scenario_proofs: evidence/scenarios/index.json
+scenario_closure_plan: evidence/scenarios/closure-plan.json
+evidence_durability: artifacts/pattern-scenarios/results.json
+evidence_dependency_graph: evidence/dependency-graph.json
+depth_parity: depth.parity.yaml
+skill_eval: evals/argocd-atlas-router.definitive-skill-eval.json
+skill_router: evals/definitive-skill-router.json
+non_regression: non-regression.yaml
+certificate: evidence/definitive-certificate.json
+historical_certificates:
+  - path: evidence/history/v0.1.0/completion-certificate.json
+    classification: bounded-complete
+reference_systems:
+  - id: argocd-reference-system
+    path: evidence/reference-system/results.json
+    digest: sha256:e7c6a284053c32852d473540d7f797eb41e42d4dd04c24f1766452580f2f8766
+    behavior_ids: [application.spec.sources, application.spec.destination, system.integrated-reference]
+comparisons: []

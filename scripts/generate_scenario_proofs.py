@@ -24,6 +24,7 @@ EVIDENCE_STAGING_ROOT = ROOT / ".evidence-next"
 EVIDENCE_BACKUP_ROOT = ROOT / ".evidence-previous"
 MANIFEST = ROOT / "integrations/reference-system/manifest.yaml"
 INVENTORY = ROOT / "definitive/surface-inventory.yaml"
+COVERAGE = ROOT / "coverage.yaml"
 VARIANT_CONTRACT = ROOT / "definitive/scenario-variant-contract.yaml"
 SOURCES = ROOT / "sources.lock.yaml"
 ENVIRONMENT_LOCK = ROOT / "environments/kind/argocd-v3.5.2.lock"
@@ -527,6 +528,7 @@ def build_reference_result(manifest: dict[str, Any], evidence_cache: dict[str, d
 
 def build_proof(
     item: dict[str, Any],
+    target_set: str,
     scenario: str,
     item_evidence: dict[str, list[str]],
     evidence_cache: dict[str, dict[str, Any]],
@@ -591,9 +593,12 @@ def build_proof(
         "generated_at": "2026-08-28T00:00:00+09:00",
         "behavior_scope": "current-surface-not-human-reviewed-authority-atomic",
         "behavior_id": item["id"],
+        "pattern_id": item["id"],
         "area": item["area"],
         "kind": item["kind"],
         "target_id": item["target_id"],
+        "target_set": target_set,
+        "source_bindings": [],
         "surface_state": item["state"],
         "scenario": scenario,
         "attempts": 1,
@@ -664,6 +669,8 @@ def build_proof(
 def build_all() -> tuple[dict[str, Any], list[tuple[Path, dict[str, Any]]]]:
     manifest = load_yaml(MANIFEST)
     inventory = load_yaml(INVENTORY)
+    coverage = load_yaml(COVERAGE)
+    target_sets = {target["id"]: target["target_set"] for target in coverage["targets"]}
     variant_contract_document = load_yaml(VARIANT_CONTRACT)
     runtime_registry = load_yaml(RUNTIME_REGISTRY)
     dedicated_runtime_reports = load_dedicated_runtime_reports(runtime_registry)
@@ -695,7 +702,7 @@ def build_all() -> tuple[dict[str, Any], list[tuple[Path, dict[str, Any]]]]:
         for scenario in SCENARIOS:
             path = PROOF_ROOT / item["id"] / f"{scenario}.proof.json"
             dedicated = dedicated_runtime_reports.get((item["id"], scenario))
-            proofs.append((path, build_proof(item, scenario, item_evidence, evidence_cache, source, reference_result, reference_digest, variants, dedicated)))
+            proofs.append((path, build_proof(item, target_sets[item["target_id"]], scenario, item_evidence, evidence_cache, source, reference_result, reference_digest, variants, dedicated)))
     supporting_counts = Counter(proof["supporting_evidence_assessment"]["status"] for _, proof in proofs)
     by_scenario = {}
     for scenario in SCENARIOS:
@@ -713,6 +720,7 @@ def build_all() -> tuple[dict[str, Any], list[tuple[Path, dict[str, Any]]]]:
         }
     files = [{
         "id": proof["id"],
+        "pattern_id": proof["pattern_id"],
         "behavior_id": proof["behavior_id"],
         "scenario": proof["scenario"],
         "path": path.relative_to(ROOT).as_posix(),

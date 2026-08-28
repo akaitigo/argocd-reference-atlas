@@ -34,10 +34,13 @@ skills:
   package_manifest: skill.package.yaml
   evals: evals/
 completion:
-  policy_version: 1.0.0
+  policy_version: 2.0.0
   required_profiles: [local, container, cluster]
   # Core v1 schemaが要求する将来のactive certificate配置先。status=incompleteの間は存在させない。
   certificate: evidence/completion-certificate.json
+  definitive:
+    manifest: definitive.yaml
+    contract_version: 2.0.0
 license:
   default: Apache-2.0
   notice: NOTICE
