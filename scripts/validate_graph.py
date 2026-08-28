@@ -101,10 +101,11 @@ def validate() -> None:
     claim_file = ROOT / "atlas" / "claims" / "index.yaml"
     proof_file = ROOT / "atlas" / "proof-obligations" / "index.yaml"
 
-    if root_value(atlas, "status") != "incomplete":
-        fail("全Completion GateのCertificateがない間はstatus: incompleteが必要です")
     certificate = ROOT / "evidence" / "completion-certificate.json"
-    if certificate.exists():
+    status = root_value(atlas, "status")
+    if status == "complete" and not certificate.is_file():
+        fail("complete状態にはCompletion Certificateが必要です")
+    if status == "incomplete" and certificate.exists():
         fail("incomplete状態でCompletion Certificateを配置できません")
 
     expected_lock = root_value(coverage_file, "authority_lock_digest")
@@ -120,8 +121,9 @@ def validate() -> None:
     actual_evidence = evidence_ids()
 
     mapped_targets = {scalar(item.get("coverage_target_id", "")) for item in capabilities.values()}
-    if set(targets) != mapped_targets:
-        fail(f"Target/Capability対応が一致しません: targets={sorted(targets)}, mapped={sorted(mapped_targets)}")
+    covered_targets = {target_id for target_id, item in targets.items() if scalar(item.get("state", "")) == "covered"}
+    if covered_targets != mapped_targets:
+        fail(f"covered Target/Capability対応が一致しません: targets={sorted(covered_targets)}, mapped={sorted(mapped_targets)}")
 
     for capability_id, capability in capabilities.items():
         target_id = scalar(capability.get("coverage_target_id", ""))
@@ -164,18 +166,23 @@ def validate() -> None:
         if root_value(lab_path, "evidence_id") != expected_id:
             fail(f"{lab_path.relative_to(ROOT)}のEvidence IDがProof Obligationと一致しません")
 
-    unknown_evidence = actual_evidence - expected_evidence
-    if unknown_evidence:
-        fail(f"Proof Obligationへ接続されていないEvidenceがあります: {sorted(unknown_evidence)}")
+    missing_proof_evidence = expected_evidence - actual_evidence
+    if missing_proof_evidence:
+        fail(f"Proof ObligationのEvidenceがありません: {sorted(missing_proof_evidence)}")
 
+    linked_evidence: set[str] = set()
     for target_id, target in targets.items():
         state = scalar(target.get("state", ""))
         linked = set(inline_list(target.get("evidence_ids", "[]")))
+        linked_evidence.update(linked)
         if state == "covered" and not linked:
             fail(f"covered TargetにEvidenceがありません: {target_id}")
         missing = linked - actual_evidence
         if missing:
             fail(f"{target_id}が存在しないEvidenceを参照しています: {sorted(missing)}")
+    unknown_evidence = actual_evidence - linked_evidence
+    if unknown_evidence:
+        fail(f"Coverage Targetへ接続されていないEvidenceがあります: {sorted(unknown_evidence)}")
 
 
 def main() -> int:
