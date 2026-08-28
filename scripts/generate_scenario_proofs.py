@@ -15,8 +15,13 @@ from typing import Any
 
 import yaml
 
+from lib.atomic_evidence_publish import publish_evidence_tree, validate_publish_manifest, write_publish_manifest
+
 
 ROOT = Path(__file__).resolve().parents[1]
+EVIDENCE_ROOT = ROOT / "evidence"
+EVIDENCE_STAGING_ROOT = ROOT / ".evidence-next"
+EVIDENCE_BACKUP_ROOT = ROOT / ".evidence-previous"
 MANIFEST = ROOT / "integrations/reference-system/manifest.yaml"
 INVENTORY = ROOT / "definitive/surface-inventory.yaml"
 VARIANT_CONTRACT = ROOT / "definitive/scenario-variant-contract.yaml"
@@ -26,6 +31,7 @@ RESULT = ROOT / "evidence/reference-system/results.json"
 PROOF_ROOT = ROOT / "evidence/scenarios/behaviors"
 INDEX = ROOT / "evidence/scenarios/index.json"
 RUNTIME_REGISTRY = ROOT / "evidence/scenarios/runtime/index.yaml"
+ATOMIC_PUBLISH_MANIFEST = ROOT / "evidence/scenarios/atomic-publish-manifest.json"
 VALIDATOR = ROOT / "scripts/validate_scenario_proofs.py"
 SCENARIOS = ["normal", "boundary", "rejection", "failure", "recovery", "migration", "operations", "security", "performance", "compatibility"]
 FE_REFERENCE = {
@@ -40,6 +46,11 @@ FE_REFERENCE = {
         "scripts/test-scenario-proofs.ts": "sha256:78e578e66df9d6d3bb59d52f32440e6fd03bf492a67be96afdcea7f2a71d0628",
         "playwright.pattern-scenario.config.ts": "sha256:93360ee588f65f04692500106e94a4e2e0be9b75645fe87f8fbe87245cb7716a",
     },
+}
+ATOMIC_PUBLISH_REFERENCE = {
+    "repository": "frontend-behavior-atlas",
+    "commit": "7175de4305afb308722d5b83475e91c18da64957",
+    "file": "scripts/reporters/pattern-scenario-evidence-reporter.ts",
 }
 
 EVIDENCE_SCENARIOS = {
@@ -729,6 +740,20 @@ def build_all() -> tuple[dict[str, Any], list[tuple[Path, dict[str, Any]]]]:
             "environment_lock": binding(ENVIRONMENT_LOCK),
             "integrated_result": {"path": RESULT.relative_to(ROOT).as_posix(), "digest": reference_digest, "bytes": len(canonical(reference_result))},
         },
+        "atomic_publish": {
+            "reference": ATOMIC_PUBLISH_REFERENCE,
+            "manifest_path": ATOMIC_PUBLISH_MANIFEST.relative_to(ROOT).as_posix(),
+            "output_root": EVIDENCE_ROOT.relative_to(ROOT).as_posix(),
+            "staging_root": EVIDENCE_STAGING_ROOT.relative_to(ROOT).as_posix(),
+            "backup_root": EVIDENCE_BACKUP_ROOT.relative_to(ROOT).as_posix(),
+            "retention_contract": {
+                "publish_on": "full-run-passed",
+                "failed_run": "retain-prior-success",
+                "swap": "staged-directory-rename-with-rollback",
+                "partial_overwrite": "rejected",
+                "mixed_generation": "rejected",
+            },
+        },
         "summary": {
             "behaviors": len(inventory["items"]),
             "scenarios": len(SCENARIOS),
@@ -766,13 +791,52 @@ def build_all() -> tuple[dict[str, Any], list[tuple[Path, dict[str, Any]]]]:
 
 def main() -> None:
     reference_result, outputs = build_all()
-    RESULT.parent.mkdir(parents=True, exist_ok=True)
-    RESULT.write_bytes(canonical(reference_result))
-    if PROOF_ROOT.exists():
-        shutil.rmtree(PROOF_ROOT)
-    for path, value in outputs:
-        path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_bytes(canonical(value))
+    generated = [(RESULT, reference_result), *outputs]
+    expected_paths = [path.relative_to(EVIDENCE_ROOT) for path, _ in generated]
+    manifest_relative = ATOMIC_PUBLISH_MANIFEST.relative_to(EVIDENCE_ROOT)
+
+    def populate(staging_root: Path) -> None:
+        staged_proof_root = staging_root / PROOF_ROOT.relative_to(EVIDENCE_ROOT)
+        if staged_proof_root.exists():
+            shutil.rmtree(staged_proof_root)
+        for final_path, value in generated:
+            staged_path = staging_root / final_path.relative_to(EVIDENCE_ROOT)
+            staged_path.parent.mkdir(parents=True, exist_ok=True)
+            staged_path.write_bytes(canonical(value))
+        write_publish_manifest(
+            staging_root,
+            manifest_relative,
+            expected_paths,
+            reporter_id="argocd-scenario-proof-atomic-publish-v1",
+            reference_commit=ATOMIC_PUBLISH_REFERENCE["commit"],
+        )
+
+    def validate(staging_root: Path) -> None:
+        validate_publish_manifest(staging_root, manifest_relative, expected_paths)
+        expected_proofs = {
+            path.relative_to(EVIDENCE_ROOT)
+            for path, _ in outputs
+            if path != INDEX
+        }
+        actual_proofs = {
+            path.relative_to(staging_root)
+            for path in (staging_root / PROOF_ROOT.relative_to(EVIDENCE_ROOT)).glob("*/*.proof.json")
+        }
+        if actual_proofs != expected_proofs:
+            raise ValueError(f"stagingのScenario Proof集合が不完全です: actual={len(actual_proofs)} expected={len(expected_proofs)}")
+        for final_path, value in generated:
+            staged_path = staging_root / final_path.relative_to(EVIDENCE_ROOT)
+            if staged_path.read_bytes() != canonical(value):
+                raise ValueError(f"staging Artifactが生成結果と一致しません: {final_path.relative_to(ROOT)}")
+
+    publish_evidence_tree(
+        EVIDENCE_ROOT,
+        EVIDENCE_STAGING_ROOT,
+        EVIDENCE_BACKUP_ROOT,
+        populate,
+        validate,
+        full_run_passed=True,
+    )
     index = outputs[0][1]
     summary = index["summary"]
     print(

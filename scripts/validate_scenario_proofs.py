@@ -85,6 +85,22 @@ def main() -> None:
     module = load_generator()
     expected_reference, expected_outputs = module.build_all()
     expected_by_path = {path: value for path, value in expected_outputs}
+    expected_publish_paths = [module.RESULT.relative_to(module.EVIDENCE_ROOT), *[
+        path.relative_to(module.EVIDENCE_ROOT) for path in expected_by_path
+    ]]
+    publish_manifest = module.validate_publish_manifest(
+        module.EVIDENCE_ROOT,
+        module.ATOMIC_PUBLISH_MANIFEST.relative_to(module.EVIDENCE_ROOT),
+        expected_publish_paths,
+    )
+    require(publish_manifest["reference"]["commit"] == module.ATOMIC_PUBLISH_REFERENCE["commit"], "Atomic Evidence正本commitが不正です")
+    require(publish_manifest["retention_contract"] == {
+        "publish_on": "full-run-passed",
+        "failed_run": "retain-prior-success",
+        "swap": "staged-directory-rename-with-rollback",
+        "partial_overwrite": "rejected",
+        "mixed_generation": "rejected",
+    }, "Atomic Evidence保持契約が不正です")
     require(module.RESULT.is_file(), "Reference System resultがありません")
     actual_reference = json.loads(module.RESULT.read_text(encoding="utf-8"))
     require(actual_reference == expected_reference, "Reference System resultが入力Evidenceと一致しません")
@@ -121,6 +137,8 @@ def main() -> None:
     require(set_digest(proof_ids) == baseline["proof_id_set_digest"] and set_digest(proof_paths) == baseline["proof_path_set_digest"], "既存Scenario Proof IDまたはpathが削除・置換・集約されています")
     require(index["reference"]["commit"] == "f2e4c4b19156f8e993f48cdcbce23679ad881924", "FE Scenario gap Closure正本commitが不正です")
     require(index["reference"]["files"] == module.FE_REFERENCE["files"], "FE Scenario gap Closure正本file digestが不正です")
+    require(index["atomic_publish"]["reference"] == module.ATOMIC_PUBLISH_REFERENCE, "FE Atomic Evidence正本がindexへ接続されていません")
+    require(index["atomic_publish"]["retention_contract"] == publish_manifest["retention_contract"], "indexとpublish manifestの保持契約が一致しません")
     variant_contract = module.load_yaml(module.VARIANT_CONTRACT)
     runtime_registry = module.load_yaml(module.RUNTIME_REGISTRY)
     require(variant_contract["reference"]["commit"] == index["reference"]["commit"] and variant_contract["denominator"]["exhaustive"] is False and variant_contract["denominator"]["surface_overrides"] == [], "現行Variant denominatorの未承認境界が不正です")

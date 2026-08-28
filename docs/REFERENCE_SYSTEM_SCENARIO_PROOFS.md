@@ -2,6 +2,8 @@
 
 `integrations/reference-system/manifest.yaml`は、normal、boundary、rejection、failure、recovery、migration、operations、security、performance、compatibilityの10 Scenarioを固定します。`scripts/generate_scenario_proofs.py`は既存の実Kind／Argo CD Evidence recordとraw Artifactをdigest再検証し、10 Scenarioを一回のoffline integration auditとして評価します。
 
+生成ReporterはFE `7175de4305afb308722d5b83475e91c18da64957`の原子的Evidence保持契約を適用します。既存`evidence/`を同一filesystem上の`.evidence-next`へ複製し、今回生成するReference結果、index、1,000 Proofをすべてstaging内で完成させます。Artifact集合、各size／digest、generation digest、意味内容のfull-run検証がpassした場合だけ、現行treeを`.evidence-previous`へ退避してdirectory renameで公開します。公開側renameが失敗した場合は退避treeを元へrenameしてrollbackします。失敗run、部分生成、または新旧Artifact混在は現行成功Evidenceを変更しません。
+
 この実行は過去のCluster Labを同じScenario契約へ統合する検証であり、同一Repository、同一Cluster topology、同一Attemptで10 Scenarioを再実行した証拠ではありません。`attempts: 1`はこのoffline監査の回数、`runtime_attempts: 0`は統合Runtime未実行を表します。したがって`evidence/reference-system/results.json`の`integrated_runtime_passed`は0で、`single_topology_execution`もfalseです。10行を評価した事実と、統合Reference GitOps Systemが未完成である事実を分離します。
 
 ## Behavior固有Proof
@@ -36,4 +38,4 @@ make scenario-proofs
 make scenario-proofs-validate
 ```
 
-Validatorは1,000ファイルの集合、10 Scenario、補助Artifact digest、専用Runtime registry、Variant分母、Closure全16条件、統合／別Artifact metadataの非流用、Authority／Completionの0固定をofflineで照合します。negative contract testは条件を一つずつ欠落・改変し、Gapが閉じないことを確認します。
+Validatorは1,000ファイルの集合、10 Scenario、補助Artifact digest、専用Runtime registry、Variant分母、Closure全16条件、統合／別Artifact metadataの非流用、Authority／Completionの0固定をofflineで照合します。`evidence/scenarios/atomic-publish-manifest.json`は今回生成した1,002 Artifactの集合とdigestを固定します。negative contract testはClosure条件に加え、失敗runによる直前成功Evidence消去、部分上書き、新旧generation混在、swap失敗時のrollbackを失敗注入で拒否します。
