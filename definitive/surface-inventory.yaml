@@ -1,0 +1,169 @@
+schema_version: 1
+atlas_id: argocd-reference-atlas
+release: v3.5.2
+source_commit: e258ee23c3e52266d407572f4bcdfe7d9ed36cb5
+status: incomplete
+authority:
+  source_id: argocd-source-tree
+  digest: sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e
+state_semantics:
+  covered: 対応Claimの全必要Scenarioが現在のEvidenceで閉じている
+  partial: 限定Fixtureのpass Evidenceはあるが必要Scenarioが残る
+  missing: Artifact Evidenceがない
+items:
+  - {id: application.spec.sources, area: application, title: Sourceとmulti-source宣言, kind: crd, locator: manifests/crds/application-crd.yaml, target_id: application.declarative-model, state: partial}
+  - {id: application.spec.destination, area: application, title: server/nameとnamespace destination, kind: crd, locator: manifests/crds/application-crd.yaml, target_id: application.declarative-model, state: partial}
+  - {id: application.spec.project, area: application, title: AppProject所属境界, kind: crd, locator: manifests/crds/application-crd.yaml, target_id: application.declarative-model, state: partial}
+  - {id: application.spec.sync-policy, area: application, title: manual/automated sync policy, kind: crd, locator: manifests/crds/application-crd.yaml, target_id: application.declarative-model, state: partial}
+  - {id: application.operation.refresh, area: application, title: normal/hard refresh, kind: cli-api, locator: cmd/argocd/commands/app.go, target_id: operations.routine-control, state: partial}
+  - {id: application.operation.sync, area: application, title: syncとselective sync, kind: cli-api, locator: cmd/argocd/commands/app.go, target_id: sync.order-and-policy, state: partial}
+  - {id: application.operation.wait, area: application, title: condition wait, kind: cli-api, locator: cmd/argocd/commands/app.go, target_id: operations.routine-control, state: partial}
+  - {id: application.operation.rollback, area: application, title: deployment history rollback, kind: cli-api, locator: cmd/argocd/commands/app.go, target_id: migration.multi-version-rollback-matrix, state: missing}
+  - {id: application.operation.terminate, area: application, title: running operation termination, kind: cli-api, locator: cmd/argocd/commands/app.go, target_id: operations.routine-control, state: missing}
+  - {id: application.resource-actions, area: application, title: custom resource action, kind: cli-api, locator: cmd/argocd/commands/app_actions.go, target_id: operations.routine-control, state: missing}
+
+  - {id: applicationset.template, area: applicationset, title: Application template rendering, kind: crd-source, locator: pkg/apis/application/v1alpha1/applicationset_types.go, target_id: applicationset.generator-templating, state: partial}
+  - {id: applicationset.go-template, area: applicationset, title: Go templateとmissingkey policy, kind: docs-source, locator: docs/operator-manual/applicationset/GoTemplate.md, target_id: applicationset.generator-templating, state: missing}
+  - {id: applicationset.generator.list, area: applicationset, title: List generator, kind: source, locator: applicationset/generators/list.go, target_id: applicationset.generator-templating, state: partial}
+  - {id: applicationset.generator.cluster, area: applicationset, title: Cluster generator, kind: source, locator: applicationset/generators/cluster.go, target_id: applicationset.generator-templating, state: missing}
+  - {id: applicationset.generator.git-directory, area: applicationset, title: Git directory generator, kind: source, locator: applicationset/generators/git.go, target_id: applicationset.generator-templating, state: missing}
+  - {id: applicationset.generator.git-file, area: applicationset, title: Git file generator, kind: source, locator: applicationset/generators/git.go, target_id: applicationset.generator-templating, state: missing}
+  - {id: applicationset.generator.scm-provider, area: applicationset, title: SCM Provider generator, kind: source, locator: applicationset/generators/scm_provider.go, target_id: compatibility.broad-version-generator-matrix, state: missing}
+  - {id: applicationset.generator.pull-request, area: applicationset, title: Pull Request generator, kind: source, locator: applicationset/generators/pull_request.go, target_id: compatibility.broad-version-generator-matrix, state: missing}
+  - {id: applicationset.generator.cluster-decision-resource, area: applicationset, title: Cluster Decision Resource generator, kind: source, locator: applicationset/generators/duck_type.go, target_id: compatibility.broad-version-generator-matrix, state: missing}
+  - {id: applicationset.generator.matrix, area: applicationset, title: Matrix generator, kind: source, locator: applicationset/generators/matrix.go, target_id: compatibility.broad-version-generator-matrix, state: missing}
+  - {id: applicationset.generator.merge, area: applicationset, title: Merge generator, kind: source, locator: applicationset/generators/merge.go, target_id: compatibility.broad-version-generator-matrix, state: missing}
+  - {id: applicationset.generator.plugin, area: applicationset, title: Plugin generator, kind: source, locator: applicationset/generators/plugin.go, target_id: compatibility.broad-version-generator-matrix, state: missing}
+  - {id: applicationset.post-selector, area: applicationset, title: Post selector, kind: docs, locator: docs/operator-manual/applicationset/Generators-Post-Selector.md, target_id: applicationset.generator-templating, state: missing}
+  - {id: applicationset.progressive-sync, area: applicationset, title: RollingSync progressive sync, kind: docs, locator: docs/operator-manual/applicationset/Progressive-Syncs.md, target_id: promotion.git-mediated-change, state: missing}
+  - {id: applicationset.deletion, area: applicationset, title: generated Application deletion policy, kind: docs, locator: docs/operator-manual/applicationset/Application-Deletion.md, target_id: applicationset.generator-templating, state: partial}
+  - {id: applicationset.any-namespace, area: applicationset, title: ApplicationSet in any namespace, kind: docs, locator: docs/operator-manual/applicationset/Appset-Any-Namespace.md, target_id: security.rbac-sso-access-boundary, state: missing}
+
+  - {id: project.source-boundary, area: project, title: source repository allow/deny, kind: crd-cli, locator: manifests/crds/appproject-crd.yaml, target_id: security.rbac-sso-access-boundary, state: partial}
+  - {id: project.destination-boundary, area: project, title: cluster/namespace destination allow/deny, kind: crd-cli, locator: cmd/argocd/commands/project.go, target_id: security.rbac-sso-access-boundary, state: partial}
+  - {id: project.resource-boundary, area: project, title: cluster/namespaced resource allow/deny, kind: crd-cli, locator: cmd/argocd/commands/project.go, target_id: security.rbac-sso-access-boundary, state: partial}
+  - {id: project.roles, area: project, title: Project role policy/group/JWT lifecycle, kind: cli-api, locator: cmd/argocd/commands/project_role.go, target_id: security.rbac-sso-access-boundary, state: partial}
+  - {id: project.sync-windows, area: project, title: allow/deny sync window, kind: cli-api, locator: cmd/argocd/commands/projectwindows.go, target_id: sync.order-and-policy, state: missing}
+  - {id: project.orphaned-resources, area: project, title: orphaned resource monitoring, kind: crd-cli, locator: manifests/crds/appproject-crd.yaml, target_id: drift.tracking-and-refresh, state: missing}
+  - {id: project.source-integrity, area: project, title: Git source integrity policy, kind: cli-api, locator: cmd/argocd/commands/project_source_integrity.go, target_id: security.secret-boundary, state: missing}
+
+  - {id: connection.repository-secret, area: connection, title: repository Secret registration, kind: docs-api, locator: docs/user-guide/private-repositories.md, target_id: connection.repository-cluster-registration, state: partial}
+  - {id: connection.repository-credentials, area: connection, title: credential template matching, kind: cli-api, locator: cmd/argocd/commands/repocreds.go, target_id: connection.repository-cluster-registration, state: missing}
+  - {id: connection.repository-tls-ssh, area: connection, title: TLS/SSH trust store, kind: cli-api, locator: cmd/argocd/commands/cert.go, target_id: connection.repository-cluster-registration, state: missing}
+  - {id: connection.repository-auth-matrix, area: connection, title: HTTPS/SSH/GitHub App/GCP/Azure/Helm/OCI auth, kind: docs, locator: docs/user-guide/private-repositories.md, target_id: connection.repository-cluster-registration, state: missing}
+  - {id: connection.cluster-secret, area: connection, title: cluster Secret registration, kind: docs-cli, locator: docs/operator-manual/cluster-management.md, target_id: connection.repository-cluster-registration, state: partial}
+  - {id: connection.cluster-namespaces, area: connection, title: namespace-scoped cluster access, kind: docs-cli, locator: cmd/argocd/commands/admin/cluster.go, target_id: connection.repository-cluster-registration, state: partial}
+  - {id: connection.cluster-auth-rotation, area: connection, title: cluster auth rotation, kind: cli-api, locator: cmd/argocd/commands/cluster.go, target_id: connection.repository-cluster-registration, state: missing}
+  - {id: connection.cluster-shard, area: connection, title: manual cluster shard assignment, kind: docs-cli, locator: docs/operator-manual/high_availability.md, target_id: availability.high-availability, state: missing}
+
+  - {id: auth.local-account, area: auth, title: local account/password/token, kind: docs-cli, locator: docs/operator-manual/user-management/index.md, target_id: security.rbac-sso-access-boundary, state: partial}
+  - {id: auth.dex-connector, area: auth, title: bundled Dex connector, kind: docs-source, locator: docs/operator-manual/user-management/index.md, target_id: security.external-idp-interactive-sso, state: missing}
+  - {id: auth.external-oidc, area: auth, title: external OIDC provider, kind: docs-source, locator: docs/operator-manual/user-management/index.md, target_id: security.external-idp-interactive-sso, state: partial}
+  - {id: auth.login-session, area: auth, title: interactive login/session/logout, kind: cli-api, locator: server/session/session.proto, target_id: security.external-idp-interactive-sso, state: missing}
+  - {id: auth.claim-mapping, area: auth, title: group claim mappingとlifecycle, kind: docs, locator: docs/operator-manual/rbac.md, target_id: security.external-idp-interactive-sso, state: missing}
+  - {id: auth.rbac-policy, area: auth, title: global RBAC policy/default/match mode, kind: docs-source, locator: docs/operator-manual/rbac.md, target_id: security.rbac-sso-access-boundary, state: partial}
+  - {id: auth.permission-check, area: auth, title: can-iとpolicy validation, kind: cli-api, locator: cmd/argocd/commands/account.go, target_id: security.rbac-sso-access-boundary, state: partial}
+
+  - {id: sync.automated-prune-selfheal, area: sync, title: automated/prune/selfHeal/allowEmpty, kind: docs-crd, locator: docs/user-guide/auto_sync.md, target_id: recovery.automated-resynchronization, state: partial}
+  - {id: sync.retry, area: sync, title: retry/backoff/refresh behavior, kind: crd, locator: manifests/crds/application-crd.yaml, target_id: recovery.automated-resynchronization, state: partial}
+  - {id: sync.options, area: sync, title: sync option compatibility, kind: docs-crd, locator: docs/user-guide/sync-options.md, target_id: sync.order-and-policy, state: partial}
+  - {id: sync.hooks, area: sync, title: PreSync/Sync/PostSync/SyncFail/PostDelete lifecycle, kind: docs-source, locator: docs/user-guide/sync-waves.md, target_id: sync.hook-wave-lifecycle, state: partial}
+  - {id: sync.waves, area: sync, title: wave orderingとfailure stop, kind: docs-source, locator: docs/user-guide/sync-waves.md, target_id: sync.hook-wave-lifecycle, state: partial}
+  - {id: diff.ignore-rules, area: diff, title: jsonPointers/JQ/managedFields ignore, kind: docs-crd, locator: docs/user-guide/diffing.md, target_id: diff.desired-live-comparison, state: partial}
+  - {id: diff.server-side, area: diff, title: server-side diffとcache invalidation, kind: docs-source, locator: docs/user-guide/diff-strategies.md, target_id: diff.desired-live-comparison, state: missing}
+  - {id: health.built-in, area: health, title: built-in resource health, kind: docs-source, locator: docs/operator-manual/health.md, target_id: health.resource-assessment, state: partial}
+  - {id: health.lua-customization, area: health, title: Lua health customization, kind: docs-source, locator: docs/operator-manual/health.md, target_id: health.resource-assessment, state: partial}
+  - {id: tracking.methods, area: drift, title: label/annotation/annotation+label tracking, kind: docs-source, locator: docs/user-guide/resource_tracking.md, target_id: drift.tracking-and-refresh, state: partial}
+  - {id: application.multi-source, area: application, title: multiple sources precedenceとRepeatedResourceWarning, kind: docs-crd, locator: docs/user-guide/multiple_sources.md, target_id: application.declarative-model, state: missing}
+
+  - {id: secret.repository-cluster-boundary, area: secret-boundary, title: repository/cluster Secret type分離, kind: source-docs, locator: util/settings/settings.go, target_id: security.secret-boundary, state: partial}
+  - {id: secret.manifest-generation, area: secret-boundary, title: manifest generation secret responsibility, kind: docs, locator: docs/operator-manual/secret-management.md, target_id: security.secret-boundary, state: partial}
+  - {id: extension.config-management-plugin, area: extensions, title: CMP sidecar contract, kind: docs-source, locator: docs/operator-manual/config-management-plugins.md, target_id: security.secret-boundary, state: missing}
+  - {id: extension.proxy, area: extensions, title: API proxy extension, kind: docs-source, locator: docs/developer-guide/extensions/proxy-extensions.md, target_id: compatibility.broad-version-generator-matrix, state: missing}
+  - {id: extension.ui, area: extensions, title: UI extension, kind: docs-source, locator: docs/developer-guide/extensions/ui-extensions.md, target_id: compatibility.broad-version-generator-matrix, state: missing}
+
+  - {id: ha.api-server, area: availability, title: API server replica/failover, kind: manifest-source, locator: manifests/ha/install.yaml, target_id: availability.high-availability, state: partial}
+  - {id: ha.application-controller, area: availability, title: controller replica/shard failover, kind: docs-source, locator: docs/operator-manual/high_availability.md, target_id: availability.high-availability, state: missing}
+  - {id: ha.repo-server, area: availability, title: repo-server replica/failure isolation, kind: manifest-source, locator: manifests/ha/install.yaml, target_id: availability.high-availability, state: partial}
+  - {id: ha.applicationset-controller, area: availability, title: ApplicationSet controller replica/failover, kind: manifest-source, locator: manifests/ha/install.yaml, target_id: availability.high-availability, state: missing}
+  - {id: ha.redis, area: availability, title: Redis HA leader/cache rebuild, kind: manifest-source, locator: manifests/ha/install.yaml, target_id: availability.high-availability, state: partial}
+  - {id: ha.sharding, area: availability, title: round-robin/legacy/consistent-hashing shard, kind: docs-source, locator: docs/operator-manual/high_availability.md, target_id: availability.high-availability, state: missing}
+  - {id: ha.cache, area: availability, title: manifest/cluster/RBAC/webhook cache, kind: docs-source, locator: docs/operator-manual/high_availability.md, target_id: performance.capacity-cost-baseline, state: missing}
+  - {id: ha.host-network, area: availability, title: host/node/network partition RTO-RPO, kind: runtime-obligation, locator: definitive/gap-ledger.yaml, target_id: availability.host-network-rto-rpo, state: missing}
+
+  - {id: observe.metrics.controller, area: observability, title: application-controller metrics, kind: docs-runtime, locator: docs/operator-manual/metrics.md, target_id: observability.metrics-logs, state: partial}
+  - {id: observe.metrics.server, area: observability, title: API server metrics, kind: docs-runtime, locator: docs/operator-manual/metrics.md, target_id: observability.metrics-logs, state: partial}
+  - {id: observe.metrics.repo-server, area: observability, title: repo-server metrics, kind: docs-runtime, locator: docs/operator-manual/metrics.md, target_id: observability.metrics-logs, state: partial}
+  - {id: observe.metrics.applicationset, area: observability, title: ApplicationSet controller metrics, kind: docs-runtime, locator: docs/operator-manual/metrics.md, target_id: observability.metrics-logs, state: missing}
+  - {id: observe.logs.correlation, area: observability, title: component/Application log correlation, kind: runtime-obligation, locator: definitive/gap-ledger.yaml, target_id: observability.metrics-logs, state: partial}
+  - {id: observe.traces.otlp, area: observability, title: controller/server/repo-server OTLP trace, kind: cli-source, locator: docs/operator-manual/server-commands/argocd-application-controller.md, target_id: observability.distributed-trace-incident-capacity, state: missing}
+  - {id: observe.incident, area: observability, title: incident rehearsal/SLO/retention/cardinality/redaction, kind: runtime-obligation, locator: definitive/gap-ledger.yaml, target_id: observability.distributed-trace-incident-capacity, state: missing}
+
+  - {id: recovery.export-import, area: recovery, title: argocd admin export/import, kind: docs-cli, locator: docs/operator-manual/disaster_recovery.md, target_id: recovery.control-plane-restore, state: covered}
+  - {id: recovery.repository-outage, area: recovery, title: repository outage/recovery, kind: runtime-obligation, locator: labs/failure/lab.yaml, target_id: failure.degraded-dependency, state: partial}
+  - {id: recovery.cluster-outage, area: recovery, title: registered cluster outage/recovery, kind: runtime-obligation, locator: definitive/gap-ledger.yaml, target_id: failure.degraded-dependency, state: missing}
+  - {id: recovery.component-failure, area: recovery, title: controller/repo-server/Redis failure/recovery, kind: runtime-obligation, locator: definitive/gap-ledger.yaml, target_id: failure.degraded-dependency, state: partial}
+  - {id: recovery.idp-outage, area: recovery, title: IdP outage/session/recovery, kind: runtime-obligation, locator: definitive/gap-ledger.yaml, target_id: security.external-idp-interactive-sso, state: partial}
+
+  - {id: migration.preflight-backup, area: migration, title: upgrade preflightとbackup, kind: docs-runtime, locator: docs/operator-manual/upgrading/3.4-3.5.md, target_id: migration.version-upgrade, state: partial}
+  - {id: migration.forward-3.4-3.5, area: migration, title: v3.4.8からv3.5.2 forward upgrade, kind: runtime, locator: labs/upgrade-migration/lab.yaml, target_id: migration.version-upgrade, state: partial}
+  - {id: migration.rollback, area: migration, title: actual version rollbackとrestore decision, kind: runtime-obligation, locator: definitive/gap-ledger.yaml, target_id: migration.multi-version-rollback-matrix, state: missing}
+  - {id: compatibility.argocd-version, area: compatibility, title: Argo CD patch/minor matrix, kind: runtime-obligation, locator: definitive/gap-ledger.yaml, target_id: compatibility.broad-version-generator-matrix, state: missing}
+  - {id: compatibility.kubernetes-version, area: compatibility, title: Kubernetes version matrix, kind: runtime-obligation, locator: definitive/gap-ledger.yaml, target_id: compatibility.broad-version-generator-matrix, state: missing}
+
+  - {id: performance.application-scale, area: performance, title: Application count throughput/latency, kind: benchmark-obligation, locator: definitive/gap-ledger.yaml, target_id: performance.capacity-cost-baseline, state: missing}
+  - {id: performance.repository-scale, area: performance, title: repository/monorepo generation capacity, kind: benchmark-obligation, locator: definitive/gap-ledger.yaml, target_id: performance.capacity-cost-baseline, state: missing}
+  - {id: performance.cluster-shard-scale, area: performance, title: cluster/shard queueとmemory capacity, kind: benchmark-obligation, locator: definitive/gap-ledger.yaml, target_id: performance.capacity-cost-baseline, state: missing}
+  - {id: performance.cost-baseline, area: performance, title: CPU/memory/storage/network cost baseline, kind: benchmark-obligation, locator: definitive/gap-ledger.yaml, target_id: performance.capacity-cost-baseline, state: missing}
+evidence_bindings:
+  - evidence_id: evidence.application.v3-5-2
+    item_ids: [application.spec.sources, application.spec.destination, application.spec.project, application.spec.sync-policy]
+    bounded_scope: 単一source、in-cluster destination、default Project、固定manual sync Fixture。
+  - evidence_id: evidence.operations.v3-5-2
+    item_ids: [application.operation.refresh, application.operation.wait]
+    bounded_scope: 固定Applicationのrefresh、wait、export/import操作。
+  - evidence_id: evidence.sync.v3-5-2
+    item_ids: [application.operation.sync, sync.options]
+    bounded_scope: 固定Resource集合と限定Sync option。
+  - evidence_id: evidence.applicationset.v3-5-2
+    item_ids: [applicationset.template, applicationset.generator.list, applicationset.deletion]
+    bounded_scope: List generatorのblue/green生成、template一致、element削除。
+  - evidence_id: evidence.access-boundary.v3-5-2
+    item_ids: [applicationset.any-namespace, project.source-boundary, project.destination-boundary, project.resource-boundary, project.roles, auth.local-account, auth.external-oidc, auth.rbac-policy, auth.permission-check, recovery.idp-outage]
+    bounded_scope: 固定Identity、RBAC allow/deny、OIDC discovery/provider outage。interactive login、MFA、group lifecycleは含まない。
+  - evidence_id: evidence.connection.v3-5-2
+    item_ids: [connection.repository-secret, connection.cluster-secret, connection.cluster-namespaces]
+    bounded_scope: 単一local repositoryとnamespace限定cluster登録、到達不能endpoint拒否。
+  - evidence_id: evidence.auto-recovery.v3-5-2
+    item_ids: [sync.automated-prune-selfheal, sync.retry]
+    bounded_scope: 固定Applicationのautomated sync、selfHeal、retry。
+  - evidence_id: evidence.hook-wave.v3-5-2
+    item_ids: [sync.hooks, sync.waves]
+    bounded_scope: 固定PreSync/Sync/PostSync Fixtureとwave順序。
+  - evidence_id: evidence.diff.v3-5-2
+    item_ids: [diff.ignore-rules]
+    bounded_scope: 固定Deployment driftと限定ignore rule。
+  - evidence_id: evidence.health.v3-5-2
+    item_ids: [health.built-in, health.lua-customization]
+    bounded_scope: 固定workloadのHealthy/Progressing/Degradedと固定customization。
+  - evidence_id: evidence.drift.v3-5-2
+    item_ids: [tracking.methods]
+    bounded_scope: 固定tracking設定とmanual live drift。
+  - evidence_id: evidence.security.v3-5-2
+    item_ids: [secret.repository-cluster-boundary, secret.manifest-generation]
+    bounded_scope: 固定Git/Cluster/EvidenceのSecret data非保存検査。
+  - evidence_id: evidence.high-availability.v3-5-2
+    item_ids: [ha.api-server, ha.repo-server, ha.redis, recovery.component-failure]
+    bounded_scope: 3-node Kind、Redis leader削除、障害窓中read。controller/repo-server独立failureは含まない。
+  - evidence_id: evidence.observability.v3-5-2
+    item_ids: [observe.metrics.controller, observe.metrics.server, observe.metrics.repo-server, observe.logs.correlation]
+    bounded_scope: 固定sync時刻周辺のcomponent metrics/logs。trace、SLO、incidentは含まない。
+  - evidence_id: evidence.recovery.v3-5-2
+    item_ids: [recovery.export-import]
+    bounded_scope: 固定Application/AppProjectのadmin export/importとspec digest一致。
+  - evidence_id: evidence.failure.v3-5-2
+    item_ids: [recovery.repository-outage]
+    bounded_scope: 単一source-server停止中のComparisonErrorと復旧後再収束。
+  - evidence_id: evidence.upgrade-migration.v3-5-2
+    item_ids: [migration.preflight-backup, migration.forward-3.4-3.5]
+    bounded_scope: Kind v1.34.0上のv3.4.8からv3.5.2への正方向Upgrade。実Rollbackは含まない。

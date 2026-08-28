@@ -1,7 +1,7 @@
 schema_version: 1
 atlas_id: argocd-reference-atlas
 epoch: "2026-08-28"
-authority_lock_digest: sha256:485860cb634a7f6095a629b149cb6f1afe2bb36d8f0bc657f1302f95238113df
+authority_lock_digest: sha256:fc76f2c5267059ae59c118c9f4924c51e4ca179476a687cced7f43ae1c977674
 target_sets:
   - id: control-loop
     title: 宣言状態と制御ループ
@@ -124,12 +124,12 @@ targets:
     claim_ids: [claim.security.no-secret-leak]
     evidence_ids: [evidence.security.v3-5-2]
   - id: failure.degraded-dependency
-    title: 依存障害時の安全な劣化
+    title: Repository依存障害時の安全な劣化
     target_set: resilience
     kind: failure
     requirement: required
-    state: covered
-    rationale: RepositoryまたはControl Planeの一時障害を専用環境で発生させ、誤った成功判定や無制限な外部影響がないことを確認する必要がある。
+    state: partial
+    rationale: Repository sourceの一時停止は実証済みだが、Controller、repo-server、Redis全停止、Network partitionを個別に発生させ、誤った成功判定や無制限な外部影響がないことまで確認する必要がある。
     claim_ids: [claim.failure.safe-degradation]
     evidence_ids: [evidence.failure.v3-5-2]
   - id: recovery.control-plane-restore

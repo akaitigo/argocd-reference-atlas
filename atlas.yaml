@@ -27,8 +27,6 @@ scope:
   exclusions:
     - GitOps一般、Kubernetes自体、外部Secret製品、CI製品の包括的な機能比較
     - 公開Cloudまたは第三者が管理するKubernetesクラスタに対する障害注入
-    - Argo CD v3.5.2以外のVersionについて同一結果や互換性を保証すること
-    - 大規模性能・Cost、広域互換Matrix、実IdP、独立Host／Network障害、全Version Rollback Matrixを保証すること
 skills:
   router:
     id: argocd-atlas-router
@@ -38,6 +36,7 @@ skills:
 completion:
   policy_version: 1.0.0
   required_profiles: [local, container, cluster]
+  # Core v1 schemaが要求する将来のactive certificate配置先。status=incompleteの間は存在させない。
   certificate: evidence/completion-certificate.json
 license:
   default: Apache-2.0

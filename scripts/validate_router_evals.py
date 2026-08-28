@@ -46,6 +46,12 @@ KNOWN_TARGETS = {
     "migration.version-upgrade",
     "operations.routine-control",
     "skill.router-evaluation",
+    "performance.capacity-cost-baseline",
+    "compatibility.broad-version-generator-matrix",
+    "security.external-idp-interactive-sso",
+    "availability.host-network-rto-rpo",
+    "migration.multi-version-rollback-matrix",
+    "observability.distributed-trace-incident-capacity",
 }
 PERMISSIONS = {"read-only", "local-kind-write", "denied"}
 CHALLENGES = {"direct", "ambiguous", "composite", "dangerous", "evidence"}

@@ -19,4 +19,4 @@
 - Node／host／network partitionを含むHA試験とRTO／RPO Benchmark
 - 公開GitHub上でのRelease、署名Tag、外部配布物、人手による権利・商標・Security Review
 
-上記はDefinitiveに重要なため`excluded`で閉じず、6件を`missing`、既存の広域12件を`partial`として再開しました。公開済みv0.1.0 Certificateは、そのSource commitにおける限定FixtureとCore v1 Gateを再現するbounded historical recordです。Core v2、細粒度Inventory、正常・拒否・障害・回復・移行・容量Evidence、統合Reference GitOps System、更新後Skill Evalを閉じるまで`atlas.yaml`は`status: incomplete`を維持します。
+上記はDefinitiveに重要なため`excluded`で閉じず、6件を`missing`、既存Evidenceの射程を越える13件を`partial`として再開しました。93 Surfaceと16 Gapは`definitive/`へ細分化済みです。公開済みv0.1.0 Certificateは、そのSource commitにおける限定FixtureとCore v1 Gateを再現するbounded historical recordです。Core v2、正常・拒否・障害・回復・移行・容量Evidence、統合Reference GitOps System、更新後Skill Evalを閉じるまで`atlas.yaml`は`status: incomplete`を維持します。

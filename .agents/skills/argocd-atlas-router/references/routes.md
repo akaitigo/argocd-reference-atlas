@@ -30,7 +30,10 @@
 - `promotion.git-mediated-change`: Gitを介した環境間Promotionと承認境界を設計する。
 - `security.secret-boundary`: Repository、Argo CD、Cluster間のSecret境界を設計する。
 - `security.rbac-sso-access-boundary`: Identity、RBAC、Credential accessを分離する。
+- `security.external-idp-interactive-sso`: 実IdP login、session、MFA、group lifecycleのmissing Gapへ案内する。
 - `availability.high-availability`: Component冗長化、Shard、Stateful dependencyを比較する。
+- `performance.capacity-cost-baseline`: Application／Repository／Cluster／Shard規模とCost基準のmissing Gapへ案内する。
+- `availability.host-network-rto-rpo`: Host／Node／Network faultと測定RTO/RPOのmissing Gapへ案内する。
 
 出力では、候補、選択理由、前提、禁止境界、検証に使うLabを分けます。
 
@@ -73,7 +76,8 @@ Runbookの前提、停止条件、Rollback、復旧判定、残留影響を示�
 - `promotion.git-mediated-change`: Gitに記録する段階的変更とRollback点を確認する。
 - `application.declarative-model`: Manifest契約の変更範囲を確認する。
 - `migration.version-upgrade`: 移行元／先Version、Preflight、Backup、Verification、Rollbackを確認する。
-- Coverageに互換性／Version固有Targetが追加されている場合だけ、そのTargetを利用する。
+- `migration.multi-version-rollback-matrix`: 複数Versionの実Rollback／Restore Matrixがmissingであることを返す。
+- `compatibility.broad-version-generator-matrix`: Argo CD／Kubernetes／Generator／Extension互換Matrixがmissingであることを返す。
 
 `v3.5.2`外の移行先を既知の互換対象とせず、該当VersionのAuthority LockとCompatibility Evidenceが必要だと明示します。
 
@@ -96,6 +100,7 @@ Mastery Outcome/Surface -> Coverage Target Set -> Coverage Target
 - Secret、権限、公開の境界を越えていないか。
 - `status: complete`をGate通過前に宣言していないか。
 - `skill.router-evaluation`が独立Agentの採点Evidenceへ接続されているか。
+- `observability.distributed-trace-incident-capacity`がOTLP、Incident rehearsal、SLO、Retention、Cardinality、RedactionのArtifact Evidenceを持つか。
 
 ## Route不能
 

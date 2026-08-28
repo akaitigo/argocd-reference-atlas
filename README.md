@@ -33,6 +33,8 @@
 sources.lock.yaml
   -> mastery.yaml
   -> coverage.yaml
+  -> definitive/surface-inventory.yaml
+  -> definitive/gap-ledger.yaml
   -> atlas/capabilities/index.yaml
   -> atlas/claims/index.yaml
   -> atlas/proof-obligations/index.yaml
@@ -47,6 +49,7 @@ sources.lock.yaml
 - Agent Router Package: `skill.package.yaml`
 - Product固有Graph: `atlas/`
 - Core v1移行対応: `migrations/core-v1.yaml`
+- Definitive Surface／Scenario Gap: `definitive/`
 
 利用者向け文書は日本語を正本とし、Schema Key、ID、Path、API名、Argo CDの正式名称は英語表記を維持します。
 

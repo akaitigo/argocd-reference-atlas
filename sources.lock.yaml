@@ -3,6 +3,15 @@ atlas_id: argocd-reference-atlas
 epoch: "2026-08-28"
 generated_at: "2026-08-28T00:00:00+09:00"
 sources:
+  - id: argocd-source-tree
+    kind: source
+    title: Argo CD v3.5.2 official source tree archive
+    url: https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5
+    version: v3.5.2
+    retrieved_at: "2026-08-28"
+    digest: sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e
+    license: Apache-2.0
+    redistribution: metadata-only
   - id: argocd-version
     kind: source
     title: Argo CD v3.5.2 VERSION

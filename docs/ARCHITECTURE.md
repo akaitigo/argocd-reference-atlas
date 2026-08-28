@@ -2,7 +2,7 @@
 
 ## 目的と境界
 
-本AtlasはArgo CD v3.5.2を単一のProduct Versionとして固定し、21件の実証Targetと6件の明示的除外を有限な仕様Graphにします。「Argo CDのすべて」や「GitOpsのすべて」を主張せず、`2026-08-28`のCoverage Epochと`sources.lock.yaml`のAuthority Corpusにだけ完成判定を限定します。
+本AtlasはArgo CD v3.5.2を単一のProduct Versionとして固定し、27件のrequired Targetと93件の細粒度Surfaceを有限な仕様Graphにします。現状は8件`covered`、13件`partial`、6件`missing`です。Definitiveに重要な面を除外で閉じず、`2026-08-28`のCoverage Epochと`sources.lock.yaml`のAuthority Corpusに限定して未Closureを追跡します。
 
 共通Contractは`reference-atlas-core` v1.0.0 commit `cf9e6e2`です。共通Schemaを製品固有Fieldで拡張せず、Argo CD固有情報は`atlas/`、`labs/`、`evidence/`に保持します。`mastery.yaml`は分野を増やさず、既存Coverageを8 Outcomeと14 Surfaceから辿る上位契約です。
 
@@ -12,6 +12,7 @@
 Argo Project公式Source（v3.5.2 tag）
   -> Mastery Outcome / Surface
   -> Coverage Target
+  -> Definitive Surface / Gap Scenario
   -> Capability
   -> Claim
   -> Proof Obligation
@@ -31,6 +32,7 @@ Argo Project公式Source（v3.5.2 tag）
 | Authority | `sources.lock.yaml` | 公式一次資料のURL、Version、取得日、Digest |
 | Mastery | `mastery.yaml` | 8 Outcome、14 Surface、Audience、既存Target Setへの接続 |
 | Coverage | `coverage.yaml` | 有限Target、必須度、状態、Claim／Evidence接続 |
+| Definitive inventory | `definitive/` | 公式Surface、bounded Evidence binding、未実行Scenario |
 | Domain Graph | `atlas/` | Capability、反証可能なClaim、Proof Obligation |
 | Execution | `labs/` | setup、execute、verify、cleanup、隔離 |
 | Proof | `evidence/` | 実行環境とArtifactのDigest、Verdict |

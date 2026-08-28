@@ -6,7 +6,7 @@
 
 通常Labは`kind-argocd-atlas-v3-5-2`、HA Labは3 nodeの`kind-argocd-atlas-ha-v3-5-2`、Upgrade Labは`kind-argocd-atlas-upgrade-v3-4-8`で実行しました。各clusterはEvidence生成後に削除し、元のkubectl contextへ復元しました。
 
-## 合格したTarget
+## 固定FixtureでpassしたEvidence
 
 - Application、ApplicationSet、Repository／Cluster connection
 - Reconciliation、Sync、Hook／Wave、Diff、Health、Promotion、Drift、Automated self-heal
@@ -17,7 +17,7 @@
 - v3.4.8からv3.5.2への実Upgrade、主要CR spec、Application Sync／Health維持
 - 1 Router Skillの独立forward Eval
 
-各結果は`evidence/raw/`のJSONと`evidence/records/`のCore Evidence recordへ保存しています。RecordはSource、Harness、Environment Manifest、ArtifactのSHA-256を保持し、CIはArtifact digest、size、JSON構文を再計算します。
+各結果は`evidence/raw/`のJSONと`evidence/records/`のCore Evidence recordへ保存しています。RecordはSource、Harness、Environment Manifest、ArtifactのSHA-256を保持し、CIはArtifact digest、size、JSON構文を再計算します。`coverage.yaml`が`partial`または`missing`とするTargetは、ここに固定Fixtureのpass EvidenceがあってもTarget全体がclosedであることを意味しません。
 
 ## 実行中に反証されたHarness仮定
 

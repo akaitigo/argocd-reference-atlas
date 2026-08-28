@@ -35,7 +35,7 @@ Argo Projectが管理するArgo CD公式Repositoryと公式文書だけを一次
 
 ## 必須Target
 
-21件の実証Targetはすべて`required`かつ`covered`です。性能、広域互換、実IdP、Host／Network障害、全Version Rollback Matrix、外部Trace／Incident統合は、固定Epochの結果を過剰一般化しないため理由と再評価日を持つ`excluded` Targetとして保持します。PromotionはGitを介したDesired state変更という境界で扱い、Argo CD固有の直接Promotion機能としては扱いません。
+27件はすべて`required`です。現状は8件`covered`、13件`partial`、6件`missing`であり、19件が未Closureです。Performance／Capacity、広域互換、実IdP、Host／Network RTO-RPO、複数Version Rollback、Trace／IncidentはDefinitiveに必要なため`excluded`で閉じません。93件の細粒度Surfaceと16件の実行Gapは`definitive/`で追跡します。PromotionはGitを介したDesired state変更という境界で扱い、Argo CD固有の直接Promotion機能としては扱いません。
 
 ## Evidence規則
 

@@ -1,0 +1,12 @@
+# Definitive closure
+
+このdirectoryはArgo CD v3.5.2を「その分野ならここを見ればよい」状態へ収束させるための作業正本です。文書数やpass済みFixture数ではなく、一次資料SurfaceとScenario Evidenceのclosureを追跡します。
+
+- `surface-inventory.yaml`: 公式CRD、CLI、API、Docs、Sourceから抽出した細粒度Surface。
+- `gap-ledger.yaml`: `partial`／`missing`を閉じるために必要な正常、境界、拒否、障害、回復、移行、運用、性能、互換Scenario。
+
+`evidence/certificates/historical/`のCore v1 Certificateは過去commitのbounded recordです。このdirectoryのrequired itemが閉じ、Core v2のdomain-neutral contractへ適合し、active Certificateが再発行されるまでDefinitiveは`incomplete`です。
+
+## Core v2 integration blocker
+
+2026-08-28時点のCore v2 draftは`definitive.yaml`の`area`をKotlin固有の列挙へ、runtime platformを`jvm/js/wasm/native/host-tooling`へ限定しています。Kubernetes、Argo CD component、CLI/API、IdP、repository、clusterを正確に表せないため、偽の値へ対応付けません。またdraft CLI、Makefile Gate、Certificate生成器は未完成です。Inventory自体はdomain-nativeな正本として先行し、Core側がdomain-neutralになったcommitへ固定してから`definitive.yaml`へ移行します。

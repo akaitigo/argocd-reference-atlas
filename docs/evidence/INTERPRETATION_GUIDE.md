@@ -22,13 +22,13 @@ Evidence Fileが存在することと、技術的主張が成立することは�
 
 ### `application-set`
 
-- **Strong for:** Recovery Evidenceに含まれる固定ApplicationSet CRのBackup／Restore前後Spec比較。
-- **Insufficient for:** `applicationset.generator-templating`がpartialの間のGenerator入力から生成Application集合への保証、Refresh、削除、Scale、外部API失敗。
+- **Strong for:** 固定List generatorからblue/green Applicationを生成し、element削除後の集合とtemplate一致を確認したbounded Evidence。Recovery EvidenceにはCRのBackup／Restore前後Spec比較もある。
+- **Insufficient for:** Git／Cluster／SCM／PR／Matrix／Merge／Plugin generator、Scale、外部API失敗。
 - **Corroboration needed:** Generator別Fixture、期待集合Oracle、否定系、Ownershipの合格Evidence。
 
 ### `repository-cluster`
 
-- **Strong for:** ApplicationのSource／Destination宣言、固定依存障害中に成功を偽装しない観測。
+- **Strong for:** ApplicationのSource／Destination宣言、単一local repositoryとnamespace限定cluster登録、到達不能endpoint拒否、固定依存障害中に成功を偽装しない観測。
 - **Insufficient for:** `connection.repository-cluster-registration`がpartialの間の全認証方式、TLS、Proxy、Credential Rotation、Least privilege。
 - **Corroboration needed:** Source側／Destination側を分けた接続Contractと拒否Evidence。
 
@@ -58,19 +58,19 @@ Evidence Fileが存在することと、技術的主張が成立することは�
 
 ### `rbac-sso-secret`
 
-- **Strong for:** 既知Canary SecretがRepositoryと公開Evidenceに平文で存在しないこと。
+- **Strong for:** 既知Canary Secret非混入、固定Identity/RBAC allow-deny、OIDC discoveryとprovider outageのbounded Evidence。
 - **Insufficient for:** 暗号学的秘匿、および`security.rbac-sso-access-boundary`がpartialの間のRBAC完全性、SSO Claim mapping、IdP可用性、Token lifecycle。
 - **Corroboration needed:** 無害なIdentity Fixtureによる許可／拒否Matrix。実CredentialをEvidenceにしない。
 
 ### `high-availability`
 
-- **Strong for:** `availability.high-availability`はpartialで合格Direct Evidenceなし。Failure／Recovery Evidenceは隣接情報だけ。
+- **Strong for:** 3-node KindのHA replica、Redis leader削除と再選出、障害窓中10/10 read成功のbounded Evidence。
 - **Insufficient for:** Replica数から可用性、RTO／RPO、Capacity、Shard公平性を推論すること。
 - **Corroboration needed:** 定義した故障単位、継続率、Queue、Latency、再収束時間のBenchmark。
 
 ### `observability`
 
-- **Strong for:** covered Targetの個別Labにある時刻付き状態遷移。`observability.metrics-logs`自体はpartial。
+- **Strong for:** controller、API server、repo-serverの固定Metric/Log captureと既知Sync時刻のbounded相関。`observability.metrics-logs`自体はpartial。
 - **Insufficient for:** Telemetry完全性、因果、SLI/SLO、Retention、Cardinality、安全なRedaction。
 - **Corroboration needed:** 同一Correlation ContextのMetric／Log／Trace／EventとQuery条件。
 
@@ -88,13 +88,13 @@ Evidence Fileが存在することと、技術的主張が成立することは�
 
 ### `upgrade-migration`
 
-- **Strong for:** v3.5.2内のBackup入力形状やApplication／Promotion境界のBaseline。`migration.version-upgrade`自体はpartial。
+- **Strong for:** Kind v1.34.0上のv3.4.8からv3.5.2への正方向Upgrade、主要CR spec digest、Sync/Health維持。`migration.version-upgrade`自体はpartial。
 - **Insufficient for:** 別VersionとのCompatibility、CRD Migration、Deprecated Surface、Rollback成功。
 - **Corroboration needed:** 移行元／先双方のAuthority Lock、Preflight、正／負／Rollback Evidence。
 
 ### `operations`
 
-- **Strong for:** covered Targetに接続された限定的な操作Outcome。`operations.routine-control`自体はpartial。
+- **Strong for:** 固定Applicationのrefresh、wait、export/importという限定的な操作Outcome。`operations.routine-control`自体はpartial。
 - **Insufficient for:** 統合SLO、On-call readiness、Capacity、大量操作、安全なConcurrency。
 - **Corroboration needed:** Incident scope、User impact、停止閾値、操作前後、残留影響、引継ぎ記録。
 
