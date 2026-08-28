@@ -1,0 +1,15 @@
+schema_version: 1
+id: failure
+title: Repository依存停止時の安全な劣化
+target_id: failure.degraded-dependency
+claim_id: claim.failure.safe-degradation
+evidence_id: evidence.failure.v3-5-2
+environment: kind-argocd-atlas-v3-5-2
+source_ref: main
+revision_policy: resolve-to-commit-before-apply
+phases:
+  setup: scripts/run-lab.sh failure setup
+  execute: scripts/run-lab.sh failure execute
+  verify: scripts/run-lab.sh failure verify
+  cleanup: scripts/run-lab.sh failure cleanup
+acceptance: source停止中はComparisonErrorを記録し、復旧後にdriftを再評価して正常Syncへ戻る。

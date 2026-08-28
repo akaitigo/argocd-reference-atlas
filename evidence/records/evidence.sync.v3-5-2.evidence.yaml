@@ -1,0 +1,23 @@
+schema_version: 1
+id: evidence.sync.v3-5-2
+atlas_id: argocd-reference-atlas
+claim_ids: [claim.sync.deterministic-order]
+kind: test-report
+producer: argocd-atlas-kind-harness
+command: make lab-sync
+created_at: "2026-08-28T06:15:48Z"
+environment:
+  profile: cluster
+  manifest_digest: sha256:c7c7fb796abc20741fc9c71e4ec8553e70a32783aab5faf9ea4789d3e1d8e1ee
+  cluster_name: argocd-atlas-v3-5-2
+  kubernetes_context: kind-argocd-atlas-v3-5-2
+  argocd_version: v3.5.2
+source_digest: sha256:e10b27cdf75945287a8027c643a39db5d5e164fca8b3fb527749d42aa776d1fb
+harness_digest: sha256:35a160d2e2bf84971adc0df28ed0e92ff65e9feacb17a00ed4d6ad927c9f3ba9
+artifact:
+  uri: evidence/raw/evidence.sync.v3-5-2/result.json
+  digest: sha256:04e188eaa1c8cfca6c90c7a1b87494166a6eb67c95ba4b9cbf69021cc934bcad
+  media_type: application/json
+  size_bytes: 58481
+verdict: pass
+retention: git

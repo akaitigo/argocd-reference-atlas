@@ -1,0 +1,15 @@
+schema_version: 1
+id: reconciliation
+title: 継続的Reconciliation
+target_id: reconciliation.continuous-loop
+claim_id: claim.reconciliation.convergence
+evidence_id: evidence.reconciliation.v3-5-2
+environment: kind-argocd-atlas-v3-5-2
+source_ref: main
+revision_policy: resolve-to-commit-before-apply
+phases:
+  setup: scripts/run-lab.sh reconciliation setup
+  execute: scripts/run-lab.sh reconciliation execute
+  verify: scripts/run-lab.sh reconciliation verify
+  cleanup: scripts/run-lab.sh reconciliation cleanup
+acceptance: live driftをOutOfSyncとして観測し、明示したSync後に固定Git revisionの値へ収束する。

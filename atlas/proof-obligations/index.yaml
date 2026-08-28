@@ -1,0 +1,67 @@
+schema_version: 1
+atlas_id: argocd-reference-atlas
+product_version: v3.5.2
+proof_obligations:
+  - id: proof.application.desired-state
+    claim_id: claim.application.desired-state
+    required_profile: cluster
+    lab_id: lab.application
+    expected_evidence_id: evidence.application.v3-5-2
+    oracle: Applicationの正規化済みspecとstatusを入力Manifestおよび対象Resourceと比較する。
+    state: covered
+  - id: proof.reconciliation.convergence
+    claim_id: claim.reconciliation.convergence
+    required_profile: cluster
+    lab_id: lab.reconciliation
+    expected_evidence_id: evidence.reconciliation.v3-5-2
+    oracle: Drift導入前後とSync後のApplication sync statusおよびResource値を比較する。
+    state: covered
+  - id: proof.sync.deterministic-order
+    claim_id: claim.sync.deterministic-order
+    required_profile: cluster
+    lab_id: lab.sync
+    expected_evidence_id: evidence.sync.v3-5-2
+    oracle: Resource annotation、event、operation resultからwave境界と失敗時の停止を判定する。
+    state: covered
+  - id: proof.diff.detect-drift
+    claim_id: claim.diff.detect-drift
+    required_profile: cluster
+    lab_id: lab.diff
+    expected_evidence_id: evidence.diff.v3-5-2
+    oracle: 同期状態とDiff出力を既知の変更集合およびignoreDifferences集合と比較する。
+    state: covered
+  - id: proof.health.aggregate-status
+    claim_id: claim.health.aggregate-status
+    required_profile: cluster
+    lab_id: lab.health
+    expected_evidence_id: evidence.health.v3-5-2
+    oracle: FixtureのReady条件とApplication health statusの対応を状態遷移ごとに比較する。
+    state: covered
+  - id: proof.promotion.git-boundary
+    claim_id: claim.promotion.git-boundary
+    required_profile: cluster
+    lab_id: lab.promotion
+    expected_evidence_id: evidence.promotion.v3-5-2
+    oracle: Promotion前後のGit Revision、Application observed revision、Resource値を同一記録で照合する。
+    state: covered
+  - id: proof.security.no-secret-leak
+    claim_id: claim.security.no-secret-leak
+    required_profile: local
+    lab_id: lab.security
+    expected_evidence_id: evidence.security.v3-5-2
+    oracle: 既知Canary値をRepositoryとEvidenceへ照合し、出現数がゼロであることを検査する。
+    state: covered
+  - id: proof.failure.safe-degradation
+    claim_id: claim.failure.safe-degradation
+    required_profile: cluster
+    lab_id: lab.failure
+    expected_evidence_id: evidence.failure.v3-5-2
+    oracle: 障害注入、異常状態、依存復旧、再評価の順序を時刻付きCaptureで検証する。
+    state: covered
+  - id: proof.recovery.restore-state
+    claim_id: claim.recovery.restore-state
+    required_profile: cluster
+    lab_id: lab.recovery
+    expected_evidence_id: evidence.recovery.v3-5-2
+    oracle: Backup前後で主要CRの正規化済みspec集合とArgo CD Versionを比較する。
+    state: covered

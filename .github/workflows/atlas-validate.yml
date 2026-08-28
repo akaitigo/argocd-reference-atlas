@@ -1,0 +1,70 @@
+# SPDX-FileCopyrightText: 2026 Nakayama Ryusei
+# SPDX-License-Identifier: Apache-2.0
+name: atlas-validate
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  atlas-validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout Subject Atlas
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          fetch-depth: 0
+
+      - name: Checkout reference-atlas-core v1 contract
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          repository: akaitigo/reference-atlas-core
+          ref: d5c0a6ce757fd5f43af837edd26f55c7325b811e
+          path: .atlas-core
+
+      - name: Set up Go
+        uses: actions/setup-go@d35c59abb061a4a6fb18e82ac0862c26744d6ab5
+        with:
+          go-version: "1.26.0"
+          cache-dependency-path: .atlas-core/go.sum
+
+      - name: Run atlas validate
+        shell: bash
+        run: |
+          set -euo pipefail
+          manifests=(
+            "$GITHUB_WORKSPACE/atlas.yaml"
+            "$GITHUB_WORKSPACE/mastery.yaml"
+            "$GITHUB_WORKSPACE/sources.lock.yaml"
+            "$GITHUB_WORKSPACE/coverage.yaml"
+            "$GITHUB_WORKSPACE/skill.package.yaml"
+          )
+          while IFS= read -r evidence_file; do
+            manifests+=("$GITHUB_WORKSPACE/$evidence_file")
+          done < <(find evidence -type f \( -name '*.evidence.yaml' -o -name '*.evidence.yml' -o -name '*.evidence.json' \) -print | sort)
+          cd .atlas-core
+          go run ./cmd/atlas validate "${manifests[@]}"
+          go run ./cmd/atlas audit "$GITHUB_WORKSPACE"
+
+      - name: Validate Atlas graph and Lab contracts
+        run: |
+          python3 scripts/validate_graph.py
+          scripts/environment.sh dry-run
+          tests/labs/static.sh
+
+      - name: Validate Router Skill and Evals
+        run: python3 scripts/validate_router_evals.py
+
+      - name: Validate legal and provenance gate
+        run: |
+          python3 scripts/validate_legal.py
+          python3 scripts/generate_sbom.py --check
+
+      - name: Validate DCO sign-off
+        if: github.event_name == 'pull_request'
+        run: scripts/validate_dco.sh "${{ github.event.pull_request.base.sha }}" "${{ github.event.pull_request.head.sha }}"

@@ -1,0 +1,23 @@
+schema_version: 1
+id: evidence.security.v3-5-2
+atlas_id: argocd-reference-atlas
+claim_ids: [claim.security.no-secret-leak]
+kind: attack
+producer: argocd-atlas-kind-harness
+command: make lab-security
+created_at: "2026-08-28T06:17:25Z"
+environment:
+  profile: cluster
+  manifest_digest: sha256:c7c7fb796abc20741fc9c71e4ec8553e70a32783aab5faf9ea4789d3e1d8e1ee
+  cluster_name: argocd-atlas-v3-5-2
+  kubernetes_context: kind-argocd-atlas-v3-5-2
+  argocd_version: v3.5.2
+source_digest: sha256:f099c2cd82ec3cdcac8ad41b8a8499931de288637abe60b2ad73658bbfb04fc8
+harness_digest: sha256:8f80fb278e77898e2ce81c7606bdbcfbc4108a4eeabc0d193b0f2c546c182fa7
+artifact:
+  uri: evidence/raw/evidence.security.v3-5-2/result.json
+  digest: sha256:43f49900cca996064ccf415c37dfca9131570a6f19c40da96975c2ae51211c8d
+  media_type: application/json
+  size_bytes: 51244
+verdict: pass
+retention: git

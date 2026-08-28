@@ -1,0 +1,76 @@
+schema_version: 1
+atlas_id: argocd-reference-atlas
+product_version: v3.5.2
+claims:
+  - id: claim.application.desired-state
+    capability_id: capability.application.declarative-model
+    statement: 固定したApplicationを作成すると、指定したSourceとDestinationがStatusへ反映される。
+    source_ids: [argocd-application-crd, argocd-application-specification]
+    acceptance_criteria:
+      - Applicationのspec.sourceとspec.destinationが入力Manifestと一致する。
+      - Application statusが対象Resourceの同期状態を観測可能にする。
+    proof_obligation_ids: [proof.application.desired-state]
+  - id: claim.reconciliation.convergence
+    capability_id: capability.reconciliation.continuous-loop
+    statement: Live resourceへ既知のDriftを導入するとArgo CDが差分を検出し、明示したSync操作後にDesired stateへ収束する。
+    source_ids: [argocd-install-manifest, argocd-application-crd]
+    acceptance_criteria:
+      - Drift導入後にApplicationがOutOfSyncとして観測される。
+      - Sync後にResourceの観測値がGitで固定した値と一致する。
+    proof_obligation_ids: [proof.reconciliation.convergence]
+  - id: claim.sync.deterministic-order
+    capability_id: capability.sync.order-and-policy
+    statement: 固定したSync waveを持つResource群は、同じ入力で宣言した順序制約に従って適用される。
+    source_ids: [argocd-sync-options, argocd-application-specification]
+    acceptance_criteria:
+      - Sync結果からwave境界ごとの適用順序を復元できる。
+      - 前段waveの失敗時に後段Resourceを成功扱いしない。
+    proof_obligation_ids: [proof.sync.deterministic-order]
+  - id: claim.diff.detect-drift
+    capability_id: capability.diff.desired-live-comparison
+    statement: 既知のLive変更はDiffとして検出され、明示したignoreDifferencesだけが判定対象から除外される。
+    source_ids: [argocd-diffing, argocd-application-specification]
+    acceptance_criteria:
+      - 無視対象外の変更がOutOfSyncを発生させる。
+      - 無視対象のFieldだけを変更しても同じDiffとして報告しない。
+    proof_obligation_ids: [proof.diff.detect-drift]
+  - id: claim.health.aggregate-status
+    capability_id: capability.health.resource-assessment
+    statement: Fixture Resourceの状態変更がApplicationのHealthへ反映され、HealthyとDegradedを区別できる。
+    source_ids: [argocd-health, argocd-application-crd]
+    acceptance_criteria:
+      - ReadyなFixtureでApplicationがHealthyとして観測される。
+      - 失敗FixtureでApplicationがDegradedまたはProgressingとして観測される。
+    proof_obligation_ids: [proof.health.aggregate-status]
+  - id: claim.promotion.git-boundary
+    capability_id: capability.promotion.git-mediated-change
+    statement: このAtlasのPromotionはGit上の環境宣言変更であり、Argo CDは変更済みRevisionをReconcileするが環境間Promotion自体は行わない。
+    source_ids: [argocd-application-specification, argocd-sync-options]
+    acceptance_criteria:
+      - Promotion前後のGit RevisionとDesired stateをEvidenceから追跡できる。
+      - Argo CD側の観測結果をGit変更の代替となるPromotion APIとして記録しない。
+    proof_obligation_ids: [proof.promotion.git-boundary]
+  - id: claim.security.no-secret-leak
+    capability_id: capability.security.secret-boundary
+    statement: FixtureのSecret値はGit入力と公開Evidenceへ平文で保存されず、検査結果だけが証拠になる。
+    source_ids: [argocd-secret-management, argocd-application-specification]
+    acceptance_criteria:
+      - Repository走査でFixture Secretの既知平文が検出されない。
+      - Evidence artifactはSecret valueを伏せ、参照名と検査Verdictだけを保持する。
+    proof_obligation_ids: [proof.security.no-secret-leak]
+  - id: claim.failure.safe-degradation
+    capability_id: capability.failure.degraded-dependency
+    statement: 隔離した依存障害中はApplicationが成功を偽装せず、依存復旧後に人手で状態を書き換えず再評価される。
+    source_ids: [argocd-install-manifest, argocd-application-crd]
+    acceptance_criteria:
+      - 障害中のApplication conditionまたは同期失敗をCaptureできる。
+      - 依存復旧後に再評価され、正常な同期操作を再実行できる。
+    proof_obligation_ids: [proof.failure.safe-degradation]
+  - id: claim.recovery.restore-state
+    capability_id: capability.recovery.control-plane-restore
+    statement: 固定したBackupから復元すると、Application、AppProject、対象ApplicationSetの意味的な管理状態を再構成できる。
+    source_ids: [argocd-disaster-recovery, argocd-application-crd, argocd-appproject-crd, argocd-applicationset-crd]
+    acceptance_criteria:
+      - Backup artifactとRestore入力のDigestが一致する。
+      - Restore後の主要CRについて正規化したspecがBackup前と一致する。
+    proof_obligation_ids: [proof.recovery.restore-state]

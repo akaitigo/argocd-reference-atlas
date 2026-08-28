@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/akaitigo/argocd-reference-atlas/third_party/manifest.schema.json",
+  "title": "Third-party artifact manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "artifacts"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "name", "kind", "source_url", "version", "retrieved_at", "license", "copyright_holder", "redistribution", "modified", "files", "digest", "size_bytes"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9]+(?:[.-][a-z0-9]+)*$" },
+          "name": { "type": "string", "minLength": 1 },
+          "kind": { "enum": ["source", "snippet", "documentation", "image", "texture", "video", "audio", "font", "icon", "dataset", "model", "weight", "three-dimensional-model", "cad", "board-design", "generated-artifact", "other"] },
+          "source_url": { "type": "string", "format": "uri" },
+          "version": { "type": "string", "minLength": 1 },
+          "retrieved_at": { "type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$" },
+          "license": { "type": "string", "minLength": 1 },
+          "copyright_holder": { "type": "string", "minLength": 1 },
+          "redistribution": { "enum": ["allowed", "source-offer-required", "review-required", "prohibited"] },
+          "modified": { "type": "boolean" },
+          "files": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 1,
+            "uniqueItems": true,
+            "items": { "type": "string", "pattern": "^(?!/)(?!.*(?:^|/)\.\.(?:/|$)).+$" }
+          },
+          "digest": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+          "size_bytes": { "type": "integer", "minimum": 0 },
+          "notes": { "type": "string" }
+        }
+      }
+    }
+  }
+}

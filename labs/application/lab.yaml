@@ -1,0 +1,15 @@
+schema_version: 1
+id: application
+title: 宣言的Application
+target_id: application.declarative-model
+claim_id: claim.application.desired-state
+evidence_id: evidence.application.v3-5-2
+environment: kind-argocd-atlas-v3-5-2
+source_ref: main
+revision_policy: resolve-to-commit-before-apply
+phases:
+  setup: scripts/run-lab.sh application setup
+  execute: scripts/run-lab.sh application execute
+  verify: scripts/run-lab.sh application verify
+  cleanup: scripts/run-lab.sh application cleanup
+acceptance: Applicationが固定Git revisionのdesired stateをSyncedかつHealthyとして反映する。

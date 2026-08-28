@@ -1,0 +1,15 @@
+schema_version: 1
+id: sync
+title: Revision固定Sync
+target_id: sync.order-and-policy
+claim_id: claim.sync.deterministic-order
+evidence_id: evidence.sync.v3-5-2
+environment: kind-argocd-atlas-v3-5-2
+source_ref: sync-failure
+revision_policy: resolve-to-commit-before-apply
+phases:
+  setup: scripts/run-lab.sh sync setup
+  execute: scripts/run-lab.sh sync execute
+  verify: scripts/run-lab.sh sync verify
+  cleanup: scripts/run-lab.sh sync cleanup
+acceptance: wave -1のResource適用後にwave 0が失敗するとwave 1のResourceは適用されず、SyncはFailedになる。

@@ -1,0 +1,58 @@
+schema_version: 1
+atlas_id: argocd-reference-atlas
+product_version: v3.5.2
+capabilities:
+  - id: capability.application.declarative-model
+    title: Application宣言モデル
+    coverage_target_id: application.declarative-model
+    description: Application CRDでSource、Destination、Project、Sync PolicyからDesired stateを宣言する。
+    source_ids: [argocd-application-crd, argocd-application-specification]
+    claim_ids: [claim.application.desired-state]
+  - id: capability.reconciliation.continuous-loop
+    title: 継続的Reconciliation
+    coverage_target_id: reconciliation.continuous-loop
+    description: Application controllerがDesired stateとLive stateを継続的に比較し、状態を更新する。
+    source_ids: [argocd-install-manifest, argocd-application-crd]
+    claim_ids: [claim.reconciliation.convergence]
+  - id: capability.sync.order-and-policy
+    title: Sync順序とPolicy
+    coverage_target_id: sync.order-and-policy
+    description: Sync phase、wave、hook、Sync Optionに基づきResource適用の順序と動作を制御する。
+    source_ids: [argocd-sync-options, argocd-application-specification]
+    claim_ids: [claim.sync.deterministic-order]
+  - id: capability.diff.desired-live-comparison
+    title: DesiredとLiveのDiff
+    coverage_target_id: diff.desired-live-comparison
+    description: Desired manifestとLive resourceを比較し、明示された無視規則を適用して同期状態を判定する。
+    source_ids: [argocd-diffing, argocd-application-specification]
+    claim_ids: [claim.diff.detect-drift]
+  - id: capability.health.resource-assessment
+    title: Resource Health評価
+    coverage_target_id: health.resource-assessment
+    description: Resource health assessmentをApplicationの観測可能なHealth statusへ集約する。
+    source_ids: [argocd-health, argocd-application-crd]
+    claim_ids: [claim.health.aggregate-status]
+  - id: capability.promotion.git-mediated-change
+    title: Gitを介したPromotion
+    coverage_target_id: promotion.git-mediated-change
+    description: Promotionを環境ごとのDesired stateを変更する外部Workflowとして扱い、Argo CDは変更後の状態をReconcileする。
+    source_ids: [argocd-application-specification, argocd-sync-options]
+    claim_ids: [claim.promotion.git-boundary]
+  - id: capability.security.secret-boundary
+    title: Secret管理責任の境界
+    coverage_target_id: security.secret-boundary
+    description: Secret生成・保管をArgo CD外部の責任として分離し、RepositoryとEvidenceへ平文を残さない。
+    source_ids: [argocd-secret-management, argocd-application-specification]
+    claim_ids: [claim.security.no-secret-leak]
+  - id: capability.failure.degraded-dependency
+    title: 依存障害時の安全な劣化
+    coverage_target_id: failure.degraded-dependency
+    description: RepositoryまたはControl Plane依存を一時停止し、状態遷移と回復条件を隔離環境で観測する。
+    source_ids: [argocd-install-manifest, argocd-application-crd]
+    claim_ids: [claim.failure.safe-degradation]
+  - id: capability.recovery.control-plane-restore
+    title: Control Plane状態の復旧
+    coverage_target_id: recovery.control-plane-restore
+    description: Argo CD管理状態のBackupとRestoreを実行し、主要CRの意味的状態を再構成する。
+    source_ids: [argocd-disaster-recovery, argocd-application-crd, argocd-appproject-crd, argocd-applicationset-crd]
+    claim_ids: [claim.recovery.restore-state]

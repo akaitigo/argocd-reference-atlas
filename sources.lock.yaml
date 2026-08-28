@@ -1,0 +1,104 @@
+schema_version: 1
+atlas_id: argocd-reference-atlas
+epoch: "2026-08-28"
+generated_at: "2026-08-28T00:00:00+09:00"
+sources:
+  - id: argocd-version
+    kind: source
+    title: Argo CD v3.5.2 VERSION
+    url: https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/VERSION
+    version: v3.5.2
+    retrieved_at: "2026-08-28"
+    digest: sha256:36e68867ce939b2464649670eb1b3f9759d1a99e7326dac3c79d0942e01f5d65
+    license: Apache-2.0
+    redistribution: metadata-only
+  - id: argocd-install-manifest
+    kind: source
+    title: Argo CD v3.5.2 install manifest
+    url: https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/manifests/install.yaml
+    version: v3.5.2
+    retrieved_at: "2026-08-28"
+    digest: sha256:9a87f2b3e14c278f12501eb0ef5c3955b27cf05370ca425381c6a908cf85a5c5
+    license: Apache-2.0
+    redistribution: metadata-only
+  - id: argocd-application-crd
+    kind: source
+    title: Argo CD v3.5.2 Application CRD
+    url: https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/manifests/crds/application-crd.yaml
+    version: v3.5.2
+    retrieved_at: "2026-08-28"
+    digest: sha256:5dde0e229249b6b707beb98674c1deae3949d5c319a6c45b9f5a80c99618e40c
+    license: Apache-2.0
+    redistribution: metadata-only
+  - id: argocd-appproject-crd
+    kind: source
+    title: Argo CD v3.5.2 AppProject CRD
+    url: https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/manifests/crds/appproject-crd.yaml
+    version: v3.5.2
+    retrieved_at: "2026-08-28"
+    digest: sha256:ab225266944322750136f1198d93786e4a79a0e43c8d149abfba44da30a3eac8
+    license: Apache-2.0
+    redistribution: metadata-only
+  - id: argocd-applicationset-crd
+    kind: source
+    title: Argo CD v3.5.2 ApplicationSet CRD
+    url: https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/manifests/crds/applicationset-crd.yaml
+    version: v3.5.2
+    retrieved_at: "2026-08-28"
+    digest: sha256:7d282054f41ca2b71a22bab04a8caf0000e07e53a62432e6ea292dae5ab4f07d
+    license: Apache-2.0
+    redistribution: metadata-only
+  - id: argocd-application-specification
+    kind: official-documentation
+    title: Argo CD v3.5.2 Application Specification
+    url: https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/user-guide/application-specification.md
+    version: v3.5.2
+    retrieved_at: "2026-08-28"
+    digest: sha256:653cbb03f015e8662a355046ab0d82a98da51ce890f47ace194c37d53cf93bf1
+    license: Apache-2.0
+    redistribution: link-only
+  - id: argocd-sync-options
+    kind: official-documentation
+    title: Argo CD v3.5.2 Sync Options
+    url: https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/user-guide/sync-options.md
+    version: v3.5.2
+    retrieved_at: "2026-08-28"
+    digest: sha256:b73932fd902571771ba8389dc8fce11b458fa6b3b7a9712e49c13ab8854312d2
+    license: Apache-2.0
+    redistribution: link-only
+  - id: argocd-diffing
+    kind: official-documentation
+    title: Argo CD v3.5.2 Diffing Customization
+    url: https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/user-guide/diffing.md
+    version: v3.5.2
+    retrieved_at: "2026-08-28"
+    digest: sha256:0f8e49ca633f070181e1e54051a34a2ee1ee2dbb6903f0d273eaff0fc51808fd
+    license: Apache-2.0
+    redistribution: link-only
+  - id: argocd-health
+    kind: official-documentation
+    title: Argo CD v3.5.2 Resource Health
+    url: https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/operator-manual/health.md
+    version: v3.5.2
+    retrieved_at: "2026-08-28"
+    digest: sha256:74cb9f3cd98e8ddd06e71b6a430706412a2d7d9d6c5c7817495c9351eba0f3b2
+    license: Apache-2.0
+    redistribution: link-only
+  - id: argocd-secret-management
+    kind: official-documentation
+    title: Argo CD v3.5.2 Secret Management
+    url: https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/operator-manual/secret-management.md
+    version: v3.5.2
+    retrieved_at: "2026-08-28"
+    digest: sha256:7506161fce84c679997ded4c2c1354625db740c4b5a6c42e8455839702301370
+    license: Apache-2.0
+    redistribution: link-only
+  - id: argocd-disaster-recovery
+    kind: official-documentation
+    title: Argo CD v3.5.2 Disaster Recovery
+    url: https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/operator-manual/disaster_recovery.md
+    version: v3.5.2
+    retrieved_at: "2026-08-28"
+    digest: sha256:855491cfd926034d230bafe4eb79faff40847a55e97515f22fccf4dcf1878bc2
+    license: Apache-2.0
+    redistribution: link-only

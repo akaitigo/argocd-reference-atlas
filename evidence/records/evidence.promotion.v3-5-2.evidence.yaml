@@ -1,0 +1,23 @@
+schema_version: 1
+id: evidence.promotion.v3-5-2
+atlas_id: argocd-reference-atlas
+claim_ids: [claim.promotion.git-boundary]
+kind: migration
+producer: argocd-atlas-kind-harness
+command: make lab-promotion
+created_at: "2026-08-28T06:17:11Z"
+environment:
+  profile: cluster
+  manifest_digest: sha256:c7c7fb796abc20741fc9c71e4ec8553e70a32783aab5faf9ea4789d3e1d8e1ee
+  cluster_name: argocd-atlas-v3-5-2
+  kubernetes_context: kind-argocd-atlas-v3-5-2
+  argocd_version: v3.5.2
+source_digest: sha256:44c53f58f5cfa8a0f8e8576cdc0582d851dbfe8c41f32b56d58ac0c9b2254a62
+harness_digest: sha256:b6719e1da55107cfa60c1912938145e1d9b38cfc7b2845eab1c029a5397584d2
+artifact:
+  uri: evidence/raw/evidence.promotion.v3-5-2/result.json
+  digest: sha256:ca502bf39eeb209ab733e43d529fa12ef48eef19ae2eac31552714598c15ac11
+  media_type: application/json
+  size_bytes: 51745
+verdict: pass
+retention: git

@@ -1,0 +1,15 @@
+schema_version: 1
+id: diff
+title: DesiredとLiveのDiff
+target_id: diff.desired-live-comparison
+claim_id: claim.diff.detect-drift
+evidence_id: evidence.diff.v3-5-2
+environment: kind-argocd-atlas-v3-5-2
+source_ref: main
+revision_policy: resolve-to-commit-before-apply
+phases:
+  setup: scripts/run-lab.sh diff setup
+  execute: scripts/run-lab.sh diff execute
+  verify: scripts/run-lab.sh diff verify
+  cleanup: scripts/run-lab.sh diff cleanup
+acceptance: liveだけの変更がOutOfSyncになり、明示したignoreDifferences対象だけは判定から除外される。

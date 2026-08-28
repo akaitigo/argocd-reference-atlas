@@ -1,0 +1,115 @@
+schema_version: 1
+atlas_id: argocd-reference-atlas
+epoch: "2026-08-28"
+authority_lock_digest: sha256:3e6c267fb92ed0b0a69e33760865bf8f6e3ac329368174fada9bc63c63fe6a52
+target_sets:
+  - id: control-loop
+    title: 宣言状態と制御ループ
+    sequence: 1
+    completion_required: true
+    exit_criteria:
+      - Applicationの宣言状態をローカルクラスタへ反映して観測できること
+      - 差分検出から収束までのReconciliationを反復して検証できること
+  - id: delivery
+    title: 配布判断と状態評価
+    sequence: 2
+    completion_required: true
+    exit_criteria:
+      - Sync順序、Diff、Healthの主要判断を固定入力で再実行できること
+      - PromotionをGit上の宣言変更として追跡し前後の状態を比較できること
+  - id: security-boundary
+    title: 秘密情報の境界
+    sequence: 3
+    completion_required: true
+    exit_criteria:
+      - GitとEvidenceにSecret平文を残さない境界を自動検査できること
+      - Secret取得または復号の責任主体と拒否条件を説明できること
+  - id: resilience
+    title: 障害と復旧
+    sequence: 4
+    completion_required: true
+    exit_criteria:
+      - 専用ローカルクラスタ内で主要依存障害を安全に注入できること
+      - Argo CD状態のBackupとRestoreを証拠付きで再実行できること
+targets:
+  - id: application.declarative-model
+    title: Application宣言モデル
+    target_set: control-loop
+    kind: concept
+    requirement: required
+    state: covered
+    rationale: Argo CD v3.5.2のApplicationがSource、Destination、Sync Policyを宣言する境界を固定入力で検証する必要がある。
+    claim_ids: [claim.application.desired-state]
+    evidence_ids: [evidence.application.v3-5-2]
+  - id: reconciliation.continuous-loop
+    title: 継続的Reconciliation
+    target_set: control-loop
+    kind: capability
+    requirement: required
+    state: covered
+    rationale: Live stateの変更後にControllerが望ましい状態との差分を再評価し、期待した状態へ収束することを検証する必要がある。
+    claim_ids: [claim.reconciliation.convergence]
+    evidence_ids: [evidence.reconciliation.v3-5-2]
+  - id: sync.order-and-policy
+    title: Sync順序とPolicy
+    target_set: delivery
+    kind: capability
+    requirement: required
+    state: covered
+    rationale: Argo CD v3.5.2のSync phase、wave、optionがResource適用順序と失敗時の停止条件へ与える影響を検証する必要がある。
+    claim_ids: [claim.sync.deterministic-order]
+    evidence_ids: [evidence.sync.v3-5-2]
+  - id: diff.desired-live-comparison
+    title: DesiredとLiveのDiff
+    target_set: delivery
+    kind: capability
+    requirement: required
+    state: covered
+    rationale: Desired manifestとLive resourceの差分、および明示的なDiff customizationの適用境界を判定できる必要がある。
+    claim_ids: [claim.diff.detect-drift]
+    evidence_ids: [evidence.diff.v3-5-2]
+  - id: health.resource-assessment
+    title: Resource Health評価
+    target_set: delivery
+    kind: capability
+    requirement: required
+    state: covered
+    rationale: Child resourceの状態からApplicationのHealthを評価し、Progressing、Healthy、Degradedを区別できる必要がある。
+    claim_ids: [claim.health.aggregate-status]
+    evidence_ids: [evidence.health.v3-5-2]
+  - id: promotion.git-mediated-change
+    title: Gitを介したPromotion
+    target_set: delivery
+    kind: operation
+    requirement: required
+    state: covered
+    rationale: 環境間PromotionをArgo CD固有の暗黙機能と誤認せず、Git上の監査可能な宣言変更として実証する必要がある。
+    claim_ids: [claim.promotion.git-boundary]
+    evidence_ids: [evidence.promotion.v3-5-2]
+  - id: security.secret-boundary
+    title: Secret管理責任の境界
+    target_set: security-boundary
+    kind: security
+    requirement: required
+    state: covered
+    rationale: Argo CDへSecret平文の生成責任を持たせず、Git、Plugin、Cluster、Evidence間の情報境界を検証する必要がある。
+    claim_ids: [claim.security.no-secret-leak]
+    evidence_ids: [evidence.security.v3-5-2]
+  - id: failure.degraded-dependency
+    title: 依存障害時の安全な劣化
+    target_set: resilience
+    kind: failure
+    requirement: required
+    state: covered
+    rationale: RepositoryまたはControl Planeの一時障害を専用環境で発生させ、誤った成功判定や無制限な外部影響がないことを確認する必要がある。
+    claim_ids: [claim.failure.safe-degradation]
+    evidence_ids: [evidence.failure.v3-5-2]
+  - id: recovery.control-plane-restore
+    title: Control Plane状態の復旧
+    target_set: resilience
+    kind: operation
+    requirement: required
+    state: covered
+    rationale: Argo CD v3.5.2の管理状態をBackupから復元し、ApplicationとProjectの意味的状態が再構成されることを検証する必要がある。
+    claim_ids: [claim.recovery.restore-state]
+    evidence_ids: [evidence.recovery.v3-5-2]

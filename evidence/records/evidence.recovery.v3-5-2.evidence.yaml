@@ -1,0 +1,23 @@
+schema_version: 1
+id: evidence.recovery.v3-5-2
+atlas_id: argocd-reference-atlas
+claim_ids: [claim.recovery.restore-state]
+kind: recovery
+producer: argocd-atlas-kind-harness
+command: make lab-recovery
+created_at: "2026-08-28T06:18:16Z"
+environment:
+  profile: cluster
+  manifest_digest: sha256:c7c7fb796abc20741fc9c71e4ec8553e70a32783aab5faf9ea4789d3e1d8e1ee
+  cluster_name: argocd-atlas-v3-5-2
+  kubernetes_context: kind-argocd-atlas-v3-5-2
+  argocd_version: v3.5.2
+source_digest: sha256:f099c2cd82ec3cdcac8ad41b8a8499931de288637abe60b2ad73658bbfb04fc8
+harness_digest: sha256:1d712c73562d4dfbdec362ffaa758f48c0c6f9f16b75e3f398d11bc3373af346
+artifact:
+  uri: evidence/raw/evidence.recovery.v3-5-2/result.json
+  digest: sha256:1ce151748b3ea147fabfeb66db0a620abb33f62edbaa312844942511fde950a7
+  media_type: application/json
+  size_bytes: 55248
+verdict: pass
+retention: git

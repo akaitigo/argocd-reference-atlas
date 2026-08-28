@@ -1,0 +1,15 @@
+schema_version: 1
+id: security
+title: Repository Secret境界
+target_id: security.secret-boundary
+claim_id: claim.security.no-secret-leak
+evidence_id: evidence.security.v3-5-2
+environment: kind-argocd-atlas-v3-5-2
+source_ref: main
+revision_policy: resolve-to-commit-before-apply
+phases:
+  setup: scripts/run-lab.sh security setup
+  execute: scripts/run-lab.sh security execute
+  verify: scripts/run-lab.sh security verify
+  cleanup: scripts/run-lab.sh security cleanup
+acceptance: argocd namespaceのsynthetic repo credentialがdestination namespaceへ現れない。

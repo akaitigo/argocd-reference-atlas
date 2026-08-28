@@ -1,0 +1,15 @@
+schema_version: 1
+id: health
+title: Resource Health集約
+target_id: health.resource-assessment
+claim_id: claim.health.aggregate-status
+evidence_id: evidence.health.v3-5-2
+environment: kind-argocd-atlas-v3-5-2
+source_ref: health-bad
+revision_policy: resolve-to-commit-before-apply
+phases:
+  setup: scripts/run-lab.sh health setup
+  execute: scripts/run-lab.sh health execute
+  verify: scripts/run-lab.sh health verify
+  cleanup: scripts/run-lab.sh health cleanup
+acceptance: 取得不能imageを持つDeploymentの失敗がApplicationのDegradedへ集約される。

@@ -1,0 +1,19 @@
+schema_version: 1
+atlas_id: argocd-reference-atlas
+atlas_release: v0.1.0
+router:
+  id: argocd-atlas-router
+  path: .agents/skills/argocd-atlas-router/SKILL.md
+  description: Argo CD v3.5.2の設計、実行、診断、復旧を、Coverage、Claim、Lab、一次資料へ安全に案内する。
+generated_from:
+  - mastery.yaml
+  - coverage.yaml
+  - atlas/capabilities/index.yaml
+  - atlas/claims/index.yaml
+  - atlas/proof-obligations/index.yaml
+adapters:
+  - generic-agent-skills
+  - codex
+evals:
+  path: evals/
+  minimum_pass_rate: 0.9

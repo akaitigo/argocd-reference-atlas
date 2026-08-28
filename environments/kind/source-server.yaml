@@ -1,0 +1,62 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: argocd-atlas-source
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: source-server
+  namespace: argocd-atlas-source
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: source-server
+  template:
+    metadata:
+      labels:
+        app: source-server
+    spec:
+      automountServiceAccountToken: false
+      containers:
+        - name: http
+          image: python:3.13.13-alpine3.23@sha256:420cd0bf0f3998275875e02ecd5808168cf0843cbb4d3c536432f729247b2acc
+          imagePullPolicy: IfNotPresent
+          args: ["python", "-m", "http.server", "8080", "--directory", "/srv"]
+          ports:
+            - name: http
+              containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: /repo.git/HEAD
+              port: http
+          resources:
+            requests:
+              cpu: 10m
+              memory: 24Mi
+            limits:
+              cpu: 100m
+              memory: 64Mi
+          volumeMounts:
+            - name: source
+              mountPath: /srv
+              readOnly: true
+      volumes:
+        - name: source
+          hostPath:
+            path: /atlas-source
+            type: Directory
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: source-server
+  namespace: argocd-atlas-source
+spec:
+  selector:
+    app: source-server
+  ports:
+    - name: http
+      port: 80
+      targetPort: http

@@ -1,0 +1,15 @@
+schema_version: 1
+id: promotion
+title: Git媒介Promotion
+target_id: promotion.git-mediated-change
+claim_id: claim.promotion.git-boundary
+evidence_id: evidence.promotion.v3-5-2
+environment: kind-argocd-atlas-v3-5-2
+source_ref: promotion-candidate
+revision_policy: resolve-to-commit-before-apply
+phases:
+  setup: scripts/run-lab.sh promotion setup
+  execute: scripts/run-lab.sh promotion execute
+  verify: scripts/run-lab.sh promotion verify
+  cleanup: scripts/run-lab.sh promotion cleanup
+acceptance: workload直接変更なしにApplication revision変更でcandidateが昇格する。

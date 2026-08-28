@@ -1,0 +1,6 @@
+interface:
+  display_name: "Argo CD Atlas Router"
+  short_description: "Argo CD v3.5.2の実証済み根拠へ案内します"
+  default_prompt: "$argocd-atlas-routerを使い、このArgo CDの判断をCoverage、Claim、Lab、Evidenceに基づいて検討してください。"
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,15 @@
+schema_version: 1
+id: recovery
+title: Application制御状態の復旧
+target_id: recovery.control-plane-restore
+claim_id: claim.recovery.restore-state
+evidence_id: evidence.recovery.v3-5-2
+environment: kind-argocd-atlas-v3-5-2
+source_ref: main
+revision_policy: resolve-to-commit-before-apply
+phases:
+  setup: scripts/run-lab.sh recovery setup
+  execute: scripts/run-lab.sh recovery execute
+  verify: scripts/run-lab.sh recovery verify
+  cleanup: scripts/run-lab.sh recovery cleanup
+acceptance: Application、AppProject、ApplicationSetの正規化specをBackupし、同一digestの状態へ復旧する。

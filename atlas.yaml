@@ -1,0 +1,48 @@
+schema_version: 1
+id: argocd-reference-atlas
+title: Argo CD 技術実証アトラス
+owner:
+  github: akaitigo
+repository:
+  url: https://github.com/akaitigo/argocd-reference-atlas
+  visibility: public
+  default_branch: main
+archetypes: [product]
+stage: 1
+status: incomplete
+language:
+  primary: ja
+  identifiers: en
+coverage:
+  epoch: "2026-08-28"
+  manifest: coverage.yaml
+authority:
+  lockfile: sources.lock.yaml
+  policy: primary-first
+mastery:
+  manifest: mastery.yaml
+  contract_version: 1.0.0
+scope:
+  statement: Argo CD v3.5.2のApplication、Reconciliation、Sync、Diff、Health、Promotion、Secret boundary、Failure、Recoveryを、ローカル専用クラスタで再実行可能なClaimとEvidenceとして検証する。
+  exclusions:
+    - GitOps一般、Kubernetes自体、外部Secret製品、CI製品の包括的な機能比較
+    - 公開Cloudまたは第三者が管理するKubernetesクラスタに対する障害注入
+    - Argo CD v3.5.2以外のVersionについて同一結果や互換性を保証すること
+skills:
+  router:
+    id: argocd-atlas-router
+    path: .agents/skills/argocd-atlas-router/SKILL.md
+  package_manifest: skill.package.yaml
+  evals: evals/
+completion:
+  policy_version: 1.0.0
+  required_profiles: [local, container, cluster]
+  certificate: evidence/completion-certificate.json
+license:
+  default: Apache-2.0
+  notice: NOTICE
+  third_party_manifest: third_party/manifest.yaml
+  sbom: sbom.spdx.json
+security:
+  disclosure: SECURITY.md
+  defensive_only: true
