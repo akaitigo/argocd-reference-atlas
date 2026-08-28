@@ -15,6 +15,8 @@
 - `../evals/argocd-atlas-router.definitive-forward-eval.json`: 期待値を渡さず別Agentが処理した10件のForward回答と現行Coverage／Source／Evidence／権限境界による採点記録。
 - `../integrations/reference-system/manifest.yaml`と`../evidence/reference-system/results.json`: 10 Scenarioを一つの契約で再評価するoffline Evidence integration Audit。単一Topology Runtime実行は0のため統合System完成とは扱いません。
 - `../evidence/scenarios/index.json`: 現行100 Surface × 10 Scenarioの1,000専用row。Controller／Kubernetes／Version identity、4観測ChannelのArtifactまたは明示gap、Authority atomic／Completion 0を固定します。
+- `scenario-variant-contract.yaml`と`../evidence/scenarios/runtime/index.yaml`: Authority review済み全Variant分母と、Surface×Scenario専用実Runtime reportの入口。現状は分母未承認・report 0件で、1,000 gapを閉じません。
+- `../baselines/scenario-proof-closure-v1.json`: 導入時の1,000 Proof ID／pathと20 runtime／176 total supporting Artifact floorを固定し、削除・集約・無証拠置換を拒否します。
 
 `evidence/certificates/historical/`のCore v1 Certificateは過去commitのbounded recordです。このdirectoryのrequired itemが閉じ、Core v2のdomain-neutral contractへ適合し、active Certificateが再発行されるまでDefinitiveは`incomplete`です。
 

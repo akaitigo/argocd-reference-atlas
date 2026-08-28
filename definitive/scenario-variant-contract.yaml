@@ -1,0 +1,18 @@
+schema_version: 1
+id: argocd-scenario-variant-contract-v1
+atlas_id: argocd-reference-atlas
+status: incomplete-pending-authority-derived-variant-denominator
+reference:
+  repository: frontend-behavior-atlas
+  commit: f2e4c4b19156f8e993f48cdcbce23679ad881924
+denominator:
+  source: human-reviewed-authority-atomic-surface-and-domain-variant-contract
+  default_status: pending-authority-human-review
+  exhaustive: false
+  surface_overrides: []
+rules:
+  - Surfaceごとに人手確認済みの非空Variant集合がapproved-exhaustiveになるまでScenario gapを閉じない。
+  - Surface、Scenario、Variantの完全一致を持つ専用実Argo CD／Kubernetes Runtime recordだけを算入する。
+  - 全Variantがretry 0かつfirst-attempt passでなければ行全体を閉じない。
+  - 各VariantはOracle、Source digest、Harness digest、Runtime identity、4種の専用Artifactを持つ。
+  - 統合Reference結果、既存Lab bundle、別Surface／Scenario／VariantのArtifact metadataを代用しない。

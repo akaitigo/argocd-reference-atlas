@@ -69,7 +69,7 @@ sources.lock.yaml
 - Core v1移行対応: `migrations/core-v1.yaml`
 - Definitive Surface／Scenario Gap: `definitive/`
 - FE Depth Reference 18軸監査: `definitive/argocd-depth-parity.json`
-- 10 Scenario統合Auditと1,000件のBehavior固有Proof: `integrations/reference-system/manifest.yaml`、`evidence/reference-system/results.json`、`evidence/scenarios/index.json`
+- 10 Scenario統合Audit、1,000件のBehavior固有Proof、全Variant専用Runtime Closure契約: `integrations/reference-system/manifest.yaml`、`definitive/scenario-variant-contract.yaml`、`evidence/reference-system/results.json`、`evidence/scenarios/index.json`
 
 利用者向け文書は日本語を正本とし、Schema Key、ID、Path、API名、Argo CDの正式名称は英語表記を維持します。
 

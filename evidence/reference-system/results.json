@@ -6,15 +6,15 @@
   "status": "incomplete-single-topology-runtime-and-authority-atomic",
   "reference": {
     "repository": "frontend-behavior-atlas",
-    "commit": "deadad18b6588d2c907170a451c3b5cea5ea4192",
+    "commit": "f2e4c4b19156f8e993f48cdcbce23679ad881924",
     "files": {
-      "docs/REFERENCE_SYSTEM.md": "sha256:3e751a7394fa79ad805cf229d053311fbdee86bdfc7efc0e89542999d45e7d1c",
-      "docs/DEFINITIVE_GATE_V2_REFERENCE.md": "sha256:6c8bb8d45a66b7595f22a23596cfa0ab495a4fd593740d9dab6ce138e4d4af89",
-      "scripts/lib/scenario-proof.ts": "sha256:e8ac9f30fef762be5ff37826e357a195faafb411cd7c0803126e27b1792d2bfa",
-      "scripts/generate-scenario-proofs.ts": "sha256:4b095074665cec1c66c80948baaafaaafeef31919b3afa6c3064681d7a951241",
-      "scripts/verify-scenario-proofs.ts": "sha256:2ebe02b5400dce8cbb8d022d35b90c921fedfc6be9af29ca795f1e4b323f9dda",
-      "scripts/test-scenario-proofs.ts": "sha256:fdfa98248b9ede97e8aa406a97b1020643d46ce29d31629f833ced8998f295f6",
-      "scripts/verify-reference-system-evidence.ts": "sha256:0f356e451128294789d7bc6f8b343bc85940258cb612b710d775a7674e10f66c"
+      "docs/REFERENCE_SYSTEM.md": "sha256:5562aa75e57c518c402c31d97885083bed3d1e3abc0af2ecade5c5cb3f188d49",
+      "docs/DEFINITIVE_GATE_V2_REFERENCE.md": "sha256:8e6ec1b9277d5bf0a7d8a36618c42212b2037ca43643e64ec0e79150de19a690",
+      "scripts/lib/scenario-proof.ts": "sha256:8b89ff8d0f042b181abe22a2fb1280546f7534f0525a931c6437a177fdb2432f",
+      "scripts/verify-pattern-scenario-evidence.ts": "sha256:3643d1dd6ab6830d1a729fc0684a6691e8fc7af4b2d85bae3e5ec01d89113469",
+      "scripts/verify-scenario-proofs.ts": "sha256:d6192f7da3b160300690f3a4168846711b366b77f8fc6c28918733db221005cd",
+      "scripts/test-scenario-proofs.ts": "sha256:78e578e66df9d6d3bb59d52f32440e6fd03bf492a67be96afdcea7f2a71d0628",
+      "playwright.pattern-scenario.config.ts": "sha256:93360ee588f65f04692500106e94a4e2e0be9b75645fe87f8fbe87245cb7716a"
     }
   },
   "execution": {
@@ -35,8 +35,8 @@
     "source_bindings": {
       "manifest": {
         "path": "integrations/reference-system/manifest.yaml",
-        "digest": "sha256:9ef4cd08b88fb5f1aed7750500be49cbd8a519d28d40f12e01a48b0f6f775618",
-        "bytes": 5233
+        "digest": "sha256:ca3e64e1255d4f81d68102aea59fa07009416b499fa16b16633c6e2ddaeddab0",
+        "bytes": 5536
       },
       "surface_inventory": {
         "path": "definitive/surface-inventory.yaml",
@@ -55,8 +55,8 @@
       },
       "generator": {
         "path": "scripts/generate_scenario_proofs.py",
-        "digest": "sha256:f8b689b49e10816ad97f96e13609870028e1c2beea5fbc7221e17b6da395fb83",
-        "bytes": 28322
+        "digest": "sha256:366131d31dfa20261d0e7ca40d6c86019a69a3774036ff95999b29719fc90586",
+        "bytes": 43756
       }
     }
   },
@@ -3132,6 +3132,8 @@
   "completion_limits": [
     "10 Scenarioのoffline evidence integrationは、同一Repositoryと同一Cluster topologyでの統合Runtime実行を証明しない。",
     "Scenario統合結果を各SurfaceまたはBehavior固有Proofへ自動昇格しない。",
+    "Surface Scenario gapは承認済み全Variantの専用実Runtime、retry 0、Oracle、Source/Harness digest、Runtime identity、4専用Artifactが揃う場合だけ閉じる。",
+    "既存Lab bundle、統合結果、別Surface／Scenario／VariantのArtifact metadataをClosureへ流用しない。",
     "Authority raw anchorの人手Decisionがないため、Authority atomic bindingとcompletion eligibleは0を維持する。",
     "Performance、広域Compatibility、OTLP trace、実IdP、host/network partitionのGapを既存Artifactで代用しない。"
   ]

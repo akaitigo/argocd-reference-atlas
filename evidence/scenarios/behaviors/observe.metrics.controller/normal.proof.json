@@ -11,7 +11,12 @@
   "surface_state": "partial",
   "scenario": "normal",
   "attempts": 1,
-  "status": "bounded-artifact-proof",
+  "status": "scenario-gap-open",
+  "supporting_evidence_assessment": {
+    "status": "supporting-artifact",
+    "closure_credit": false,
+    "reason": "既存Lab Artifactは専用Surface×Scenario×全Variant Runtime reportではないためClosureへ算入しない。"
+  },
   "authority_binding": {
     "status": "locked-source-candidate",
     "source_id": "argocd-source-tree",
@@ -97,7 +102,9 @@
         "digest": "sha256:098cf152a2c95f7c82311a6e2d29b0f46da85e267bccd03cc6bb1399e9e454d1",
         "bytes": 185797
       },
-      "artifact_matches_record": true
+      "artifact_matches_record": true,
+      "role": "supporting-historical-not-scenario-gap-closure",
+      "closure_credit": false
     }
   ],
   "observations": {
@@ -183,16 +190,103 @@
       "gap": null
     }
   },
+  "observation_role": "supporting-historical-not-scenario-gap-closure",
+  "scenario_gap_closure": {
+    "status": "open",
+    "scenario_gap_closed": false,
+    "variant_contract": {
+      "source": {
+        "path": "definitive/scenario-variant-contract.yaml",
+        "digest": "sha256:efca7dae0c6f29293145138aa429a580f3e0aebcc5c0b21aa8c7149afe8ad5b8",
+        "bytes": 1023
+      },
+      "status": "pending-authority-human-review",
+      "expected_variant_ids": [],
+      "exhaustive": false,
+      "gap": "Authority人手Review済みの非空かつexhaustiveなSurface Variant分母がない。"
+    },
+    "dedicated_runtime_report": null,
+    "dedicated_runtime_record_ids": [],
+    "source_bindings": [],
+    "harness_bindings": [],
+    "runtime_identity": null,
+    "oracle_records": [],
+    "artifacts": {
+      "resource_state": {
+        "status": "explicit-gap",
+        "artifacts": [],
+        "gap": "全Variant所有の専用resource_state Artifactが揃っていない。"
+      },
+      "controller_log": {
+        "status": "explicit-gap",
+        "artifacts": [],
+        "gap": "全Variant所有の専用controller_log Artifactが揃っていない。"
+      },
+      "metric": {
+        "status": "explicit-gap",
+        "artifacts": [],
+        "gap": "全Variant所有の専用metric Artifactが揃っていない。"
+      },
+      "trace": {
+        "status": "explicit-gap",
+        "artifacts": [],
+        "gap": "全Variant所有の専用trace Artifactが揃っていない。"
+      }
+    },
+    "conditions": {
+      "variant_denominator_exhaustive": false,
+      "exact_surface_scenario_scope": false,
+      "all_variants_driven": false,
+      "real_argocd_kubernetes_runtime": false,
+      "retry_zero": false,
+      "first_attempt_pass": false,
+      "oracle_pass": false,
+      "source_digest_bound": false,
+      "harness_digest_bound": false,
+      "runtime_identity_complete": false,
+      "per_variant_resource_state_artifact": false,
+      "per_variant_controller_log_artifact": false,
+      "per_variant_metric_artifact": false,
+      "per_variant_trace_artifact": false,
+      "artifact_paths_dedicated_and_distinct": false,
+      "integrated_or_other_metadata_reuse_absent": false
+    },
+    "failed_conditions": [
+      "variant_denominator_exhaustive",
+      "exact_surface_scenario_scope",
+      "all_variants_driven",
+      "real_argocd_kubernetes_runtime",
+      "retry_zero",
+      "first_attempt_pass",
+      "oracle_pass",
+      "source_digest_bound",
+      "harness_digest_bound",
+      "runtime_identity_complete",
+      "per_variant_resource_state_artifact",
+      "per_variant_controller_log_artifact",
+      "per_variant_metric_artifact",
+      "per_variant_trace_artifact",
+      "artifact_paths_dedicated_and_distinct",
+      "integrated_or_other_metadata_reuse_absent"
+    ],
+    "closure_evidence_source": "dedicated-surface-scenario-runtime-registry-only",
+    "prohibited_substitutions": [
+      "integrated-reference-result",
+      "historical-bundle-evidence",
+      "other-surface-scenario-variant-artifact-metadata",
+      "mock-or-static-runtime"
+    ]
+  },
   "integrated_reference": {
     "manifest": {
       "path": "integrations/reference-system/manifest.yaml",
-      "digest": "sha256:9ef4cd08b88fb5f1aed7750500be49cbd8a519d28d40f12e01a48b0f6f775618",
-      "bytes": 5233
+      "digest": "sha256:ca3e64e1255d4f81d68102aea59fa07009416b499fa16b16633c6e2ddaeddab0",
+      "bytes": 5536
     },
     "result": {
       "path": "evidence/reference-system/results.json",
-      "digest": "sha256:9394f098070416f684474e3860e6e91e6397533846dfbb2fe9b0a4430dd4052c",
-      "bytes": 125277
+      "digest": "sha256:5b1a3635012f8949742447c4dcdd5272c720fb9632e0a66dd6e913e149d7de4b",
+      "bytes": 125588
     },
     "scenario_row_id": "reference.scenario.normal",
     "outcome": "bounded-evidence-audit",
@@ -206,14 +300,31 @@
   "closure": {
     "dedicated_row": true,
     "dedicated_artifact": true,
-    "behavior_specific_evidence": true,
-    "real_kubernetes_runtime": true,
-    "runtime_identity_complete": false,
+    "supporting_behavior_specific_evidence": true,
+    "supporting_real_kubernetes_runtime": true,
+    "supporting_runtime_identity_complete": false,
+    "scenario_gap_closed": false,
     "authority_atomic_binding": false,
     "completion_eligible": false
   },
   "gaps": [
     "Argo CD／Kubernetes runtime version identityがArtifact内で完結していない。",
+    "closure-condition: variant_denominator_exhaustive",
+    "closure-condition: exact_surface_scenario_scope",
+    "closure-condition: all_variants_driven",
+    "closure-condition: real_argocd_kubernetes_runtime",
+    "closure-condition: retry_zero",
+    "closure-condition: first_attempt_pass",
+    "closure-condition: oracle_pass",
+    "closure-condition: source_digest_bound",
+    "closure-condition: harness_digest_bound",
+    "closure-condition: runtime_identity_complete",
+    "closure-condition: per_variant_resource_state_artifact",
+    "closure-condition: per_variant_controller_log_artifact",
+    "closure-condition: per_variant_metric_artifact",
+    "closure-condition: per_variant_trace_artifact",
+    "closure-condition: artifact_paths_dedicated_and_distinct",
+    "closure-condition: integrated_or_other_metadata_reuse_absent",
     "統合Scenario AuditをBehavior固有Proofへ流用しない。",
     "Authority raw anchorの人手DecisionがなくAtomic behaviorへ昇格していない。"
   ]

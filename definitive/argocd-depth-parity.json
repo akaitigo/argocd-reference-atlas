@@ -83,7 +83,7 @@
       "id": "scenario-normal",
       "status": "partial",
       "portable_meaning": "各atomic behaviorの正常経路を専用oracle、実Runtime profile、専用artifactへ接続する。",
-      "argocd_denominator": {"expression": "all required atomic behaviors", "source": ["definitive/surface-inventory.yaml", "definitive/gap-ledger.yaml", "evidence/scenarios/index.json"], "current_observation": "100 dedicated normal rows: 9 bounded runtime, 19 bounded artifact, 72 explicit behavior gaps; Authority atomic binding 0", "closure": "open"},
+      "argocd_denominator": {"expression": "all required atomic behaviors × approved-exhaustive Variants", "source": ["definitive/surface-inventory.yaml", "definitive/scenario-variant-contract.yaml", "evidence/scenarios/index.json"], "current_observation": "100 normal rows: closure 0/100; historical 9 runtime and 19 artifact bindings are supporting-only; approved Variant denominator 0", "closure": "open"},
       "proof_unit": "one atomic behavior x normal scenario x one real controller profile x one dedicated artifact",
       "bounded_evidence_ids": ["evidence.application.v3-5-2", "evidence.reconciliation.v3-5-2", "evidence.sync.v3-5-2", "evidence.applicationset.v3-5-2", "evidence.notifications.v3-5-2"],
       "gap_ids": ["gap.applicationset-generators", "gap.repository-connections", "gap.cluster-connections", "gap.notifications-delivery"]
@@ -92,7 +92,7 @@
       "id": "scenario-boundary",
       "status": "partial",
       "portable_meaning": "各atomic behaviorの入力、容量、権限、依存境界を専用oracleとartifactで観測する。",
-      "argocd_denominator": {"expression": "all required atomic behaviors with declared boundaries", "source": ["definitive/surface-inventory.yaml", "definitive/gap-ledger.yaml", "evidence/scenarios/index.json"], "current_observation": "100 dedicated boundary rows: 3 bounded runtime, 18 bounded artifact, 79 explicit behavior gaps; Authority atomic binding 0", "closure": "open"},
+      "argocd_denominator": {"expression": "all required atomic behaviors with declared boundaries × approved-exhaustive Variants", "source": ["definitive/surface-inventory.yaml", "definitive/scenario-variant-contract.yaml", "evidence/scenarios/index.json"], "current_observation": "100 boundary rows: closure 0/100; historical 3 runtime and 18 artifact bindings are supporting-only; approved Variant denominator 0", "closure": "open"},
       "proof_unit": "one atomic behavior x one named boundary x one real profile x before/at/beyond-boundary artifacts",
       "bounded_evidence_ids": ["evidence.access-boundary.v3-5-2", "evidence.diff.v3-5-2", "evidence.connection.v3-5-2"],
       "gap_ids": ["gap.project-boundaries", "gap.host-network-rto-rpo", "gap.capacity-benchmark"]
@@ -101,7 +101,7 @@
       "id": "scenario-refusal",
       "status": "partial",
       "portable_meaning": "不許可入力や権限を明示的に拒否し、望まないresource mutationがないことを証明する。",
-      "argocd_denominator": {"expression": "all atomic behaviors with rejection or policy-deny semantics", "source": ["definitive/surface-inventory.yaml", "definitive/gap-ledger.yaml", "evidence/scenarios/index.json"], "current_observation": "100 dedicated rejection rows: 1 bounded runtime, 14 bounded artifact, 85 explicit behavior gaps; Authority atomic binding 0", "closure": "open"},
+      "argocd_denominator": {"expression": "all rejection or policy-deny behaviors × approved-exhaustive Variants", "source": ["definitive/surface-inventory.yaml", "definitive/scenario-variant-contract.yaml", "evidence/scenarios/index.json"], "current_observation": "100 rejection rows: closure 0/100; historical 1 runtime and 14 artifact bindings are supporting-only; approved Variant denominator 0", "closure": "open"},
       "proof_unit": "one atomic behavior x one rejected input/identity x deny result x no-change resource state x dedicated artifact",
       "bounded_evidence_ids": ["evidence.access-boundary.v3-5-2", "evidence.failure.v3-5-2", "evidence.diff.v3-5-2"],
       "gap_ids": ["gap.project-boundaries", "gap.interactive-sso", "gap.sync-diff-health", "gap.secret-extensions"]
@@ -110,7 +110,7 @@
       "id": "scenario-failure",
       "status": "partial",
       "portable_meaning": "Component、repository、cluster、IdP、network等の障害を注入し、failure windowと影響範囲を記録する。",
-      "argocd_denominator": {"expression": "all atomic behaviors x applicable component/dependency failure modes", "source": ["definitive/surface-inventory.yaml", "definitive/gap-ledger.yaml", "evidence/scenarios/index.json"], "current_observation": "100 dedicated failure rows: 2 bounded runtime, 31 bounded artifact, 67 explicit behavior gaps; Authority atomic binding 0", "closure": "open"},
+      "argocd_denominator": {"expression": "all atomic behaviors × applicable failure Variants", "source": ["definitive/surface-inventory.yaml", "definitive/scenario-variant-contract.yaml", "evidence/scenarios/index.json"], "current_observation": "100 failure rows: closure 0/100; historical 2 runtime and 31 artifact bindings are supporting-only; approved Variant denominator 0", "closure": "open"},
       "proof_unit": "one behavior x one injected failure x failure-window state/log/metric x dedicated artifact",
       "bounded_evidence_ids": ["evidence.failure.v3-5-2", "evidence.high-availability.v3-5-2", "evidence.access-boundary.v3-5-2", "evidence.notifications.v3-5-2"],
       "gap_ids": ["gap.repository-connections", "gap.cluster-connections", "gap.interactive-sso", "gap.control-plane-failures", "gap.host-network-rto-rpo", "gap.notifications-delivery"]
@@ -119,7 +119,7 @@
       "id": "scenario-recovery",
       "status": "partial",
       "portable_meaning": "障害除去後の再収束、データ不変条件、RTO/RPOを実測する。",
-      "argocd_denominator": {"expression": "all required failure scenarios x recovery strategy", "source": ["definitive/gap-ledger.yaml", "evidence/records", "evidence/scenarios/index.json"], "current_observation": "100 dedicated recovery rows: 2 bounded runtime, 30 bounded artifact, 68 explicit behavior gaps; Authority atomic binding 0", "closure": "open"},
+      "argocd_denominator": {"expression": "all required failure scenarios × approved recovery Variants", "source": ["definitive/scenario-variant-contract.yaml", "evidence/scenarios/runtime/index.yaml", "evidence/scenarios/index.json"], "current_observation": "100 recovery rows: closure 0/100; historical 2 runtime and 30 artifact bindings are supporting-only; approved Variant denominator 0", "closure": "open"},
       "proof_unit": "one failure attempt x one recovery action x measured recovery time x postcondition x dedicated artifact",
       "bounded_evidence_ids": ["evidence.recovery.v3-5-2", "evidence.auto-recovery.v3-5-2", "evidence.high-availability.v3-5-2", "evidence.notifications.v3-5-2"],
       "gap_ids": ["gap.cluster-connections", "gap.control-plane-failures", "gap.host-network-rto-rpo", "gap.backup-disaster-recovery"]
@@ -128,7 +128,7 @@
       "id": "scenario-migration",
       "status": "partial",
       "portable_meaning": "Version、CRD/API、configuration、dataの移行と失敗時rollback/restoreを同じ不変条件で検証する。",
-      "argocd_denominator": {"expression": "supported from-version x to-version x Kubernetes profile x migration surface", "source": ["definitive/surface-inventory.yaml", "definitive/gap-ledger.yaml", "evidence/scenarios/index.json"], "current_observation": "100 dedicated migration rows: 0 bounded runtime, 3 bounded artifact, 97 explicit behavior gaps; rollback matrix remains open", "closure": "open"},
+      "argocd_denominator": {"expression": "supported from-version × to-version × Kubernetes profile × migration Variants", "source": ["definitive/scenario-variant-contract.yaml", "evidence/scenarios/runtime/index.yaml", "evidence/scenarios/index.json"], "current_observation": "100 migration rows: closure 0/100; historical 3 artifact bindings are supporting-only; approved Variant denominator 0 and rollback matrix open", "closure": "open"},
       "proof_unit": "one version pair x one Kubernetes profile x preflight/backup/upgrade/rollback/postcondition artifact set",
       "bounded_evidence_ids": ["evidence.upgrade-migration.v3-5-2", "evidence.recovery.v3-5-2"],
       "gap_ids": ["gap.upgrade-rollback", "gap.backup-disaster-recovery", "gap.version-kubernetes-matrix"]
@@ -137,7 +137,7 @@
       "id": "scenario-operations",
       "status": "partial",
       "portable_meaning": "定常操作、診断、incident、backup/restoreを明示した操作手順とpostconditionで検証する。",
-      "argocd_denominator": {"expression": "all operational surfaces x operator action x supported profile", "source": ["definitive/surface-inventory.yaml", "docs/runbooks/DOMAIN_RUNBOOKS.md", "evidence/scenarios/index.json"], "current_observation": "100 dedicated operations rows: 3 bounded runtime, 19 bounded artifact, 78 explicit behavior gaps; Authority atomic binding 0", "closure": "open"},
+      "argocd_denominator": {"expression": "all operational surfaces × operator action Variants × supported profile", "source": ["definitive/scenario-variant-contract.yaml", "docs/runbooks/DOMAIN_RUNBOOKS.md", "evidence/scenarios/index.json"], "current_observation": "100 operations rows: closure 0/100; historical 3 runtime and 19 artifact bindings are supporting-only; approved Variant denominator 0", "closure": "open"},
       "proof_unit": "one operational action x one starting state x command/API result x postcondition x audit artifact",
       "bounded_evidence_ids": ["evidence.operations.v3-5-2", "evidence.observability.v3-5-2", "evidence.recovery.v3-5-2", "evidence.notifications.v3-5-2"],
       "gap_ids": ["gap.observability-trace-incident", "gap.backup-disaster-recovery", "gap.notifications-delivery"]
@@ -146,7 +146,7 @@
       "id": "scenario-security",
       "status": "partial",
       "portable_meaning": "Identity、RBAC、SSO、Secret、trust、redactionを許可と拒否の両経路で実Runtime検証する。",
-      "argocd_denominator": {"expression": "all security-sensitive atomic behaviors x identity/credential/trust profile", "source": ["definitive/surface-inventory.yaml", "definitive/gap-ledger.yaml", "evidence/scenarios/index.json"], "current_observation": "100 dedicated security rows: 0 bounded runtime, 20 bounded artifact, 80 explicit behavior gaps; Authority atomic binding 0", "closure": "open"},
+      "argocd_denominator": {"expression": "all security-sensitive behaviors × identity/credential/trust Variants", "source": ["definitive/scenario-variant-contract.yaml", "evidence/scenarios/runtime/index.yaml", "evidence/scenarios/index.json"], "current_observation": "100 security rows: closure 0/100; historical 20 artifact bindings are supporting-only; approved Variant denominator 0", "closure": "open"},
       "proof_unit": "one behavior x one identity or credential state x allow/deny oracle x redacted dedicated artifact",
       "bounded_evidence_ids": ["evidence.security.v3-5-2", "evidence.access-boundary.v3-5-2", "evidence.connection.v3-5-2", "evidence.notifications.v3-5-2"],
       "gap_ids": ["gap.project-boundaries", "gap.repository-connections", "gap.cluster-connections", "gap.interactive-sso", "gap.secret-extensions"]
@@ -155,7 +155,7 @@
       "id": "scenario-performance",
       "status": "missing",
       "portable_meaning": "代表workload、環境、分布、予算、劣化戦略を固定し、全variantを同じoracleで測定する。",
-      "argocd_denominator": {"expression": "atomic behavior x implementation variant x application/repository/cluster/shard workload x Kubernetes profile", "source": ["definitive/surface-inventory.yaml", "definitive/gap-ledger.yaml", "evidence/scenarios/index.json"], "current_observation": "100 dedicated performance rows are explicit behavior gaps; no accepted capacity benchmark artifact", "closure": "open"},
+      "argocd_denominator": {"expression": "atomic behavior × implementation Variant × application/repository/cluster/shard workload × Kubernetes profile", "source": ["definitive/scenario-variant-contract.yaml", "evidence/scenarios/runtime/index.yaml", "evidence/scenarios/index.json"], "current_observation": "100 performance rows: closure 0/100; supporting Artifact 0; approved Variant denominator 0 and no accepted capacity benchmark", "closure": "open"},
       "proof_unit": "one behavior/variant x one workload level x repeated latency/throughput/resource distributions x threshold verdict",
       "bounded_evidence_ids": [],
       "gap_ids": ["gap.capacity-benchmark"]
@@ -164,7 +164,7 @@
       "id": "scenario-compatibility",
       "status": "partial",
       "portable_meaning": "必要version/profileを根拠から列挙し、正常、劣化、非対応を同じscenarioとassertionで区別する。",
-      "argocd_denominator": {"expression": "atomic behavior x Argo CD version x Kubernetes version x generator/extension/auth variant", "source": ["definitive/surface-inventory.yaml", "definitive/gap-ledger.yaml", "evidence/scenarios/index.json"], "current_observation": "100 dedicated compatibility rows: 0 bounded runtime, 2 bounded artifact, 98 explicit behavior gaps; broad matrix is absent", "closure": "open"},
+      "argocd_denominator": {"expression": "atomic behavior × Argo CD version × Kubernetes version × generator/extension/auth Variants", "source": ["definitive/scenario-variant-contract.yaml", "evidence/scenarios/runtime/index.yaml", "evidence/scenarios/index.json"], "current_observation": "100 compatibility rows: closure 0/100; historical 2 artifact bindings are supporting-only; approved Variant denominator 0 and broad matrix absent", "closure": "open"},
       "proof_unit": "one behavior x one exact Argo CD/Kubernetes/extension profile x same-scenario result artifact",
       "bounded_evidence_ids": ["evidence.upgrade-migration.v3-5-2"],
       "gap_ids": ["gap.version-kubernetes-matrix", "gap.applicationset-generators", "gap.secret-extensions"]
@@ -173,7 +173,7 @@
       "id": "artifact-trace",
       "status": "partial",
       "portable_meaning": "各required scenarioのoracle結果をSource/Harness/Runtime/Version/Attemptへ追跡できる専用artifactとして固定する。",
-      "argocd_denominator": {"expression": "all required scenario rows", "source": ["definitive/gap-ledger.yaml", "evidence/records", "evidence/raw", "evidence/scenarios/index.json"], "current_observation": "1,000 dedicated rows each require resource state/controller log/metric/trace Artifact or explicit gap; 20 runtime proofs, 156 artifact proofs, 824 behavior gaps; OTLP trace remains incomplete", "closure": "open"},
+      "argocd_denominator": {"expression": "all required Surface × Scenario × approved-exhaustive Variant rows", "source": ["definitive/gap-ledger.yaml", "definitive/scenario-variant-contract.yaml", "evidence/scenarios/runtime/index.yaml", "evidence/scenarios/index.json"], "current_observation": "1,000 dedicated Surface×Scenario rows; approved-exhaustive Variant denominators 0, dedicated Runtime reports 0, Scenario gap closure 0/1,000; historical artifacts remain supporting-only; OTLP trace remains incomplete", "closure": "open"},
       "proof_unit": "one scenario row x one unique proof/evidence ID x one content-addressed artifact and trace/applicability record",
       "bounded_evidence_ids": ["evidence.reconciliation.v3-5-2", "evidence.observability.v3-5-2", "evidence.high-availability.v3-5-2", "evidence.notifications.v3-5-2"],
       "gap_ids": ["gap.observability-trace-incident", "gap.core-v2-contract"]

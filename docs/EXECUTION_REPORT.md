@@ -18,7 +18,7 @@
 - v3.4.8からv3.5.2への実Upgrade、主要CR spec、Application Sync／Health維持
 - 1 Router Skillの8件bounded historical forward Eval
 - 8 Outcome × 14 Surfaceの112セルRouter契約、7境界Case、全30 Target state、10件独立Forward Eval（Matrix／Forward passはCompletionへ算入しない）
-- 10 Scenarioのoffline Evidence integration Auditと、現行100 Surface × 10 Scenarioの1,000専用Proof row。20行はRuntime／全Component identityまで完結、156行は直接Artifactとidentity gap、824行はBehavior固有gap。単一Topology Runtime成功とCompletion eligibleはいずれも0
+- 10 Scenarioのoffline Evidence integration Auditと、現行100 Surface × 10 Scenarioの1,000専用Proof row。既存Evidenceは20 supporting-runtime／156 supporting-artifact／824 no-supportingとして保持するがClosure creditは0。承認済み全Variantの専用Runtime reportが0件のためScenario gapは0 closed／1,000 open。単一Topology Runtime成功とCompletion eligibleも0
 
 各結果は`evidence/raw/`のJSONと`evidence/records/`のCore Evidence recordへ保存しています。RecordはSource、Harness、Environment Manifest、ArtifactのSHA-256を保持し、CIはArtifact digest、size、JSON構文を再計算します。`coverage.yaml`が`partial`または`missing`とするTargetは、ここに固定Fixtureのpass EvidenceがあってもTarget全体がclosedであることを意味しません。
 

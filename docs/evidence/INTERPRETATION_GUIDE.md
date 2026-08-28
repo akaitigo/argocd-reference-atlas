@@ -108,9 +108,9 @@ Evidence Fileが存在することと、技術的主張が成立することは�
 
 ### `integrated-reference-system`
 
-- **Strong for:** 10 Scenario契約、既存Cluster Evidenceのdigest再検証、100 Surface × 10 Scenarioの専用row、各rowのController／Kubernetes／Version identityとresource state／controller log／metric／trace Artifactまたは明示gap。
+- **Strong for:** 10 Scenario契約、既存Cluster Evidenceのdigest再検証、100 Surface × 10 Scenarioの専用row、補助EvidenceとClosure Evidenceの分離、専用全Variant Runtime Closure条件と明示gap。
 - **Insufficient for:** 同一Repository／Cluster topology／Attemptのcross-surface不変条件。offline統合結果をBehavior固有Proofへ流用できず、Authority atomic bindingとCompletion eligibleは0。
-- **Corroboration needed:** 単一Repository／Cluster／Revision／Correlation contextで10 Scenarioを再実行した統合Artifactと、人手Authority Decisionへ束縛したAtomic behavior。
+- **Corroboration needed:** Authority review済みVariant分母、各Surface×Scenario×全Variantをretry 0で駆動した専用実Runtime report、Oracle、Source／Harness digest、4観測Artifact、人手Authority Decisionへ束縛したAtomic behavior。
 
 ### `evidence-comparison`
 

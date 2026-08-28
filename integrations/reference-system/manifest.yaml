@@ -59,5 +59,7 @@ scenarios:
 completion_limits:
   - 10 Scenarioのoffline evidence integrationは、同一Repositoryと同一Cluster topologyでの統合Runtime実行を証明しない。
   - Scenario統合結果を各SurfaceまたはBehavior固有Proofへ自動昇格しない。
+  - Surface Scenario gapは承認済み全Variantの専用実Runtime、retry 0、Oracle、Source/Harness digest、Runtime identity、4専用Artifactが揃う場合だけ閉じる。
+  - 既存Lab bundle、統合結果、別Surface／Scenario／VariantのArtifact metadataをClosureへ流用しない。
   - Authority raw anchorの人手Decisionがないため、Authority atomic bindingとcompletion eligibleは0を維持する。
   - Performance、広域Compatibility、OTLP trace、実IdP、host/network partitionのGapを既存Artifactで代用しない。

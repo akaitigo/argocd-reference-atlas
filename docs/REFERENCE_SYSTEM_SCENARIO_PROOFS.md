@@ -13,8 +13,21 @@
 - Behaviorへ直接接続されたEvidence recordとraw Artifact digest。
 - resource state、controller log、metric、traceそれぞれのArtifact JSON pointer、または専用の明示gap。
 - 同じScenarioの統合Audit結果。ただしBehavior固有Evidenceとしては算入しない。
+- `definitive/scenario-variant-contract.yaml`のVariant分母と、専用Runtime Closure全条件。
 
-現行itemはAuthority raw anchorから人手Decisionで昇格したAtomic behaviorではありません。全行は`authority_atomic_binding: false`、`completion_eligible: false`です。ControllerとKubernetes version identityまでArtifact内で完結する行だけを`bounded-runtime-proof`、直接Evidenceはあるがidentity gapが残る行を`bounded-artifact-proof`、直接Evidenceがない行を`behavior-specific-gap`とします。いずれもTarget closureやDefinitive完成を意味しません。
+現行itemはAuthority raw anchorから人手Decisionで昇格したAtomic behaviorではなく、exhaustiveなVariant分母も未承認です。全行は`scenario-gap-open`、`authority_atomic_binding: false`、`completion_eligible: false`です。既存Labとの接続は20件の`supporting-runtime-artifact`、156件の`supporting-artifact`、824件の`no-supporting-artifact`として保持しますが、いずれもScenario gap Closureへ算入しません。
+
+Gapを閉じられるのは、`evidence/scenarios/runtime/index.yaml`へ登録した専用reportがSurfaceとScenarioに完全一致し、承認済みの全Variantを実Argo CD on Kubernetesで駆動し、次の全条件を満たす場合だけです。
+
+- retry 0、全Variantがfirst-attempt pass。
+- 反証可能なOracleとAssertion。
+- 実ファイルから再計算できるSource／Harness digest。
+- Argo CD／Kubernetes version、Cluster／Topology、対象Controllerを含むRuntime identity。
+- Variantごとに所有pathが異なるresource state、controller log、metric、trace Artifact。
+
+統合Reference結果、既存Lab bundle、別Surface／Scenario／VariantのArtifact metadata、mock／static結果は代用できません。現行registryは専用report 0件であるため、Closureは0/1,000です。
+
+専用reportは`id`、`surface_id`、`scenario`、`execution.retries`、Argo CD／Kubernetes／Cluster／Topology／Controllerを識別する`runtime_identity`を持ちます。`variants`は承認済みVariant集合と完全一致し、各recordがAttempt、結果、Oracle、所有者付きSource／Harness binding、4 Artifact bindingを保持します。Artifact pathは`evidence/scenarios/runtime/artifacts/<report-id>/<variant-id>/<channel>`配下に限定し、ownerを`<report-id>:<variant-id>:<channel>`として固定します。Channelごとのkindは`kubernetes-resource-state`、`argocd-controller-log`、`argocd-prometheus-metric`、`scenario-execution-trace`です。同じpathを別recordまたは別Channelへ再利用すると生成器が拒否します。
 
 ## 再生成と検証
 
@@ -23,4 +36,4 @@ make scenario-proofs
 make scenario-proofs-validate
 ```
 
-Validatorは1,000ファイルの集合、Source／Harness／Artifact digest、10 Scenario、各rowのidentity、4観測ChannelのArtifactまたはgap、統合結果の非流用、Authority／Completionの0固定をofflineで照合します。
+Validatorは1,000ファイルの集合、10 Scenario、補助Artifact digest、専用Runtime registry、Variant分母、Closure全16条件、統合／別Artifact metadataの非流用、Authority／Completionの0固定をofflineで照合します。negative contract testは条件を一つずつ欠落・改変し、Gapが閉じないことを確認します。

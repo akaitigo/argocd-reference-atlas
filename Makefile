@@ -28,12 +28,14 @@ graph-validate:
 definitive-validate:
 	python3 scripts/validate_definitive_inventory.py
 	python3 scripts/validate_scenario_proofs.py
+	python3 scripts/test_scenario_gap_closure.py
 
 scenario-proofs:
 	python3 scripts/generate_scenario_proofs.py
 
 scenario-proofs-validate:
 	python3 scripts/validate_scenario_proofs.py
+	python3 scripts/test_scenario_gap_closure.py
 
 authority-locators:
 	python3 scripts/generate_authority_locators.py --source-tree /private/tmp/argo-cd-v3.5.2-source

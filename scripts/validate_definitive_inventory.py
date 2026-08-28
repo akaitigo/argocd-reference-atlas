@@ -159,12 +159,16 @@ def main() -> None:
     scenario_index = json.loads(SCENARIO_PROOF_INDEX.read_text(encoding="utf-8"))
     scenario_summary = scenario_index.get("summary", {})
     reference_result = json.loads(REFERENCE_SYSTEM_RESULT.read_text(encoding="utf-8"))
-    if scenario_index.get("reference", {}).get("commit") != "deadad18b6588d2c907170a451c3b5cea5ea4192":
-        raise ValueError("FE Reference System／Scenario Proof正本commitが固定されていません")
+    if scenario_index.get("reference", {}).get("commit") != "f2e4c4b19156f8e993f48cdcbce23679ad881924":
+        raise ValueError("FE Scenario gap Closure正本commitが固定されていません")
     if scenario_index.get("status") != "incomplete-authority-atomic-and-runtime-closure" or scenario_summary.get("behaviors") != 100 or scenario_summary.get("scenarios") != 10 or scenario_summary.get("rows") != 1000 or scenario_summary.get("dedicated_artifacts") != 1000:
         raise ValueError("100 Surface × 10 Scenario専用Proof分母が不正です")
-    if scenario_summary.get("bounded_runtime_proofs", 0) + scenario_summary.get("bounded_artifact_proofs", 0) + scenario_summary.get("behavior_specific_gaps", 0) != 1000:
-        raise ValueError("Scenario Proof rowがruntime／artifact／gapで閉じていません")
+    if scenario_summary.get("scenario_gaps_closed") != 0 or scenario_summary.get("scenario_gaps_open") != 1000:
+        raise ValueError("専用Surface×Scenario×全Variant RuntimeなしでScenario gapを閉じています")
+    if scenario_summary.get("variant_denominators_exhaustive") != 0 or scenario_summary.get("dedicated_runtime_reports") != 0:
+        raise ValueError("未承認Variant分母または存在しない専用Runtime reportを算入しています")
+    if scenario_summary.get("supporting_runtime_artifacts", 0) + scenario_summary.get("supporting_artifacts", 0) + scenario_summary.get("no_supporting_artifacts", 0) != 1000:
+        raise ValueError("既存Artifactの補助Evidence分類が分母を閉じていません")
     if scenario_summary.get("integrated_scenario_rows") != 10 or scenario_summary.get("integrated_runtime_passed") != 0 or scenario_summary.get("authority_atomic_bindings") != 0 or scenario_summary.get("completion_eligible_rows") != 0:
         raise ValueError("統合System非流用またはAuthority／Completion境界が不正です")
     if reference_result.get("counts") != {"total": 10, "evaluated": 10, "bounded_component_evidence": 10, "integrated_runtime_passed": 0, "single_topology_executed": 0, "completion_eligible": 0}:

@@ -19,24 +19,26 @@ import yaml
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "integrations/reference-system/manifest.yaml"
 INVENTORY = ROOT / "definitive/surface-inventory.yaml"
+VARIANT_CONTRACT = ROOT / "definitive/scenario-variant-contract.yaml"
 SOURCES = ROOT / "sources.lock.yaml"
 ENVIRONMENT_LOCK = ROOT / "environments/kind/argocd-v3.5.2.lock"
 RESULT = ROOT / "evidence/reference-system/results.json"
 PROOF_ROOT = ROOT / "evidence/scenarios/behaviors"
 INDEX = ROOT / "evidence/scenarios/index.json"
+RUNTIME_REGISTRY = ROOT / "evidence/scenarios/runtime/index.yaml"
 VALIDATOR = ROOT / "scripts/validate_scenario_proofs.py"
 SCENARIOS = ["normal", "boundary", "rejection", "failure", "recovery", "migration", "operations", "security", "performance", "compatibility"]
 FE_REFERENCE = {
     "repository": "frontend-behavior-atlas",
-    "commit": "deadad18b6588d2c907170a451c3b5cea5ea4192",
+    "commit": "f2e4c4b19156f8e993f48cdcbce23679ad881924",
     "files": {
-        "docs/REFERENCE_SYSTEM.md": "sha256:3e751a7394fa79ad805cf229d053311fbdee86bdfc7efc0e89542999d45e7d1c",
-        "docs/DEFINITIVE_GATE_V2_REFERENCE.md": "sha256:6c8bb8d45a66b7595f22a23596cfa0ab495a4fd593740d9dab6ce138e4d4af89",
-        "scripts/lib/scenario-proof.ts": "sha256:e8ac9f30fef762be5ff37826e357a195faafb411cd7c0803126e27b1792d2bfa",
-        "scripts/generate-scenario-proofs.ts": "sha256:4b095074665cec1c66c80948baaafaaafeef31919b3afa6c3064681d7a951241",
-        "scripts/verify-scenario-proofs.ts": "sha256:2ebe02b5400dce8cbb8d022d35b90c921fedfc6be9af29ca795f1e4b323f9dda",
-        "scripts/test-scenario-proofs.ts": "sha256:fdfa98248b9ede97e8aa406a97b1020643d46ce29d31629f833ced8998f295f6",
-        "scripts/verify-reference-system-evidence.ts": "sha256:0f356e451128294789d7bc6f8b343bc85940258cb612b710d775a7674e10f66c",
+        "docs/REFERENCE_SYSTEM.md": "sha256:5562aa75e57c518c402c31d97885083bed3d1e3abc0af2ecade5c5cb3f188d49",
+        "docs/DEFINITIVE_GATE_V2_REFERENCE.md": "sha256:8e6ec1b9277d5bf0a7d8a36618c42212b2037ca43643e64ec0e79150de19a690",
+        "scripts/lib/scenario-proof.ts": "sha256:8b89ff8d0f042b181abe22a2fb1280546f7534f0525a931c6437a177fdb2432f",
+        "scripts/verify-pattern-scenario-evidence.ts": "sha256:3643d1dd6ab6830d1a729fc0684a6691e8fc7af4b2d85bae3e5ec01d89113469",
+        "scripts/verify-scenario-proofs.ts": "sha256:d6192f7da3b160300690f3a4168846711b366b77f8fc6c28918733db221005cd",
+        "scripts/test-scenario-proofs.ts": "sha256:78e578e66df9d6d3bb59d52f32440e6fd03bf492a67be96afdcea7f2a71d0628",
+        "playwright.pattern-scenario.config.ts": "sha256:93360ee588f65f04692500106e94a4e2e0be9b75645fe87f8fbe87245cb7716a",
     },
 }
 
@@ -238,6 +240,214 @@ def observation(channel: str, evidence: list[dict[str, Any]]) -> dict[str, Any]:
     return {"status": "explicit-gap", "artifact_kind": None, "artifacts": [], "gap": labels[channel]}
 
 
+def exact_file_binding(value: Any, *, expected_prefix: str | None = None) -> bool:
+    if not isinstance(value, dict) or set(value) < {"path", "digest", "bytes"}:
+        return False
+    relative = str(value["path"])
+    path = (ROOT / relative).resolve()
+    try:
+        path.relative_to(ROOT.resolve())
+    except ValueError:
+        return False
+    if expected_prefix is not None and not relative.startswith(expected_prefix):
+        return False
+    return path.is_file() and binding(path) == {key: value[key] for key in ("path", "digest", "bytes")}
+
+
+def load_dedicated_runtime_reports(registry: dict[str, Any]) -> dict[tuple[str, str], dict[str, Any]]:
+    reports: dict[tuple[str, str], dict[str, Any]] = {}
+    used_artifact_paths: set[str] = set()
+    for reference in registry.get("reports", []):
+        if not exact_file_binding(reference):
+            raise ValueError(f"Dedicated Runtime report bindingが不正です: {reference.get('path')}")
+        report = load_json(ROOT / reference["path"])
+        if report.get("id") != reference.get("id"):
+            raise ValueError(f"Dedicated Runtime report IDがregistryと一致しません: {reference.get('id')}")
+        surface_id = report.get("surface_id")
+        scenario = report.get("scenario")
+        key = (surface_id, scenario)
+        if not isinstance(surface_id, str) or scenario not in SCENARIOS or key in reports:
+            raise ValueError(f"Dedicated Runtime report scopeが不正または重複しています: {key}")
+        variant_records = report.get("variants", [])
+        if not isinstance(variant_records, list):
+            raise ValueError(f"Dedicated Runtime variantsが配列ではありません: {report['id']}")
+        variant_ids: set[str] = set()
+        source_verified = bool(variant_records)
+        harness_verified = bool(variant_records)
+        artifact_bindings_verified = True
+        artifact_paths_distinct = True
+        for variant in variant_records:
+            variant_id = variant.get("variant_id")
+            if not isinstance(variant_id, str) or not variant_id or variant_id in variant_ids:
+                raise ValueError(f"Dedicated Runtime Variant IDが不正または重複しています: {report['id']}")
+            variant_ids.add(variant_id)
+            variant_source_verified = variant.get("source", {}).get("owner") == f"{report['id']}:{variant_id}:source" and exact_file_binding(variant.get("source"))
+            variant_harness_verified = variant.get("harness", {}).get("owner") == f"{report['id']}:{variant_id}:harness" and exact_file_binding(variant.get("harness"))
+            source_verified = source_verified and variant_source_verified
+            harness_verified = harness_verified and variant_harness_verified
+            if variant.get("source") and not variant_source_verified:
+                raise ValueError(f"Dedicated Runtime Variant Source bindingが不正です: {report['id']} {variant_id}")
+            if variant.get("harness") and not variant_harness_verified:
+                raise ValueError(f"Dedicated Runtime Variant Harness bindingが不正です: {report['id']} {variant_id}")
+            expected_prefix = f"evidence/scenarios/runtime/artifacts/{report['id']}/{variant_id}/"
+            local_paths: set[str] = set()
+            artifact_kinds = {
+                "resource_state": "kubernetes-resource-state",
+                "controller_log": "argocd-controller-log",
+                "metric": "argocd-prometheus-metric",
+                "trace": "scenario-execution-trace",
+            }
+            for channel in ("resource_state", "controller_log", "metric", "trace"):
+                artifact = variant.get("artifacts", {}).get(channel)
+                if artifact is None:
+                    artifact_bindings_verified = False
+                    continue
+                owner = f"{report['id']}:{variant_id}:{channel}"
+                verified = artifact.get("owner") == owner and artifact.get("kind") == artifact_kinds[channel] and exact_file_binding(artifact, expected_prefix=expected_prefix)
+                artifact_bindings_verified = artifact_bindings_verified and verified
+                artifact_path = artifact.get("path")
+                if artifact_path in local_paths or artifact_path in used_artifact_paths:
+                    artifact_paths_distinct = False
+                if isinstance(artifact_path, str):
+                    local_paths.add(artifact_path)
+                    used_artifact_paths.add(artifact_path)
+        reports[key] = {
+            "reference": {key: reference[key] for key in ("path", "digest", "bytes")},
+            "report": report,
+            "source_verified": source_verified,
+            "harness_verified": harness_verified,
+            "artifact_bindings_verified": artifact_bindings_verified,
+            "artifact_paths_distinct": artifact_paths_distinct,
+        }
+    return reports
+
+
+def surface_variant_contract(surface_id: str, contract: dict[str, Any]) -> dict[str, Any]:
+    denominator = contract["denominator"]
+    override = next((item for item in denominator.get("surface_overrides", []) if item.get("surface_id") == surface_id), None)
+    status = override.get("status") if override else denominator["default_status"]
+    variants = override.get("variants", []) if override else []
+    ids = [item["id"] if isinstance(item, dict) else item for item in variants]
+    if len(ids) != len(set(ids)) or any(not isinstance(item, str) or not item for item in ids):
+        raise ValueError(f"Surface Variant IDが不正または重複しています: {surface_id}")
+    exhaustive = status == "approved-exhaustive" and bool(ids)
+    return {
+        "source": binding(VARIANT_CONTRACT),
+        "status": status,
+        "expected_variant_ids": ids,
+        "exhaustive": exhaustive,
+        "gap": None if exhaustive else "Authority人手Review済みの非空かつexhaustiveなSurface Variant分母がない。",
+    }
+
+
+def evaluate_gap_closure(
+    surface_id: str,
+    scenario: str,
+    variant_contract: dict[str, Any],
+    dedicated: dict[str, Any] | None,
+    expected_components: list[str],
+) -> dict[str, Any]:
+    report = dedicated["report"] if dedicated else {}
+    records = report.get("variants", []) if dedicated else []
+    execution = report.get("execution", {})
+    runtime = report.get("runtime_identity", {})
+    expected_variants = variant_contract["expected_variant_ids"]
+    actual_variants = [record.get("variant_id") for record in records]
+    all_variants = variant_contract["exhaustive"] and sorted(actual_variants) == sorted(expected_variants)
+    retry_zero = bool(records) and execution.get("retries") == 0
+    first_attempt_pass = bool(records) and all(
+        record.get("attempts") == 1
+        and record.get("outcome") == "expected"
+        and record.get("final_status") == "passed"
+        and record.get("error") is None
+        for record in records
+    )
+    oracle_pass = bool(records) and all(
+        record.get("oracle", {}).get("status") == "pass"
+        and bool(record.get("oracle", {}).get("assertions"))
+        for record in records
+    )
+    real_runtime = bool(records) and (
+        runtime.get("profile") == "cluster"
+        and runtime.get("real_argocd_kubernetes_runtime") is True
+    )
+    runtime_identity_complete = real_runtime and (
+        bool(runtime.get("argocd_version"))
+        and bool(runtime.get("kubernetes_api_server_version"))
+        and bool(runtime.get("kubernetes_kubelet_version"))
+        and bool(runtime.get("cluster_uid"))
+        and bool(runtime.get("topology_digest"))
+        and set(expected_components) <= set(runtime.get("observed_argocd_components", []))
+    )
+    exact_scope = bool(records) and report.get("surface_id") == surface_id and report.get("scenario") == scenario
+    channels = ("resource_state", "controller_log", "metric", "trace")
+    artifact_conditions = {
+        f"per_variant_{channel}_artifact": bool(records)
+        and all(isinstance(record.get("artifacts", {}).get(channel), dict) for record in records)
+        and bool(dedicated and dedicated["artifact_bindings_verified"])
+        for channel in channels
+    }
+    conditions = {
+        "variant_denominator_exhaustive": variant_contract["exhaustive"],
+        "exact_surface_scenario_scope": exact_scope,
+        "all_variants_driven": all_variants,
+        "real_argocd_kubernetes_runtime": real_runtime,
+        "retry_zero": retry_zero,
+        "first_attempt_pass": first_attempt_pass,
+        "oracle_pass": oracle_pass,
+        "source_digest_bound": bool(dedicated and dedicated["source_verified"]),
+        "harness_digest_bound": bool(dedicated and dedicated["harness_verified"]),
+        "runtime_identity_complete": runtime_identity_complete,
+        **artifact_conditions,
+        "artifact_paths_dedicated_and_distinct": bool(dedicated and dedicated["artifact_bindings_verified"] and dedicated["artifact_paths_distinct"]),
+        "integrated_or_other_metadata_reuse_absent": bool(dedicated and dedicated["artifact_bindings_verified"] and dedicated["artifact_paths_distinct"]),
+    }
+    closed = all(conditions.values())
+    closure_artifacts = {}
+    for channel in channels:
+        artifacts = [
+            {"variant_id": record.get("variant_id"), "artifact": record.get("artifacts", {}).get(channel)}
+            for record in records
+            if isinstance(record.get("artifacts", {}).get(channel), dict)
+        ]
+        condition = conditions[f"per_variant_{channel}_artifact"]
+        closure_artifacts[channel] = {
+            "status": "artifact" if condition else "explicit-gap",
+            "artifacts": artifacts,
+            "gap": None if condition else f"全Variant所有の専用{channel} Artifactが揃っていない。",
+        }
+    return {
+        "status": "closed" if closed else "open",
+        "scenario_gap_closed": closed,
+        "variant_contract": variant_contract,
+        "dedicated_runtime_report": dedicated["reference"] if dedicated else None,
+        "dedicated_runtime_record_ids": [f"{report.get('id')}:{variant}" for variant in actual_variants] if dedicated else [],
+        "source_bindings": [
+            {"variant_id": record.get("variant_id"), "source": record.get("source")}
+            for record in records
+        ],
+        "harness_bindings": [
+            {"variant_id": record.get("variant_id"), "harness": record.get("harness")}
+            for record in records
+        ],
+        "runtime_identity": runtime if dedicated else None,
+        "oracle_records": [
+            {"variant_id": record.get("variant_id"), "oracle": record.get("oracle")}
+            for record in records
+        ],
+        "artifacts": closure_artifacts,
+        "conditions": conditions,
+        "failed_conditions": [key for key, passed in conditions.items() if not passed],
+        "closure_evidence_source": "dedicated-surface-scenario-runtime-registry-only",
+        "prohibited_substitutions": [
+            "integrated-reference-result",
+            "historical-bundle-evidence",
+            "other-surface-scenario-variant-artifact-metadata",
+            "mock-or-static-runtime",
+        ],
+    }
+
+
 def build_reference_result(manifest: dict[str, Any], evidence_cache: dict[str, dict[str, Any]]) -> dict[str, Any]:
     rows = []
     for scenario in manifest["scenarios"]:
@@ -312,6 +522,8 @@ def build_proof(
     source: dict[str, Any],
     reference_result: dict[str, Any],
     reference_digest: str,
+    variant_contract: dict[str, Any],
+    dedicated_runtime: dict[str, Any] | None,
 ) -> dict[str, Any]:
     candidate_ids = item_evidence.get(item["id"], [])
     evidence_ids = [
@@ -349,16 +561,18 @@ def build_proof(
     for channel, value in observations.items():
         if value["status"] == "explicit-gap":
             gaps.append(f"{channel}: {value['gap']}")
+    scenario_gap_closure = evaluate_gap_closure(item["id"], scenario, variant_contract, dedicated_runtime, components)
     gaps.extend([
+        *[f"closure-condition: {condition}" for condition in scenario_gap_closure["failed_conditions"]],
         "統合Scenario AuditをBehavior固有Proofへ流用しない。",
         "Authority raw anchorの人手DecisionがなくAtomic behaviorへ昇格していない。",
     ])
     if bound and runtime_identity_complete and component_identity_complete:
-        status = "bounded-runtime-proof"
+        supporting_status = "supporting-runtime-artifact"
     elif bound:
-        status = "bounded-artifact-proof"
+        supporting_status = "supporting-artifact"
     else:
-        status = "behavior-specific-gap"
+        supporting_status = "no-supporting-artifact"
     return {
         "schema_version": 1,
         "id": f"proof.behavior.{item['id']}.{scenario}",
@@ -372,7 +586,12 @@ def build_proof(
         "surface_state": item["state"],
         "scenario": scenario,
         "attempts": 1,
-        "status": status,
+        "status": "scenario-gap-closed" if scenario_gap_closure["scenario_gap_closed"] else "scenario-gap-open",
+        "supporting_evidence_assessment": {
+            "status": supporting_status,
+            "closure_credit": False,
+            "reason": "既存Lab Artifactは専用Surface×Scenario×全Variant Runtime reportではないためClosureへ算入しない。",
+        },
         "authority_binding": {
             "status": "explicit-gap" if local_obligation else "locked-source-candidate",
             "source_id": None if local_obligation else source["id"],
@@ -399,8 +618,12 @@ def build_proof(
             "record": data["record_binding"],
             "artifact": data["artifact_binding"],
             "artifact_matches_record": data["artifact_matches_record"],
+            "role": "supporting-historical-not-scenario-gap-closure",
+            "closure_credit": False,
         } for data in bound],
         "observations": observations,
+        "observation_role": "supporting-historical-not-scenario-gap-closure",
+        "scenario_gap_closure": scenario_gap_closure,
         "integrated_reference": {
             "manifest": binding(MANIFEST),
             "result": {"path": RESULT.relative_to(ROOT).as_posix(), "digest": reference_digest, "bytes": len(canonical(reference_result))},
@@ -416,9 +639,10 @@ def build_proof(
         "closure": {
             "dedicated_row": True,
             "dedicated_artifact": True,
-            "behavior_specific_evidence": bool(bound),
-            "real_kubernetes_runtime": bool(bound) and all(identity["real_kubernetes_runtime"] for identity in runtime_identities),
-            "runtime_identity_complete": runtime_identity_complete,
+            "supporting_behavior_specific_evidence": bool(bound),
+            "supporting_real_kubernetes_runtime": bool(bound) and all(identity["real_kubernetes_runtime"] for identity in runtime_identities),
+            "supporting_runtime_identity_complete": runtime_identity_complete,
+            "scenario_gap_closed": scenario_gap_closure["scenario_gap_closed"],
             "authority_atomic_binding": False,
             "completion_eligible": False,
         },
@@ -429,8 +653,21 @@ def build_proof(
 def build_all() -> tuple[dict[str, Any], list[tuple[Path, dict[str, Any]]]]:
     manifest = load_yaml(MANIFEST)
     inventory = load_yaml(INVENTORY)
+    variant_contract_document = load_yaml(VARIANT_CONTRACT)
+    runtime_registry = load_yaml(RUNTIME_REGISTRY)
+    dedicated_runtime_reports = load_dedicated_runtime_reports(runtime_registry)
     source_lock = load_yaml(SOURCES)
     source = next(item for item in source_lock["sources"] if item["id"] == inventory["authority"]["source_id"])
+    if variant_contract_document.get("id") != "argocd-scenario-variant-contract-v1" or variant_contract_document.get("reference", {}).get("commit") != FE_REFERENCE["commit"]:
+        raise ValueError("Scenario Variant contract identityまたはFE Referenceが不正です")
+    if runtime_registry.get("id") != "argocd-dedicated-surface-scenario-runtime-registry-v1":
+        raise ValueError("Dedicated Runtime registry identityが不正です")
+    inventory_ids = {item["id"] for item in inventory["items"]}
+    override_ids = [item.get("surface_id") for item in variant_contract_document["denominator"].get("surface_overrides", [])]
+    if len(override_ids) != len(set(override_ids)) or set(override_ids) - inventory_ids:
+        raise ValueError("Scenario Variant overrideが重複または未知Surfaceを参照しています")
+    if {surface_id for surface_id, _ in dedicated_runtime_reports} - inventory_ids:
+        raise ValueError("Dedicated Runtime reportが未知Surfaceを参照しています")
     if [item["id"] for item in manifest["scenarios"]] != SCENARIOS:
         raise ValueError("Reference System Scenario集合または順序が不正です")
     evidence_ids = sorted({evidence_id for scenario in manifest["scenarios"] for evidence_id in scenario["evidence_ids"]})
@@ -443,19 +680,23 @@ def build_all() -> tuple[dict[str, Any], list[tuple[Path, dict[str, Any]]]]:
             item_evidence[item_id].append(evidence_binding["evidence_id"])
     proofs: list[tuple[Path, dict[str, Any]]] = []
     for item in inventory["items"]:
+        variants = surface_variant_contract(item["id"], variant_contract_document)
         for scenario in SCENARIOS:
             path = PROOF_ROOT / item["id"] / f"{scenario}.proof.json"
-            proofs.append((path, build_proof(item, scenario, item_evidence, evidence_cache, source, reference_result, reference_digest)))
-    status_counts = Counter(proof["status"] for _, proof in proofs)
+            dedicated = dedicated_runtime_reports.get((item["id"], scenario))
+            proofs.append((path, build_proof(item, scenario, item_evidence, evidence_cache, source, reference_result, reference_digest, variants, dedicated)))
+    supporting_counts = Counter(proof["supporting_evidence_assessment"]["status"] for _, proof in proofs)
     by_scenario = {}
     for scenario in SCENARIOS:
         rows = [proof for _, proof in proofs if proof["scenario"] == scenario]
         by_scenario[scenario] = {
             "rows": len(rows),
-            "bounded_runtime_proofs": sum(item["status"] == "bounded-runtime-proof" for item in rows),
-            "bounded_artifact_proofs": sum(item["status"] == "bounded-artifact-proof" for item in rows),
-            "behavior_specific_gaps": sum(item["status"] == "behavior-specific-gap" for item in rows),
-            "runtime_identity_complete": sum(item["closure"]["runtime_identity_complete"] for item in rows),
+            "scenario_gaps_closed": sum(item["scenario_gap_closure"]["scenario_gap_closed"] for item in rows),
+            "scenario_gaps_open": sum(not item["scenario_gap_closure"]["scenario_gap_closed"] for item in rows),
+            "supporting_runtime_artifacts": sum(item["supporting_evidence_assessment"]["status"] == "supporting-runtime-artifact" for item in rows),
+            "supporting_artifacts": sum(item["supporting_evidence_assessment"]["status"] == "supporting-artifact" for item in rows),
+            "no_supporting_artifacts": sum(item["supporting_evidence_assessment"]["status"] == "no-supporting-artifact" for item in rows),
+            "supporting_runtime_identity_complete": sum(item["closure"]["supporting_runtime_identity_complete"] for item in rows),
             "authority_atomic_bindings": 0,
             "completion_eligible": 0,
         }
@@ -466,6 +707,7 @@ def build_all() -> tuple[dict[str, Any], list[tuple[Path, dict[str, Any]]]]:
         "path": path.relative_to(ROOT).as_posix(),
         "digest": sha256_bytes(canonical(proof)),
         "status": proof["status"],
+        "supporting_evidence_status": proof["supporting_evidence_assessment"]["status"],
     } for path, proof in proofs]
     index = {
         "schema_version": 1,
@@ -481,6 +723,8 @@ def build_all() -> tuple[dict[str, Any], list[tuple[Path, dict[str, Any]]]]:
             "validator": binding(VALIDATOR),
             "manifest": binding(MANIFEST),
             "surface_inventory": binding(INVENTORY),
+            "variant_contract": binding(VARIANT_CONTRACT),
+            "dedicated_runtime_registry": binding(RUNTIME_REGISTRY),
             "sources_lock": binding(SOURCES),
             "environment_lock": binding(ENVIRONMENT_LOCK),
             "integrated_result": {"path": RESULT.relative_to(ROOT).as_posix(), "digest": reference_digest, "bytes": len(canonical(reference_result))},
@@ -490,10 +734,14 @@ def build_all() -> tuple[dict[str, Any], list[tuple[Path, dict[str, Any]]]]:
             "scenarios": len(SCENARIOS),
             "rows": len(proofs),
             "dedicated_artifacts": len(proofs),
-            "bounded_runtime_proofs": status_counts["bounded-runtime-proof"],
-            "bounded_artifact_proofs": status_counts["bounded-artifact-proof"],
-            "behavior_specific_gaps": status_counts["behavior-specific-gap"],
-            "runtime_identity_complete": sum(proof["closure"]["runtime_identity_complete"] for _, proof in proofs),
+            "scenario_gaps_closed": sum(proof["scenario_gap_closure"]["scenario_gap_closed"] for _, proof in proofs),
+            "scenario_gaps_open": sum(not proof["scenario_gap_closure"]["scenario_gap_closed"] for _, proof in proofs),
+            "variant_denominators_exhaustive": sum(proof["scenario_gap_closure"]["variant_contract"]["exhaustive"] for _, proof in proofs) // len(SCENARIOS),
+            "dedicated_runtime_reports": len(dedicated_runtime_reports),
+            "supporting_runtime_artifacts": supporting_counts["supporting-runtime-artifact"],
+            "supporting_artifacts": supporting_counts["supporting-artifact"],
+            "no_supporting_artifacts": supporting_counts["no-supporting-artifact"],
+            "supporting_runtime_identity_complete": sum(proof["closure"]["supporting_runtime_identity_complete"] for _, proof in proofs),
             "integrated_scenario_rows": len(reference_result["tests"]),
             "integrated_runtime_passed": 0,
             "authority_atomic_bindings": 0,
@@ -503,6 +751,10 @@ def build_all() -> tuple[dict[str, Any], list[tuple[Path, dict[str, Any]]]]:
         "files": files,
         "completion_limits": [
             "現行100 SurfaceはAuthority人手Review済みAtomic behavior母集団ではない。",
+            "Authority人手Review済みのexhaustiveなSurface Variant分母がない行は閉じない。",
+            "Surface×Scenario×全Variantの専用実Argo CD／Kubernetes RuntimeだけをClosureへ算入する。",
+            "retry 0、first-attempt pass、Oracle、Source/Harness digest、Runtime identity、4専用Artifactの全条件を要求する。",
+            "既存Lab bundle、統合結果、別Artifact metadataをClosureへ流用しない。",
             "10 Scenario offline integration auditを各Behavior固有Runtime Proofへ流用しない。",
             "各rowのresource state、controller log、metric、traceはArtifact bindingまたは明示gapのまま保持する。",
             "同一Topology実行、Performance、広域Compatibility、OTLP traceのGapが残る。",
@@ -525,8 +777,9 @@ def main() -> None:
     summary = index["summary"]
     print(
         "Generated Scenario Proof Matrix: "
-        f"rows={summary['rows']} runtime={summary['bounded_runtime_proofs']} artifact={summary['bounded_artifact_proofs']} "
-        f"gaps={summary['behavior_specific_gaps']} authority-atomic=0 completion=0"
+        f"rows={summary['rows']} closed={summary['scenario_gaps_closed']} open={summary['scenario_gaps_open']} "
+        f"supporting-runtime={summary['supporting_runtime_artifacts']} supporting-artifact={summary['supporting_artifacts']} "
+        f"authority-atomic=0 completion=0"
     )
 
 
