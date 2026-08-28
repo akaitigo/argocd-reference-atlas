@@ -24,7 +24,7 @@ jobs:
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
           repository: akaitigo/reference-atlas-core
-          ref: d5c0a6ce757fd5f43af837edd26f55c7325b811e
+          ref: cf9e6e2d981305c83f970c1f21a1ddc9c1109263
           path: .atlas-core
 
       - name: Set up Go
@@ -33,23 +33,8 @@ jobs:
           go-version: "1.26.0"
           cache-dependency-path: .atlas-core/go.sum
 
-      - name: Run atlas validate
-        shell: bash
-        run: |
-          set -euo pipefail
-          manifests=(
-            "$GITHUB_WORKSPACE/atlas.yaml"
-            "$GITHUB_WORKSPACE/mastery.yaml"
-            "$GITHUB_WORKSPACE/sources.lock.yaml"
-            "$GITHUB_WORKSPACE/coverage.yaml"
-            "$GITHUB_WORKSPACE/skill.package.yaml"
-          )
-          while IFS= read -r evidence_file; do
-            manifests+=("$GITHUB_WORKSPACE/$evidence_file")
-          done < <(find evidence -type f \( -name '*.evidence.yaml' -o -name '*.evidence.yml' -o -name '*.evidence.json' \) -print | sort)
-          cd .atlas-core
-          go run ./cmd/atlas validate "${manifests[@]}"
-          go run ./cmd/atlas audit "$GITHUB_WORKSPACE"
+      - name: Run atlas validate and audit
+        run: make ATLAS_CORE="$GITHUB_WORKSPACE/.atlas-core" atlas-validate atlas-audit
 
       - name: Validate Atlas graph and Lab contracts
         run: |

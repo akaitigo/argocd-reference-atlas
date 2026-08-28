@@ -1,0 +1,15 @@
+schema_version: 1
+id: claim.diff.detect-drift
+atlas_id: argocd-reference-atlas
+capability_id: capability.diff.desired-live-comparison
+statement: 既知のLive変更はDiffとして検出され、明示したignoreDifferencesだけが判定対象から除外される。
+status: accepted
+source_ids:
+- argocd-diffing
+- argocd-application-specification
+proof_obligations:
+- id: proof.diff.detect-drift
+  statement: 同期状態とDiff出力を既知の変更集合およびignoreDifferences集合と比較する。
+  acceptance_criteria:
+  - 無視対象外の変更がOutOfSyncを発生させる。
+  - 無視対象のFieldだけを変更しても同じDiffとして報告しない。

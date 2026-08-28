@@ -11,8 +11,9 @@ environment:
   manifest_digest: sha256:fba4965e0c1ef1f37c6fc36c048093d2e098ff73fbfdc1e398a05a3de348c73e
   lab: access-boundary
   argocd_version: v3.5.2
-source_digest: sha256:f099c2cd82ec3cdcac8ad41b8a8499931de288637abe60b2ad73658bbfb04fc8
-harness_digest: sha256:5cf7417aeac9faf94b547756452e368b93026e8c0a2dd1a6bdfecc762433e26a
+source_digest: sha256:485860cb634a7f6095a629b149cb6f1afe2bb36d8f0bc657f1302f95238113df
+harness_digest: sha256:f83f5303a4587de821f0fb2adb0d925d22996ccf56b5e40f9a98005fc22dc210
+harness_path: labs/access-boundary/lab.yaml
 artifact:
   uri: evidence/raw/evidence.access-boundary.v3-5-2/result.json
   digest: sha256:d6ea44ed81d3c64ac5df56192a2554b750d2e7ebb9f7a9c94e8c71493f7e119c

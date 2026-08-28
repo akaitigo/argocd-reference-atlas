@@ -1,0 +1,15 @@
+schema_version: 1
+id: claim.sync.deterministic-order
+atlas_id: argocd-reference-atlas
+capability_id: capability.sync.order-and-policy
+statement: 固定したSync waveを持つResource群は、同じ入力で宣言した順序制約に従って適用される。
+status: accepted
+source_ids:
+- argocd-sync-options
+- argocd-application-specification
+proof_obligations:
+- id: proof.sync.deterministic-order
+  statement: Resource annotation、event、operation resultからwave境界と失敗時の停止を判定する。
+  acceptance_criteria:
+  - Sync結果からwave境界ごとの適用順序を復元できる。
+  - 前段waveの失敗時に後段Resourceを成功扱いしない。

@@ -12,8 +12,9 @@ environment:
   cluster_name: argocd-atlas-v3-5-2
   kubernetes_context: kind-argocd-atlas-v3-5-2
   argocd_version: v3.5.2
-source_digest: sha256:e10b27cdf75945287a8027c643a39db5d5e164fca8b3fb527749d42aa776d1fb
-harness_digest: sha256:35a160d2e2bf84971adc0df28ed0e92ff65e9feacb17a00ed4d6ad927c9f3ba9
+source_digest: sha256:485860cb634a7f6095a629b149cb6f1afe2bb36d8f0bc657f1302f95238113df
+harness_digest: sha256:8e801d21354dd2e041a604b0eb1bd186b27ad124e5c4ec5c5c90e2f81f7204ad
+harness_path: labs/sync/lab.yaml
 artifact:
   uri: evidence/raw/evidence.sync.v3-5-2/result.json
   digest: sha256:04e188eaa1c8cfca6c90c7a1b87494166a6eb67c95ba4b9cbf69021cc934bcad

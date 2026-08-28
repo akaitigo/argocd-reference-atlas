@@ -1,0 +1,18 @@
+schema_version: 1
+id: claim.operations.bounded-runbook
+atlas_id: argocd-reference-atlas
+capability_id: capability.operations.bounded-runbook
+statement: 日常のRefresh、Sync、Wait、診断、停止、Backupは事前条件、Timeout、観測点、終了条件を持つ境界付きRunbookとして再実行できる。
+status: accepted
+source_ids:
+- argocd-architecture
+- argocd-metrics
+- argocd-disaster-recovery
+- argocd-sync-options
+proof_obligations:
+- id: proof.operations.bounded-runbook
+  statement: Runbook各操作の対象確認、有限Timeout、終了Code、Cleanup後Resource集合を検査する。
+  acceptance_criteria:
+  - 各操作が対象ApplicationとClusterを実行前に表示して検証する。
+  - Waitと診断に有限Timeoutがあり、失敗時に成功終了しない。
+  - Cleanup後に一時Credential、Port forward、Fixture Resourceを残さない。

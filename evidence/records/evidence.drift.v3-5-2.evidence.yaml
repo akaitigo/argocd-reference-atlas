@@ -11,8 +11,9 @@ environment:
   manifest_digest: sha256:fba4965e0c1ef1f37c6fc36c048093d2e098ff73fbfdc1e398a05a3de348c73e
   lab: drift
   argocd_version: v3.5.2
-source_digest: sha256:f099c2cd82ec3cdcac8ad41b8a8499931de288637abe60b2ad73658bbfb04fc8
-harness_digest: sha256:11c22c3d9a5d6295caa65627f9545a47058f3dc19217792e8d4508f3e67189d7
+source_digest: sha256:485860cb634a7f6095a629b149cb6f1afe2bb36d8f0bc657f1302f95238113df
+harness_digest: sha256:ca0517f791acc949fdd871f9af2cdb9596f84b58947f7cf331da9160aaa02471
+harness_path: labs/drift/lab.yaml
 artifact:
   uri: evidence/raw/evidence.drift.v3-5-2/result.json
   digest: sha256:37ae3fe3310efa64e41cfd9ba96a6ec42c76f74259839d2ce00bde031a3aae26

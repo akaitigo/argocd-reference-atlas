@@ -1,0 +1,17 @@
+schema_version: 1
+id: claim.recovery.restore-state
+atlas_id: argocd-reference-atlas
+capability_id: capability.recovery.control-plane-restore
+statement: 固定したBackupから復元すると、Application、AppProject、対象ApplicationSetの意味的な管理状態を再構成できる。
+status: accepted
+source_ids:
+- argocd-disaster-recovery
+- argocd-application-crd
+- argocd-appproject-crd
+- argocd-applicationset-crd
+proof_obligations:
+- id: proof.recovery.restore-state
+  statement: Backup前後で主要CRの正規化済みspec集合とArgo CD Versionを比較する。
+  acceptance_criteria:
+  - Backup artifactとRestore入力のDigestが一致する。
+  - Restore後の主要CRについて正規化したspecがBackup前と一致する。

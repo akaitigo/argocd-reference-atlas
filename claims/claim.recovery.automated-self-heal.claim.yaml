@@ -1,0 +1,16 @@
+schema_version: 1
+id: claim.recovery.automated-self-heal
+atlas_id: argocd-reference-atlas
+capability_id: capability.recovery.automated-self-heal
+statement: Automated syncとselfHealを明示したApplicationは既知のLive Driftを自動でDesired stateへ戻し、未指定のpruneまたはallowEmptyを暗黙に有効化しない。
+status: accepted
+source_ids:
+- argocd-automated-sync
+- argocd-application-specification
+proof_obligations:
+- id: proof.recovery.automated-self-heal
+  statement: selfHeal前後のLive value、prune無効時のResource集合、retry時刻列を宣言Policyと比較する。
+  acceptance_criteria:
+  - selfHeal有効時にLive Driftが手動SyncなしでDesired stateへ戻る。
+  - prune無効時にGitから除外したFixture Resourceが自動削除されない。
+  - retry limitとbackoffを設定した場合に試行が宣言した上限を超えない。

@@ -2,7 +2,7 @@
 
 `argocd-reference-atlas`は、Argo CD **v3.5.2**の主要な挙動を、固定した一次資料、反証可能なClaim、ローカルクラスタで再実行できるLab、Digestで束縛したEvidenceとして扱うProduct Atlasです。
 
-現在の状態は`incomplete`です。21 TargetのLab／Eval Evidenceは生成済みですが、Performance、広いCompatibility、Publication Gate、Completion Certificateが揃うまでは完成を主張しません。残差は[`docs/MASTERY_GAPS.md`](docs/MASTERY_GAPS.md)に明示します。
+現在の状態は固定Epoch `2026-08-28`に対して`complete`です。21 TargetのLab／Eval Evidence、6 Targetの明示的除外、Core v1の8 ClosureをCompletion Certificateへ固定します。これはArgo CD全Versionや大規模本番環境の一般保証ではありません。境界は[`docs/MASTERY_GAPS.md`](docs/MASTERY_GAPS.md)に明示します。
 
 ## 対象
 
@@ -52,7 +52,7 @@ sources.lock.yaml
 
 ## 検証
 
-共通5 Manifestは`reference-atlas-core`の固定commit `d5c0a6c`に含まれる`atlas validate`で検証し、Repository全体は`atlas audit`で横断監査します。
+共通5 Manifestは`reference-atlas-core` v1.0.0の固定commit `cf9e6e2`に含まれる`atlas validate`で検証し、Repository全体は`atlas audit`で横断監査します。
 
 ```sh
 atlas validate atlas.yaml mastery.yaml sources.lock.yaml coverage.yaml skill.package.yaml

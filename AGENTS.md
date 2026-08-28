@@ -4,7 +4,7 @@
 
 ## Canonical sources
 
-- 共通契約は`reference-atlas-core` commit `d5c0a6c`のSchema、Migration Contract、Mastery Contractを正本とする。
+- 共通契約は`reference-atlas-core` v1.0.0 commit `cf9e6e2`のSchema、Migration Contract、Mastery Contractを正本とする。
 - `atlas.yaml`、`mastery.yaml`、`sources.lock.yaml`、`coverage.yaml`、`skill.package.yaml`を共通Manifestの正本とする。
 - Argo CD固有のClaimとLab対応は`atlas/claims/`と`labs/`で保持し、共通Schemaへ製品固有項目を追加しない。
 

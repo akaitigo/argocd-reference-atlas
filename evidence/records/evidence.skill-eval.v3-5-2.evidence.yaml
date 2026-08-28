@@ -11,8 +11,9 @@ environment:
   manifest_digest: sha256:6e2b4099b7ed2bd9de6e24e2a856c4a0317a6f119fe1d4cab1e20e9ccd7cbafa
   lab: skill-eval
   argocd_version: v3.5.2
-source_digest: sha256:c76a2b01256195b0bdb26fa55a4498a108704ad94dd0c02ae8e724d32fffc2a1
-harness_digest: sha256:0c27fd717f26bacac88dcd41e94308e4084303537319e11a65802cac624b5b78
+source_digest: sha256:485860cb634a7f6095a629b149cb6f1afe2bb36d8f0bc657f1302f95238113df
+harness_digest: sha256:5f48f9b90144afe08729085f0601394aabe9a79edf6375117efd5006693fc698
+harness_path: labs/skill-eval/lab.yaml
 artifact:
   uri: evidence/raw/evidence.skill-eval.v3-5-2/result.json
   digest: sha256:38ff58c91a99726f59368669cfcc607615b10b238613af33ec20d18f9d5ca0a0

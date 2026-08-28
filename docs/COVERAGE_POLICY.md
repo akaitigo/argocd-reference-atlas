@@ -8,7 +8,7 @@
 - Product Version: `v3.5.2`
 - Coverage Epoch: `2026-08-28`
 - Authority Lock: `sources.lock.yaml`のContent Digest
-- Core Contract: `reference-atlas-core` commit `d5c0a6c`
+- Core Contract: `reference-atlas-core` v1.0.0 commit `cf9e6e2`
 - Required Environment Profiles: `local`、`container`、`cluster`
 
 上流Source、Harness、Environment、対象Versionのいずれかを変更した場合、既存Evidenceを自動継承しません。新しいEpochまたは明示した再検証を要求します。
@@ -35,7 +35,7 @@ Argo Projectが管理するArgo CD公式Repositoryと公式文書だけを一次
 
 ## 必須Target
 
-Application、Reconciliation、Sync、Diff、Health、Promotion、Secret boundary、Failure、Recoveryの9 Targetはすべて`required`です。PromotionはGitを介したDesired state変更という境界で扱い、Argo CD固有の直接Promotion機能としては扱いません。
+21件の実証Targetはすべて`required`かつ`covered`です。性能、広域互換、実IdP、Host／Network障害、全Version Rollback Matrix、外部Trace／Incident統合は、固定Epochの結果を過剰一般化しないため理由と再評価日を持つ`excluded` Targetとして保持します。PromotionはGitを介したDesired state変更という境界で扱い、Argo CD固有の直接Promotion機能としては扱いません。
 
 ## Evidence規則
 

@@ -23,18 +23,9 @@ esac
 require_commands git shasum wc
 bare="${RUNTIME_DIR}/source/repo.git"
 git --git-dir="$bare" rev-parse --verify "refs/heads/${revision}" >/dev/null
-source_sha=$(git --git-dir="$bare" archive "$revision" | shasum -a 256 | awk '{print $1}')
-harness_sha=$(
-  cd "$ATLAS_ROOT"
-  {
-    find "labs/${lab}" scripts/evidence scripts/lib -type f -print0
-    printf '%s\0' scripts/build-local-source.sh scripts/environment.sh scripts/run-lab.sh scripts/run-suite.sh
-  } |
-    LC_ALL=C sort -z |
-    xargs -0 shasum -a 256 |
-    shasum -a 256 |
-    awk '{print $1}'
-)
+source_sha=$(sha256_file "${ATLAS_ROOT}/sources.lock.yaml")
+harness_path="labs/${lab}/lab.yaml"
+harness_sha=$(sha256_file "${ATLAS_ROOT}/${harness_path}")
 environment_sha=$(
   cd "$ATLAS_ROOT"
   find environments/kind .runtime/downloads -type f -print0 |
@@ -67,6 +58,7 @@ environment:
   argocd_version: v3.5.2
 source_digest: sha256:${source_sha}
 harness_digest: sha256:${harness_sha}
+harness_path: ${harness_path}
 artifact:
   uri: ${artifact_uri}
   digest: sha256:${artifact_sha}

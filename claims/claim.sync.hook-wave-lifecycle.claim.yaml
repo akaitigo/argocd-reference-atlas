@@ -1,0 +1,16 @@
+schema_version: 1
+id: claim.sync.hook-wave-lifecycle
+atlas_id: argocd-reference-atlas
+capability_id: capability.sync.hook-wave-lifecycle
+statement: 固定したHook phaseとSync waveを持つResource群はphase、wave、kind、nameの順序規則に従い、Hook削除PolicyをLifecycleへ反映する。
+status: accepted
+source_ids:
+- argocd-sync-waves
+- argocd-sync-options
+proof_obligations:
+- id: proof.sync.hook-wave-lifecycle
+  statement: Operation result、Resource作成時刻、Hook削除後集合からphase、wave、cleanupの順序を検証する。
+  acceptance_criteria:
+  - PreSync、Sync、PostSyncの観測順序をoperation resultから復元できる。
+  - waveの小さいResourceが同一phaseの大きいwaveより先にHealthyとなる。
+  - 選択したHook削除Policyの結果が実行後のResource集合と一致する。

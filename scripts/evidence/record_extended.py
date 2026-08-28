@@ -6,7 +6,6 @@
 from __future__ import annotations
 
 import hashlib
-import subprocess
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -58,23 +57,8 @@ def tree_digest(paths: list[Path]) -> str:
     return digest.hexdigest()
 
 
-def source_digest(lab: str) -> str:
-    if lab == "skill-eval":
-        return tree_digest([
-            ROOT / ".agents/skills/argocd-atlas-router",
-            ROOT / "coverage.yaml",
-            ROOT / "atlas/claims/index.yaml",
-            ROOT / "evals/forward-cases.json",
-        ])
-    bare = ROOT / ".runtime/source/repo.git"
-    if not bare.is_dir():
-        fail("ローカルGit fixtureがありません")
-    archive = subprocess.run(
-        ["git", f"--git-dir={bare}", "archive", "main"],
-        check=True,
-        stdout=subprocess.PIPE,
-    ).stdout
-    return hashlib.sha256(archive).hexdigest()
+def source_digest() -> str:
+    return hashlib.sha256((ROOT / "sources.lock.yaml").read_bytes()).hexdigest()
 
 
 def main() -> int:
@@ -90,24 +74,12 @@ def main() -> int:
             fail(f"raw artifactがありません: {artifact.relative_to(ROOT)}")
 
         if lab == "skill-eval":
-            harness_paths = [ROOT / "scripts/grade_skill_forward_eval.py", spec]
             environment_paths = [ROOT / "evals/forward-cases.json", artifact]
             profile = "local"
             version = "v3.5.2"
             producer = "codex-independent-forward-evaluator"
             command = "make skill-forward-eval"
         else:
-            harness_paths = [
-                ROOT / "scripts/extended/common.sh",
-                ROOT / "scripts/extended/run.sh",
-                ROOT / "scripts/extended/run-suite.sh",
-                ROOT / "scripts/extended/cases" / f"{lab}.sh",
-                ROOT / "scripts/evidence/record_extended.py",
-                ROOT / "scripts/build-local-source.sh",
-                spec,
-            ]
-            if lab in {"high-availability", "upgrade-migration"}:
-                harness_paths.append(ROOT / "scripts/extended/isolation.sh")
             if lab == "high-availability":
                 environment_paths = [
                     ROOT / "environments/kind/argocd-v3.5.2-ha.lock",
@@ -152,8 +124,9 @@ def main() -> int:
                 f"  manifest_digest: sha256:{tree_digest(environment_paths)}",
                 f"  lab: {lab}",
                 f"  argocd_version: {version}",
-                f"source_digest: sha256:{source_digest(lab)}",
-                f"harness_digest: sha256:{tree_digest(harness_paths)}",
+                f"source_digest: sha256:{source_digest()}",
+                f"harness_digest: sha256:{hashlib.sha256(spec.read_bytes()).hexdigest()}",
+                f"harness_path: {spec.relative_to(ROOT)}",
                 "artifact:",
                 f"  uri: {artifact.relative_to(ROOT)}",
                 f"  digest: sha256:{hashlib.sha256(content).hexdigest()}",

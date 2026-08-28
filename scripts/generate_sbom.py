@@ -16,7 +16,12 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "sbom.spdx.json"
 IGNORED_DIRECTORIES = {".git", ".runtime", ".cache", "__pycache__"}
-IGNORED_FILES = {"sbom.spdx.json", ".DS_Store"}
+IGNORED_FILES = {
+    "sbom.spdx.json",
+    "provenance.yaml",
+    "evidence/completion-certificate.json",
+    ".DS_Store",
+}
 
 
 def source_files() -> list[Path]:

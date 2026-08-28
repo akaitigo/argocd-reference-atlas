@@ -1,0 +1,15 @@
+schema_version: 1
+id: claim.application.desired-state
+atlas_id: argocd-reference-atlas
+capability_id: capability.application.declarative-model
+statement: 固定したApplicationを作成すると、指定したSourceとDestinationがStatusへ反映される。
+status: accepted
+source_ids:
+- argocd-application-crd
+- argocd-application-specification
+proof_obligations:
+- id: proof.application.desired-state
+  statement: Applicationの正規化済みspecとstatusを入力Manifestおよび対象Resourceと比較する。
+  acceptance_criteria:
+  - Applicationのspec.sourceとspec.destinationが入力Manifestと一致する。
+  - Application statusが対象Resourceの同期状態を観測可能にする。

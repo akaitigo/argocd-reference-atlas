@@ -1,0 +1,17 @@
+schema_version: 1
+id: claim.connection.register-and-reject
+atlas_id: argocd-reference-atlas
+capability_id: capability.connection.repository-cluster-registration
+statement: 有効なRepositoryとCluster connectionは個別に登録・照会でき、無効な資格情報または接続先は成功として扱われない。
+status: accepted
+source_ids:
+- argocd-architecture
+- argocd-private-repositories
+- argocd-cluster-management
+proof_obligations:
+- id: proof.connection.register-and-reject
+  statement: 有効・無効FixtureごとのRepositoryとCluster接続状態を比較し、Credential値を伏せて判定する。
+  acceptance_criteria:
+  - 有効なFixture repositoryとClusterが接続可能状態として観測される。
+  - 無効Credentialまたは到達不能Endpointが接続成功として記録されない。
+  - CaptureへCredential平文を保存しない。

@@ -1,0 +1,17 @@
+schema_version: 1
+id: claim.observability.correlate-signals
+atlas_id: argocd-reference-atlas
+capability_id: capability.observability.correlate-signals
+statement: Argo CD v3.5.2のComponent metricとLogをApplicationのSync、Health、Reconciliation eventへ時系列で相関できる。
+status: accepted
+source_ids:
+- argocd-metrics
+- argocd-reconcile-optimization
+- argocd-architecture
+proof_obligations:
+- id: proof.observability.correlate-signals
+  statement: 既知操作の時刻とApplication状態、Component metric、構造化Logを共通識別子で相関する。
+  acceptance_criteria:
+  - Application Controller、API Server、Repository ServerのMetric endpointからSampleを取得できる。
+  - 既知のSyncまたはDrift操作をApplication識別子付きの状態、MetricまたはLogへ対応付けられる。
+  - CredentialやSecret値をTelemetry artifactへ含めない。

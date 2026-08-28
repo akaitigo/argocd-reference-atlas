@@ -2,9 +2,9 @@
 
 ## 目的と境界
 
-本AtlasはArgo CD v3.5.2を単一のProduct Versionとして固定し、ApplicationからRecoveryまでの9領域を実行可能な仕様Graphにします。「Argo CDのすべて」や「GitOpsのすべて」を主張せず、`2026-08-28`のCoverage Epochと`sources.lock.yaml`のAuthority Corpusに対して未検証状態を明示します。
+本AtlasはArgo CD v3.5.2を単一のProduct Versionとして固定し、21件の実証Targetと6件の明示的除外を有限な仕様Graphにします。「Argo CDのすべて」や「GitOpsのすべて」を主張せず、`2026-08-28`のCoverage Epochと`sources.lock.yaml`のAuthority Corpusにだけ完成判定を限定します。
 
-共通Contractは`reference-atlas-core` commit `d5c0a6c`です。共通Schemaを製品固有Fieldで拡張せず、Argo CD固有情報は`atlas/`、`labs/`、`evidence/`に保持します。`mastery.yaml`は分野を増やさず、既存Coverageを8 Outcomeと14 Surfaceから辿る上位契約です。
+共通Contractは`reference-atlas-core` v1.0.0 commit `cf9e6e2`です。共通Schemaを製品固有Fieldで拡張せず、Argo CD固有情報は`atlas/`、`labs/`、`evidence/`に保持します。`mastery.yaml`は分野を増やさず、既存Coverageを8 Outcomeと14 Surfaceから辿る上位契約です。
 
 ## Canonical Graph
 
@@ -60,4 +60,4 @@ Secretの生成・保管・復号責任をArgo CDの外に置きます。Reposit
 
 ## 完成状態
 
-`status: complete`へ移行できるのは、Authority、Coverage、Mastery、Claim、Execution、Operational、Skill、Publicationの8 Closureがすべて通過し、生成済みCompletion CertificateがRelease入力をDigest固定した場合だけです。それまでは`incomplete`を維持します。
+`status: complete`は、Authority、Coverage、Mastery、Claim、Execution、Operational、Skill、Publicationの8 Closureを通過し、生成済みCompletion CertificateがRelease入力をDigest固定した場合だけ維持します。いずれかのDigestまたは必須Gateが崩れた場合は`incomplete`へ戻します。

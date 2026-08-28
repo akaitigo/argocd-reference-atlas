@@ -1,0 +1,16 @@
+schema_version: 1
+id: claim.availability.component-redundancy
+atlas_id: argocd-reference-atlas
+capability_id: capability.availability.component-redundancy
+statement: HA fixtureで冗長化したComponentの単一Pod停止は、定めた観測期間内にReplicaを回復し、検証対象のread経路を継続可能にする。
+status: accepted
+source_ids:
+- argocd-high-availability
+- argocd-architecture
+proof_obligations:
+- id: proof.availability.component-redundancy
+  statement: Replica構成、Pod停止、read probe、Replica回復の時系列を比較し、保証した機能範囲だけを合格とする。
+  acceptance_criteria:
+  - 対象Componentが複数Replicaまたは文書化されたShard構成を持つ。
+  - 単一Pod停止後にControllerがDesired replica数を回復する。
+  - 障害中と復旧後の利用可能な機能および非保証範囲を区別して記録する。

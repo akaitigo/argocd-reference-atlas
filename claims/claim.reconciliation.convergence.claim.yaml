@@ -1,0 +1,15 @@
+schema_version: 1
+id: claim.reconciliation.convergence
+atlas_id: argocd-reference-atlas
+capability_id: capability.reconciliation.continuous-loop
+statement: Live resourceへ既知のDriftを導入するとArgo CDが差分を検出し、明示したSync操作後にDesired stateへ収束する。
+status: accepted
+source_ids:
+- argocd-install-manifest
+- argocd-application-crd
+proof_obligations:
+- id: proof.reconciliation.convergence
+  statement: Drift導入前後とSync後のApplication sync statusおよびResource値を比較する。
+  acceptance_criteria:
+  - Drift導入後にApplicationがOutOfSyncとして観測される。
+  - Sync後にResourceの観測値がGitで固定した値と一致する。

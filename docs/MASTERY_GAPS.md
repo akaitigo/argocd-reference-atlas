@@ -1,4 +1,4 @@
-# Mastery Gap
+# Mastery Closureと明示的除外
 
 `mastery.yaml`はArgo CDという対象分野を増やすものではなく、既存Coverageを「理解、選択、構築、検証、運用、診断、進化、委任」のOutcomeと14 Surfaceから利用できるか判定する契約です。
 
@@ -9,7 +9,7 @@
 - Authority Lock、Capability／Claim／Proof Graph、1 Router Skill、19件の静的Eval Corpus、8件の独立forward Eval
 - Apache-2.0、NOTICE、第三者Manifest、決定論的SPDX SBOM、DCO／Security方針
 
-## `complete`を阻止している不足
+## 固定Epochで一般保証しない範囲
 
 - Performance／Capacity／CostのBenchmarkと回帰基準
 - 対応Kubernetes Version、Source generator、CLI／APIのCompatibility Evidence
@@ -17,7 +17,6 @@
 - 分散Trace、Incident rehearsal、Capacityを統合した運用Evidence
 - 実Identity Providerとの対話Login、MFA、Group claim変化を含むSSO E2E
 - Node／host／network partitionを含むHA試験とRTO／RPO Benchmark
-- `local`、`container`、`cluster`全Required Profileを閉じるEvidence集合
-- Release Artifact、署名、Completion Certificate、人手による権利・商標・Security Review
+- 公開GitHub上でのRelease、署名Tag、外部配布物、人手による権利・商標・Security Review
 
-21 Targetが`covered`になっても、上記Performance／Compatibility／Operational／Publication Closureが残るため、`atlas.yaml`は`status: incomplete`を維持します。件数を満たすためのTarget分割や、根拠のない`not-applicable`指定では解消しません。
+上記のうち技術的な非保証範囲は、理由と再評価日を持つ6件の`excluded` Coverage Targetとして固定しています。21件の実証Target、Core v1 Claim／Evidence Graph、Required Profile、Skill Eval、Provenance、ローカルCompletion Certificateの全Gateを通した固定Epochだけを`complete`とします。GitHub公開、Release作成、署名Tagはこの作業では行いません。

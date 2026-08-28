@@ -1,16 +1,18 @@
 schema_version: 1
-id: evidence.architecture.v3-5-2
+id: evidence.architecture-container-profile.v3-5-2
 atlas_id: argocd-reference-atlas
-claim_ids: [claim.architecture.component-boundaries]
+claim_ids:
+- claim.architecture.component-boundaries
 kind: conformance
-producer: argocd-atlas-kind-extended-harness
+producer: argocd-atlas-kind-container-profile-adapter
 command: make extended-lab-architecture
-created_at: "2026-08-28T08:00:15Z"
+created_at: '2026-08-28T08:00:15Z'
 environment:
-  profile: cluster
+  profile: container
   manifest_digest: sha256:fba4965e0c1ef1f37c6fc36c048093d2e098ff73fbfdc1e398a05a3de348c73e
   lab: architecture
   argocd_version: v3.5.2
+  profile_basis: Kind node containers on the local Docker runtime
 source_digest: sha256:485860cb634a7f6095a629b149cb6f1afe2bb36d8f0bc657f1302f95238113df
 harness_digest: sha256:9e17c371905959032827e0a1554696d6994cd4c86baafb9409d411933032aba9
 harness_path: labs/architecture/lab.yaml

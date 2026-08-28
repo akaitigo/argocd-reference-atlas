@@ -1,0 +1,15 @@
+schema_version: 1
+id: claim.promotion.git-boundary
+atlas_id: argocd-reference-atlas
+capability_id: capability.promotion.git-mediated-change
+statement: このAtlasのPromotionはGit上の環境宣言変更であり、Argo CDは変更済みRevisionをReconcileするが環境間Promotion自体は行わない。
+status: accepted
+source_ids:
+- argocd-application-specification
+- argocd-sync-options
+proof_obligations:
+- id: proof.promotion.git-boundary
+  statement: Promotion前後のGit Revision、Application observed revision、Resource値を同一記録で照合する。
+  acceptance_criteria:
+  - Promotion前後のGit RevisionとDesired stateをEvidenceから追跡できる。
+  - Argo CD側の観測結果をGit変更の代替となるPromotion APIとして記録しない。

@@ -1,0 +1,17 @@
+schema_version: 1
+id: claim.migration.preflight-and-verify
+atlas_id: argocd-reference-atlas
+capability_id: capability.migration.preflight-and-verify
+statement: v3.4からv3.5への移行判断は公式Upgrade GuideのBreaking ChangeとDeprecated Surfaceを事前検査し、Backupと事後検証を成功条件に含める。
+status: accepted
+source_ids:
+- argocd-upgrade-3-4-to-3-5
+- argocd-disaster-recovery
+- argocd-version
+proof_obligations:
+- id: proof.migration.preflight-and-verify
+  statement: Preflight結果、Backup Digest、Version遷移、主要CRとApplication状態を移行Acceptance Criteriaへ照合する。
+  acceptance_criteria:
+  - Fixture設定に対してv3.5のBreaking ChangeとMigration actionを対応付ける。
+  - Upgrade前BackupのDigestと復元手順を記録する。
+  - Upgrade後のVersion、主要CR、Application sync/healthを検証し、不一致時の停止条件を示す。

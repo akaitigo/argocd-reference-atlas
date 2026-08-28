@@ -1,0 +1,16 @@
+schema_version: 1
+id: claim.applicationset.generated-applications
+atlas_id: argocd-reference-atlas
+capability_id: capability.applicationset.generator-templating
+statement: 固定したList generatorとTemplateを持つApplicationSetはparameter setに対応するApplication集合を生成し、入力変更後に集合を更新する。
+status: accepted
+source_ids:
+- argocd-applicationset-crd
+- argocd-applicationset-introduction
+- argocd-applicationset-specification
+proof_obligations:
+- id: proof.applicationset.generated-applications
+  statement: Generator入力と生成後Applicationの正規化済みspec集合を要素単位で比較する。
+  acceptance_criteria:
+  - Generatorの各elementに対応するApplicationの正規化済みspecがTemplate結果と一致する。
+  - Element追加または削除後にApplication集合が宣言したPolicyどおり更新される。

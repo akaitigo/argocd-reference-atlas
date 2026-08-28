@@ -1,0 +1,15 @@
+schema_version: 1
+id: claim.health.aggregate-status
+atlas_id: argocd-reference-atlas
+capability_id: capability.health.resource-assessment
+statement: Fixture Resourceの状態変更がApplicationのHealthへ反映され、HealthyとDegradedを区別できる。
+status: accepted
+source_ids:
+- argocd-health
+- argocd-application-crd
+proof_obligations:
+- id: proof.health.aggregate-status
+  statement: FixtureのReady条件とApplication health statusの対応を状態遷移ごとに比較する。
+  acceptance_criteria:
+  - ReadyなFixtureでApplicationがHealthyとして観測される。
+  - 失敗FixtureでApplicationがDegradedまたはProgressingとして観測される。

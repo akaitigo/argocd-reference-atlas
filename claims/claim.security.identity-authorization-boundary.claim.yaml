@@ -1,0 +1,17 @@
+schema_version: 1
+id: claim.security.identity-authorization-boundary
+atlas_id: argocd-reference-atlas
+capability_id: capability.security.identity-authorization-boundary
+statement: SSOまたはFixture Identityから得た主体はArgo CD RBACで認可され、許可されないApplication操作とCredential参照を拒否される。
+status: accepted
+source_ids:
+- argocd-rbac
+- argocd-user-management
+- argocd-secret-management
+proof_obligations:
+- id: proof.security.identity-authorization-boundary
+  statement: Fixture主体ごとの許可・拒否MatrixをRBAC policyと照合し、認証情報を伏せて判定する。
+  acceptance_criteria:
+  - 許可Roleの主体が対象Applicationのread操作を実行できる。
+  - 同じ主体による許可外Projectの操作が拒否される。
+  - Token、Client Secret、RepositoryまたはCluster Credentialの値をEvidenceへ保存しない。

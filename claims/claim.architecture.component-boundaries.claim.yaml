@@ -1,0 +1,15 @@
+schema_version: 1
+id: claim.architecture.component-boundaries
+atlas_id: argocd-reference-atlas
+capability_id: capability.architecture.component-boundaries
+statement: Argo CD v3.5.2のAPI Server、Repository Server、Application Controllerは異なる責任を持ち、固定した入力から各Componentの境界を観測できる。
+status: accepted
+source_ids:
+- argocd-architecture
+- argocd-install-manifest
+proof_obligations:
+- id: proof.architecture.component-boundaries
+  statement: 実行中Workload、ServiceAccount、Service、Network endpointを公式Component責任表へ対応付ける。
+  acceptance_criteria:
+  - API操作、Manifest生成、Desired/Live比較を担当するComponentを実行環境から識別できる。
+  - ComponentごとのServiceAccount、Service、DeploymentまたはStatefulSetをCaptureできる。

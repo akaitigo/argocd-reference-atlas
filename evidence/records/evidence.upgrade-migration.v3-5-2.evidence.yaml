@@ -11,8 +11,9 @@ environment:
   manifest_digest: sha256:39af380f11956c83641d08da483fcd828edfc784e77f327468e92736d00f1f3e
   lab: upgrade-migration
   argocd_version: v3.4.8-to-v3.5.2
-source_digest: sha256:f099c2cd82ec3cdcac8ad41b8a8499931de288637abe60b2ad73658bbfb04fc8
-harness_digest: sha256:17b3987289c84e1f8390a38c6a8fc8bd87aa7a26d39435d75beaf3738765549e
+source_digest: sha256:485860cb634a7f6095a629b149cb6f1afe2bb36d8f0bc657f1302f95238113df
+harness_digest: sha256:0cc92cdba956488c5749c71d5dd5fd6e3543ae1a4476c9f91131ce3f878bebab
+harness_path: labs/upgrade-migration/lab.yaml
 artifact:
   uri: evidence/raw/evidence.upgrade-migration.v3-5-2/result.json
   digest: sha256:4e52548e5b48e5ea031cb8b9a0eddbc9f40a21f5f010de0bd54a535ffd3e2e80

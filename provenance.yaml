@@ -1,0 +1,196 @@
+schema_version: 1
+atlas_id: argocd-reference-atlas
+generated_at: '2026-08-28T00:00:00+09:00'
+artifacts:
+- path: evidence/raw/evidence.access-boundary.v3-5-2/result.json
+  digest: sha256:d6ea44ed81d3c64ac5df56192a2554b750d2e7ebb9f7a9c94e8c71493f7e119c
+  kind: capture
+  license: Apache-2.0
+  source_ids:
+  - argocd-rbac
+  - argocd-user-management
+  - argocd-secret-management
+  generated_by: make extended-lab-access-boundary
+- path: evidence/raw/evidence.application.v3-5-2/result.json
+  digest: sha256:0a05bcd6a68a6d839c85ecd3b8d1a0015d2b863df39ef87112c81ace6922e922
+  kind: capture
+  license: Apache-2.0
+  source_ids:
+  - argocd-application-crd
+  - argocd-application-specification
+  generated_by: make lab-application
+- path: evidence/raw/evidence.applicationset.v3-5-2/result.json
+  digest: sha256:60cd2340ee3b3d239c897271c4bccd10b4390e9aca4f3882e4370fa0b5a9f0f6
+  kind: capture
+  license: Apache-2.0
+  source_ids:
+  - argocd-applicationset-crd
+  - argocd-applicationset-introduction
+  - argocd-applicationset-specification
+  generated_by: make extended-lab-applicationset
+- path: evidence/raw/evidence.architecture.v3-5-2/result.json
+  digest: sha256:703d97b1765f9434691bdc51778e74261574dc8c4e90dbdef20664fa2bae4fd2
+  kind: capture
+  license: Apache-2.0
+  source_ids:
+  - argocd-architecture
+  - argocd-install-manifest
+  generated_by: make extended-lab-architecture
+- path: evidence/raw/evidence.auto-recovery.v3-5-2/result.json
+  digest: sha256:b3af7188f84822f1c5cfc1d5145d4949e1e43f1fedd57570b6ce4810481a76e8
+  kind: capture
+  license: Apache-2.0
+  source_ids:
+  - argocd-automated-sync
+  - argocd-application-specification
+  generated_by: make extended-lab-auto-recovery
+- path: evidence/raw/evidence.connection.v3-5-2/result.json
+  digest: sha256:43284faa25ee4e41ffd22a0078e1a9159293b33ebe4a5f3d163cda19d718a59c
+  kind: capture
+  license: Apache-2.0
+  source_ids:
+  - argocd-architecture
+  - argocd-private-repositories
+  - argocd-cluster-management
+  generated_by: make extended-lab-connection
+- path: evidence/raw/evidence.diff.v3-5-2/result.json
+  digest: sha256:5a18652055ce087f8baf7e2e03d5d0339bc982288ba93a4348fd9a6405216d7e
+  kind: capture
+  license: Apache-2.0
+  source_ids:
+  - argocd-diffing
+  - argocd-application-specification
+  generated_by: make lab-diff
+- path: evidence/raw/evidence.drift.v3-5-2/result.json
+  digest: sha256:37ae3fe3310efa64e41cfd9ba96a6ec42c76f74259839d2ce00bde031a3aae26
+  kind: capture
+  license: Apache-2.0
+  source_ids:
+  - argocd-resource-tracking
+  - argocd-diffing
+  - argocd-reconcile-optimization
+  generated_by: make extended-lab-drift
+- path: evidence/raw/evidence.failure.v3-5-2/result.json
+  digest: sha256:58949503ed287a1622a8bd04b420fa8b8b3490fb5d77e010655ec9bba16020bd
+  kind: capture
+  license: Apache-2.0
+  source_ids:
+  - argocd-install-manifest
+  - argocd-application-crd
+  generated_by: make lab-failure
+- path: evidence/raw/evidence.health.v3-5-2/result.json
+  digest: sha256:e7fc692c01b10030734baecfe4a0d687d3a797f8f688872aaae3fb3aba157899
+  kind: capture
+  license: Apache-2.0
+  source_ids:
+  - argocd-health
+  - argocd-application-crd
+  generated_by: make lab-health
+- path: evidence/raw/evidence.high-availability.v3-5-2/result.json
+  digest: sha256:775c6f17c2c6b9d414ae6c07266fa1ff152a330a78ae9107a4bf32e3ba1eeab6
+  kind: capture
+  license: Apache-2.0
+  source_ids:
+  - argocd-high-availability
+  - argocd-architecture
+  generated_by: make extended-lab-high-availability
+- path: evidence/raw/evidence.hook-wave.v3-5-2/result.json
+  digest: sha256:af5255f15a12c857a38d70810f9a926d387c20d27dfeb8517a97e27116558603
+  kind: capture
+  license: Apache-2.0
+  source_ids:
+  - argocd-sync-waves
+  - argocd-sync-options
+  generated_by: make extended-lab-hook-wave
+- path: evidence/raw/evidence.observability.v3-5-2/result.json
+  digest: sha256:098cf152a2c95f7c82311a6e2d29b0f46da85e267bccd03cc6bb1399e9e454d1
+  kind: capture
+  license: Apache-2.0
+  source_ids:
+  - argocd-metrics
+  - argocd-reconcile-optimization
+  - argocd-architecture
+  generated_by: make extended-lab-observability
+- path: evidence/raw/evidence.operations.v3-5-2/result.json
+  digest: sha256:5968b4e4b75f4aae7558133d98e953638d5c30881a25832eddb0e43a6ed74b52
+  kind: capture
+  license: Apache-2.0
+  source_ids:
+  - argocd-architecture
+  - argocd-metrics
+  - argocd-disaster-recovery
+  - argocd-sync-options
+  generated_by: make extended-lab-operations
+- path: evidence/raw/evidence.promotion.v3-5-2/result.json
+  digest: sha256:ca502bf39eeb209ab733e43d529fa12ef48eef19ae2eac31552714598c15ac11
+  kind: capture
+  license: Apache-2.0
+  source_ids:
+  - argocd-application-specification
+  - argocd-sync-options
+  generated_by: make lab-promotion
+- path: evidence/raw/evidence.reconciliation.v3-5-2/result.json
+  digest: sha256:198eb01b96dbd52ee1cb634e286fc18a7e5c53b68170bfa32f86e5d3f22e6abf
+  kind: capture
+  license: Apache-2.0
+  source_ids:
+  - argocd-install-manifest
+  - argocd-application-crd
+  generated_by: make lab-reconciliation
+- path: evidence/raw/evidence.recovery.v3-5-2/result.json
+  digest: sha256:1ce151748b3ea147fabfeb66db0a620abb33f62edbaa312844942511fde950a7
+  kind: capture
+  license: Apache-2.0
+  source_ids:
+  - argocd-disaster-recovery
+  - argocd-application-crd
+  - argocd-appproject-crd
+  - argocd-applicationset-crd
+  generated_by: make lab-recovery
+- path: evidence/raw/evidence.security.v3-5-2/result.json
+  digest: sha256:43f49900cca996064ccf415c37dfca9131570a6f19c40da96975c2ae51211c8d
+  kind: capture
+  license: Apache-2.0
+  source_ids:
+  - argocd-secret-management
+  - argocd-application-specification
+  generated_by: make lab-security
+- path: evidence/raw/evidence.skill-eval.v3-5-2/result.json
+  digest: sha256:38ff58c91a99726f59368669cfcc607615b10b238613af33ec20d18f9d5ca0a0
+  kind: skill-eval
+  license: Apache-2.0
+  source_ids:
+  - argocd-version
+  - argocd-architecture
+  generated_by: make skill-forward-eval
+- path: evidence/raw/evidence.sync.v3-5-2/result.json
+  digest: sha256:04e188eaa1c8cfca6c90c7a1b87494166a6eb67c95ba4b9cbf69021cc934bcad
+  kind: capture
+  license: Apache-2.0
+  source_ids:
+  - argocd-sync-options
+  - argocd-application-specification
+  generated_by: make lab-sync
+- path: evidence/raw/evidence.upgrade-migration.v3-5-2/result.json
+  digest: sha256:4e52548e5b48e5ea031cb8b9a0eddbc9f40a21f5f010de0bd54a535ffd3e2e80
+  kind: capture
+  license: Apache-2.0
+  source_ids:
+  - argocd-upgrade-3-4-to-3-5
+  - argocd-disaster-recovery
+  - argocd-version
+  generated_by: make extended-lab-upgrade-migration
+- path: evals/argocd-router-v0-1-0.skill-eval.json
+  digest: sha256:8da24f44b5e6e2f01ad6bef4ef6d00e13dfa25ed6b834ca5f3141b8b0fc69b29
+  kind: skill-eval
+  license: Apache-2.0
+  source_ids:
+  - argocd-version
+  - argocd-architecture
+  generated_by: scripts/generate_core_v1_metadata.py graph
+- path: sbom.spdx.json
+  digest: sha256:093f55a62aae509b1cbd3d208f23bd7a4341c2cc5e252f9a54edfd06e6db34fa
+  kind: sbom
+  license: CC0-1.0
+  source_ids: []
+  generated_by: scripts/generate_sbom.py

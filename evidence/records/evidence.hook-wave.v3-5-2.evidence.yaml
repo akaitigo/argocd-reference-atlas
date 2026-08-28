@@ -11,8 +11,9 @@ environment:
   manifest_digest: sha256:fba4965e0c1ef1f37c6fc36c048093d2e098ff73fbfdc1e398a05a3de348c73e
   lab: hook-wave
   argocd_version: v3.5.2
-source_digest: sha256:f099c2cd82ec3cdcac8ad41b8a8499931de288637abe60b2ad73658bbfb04fc8
-harness_digest: sha256:25b703b2eed6069d9d7f8a51c487246e786935f54d82fc8982f9dea543e42165
+source_digest: sha256:485860cb634a7f6095a629b149cb6f1afe2bb36d8f0bc657f1302f95238113df
+harness_digest: sha256:87e167b5eb2fb9ff35c2e018d554f225dc6adebae380a0f1a3c22654420ec2f4
+harness_path: labs/hook-wave/lab.yaml
 artifact:
   uri: evidence/raw/evidence.hook-wave.v3-5-2/result.json
   digest: sha256:af5255f15a12c857a38d70810f9a926d387c20d27dfeb8517a97e27116558603

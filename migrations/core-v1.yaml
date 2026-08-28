@@ -1,51 +1,19 @@
 schema_version: 1
-migration_id: argocd-executable-reference-to-core-v1
-core:
-  repository: reference-atlas-core
-  commit: d5c0a6ce757fd5f43af837edd26f55c7325b811e
-source:
-  repository_id: argocd-executable-reference
-  title: Argo CD Executable Reference
-  record_kind: prior-research-inventory
-target:
-  repository_id: argocd-reference-atlas
-  title: Argo CD 技術実証アトラス
-  archetypes: [product]
-  status: incomplete
-record_mappings:
-  - source_id: application
-    capability_id: capability.application.declarative-model
-    coverage_target_id: application.declarative-model
-  - source_id: reconciliation
-    capability_id: capability.reconciliation.continuous-loop
-    coverage_target_id: reconciliation.continuous-loop
-  - source_id: sync
-    capability_id: capability.sync.order-and-policy
-    coverage_target_id: sync.order-and-policy
-  - source_id: diff
-    capability_id: capability.diff.desired-live-comparison
-    coverage_target_id: diff.desired-live-comparison
-  - source_id: health
-    capability_id: capability.health.resource-assessment
-    coverage_target_id: health.resource-assessment
-  - source_id: promotion
-    capability_id: capability.promotion.git-mediated-change
-    coverage_target_id: promotion.git-mediated-change
-  - source_id: secret-boundary
-    capability_id: capability.security.secret-boundary
-    coverage_target_id: security.secret-boundary
-  - source_id: failure
-    capability_id: capability.failure.degraded-dependency
-    coverage_target_id: failure.degraded-dependency
-  - source_id: recovery
-    capability_id: capability.recovery.control-plane-restore
-    coverage_target_id: recovery.control-plane-restore
-preservation:
-  prior_research: retained-as-canonical-graph-input
-  evidence: no-preexisting-evidence-files
-  git_history: no-preexisting-repository-history
-  completion_status_inherited: false
-notes:
-  - 旧調査の9領域を欠落なくCapabilityとCoverage Targetへ対応させた。
-  - 既存4 Target SetをMastery Contract v1の8 Outcomeと14 Surfaceへ接続した。
-  - Core v1の全Gateを再検証するまで旧資料から完成状態を継承しない。
+atlas_id: argocd-reference-atlas
+from: argocd-executable-reference
+to: core-v1
+generated_at: "2026-08-28T00:00:00+09:00"
+id_mappings:
+  - {legacy_id: application, target_id: application.declarative-model, disposition: renamed, reason: 旧領域名を有限なCoverage Target IDへ固定した。}
+  - {legacy_id: reconciliation, target_id: reconciliation.continuous-loop, disposition: renamed, reason: 旧領域名を有限なCoverage Target IDへ固定した。}
+  - {legacy_id: sync, target_id: sync.order-and-policy, disposition: renamed, reason: 旧領域名を有限なCoverage Target IDへ固定した。}
+  - {legacy_id: diff, target_id: diff.desired-live-comparison, disposition: renamed, reason: 旧領域名を有限なCoverage Target IDへ固定した。}
+  - {legacy_id: health, target_id: health.resource-assessment, disposition: renamed, reason: 旧領域名を有限なCoverage Target IDへ固定した。}
+  - {legacy_id: promotion, target_id: promotion.git-mediated-change, disposition: renamed, reason: Git媒介という製品境界をTarget IDへ固定した。}
+  - {legacy_id: secret-boundary, target_id: security.secret-boundary, disposition: renamed, reason: Security Target Setの明示的境界へ移した。}
+  - {legacy_id: failure, target_id: failure.degraded-dependency, disposition: renamed, reason: 依存障害時の安全な劣化へ意味を限定した。}
+  - {legacy_id: recovery, target_id: recovery.control-plane-restore, disposition: renamed, reason: Control Plane状態の復元へ意味を限定した。}
+compatibility:
+  classification: additive
+  legacy_paths_preserved: true
+  sunset_date: null

@@ -1,0 +1,17 @@
+schema_version: 1
+id: claim.drift.classify-and-refresh
+atlas_id: argocd-reference-atlas
+capability_id: capability.drift.classify-and-refresh
+statement: 追跡対象Resourceの意味的変更はDriftとして再評価され、明示的に無視した非意味的更新だけが不要なRefreshから除外される。
+status: accepted
+source_ids:
+- argocd-resource-tracking
+- argocd-diffing
+- argocd-reconcile-optimization
+proof_obligations:
+- id: proof.drift.classify-and-refresh
+  statement: 意味的spec変更と無視対象Field更新を別々に注入し、Refresh、Diff、Tracking結果を比較する。
+  acceptance_criteria:
+  - 追跡対象のspec変更がApplication refreshとOutOfSync判定を発生させる。
+  - 無視規則に一致するField更新は期待した範囲だけRefreshまたはDiffから除外される。
+  - Tracking method、Diff ignore、resource update ignoreの適用点を別々にCaptureする。

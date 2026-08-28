@@ -1,0 +1,15 @@
+schema_version: 1
+id: claim.failure.safe-degradation
+atlas_id: argocd-reference-atlas
+capability_id: capability.failure.degraded-dependency
+statement: 隔離した依存障害中はApplicationが成功を偽装せず、依存復旧後に人手で状態を書き換えず再評価される。
+status: accepted
+source_ids:
+- argocd-install-manifest
+- argocd-application-crd
+proof_obligations:
+- id: proof.failure.safe-degradation
+  statement: 障害注入、異常状態、依存復旧、再評価の順序を時刻付きCaptureで検証する。
+  acceptance_criteria:
+  - 障害中のApplication conditionまたは同期失敗をCaptureできる。
+  - 依存復旧後に再評価され、正常な同期操作を再実行できる。
