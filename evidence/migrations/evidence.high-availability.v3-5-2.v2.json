@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "baseline_id": "public-main-v0.1.0",
+  "baseline_commit": "d9838017fd1a883b927afec56cf8bb5130c0816a",
+  "old_evidence_id": "evidence.high-availability.v3-5-2",
+  "new_evidence_id": "evidence.high-availability.v3-5-2",
+  "from_artifact_sha256": "775c6f17c2c6b9d414ae6c07266fa1ff152a330a78ae9107a4bf32e3ba1eeab6",
+  "to_artifact_sha256": "6fe217a67aa7f956f53f627a06cce1a982ee77cf2264ecc31b1fc88d49b8f249",
+  "reason": "既存の3-node HA、Redis master停止、read/metrics観測を維持し、Application Controllerとrepo-serverの独立Pod障害、UID交代、controller復旧後のDrift再収束、repo-server復旧後のHard Refreshを追加した。",
+  "execution_proof": {
+    "command": "make extended-lab-high-availability",
+    "environment": "kind-argocd-atlas-ha-v3-5-2 / Kubernetes v1.34.0 / Argo CD v3.5.2",
+    "verdict": "pass",
+    "artifact": "evidence/raw/evidence.high-availability.v3-5-2/result.json",
+    "assertions_preserved": [
+      "公式HA manifestの複数replica",
+      "Redis master Pod障害前後のUID交代とmaster応答回復",
+      "障害窓中のApplication readとserver metrics read"
+    ],
+    "assertions_added": [
+      "Application Controller Pod障害前後のUID交代",
+      "Controller復旧後のLive Drift検出と再収束",
+      "repo-server Pod障害前後のUID交代",
+      "repo-server復旧後のHard Refresh成功"
+    ]
+  }
+}

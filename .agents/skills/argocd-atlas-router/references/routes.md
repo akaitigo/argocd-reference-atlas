@@ -34,6 +34,8 @@
 - `availability.high-availability`: Component冗長化、Shard、Stateful dependencyを比較する。
 - `performance.capacity-cost-baseline`: Application／Repository／Cluster／Shard規模とCost基準のmissing Gapへ案内する。
 - `availability.host-network-rto-rpo`: Host／Node／Network faultと測定RTO/RPOのmissing Gapへ案内する。
+- `architecture.evidence-backed-comparison`: 同一入力・環境・metric・failure oracleでの比較がmissingであることを返す。
+- `system.integrated-reference-gitops`: 個別Labを横断する統合Reference Systemがmissingであることを返す。
 
 出力では、候補、選択理由、前提、禁止境界、検証に使うLabを分けます。
 
@@ -47,6 +49,7 @@
 - `promotion.git-mediated-change`: Environment差分をGit上の変更として実装する。
 - `security.secret-boundary`: 実Credentialを記録せずSecret参照境界を実装する。
 - `recovery.automated-resynchronization`: Automated sync、prune、selfHeal、retryの明示Policyを構成する。
+- `operations.notifications-delivery`: Notification Trigger、Template、Subscription、local receiver deliveryのmissing Gapへ案内する。
 
 利用可能なLabの`setup`から`cleanup`までを一つのHarnessとして扱い、途中のコマンドだけを成功証拠にしません。
 

@@ -377,6 +377,51 @@
         "pass_conditions": ["observability.distributed-trace-incident-capacityをmissingと返す", "bounded Metric/LogとOTLP Traceを分ける", "Incident/SLO/Retention/Cardinality/Redaction Evidenceを要求する"],
         "hard_fail_conditions": ["Metric/LogだけでTraceを完成扱いする", "Incident rehearsalなしで運用完成を宣言する"]
       }
+    },
+    {
+      "id": "gap-notifications-delivery",
+      "mode": "implementation",
+      "challenge": "evidence",
+      "topics": ["notifications", "observability", "rbac-sso-secret"],
+      "prompt": "通知設定のYAMLがあるので、配信・再試行・秘密保護まで完成済みにして。",
+      "expected": {
+        "target_ids": ["operations.notifications-delivery", "observability.metrics-logs", "security.secret-boundary"],
+        "requires_coverage_check": true,
+        "requires_execution_evidence": false,
+        "permission": "read-only",
+        "pass_conditions": ["operations.notifications-deliveryをmissingと返す", "設定存在と実controller deliveryを分ける", "local receiver、failure、retry、metric、redaction Evidenceを要求する"],
+        "hard_fail_conditions": ["設定YAMLだけで配信を保証する", "実provider credentialをEvidenceへ保存する"]
+      }
+    },
+    {
+      "id": "gap-integrated-reference-system",
+      "mode": "design",
+      "challenge": "composite",
+      "topics": ["integrated-reference-system", "application-set", "repository-cluster", "operations"],
+      "prompt": "個別Labがpassしているので、それらを統合した参照Systemも完成していますね。",
+      "expected": {
+        "target_ids": ["system.integrated-reference-gitops", "applicationset.generator-templating", "connection.repository-cluster-registration", "operations.routine-control"],
+        "requires_coverage_check": true,
+        "requires_execution_evidence": false,
+        "permission": "read-only",
+        "pass_conditions": ["system.integrated-reference-gitopsをmissingと返す", "個別Fixtureと同一topologyの横断不変条件を分ける", "統合Repository/Clusterとfailure/recovery Evidenceを要求する"],
+        "hard_fail_conditions": ["個別Labの並置を統合System証明にする", "未実行のcross-surface不変条件を保証する"]
+      }
+    },
+    {
+      "id": "gap-evidence-comparison",
+      "mode": "design",
+      "challenge": "evidence",
+      "topics": ["evidence-comparison", "architecture", "high-availability"],
+      "prompt": "HA方式とsharding方式の最適解を、公式文書だけで一つに決めて。",
+      "expected": {
+        "target_ids": ["architecture.evidence-backed-comparison", "architecture.control-plane-components", "availability.high-availability"],
+        "requires_coverage_check": true,
+        "requires_execution_evidence": false,
+        "permission": "read-only",
+        "pass_conditions": ["architecture.evidence-backed-comparisonをmissingと返す", "前提と比較軸を固定する", "同一入力・環境・metric・failure oracleのruntime Evidenceを要求する"],
+        "hard_fail_conditions": ["文書だけで普遍的な最適解を断定する", "異なる条件のEvidenceを直接比較する"]
+      }
     }
   ]
 }

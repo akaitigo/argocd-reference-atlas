@@ -6,16 +6,55 @@
   "context": "kind-argocd-atlas-ha-v3-5-2",
   "trace": {
     "high_availability": {
-      "leader_before": "pod/argocd-redis-ha-server-0",
-      "leader_uid_before": "bf6270f3-a5e8-4a48-9273-9903f0bda8d7",
-      "outage_window": {
-        "application_reads_succeeded": 10,
-        "application_reads_failed": 0,
-        "server_metric_reads_succeeded": 10,
-        "server_metric_reads_failed": 0,
-        "attempts": 10
+      "component_failures": {
+        "application_controller": {
+          "component": "application-controller",
+          "pod_before": "argocd-application-controller-0",
+          "pod_uid_before": "4770adbc-be5e-427f-ac75-04bbd574205d",
+          "pod_after": "argocd-application-controller-0",
+          "pod_uid_after": "14c46e7f-8767-4e9b-be86-30a81085d183",
+          "started_at": "2026-08-28T11:04:53Z",
+          "recovered_at": "2026-08-28T11:05:17Z",
+          "recovery_seconds": 24,
+          "application_reads": {
+            "succeeded": 10,
+            "failed": 0,
+            "attempts": 10
+          }
+        },
+        "repo_server": {
+          "component": "repo-server",
+          "pod_before": "argocd-repo-server-6b46849778-ngxfm",
+          "pod_uid_before": "239145a2-0d9f-4b38-ac24-d5053b1fca21",
+          "pod_after": "argocd-repo-server-6b46849778-v84l7",
+          "pod_uid_after": "5ab3e7dc-31a2-42ab-adaa-89cdc4db98d2",
+          "started_at": "2026-08-28T11:05:22Z",
+          "recovered_at": "2026-08-28T11:05:47Z",
+          "recovery_seconds": 25,
+          "application_reads": {
+            "succeeded": 10,
+            "failed": 0,
+            "attempts": 10
+          }
+        }
       },
-      "leader_after": "pod/argocd-redis-ha-server-1",
+      "controller_reconciled_post_recovery_drift": true,
+      "repo_server_completed_hard_refresh_after_recovery": true,
+      "redis": {
+        "leader_before": "pod/argocd-redis-ha-server-0",
+        "leader_uid_before": "3a0ae672-c42f-4d90-b8c5-e250af64d1b1",
+        "leader_promoted_during_outage": "pod/argocd-redis-ha-server-1",
+        "outage_window": {
+          "application_reads_succeeded": 10,
+          "application_reads_failed": 0,
+          "server_metric_reads_succeeded": 10,
+          "server_metric_reads_failed": 0,
+          "attempts": 10
+        },
+        "leader_after": "pod/argocd-redis-ha-server-1",
+        "leader_uid_after": "402630a3-b283-4cfb-ba78-c37d53709f81",
+        "master_process_recovered": true
+      },
       "repo_server_ready": 2,
       "api_server_ready": 2,
       "application_read_path_available": true,
@@ -41,7 +80,7 @@
           "imageID": "quay.io/argoproj/argocd@sha256:e2aadfae709d904e87f46ba4aa49601d827b3022db22cd4d03aae816a2e7097b"
         }
       ],
-      "non_guarantee": "単一Kind host自体の障害耐性は実証対象外"
+      "non_guarantee": "単一Kind host自体の障害耐性、network partition、Redis全停止、別ordinalへの昇格は実証対象外"
     }
   },
   "applications": {
@@ -55,12 +94,12 @@
           "annotations": {
             "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"argoproj.io/v1alpha1\",\"kind\":\"Application\",\"metadata\":{\"annotations\":{},\"name\":\"atlas-extended-high-availability\",\"namespace\":\"argocd\"},\"spec\":{\"destination\":{\"namespace\":\"atlas-extended-high-availability\",\"server\":\"https://kubernetes.default.svc\"},\"project\":\"atlas-extended-high-availability\",\"source\":{\"path\":\"apps/application\",\"repoURL\":\"http://source-server.argocd-atlas-source.svc.cluster.local/repo.git\",\"targetRevision\":\"f1e20c046600f8830e981b55f73b5a17c5cf0d0f\"},\"syncPolicy\":{\"syncOptions\":[\"CreateNamespace=true\"]}}}\n"
           },
-          "creationTimestamp": "2026-08-28T07:51:07Z",
-          "generation": 7,
+          "creationTimestamp": "2026-08-28T11:04:49Z",
+          "generation": 17,
           "name": "atlas-extended-high-availability",
           "namespace": "argocd",
-          "resourceVersion": "1626",
-          "uid": "aea752f1-3fc4-484d-b473-501f85e26392"
+          "resourceVersion": "1782",
+          "uid": "c549d295-d1d6-4d06-9202-d7b5471e1c78"
         },
         "spec": {
           "destination": {
@@ -82,14 +121,26 @@
         "status": {
           "controllerNamespace": "argocd",
           "health": {
-            "lastTransitionTime": "2026-08-28T07:51:10Z",
+            "lastTransitionTime": "2026-08-28T11:04:50Z",
             "status": "Healthy"
           },
           "history": [
             {
-              "deployStartedAt": "2026-08-28T07:51:10Z",
-              "deployedAt": "2026-08-28T07:51:10Z",
+              "deployStartedAt": "2026-08-28T11:04:50Z",
+              "deployedAt": "2026-08-28T11:04:50Z",
               "id": 0,
+              "initiatedBy": {},
+              "revision": "f1e20c046600f8830e981b55f73b5a17c5cf0d0f",
+              "source": {
+                "path": "apps/application",
+                "repoURL": "http://source-server.argocd-atlas-source.svc.cluster.local/repo.git",
+                "targetRevision": "f1e20c046600f8830e981b55f73b5a17c5cf0d0f"
+              }
+            },
+            {
+              "deployStartedAt": "2026-08-28T11:05:19Z",
+              "deployedAt": "2026-08-28T11:05:19Z",
+              "id": 1,
               "initiatedBy": {},
               "revision": "f1e20c046600f8830e981b55f73b5a17c5cf0d0f",
               "source": {
@@ -100,7 +151,7 @@
             }
           ],
           "operationState": {
-            "finishedAt": "2026-08-28T07:51:10Z",
+            "finishedAt": "2026-08-28T11:05:19Z",
             "message": "successfully synced (all tasks run)",
             "operation": {
               "initiatedBy": {},
@@ -110,14 +161,14 @@
               }
             },
             "phase": "Succeeded",
-            "startedAt": "2026-08-28T07:51:10Z",
+            "startedAt": "2026-08-28T11:05:19Z",
             "syncResult": {
               "resources": [
                 {
                   "group": "",
                   "hookPhase": "Running",
                   "kind": "ConfigMap",
-                  "message": "configmap/atlas-application created",
+                  "message": "configmap/atlas-application configured",
                   "name": "atlas-application",
                   "namespace": "atlas-extended-high-availability",
                   "status": "Synced",
@@ -133,7 +184,7 @@
               }
             }
           },
-          "reconciledAt": "2026-08-28T07:51:10Z",
+          "reconciledAt": "2026-08-28T11:05:47Z",
           "resourceHealthSource": "appTree",
           "resources": [
             {
@@ -175,12 +226,12 @@
           "annotations": {
             "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"argoproj.io/v1alpha1\",\"kind\":\"AppProject\",\"metadata\":{\"annotations\":{},\"name\":\"atlas-extended-high-availability\",\"namespace\":\"argocd\"},\"spec\":{\"destinations\":[{\"namespace\":\"atlas-extended-high-availability\",\"server\":\"https://kubernetes.default.svc\"}],\"namespaceResourceWhitelist\":[{\"group\":\"*\",\"kind\":\"*\"}],\"sourceRepos\":[\"http://source-server.argocd-atlas-source.svc.cluster.local/repo.git\"]}}\n"
           },
-          "creationTimestamp": "2026-08-28T07:51:07Z",
+          "creationTimestamp": "2026-08-28T11:04:49Z",
           "generation": 1,
           "name": "atlas-extended-high-availability",
           "namespace": "argocd",
-          "resourceVersion": "1605",
-          "uid": "2cb44a3c-6fd8-4841-ac5a-1df730f5f44b"
+          "resourceVersion": "1592",
+          "uid": "e8ee1fd3-8178-4f5b-83b7-339597db5a40"
         },
         "spec": {
           "destinations": [
@@ -221,28 +272,28 @@
             "argocd.argoproj.io/tracking-id": "atlas-extended-high-availability:/ConfigMap:atlas-extended-high-availability/atlas-application",
             "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"data\":{\"release\":\"v1\"},\"kind\":\"ConfigMap\",\"metadata\":{\"annotations\":{\"argocd.argoproj.io/tracking-id\":\"atlas-extended-high-availability:/ConfigMap:atlas-extended-high-availability/atlas-application\"},\"name\":\"atlas-application\",\"namespace\":\"atlas-extended-high-availability\"}}\n"
           },
-          "creationTimestamp": "2026-08-28T07:51:10Z",
+          "creationTimestamp": "2026-08-28T11:04:50Z",
           "name": "atlas-application",
           "namespace": "atlas-extended-high-availability",
-          "resourceVersion": "1620",
-          "uid": "73368cc7-759f-458f-9f60-f3f038bdd564"
+          "resourceVersion": "1693",
+          "uid": "06124fb0-7903-4061-ad11-0dc76964d5ea"
         }
       },
       {
         "apiVersion": "v1",
         "data": {
-          "ca.crt": "-----BEGIN CERTIFICATE-----\nMIIDBTCCAe2gAwIBAgIIfij3MKfWE/cwDQYJKoZIhvcNAQELBQAwFTETMBEGA1UE\nAxMKa3ViZXJuZXRlczAeFw0yNjA4MjgwNzQwNDVaFw0zNjA4MjUwNzQ1NDVaMBUx\nEzARBgNVBAMTCmt1YmVybmV0ZXMwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEK\nAoIBAQC4FJpmFtbgsmnN4SDRNxQgL5L/tmlsbdG8yeORUW8pMRNYWQsiOf6LvzLJ\nAagDkxGl9IL0Srr8uXtfk4zIU1p9b/DueIfL9Ri0XnAW91GyzHd7ch7Ot1mVbcJQ\nQT+5CREaCwSPJb5n2qX0lbWM1Xy93ONJeSlHMqPjOQzEYtFIWDkILmStnZ14XAMH\nhzmkLREHBuw+VTHzvI22od/yEYXgaJQYgBuxMAAunf2GaeJ1z0lsxXXy2uVAPje2\nnm+iA8BovInkmJUn0II/ibCuDr3I0T1g8Tax9fZ7NBl5Yo9MbQWKu2ijmflZ9tV2\ne4FbNpQbPCr0aacTKLNuPh6XmGxtAgMBAAGjWTBXMA4GA1UdDwEB/wQEAwICpDAP\nBgNVHRMBAf8EBTADAQH/MB0GA1UdDgQWBBSq/6qXgGhRlEeCshey5FYCSfw4HjAV\nBgNVHREEDjAMggprdWJlcm5ldGVzMA0GCSqGSIb3DQEBCwUAA4IBAQCgs+F0Xdqw\nOYKnsCFYLjtb+ZJdJQuzI8MWTJ/KNRjllIyEesAI+H3OgHcMTd4W072j9+RiKx7K\npxyGTe/tbxlanlrFZeMPVZabSBT7jBjbb9owZtgpntajf+JUdohYU68DZwiXpcVL\nZAuIolIPoCGgSKuc6wAQsSHybIPi/uIGAXf8fsJbF3wdUM4s5GafP+zcaubKJ6ni\nv3OLwoTA3dIW6utXANUcWUNIHd2H+jPp0nkpGMF1i9cFPOwwPhinET+h7fu+T55H\nrH/CfiLTvdTI7x9HOv5VwKcfMOitxVD40ObcFi+xnyxtE6g6y5abuTk81DEPp+dR\nJsXFGJuqYPXA\n-----END CERTIFICATE-----\n"
+          "ca.crt": "-----BEGIN CERTIFICATE-----\nMIIDBTCCAe2gAwIBAgIIYH2pXoPZOKUwDQYJKoZIhvcNAQELBQAwFTETMBEGA1UE\nAxMKa3ViZXJuZXRlczAeFw0yNjA4MjgxMDU0NTdaFw0zNjA4MjUxMDU5NTdaMBUx\nEzARBgNVBAMTCmt1YmVybmV0ZXMwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEK\nAoIBAQC/4Hi2oGArSyiX51V5CJzNtFLDOpYGyUwabZ2m4mMs1KxpPEdVfRKi6rzH\n+lNU28tce5XuQHhM+kqkvwlv6LKjbL2yakT1ChcqQr87hQGXjPs4mAOulIkocet8\n95aogeFkagBILpFAstP36wheCxCtv3JcrUKnidDSEnjSJvnMDIi9ux7HMKLxlB96\n8mcre22WolCBDL3GTBdk7rdG+OUDV1hEonHng5Ywr82fzUr6QmtI/d4K2eDCfDP2\nRMq9ijyrAb21oRBzGJKnNgygHtkukxp/phjfJ31YoPgKcRAqoz8LFdnxaui0EtwD\njuR4FD8MEsxfKs/kjoFVGU2tXxbhAgMBAAGjWTBXMA4GA1UdDwEB/wQEAwICpDAP\nBgNVHRMBAf8EBTADAQH/MB0GA1UdDgQWBBRDD49E4M+9sEafo0ODQyiO+ZzVPTAV\nBgNVHREEDjAMggprdWJlcm5ldGVzMA0GCSqGSIb3DQEBCwUAA4IBAQAPf+/ssF1l\ndQKRBBWknpJeF09mBtcSokJbfxrNCdJpWw694XsKTB0ah9IG2jxdTaUNYzoC8jnZ\nq3NxSlZ4OM9AcipEhledv0YgqEEPyBs0jvEQJFCuZFFVuAXs5sTGKQf8lTFTbd4s\n4kvD5f5GQltGipshlpulRUb7r5jlF7vkVkj49tQLXiAupjIXXo51c7H7kgP6yKwY\niNU0FAstbabyDrx99vBTrExveGY4WNR0LuSURSn7uugB3OMhrF0gZDj9QH1YdFEc\nIDdMgO/sJxJdr9dN9FcKpDu+gS4P7SnG32WeAMylUOcqgw3KBCOJaeW6OpIi9qGg\nwhyiwgPSTm10\n-----END CERTIFICATE-----\n"
         },
         "kind": "ConfigMap",
         "metadata": {
           "annotations": {
             "kubernetes.io/description": "Contains a CA bundle that can be used to verify the kube-apiserver when using internal endpoints such as the internal service IP or kubernetes.default.svc. No other usage is guaranteed across distributions of Kubernetes clusters."
           },
-          "creationTimestamp": "2026-08-28T07:51:07Z",
+          "creationTimestamp": "2026-08-28T11:04:48Z",
           "name": "kube-root-ca.crt",
           "namespace": "atlas-extended-high-availability",
-          "resourceVersion": "1603",
-          "uid": "c2671fc2-d6ec-4d94-a824-608ae78bbcfd"
+          "resourceVersion": "1591",
+          "uid": "c5b2e1bc-8615-4c76-9119-3228e224d8fd"
         }
       }
     ],
@@ -261,7 +312,7 @@
           "annotations": {
             "deployment.kubernetes.io/revision": "1"
           },
-          "creationTimestamp": "2026-08-28T07:46:08Z",
+          "creationTimestamp": "2026-08-28T11:00:20Z",
           "generation": 1,
           "labels": {
             "app.kubernetes.io/component": "applicationset-controller",
@@ -270,8 +321,8 @@
           },
           "name": "argocd-applicationset-controller",
           "namespace": "argocd",
-          "resourceVersion": "935",
-          "uid": "e95066e7-52c0-465f-8feb-f9f2d52b39fd"
+          "resourceVersion": "920",
+          "uid": "ee13ffdb-ed65-4d9e-93b9-fabbce0bc1be"
         },
         "spec": {
           "progressDeadlineSeconds": 600,
@@ -865,16 +916,16 @@
           "availableReplicas": 1,
           "conditions": [
             {
-              "lastTransitionTime": "2026-08-28T07:46:39Z",
-              "lastUpdateTime": "2026-08-28T07:46:39Z",
+              "lastTransitionTime": "2026-08-28T11:00:39Z",
+              "lastUpdateTime": "2026-08-28T11:00:39Z",
               "message": "Deployment has minimum availability.",
               "reason": "MinimumReplicasAvailable",
               "status": "True",
               "type": "Available"
             },
             {
-              "lastTransitionTime": "2026-08-28T07:46:08Z",
-              "lastUpdateTime": "2026-08-28T07:46:39Z",
+              "lastTransitionTime": "2026-08-28T11:00:20Z",
+              "lastUpdateTime": "2026-08-28T11:00:39Z",
               "message": "ReplicaSet \"argocd-applicationset-controller-5948565c5c\" has successfully progressed.",
               "reason": "NewReplicaSetAvailable",
               "status": "True",
@@ -894,7 +945,7 @@
           "annotations": {
             "deployment.kubernetes.io/revision": "1"
           },
-          "creationTimestamp": "2026-08-28T07:46:08Z",
+          "creationTimestamp": "2026-08-28T11:00:20Z",
           "generation": 1,
           "labels": {
             "app.kubernetes.io/component": "dex-server",
@@ -903,8 +954,8 @@
           },
           "name": "argocd-dex-server",
           "namespace": "argocd",
-          "resourceVersion": "1068",
-          "uid": "24ca8bbf-1a24-4b35-86db-3534d94e78fe"
+          "resourceVersion": "1098",
+          "uid": "0af61b32-7db8-4076-b30e-d9495b4936e2"
         },
         "spec": {
           "progressDeadlineSeconds": 600,
@@ -1142,16 +1193,16 @@
           "availableReplicas": 1,
           "conditions": [
             {
-              "lastTransitionTime": "2026-08-28T07:47:02Z",
-              "lastUpdateTime": "2026-08-28T07:47:02Z",
+              "lastTransitionTime": "2026-08-28T11:01:02Z",
+              "lastUpdateTime": "2026-08-28T11:01:02Z",
               "message": "Deployment has minimum availability.",
               "reason": "MinimumReplicasAvailable",
               "status": "True",
               "type": "Available"
             },
             {
-              "lastTransitionTime": "2026-08-28T07:46:08Z",
-              "lastUpdateTime": "2026-08-28T07:47:02Z",
+              "lastTransitionTime": "2026-08-28T11:00:20Z",
+              "lastUpdateTime": "2026-08-28T11:01:02Z",
               "message": "ReplicaSet \"argocd-dex-server-5d84584587\" has successfully progressed.",
               "reason": "NewReplicaSetAvailable",
               "status": "True",
@@ -1171,7 +1222,7 @@
           "annotations": {
             "deployment.kubernetes.io/revision": "1"
           },
-          "creationTimestamp": "2026-08-28T07:46:08Z",
+          "creationTimestamp": "2026-08-28T11:00:20Z",
           "generation": 1,
           "labels": {
             "app.kubernetes.io/component": "notifications-controller",
@@ -1180,8 +1231,8 @@
           },
           "name": "argocd-notifications-controller",
           "namespace": "argocd",
-          "resourceVersion": "948",
-          "uid": "473a2f6a-2571-447f-b008-f878bf8aa2b4"
+          "resourceVersion": "1021",
+          "uid": "79490521-f875-4f78-9d37-cf5947a47ee3"
         },
         "spec": {
           "progressDeadlineSeconds": 600,
@@ -1425,16 +1476,16 @@
           "availableReplicas": 1,
           "conditions": [
             {
-              "lastTransitionTime": "2026-08-28T07:46:40Z",
-              "lastUpdateTime": "2026-08-28T07:46:40Z",
+              "lastTransitionTime": "2026-08-28T11:00:48Z",
+              "lastUpdateTime": "2026-08-28T11:00:48Z",
               "message": "Deployment has minimum availability.",
               "reason": "MinimumReplicasAvailable",
               "status": "True",
               "type": "Available"
             },
             {
-              "lastTransitionTime": "2026-08-28T07:46:08Z",
-              "lastUpdateTime": "2026-08-28T07:46:40Z",
+              "lastTransitionTime": "2026-08-28T11:00:20Z",
+              "lastUpdateTime": "2026-08-28T11:00:48Z",
               "message": "ReplicaSet \"argocd-notifications-controller-54b485b4dd\" has successfully progressed.",
               "reason": "NewReplicaSetAvailable",
               "status": "True",
@@ -1454,7 +1505,7 @@
           "annotations": {
             "deployment.kubernetes.io/revision": "1"
           },
-          "creationTimestamp": "2026-08-28T07:46:08Z",
+          "creationTimestamp": "2026-08-28T11:00:20Z",
           "generation": 1,
           "labels": {
             "app.kubernetes.io/component": "redis",
@@ -1463,8 +1514,8 @@
           },
           "name": "argocd-redis-ha-haproxy",
           "namespace": "argocd",
-          "resourceVersion": "1534",
-          "uid": "eb0fa561-ca57-4545-92ed-7c8f8450ca41"
+          "resourceVersion": "1136",
+          "uid": "24a917bf-448d-4ede-b1f5-f5a78a9a3a9c"
         },
         "spec": {
           "progressDeadlineSeconds": 600,
@@ -1696,16 +1747,16 @@
           "availableReplicas": 3,
           "conditions": [
             {
-              "lastTransitionTime": "2026-08-28T07:50:30Z",
-              "lastUpdateTime": "2026-08-28T07:50:30Z",
+              "lastTransitionTime": "2026-08-28T11:01:12Z",
+              "lastUpdateTime": "2026-08-28T11:01:12Z",
               "message": "Deployment has minimum availability.",
               "reason": "MinimumReplicasAvailable",
               "status": "True",
               "type": "Available"
             },
             {
-              "lastTransitionTime": "2026-08-28T07:46:08Z",
-              "lastUpdateTime": "2026-08-28T07:50:30Z",
+              "lastTransitionTime": "2026-08-28T11:00:20Z",
+              "lastUpdateTime": "2026-08-28T11:01:12Z",
               "message": "ReplicaSet \"argocd-redis-ha-haproxy-59b5dcdb4d\" has successfully progressed.",
               "reason": "NewReplicaSetAvailable",
               "status": "True",
@@ -1725,7 +1776,7 @@
           "annotations": {
             "deployment.kubernetes.io/revision": "1"
           },
-          "creationTimestamp": "2026-08-28T07:46:08Z",
+          "creationTimestamp": "2026-08-28T11:00:20Z",
           "generation": 1,
           "labels": {
             "app.kubernetes.io/component": "repo-server",
@@ -1734,8 +1785,8 @@
           },
           "name": "argocd-repo-server",
           "namespace": "argocd",
-          "resourceVersion": "1108",
-          "uid": "61047c9b-e9b5-42f8-ab49-88ee3777fef6"
+          "resourceVersion": "1764",
+          "uid": "ea41c513-08b1-467d-8812-5a0a9739f4bc"
         },
         "spec": {
           "progressDeadlineSeconds": 600,
@@ -2469,20 +2520,20 @@
           "availableReplicas": 2,
           "conditions": [
             {
-              "lastTransitionTime": "2026-08-28T07:47:13Z",
-              "lastUpdateTime": "2026-08-28T07:47:13Z",
-              "message": "Deployment has minimum availability.",
-              "reason": "MinimumReplicasAvailable",
-              "status": "True",
-              "type": "Available"
-            },
-            {
-              "lastTransitionTime": "2026-08-28T07:46:08Z",
-              "lastUpdateTime": "2026-08-28T07:47:13Z",
+              "lastTransitionTime": "2026-08-28T11:00:21Z",
+              "lastUpdateTime": "2026-08-28T11:01:18Z",
               "message": "ReplicaSet \"argocd-repo-server-6b46849778\" has successfully progressed.",
               "reason": "NewReplicaSetAvailable",
               "status": "True",
               "type": "Progressing"
+            },
+            {
+              "lastTransitionTime": "2026-08-28T11:05:36Z",
+              "lastUpdateTime": "2026-08-28T11:05:36Z",
+              "message": "Deployment has minimum availability.",
+              "reason": "MinimumReplicasAvailable",
+              "status": "True",
+              "type": "Available"
             }
           ],
           "observedGeneration": 1,
@@ -2498,7 +2549,7 @@
           "annotations": {
             "deployment.kubernetes.io/revision": "1"
           },
-          "creationTimestamp": "2026-08-28T07:46:08Z",
+          "creationTimestamp": "2026-08-28T11:00:21Z",
           "generation": 1,
           "labels": {
             "app.kubernetes.io/component": "server",
@@ -2507,8 +2558,8 @@
           },
           "name": "argocd-server",
           "namespace": "argocd",
-          "resourceVersion": "1125",
-          "uid": "611c73aa-271e-427d-8c62-76946e650c71"
+          "resourceVersion": "1143",
+          "uid": "30f227ad-76f0-4c91-9db4-944b2d8fe2ca"
         },
         "spec": {
           "progressDeadlineSeconds": 600,
@@ -3386,16 +3437,16 @@
           "availableReplicas": 2,
           "conditions": [
             {
-              "lastTransitionTime": "2026-08-28T07:47:19Z",
-              "lastUpdateTime": "2026-08-28T07:47:19Z",
+              "lastTransitionTime": "2026-08-28T11:01:12Z",
+              "lastUpdateTime": "2026-08-28T11:01:12Z",
               "message": "Deployment has minimum availability.",
               "reason": "MinimumReplicasAvailable",
               "status": "True",
               "type": "Available"
             },
             {
-              "lastTransitionTime": "2026-08-28T07:46:08Z",
-              "lastUpdateTime": "2026-08-28T07:47:19Z",
+              "lastTransitionTime": "2026-08-28T11:00:21Z",
+              "lastUpdateTime": "2026-08-28T11:01:12Z",
               "message": "ReplicaSet \"argocd-server-74cfcfc75f\" has successfully progressed.",
               "reason": "NewReplicaSetAvailable",
               "status": "True",
@@ -3412,7 +3463,7 @@
         "apiVersion": "apps/v1",
         "kind": "StatefulSet",
         "metadata": {
-          "creationTimestamp": "2026-08-28T07:46:08Z",
+          "creationTimestamp": "2026-08-28T11:00:21Z",
           "generation": 1,
           "labels": {
             "app.kubernetes.io/component": "application-controller",
@@ -3421,8 +3472,8 @@
           },
           "name": "argocd-application-controller",
           "namespace": "argocd",
-          "resourceVersion": "1024",
-          "uid": "2beb2601-eb11-4d1b-8ec3-d9558cfb658d"
+          "resourceVersion": "1665",
+          "uid": "6b591737-4d17-411c-83b4-59bb6a83f389"
         },
         "spec": {
           "persistentVolumeClaimRetentionPolicy": {
@@ -4202,7 +4253,7 @@
         "apiVersion": "apps/v1",
         "kind": "StatefulSet",
         "metadata": {
-          "creationTimestamp": "2026-08-28T07:46:08Z",
+          "creationTimestamp": "2026-08-28T11:00:21Z",
           "generation": 1,
           "labels": {
             "app.kubernetes.io/component": "redis",
@@ -4211,8 +4262,8 @@
           },
           "name": "argocd-redis-ha-server",
           "namespace": "argocd",
-          "resourceVersion": "1818",
-          "uid": "434287ac-4b76-48ee-be52-dc298d58489b"
+          "resourceVersion": "2023",
+          "uid": "f0d3ae2e-519b-4458-aaf2-81df1cd3ff31"
         },
         "spec": {
           "persistentVolumeClaimRetentionPolicy": {
@@ -4675,7 +4726,7 @@
         "apiVersion": "v1",
         "kind": "ServiceAccount",
         "metadata": {
-          "creationTimestamp": "2026-08-28T07:46:08Z",
+          "creationTimestamp": "2026-08-28T11:00:20Z",
           "labels": {
             "app.kubernetes.io/component": "application-controller",
             "app.kubernetes.io/name": "argocd-application-controller",
@@ -4683,15 +4734,15 @@
           },
           "name": "argocd-application-controller",
           "namespace": "argocd",
-          "resourceVersion": "510",
-          "uid": "8f930cd2-5406-4d6f-aa24-d78dfa648c74"
+          "resourceVersion": "543",
+          "uid": "aabbb44e-7549-4f61-86d5-a822b9e2aa26"
         }
       },
       {
         "apiVersion": "v1",
         "kind": "ServiceAccount",
         "metadata": {
-          "creationTimestamp": "2026-08-28T07:46:08Z",
+          "creationTimestamp": "2026-08-28T11:00:20Z",
           "labels": {
             "app.kubernetes.io/component": "applicationset-controller",
             "app.kubernetes.io/name": "argocd-applicationset-controller",
@@ -4699,15 +4750,15 @@
           },
           "name": "argocd-applicationset-controller",
           "namespace": "argocd",
-          "resourceVersion": "511",
-          "uid": "a71b2e0c-5911-4547-9248-a4f477671acc"
+          "resourceVersion": "544",
+          "uid": "17531b9d-ce4d-41d3-9a90-04e11cc53096"
         }
       },
       {
         "apiVersion": "v1",
         "kind": "ServiceAccount",
         "metadata": {
-          "creationTimestamp": "2026-08-28T07:46:08Z",
+          "creationTimestamp": "2026-08-28T11:00:20Z",
           "labels": {
             "app.kubernetes.io/component": "dex-server",
             "app.kubernetes.io/name": "argocd-dex-server",
@@ -4715,15 +4766,15 @@
           },
           "name": "argocd-dex-server",
           "namespace": "argocd",
-          "resourceVersion": "512",
-          "uid": "97f11078-3dd0-4d25-b435-7f1eb6aa3fd4"
+          "resourceVersion": "545",
+          "uid": "a5338951-b83b-47da-87a0-e35123311448"
         }
       },
       {
         "apiVersion": "v1",
         "kind": "ServiceAccount",
         "metadata": {
-          "creationTimestamp": "2026-08-28T07:46:08Z",
+          "creationTimestamp": "2026-08-28T11:00:20Z",
           "labels": {
             "app.kubernetes.io/component": "notifications-controller",
             "app.kubernetes.io/name": "argocd-notifications-controller",
@@ -4731,15 +4782,15 @@
           },
           "name": "argocd-notifications-controller",
           "namespace": "argocd",
-          "resourceVersion": "513",
-          "uid": "cff1afab-4441-494b-b468-dbb2d155a50f"
+          "resourceVersion": "546",
+          "uid": "67cc8e11-cbc8-41f2-a4c6-62eafd2939e5"
         }
       },
       {
         "apiVersion": "v1",
         "kind": "ServiceAccount",
         "metadata": {
-          "creationTimestamp": "2026-08-28T07:46:08Z",
+          "creationTimestamp": "2026-08-28T11:00:20Z",
           "labels": {
             "app.kubernetes.io/component": "redis",
             "app.kubernetes.io/name": "argocd-redis-ha",
@@ -4747,8 +4798,8 @@
           },
           "name": "argocd-redis-ha",
           "namespace": "argocd",
-          "resourceVersion": "514",
-          "uid": "2b963fbd-8039-4136-b8a3-d9d35393e6e5"
+          "resourceVersion": "547",
+          "uid": "6a9cdf3a-b8c8-40cf-b57e-63c959f4f0dc"
         },
         "secrets": [
           {
@@ -4760,7 +4811,7 @@
         "apiVersion": "v1",
         "kind": "ServiceAccount",
         "metadata": {
-          "creationTimestamp": "2026-08-28T07:46:08Z",
+          "creationTimestamp": "2026-08-28T11:00:20Z",
           "labels": {
             "app.kubernetes.io/component": "redis",
             "app.kubernetes.io/name": "argocd-redis-ha-haproxy",
@@ -4768,15 +4819,15 @@
           },
           "name": "argocd-redis-ha-haproxy",
           "namespace": "argocd",
-          "resourceVersion": "515",
-          "uid": "098f77cd-6d08-4eb2-95c3-6702e178f91a"
+          "resourceVersion": "548",
+          "uid": "ec6c5bfd-7bd1-4f81-be87-9fa3297e72e2"
         }
       },
       {
         "apiVersion": "v1",
         "kind": "ServiceAccount",
         "metadata": {
-          "creationTimestamp": "2026-08-28T07:46:08Z",
+          "creationTimestamp": "2026-08-28T11:00:20Z",
           "labels": {
             "app.kubernetes.io/component": "repo-server",
             "app.kubernetes.io/name": "argocd-repo-server",
@@ -4784,15 +4835,15 @@
           },
           "name": "argocd-repo-server",
           "namespace": "argocd",
-          "resourceVersion": "516",
-          "uid": "7b12560c-d439-4af2-b1ea-1596807981f3"
+          "resourceVersion": "549",
+          "uid": "1d8a1854-dd9f-4ac9-99cc-78485080e611"
         }
       },
       {
         "apiVersion": "v1",
         "kind": "ServiceAccount",
         "metadata": {
-          "creationTimestamp": "2026-08-28T07:46:08Z",
+          "creationTimestamp": "2026-08-28T11:00:20Z",
           "labels": {
             "app.kubernetes.io/component": "server",
             "app.kubernetes.io/name": "argocd-server",
@@ -4800,26 +4851,26 @@
           },
           "name": "argocd-server",
           "namespace": "argocd",
-          "resourceVersion": "517",
-          "uid": "d32dd50c-a66f-4508-a5ef-7bfae7877b8a"
+          "resourceVersion": "550",
+          "uid": "3ec6f230-680d-4cc1-ab28-a392c388ef57"
         }
       },
       {
         "apiVersion": "v1",
         "kind": "ServiceAccount",
         "metadata": {
-          "creationTimestamp": "2026-08-28T07:46:07Z",
+          "creationTimestamp": "2026-08-28T11:00:19Z",
           "name": "default",
           "namespace": "argocd",
-          "resourceVersion": "501",
-          "uid": "53b6476f-0bf9-4590-95a5-2743d464d06b"
+          "resourceVersion": "536",
+          "uid": "3f8e51fd-e0ec-4600-ba94-d0d44cc78d7c"
         }
       },
       {
         "apiVersion": "rbac.authorization.k8s.io/v1",
         "kind": "RoleBinding",
         "metadata": {
-          "creationTimestamp": "2026-08-28T07:46:08Z",
+          "creationTimestamp": "2026-08-28T11:00:20Z",
           "labels": {
             "app.kubernetes.io/component": "application-controller",
             "app.kubernetes.io/name": "argocd-application-controller",
@@ -4827,8 +4878,8 @@
           },
           "name": "argocd-application-controller",
           "namespace": "argocd",
-          "resourceVersion": "528",
-          "uid": "23cc5b3b-17da-4f23-82df-76b387f72d98"
+          "resourceVersion": "561",
+          "uid": "50ec57ff-9b1d-4b67-af7a-0e2b82eeba1a"
         },
         "roleRef": {
           "apiGroup": "rbac.authorization.k8s.io",
@@ -4846,7 +4897,7 @@
         "apiVersion": "rbac.authorization.k8s.io/v1",
         "kind": "RoleBinding",
         "metadata": {
-          "creationTimestamp": "2026-08-28T07:46:08Z",
+          "creationTimestamp": "2026-08-28T11:00:20Z",
           "labels": {
             "app.kubernetes.io/component": "applicationset-controller",
             "app.kubernetes.io/name": "argocd-applicationset-controller",
@@ -4854,8 +4905,8 @@
           },
           "name": "argocd-applicationset-controller",
           "namespace": "argocd",
-          "resourceVersion": "529",
-          "uid": "d599292d-07c9-4141-9656-864091c03969"
+          "resourceVersion": "562",
+          "uid": "7f5e93f8-4c9e-4248-a861-80a067bd635b"
         },
         "roleRef": {
           "apiGroup": "rbac.authorization.k8s.io",
@@ -4873,7 +4924,7 @@
         "apiVersion": "rbac.authorization.k8s.io/v1",
         "kind": "RoleBinding",
         "metadata": {
-          "creationTimestamp": "2026-08-28T07:46:08Z",
+          "creationTimestamp": "2026-08-28T11:00:20Z",
           "labels": {
             "app.kubernetes.io/component": "dex-server",
             "app.kubernetes.io/name": "argocd-dex-server",
@@ -4881,8 +4932,8 @@
           },
           "name": "argocd-dex-server",
           "namespace": "argocd",
-          "resourceVersion": "530",
-          "uid": "85a1cb4f-8e33-4998-93a4-467fb004e6a0"
+          "resourceVersion": "563",
+          "uid": "54a98187-93cb-4619-9981-6efd1bb7cca4"
         },
         "roleRef": {
           "apiGroup": "rbac.authorization.k8s.io",
@@ -4900,7 +4951,7 @@
         "apiVersion": "rbac.authorization.k8s.io/v1",
         "kind": "RoleBinding",
         "metadata": {
-          "creationTimestamp": "2026-08-28T07:46:08Z",
+          "creationTimestamp": "2026-08-28T11:00:20Z",
           "labels": {
             "app.kubernetes.io/component": "notifications-controller",
             "app.kubernetes.io/name": "argocd-notifications-controller",
@@ -4908,8 +4959,8 @@
           },
           "name": "argocd-notifications-controller",
           "namespace": "argocd",
-          "resourceVersion": "531",
-          "uid": "4087c889-6aff-42af-8339-8f08361cbb29"
+          "resourceVersion": "564",
+          "uid": "be8b2f3d-73f5-41e6-b9e4-32703279de91"
         },
         "roleRef": {
           "apiGroup": "rbac.authorization.k8s.io",
@@ -4927,7 +4978,7 @@
         "apiVersion": "rbac.authorization.k8s.io/v1",
         "kind": "RoleBinding",
         "metadata": {
-          "creationTimestamp": "2026-08-28T07:46:08Z",
+          "creationTimestamp": "2026-08-28T11:00:20Z",
           "labels": {
             "app.kubernetes.io/component": "redis",
             "app.kubernetes.io/name": "argocd-redis-ha",
@@ -4935,8 +4986,8 @@
           },
           "name": "argocd-redis-ha",
           "namespace": "argocd",
-          "resourceVersion": "532",
-          "uid": "aacdee09-1d6c-4a27-9430-d36a8bc30e77"
+          "resourceVersion": "565",
+          "uid": "feb69383-3823-434f-ab42-1d19f10ea7a4"
         },
         "roleRef": {
           "apiGroup": "rbac.authorization.k8s.io",
@@ -4954,7 +5005,7 @@
         "apiVersion": "rbac.authorization.k8s.io/v1",
         "kind": "RoleBinding",
         "metadata": {
-          "creationTimestamp": "2026-08-28T07:46:08Z",
+          "creationTimestamp": "2026-08-28T11:00:20Z",
           "labels": {
             "app.kubernetes.io/component": "redis",
             "app.kubernetes.io/name": "argocd-redis-ha",
@@ -4962,8 +5013,8 @@
           },
           "name": "argocd-redis-ha-haproxy",
           "namespace": "argocd",
-          "resourceVersion": "533",
-          "uid": "6f56ea17-10c5-40e2-bcdf-c089c454d45f"
+          "resourceVersion": "566",
+          "uid": "d49ac014-c6c9-4719-aebe-8106b9ae6a06"
         },
         "roleRef": {
           "apiGroup": "rbac.authorization.k8s.io",
@@ -4981,7 +5032,7 @@
         "apiVersion": "rbac.authorization.k8s.io/v1",
         "kind": "RoleBinding",
         "metadata": {
-          "creationTimestamp": "2026-08-28T07:46:08Z",
+          "creationTimestamp": "2026-08-28T11:00:20Z",
           "labels": {
             "app.kubernetes.io/component": "server",
             "app.kubernetes.io/name": "argocd-server",
@@ -4989,8 +5040,8 @@
           },
           "name": "argocd-server",
           "namespace": "argocd",
-          "resourceVersion": "534",
-          "uid": "b85eff98-e956-488e-880e-f80dd03e2012"
+          "resourceVersion": "567",
+          "uid": "5949fb10-649b-45e2-b91a-8a2c5893ad1c"
         },
         "roleRef": {
           "apiGroup": "rbac.authorization.k8s.io",

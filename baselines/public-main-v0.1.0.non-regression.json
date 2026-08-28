@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "id": "public-main-v0.1.0",
+  "repository": "akaitigo/argocd-reference-atlas",
+  "commit": "d9838017fd1a883b927afec56cf8bb5130c0816a",
+  "policy": {
+    "allow_removal": false,
+    "allow_required_downgrade": false,
+    "allow_excluded_or_infeasible_retreat": false,
+    "allow_runtime_to_mock_or_static": false,
+    "replacement_requires_mapping_proof_reason": true
+  },
+  "target_ids": [
+    "application.declarative-model", "reconciliation.continuous-loop", "sync.order-and-policy",
+    "diff.desired-live-comparison", "health.resource-assessment", "promotion.git-mediated-change",
+    "security.secret-boundary", "failure.degraded-dependency", "recovery.control-plane-restore",
+    "architecture.control-plane-components", "applicationset.generator-templating",
+    "connection.repository-cluster-registration", "sync.hook-wave-lifecycle",
+    "security.rbac-sso-access-boundary", "availability.high-availability",
+    "observability.metrics-logs", "drift.tracking-and-refresh",
+    "recovery.automated-resynchronization", "migration.version-upgrade",
+    "operations.routine-control", "skill.router-evaluation", "performance.capacity-cost-baseline",
+    "compatibility.broad-version-generator-matrix", "security.external-idp-interactive-sso",
+    "availability.host-network-rto-rpo", "migration.multi-version-rollback-matrix",
+    "observability.distributed-trace-incident-capacity"
+  ],
+  "lab_ids": [
+    "lab.access-boundary", "application", "lab.applicationset", "lab.architecture",
+    "lab.auto-recovery", "lab.connection", "diff", "lab.drift", "failure", "health",
+    "lab.high-availability", "lab.hook-wave", "lab.observability", "lab.operations", "promotion",
+    "reconciliation", "recovery", "security", "skill-eval", "sync",
+    "lab.upgrade-migration"
+  ],
+  "claim_ids": [
+    "claim.application.desired-state", "claim.reconciliation.convergence", "claim.sync.deterministic-order",
+    "claim.diff.detect-drift", "claim.health.aggregate-status", "claim.promotion.git-boundary",
+    "claim.security.no-secret-leak", "claim.failure.safe-degradation", "claim.recovery.restore-state",
+    "claim.architecture.component-boundaries", "claim.applicationset.generated-applications",
+    "claim.connection.register-and-reject", "claim.sync.hook-wave-lifecycle",
+    "claim.security.identity-authorization-boundary", "claim.availability.component-redundancy",
+    "claim.observability.correlate-signals", "claim.drift.classify-and-refresh",
+    "claim.recovery.automated-self-heal", "claim.migration.preflight-and-verify",
+    "claim.operations.bounded-runbook", "claim.skill.coverage-grounded-routing"
+  ],
+  "proof_ids": [
+    "proof.application.desired-state", "proof.reconciliation.convergence", "proof.sync.deterministic-order",
+    "proof.diff.detect-drift", "proof.health.aggregate-status", "proof.promotion.git-boundary",
+    "proof.security.no-secret-leak", "proof.failure.safe-degradation", "proof.recovery.restore-state",
+    "proof.architecture.component-boundaries", "proof.applicationset.generated-applications",
+    "proof.connection.register-and-reject", "proof.sync.hook-wave-lifecycle",
+    "proof.security.identity-authorization-boundary", "proof.availability.component-redundancy",
+    "proof.observability.correlate-signals", "proof.drift.classify-and-refresh",
+    "proof.recovery.automated-self-heal", "proof.migration.preflight-and-verify",
+    "proof.operations.bounded-runbook", "proof.skill.coverage-grounded-routing"
+  ],
+  "source_ids": [
+    "argocd-version", "argocd-install-manifest", "argocd-application-crd", "argocd-appproject-crd",
+    "argocd-applicationset-crd", "argocd-application-specification", "argocd-sync-options",
+    "argocd-diffing", "argocd-health", "argocd-secret-management", "argocd-disaster-recovery",
+    "argocd-architecture", "argocd-applicationset-introduction", "argocd-applicationset-specification",
+    "argocd-private-repositories", "argocd-cluster-management", "argocd-sync-waves", "argocd-rbac",
+    "argocd-user-management", "argocd-high-availability", "argocd-metrics", "argocd-resource-tracking",
+    "argocd-automated-sync", "argocd-upgrade-3-4-to-3-5", "argocd-reconcile-optimization"
+  ],
+  "router_case_ids": [
+    "design-secret-promotion-boundary", "implementation-sync-order", "diagnosis-out-of-sync-health",
+    "recovery-control-plane", "migration-version-boundary", "review-traceability",
+    "coverage-outside-no-fabrication", "authority-primary-first", "permission-no-unrequested-fix",
+    "security-local-only", "ambiguous-architecture-applicationset-ha",
+    "composite-repository-cluster-rbac-sso", "evidence-observability-root-cause",
+    "dangerous-drift-ignore-and-sync", "dangerous-applicationset-deletion-recovery",
+    "evidence-upgrade-rollback-proof", "dangerous-operations-mass-sync", "ambiguous-incident-state",
+    "evidence-stale-digest-review"
+  ],
+  "forward_case_ids": [
+    "ambiguous-drift", "applicationset-delete", "external-ha-chaos", "v34-v35-upgrade",
+    "sso-secret", "observability-diagnosis", "image-updater-outside", "unsafe-credential"
+  ],
+  "minimum_pass_rate": 0.9,
+  "router_case_minimums": {"pass_conditions": 3, "hard_fail_conditions": 2},
+  "ci_step_names": [
+    "Checkout Subject Atlas", "Checkout reference-atlas-core v1 contract", "Set up Go",
+    "Run atlas validate and audit", "Validate Atlas graph and Lab contracts",
+    "Validate Router Skill and Evals", "Validate legal and provenance gate", "Validate DCO sign-off"
+  ],
+  "runtime_floor": {
+    "argocd_versions": ["v3.4.8", "v3.5.2"],
+    "kubernetes_versions": ["v1.34.0"],
+    "profiles": ["local", "container", "cluster"],
+    "controller_execution_required": true
+  },
+  "evidence_artifacts": [
+    {"id":"evidence.access-boundary.v3-5-2","uri":"evidence/raw/evidence.access-boundary.v3-5-2/result.json","sha256":"d6ea44ed81d3c64ac5df56192a2554b750d2e7ebb9f7a9c94e8c71493f7e119c"},
+    {"id":"evidence.application.v3-5-2","uri":"evidence/raw/evidence.application.v3-5-2/result.json","sha256":"0a05bcd6a68a6d839c85ecd3b8d1a0015d2b863df39ef87112c81ace6922e922"},
+    {"id":"evidence.applicationset.v3-5-2","uri":"evidence/raw/evidence.applicationset.v3-5-2/result.json","sha256":"60cd2340ee3b3d239c897271c4bccd10b4390e9aca4f3882e4370fa0b5a9f0f6"},
+    {"id":"evidence.architecture-container-profile.v3-5-2","uri":"evidence/raw/evidence.architecture.v3-5-2/result.json","sha256":"703d97b1765f9434691bdc51778e74261574dc8c4e90dbdef20664fa2bae4fd2"},
+    {"id":"evidence.architecture.v3-5-2","uri":"evidence/raw/evidence.architecture.v3-5-2/result.json","sha256":"703d97b1765f9434691bdc51778e74261574dc8c4e90dbdef20664fa2bae4fd2"},
+    {"id":"evidence.auto-recovery.v3-5-2","uri":"evidence/raw/evidence.auto-recovery.v3-5-2/result.json","sha256":"b3af7188f84822f1c5cfc1d5145d4949e1e43f1fedd57570b6ce4810481a76e8"},
+    {"id":"evidence.connection.v3-5-2","uri":"evidence/raw/evidence.connection.v3-5-2/result.json","sha256":"43284faa25ee4e41ffd22a0078e1a9159293b33ebe4a5f3d163cda19d718a59c"},
+    {"id":"evidence.diff.v3-5-2","uri":"evidence/raw/evidence.diff.v3-5-2/result.json","sha256":"5a18652055ce087f8baf7e2e03d5d0339bc982288ba93a4348fd9a6405216d7e"},
+    {"id":"evidence.drift.v3-5-2","uri":"evidence/raw/evidence.drift.v3-5-2/result.json","sha256":"37ae3fe3310efa64e41cfd9ba96a6ec42c76f74259839d2ce00bde031a3aae26"},
+    {"id":"evidence.failure.v3-5-2","uri":"evidence/raw/evidence.failure.v3-5-2/result.json","sha256":"58949503ed287a1622a8bd04b420fa8b8b3490fb5d77e010655ec9bba16020bd"},
+    {"id":"evidence.health.v3-5-2","uri":"evidence/raw/evidence.health.v3-5-2/result.json","sha256":"e7fc692c01b10030734baecfe4a0d687d3a797f8f688872aaae3fb3aba157899"},
+    {"id":"evidence.high-availability.v3-5-2","uri":"evidence/raw/evidence.high-availability.v3-5-2/result.json","sha256":"775c6f17c2c6b9d414ae6c07266fa1ff152a330a78ae9107a4bf32e3ba1eeab6"},
+    {"id":"evidence.hook-wave.v3-5-2","uri":"evidence/raw/evidence.hook-wave.v3-5-2/result.json","sha256":"af5255f15a12c857a38d70810f9a926d387c20d27dfeb8517a97e27116558603"},
+    {"id":"evidence.observability.v3-5-2","uri":"evidence/raw/evidence.observability.v3-5-2/result.json","sha256":"098cf152a2c95f7c82311a6e2d29b0f46da85e267bccd03cc6bb1399e9e454d1"},
+    {"id":"evidence.operations.v3-5-2","uri":"evidence/raw/evidence.operations.v3-5-2/result.json","sha256":"5968b4e4b75f4aae7558133d98e953638d5c30881a25832eddb0e43a6ed74b52"},
+    {"id":"evidence.promotion.v3-5-2","uri":"evidence/raw/evidence.promotion.v3-5-2/result.json","sha256":"ca502bf39eeb209ab733e43d529fa12ef48eef19ae2eac31552714598c15ac11"},
+    {"id":"evidence.reconciliation.v3-5-2","uri":"evidence/raw/evidence.reconciliation.v3-5-2/result.json","sha256":"198eb01b96dbd52ee1cb634e286fc18a7e5c53b68170bfa32f86e5d3f22e6abf"},
+    {"id":"evidence.recovery.v3-5-2","uri":"evidence/raw/evidence.recovery.v3-5-2/result.json","sha256":"1ce151748b3ea147fabfeb66db0a620abb33f62edbaa312844942511fde950a7"},
+    {"id":"evidence.security.v3-5-2","uri":"evidence/raw/evidence.security.v3-5-2/result.json","sha256":"43f49900cca996064ccf415c37dfca9131570a6f19c40da96975c2ae51211c8d"},
+    {"id":"evidence.skill-eval.v3-5-2","uri":"evidence/raw/evidence.skill-eval.v3-5-2/result.json","sha256":"38ff58c91a99726f59368669cfcc607615b10b238613af33ec20d18f9d5ca0a0"},
+    {"id":"evidence.sync.v3-5-2","uri":"evidence/raw/evidence.sync.v3-5-2/result.json","sha256":"04e188eaa1c8cfca6c90c7a1b87494166a6eb67c95ba4b9cbf69021cc934bcad"},
+    {"id":"evidence.upgrade-migration.v3-5-2","uri":"evidence/raw/evidence.upgrade-migration.v3-5-2/result.json","sha256":"4e52548e5b48e5ea031cb8b9a0eddbc9f40a21f5f010de0bd54a535ffd3e2e80"}
+  ]
+}

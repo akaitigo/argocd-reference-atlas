@@ -5,6 +5,7 @@
 
 from __future__ import annotations
 
+import json
 import re
 from pathlib import Path
 
@@ -12,6 +13,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 INVENTORY = ROOT / "definitive" / "surface-inventory.yaml"
 GAP_LEDGER = ROOT / "definitive" / "gap-ledger.yaml"
+PARITY_MATRIX = ROOT / "definitive" / "fe-parity-matrix.json"
+DEPTH_PARITY = ROOT / "definitive" / "argocd-depth-parity.json"
 
 
 def ids(path: Path, pattern: str) -> set[str]:
@@ -75,7 +78,7 @@ def main() -> None:
     required_areas = {
         "application", "applicationset", "project", "connection", "auth", "sync", "diff", "health",
         "drift", "secret-boundary", "extensions", "availability", "observability", "recovery",
-        "migration", "compatibility", "performance",
+        "migration", "compatibility", "performance", "notifications", "system", "comparison",
     }
     actual_areas = {item["area"] for item in inventory_items}
     if missing := required_areas - actual_areas:
@@ -113,9 +116,111 @@ def main() -> None:
     if not gap_ids:
         raise ValueError("Gap Ledgerが空です")
 
+    parity = json.loads(PARITY_MATRIX.read_text(encoding="utf-8"))
+    axes = parity.get("axes", [])
+    axis_ids = {axis["id"] for axis in axes}
+    required_axis_ids = {
+        "authority-extraction", "application-reconciliation", "sync-wave-hook", "applicationset",
+        "multi-source", "config-management", "rbac-sso", "secrets", "high-availability",
+        "notifications", "observability", "performance-capacity", "upgrade-migration",
+        "drift-refusal", "failure-recovery", "version-compatibility", "integrated-reference-system",
+        "comparison", "skill-eval", "core-v2-gate",
+    }
+    if axis_ids != required_axis_ids:
+        raise ValueError(f"FE Parity axisが不一致です: {sorted(axis_ids)}")
+    for axis in axes:
+        if not axis.get("required_signals"):
+            raise ValueError(f"Parity axisにrequired signalがありません: {axis['id']}")
+        unknown = set(axis.get("gap_ids", [])) - gap_ids
+        if unknown:
+            raise ValueError(f"Parity axisが未定義Gapを参照しています: {axis['id']} {sorted(unknown)}")
+        unknown_evidence = set(axis.get("bounded_evidence_ids", [])) - evidence_ids
+        if unknown_evidence:
+            raise ValueError(f"Parity axisが未定義Evidenceを参照しています: {axis['id']} {sorted(unknown_evidence)}")
+    atlas_status = next(
+        line.split(":", 1)[1].strip()
+        for line in (ROOT / "atlas.yaml").read_text(encoding="utf-8").splitlines()
+        if line.startswith("status:")
+    )
+    open_parity_gaps = sum(len(axis.get("gap_ids", [])) for axis in axes)
+    if (atlas_status == "complete" or parity.get("status") == "complete") and open_parity_gaps:
+        raise ValueError("FE Parity Gapが残る状態でcompleteにできません")
+
+    depth = json.loads(DEPTH_PARITY.read_text(encoding="utf-8"))
+    expected_reference_commit = "4a0b2df8e2091a963bd0e0e1bbccef9c84b49a45"
+    if depth.get("reference", {}).get("commit") != expected_reference_commit:
+        raise ValueError("FE Depth Reference commitが固定値と一致しません")
+    expected_reference_files = {
+        "FE_DEPTH_REFERENCE.json",
+        "docs/DEFINITIVE_GATE_V2_REFERENCE.md",
+        "fixtures/definitive-gate-v2/authority-surface-inventory.fixture.json",
+        "fixtures/definitive-gate-v2/evidence-granularity.fixture.json",
+        "fixtures/definitive-gate-v2/profile-incompatibility.fixture.json",
+        "fixtures/definitive-gate-v2/variant-comparison.fixture.json",
+        "baselines/definitive-gate-v2.json",
+    }
+    reference_files = depth.get("reference", {}).get("files", [])
+    if {item.get("path") for item in reference_files} != expected_reference_files:
+        raise ValueError("FE Depth Referenceの正本/4 fixtures/baseline参照が不一致です")
+    if any(not re.fullmatch(r"[0-9a-f]{64}", item.get("sha256", "")) for item in reference_files):
+        raise ValueError("FE Depth Reference file digestが不正です")
+    if depth.get("reference", {}).get("frontend_summary") != {"satisfied": 1, "partial": 17, "missing": 0}:
+        raise ValueError("FE自身の1/18 satisfied境界が保持されていません")
+    if depth.get("denominator_policy", {}).get("absolute_frontend_counts_are_thresholds") is not False:
+        raise ValueError("FE絶対件数をArgo CD thresholdに転用できません")
+    if depth.get("proof_contract", {}).get("aggregate_evidence_is_completion_proof") is not False:
+        raise ValueError("Aggregate Evidenceを専用Proofの代替にできません")
+    if depth.get("proof_contract", {}).get("mock_or_static_substitutes_for_real_runtime") is not False:
+        raise ValueError("mock/staticを実Runtime Proofの代替にできません")
+
+    depth_axes = depth.get("axes", [])
+    expected_depth_axis_ids = {
+        "authority-body-digestion", "surface-atomic-behavior-variant", "real-runtime-lab",
+        "scenario-normal", "scenario-boundary", "scenario-refusal", "scenario-failure",
+        "scenario-recovery", "scenario-migration", "scenario-operations", "scenario-security",
+        "scenario-performance", "scenario-compatibility", "artifact-trace",
+        "integrated-reference-system", "skill-eval", "rights-provenance", "non-regression-gate",
+    }
+    if {axis.get("id") for axis in depth_axes} != expected_depth_axis_ids or len(depth_axes) != 18:
+        raise ValueError("argocd-depth-parityの18軸がFE Depth Referenceと一致しません")
+    depth_status_counts: dict[str, int] = {"satisfied": 0, "partial": 0, "missing": 0}
+    for axis in depth_axes:
+        axis_id = axis["id"]
+        status = axis.get("status")
+        if status not in depth_status_counts:
+            raise ValueError(f"Depth parity axis statusが不正です: {axis_id} {status}")
+        depth_status_counts[status] += 1
+        denominator = axis.get("argocd_denominator", {})
+        if not denominator.get("expression") or not denominator.get("source"):
+            raise ValueError(f"Argo CD固有denominatorがありません: {axis_id}")
+        if denominator.get("closure") not in {"open", "closed"}:
+            raise ValueError(f"denominator closureが不正です: {axis_id}")
+        if not axis.get("proof_unit"):
+            raise ValueError(f"専用Proof粒度がありません: {axis_id}")
+        unknown = set(axis.get("gap_ids", [])) - gap_ids
+        if unknown:
+            raise ValueError(f"Depth parity axisが未定義Gapを参照しています: {axis_id} {sorted(unknown)}")
+        unknown_evidence = set(axis.get("bounded_evidence_ids", [])) - evidence_ids
+        if unknown_evidence:
+            raise ValueError(f"Depth parity axisが未定義Evidenceを参照しています: {axis_id} {sorted(unknown_evidence)}")
+        if status == "satisfied" and (axis.get("gap_ids") or denominator.get("closure") != "closed"):
+            raise ValueError(f"Gapまたはopen denominatorがある軸をsatisfiedにできません: {axis_id}")
+        if status != "satisfied" and not axis.get("gap_ids"):
+            raise ValueError(f"未達軸にGap IDがありません: {axis_id}")
+    if depth.get("summary") != depth_status_counts:
+        raise ValueError(f"Depth parity summaryが実軸と一致しません: {depth_status_counts}")
+    open_depth_gaps = sum(len(axis.get("gap_ids", [])) for axis in depth_axes)
+    if (atlas_status == "complete" or depth.get("status") == "complete") and (
+        depth_status_counts["satisfied"] != 18 or open_depth_gaps
+    ):
+        raise ValueError("18軸Gap 0でない状態をcompleteにできません")
+
     print(
         f"definitive inventory validated: items={len(inventory_items)} "
-        f"areas={len(actual_areas)} gaps={len(gap_ids)} evidence_bindings={len(bound_evidence)}"
+        f"areas={len(actual_areas)} gaps={len(gap_ids)} evidence_bindings={len(bound_evidence)} "
+        f"parity_axes={len(axes)} parity_gap_links={open_parity_gaps} "
+        f"depth_axes={len(depth_axes)} depth_satisfied={depth_status_counts['satisfied']} "
+        f"depth_gap_links={open_depth_gaps}"
     )
 
 

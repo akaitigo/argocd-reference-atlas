@@ -35,7 +35,7 @@ Argo Projectが管理するArgo CD公式Repositoryと公式文書だけを一次
 
 ## 必須Target
 
-27件はすべて`required`です。現状は8件`covered`、13件`partial`、6件`missing`であり、19件が未Closureです。Performance／Capacity、広域互換、実IdP、Host／Network RTO-RPO、複数Version Rollback、Trace／IncidentはDefinitiveに必要なため`excluded`で閉じません。93件の細粒度Surfaceと16件の実行Gapは`definitive/`で追跡します。PromotionはGitを介したDesired state変更という境界で扱い、Argo CD固有の直接Promotion機能としては扱いません。
+30件はすべて`required`です。現状は8件`covered`、13件`partial`、9件`missing`であり、22件が未Closureです。Performance／Capacity、広域互換、実IdP、Host／Network RTO-RPO、複数Version Rollback、Trace／Incident、Notifications、統合Reference System、Evidence比較はDefinitiveに必要なため`excluded`で閉じません。100件の細粒度Surface、21件のGap、Argo CD機能20軸のParity Matrix、FE Depth Reference由来18軸の`argocd-depth-parity`は`definitive/`で追跡します。18軸は現状1件`satisfied`、15件`partial`、2件`missing`です。PromotionはGitを介したDesired state変更という境界で扱い、Argo CD固有の直接Promotion機能としては扱いません。
 
 ## Evidence規則
 

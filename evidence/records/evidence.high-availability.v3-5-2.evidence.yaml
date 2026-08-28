@@ -5,19 +5,19 @@ claim_ids: [claim.availability.component-redundancy]
 kind: recovery
 producer: argocd-atlas-kind-extended-harness
 command: make extended-lab-high-availability
-created_at: "2026-08-28T08:00:16Z"
+created_at: "2026-08-28T11:07:41Z"
 environment:
   profile: cluster
   manifest_digest: sha256:1af964eee23cfbcb7396b665987d664419c4db509c3766576757728ec9e6fb80
   lab: high-availability
   argocd_version: v3.5.2
 source_digest: sha256:fc76f2c5267059ae59c118c9f4924c51e4ca179476a687cced7f43ae1c977674
-harness_digest: sha256:376bed2d894c275648ec16eadc0ae06f2109dc743bab741b89044b0125b0968c
+harness_digest: sha256:99a8351c47badb6c083ada2c5cca5b205baaaa42fe9fff661ffdd9660c5762e1
 harness_path: labs/high-availability/lab.yaml
 artifact:
   uri: evidence/raw/evidence.high-availability.v3-5-2/result.json
-  digest: sha256:775c6f17c2c6b9d414ae6c07266fa1ff152a330a78ae9107a4bf32e3ba1eeab6
+  digest: sha256:6fe217a67aa7f956f53f627a06cce1a982ee77cf2264ecc31b1fc88d49b8f249
   media_type: application/json
-  size_bytes: 189779
+  size_bytes: 191957
 verdict: pass
 retention: git

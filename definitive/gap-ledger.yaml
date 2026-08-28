@@ -39,7 +39,7 @@ gaps:
   - id: gap.control-plane-failures
     target_ids: [failure.degraded-dependency, availability.high-availability]
     required_scenarios: [failure, recovery, operations]
-    missing: controller leader/shard交代、独立repo-server障害、Redis全停止/データ損失、ApplicationSet controller障害をfailure window付きで実証する。
+    missing: Controller Podとrepo-server単一PodのUID交代は実証済み。controller shard/leader交代、repo-server全replica停止、Redis全停止/データ損失、ApplicationSet controller障害をfailure window付きで実証する。
   - id: gap.host-network-rto-rpo
     target_ids: [availability.host-network-rto-rpo]
     required_scenarios: [boundary, failure, recovery, operations]
@@ -68,3 +68,23 @@ gaps:
     target_ids: [skill.router-evaluation]
     required_scenarios: [normal, boundary, rejection, failure, recovery, migration, operations, security, performance, compatibility]
     missing: covered/partial/missing/historicalを区別し、全Gap ID、複合診断、permission boundary、Evidence freshnessをblind semantic Evalで採点する。
+  - id: gap.notifications-delivery
+    target_ids: [operations.notifications-delivery]
+    required_scenarios: [normal, boundary, rejection, failure, recovery, operations, security, performance, compatibility]
+    missing: Trigger、Template、Global/Application subscription、local receiver delivery、Secret redaction、provider outage、retry、deduplication、metricを実Notification controllerで実証する。
+  - id: gap.integrated-reference-system
+    target_ids: [system.integrated-reference-gitops]
+    required_scenarios: [normal, boundary, rejection, failure, recovery, migration, operations, security, performance, compatibility]
+    missing: ApplicationSet、Project、multi-source、CMP、RBAC/SSO、Secret、Notification、Metric/Log/Trace、Promotion、Backup/Restoreを同一RepositoryとCluster topologyへ接続し横断不変条件を実証する。
+  - id: gap.evidence-backed-comparison
+    target_ids: [architecture.evidence-backed-comparison]
+    required_scenarios: [normal, boundary, rejection, failure, recovery, migration, operations, security, performance, compatibility]
+    missing: Application構成、Generator、tracking、sync policy、HA/sharding/cache、auth方式、promotion/rollback方式を同一条件・同一metric・同一failure oracleで比較する。
+  - id: gap.core-v2-domain-neutral-authority-contract
+    target_ids: [system.integrated-reference-gitops]
+    required_scenarios: [operations, compatibility]
+    missing: Core v2のAuthority/Surface areaとruntime platformをKubernetes/Product domainで正確に表せるdomain-neutral Schemaへ固定する。
+  - id: gap.core-v2-contract
+    target_ids: [system.integrated-reference-gitops, skill.router-evaluation]
+    required_scenarios: [operations, compatibility]
+    missing: Core v2のSchema、CLI、audit、migration、Skill Eval routing、Certificate generatorを一致させた固定commitで全Gateを実行する。

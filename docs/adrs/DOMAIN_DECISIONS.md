@@ -104,4 +104,25 @@
 
 ## Decision Review
 
+### Notification
+
+- **Status:** missing
+- **Decision:** 無害なlocal receiverを使い、Notification controllerのTrigger、Template、Subscription、Delivery、retry、metricを実行証拠にする。
+- **Rejected:** ConfigMapの存在だけでdeliveryを保証すること、CredentialをArtifactへ保存すること。
+- **Consequence:** `operations.notifications-delivery`がmissingの間は通知経路を運用保証に含めない。
+
+### 統合Reference
+
+- **Status:** missing
+- **Decision:** 個別Labと別に、同一Repository／Cluster topologyで複数Surfaceの不変条件を接続する。
+- **Rejected:** 個別Lab一覧を統合Systemの証明とみなすこと。
+- **Consequence:** `system.integrated-reference-gitops`がmissingの間はcross-surface failure、promotion、recoveryを完成扱いしない。
+
+### Evidence比較
+
+- **Status:** missing
+- **Decision:** 複数方式を同一入力、環境、version、metric、failure oracleで比較する。
+- **Rejected:** 異なる条件の測定値や公式文書の説明だけで方式を順位付けすること。
+- **Consequence:** `architecture.evidence-backed-comparison`がmissingの間は選択条件を仮説として扱う。
+
 Decisionを更新するときは、対象Version、Coverage Epoch、関連Target、反証Evidence、Security境界、Rollback可能性を同時に確認します。Gapを`accepted`へ変えるには、文書の追加ではなく、Coverage Target、Claim、Lab、Evidenceの接続が必要です。

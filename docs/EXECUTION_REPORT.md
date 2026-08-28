@@ -13,7 +13,7 @@
 - Secret boundary、Fixture Identity、RBAC、ローカルOIDC discoveryとprovider outage
 - Dependency failure、Control Plane state restore、Operations export／import
 - Controller／API Server／Repository ServerのMetricとLog
-- 3 node上のHA replica、Redis leader削除、障害窓中read、Replica回復
+- 3 node上のHA replica、Application Controller/repo-server/Redis master Pod UID交代、Controller復旧後Drift再収束、repo-server復旧後Hard Refresh、Redis障害窓中read/metrics、Replica回復
 - v3.4.8からv3.5.2への実Upgrade、主要CR spec、Application Sync／Health維持
 - 1 Router Skillの独立forward Eval
 

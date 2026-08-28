@@ -34,6 +34,9 @@
 | `host-network-rto-rpo` | Host／Network障害とRTO/RPO | diagnosis, recovery, review | `availability.host-network-rto-rpo` | `availability.high-availability`, `recovery.control-plane-restore` | `failure-recovery`, `performance-capacity-cost` | required missing。Pod/Redis leader削除で代用しない |
 | `rollback-matrix` | 複数Version Rollback | migration, recovery | `migration.multi-version-rollback-matrix` | `migration.version-upgrade`, `recovery.control-plane-restore` | `migration-evolution-deprecation`, `compatibility-integration` | required missing。正方向Upgradeと同一Version Restoreで代用しない |
 | `trace-incident-capacity` | Trace／Incident／Telemetry容量 | diagnosis, review | `observability.distributed-trace-incident-capacity` | `observability.metrics-logs` | `operations-observability`, `performance-capacity-cost` | required missing。Metric/Log captureだけでは閉じない |
+| `notifications` | Trigger／Template／Subscription／Delivery | implementation, diagnosis, review | `operations.notifications-delivery` | `observability.metrics-logs`, `security.secret-boundary` | `implementation-construction`, `operations-observability` | required missing。実Notification controllerとlocal receiver Evidenceが必要 |
+| `integrated-reference-system` | 統合Reference GitOps System | design, implementation, review | `system.integrated-reference-gitops` | 全Targetを横断 | `architecture-design`, `compatibility-integration`, `operations-observability` | required missing。個別Labの並置では閉じない |
+| `evidence-comparison` | 同一条件での方式比較 | design, review | `architecture.evidence-backed-comparison` | 比較対象ごとのTarget | `decision-comparison`, `testing-verification` | required missing。一次資料だけでなく同一条件runtime Evidenceが必要 |
 
 ## 文書Route
 

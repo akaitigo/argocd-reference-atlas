@@ -64,7 +64,7 @@ Evidence Fileが存在することと、技術的主張が成立することは�
 
 ### `high-availability`
 
-- **Strong for:** 3-node KindのHA replica、Redis leader削除と再選出、障害窓中10/10 read成功のbounded Evidence。
+- **Strong for:** 3-node KindのHA replica、Application Controller/repo-server/Redis master Pod UID交代、Controller復旧後Drift再収束、repo-server復旧後Hard Refresh、Redis障害窓中10/10 read/metrics成功のbounded Evidence。
 - **Insufficient for:** Replica数から可用性、RTO／RPO、Capacity、Shard公平性を推論すること。
 - **Corroboration needed:** 定義した故障単位、継続率、Queue、Latency、再収束時間のBenchmark。
 
@@ -99,6 +99,24 @@ Evidence Fileが存在することと、技術的主張が成立することは�
 - **Corroboration needed:** Incident scope、User impact、停止閾値、操作前後、残留影響、引継ぎ記録。
 
 ## Evidence要求への返答形式
+
+### `notifications`
+
+- **Strong for:** 現在は一次資料Surfaceと必要ScenarioのInventory。
+- **Insufficient for:** 実delivery、retry、deduplication、provider outage、receiver到達性。
+- **Corroboration needed:** Notification controller log、delivery metric、local receiver artifact、redaction結果。
+
+### `integrated-reference-system`
+
+- **Strong for:** 個別Targetのbounded Evidenceと接続予定Surface。
+- **Insufficient for:** 同一topologyのcross-surface不変条件。
+- **Corroboration needed:** 単一Repository／Cluster／Revision／Correlation contextの統合Artifact。
+
+### `evidence-comparison`
+
+- **Strong for:** 個々の方式について固定Fixtureが直接観測した結果。
+- **Insufficient for:** 入力、環境、version、metric、failure oracleが異なる方式間の優劣。
+- **Corroboration needed:** 同一条件の比較Matrix、raw artifact、選択条件、非保証条件。
 
 Evidenceを求められたら、少なくとも次を分けます。
 

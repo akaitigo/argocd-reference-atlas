@@ -115,6 +115,13 @@ items:
   - {id: performance.repository-scale, area: performance, title: repository/monorepo generation capacity, kind: benchmark-obligation, locator: definitive/gap-ledger.yaml, target_id: performance.capacity-cost-baseline, state: missing}
   - {id: performance.cluster-shard-scale, area: performance, title: cluster/shard queueとmemory capacity, kind: benchmark-obligation, locator: definitive/gap-ledger.yaml, target_id: performance.capacity-cost-baseline, state: missing}
   - {id: performance.cost-baseline, area: performance, title: CPU/memory/storage/network cost baseline, kind: benchmark-obligation, locator: definitive/gap-ledger.yaml, target_id: performance.capacity-cost-baseline, state: missing}
+  - {id: notifications.controller, area: notifications, title: Notification controller reconciliation, kind: source-runtime, locator: notification_controller/controller/controller.go, target_id: operations.notifications-delivery, state: missing}
+  - {id: notifications.trigger-template, area: notifications, title: TriggerとTemplate evaluation, kind: docs-source, locator: docs/operator-manual/notifications/triggers.md, target_id: operations.notifications-delivery, state: missing}
+  - {id: notifications.subscription, area: notifications, title: Global/Application subscription, kind: docs-source, locator: docs/operator-manual/notifications/subscriptions.md, target_id: operations.notifications-delivery, state: missing}
+  - {id: notifications.service-delivery, area: notifications, title: Service deliveryとsecret boundary, kind: docs-source, locator: docs/operator-manual/notifications/services/overview.md, target_id: operations.notifications-delivery, state: missing}
+  - {id: notifications.failure-metrics, area: notifications, title: Delivery failure/retry/metrics, kind: docs-runtime, locator: docs/operator-manual/notifications/monitoring.md, target_id: operations.notifications-delivery, state: missing}
+  - {id: system.integrated-reference, area: system, title: Cross-surface Reference GitOps System, kind: runtime-obligation, locator: definitive/fe-parity-matrix.json, target_id: system.integrated-reference-gitops, state: missing}
+  - {id: comparison.runtime-options, area: comparison, title: Evidence-backed architecture and operation comparison, kind: comparison-obligation, locator: definitive/fe-parity-matrix.json, target_id: architecture.evidence-backed-comparison, state: missing}
 evidence_bindings:
   - evidence_id: evidence.application.v3-5-2
     item_ids: [application.spec.sources, application.spec.destination, application.spec.project, application.spec.sync-policy]
@@ -154,7 +161,7 @@ evidence_bindings:
     bounded_scope: 固定Git/Cluster/EvidenceのSecret data非保存検査。
   - evidence_id: evidence.high-availability.v3-5-2
     item_ids: [ha.api-server, ha.repo-server, ha.redis, recovery.component-failure]
-    bounded_scope: 3-node Kind、Redis leader削除、障害窓中read。controller/repo-server独立failureは含まない。
+    bounded_scope: 3-node Kind、Application Controller/repo-server/Redis master Pod UID交代、Controller復旧後Drift再収束、repo-server復旧後Hard Refresh、Redis障害窓中read/metrics。host/network、全replica停止、shard交代は含まない。
   - evidence_id: evidence.observability.v3-5-2
     item_ids: [observe.metrics.controller, observe.metrics.server, observe.metrics.repo-server, observe.logs.correlation]
     bounded_scope: 固定sync時刻周辺のcomponent metrics/logs。trace、SLO、incidentは含まない。

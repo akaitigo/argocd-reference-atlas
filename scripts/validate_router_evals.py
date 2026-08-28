@@ -52,6 +52,9 @@ KNOWN_TARGETS = {
     "availability.host-network-rto-rpo",
     "migration.multi-version-rollback-matrix",
     "observability.distributed-trace-incident-capacity",
+    "operations.notifications-delivery",
+    "system.integrated-reference-gitops",
+    "architecture.evidence-backed-comparison",
 }
 PERMISSIONS = {"read-only", "local-kind-write", "denied"}
 CHALLENGES = {"direct", "ambiguous", "composite", "dangerous", "evidence"}
@@ -71,6 +74,9 @@ TOPIC_HEADINGS = {
     "drift": "Drift",
     "upgrade-migration": "Upgrade／Migration",
     "operations": "Operations",
+    "notifications": "Notification",
+    "integrated-reference-system": "統合Reference",
+    "evidence-comparison": "Evidence比較",
 }
 REQUIRED_TOPICS = set(TOPIC_HEADINGS)
 CASE_ID = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")

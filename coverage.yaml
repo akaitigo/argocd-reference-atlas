@@ -303,3 +303,30 @@ targets:
     rationale: Component MetricとLogの相関Evidenceを、外部Trace backend、実Incident rehearsal、Capacity SLOの保証へ拡張しない。
     claim_ids: []
     evidence_ids: []
+  - id: operations.notifications-delivery
+    title: Notification Trigger・Template・Subscription・Delivery
+    target_set: operations
+    kind: operation
+    requirement: required
+    state: missing
+    rationale: Notification controller、Trigger、Template、Subscription、Service delivery、retry、metricを実Controllerと無害なlocal receiverで検証する必要がある。
+    claim_ids: []
+    evidence_ids: []
+  - id: system.integrated-reference-gitops
+    title: 統合Reference GitOps System
+    target_set: platform-surface
+    kind: construction
+    requirement: required
+    state: missing
+    rationale: 個別Fixtureだけでなく、ApplicationSet、Project、multi-source、CMP、RBAC、Notification、Observability、Promotion、Recoveryを同一Systemで接続し、横断不変条件を実証する必要がある。
+    claim_ids: []
+    evidence_ids: []
+  - id: architecture.evidence-backed-comparison
+    title: Evidenceに基づく設計比較
+    target_set: platform-surface
+    kind: concept
+    requirement: required
+    state: missing
+    rationale: 複数の構成方式を前提、利点、制約、failure mode、運用Cost、runtime Evidenceで比較し、単一Fixtureを一般解として扱わないために必要である。
+    claim_ids: []
+    evidence_ids: []
