@@ -1,0 +1,24 @@
+schema_version: 1
+id: evidence.skill-definitive-eval.v3-5-2
+atlas_id: argocd-reference-atlas
+claim_ids:
+- claim.skill.coverage-grounded-routing
+kind: skill-eval
+producer: argocd-atlas-definitive-skill-eval-harness
+command: make skill-definitive-eval
+created_at: '2026-08-28T13:00:00Z'
+environment:
+  profile: local
+  manifest_digest: sha256:b41270a27c93af32f1beeda60a537ee52cef8c4790a60eb1d669360eb8bcb9a5
+  lab: skill-definitive-eval
+  argocd_version: v3.5.2
+source_digest: sha256:fc76f2c5267059ae59c118c9f4924c51e4ca179476a687cced7f43ae1c977674
+harness_digest: sha256:4e34f9b33adb8e20237d8e7a13974d2c375771b74fafa21b4d14e75a0f2b2ad9
+harness_path: scripts/generate_definitive_skill_eval.py
+artifact:
+  uri: evidence/raw/evidence.skill-definitive-eval.v3-5-2/result.json
+  digest: sha256:db059e3835332e197d7ccf679854e26e13a2e5fcde77f824ed6d1a18ca5aac0f
+  media_type: application/json
+  size_bytes: 1462
+verdict: pass
+retention: git

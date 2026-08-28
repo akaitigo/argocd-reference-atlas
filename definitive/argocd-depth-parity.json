@@ -191,9 +191,9 @@
       "id": "skill-eval",
       "status": "partial",
       "portable_meaning": "8 Outcome、14 Surface、risk/gap class、曖昧query、権限境界を実行結果と独立oracleで評価する。",
-      "argocd_denominator": {"expression": "8 outcomes x 14 surfaces x risk/coverage-gap classes x execution modes", "source": ["mastery.yaml", "evals/router-cases.json", "evals/argocd-atlas-forward.skill-eval.json"], "current_observation": "router contract and bounded forward eval exist; full blind semantic execution matrix is open", "closure": "open"},
+      "argocd_denominator": {"expression": "8 outcomes x 14 surfaces x risk/coverage-gap classes x execution modes", "source": ["mastery.yaml", "evals/router-cases.json", "evals/argocd-atlas-router.definitive-skill-eval.json", "evals/argocd-atlas-router.definitive-forward-eval.json"], "current_observation": "112/112 deterministic Router contract cells pass; 111 routed and build x failure-recovery remains one mastery routing gap; all 30 Target states are recorded as covered 8 / partial 14 / missing 8; 10 independent Forward cases cover all 8 Outcomes; matrix/forward pass has no completion credit", "closure": "open"},
       "proof_unit": "one blind case x expected route/coverage/gap/permission/action x independent graded artifact",
-      "bounded_evidence_ids": ["evidence.skill-eval.v3-5-2"],
+      "bounded_evidence_ids": ["evidence.skill-eval.v3-5-2", "evidence.skill-definitive-eval.v3-5-2"],
       "gap_ids": ["gap.skill-definitive-eval"]
     },
     {

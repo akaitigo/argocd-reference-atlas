@@ -51,7 +51,9 @@ jobs:
           tests/labs/extended-static.sh
 
       - name: Validate Router Skill and Evals
-        run: python3 scripts/validate_router_evals.py
+        run: |
+          python3 scripts/validate_router_evals.py
+          python3 scripts/validate_definitive_skill_eval.py
 
       - name: Validate legal and provenance gate
         run: |

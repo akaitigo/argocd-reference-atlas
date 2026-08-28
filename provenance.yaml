@@ -162,13 +162,19 @@ artifacts:
   - argocd-secret-management
   - argocd-application-specification
   generated_by: make lab-security
+- path: evidence/raw/evidence.skill-definitive-eval.v3-5-2/result.json
+  digest: sha256:db059e3835332e197d7ccf679854e26e13a2e5fcde77f824ed6d1a18ca5aac0f
+  kind: skill-eval
+  license: Apache-2.0
+  source_ids: &id001
+  - argocd-version
+  - argocd-architecture
+  generated_by: make skill-definitive-eval
 - path: evidence/raw/evidence.skill-eval.v3-5-2/result.json
   digest: sha256:38ff58c91a99726f59368669cfcc607615b10b238613af33ec20d18f9d5ca0a0
   kind: skill-eval
   license: Apache-2.0
-  source_ids:
-  - argocd-version
-  - argocd-architecture
+  source_ids: *id001
   generated_by: make skill-forward-eval
 - path: evidence/raw/evidence.sync.v3-5-2/result.json
   digest: sha256:04e188eaa1c8cfca6c90c7a1b87494166a6eb67c95ba4b9cbf69021cc934bcad
@@ -196,7 +202,7 @@ artifacts:
   - argocd-architecture
   generated_by: scripts/generate_core_v1_metadata.py graph
 - path: sbom.spdx.json
-  digest: sha256:f315c2fbba83f68c001e64513633c9e01ce0da86a133636d4a680cf6354b08b4
+  digest: sha256:c4196edeeed7aef3def2410aa60eed8b6dec21048d47fa3abeab8722f8837023
   kind: sbom
   license: CC0-1.0
   source_ids: []

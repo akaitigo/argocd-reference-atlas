@@ -105,6 +105,7 @@ Mastery Outcome/Surface -> Coverage Target Set -> Coverage Target
 - `authority/body-inventory.snapshot.json`の全raw anchorが`authority/review-queue.snapshot.json`へ欠落なく入り、priority／cluster／batchが提案だけに留まるか。`authority/reviews/decisions.json`に人の一次資料確認、reviewer／time／reason、source/tool/context digest、locator offset、旧anchor→新Controller／Behavior item Mapping、resultの整合がなければ昇格を認めない。staleはholdし、Queue件数をSemantic Surface／Depth達成へ算入しない。stable IDの縮小は専用baselineとMigration Mappingで検査する。
 - `skill.router-evaluation`が独立Agentの採点Evidenceへ接続されているか。
 - `observability.distributed-trace-incident-capacity`がOTLP、Incident rehearsal、SLO、Retention、Cardinality、RedactionのArtifact Evidenceを持つか。
+- `evals/argocd-atlas-router.definitive-skill-eval.json`の8 Outcome × 14 Surface、mutation authorization、人手Authority／stale relock停止、曖昧／未知Query、Source／Runtime Evidence binding、routing gap、全Target state、独立Forward Evalを確認する。Matrix passだけをTargetまたはAtlasの完成へ算入しない。
 
 ## Route不能
 

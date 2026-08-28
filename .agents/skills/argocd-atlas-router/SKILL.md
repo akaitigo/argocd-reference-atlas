@@ -34,6 +34,14 @@ Argo CD v3.5.2について判断するとき、このSkillをAtlasの入口と�
 
 Modeを選んだ後、依頼の領域を[Router Index](../../../docs/ROUTER_INDEX.md)で特定します。設計判断ならADR、手順ならRunbook、異常の切り分けならFailure-mode Catalog、証拠の評価ならEvidence Interpretationだけを追加で読みます。直接Targetがない領域は、隣接Targetを根拠の代用にせず、Router IndexのGap分類を維持します。
 
+OutcomeとSurfaceが決まったら、Skill Directoryから次のRouterを使い、Target state、固定Authority、Claim、実Kubernetes／Argo CD controller Evidence、権限境界を同時に確認します。
+
+```sh
+python3 scripts/argocd_router.py --outcome <outcome> --surface <surface> --query "<依頼>"
+```
+
+変更を含む依頼で`--authorized-change`を渡せるのは、利用者がその対象変更を明示的に依頼した場合だけです。読取Outcomeでも変更を求める場合は`--mutation-requested`を付け、許可がなければ停止します。人手Authority分類を要求する場合は`--authority-semantic-decision`、stale Source更新を伴う場合は`--stale-source-relock`を付け、通常の変更許可と分離した停止条件を維持します。曖昧または未知のQueryで一意Targetが得られない場合は`coverage-gap`として返し、推測でRouteしません。
+
 ## 根拠を辿る手順
 
 1. `mastery.yaml`で依頼のOutcomeとSurfaceを特定し、接続先Target Setを確認します。
@@ -44,6 +52,7 @@ Modeを選んだ後、依頼の領域を[Router Index](../../../docs/ROUTER_INDE
 6. 実行や障害対応が必要なら、Router Indexから`docs/runbooks/`または`docs/failure-modes/`を選び、その文書が指すTarget、Lab、停止条件を確認します。実行Labが存在しなければ手順を創作せず、Gapとして返します。
 7. Claimが参照するEvidenceを`evidence/`で確認し、`source_digest`、`harness_digest`、Environment Manifest Digest、`artifact_digest`、`verdict`を保持したまま使います。Inventoryの`evidence_bindings.bounded_scope`を越えて一般化しません。
 8. 推奨を述べるときは、Outcome、Surface、Target ID、Coverage State、Claim ID、Evidence ID、適用Version、未検証点を示します。
+9. 全体評価では`evals/argocd-atlas-router.definitive-skill-eval.json`を確認します。112セルの`pass`はRouter契約の合格に限られ、`mastery_routing_gaps`、全30 Target state、独立Forward Eval、Core／Depth Gapの代替やCompletion Certificateにはなりません。
 
 `rg`が使える環境では、まず次のようにIDを正確に検索します。
 

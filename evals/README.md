@@ -19,4 +19,6 @@
 python3 scripts/validate_router_evals.py
 ```
 
-`scripts/grade_skill_forward_eval.py`が採点する既存8件はv0.1.0のbounded historical forward Evalです。29件すべてを期待値非公開で別Agentへ実行し、全`pass_conditions`、全`hard_fail_conditions`、Claim/Evidence/Digest、Gap内容を採点するDefinitive semantic Gateは未実装です。そのGateがpassするまで`skill.router-evaluation`は`partial`です。
+`scripts/grade_skill_forward_eval.py`が採点する既存8件はv0.1.0のbounded historical forward Evalとして維持します。追加の`argocd-atlas-router.definitive-skill-eval.json`は8 Outcome × 14 Surfaceの112セル、7境界Case、全30 Target state、Source binding、実Kubernetes／Argo CD controller Evidenceを機械記録します。`argocd-atlas-router.definitive-forward-eval.json`は期待値を渡さない別Agentの10件Forward回答を8 Outcome横断で採点します。
+
+112セルのcontract passまたは独立Forward Evalのpassは、22 open Target、`build × failure-recovery` routing gap、Authority人手Review、Core v2／Depth Gapを閉じません。Matrix件数をTarget、Atlas、Definitive、Completion Certificateの完成へ算入しないため、`skill.router-evaluation`は`partial`を維持します。

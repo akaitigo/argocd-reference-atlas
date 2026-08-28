@@ -11,6 +11,8 @@
 - `../authority/review-queue.snapshot.json`: 全63,889 anchorを251 batchへ損失なく投影する提案専用Queue。priority／cluster／batchは人手確認順序の提案だけで、`../authority/reviews/decisions.json`の人手一次資料DecisionなしにはController／Behavior itemへ昇格しません。
 - `../baselines/authority-body-inventory-v1.json`: raw anchorのstable ID、Source digest、document floorを固定する専用非後退baseline。置換は`../migrations/authority-body-inventory-v1.json`のMappingとEvidenceを要求します。
 - `../baselines/public-main-v0.1.0.non-regression.json`: 公開mainのTest／Lab／Target／Claim／Proof／Evidence／Source／Skill Eval／CI非後退条件。
+- `../evals/argocd-atlas-router.definitive-skill-eval.json`: 8 Outcome × 14 Surfaceの全112セル、7境界Case、全30 Target state、Authority／Runtime Evidence bindingを保持するRouter契約評価。Matrix passにCompletion creditはありません。
+- `../evals/argocd-atlas-router.definitive-forward-eval.json`: 期待値を渡さず別Agentが処理した10件のForward回答と現行Coverage／Source／Evidence／権限境界による採点記録。
 
 `evidence/certificates/historical/`のCore v1 Certificateは過去commitのbounded recordです。このdirectoryのrequired itemが閉じ、Core v2のdomain-neutral contractへ適合し、active Certificateが再発行されるまでDefinitiveは`incomplete`です。
 

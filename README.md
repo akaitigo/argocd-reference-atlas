@@ -44,6 +44,8 @@ sources.lock.yaml
   -> definitive/gap-ledger.yaml
   -> definitive/argocd-depth-parity.json
   -> definitive/fe-parity-matrix.json
+  -> evals/argocd-atlas-router.definitive-skill-eval.json
+  -> evals/argocd-atlas-router.definitive-forward-eval.json
   -> atlas/capabilities/index.yaml
   -> atlas/claims/index.yaml
   -> atlas/proof-obligations/index.yaml
@@ -59,6 +61,7 @@ sources.lock.yaml
 - 8 Outcome／14 Surface: `mastery.yaml`
 - 有限のCoverage: `coverage.yaml`
 - Agent Router Package: `skill.package.yaml`
+- 8 Outcome × 14 Surface Router契約と独立Forward Eval: `evals/argocd-atlas-router.definitive-skill-eval.json`、`evals/argocd-atlas-router.definitive-forward-eval.json`
 - Product固有Graph: `atlas/`
 - Core v1移行対応: `migrations/core-v1.yaml`
 - Definitive Surface／Scenario Gap: `definitive/`

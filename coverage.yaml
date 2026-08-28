@@ -248,7 +248,7 @@ targets:
     state: partial
     rationale: Agentがv3.5.2のCoverage内外を識別し、設計、診断、移行、安全拒否を正しい正本へ案内できることを評価する必要がある。
     claim_ids: [claim.skill.coverage-grounded-routing]
-    evidence_ids: [evidence.skill-eval.v3-5-2]
+    evidence_ids: [evidence.skill-eval.v3-5-2, evidence.skill-definitive-eval.v3-5-2]
   - id: performance.capacity-cost-baseline
     title: 大規模性能・容量・Cost基準
     target_set: operations

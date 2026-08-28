@@ -16,7 +16,8 @@
 - Notification controllerからlocal receiverへの正常配信、HTTP 503による6回の試行、receiver回復後の配信、trigger／delivery metric
 - 3 node上のHA replica、Application Controller/repo-server/Redis master Pod UID交代、Controller復旧後Drift再収束、repo-server復旧後Hard Refresh、Redis障害窓中read/metrics、Replica回復
 - v3.4.8からv3.5.2への実Upgrade、主要CR spec、Application Sync／Health維持
-- 1 Router Skillの独立forward Eval
+- 1 Router Skillの8件bounded historical forward Eval
+- 8 Outcome × 14 Surfaceの112セルRouter契約、7境界Case、全30 Target state、10件独立Forward Eval（Matrix／Forward passはCompletionへ算入しない）
 
 各結果は`evidence/raw/`のJSONと`evidence/records/`のCore Evidence recordへ保存しています。RecordはSource、Harness、Environment Manifest、ArtifactのSHA-256を保持し、CIはArtifact digest、size、JSON構文を再計算します。`coverage.yaml`が`partial`または`missing`とするTargetは、ここに固定Fixtureのpass EvidenceがあってもTarget全体がclosedであることを意味しません。
 

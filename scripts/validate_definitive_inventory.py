@@ -15,6 +15,7 @@ INVENTORY = ROOT / "definitive" / "surface-inventory.yaml"
 GAP_LEDGER = ROOT / "definitive" / "gap-ledger.yaml"
 PARITY_MATRIX = ROOT / "definitive" / "fe-parity-matrix.json"
 DEPTH_PARITY = ROOT / "definitive" / "argocd-depth-parity.json"
+DEFINITIVE_SKILL_EVAL = ROOT / "evals" / "argocd-atlas-router.definitive-skill-eval.json"
 
 
 def ids(path: Path, pattern: str) -> set[str]:
@@ -147,6 +148,12 @@ def main() -> None:
         raise ValueError("FE Parity Gapが残る状態でcompleteにできません")
 
     depth = json.loads(DEPTH_PARITY.read_text(encoding="utf-8"))
+    skill_eval = json.loads(DEFINITIVE_SKILL_EVAL.read_text(encoding="utf-8"))
+    skill_summary = skill_eval.get("summary", {})
+    if skill_eval.get("reference", {}).get("commit") != "8a9e34a89a55cc53702032783c06ede7246a286f":
+        raise ValueError("FE Definitive Skill Eval正本commitが固定されていません")
+    if skill_eval.get("status") != "incomplete-target-or-routing-gaps" or skill_summary.get("matrix_cells") != 112 or skill_summary.get("matrix_contract_passed") != 112 or skill_summary.get("mastery_routing_gaps") != 1 or skill_summary.get("open_required_targets") != 22 or skill_summary.get("matrix_pass_is_completion") is not False:
+        raise ValueError("Definitive Skill EvalのMatrix pass／routing gap／Target未完了境界が不正です")
     expected_reference_commit = "4a0b2df8e2091a963bd0e0e1bbccef9c84b49a45"
     if depth.get("reference", {}).get("commit") != expected_reference_commit:
         raise ValueError("FE Depth Reference commitが固定値と一致しません")

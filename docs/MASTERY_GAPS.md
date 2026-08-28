@@ -6,12 +6,13 @@
 
 - 8 Outcomeと14 Surfaceを8 Target Setへ接続
 - Application、ApplicationSet、Connection、Reconciliation、Sync、Hook／Wave、Diff、Health、Promotion、Secret、RBAC／OIDC、HA、Observability、Notification、Drift、Self-heal、Failure、Recovery、Upgrade、Operationsの実行Labと合格Evidence
-- Authority Lock、Capability／Claim／Proof Graph、1 Router Skill、29件の静的Eval Corpus、8件の独立forward Eval
+- Authority Lock、Capability／Claim／Proof Graph、1 Router Skill、29件の静的Eval Corpus、8件のbounded historical forward Eval、112セルのDefinitive Router契約、10件の独立Forward Eval
 - Apache-2.0、NOTICE、第三者Manifest、決定論的SPDX SBOM、DCO／Security方針
 
 ## Definitive Completionを阻止する必須Gap
 
 - 提案専用Queueにある63,889件のraw Authority anchorに対する人手一次資料decisionと、digest／locator／Mapping／resultを束縛したController／behavior Surfaceへの昇格（現在Decision 0、昇格0）
+- `build × failure-recovery`のMastery target_set routing gapと、22件のopen required Target。112セルのcontract passまたは独立Forward passでは閉じない
 - Performance／Capacity／CostのBenchmarkと回帰基準
 - 対応Kubernetes Version、Source generator、CLI／APIのCompatibility Evidence
 - v3.3、v3.4系の追加patch、複数Kubernetes Versionを横断するUpgrade／Rollback実行Matrix
