@@ -21,7 +21,12 @@ source_server_image=$(sed -n 's/^source_server_image=//p' "${root}/environments/
 grep -Fq "image: ${kind_node_image}" "${root}/environments/kind/kind-config.yaml.tmpl"
 grep -Fq "image: ${source_server_image}" "${root}/environments/kind/source-server.yaml"
 grep -Fq "$source_server_image" "${root}/scripts/build-local-source.sh"
-test ! -e "${root}/evidence/completion-certificate.json"
+status=$(sed -n 's/^status: //p' "${root}/atlas.yaml")
+if [[ "$status" == complete ]]; then
+  test -f "${root}/evidence/completion-certificate.json"
+else
+  test ! -e "${root}/evidence/completion-certificate.json"
+fi
 if grep -R -n -E 'placeholder|TODO' "${root}/labs" "${root}/evidence" 2>/dev/null; then
   printf 'LabまたはEvidenceにplaceholder表現があります\n' >&2
   exit 1

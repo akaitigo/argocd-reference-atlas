@@ -22,5 +22,10 @@ if grep -R -n -E 'password: [^$]|bearerToken":"[A-Za-z0-9_-]{20,}' "${root}/labs
   printf '固定Credentialらしき値を検出しました\n' >&2
   exit 1
 fi
-test ! -e "${root}/evidence/completion-certificate.json"
+status=$(sed -n 's/^status: //p' "${root}/atlas.yaml")
+if [[ "$status" == complete ]]; then
+  test -f "${root}/evidence/completion-certificate.json"
+else
+  test ! -e "${root}/evidence/completion-certificate.json"
+fi
 printf 'Extended Lab static checks: pass\n'
