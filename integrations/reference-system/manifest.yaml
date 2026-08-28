@@ -1,0 +1,63 @@
+schema_version: 1
+id: argocd-reference-system-scenario-contract-v1
+atlas_id: argocd-reference-atlas
+status: incomplete-single-topology-runtime
+subject: current-surface-scenario-evidence-not-authority-atomic-completion
+execution_mode: offline-bound-evidence-integration
+runtime_target: real-kubernetes-argocd-controller-evidence
+scenarios:
+  - id: normal
+    evidence_ids: [evidence.application.v3-5-2, evidence.applicationset.v3-5-2, evidence.reconciliation.v3-5-2, evidence.sync.v3-5-2, evidence.health.v3-5-2, evidence.notifications.v3-5-2]
+    controller_components: [argocd-application-controller, argocd-applicationset-controller, argocd-notifications-controller]
+    kubernetes_behaviors: [custom-resource-reconciliation, desired-live-convergence, workload-health-assessment]
+    assertions: [application-synced-healthy, generated-application-state, reconciliation-converged]
+  - id: boundary
+    evidence_ids: [evidence.access-boundary.v3-5-2, evidence.connection.v3-5-2, evidence.diff.v3-5-2, evidence.hook-wave.v3-5-2]
+    controller_components: [argocd-server, argocd-application-controller, argocd-repo-server]
+    kubernetes_behaviors: [rbac-admission-boundary, namespace-scope, ordered-resource-application]
+    assertions: [allow-deny-distinction, namespace-boundary, bounded-diff-and-wave]
+  - id: rejection
+    evidence_ids: [evidence.access-boundary.v3-5-2, evidence.connection.v3-5-2, evidence.security.v3-5-2]
+    controller_components: [argocd-server, argocd-application-controller, argocd-repo-server]
+    kubernetes_behaviors: [authorization-rejection, unreachable-endpoint-rejection, secret-data-boundary]
+    assertions: [unauthorized-request-rejected, unreachable-target-not-success, secret-not-disclosed]
+  - id: failure
+    evidence_ids: [evidence.failure.v3-5-2, evidence.high-availability.v3-5-2, evidence.notifications.v3-5-2, evidence.access-boundary.v3-5-2]
+    controller_components: [argocd-application-controller, argocd-repo-server, argocd-notifications-controller, redis-ha]
+    kubernetes_behaviors: [pod-replacement, dependency-outage, service-delivery-failure]
+    assertions: [failure-visible, stale-state-not-success, failure-window-preserved]
+  - id: recovery
+    evidence_ids: [evidence.auto-recovery.v3-5-2, evidence.recovery.v3-5-2, evidence.high-availability.v3-5-2, evidence.notifications.v3-5-2, evidence.failure.v3-5-2]
+    controller_components: [argocd-application-controller, argocd-repo-server, argocd-notifications-controller, redis-ha]
+    kubernetes_behaviors: [self-heal-reconciliation, pod-replacement, state-restore]
+    assertions: [desired-state-restored, replacement-observed, endpoint-recovery-delivered]
+  - id: migration
+    evidence_ids: [evidence.upgrade-migration.v3-5-2, evidence.promotion.v3-5-2, evidence.recovery.v3-5-2]
+    controller_components: [argocd-application-controller, argocd-server, argocd-repo-server]
+    kubernetes_behaviors: [crd-version-continuity, declarative-state-transition, export-import]
+    assertions: [forward-upgrade-bounded, git-mediated-change, restore-digest-preserved]
+  - id: operations
+    evidence_ids: [evidence.operations.v3-5-2, evidence.observability.v3-5-2, evidence.drift.v3-5-2, evidence.high-availability.v3-5-2]
+    controller_components: [argocd-application-controller, argocd-server, argocd-repo-server]
+    kubernetes_behaviors: [bounded-wait, status-refresh, pod-readiness]
+    assertions: [finite-command-result, state-log-metric-correlation, cleanup-bounded]
+  - id: security
+    evidence_ids: [evidence.security.v3-5-2, evidence.access-boundary.v3-5-2, evidence.connection.v3-5-2, evidence.notifications.v3-5-2]
+    controller_components: [argocd-server, argocd-application-controller, argocd-repo-server, argocd-notifications-controller]
+    kubernetes_behaviors: [secret-reference-boundary, rbac-policy-enforcement, namespace-scope]
+    assertions: [secret-value-not-retained, denied-identity-rejected, credential-boundary-explicit]
+  - id: performance
+    evidence_ids: [evidence.observability.v3-5-2, evidence.high-availability.v3-5-2]
+    controller_components: [argocd-application-controller, argocd-server, argocd-repo-server]
+    kubernetes_behaviors: [controller-queue-observation, resource-consumption-observation]
+    assertions: [metrics-artifact-bound, capacity-benchmark-gap-explicit]
+  - id: compatibility
+    evidence_ids: [evidence.upgrade-migration.v3-5-2, evidence.applicationset.v3-5-2]
+    controller_components: [argocd-application-controller, argocd-applicationset-controller, argocd-server]
+    kubernetes_behaviors: [argocd-version-transition, kubernetes-version-binding, generator-compatibility]
+    assertions: [single-upgrade-path-bound, broad-version-matrix-gap-explicit]
+completion_limits:
+  - 10 Scenarioのoffline evidence integrationは、同一Repositoryと同一Cluster topologyでの統合Runtime実行を証明しない。
+  - Scenario統合結果を各SurfaceまたはBehavior固有Proofへ自動昇格しない。
+  - Authority raw anchorの人手Decisionがないため、Authority atomic bindingとcompletion eligibleは0を維持する。
+  - Performance、広域Compatibility、OTLP trace、実IdP、host/network partitionのGapを既存Artifactで代用しない。

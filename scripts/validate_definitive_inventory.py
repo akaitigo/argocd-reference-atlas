@@ -16,6 +16,8 @@ GAP_LEDGER = ROOT / "definitive" / "gap-ledger.yaml"
 PARITY_MATRIX = ROOT / "definitive" / "fe-parity-matrix.json"
 DEPTH_PARITY = ROOT / "definitive" / "argocd-depth-parity.json"
 DEFINITIVE_SKILL_EVAL = ROOT / "evals" / "argocd-atlas-router.definitive-skill-eval.json"
+SCENARIO_PROOF_INDEX = ROOT / "evidence" / "scenarios" / "index.json"
+REFERENCE_SYSTEM_RESULT = ROOT / "evidence" / "reference-system" / "results.json"
 
 
 def ids(path: Path, pattern: str) -> set[str]:
@@ -154,6 +156,19 @@ def main() -> None:
         raise ValueError("FE Definitive Skill Eval正本commitが固定されていません")
     if skill_eval.get("status") != "incomplete-target-or-routing-gaps" or skill_summary.get("matrix_cells") != 112 or skill_summary.get("matrix_contract_passed") != 112 or skill_summary.get("mastery_routing_gaps") != 1 or skill_summary.get("open_required_targets") != 22 or skill_summary.get("matrix_pass_is_completion") is not False:
         raise ValueError("Definitive Skill EvalのMatrix pass／routing gap／Target未完了境界が不正です")
+    scenario_index = json.loads(SCENARIO_PROOF_INDEX.read_text(encoding="utf-8"))
+    scenario_summary = scenario_index.get("summary", {})
+    reference_result = json.loads(REFERENCE_SYSTEM_RESULT.read_text(encoding="utf-8"))
+    if scenario_index.get("reference", {}).get("commit") != "deadad18b6588d2c907170a451c3b5cea5ea4192":
+        raise ValueError("FE Reference System／Scenario Proof正本commitが固定されていません")
+    if scenario_index.get("status") != "incomplete-authority-atomic-and-runtime-closure" or scenario_summary.get("behaviors") != 100 or scenario_summary.get("scenarios") != 10 or scenario_summary.get("rows") != 1000 or scenario_summary.get("dedicated_artifacts") != 1000:
+        raise ValueError("100 Surface × 10 Scenario専用Proof分母が不正です")
+    if scenario_summary.get("bounded_runtime_proofs", 0) + scenario_summary.get("bounded_artifact_proofs", 0) + scenario_summary.get("behavior_specific_gaps", 0) != 1000:
+        raise ValueError("Scenario Proof rowがruntime／artifact／gapで閉じていません")
+    if scenario_summary.get("integrated_scenario_rows") != 10 or scenario_summary.get("integrated_runtime_passed") != 0 or scenario_summary.get("authority_atomic_bindings") != 0 or scenario_summary.get("completion_eligible_rows") != 0:
+        raise ValueError("統合System非流用またはAuthority／Completion境界が不正です")
+    if reference_result.get("counts") != {"total": 10, "evaluated": 10, "bounded_component_evidence": 10, "integrated_runtime_passed": 0, "single_topology_executed": 0, "completion_eligible": 0}:
+        raise ValueError("10 Scenario統合Auditと単一Topology実行Gapの分離が不正です")
     expected_reference_commit = "4a0b2df8e2091a963bd0e0e1bbccef9c84b49a45"
     if depth.get("reference", {}).get("commit") != expected_reference_commit:
         raise ValueError("FE Depth Reference commitが固定値と一致しません")

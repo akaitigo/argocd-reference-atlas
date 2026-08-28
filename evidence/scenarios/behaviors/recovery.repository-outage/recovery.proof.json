@@ -1,0 +1,199 @@
+{
+  "schema_version": 1,
+  "id": "proof.behavior.recovery.repository-outage.recovery",
+  "atlas_id": "argocd-reference-atlas",
+  "generated_at": "2026-08-28T00:00:00+09:00",
+  "behavior_scope": "current-surface-not-human-reviewed-authority-atomic",
+  "behavior_id": "recovery.repository-outage",
+  "area": "recovery",
+  "kind": "runtime-obligation",
+  "target_id": "failure.degraded-dependency",
+  "surface_state": "partial",
+  "scenario": "recovery",
+  "attempts": 1,
+  "status": "bounded-artifact-proof",
+  "authority_binding": {
+    "status": "explicit-gap",
+    "source_id": null,
+    "source_digest": null,
+    "candidate_locator": "labs/failure/lab.yaml",
+    "locator_scope": "local-proof-obligation-not-authority",
+    "authority_gap": "このlocatorはローカルProof obligationであり一次資料Atomic bindingではない。",
+    "review_decision_id": null,
+    "human_reviewed": false,
+    "authority_atomic_binding": false
+  },
+  "controller_kubernetes_behavior": {
+    "expected_argocd_components": [
+      "argocd-application-controller",
+      "argocd-server",
+      "argocd-repo-server",
+      "redis-ha"
+    ],
+    "observed_argocd_components": [
+      "argocd-application-controller",
+      "argocd-repo-server"
+    ],
+    "component_identity_status": "explicit-gap",
+    "component_identity_complete": false,
+    "component_identity_gap": "期待する全Argo CD component identityをBehavior固有Artifactから確認できない。",
+    "kubernetes_behavior": "failure-detection-and-state-recovery"
+  },
+  "runtime_identity": {
+    "status": "complete",
+    "argocd_versions": [
+      "v3.5.2"
+    ],
+    "kubernetes_api_server_versions": [
+      "v1.34.1"
+    ],
+    "kubernetes_kubelet_versions": [
+      "v1.34.0"
+    ],
+    "profiles": [
+      "cluster"
+    ],
+    "artifact_evidence_ids": [
+      "evidence.failure.v3-5-2"
+    ],
+    "gap": null
+  },
+  "runtime_identities": [
+    {
+      "profile": "cluster",
+      "producer": "argocd-atlas-kind-harness",
+      "command": "make lab-failure",
+      "manifest_digest": "sha256:c7c7fb796abc20741fc9c71e4ec8553e70a32783aab5faf9ea4789d3e1d8e1ee",
+      "cluster_name": "argocd-atlas-v3-5-2",
+      "kubernetes_context": "kind-argocd-atlas-v3-5-2",
+      "argocd_version": "v3.5.2",
+      "kubernetes_api_server_versions": [
+        "v1.34.1"
+      ],
+      "kubernetes_kubelet_versions": [
+        "v1.34.0"
+      ],
+      "kubernetes_node_image_version": "v1.34.0",
+      "kubernetes_environment_lock": {
+        "path": "environments/kind/argocd-v3.5.2.lock",
+        "digest": "sha256:91f435bad9af7bb58e403882efa4e0c874d7bcb8703081733da5bbfd0ab48a2c",
+        "bytes": 573
+      },
+      "observed_components": [
+        "argocd-application-controller",
+        "argocd-repo-server"
+      ],
+      "real_kubernetes_runtime": true,
+      "version_identity_complete": true
+    }
+  ],
+  "evidence_bindings": [
+    {
+      "evidence_id": "evidence.failure.v3-5-2",
+      "record": {
+        "path": "evidence/records/evidence.failure.v3-5-2.evidence.yaml",
+        "digest": "sha256:2befb74958ee3c7952934b98a6dda1bab0003a9a11144d9dae3e5a6000360f58",
+        "bytes": 903
+      },
+      "artifact": {
+        "path": "evidence/raw/evidence.failure.v3-5-2/result.json",
+        "digest": "sha256:58949503ed287a1622a8bd04b420fa8b8b3490fb5d77e010655ec9bba16020bd",
+        "bytes": 51991
+      },
+      "artifact_matches_record": true
+    }
+  ],
+  "observations": {
+    "resource_state": {
+      "status": "artifact",
+      "artifact_kind": "resource-state-json",
+      "artifacts": [
+        {
+          "evidence_id": "evidence.failure.v3-5-2",
+          "artifact": {
+            "path": "evidence/raw/evidence.failure.v3-5-2/result.json",
+            "digest": "sha256:58949503ed287a1622a8bd04b420fa8b8b3490fb5d77e010655ec9bba16020bd",
+            "bytes": 51991
+          },
+          "json_pointers": [
+            "/application",
+            "/application/status",
+            "/application/status/health/status",
+            "/application/status/operationState",
+            "/application/status/operationState/syncResult/resources",
+            "/application/status/operationState/syncResult/resources/0/status",
+            "/application/status/resources",
+            "/application/status/resources/0/status"
+          ]
+        }
+      ],
+      "gap": null
+    },
+    "controller_log": {
+      "status": "explicit-gap",
+      "artifact_kind": null,
+      "artifacts": [],
+      "gap": "Behavior固有controller log Artifactがない。"
+    },
+    "metric": {
+      "status": "explicit-gap",
+      "artifact_kind": null,
+      "artifacts": [],
+      "gap": "Behavior固有metric Artifactがない。"
+    },
+    "trace": {
+      "status": "artifact",
+      "artifact_kind": "structured-lab-trace-not-otlp",
+      "artifacts": [
+        {
+          "evidence_id": "evidence.failure.v3-5-2",
+          "artifact": {
+            "path": "evidence/raw/evidence.failure.v3-5-2/result.json",
+            "digest": "sha256:58949503ed287a1622a8bd04b420fa8b8b3490fb5d77e010655ec9bba16020bd",
+            "bytes": 51991
+          },
+          "json_pointers": [
+            "/trace"
+          ]
+        }
+      ],
+      "gap": null
+    }
+  },
+  "integrated_reference": {
+    "manifest": {
+      "path": "integrations/reference-system/manifest.yaml",
+      "digest": "sha256:9ef4cd08b88fb5f1aed7750500be49cbd8a519d28d40f12e01a48b0f6f775618",
+      "bytes": 5233
+    },
+    "result": {
+      "path": "evidence/reference-system/results.json",
+      "digest": "sha256:9394f098070416f684474e3860e6e91e6397533846dfbb2fe9b0a4430dd4052c",
+      "bytes": 125277
+    },
+    "scenario_row_id": "reference.scenario.recovery",
+    "outcome": "bounded-evidence-audit",
+    "attempts": 1,
+    "final_status": "evaluated",
+    "runtime_attempts": 0,
+    "scenario_evaluated": true,
+    "single_topology_execution": false,
+    "used_as_behavior_specific_evidence": false
+  },
+  "closure": {
+    "dedicated_row": true,
+    "dedicated_artifact": true,
+    "behavior_specific_evidence": true,
+    "real_kubernetes_runtime": true,
+    "runtime_identity_complete": true,
+    "authority_atomic_binding": false,
+    "completion_eligible": false
+  },
+  "gaps": [
+    "期待Controller identityをArtifactから直接確認できない。",
+    "controller_log: Behavior固有controller log Artifactがない。",
+    "metric: Behavior固有metric Artifactがない。",
+    "統合Scenario AuditをBehavior固有Proofへ流用しない。",
+    "Authority raw anchorの人手DecisionがなくAtomic behaviorへ昇格していない。"
+  ]
+}

@@ -1,0 +1,195 @@
+{
+  "schema_version": 1,
+  "id": "proof.behavior.auth.local-account.boundary",
+  "atlas_id": "argocd-reference-atlas",
+  "generated_at": "2026-08-28T00:00:00+09:00",
+  "behavior_scope": "current-surface-not-human-reviewed-authority-atomic",
+  "behavior_id": "auth.local-account",
+  "area": "auth",
+  "kind": "docs-cli",
+  "target_id": "security.rbac-sso-access-boundary",
+  "surface_state": "partial",
+  "scenario": "boundary",
+  "attempts": 1,
+  "status": "bounded-artifact-proof",
+  "authority_binding": {
+    "status": "locked-source-candidate",
+    "source_id": "argocd-source-tree",
+    "source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+    "candidate_locator": "docs/operator-manual/user-management/index.md",
+    "locator_scope": "locked-argocd-source-tree-candidate",
+    "authority_gap": "人手Review DecisionがなくSource locator候補からAtomic behaviorへ昇格していない。",
+    "review_decision_id": null,
+    "human_reviewed": false,
+    "authority_atomic_binding": false
+  },
+  "controller_kubernetes_behavior": {
+    "expected_argocd_components": [
+      "argocd-server",
+      "argocd-application-controller"
+    ],
+    "observed_argocd_components": [
+      "argocd-application-controller",
+      "argocd-applicationset-controller",
+      "argocd-notifications-controller",
+      "argocd-repo-server",
+      "argocd-server"
+    ],
+    "component_identity_status": "complete",
+    "component_identity_complete": true,
+    "component_identity_gap": null,
+    "kubernetes_behavior": "authorization-and-project-boundary"
+  },
+  "runtime_identity": {
+    "status": "partial",
+    "argocd_versions": [
+      "v3.5.2"
+    ],
+    "kubernetes_api_server_versions": [],
+    "kubernetes_kubelet_versions": [],
+    "profiles": [
+      "cluster"
+    ],
+    "artifact_evidence_ids": [
+      "evidence.access-boundary.v3-5-2"
+    ],
+    "gap": "Artifact内のArgo CD／Kubernetes version identityが不完全。"
+  },
+  "runtime_identities": [
+    {
+      "profile": "cluster",
+      "producer": "argocd-atlas-kind-extended-harness",
+      "command": "make extended-lab-access-boundary",
+      "manifest_digest": "sha256:fba4965e0c1ef1f37c6fc36c048093d2e098ff73fbfdc1e398a05a3de348c73e",
+      "cluster_name": null,
+      "kubernetes_context": null,
+      "argocd_version": "v3.5.2",
+      "kubernetes_api_server_versions": [],
+      "kubernetes_kubelet_versions": [],
+      "kubernetes_node_image_version": "v1.34.0",
+      "kubernetes_environment_lock": {
+        "path": "environments/kind/argocd-v3.5.2.lock",
+        "digest": "sha256:91f435bad9af7bb58e403882efa4e0c874d7bcb8703081733da5bbfd0ab48a2c",
+        "bytes": 573
+      },
+      "observed_components": [
+        "argocd-application-controller",
+        "argocd-applicationset-controller",
+        "argocd-notifications-controller",
+        "argocd-repo-server",
+        "argocd-server"
+      ],
+      "real_kubernetes_runtime": true,
+      "version_identity_complete": false
+    }
+  ],
+  "evidence_bindings": [
+    {
+      "evidence_id": "evidence.access-boundary.v3-5-2",
+      "record": {
+        "path": "evidence/records/evidence.access-boundary.v3-5-2.evidence.yaml",
+        "digest": "sha256:ed923dc3cd1c5c8c4fe88e1a0c7c267e60a83b865cc301f224b8313c0164e379",
+        "bytes": 910
+      },
+      "artifact": {
+        "path": "evidence/raw/evidence.access-boundary.v3-5-2/result.json",
+        "digest": "sha256:d6ea44ed81d3c64ac5df56192a2554b750d2e7ebb9f7a9c94e8c71493f7e119c",
+        "bytes": 192412
+      },
+      "artifact_matches_record": true
+    }
+  ],
+  "observations": {
+    "resource_state": {
+      "status": "artifact",
+      "artifact_kind": "resource-state-json",
+      "artifacts": [
+        {
+          "evidence_id": "evidence.access-boundary.v3-5-2",
+          "artifact": {
+            "path": "evidence/raw/evidence.access-boundary.v3-5-2/result.json",
+            "digest": "sha256:d6ea44ed81d3c64ac5df56192a2554b750d2e7ebb9f7a9c94e8c71493f7e119c",
+            "bytes": 192412
+          },
+          "json_pointers": [
+            "/applications",
+            "/applicationsets",
+            "/projects",
+            "/topology/items/0/status",
+            "/topology/items/0/status/conditions/0/status",
+            "/topology/items/0/status/conditions/1/status",
+            "/topology/items/1/status",
+            "/topology/items/1/status/conditions/0/status"
+          ]
+        }
+      ],
+      "gap": null
+    },
+    "controller_log": {
+      "status": "explicit-gap",
+      "artifact_kind": null,
+      "artifacts": [],
+      "gap": "Behavior固有controller log Artifactがない。"
+    },
+    "metric": {
+      "status": "explicit-gap",
+      "artifact_kind": null,
+      "artifacts": [],
+      "gap": "Behavior固有metric Artifactがない。"
+    },
+    "trace": {
+      "status": "artifact",
+      "artifact_kind": "structured-lab-trace-not-otlp",
+      "artifacts": [
+        {
+          "evidence_id": "evidence.access-boundary.v3-5-2",
+          "artifact": {
+            "path": "evidence/raw/evidence.access-boundary.v3-5-2/result.json",
+            "digest": "sha256:d6ea44ed81d3c64ac5df56192a2554b750d2e7ebb9f7a9c94e8c71493f7e119c",
+            "bytes": 192412
+          },
+          "json_pointers": [
+            "/trace"
+          ]
+        }
+      ],
+      "gap": null
+    }
+  },
+  "integrated_reference": {
+    "manifest": {
+      "path": "integrations/reference-system/manifest.yaml",
+      "digest": "sha256:9ef4cd08b88fb5f1aed7750500be49cbd8a519d28d40f12e01a48b0f6f775618",
+      "bytes": 5233
+    },
+    "result": {
+      "path": "evidence/reference-system/results.json",
+      "digest": "sha256:9394f098070416f684474e3860e6e91e6397533846dfbb2fe9b0a4430dd4052c",
+      "bytes": 125277
+    },
+    "scenario_row_id": "reference.scenario.boundary",
+    "outcome": "bounded-evidence-audit",
+    "attempts": 1,
+    "final_status": "evaluated",
+    "runtime_attempts": 0,
+    "scenario_evaluated": true,
+    "single_topology_execution": false,
+    "used_as_behavior_specific_evidence": false
+  },
+  "closure": {
+    "dedicated_row": true,
+    "dedicated_artifact": true,
+    "behavior_specific_evidence": true,
+    "real_kubernetes_runtime": true,
+    "runtime_identity_complete": false,
+    "authority_atomic_binding": false,
+    "completion_eligible": false
+  },
+  "gaps": [
+    "Argo CD／Kubernetes runtime version identityがArtifact内で完結していない。",
+    "controller_log: Behavior固有controller log Artifactがない。",
+    "metric: Behavior固有metric Artifactがない。",
+    "統合Scenario AuditをBehavior固有Proofへ流用しない。",
+    "Authority raw anchorの人手DecisionがなくAtomic behaviorへ昇格していない。"
+  ]
+}

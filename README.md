@@ -44,6 +44,9 @@ sources.lock.yaml
   -> definitive/gap-ledger.yaml
   -> definitive/argocd-depth-parity.json
   -> definitive/fe-parity-matrix.json
+  -> integrations/reference-system/manifest.yaml
+  -> evidence/reference-system/results.json
+  -> evidence/scenarios/index.json
   -> evals/argocd-atlas-router.definitive-skill-eval.json
   -> evals/argocd-atlas-router.definitive-forward-eval.json
   -> atlas/capabilities/index.yaml
@@ -66,6 +69,7 @@ sources.lock.yaml
 - Core v1移行対応: `migrations/core-v1.yaml`
 - Definitive Surface／Scenario Gap: `definitive/`
 - FE Depth Reference 18軸監査: `definitive/argocd-depth-parity.json`
+- 10 Scenario統合Auditと1,000件のBehavior固有Proof: `integrations/reference-system/manifest.yaml`、`evidence/reference-system/results.json`、`evidence/scenarios/index.json`
 
 利用者向け文書は日本語を正本とし、Schema Key、ID、Path、API名、Argo CDの正式名称は英語表記を維持します。
 

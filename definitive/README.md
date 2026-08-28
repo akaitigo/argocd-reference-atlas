@@ -13,6 +13,8 @@
 - `../baselines/public-main-v0.1.0.non-regression.json`: 公開mainのTest／Lab／Target／Claim／Proof／Evidence／Source／Skill Eval／CI非後退条件。
 - `../evals/argocd-atlas-router.definitive-skill-eval.json`: 8 Outcome × 14 Surfaceの全112セル、7境界Case、全30 Target state、Authority／Runtime Evidence bindingを保持するRouter契約評価。Matrix passにCompletion creditはありません。
 - `../evals/argocd-atlas-router.definitive-forward-eval.json`: 期待値を渡さず別Agentが処理した10件のForward回答と現行Coverage／Source／Evidence／権限境界による採点記録。
+- `../integrations/reference-system/manifest.yaml`と`../evidence/reference-system/results.json`: 10 Scenarioを一つの契約で再評価するoffline Evidence integration Audit。単一Topology Runtime実行は0のため統合System完成とは扱いません。
+- `../evidence/scenarios/index.json`: 現行100 Surface × 10 Scenarioの1,000専用row。Controller／Kubernetes／Version identity、4観測ChannelのArtifactまたは明示gap、Authority atomic／Completion 0を固定します。
 
 `evidence/certificates/historical/`のCore v1 Certificateは過去commitのbounded recordです。このdirectoryのrequired itemが閉じ、Core v2のdomain-neutral contractへ適合し、active Certificateが再発行されるまでDefinitiveは`incomplete`です。
 
