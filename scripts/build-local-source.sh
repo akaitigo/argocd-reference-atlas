@@ -5,10 +5,14 @@ set -euo pipefail
 require_commands git
 work="${RUNTIME_DIR}/source-work"
 bare="${RUNTIME_DIR}/source/repo.git"
+bare_next="${RUNTIME_DIR}/source/repo.git.next"
+bare_previous="${RUNTIME_DIR}/source/repo.git.previous"
 assert_runtime_path "$work"
 assert_runtime_path "$bare"
+assert_runtime_path "$bare_next"
+assert_runtime_path "$bare_previous"
 mkdir -p "$RUNTIME_DIR" "${RUNTIME_DIR}/source"
-rm -rf -- "$work" "$bare"
+rm -rf -- "$work" "$bare_next" "$bare_previous"
 mkdir -p "$work"
 
 git -C "$work" init -q -b main
@@ -45,6 +49,12 @@ cp -R "${ATLAS_ROOT}/fixtures/scenarios/security-002/terminate" "${work}/apps/se
 cp -R "${ATLAS_ROOT}/fixtures/scenarios/security-002/wait" "${work}/apps/security-002/wait"
 cp -R "${ATLAS_ROOT}/fixtures/scenarios/security-002/resource-actions" "${work}/apps/security-002/resource-actions"
 cp -R "${ATLAS_ROOT}/fixtures/scenarios/security-002/destination" "${work}/apps/security-002/destination"
+mkdir -p "${work}/apps/security-003"
+cp -R "${ATLAS_ROOT}/fixtures/scenarios/security-003/project" "${work}/apps/security-003/project"
+cp -R "${ATLAS_ROOT}/fixtures/scenarios/security-003/sources-a" "${work}/apps/security-003/sources-a"
+cp -R "${ATLAS_ROOT}/fixtures/scenarios/security-003/sources-b" "${work}/apps/security-003/sources-b"
+cp -R "${ATLAS_ROOT}/fixtures/scenarios/security-003/sync-policy" "${work}/apps/security-003/sync-policy"
+cp -R "${ATLAS_ROOT}/fixtures/scenarios/security-003/appset-workload" "${work}/apps/security-003/appset-workload"
 write_configmap apps/reconciliation atlas-reconciliation desired canonical
 write_configmap apps/sync atlas-sync release v1
 write_configmap apps/diff atlas-diff desired git
@@ -194,9 +204,27 @@ git -C "$work" add apps/health/deployment.yaml
 git -C "$work" commit -q -m 'inject unavailable workload image'
 
 git -C "$work" switch -q main
-git clone -q --bare "$work" "$bare"
-git --git-dir="$bare" symbolic-ref HEAD refs/heads/main
-git --git-dir="$bare" update-server-info
-find "$bare" -type d -exec chmod 0755 {} +
-find "$bare" -type f -exec chmod 0644 {} +
+
+git -C "$work" switch -q -c security-003-sync-v2
+sed -i.bak 's/release: v1/release: v2/' "${work}/apps/security-003/sync-policy/configmap.yaml"
+rm -- "${work}/apps/security-003/sync-policy/configmap.yaml.bak"
+git -C "$work" add apps/security-003/sync-policy/configmap.yaml
+git -C "$work" commit -q -m 'security tranche sync policy revision v2'
+git -C "$work" switch -q main
+
+git clone -q --bare "$work" "$bare_next"
+git --git-dir="$bare_next" symbolic-ref HEAD refs/heads/main
+git --git-dir="$bare_next" update-server-info
+find "$bare_next" -type d -exec chmod 0755 {} +
+find "$bare_next" -type f -exec chmod 0644 {} +
+if [[ -d "$bare" ]]; then
+  mv -- "$bare" "$bare_previous"
+fi
+if ! mv -- "$bare_next" "$bare"; then
+  if [[ -d "$bare_previous" ]]; then
+    mv -- "$bare_previous" "$bare"
+  fi
+  die 'local Git sourceのatomic swapに失敗しました'
+fi
+rm -rf -- "$bare_previous"
 info "local Git sourceを生成しました: ${bare}"

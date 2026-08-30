@@ -205,12 +205,13 @@ def input_specs() -> list[dict[str, Any]]:
     specs = [
         ("source.application", "source", ["atlas/claims/index.yaml", "claims/claim.application.desired-state.claim.yaml", "claims/claim.applicationset.generated-applications.claim.yaml", "claims/claim.reconciliation.convergence.claim.yaml", "definitive/surface-inventory.yaml"]),
         ("source.project-policy", "source", ["atlas.yaml", "definitive.yaml", "migrations/definitive-v2.yaml", "atlas/proof-obligations/index.yaml", "coverage.yaml", "mastery.yaml", "claims/claim.security.identity-authorization-boundary.claim.yaml", "claims/claim.security.no-secret-leak.claim.yaml"]),
-        ("source.manifests", "source", ["integrations/reference-system/manifest.yaml", "environments/kind/source-server.yaml", "scripts/build-local-source.sh", "fixtures/scenarios/application-sync-policy-normal/configmap.yaml", "fixtures/scenarios/security-001/source-a/shared.yaml", "fixtures/scenarios/security-001/source-b/shared.yaml", "fixtures/scenarios/security-001/operations/configmap.yaml", "fixtures/scenarios/security-002/terminate/hook.yaml", "fixtures/scenarios/security-002/wait/configmap.yaml", "fixtures/scenarios/security-002/resource-actions/deployment.yaml", "fixtures/scenarios/security-002/destination/configmap.yaml"]),
+        ("source.manifests", "source", ["integrations/reference-system/manifest.yaml", "environments/kind/source-server.yaml", "scripts/build-local-source.sh", "fixtures/scenarios/application-sync-policy-normal/configmap.yaml", "fixtures/scenarios/security-001/source-a/shared.yaml", "fixtures/scenarios/security-001/source-b/shared.yaml", "fixtures/scenarios/security-001/operations/configmap.yaml", "fixtures/scenarios/security-002/terminate/hook.yaml", "fixtures/scenarios/security-002/wait/configmap.yaml", "fixtures/scenarios/security-002/resource-actions/deployment.yaml", "fixtures/scenarios/security-002/destination/configmap.yaml", "fixtures/scenarios/security-003/project/configmap.yaml", "fixtures/scenarios/security-003/sources-a/configmap.yaml", "fixtures/scenarios/security-003/sources-b/configmap.yaml", "fixtures/scenarios/security-003/sync-policy/configmap.yaml", "fixtures/scenarios/security-003/appset-workload/configmap.yaml", "fixtures/scenarios/security-003/applicationset.yaml"]),
         ("harness.cluster-labs", "harness", [*lab_specs, "scripts/run-lab.sh", "scripts/run-suite.sh", "scripts/evidence/capture.sh", "scripts/evidence/record.sh", "scripts/evidence/record_extended.py", "scripts/extended/run.sh", "scripts/extended/run-suite.sh"]),
         ("harness.scenario-proof", "harness", ["scripts/generate_scenario_proofs.py", "scripts/validate_scenario_proofs.py", "scripts/test_scenario_gap_closure.py", "scripts/test_atomic_evidence_publish.py", "scripts/lib/atomic_evidence_publish.py", "definitive/scenario-variant-contract.yaml", "evidence/scenarios/runtime/index.yaml"]),
         ("harness.scenario-runtime", "harness", ["scripts/scenarios/run_application_sync_policy_normal.py", "scripts/generate_scenario_proofs.py", "scripts/validate_scenario_proofs.py", "scripts/lib/atomic_evidence_publish.py", "definitive/scenario-variant-contract.yaml", "fixtures/scenarios/application-sync-policy-normal/configmap.yaml"]),
         ("harness.scenario-runtime.security-001", "harness", ["scripts/scenarios/run_security_001.py", "scripts/scenarios/run_application_sync_policy_normal.py", "scripts/generate_scenario_proofs.py", "scripts/validate_scenario_proofs.py", "scripts/lib/atomic_evidence_publish.py", "definitive/scenario-variant-contract.yaml", "fixtures/scenarios/security-001/source-a/shared.yaml", "fixtures/scenarios/security-001/source-b/shared.yaml", "fixtures/scenarios/security-001/operations/configmap.yaml"]),
         ("harness.scenario-runtime.security-002", "harness", ["scripts/scenarios/run_security_002.py", "scripts/scenarios/run_application_sync_policy_normal.py", "scripts/generate_scenario_proofs.py", "scripts/validate_scenario_proofs.py", "scripts/lib/atomic_evidence_publish.py", "definitive/scenario-variant-contract.yaml", "fixtures/scenarios/security-002/terminate/hook.yaml", "fixtures/scenarios/security-002/wait/configmap.yaml", "fixtures/scenarios/security-002/resource-actions/deployment.yaml", "fixtures/scenarios/security-002/destination/configmap.yaml"]),
+        ("harness.scenario-runtime.security-003", "harness", ["scripts/scenarios/run_security_003.py", "scripts/scenarios/run_application_sync_policy_normal.py", "scripts/build-local-source.sh", "scripts/generate_scenario_proofs.py", "scripts/validate_scenario_proofs.py", "scripts/lib/atomic_evidence_publish.py", "definitive/scenario-variant-contract.yaml", "fixtures/scenarios/security-003/project/configmap.yaml", "fixtures/scenarios/security-003/sources-a/configmap.yaml", "fixtures/scenarios/security-003/sources-b/configmap.yaml", "fixtures/scenarios/security-003/sync-policy/configmap.yaml", "fixtures/scenarios/security-003/appset-workload/configmap.yaml", "fixtures/scenarios/security-003/applicationset.yaml"]),
         ("harness.evidence-dependency", "harness", ["scripts/evidence_dependency_graph.py", "scripts/test_evidence_dependency_graph.py", "docs/EVIDENCE_DEPENDENCY_GRAPH.md"]),
         ("harness.skill-eval", "harness", ["skill.package.yaml", ".agents/skills/argocd-atlas-router/SKILL.md", "evals/router-cases.json", "evals/forward-cases.json", "evals/definitive-forward-cases.json", "scripts/generate_definitive_skill_eval.py", "scripts/grade_definitive_forward_eval.py", "scripts/validate_definitive_skill_eval.py"]),
         ("runtime.controller-components", "runtime", ["sources.lock.yaml", "environments/kind/argocd-v3.5.2.lock", "environments/kind/argocd-v3.5.2-ha.lock"]),
@@ -365,6 +366,9 @@ def build_graph() -> dict[str, Any]:
         security_002 = report["scenario"] == "security" and report["surface_id"] in {
             "application.operation.terminate", "application.operation.wait", "application.resource-actions", "application.spec.destination",
         }
+        security_003 = report["scenario"] == "security" and report["surface_id"] in {
+            "application.spec.project", "application.spec.sources", "application.spec.sync-policy", "applicationset.any-namespace",
+        }
         if security_001:
             run_id = "run.scenario-runtime.security-001"
             harness_id = "harness.scenario-runtime.security-001"
@@ -373,6 +377,10 @@ def build_graph() -> dict[str, Any]:
             run_id = "run.scenario-runtime.security-002"
             harness_id = "harness.scenario-runtime.security-002"
             command_name = "make scenario-runtime-security-002"
+        elif security_003:
+            run_id = "run.scenario-runtime.security-003"
+            harness_id = "harness.scenario-runtime.security-003"
+            command_name = "make scenario-runtime-security-003"
         else:
             run_id = "run.scenario-runtime.application-sync-policy.normal"
             harness_id = "harness.scenario-runtime"
@@ -389,8 +397,8 @@ def build_graph() -> dict[str, Any]:
         group["output_ids"].extend([*artifact_ids, report_id])
         runtime_output_ids.append(report_id)
 
-    registry_run = "run.scenario-runtime.security-002"
-    registry_dependencies = [*runtime_output_ids, "harness.scenario-runtime.security-002", "harness.scenario-runtime.security-001", "harness.scenario-runtime"]
+    registry_run = "run.scenario-runtime.security-003"
+    registry_dependencies = [*runtime_output_ids, "harness.scenario-runtime.security-003", "harness.scenario-runtime.security-002", "harness.scenario-runtime.security-001", "harness.scenario-runtime"]
     for path in ["evidence/scenarios/runtime/index.yaml", "evidence/scenarios/runtime/atomic-publish-manifest.json"]:
         output_id = add_output(outputs, path, "runtime-evidence", registry_dependencies, registry_run)
         runtime_groups[registry_run]["output_ids"].append(output_id)

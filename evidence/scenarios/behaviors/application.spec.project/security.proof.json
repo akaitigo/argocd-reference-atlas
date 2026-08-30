@@ -83,81 +83,302 @@
   "scenario_gap_closure": {
     "status": "open",
     "scenario_gap_closed": false,
-    "dedicated_runtime_execution_complete": false,
+    "dedicated_runtime_execution_complete": true,
     "variant_contract": {
       "source": {
         "path": "definitive/scenario-variant-contract.yaml",
-        "digest": "sha256:cb01fcf41d71cc12a529c43d056e339aa9ce0cd167537667d2456cc08386dd66",
-        "bytes": 3904
+        "digest": "sha256:5cb621bec3eeb68a29c3f969f301422c1f9051fa1efe3f2318c6db70611d12f6",
+        "bytes": 4817
       },
-      "status": "pending-authority-human-review",
-      "expected_variant_ids": [],
+      "status": "runtime-declared-pending-authority-human-review",
+      "expected_variant_ids": [
+        "restricted-project-binding",
+        "authorized-project-binding"
+      ],
       "exhaustive": false,
       "gap": "Authority人手Review済みの非空かつexhaustiveなSurface Variant分母がない。"
     },
-    "dedicated_runtime_report": null,
-    "dedicated_runtime_record_ids": [],
-    "source_bindings": [],
-    "harness_bindings": [],
-    "runtime_identity": null,
-    "oracle_records": [],
+    "dedicated_runtime_report": {
+      "path": "evidence/scenarios/runtime/reports/runtime.application-spec-project.security.v3-5-2.json",
+      "digest": "sha256:efc03b9d4663eddfd7345e95abe329e4d4c277a9f0b0434d3397b41121c6465c",
+      "bytes": 9121
+    },
+    "dedicated_runtime_record_ids": [
+      "runtime.application-spec-project.security.v3-5-2:restricted-project-binding",
+      "runtime.application-spec-project.security.v3-5-2:authorized-project-binding"
+    ],
+    "source_bindings": [
+      {
+        "variant_id": "restricted-project-binding",
+        "source": {
+          "path": "fixtures/scenarios/security-003/project/configmap.yaml",
+          "digest": "sha256:52f6af17e66e71d97a10a10de1c7e5b5b8c9c1d70bfe3ae298701c83649bbdaa",
+          "bytes": 113,
+          "owner": "runtime.application-spec-project.security.v3-5-2:restricted-project-binding:source"
+        }
+      },
+      {
+        "variant_id": "authorized-project-binding",
+        "source": {
+          "path": "fixtures/scenarios/security-003/project/configmap.yaml",
+          "digest": "sha256:52f6af17e66e71d97a10a10de1c7e5b5b8c9c1d70bfe3ae298701c83649bbdaa",
+          "bytes": 113,
+          "owner": "runtime.application-spec-project.security.v3-5-2:authorized-project-binding:source"
+        }
+      }
+    ],
+    "harness_bindings": [
+      {
+        "variant_id": "restricted-project-binding",
+        "harness": {
+          "path": "scripts/scenarios/run_security_003.py",
+          "digest": "sha256:227bc77f6ea536661cc5eafc57248b10588fcdc46668e2c26434b5765a6bde73",
+          "bytes": 42581,
+          "owner": "runtime.application-spec-project.security.v3-5-2:restricted-project-binding:harness"
+        }
+      },
+      {
+        "variant_id": "authorized-project-binding",
+        "harness": {
+          "path": "scripts/scenarios/run_security_003.py",
+          "digest": "sha256:227bc77f6ea536661cc5eafc57248b10588fcdc46668e2c26434b5765a6bde73",
+          "bytes": 42581,
+          "owner": "runtime.application-spec-project.security.v3-5-2:authorized-project-binding:harness"
+        }
+      }
+    ],
+    "runtime_identity": {
+      "profile": "cluster",
+      "real_argocd_kubernetes_runtime": true,
+      "cluster_name": "argocd-atlas-v3-5-2",
+      "kubernetes_context": "kind-argocd-atlas-v3-5-2",
+      "argocd_version": "3.5.2",
+      "kubernetes_api_server_version": "v1.34.0",
+      "kubernetes_kubelet_version": "v1.34.0",
+      "cluster_uid": "72ccbe2b-84df-443c-8a36-b27ccd178635",
+      "topology_digest": "sha256:c801daf9153ab9cb3b3b9f736218a1a039abfa92adf37afc99813ba8383bb7f1",
+      "observed_argocd_components": [
+        "argocd-application-controller",
+        "argocd-applicationset-controller",
+        "argocd-repo-server"
+      ]
+    },
+    "oracle_records": [
+      {
+        "variant_id": "restricted-project-binding",
+        "oracle": {
+          "status": "pass",
+          "assertions": [
+            {
+              "channel": "resource_state",
+              "pointer": "/security/secret_scan_hits",
+              "operator": "equals",
+              "expected": 0
+            },
+            {
+              "channel": "controller_log",
+              "pointer": "/entries/0/application",
+              "operator": "equals",
+              "expected": "atlas-security-003-project"
+            },
+            {
+              "channel": "metric",
+              "pointer": "/app_info/labels/name",
+              "operator": "equals",
+              "expected": "atlas-security-003-project"
+            },
+            {
+              "channel": "trace",
+              "pointer": "/result/first_attempt",
+              "operator": "equals",
+              "expected": true
+            },
+            {
+              "channel": "resource_state",
+              "pointer": "/observation/invalid_spec_error",
+              "operator": "equals",
+              "expected": true
+            },
+            {
+              "channel": "resource_state",
+              "pointer": "/observation/workload_present",
+              "operator": "equals",
+              "expected": false
+            }
+          ]
+        }
+      },
+      {
+        "variant_id": "authorized-project-binding",
+        "oracle": {
+          "status": "pass",
+          "assertions": [
+            {
+              "channel": "resource_state",
+              "pointer": "/security/secret_scan_hits",
+              "operator": "equals",
+              "expected": 0
+            },
+            {
+              "channel": "controller_log",
+              "pointer": "/entries/0/application",
+              "operator": "equals",
+              "expected": "atlas-security-003-project"
+            },
+            {
+              "channel": "metric",
+              "pointer": "/app_info/labels/name",
+              "operator": "equals",
+              "expected": "atlas-security-003-project"
+            },
+            {
+              "channel": "trace",
+              "pointer": "/result/first_attempt",
+              "operator": "equals",
+              "expected": true
+            },
+            {
+              "channel": "resource_state",
+              "pointer": "/observation/invalid_spec_error",
+              "operator": "equals",
+              "expected": false
+            },
+            {
+              "channel": "resource_state",
+              "pointer": "/observation/workload_present",
+              "operator": "equals",
+              "expected": true
+            }
+          ]
+        }
+      }
+    ],
     "artifacts": {
       "resource_state": {
-        "status": "explicit-gap",
-        "artifacts": [],
-        "gap": "全Variant所有の専用resource_state Artifactが揃っていない。"
+        "status": "artifact",
+        "artifacts": [
+          {
+            "variant_id": "restricted-project-binding",
+            "artifact": {
+              "path": "evidence/scenarios/runtime/artifacts/runtime.application-spec-project.security.v3-5-2/restricted-project-binding/resource_state.json",
+              "digest": "sha256:e55afe6224001d8d765fea8a78d8d330e9a8d7dbe088720cdb699cc00d430f4e",
+              "bytes": 12505,
+              "kind": "kubernetes-resource-state",
+              "owner": "runtime.application-spec-project.security.v3-5-2:restricted-project-binding:resource_state"
+            }
+          },
+          {
+            "variant_id": "authorized-project-binding",
+            "artifact": {
+              "path": "evidence/scenarios/runtime/artifacts/runtime.application-spec-project.security.v3-5-2/authorized-project-binding/resource_state.json",
+              "digest": "sha256:f8dfdefc88d1483acabe295e877bb18683f197b1f5a77a45319d475007adb949",
+              "bytes": 16418,
+              "kind": "kubernetes-resource-state",
+              "owner": "runtime.application-spec-project.security.v3-5-2:authorized-project-binding:resource_state"
+            }
+          }
+        ],
+        "gap": null
       },
       "controller_log": {
-        "status": "explicit-gap",
-        "artifacts": [],
-        "gap": "全Variant所有の専用controller_log Artifactが揃っていない。"
+        "status": "artifact",
+        "artifacts": [
+          {
+            "variant_id": "restricted-project-binding",
+            "artifact": {
+              "path": "evidence/scenarios/runtime/artifacts/runtime.application-spec-project.security.v3-5-2/restricted-project-binding/controller_log.json",
+              "digest": "sha256:5cc48362d9f5e9c0440b837df5f7f778d85e7fc58548c9e36c9139af0307809c",
+              "bytes": 3186,
+              "kind": "argocd-controller-log",
+              "owner": "runtime.application-spec-project.security.v3-5-2:restricted-project-binding:controller_log"
+            }
+          },
+          {
+            "variant_id": "authorized-project-binding",
+            "artifact": {
+              "path": "evidence/scenarios/runtime/artifacts/runtime.application-spec-project.security.v3-5-2/authorized-project-binding/controller_log.json",
+              "digest": "sha256:cefc03c0f1034f0639dbf4ca5941f5162cb3b374640c2d804af1a19ae0c305b4",
+              "bytes": 20877,
+              "kind": "argocd-controller-log",
+              "owner": "runtime.application-spec-project.security.v3-5-2:authorized-project-binding:controller_log"
+            }
+          }
+        ],
+        "gap": null
       },
       "metric": {
-        "status": "explicit-gap",
-        "artifacts": [],
-        "gap": "全Variant所有の専用metric Artifactが揃っていない。"
+        "status": "artifact",
+        "artifacts": [
+          {
+            "variant_id": "restricted-project-binding",
+            "artifact": {
+              "path": "evidence/scenarios/runtime/artifacts/runtime.application-spec-project.security.v3-5-2/restricted-project-binding/metric.json",
+              "digest": "sha256:7bbe771641f3b95a69c14d76249cfd0fa6849325a86b1b1dff7de43c94c6f383",
+              "bytes": 1118,
+              "kind": "argocd-prometheus-metric",
+              "owner": "runtime.application-spec-project.security.v3-5-2:restricted-project-binding:metric"
+            }
+          },
+          {
+            "variant_id": "authorized-project-binding",
+            "artifact": {
+              "path": "evidence/scenarios/runtime/artifacts/runtime.application-spec-project.security.v3-5-2/authorized-project-binding/metric.json",
+              "digest": "sha256:a9f557f7725f887f38898d44e7afe560d2b76661ae0daf8d60c8d1fd1519f1e4",
+              "bytes": 1118,
+              "kind": "argocd-prometheus-metric",
+              "owner": "runtime.application-spec-project.security.v3-5-2:authorized-project-binding:metric"
+            }
+          }
+        ],
+        "gap": null
       },
       "trace": {
-        "status": "explicit-gap",
-        "artifacts": [],
-        "gap": "全Variant所有の専用trace Artifactが揃っていない。"
+        "status": "artifact",
+        "artifacts": [
+          {
+            "variant_id": "restricted-project-binding",
+            "artifact": {
+              "path": "evidence/scenarios/runtime/artifacts/runtime.application-spec-project.security.v3-5-2/restricted-project-binding/trace.json",
+              "digest": "sha256:1ae950590bcb0c43de5d48510c1c065391132a1ac10ff13543f58e521109f5c5",
+              "bytes": 572,
+              "kind": "scenario-execution-trace",
+              "owner": "runtime.application-spec-project.security.v3-5-2:restricted-project-binding:trace"
+            }
+          },
+          {
+            "variant_id": "authorized-project-binding",
+            "artifact": {
+              "path": "evidence/scenarios/runtime/artifacts/runtime.application-spec-project.security.v3-5-2/authorized-project-binding/trace.json",
+              "digest": "sha256:f674bf591c919c1c837395f08c30c1c969ccb5040de2e0a8447c65bd7ab5ba0a",
+              "bytes": 628,
+              "kind": "scenario-execution-trace",
+              "owner": "runtime.application-spec-project.security.v3-5-2:authorized-project-binding:trace"
+            }
+          }
+        ],
+        "gap": null
       }
     },
     "conditions": {
       "variant_denominator_exhaustive": false,
-      "exact_surface_scenario_scope": false,
-      "all_variants_driven": false,
-      "real_argocd_kubernetes_runtime": false,
-      "retry_zero": false,
-      "first_attempt_pass": false,
-      "oracle_pass": false,
-      "source_digest_bound": false,
-      "harness_digest_bound": false,
-      "runtime_identity_complete": false,
-      "per_variant_resource_state_artifact": false,
-      "per_variant_controller_log_artifact": false,
-      "per_variant_metric_artifact": false,
-      "per_variant_trace_artifact": false,
-      "artifact_paths_dedicated_and_distinct": false,
-      "integrated_or_other_metadata_reuse_absent": false
+      "exact_surface_scenario_scope": true,
+      "all_variants_driven": true,
+      "real_argocd_kubernetes_runtime": true,
+      "retry_zero": true,
+      "first_attempt_pass": true,
+      "oracle_pass": true,
+      "source_digest_bound": true,
+      "harness_digest_bound": true,
+      "runtime_identity_complete": true,
+      "per_variant_resource_state_artifact": true,
+      "per_variant_controller_log_artifact": true,
+      "per_variant_metric_artifact": true,
+      "per_variant_trace_artifact": true,
+      "artifact_paths_dedicated_and_distinct": true,
+      "integrated_or_other_metadata_reuse_absent": true
     },
     "failed_conditions": [
-      "variant_denominator_exhaustive",
-      "exact_surface_scenario_scope",
-      "all_variants_driven",
-      "real_argocd_kubernetes_runtime",
-      "retry_zero",
-      "first_attempt_pass",
-      "oracle_pass",
-      "source_digest_bound",
-      "harness_digest_bound",
-      "runtime_identity_complete",
-      "per_variant_resource_state_artifact",
-      "per_variant_controller_log_artifact",
-      "per_variant_metric_artifact",
-      "per_variant_trace_artifact",
-      "artifact_paths_dedicated_and_distinct",
-      "integrated_or_other_metadata_reuse_absent"
+      "variant_denominator_exhaustive"
     ],
     "closure_evidence_source": "dedicated-surface-scenario-runtime-registry-only",
     "prohibited_substitutions": [
@@ -194,7 +415,7 @@
     "supporting_real_kubernetes_runtime": false,
     "supporting_runtime_identity_complete": false,
     "scenario_gap_closed": false,
-    "dedicated_runtime_execution_complete": false,
+    "dedicated_runtime_execution_complete": true,
     "authority_atomic_binding": false,
     "completion_eligible": false
   },
@@ -205,21 +426,6 @@
     "metric: Behavior固有metric Artifactがない。",
     "trace: Behavior固有trace Artifactがない。OTLP traceは別Gapとして未Closure。",
     "closure-condition: variant_denominator_exhaustive",
-    "closure-condition: exact_surface_scenario_scope",
-    "closure-condition: all_variants_driven",
-    "closure-condition: real_argocd_kubernetes_runtime",
-    "closure-condition: retry_zero",
-    "closure-condition: first_attempt_pass",
-    "closure-condition: oracle_pass",
-    "closure-condition: source_digest_bound",
-    "closure-condition: harness_digest_bound",
-    "closure-condition: runtime_identity_complete",
-    "closure-condition: per_variant_resource_state_artifact",
-    "closure-condition: per_variant_controller_log_artifact",
-    "closure-condition: per_variant_metric_artifact",
-    "closure-condition: per_variant_trace_artifact",
-    "closure-condition: artifact_paths_dedicated_and_distinct",
-    "closure-condition: integrated_or_other_metadata_reuse_absent",
     "統合Scenario AuditをBehavior固有Proofへ流用しない。",
     "Authority raw anchorの人手DecisionがなくAtomic behaviorへ昇格していない。"
   ]

@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "surface_id": "application.spec.sources",
+  "scenario": "security",
+  "variant_id": "project-allowed-multi-source",
+  "started_at": "2026-08-30T18:47:22.294040Z",
+  "completed_at": "2026-08-30T18:47:22.294071Z",
+  "attempt": 1,
+  "retries": 0,
+  "actions": [
+    {
+      "action": "allow-project-sources",
+      "status": "passed"
+    },
+    {
+      "action": "sync-two-sources",
+      "status": "passed"
+    }
+  ],
+  "result": {
+    "first_attempt": true,
+    "ephemeral_token_leak": false,
+    "source_count": 2,
+    "invalid_spec_error": false,
+    "source_a_present": true,
+    "source_b_present": true
+  }
+}

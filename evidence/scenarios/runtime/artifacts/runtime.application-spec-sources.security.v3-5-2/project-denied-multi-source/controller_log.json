@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "component": "argocd-application-controller",
+  "surface_id": "application.spec.sources",
+  "scenario": "security",
+  "variant_id": "project-denied-multi-source",
+  "entries": [
+    {
+      "app-namespace": "argocd",
+      "application": "atlas-security-003-sources",
+      "level": "info",
+      "msg": "Refreshing app status (at least one of the spec.sources differs), level (3)",
+      "project": "atlas-security-003-sources",
+      "time": "2026-08-30T18:47:12Z"
+    },
+    {
+      "application": "atlas-security-003-sources",
+      "dest-namespace": "atlas-security-003-workloads",
+      "dest-server": "https://kubernetes.default.svc",
+      "level": "info",
+      "msg": "Updated sync status:  -> Unknown",
+      "reason": "ResourceUpdated",
+      "time": "2026-08-30T18:47:12Z",
+      "type": "Normal"
+    },
+    {
+      "application": "atlas-security-003-sources",
+      "dest-namespace": "atlas-security-003-workloads",
+      "dest-server": "https://kubernetes.default.svc",
+      "level": "info",
+      "msg": "Updated health status:  -> Unknown",
+      "reason": "ResourceUpdated",
+      "time": "2026-08-30T18:47:12Z",
+      "type": "Normal"
+    },
+    {
+      "app-namespace": "argocd",
+      "application": "atlas-security-003-sources",
+      "level": "info",
+      "msg": "Update successful",
+      "project": "atlas-security-003-sources",
+      "time": "2026-08-30T18:47:12Z"
+    },
+    {
+      "app-namespace": "argocd",
+      "application": "atlas-security-003-sources",
+      "comparison-level": 3,
+      "comparison_with_nothing_ms": 0,
+      "dest-name": "",
+      "dest-namespace": "atlas-security-003-workloads",
+      "dest-server": "https://kubernetes.default.svc",
+      "level": "info",
+      "msg": "Reconciliation completed",
+      "patch_ms": 11,
+      "process_refresh_app_conditions_errors_ms": 33,
+      "project": "atlas-security-003-sources",
+      "refresh_app_conditions_ms": 0,
+      "setop_ms": 0,
+      "time": "2026-08-30T18:47:12Z",
+      "time_ms": 33
+    },
+    {
+      "app-namespace": "argocd",
+      "application": "atlas-security-003-sources",
+      "level": "info",
+      "msg": "Refreshing app status (at least one of the spec.sources differs), level (3)",
+      "project": "atlas-security-003-sources",
+      "time": "2026-08-30T18:47:12Z"
+    },
+    {
+      "app-namespace": "argocd",
+      "application": "atlas-security-003-sources",
+      "level": "info",
+      "msg": "No status changes. Skipping patch",
+      "project": "atlas-security-003-sources",
+      "time": "2026-08-30T18:47:12Z"
+    },
+    {
+      "app-namespace": "argocd",
+      "application": "atlas-security-003-sources",
+      "comparison-level": 3,
+      "comparison_with_nothing_ms": 0,
+      "dest-name": "",
+      "dest-namespace": "atlas-security-003-workloads",
+      "dest-server": "https://kubernetes.default.svc",
+      "level": "info",
+      "msg": "Reconciliation completed",
+      "patch_ms": 0,
+      "process_refresh_app_conditions_errors_ms": 1,
+      "project": "atlas-security-003-sources",
+      "refresh_app_conditions_ms": 0,
+      "setop_ms": 0,
+      "time": "2026-08-30T18:47:12Z",
+      "time_ms": 1
+    }
+  ]
+}

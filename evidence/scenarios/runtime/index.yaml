@@ -35,10 +35,26 @@ reports:
   path: evidence/scenarios/runtime/reports/runtime.application-spec-destination.security.v3-5-2.json
   digest: sha256:e6211dc1f875f679c1fb57376c6d7911286fa7c126132649ccda492379959c89
   bytes: 9665
+- id: runtime.application-spec-project.security.v3-5-2
+  path: evidence/scenarios/runtime/reports/runtime.application-spec-project.security.v3-5-2.json
+  digest: sha256:efc03b9d4663eddfd7345e95abe329e4d4c277a9f0b0434d3397b41121c6465c
+  bytes: 9121
+- id: runtime.application-spec-sources.security.v3-5-2
+  path: evidence/scenarios/runtime/reports/runtime.application-spec-sources.security.v3-5-2.json
+  digest: sha256:84bc10e2b0d1092ebcc1a27f8772b9f6f02d8bf8cb5b897e279efe10f0b85495
+  bytes: 9326
 - id: runtime.application-spec-sync-policy.normal.v3-5-2
   path: evidence/scenarios/runtime/reports/runtime.application-spec-sync-policy.normal.v3-5-2.json
   digest: sha256:55827f3ed6e43d1dc373f6228acb66d04fd3da29f346b0d14ad00909d2db6e5f
   bytes: 9480
+- id: runtime.application-spec-sync-policy.security.v3-5-2
+  path: evidence/scenarios/runtime/reports/runtime.application-spec-sync-policy.security.v3-5-2.json
+  digest: sha256:d8074c0e84a7b77db09e6dd219a4d46116a270f7c2fa0848db2eec1f1a4ab0ab
+  bytes: 10041
+- id: runtime.applicationset-any-namespace.security.v3-5-2
+  path: evidence/scenarios/runtime/reports/runtime.applicationset-any-namespace.security.v3-5-2.json
+  digest: sha256:468da5585a4b519bbd26ba79c88ae2b69b1b2f33b64ea4f64ee44fcb53474099
+  bytes: 9139
 admission_contract:
   report_scope: exact-surface-scenario
   variant_scope: all-runtime-declared-variants-with-authority-exhaustive-kept-separate

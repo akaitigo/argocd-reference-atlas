@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "surface_id": "application.spec.sources",
+  "scenario": "security",
+  "variant_id": "project-denied-multi-source",
+  "started_at": "2026-08-30T18:47:17.994685Z",
+  "completed_at": "2026-08-30T18:47:17.994709Z",
+  "attempt": 1,
+  "retries": 0,
+  "actions": [
+    {
+      "action": "reconcile-project-denied-sources",
+      "status": "rejected"
+    }
+  ],
+  "result": {
+    "first_attempt": true,
+    "ephemeral_token_leak": false,
+    "source_count": 2,
+    "invalid_spec_error": true,
+    "source_a_present": false,
+    "source_b_present": false
+  }
+}

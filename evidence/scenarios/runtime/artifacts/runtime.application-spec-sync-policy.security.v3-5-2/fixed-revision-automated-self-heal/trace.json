@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "surface_id": "application.spec.sync-policy",
+  "scenario": "security",
+  "variant_id": "fixed-revision-automated-self-heal",
+  "started_at": "2026-08-30T18:47:26.401173Z",
+  "completed_at": "2026-08-30T18:47:26.401201Z",
+  "attempt": 1,
+  "retries": 0,
+  "actions": [
+    {
+      "action": "enable-automated-sync",
+      "subject": "atlas-security-003-allowed",
+      "status": "passed"
+    },
+    {
+      "action": "controller-auto-sync",
+      "status": "passed"
+    }
+  ],
+  "result": {
+    "first_attempt": true,
+    "ephemeral_token_leak": false,
+    "rbac_decision": "Yes",
+    "automated_enabled": true,
+    "self_heal_enabled": true,
+    "sync_status": "Synced",
+    "workload_present": true
+  }
+}

@@ -73,6 +73,27 @@ denominator:
       variants:
         - id: project-denied-destination
         - id: project-allowed-destination
+    - surface_id: application.spec.project
+      status: runtime-declared-pending-authority-human-review
+      exhaustive_for_completion: false
+      declaration_scope: bounded-local-runtime-execution-only
+      variants:
+        - id: restricted-project-binding
+        - id: authorized-project-binding
+    - surface_id: application.spec.sources
+      status: runtime-declared-pending-authority-human-review
+      exhaustive_for_completion: false
+      declaration_scope: bounded-local-runtime-execution-only
+      variants:
+        - id: project-denied-multi-source
+        - id: project-allowed-multi-source
+    - surface_id: applicationset.any-namespace
+      status: runtime-declared-pending-authority-human-review
+      exhaustive_for_completion: false
+      declaration_scope: bounded-local-runtime-execution-only
+      variants:
+        - id: namespace-not-allowlisted
+        - id: namespace-allowlisted
 rules:
   - Surfaceごとに人手確認済みの非空Variant集合がapproved-exhaustiveになるまでScenario gapを閉じない。
   - Surface、Scenario、Variantの完全一致を持つ専用実Argo CD／Kubernetes Runtime recordだけを算入する。

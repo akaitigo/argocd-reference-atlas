@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "surface_id": "application.spec.project",
+  "scenario": "security",
+  "variant_id": "restricted-project-binding",
+  "started_at": "2026-08-30T18:47:15.671422Z",
+  "completed_at": "2026-08-30T18:47:15.671723Z",
+  "attempt": 1,
+  "retries": 0,
+  "actions": [
+    {
+      "action": "reconcile-restricted-project",
+      "status": "rejected"
+    }
+  ],
+  "result": {
+    "first_attempt": true,
+    "ephemeral_token_leak": false,
+    "project": "atlas-security-003-project-denied",
+    "invalid_spec_error": true,
+    "workload_present": false
+  }
+}

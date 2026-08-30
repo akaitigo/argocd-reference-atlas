@@ -4,14 +4,14 @@
   "status": "incomplete-no-runtime-substitution",
   "core_commit": "072d7ca77981f51754e824d70c6d4ecd55ea67e5",
   "inputs": {
-    "evidence/scenarios/index.json": "sha256:1b6bcd93726b72059dfb1a910adced176b35b775f895033f699e0fa3e31e2b45",
-    "evidence/scenarios/closure-plan.json": "sha256:ae2725ec6a040e3362868c996e2613a82ad654172e6c915491f4a22f750ca5ae"
+    "evidence/scenarios/index.json": "sha256:a933a99aa700b5462429f05fff57b4c068899b024ea8602031863d74b327727e",
+    "evidence/scenarios/closure-plan.json": "sha256:8d6e6798d0bcc6841909899b441ce27e4bbd9062a15c5d99713c98e297dd2f4a"
   },
   "denominator": {
     "patterns": 100,
     "scenarios": 10,
     "rows": 1000,
-    "remaining_rows": 991,
+    "remaining_rows": 987,
     "scenario_gaps_open": 1000,
     "scenario_gaps_closed": 0
   },
@@ -50,8 +50,8 @@
   "independent_gaps": {
     "authority_atomic_rows": 0,
     "approved_variant_denominators": 0,
-    "dedicated_runtime_reports": 9,
-    "dedicated_runtime_execution_complete_rows": 9,
+    "dedicated_runtime_reports": 13,
+    "dedicated_runtime_execution_complete_rows": 13,
     "completion_eligible_rows": 0,
     "integrated_runtime_passed": 0,
     "missing_core_artifacts": [
@@ -69,7 +69,7 @@
   "runtime_preflight": {
     "state": "partial-dedicated-local-kind-runtime-proof",
     "dedicated_local_kind_required": true,
-    "completed_dedicated_rows": 9,
+    "completed_dedicated_rows": 13,
     "external_context_access_forbidden": true,
     "fixture_runtime_credit": false
   },

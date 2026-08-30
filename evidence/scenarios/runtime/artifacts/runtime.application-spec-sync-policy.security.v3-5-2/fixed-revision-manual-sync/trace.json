@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "surface_id": "application.spec.sync-policy",
+  "scenario": "security",
+  "variant_id": "fixed-revision-manual-sync",
+  "started_at": "2026-08-30T18:47:23.073424Z",
+  "completed_at": "2026-08-30T18:47:23.073444Z",
+  "attempt": 1,
+  "retries": 0,
+  "actions": [
+    {
+      "action": "enable-automated-sync",
+      "subject": "atlas-security-003-update-denied",
+      "status": "permission-denied"
+    }
+  ],
+  "result": {
+    "first_attempt": true,
+    "ephemeral_token_leak": false,
+    "rbac_decision": "No",
+    "automated_enabled": false,
+    "self_heal_enabled": false,
+    "sync_status": "OutOfSync",
+    "workload_present": false
+  }
+}
