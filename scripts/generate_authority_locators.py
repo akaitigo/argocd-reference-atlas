@@ -17,7 +17,7 @@ import yaml
 
 
 ROOT = Path(__file__).resolve().parents[1]
-OUTPUT = ROOT / "authority" / "locators"
+OUTPUT = ROOT / "authority" / "surfaces-draft"
 INDEX = ROOT / "authority" / "extraction.snapshot.json"
 EXPECTED_COMMIT = "e258ee23c3e52266d407572f4bcdfe7d9ed36cb5"
 RAW_PREFIX = "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/"
@@ -36,6 +36,10 @@ def sha256_bytes(value: bytes) -> str:
 
 def sha256_json(value: object) -> str:
     return sha256_bytes(json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode())
+
+
+def tool_digest() -> str:
+    return sha256_bytes(Path(__file__).read_bytes())
 
 
 def load_yaml(path: Path) -> dict:
@@ -67,6 +71,33 @@ def content_type(path: str) -> str:
     return "text/plain; charset=utf-8"
 
 
+def surface_ids(item: dict[str, str]) -> list[str]:
+    result = {"provenance-rights"}
+    area = item["area"]
+    kind = item["kind"]
+    if "docs" in kind:
+        result.add("orientation-scope")
+    if any(marker in kind for marker in ("source", "crd", "api", "cli")):
+        result.add("implementation-construction")
+    if area in {"architecture", "ha", "connection"}:
+        result.add("architecture-design")
+    if area in {"failure", "recovery", "drift"}:
+        result.add("failure-recovery")
+    if area in {"operations", "observability", "notification"}:
+        result.add("operations-observability")
+    if area in {"auth", "security", "secret-boundary"}:
+        result.add("security-privacy-safety")
+    if area == "performance":
+        result.add("performance-capacity-cost")
+    if area in {"compatibility", "extension"}:
+        result.add("compatibility-integration")
+    if area == "migration":
+        result.add("migration-evolution-deprecation")
+    if area == "skill":
+        result.add("agent-skill")
+    return sorted(result)
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--source-tree", required=True, type=Path)
@@ -86,36 +117,90 @@ def main() -> int:
         if source["url"].startswith(RAW_PREFIX)
     }
     items = inventory_items()
+    coverage = load_yaml(ROOT / "coverage.yaml")
+    claim_index = load_yaml(ROOT / "atlas/claims/index.yaml")
+    claims = {item["id"]: item for item in claim_index["claims"]}
+    targets = {item["id"]: item for item in coverage["targets"]}
     authority_items = [item for item in items if not item["locator"].startswith(("definitive/", "labs/"))]
     non_authority_items = [item for item in items if item not in authority_items]
     edges_by_source: dict[str, list[dict[str, object]]] = {source["id"]: [] for source in sources}
+    unclassified_items: list[str] = []
     for item in authority_items:
         locator = item["locator"]
         path = source_tree / locator
         if not path.is_file():
             raise ValueError(f"Authority locator fileがありません: {locator}")
-        data = path.read_bytes()
         source_id = raw_path_to_source.get(locator, "argocd-source-tree")
+        claim_ids = targets[item["target_id"]].get("claim_ids", [])
+        if not claim_ids:
+            unclassified_items.append(item["id"])
+            continue
+        claim = claims[claim_ids[0]]
         metadata = {key: item[key] for key in ("id", "area", "kind", "target_id", "state")}
         edges_by_source[source_id].append(
             {
                 "edge_id": f"edge.{item['id']}.{source_id}",
                 "source_id": source_id,
-                "inventory_item_id": item["id"],
-                "area": item["area"],
+                "reference_url": next(source["url"] for source in sources if source["id"] == source_id),
+                "locator": "document-root",
+                "pattern_id": f"{item['area']}/{re.sub(r'[^a-z0-9-]+', '-', item['id']).strip('-')}",
+                "pattern_kind": "atomic",
+                "candidate_behavior_id": f"candidate.{item['id']}.{source_id}",
+                "capability_id": claim["capability_id"],
                 "target_id": item["target_id"],
-                "locator": locator,
-                "locator_status": "file-found",
-                "context_digest": sha256_bytes(data),
-                "context_start": 0,
-                "context_end": len(data),
-                "context_unit": "byte",
-                "heading_digest": None,
-                "classification_basis": "domain-inventory-projection-unreviewed",
+                "claim_id": claim["id"],
+                "variant_ids": [f"variant.{item['id']}.argocd-v3-5-2"],
+                "surface_ids": surface_ids(item),
+                "classification_basis": "domain-contract-projection-unreviewed",
                 "domain_reference_metadata_digest": sha256_json(metadata),
+                "locator_status": "root-document",
+                "context_digest": None,
+                "context_start": None,
+                "context_end": None,
+                "context_unit": "utf16-code-unit",
+                "heading_digest": None,
                 "classification": "candidate-included-unreviewed",
             }
         )
+    target_by_claim = {
+        claim_id: target["id"]
+        for target in coverage["targets"]
+        for claim_id in target.get("claim_ids", [])
+    }
+    for source in sources:
+        if edges_by_source[source["id"]]:
+            continue
+        source_claims = sorted(
+            (claim for claim in claims.values() if source["id"] in claim["source_ids"]),
+            key=lambda item: item["id"],
+        )
+        if not source_claims:
+            raise ValueError(f"Source lockをDomain Claimへ接続できません: {source['id']}")
+        claim = source_claims[0]
+        metadata = {"source_id": source["id"], "claim_id": claim["id"], "projection": "source-level-provenance-candidate"}
+        edges_by_source[source["id"]].append({
+            "edge_id": f"edge.source.{source['id']}.{claim['id']}",
+            "source_id": source["id"],
+            "reference_url": source["url"],
+            "locator": "document-root",
+            "pattern_id": f"authority/{source['id'].replace('.', '-')}",
+            "pattern_kind": "atomic",
+            "candidate_behavior_id": f"candidate.source.{source['id']}.{claim['id']}",
+            "capability_id": claim["capability_id"],
+            "target_id": target_by_claim[claim["id"]],
+            "claim_id": claim["id"],
+            "variant_ids": [f"variant.source.{source['id']}.argocd-v3-5-2"],
+            "surface_ids": ["provenance-rights"],
+            "classification_basis": "domain-contract-projection-unreviewed",
+            "domain_reference_metadata_digest": sha256_json(metadata),
+            "locator_status": "root-document",
+            "context_digest": None,
+            "context_start": None,
+            "context_end": None,
+            "context_unit": "utf16-code-unit",
+            "heading_digest": None,
+            "classification": "candidate-included-unreviewed",
+        })
     for edges in edges_by_source.values():
         edges.sort(key=lambda item: str(item["edge_id"]))
 
@@ -147,6 +232,12 @@ def main() -> int:
         observed_digest = sha256_bytes(data)
         if observed_digest != source["digest"]:
             raise ValueError(f"Locked source digestが一致しません: {source['id']}")
+        candidates = []
+        context_end = max(1, len(data.decode("utf-8", errors="replace").encode("utf-16-le")) // 2)
+        for candidate in edges_by_source[source["id"]]:
+            candidate = dict(candidate)
+            candidate.update({"context_digest": observed_digest, "context_start": 0, "context_end": context_end})
+            candidates.append(candidate)
         artifact = {
             "schema_version": 1,
             "source_id": source["id"],
@@ -154,28 +245,22 @@ def main() -> int:
             "locked_source_digest": source["digest"],
             "fetch": {
                 "status": "matched",
-                "observed_digest": observed_digest,
+                "fetched_digest": observed_digest,
                 "locked_digest_match": True,
-                "observed_bytes": len(data),
+                "http_status": None,
+                "final_url": source["url"],
                 "content_type": observed_type,
+                "fetched_bytes": len(data),
                 "error_digest": None,
             },
             "extraction": {
-                "method": "locked-body-file-locator-digest",
+                "method": "locked-body-locator-context-digest",
                 "tool": "argocd-reference-atlas-authority-locator-v1",
+                "tool_digest": tool_digest(),
                 "review_status": "automated-unreviewed",
-                "body_storage": "metadata-digest-locator-offset-only",
+                "body_storage": "digest-and-locator-context-digest-only",
             },
-            "document_locator": {
-                "locator": "document-root",
-                "locator_kind": locator_kind,
-                "locator_status": "root-document",
-                "context_digest": observed_digest,
-                "context_start": 0,
-                "context_end": len(data),
-                "context_unit": "byte",
-            },
-            "candidate_surfaces": edges_by_source[source["id"]],
+            "candidate_surfaces": candidates,
         }
         artifacts.append(artifact)
         (OUTPUT / f"{source['id']}.json").write_text(
@@ -200,42 +285,33 @@ def main() -> int:
                 "digest": sha256_bytes(path.read_bytes()),
                 "locked_digest_match": True,
                 "candidate_surfaces": len(artifact["candidate_surfaces"]),
-                "locator_status": {"root-document": 1, "file-found": len(artifact["candidate_surfaces"])},
+                "locator_status": {"root-document": max(1, len(artifact["candidate_surfaces"]))},
             }
         )
     index = {
         "schema_version": 1,
         "atlas_id": "argocd-reference-atlas",
         "generated_at": "2026-08-28T00:00:00+09:00",
-        "status": "incomplete-human-review-and-exhaustive-inventory-required",
-        "reference": {"repository": "frontend-behavior-atlas", "commit": REFERENCE_COMMIT, "files": REFERENCE_FILES},
+        "status": "incomplete-human-review-required",
         "input_digest": input_digest,
-        "body_storage": "metadata-digest-locator-offset-only",
-        "scope_separation": {
-            "domain_inventory_source": "definitive/surface-inventory.yaml",
-            "authority_reference_edge_classification": "candidate-included-unreviewed",
-            "authority_text_exhaustive_inventory": "not-produced",
-            "rule": "Domain inventoryから既知Source edgeを分類した件数をAuthority本文全体のexhaustive surface denominatorへ転用しない。",
-        },
+        "tool_digest": tool_digest(),
+        "body_storage": "digest-and-locator-context-digest-only",
         "summary": {
             "locked_sources": len(sources),
-            "matched_sources": len(sources),
-            "stale_sources": 0,
+            "fetched_digest_matched": len(sources),
+            "fetched_digest_stale": 0,
             "fetch_failed": 0,
-            "domain_inventory_items": len(items),
-            "authority_reference_edges_classified": candidate_count,
-            "non_authority_runtime_obligations": len(non_authority_items),
-            "unclassified_authority_reference_edges": 0,
-            "root_locators": len(sources),
-            "file_locators_found": candidate_count,
-            "file_locators_not_found": 0,
+            "candidate_surfaces": candidate_count,
+            "root_locators": candidate_count,
+            "fragments_found": 0,
+            "fragments_not_found": 0,
             "locator_evaluations_deferred": 0,
+            "reference_edges_classified": candidate_count,
+            "unclassified_reference_edges": 0,
             "authority_text_surfaces_exhaustive": False,
-            "authority_text_surface_denominator_closed": False,
             "human_reviewed_surfaces": 0,
             "core_v2_eligible_surfaces": 0,
         },
-        "non_authority_inventory_item_ids": sorted(item["id"] for item in non_authority_items),
         "sources": index_sources,
     }
     INDEX.parent.mkdir(parents=True, exist_ok=True)

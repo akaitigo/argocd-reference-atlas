@@ -1,0 +1,165 @@
+{
+  "schema_version": 1,
+  "source_id": "argocd-application-crd",
+  "source_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/manifests/crds/application-crd.yaml",
+  "locked_source_digest": "sha256:5dde0e229249b6b707beb98674c1deae3949d5c319a6c45b9f5a80c99618e40c",
+  "fetch": {
+    "status": "matched",
+    "fetched_digest": "sha256:5dde0e229249b6b707beb98674c1deae3949d5c319a6c45b9f5a80c99618e40c",
+    "locked_digest_match": true,
+    "http_status": null,
+    "final_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/manifests/crds/application-crd.yaml",
+    "content_type": "application/yaml",
+    "fetched_bytes": 405924,
+    "error_digest": null
+  },
+  "extraction": {
+    "method": "locked-body-locator-context-digest",
+    "tool": "argocd-reference-atlas-authority-locator-v1",
+    "tool_digest": "sha256:53e20736c1f6867e1b680d5e5244b589839b00d1cc82816d5227d798c898366e",
+    "review_status": "automated-unreviewed",
+    "body_storage": "digest-and-locator-context-digest-only"
+  },
+  "candidate_surfaces": [
+    {
+      "edge_id": "edge.application.spec.destination.argocd-application-crd",
+      "source_id": "argocd-application-crd",
+      "reference_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/manifests/crds/application-crd.yaml",
+      "locator": "document-root",
+      "pattern_id": "application/application-spec-destination",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.application.spec.destination.argocd-application-crd",
+      "capability_id": "capability.application.declarative-model",
+      "target_id": "application.declarative-model",
+      "claim_id": "claim.application.desired-state",
+      "variant_ids": [
+        "variant.application.spec.destination.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "implementation-construction",
+        "provenance-rights"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:5ec4879ce4fe7343652db707ffbdf1e9eef54d8ac656ead4481867d387603274",
+      "locator_status": "root-document",
+      "context_digest": "sha256:5dde0e229249b6b707beb98674c1deae3949d5c319a6c45b9f5a80c99618e40c",
+      "context_start": 0,
+      "context_end": 405924,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    },
+    {
+      "edge_id": "edge.application.spec.project.argocd-application-crd",
+      "source_id": "argocd-application-crd",
+      "reference_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/manifests/crds/application-crd.yaml",
+      "locator": "document-root",
+      "pattern_id": "application/application-spec-project",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.application.spec.project.argocd-application-crd",
+      "capability_id": "capability.application.declarative-model",
+      "target_id": "application.declarative-model",
+      "claim_id": "claim.application.desired-state",
+      "variant_ids": [
+        "variant.application.spec.project.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "implementation-construction",
+        "provenance-rights"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:1d302a44c7ecc42e1dcacb787528afef844e7f768b443c107f63b02bc94a65c6",
+      "locator_status": "root-document",
+      "context_digest": "sha256:5dde0e229249b6b707beb98674c1deae3949d5c319a6c45b9f5a80c99618e40c",
+      "context_start": 0,
+      "context_end": 405924,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    },
+    {
+      "edge_id": "edge.application.spec.sources.argocd-application-crd",
+      "source_id": "argocd-application-crd",
+      "reference_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/manifests/crds/application-crd.yaml",
+      "locator": "document-root",
+      "pattern_id": "application/application-spec-sources",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.application.spec.sources.argocd-application-crd",
+      "capability_id": "capability.application.declarative-model",
+      "target_id": "application.declarative-model",
+      "claim_id": "claim.application.desired-state",
+      "variant_ids": [
+        "variant.application.spec.sources.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "implementation-construction",
+        "provenance-rights"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:e4067740683361a4b282b20a9193f74c0687ca488595d215a5d2cfcd3c351798",
+      "locator_status": "root-document",
+      "context_digest": "sha256:5dde0e229249b6b707beb98674c1deae3949d5c319a6c45b9f5a80c99618e40c",
+      "context_start": 0,
+      "context_end": 405924,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    },
+    {
+      "edge_id": "edge.application.spec.sync-policy.argocd-application-crd",
+      "source_id": "argocd-application-crd",
+      "reference_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/manifests/crds/application-crd.yaml",
+      "locator": "document-root",
+      "pattern_id": "application/application-spec-sync-policy",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.application.spec.sync-policy.argocd-application-crd",
+      "capability_id": "capability.application.declarative-model",
+      "target_id": "application.declarative-model",
+      "claim_id": "claim.application.desired-state",
+      "variant_ids": [
+        "variant.application.spec.sync-policy.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "implementation-construction",
+        "provenance-rights"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:cd42f2b9f0fa088a9432537af24f8f08b9815992bcc31f2cf0831762ad0593b6",
+      "locator_status": "root-document",
+      "context_digest": "sha256:5dde0e229249b6b707beb98674c1deae3949d5c319a6c45b9f5a80c99618e40c",
+      "context_start": 0,
+      "context_end": 405924,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    },
+    {
+      "edge_id": "edge.sync.retry.argocd-application-crd",
+      "source_id": "argocd-application-crd",
+      "reference_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/manifests/crds/application-crd.yaml",
+      "locator": "document-root",
+      "pattern_id": "sync/sync-retry",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.sync.retry.argocd-application-crd",
+      "capability_id": "capability.recovery.automated-self-heal",
+      "target_id": "recovery.automated-resynchronization",
+      "claim_id": "claim.recovery.automated-self-heal",
+      "variant_ids": [
+        "variant.sync.retry.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "implementation-construction",
+        "provenance-rights"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:ba026f39dfab07e1021e0cc0e79e91e152f68bf0cd7f46d8565d13889d9fb096",
+      "locator_status": "root-document",
+      "context_digest": "sha256:5dde0e229249b6b707beb98674c1deae3949d5c319a6c45b9f5a80c99618e40c",
+      "context_start": 0,
+      "context_end": 405924,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    }
+  ]
+}

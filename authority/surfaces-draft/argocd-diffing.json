@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "source_id": "argocd-diffing",
+  "source_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/user-guide/diffing.md",
+  "locked_source_digest": "sha256:0f8e49ca633f070181e1e54051a34a2ee1ee2dbb6903f0d273eaff0fc51808fd",
+  "fetch": {
+    "status": "matched",
+    "fetched_digest": "sha256:0f8e49ca633f070181e1e54051a34a2ee1ee2dbb6903f0d273eaff0fc51808fd",
+    "locked_digest_match": true,
+    "http_status": null,
+    "final_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/user-guide/diffing.md",
+    "content_type": "text/markdown; charset=utf-8",
+    "fetched_bytes": 8136,
+    "error_digest": null
+  },
+  "extraction": {
+    "method": "locked-body-locator-context-digest",
+    "tool": "argocd-reference-atlas-authority-locator-v1",
+    "tool_digest": "sha256:53e20736c1f6867e1b680d5e5244b589839b00d1cc82816d5227d798c898366e",
+    "review_status": "automated-unreviewed",
+    "body_storage": "digest-and-locator-context-digest-only"
+  },
+  "candidate_surfaces": [
+    {
+      "edge_id": "edge.diff.ignore-rules.argocd-diffing",
+      "source_id": "argocd-diffing",
+      "reference_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/user-guide/diffing.md",
+      "locator": "document-root",
+      "pattern_id": "diff/diff-ignore-rules",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.diff.ignore-rules.argocd-diffing",
+      "capability_id": "capability.diff.desired-live-comparison",
+      "target_id": "diff.desired-live-comparison",
+      "claim_id": "claim.diff.detect-drift",
+      "variant_ids": [
+        "variant.diff.ignore-rules.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "implementation-construction",
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:285203fc45c4cd42f22ff48427de85ea70b87efd07e7be3bee32fb265e5a1213",
+      "locator_status": "root-document",
+      "context_digest": "sha256:0f8e49ca633f070181e1e54051a34a2ee1ee2dbb6903f0d273eaff0fc51808fd",
+      "context_start": 0,
+      "context_end": 8136,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    }
+  ]
+}

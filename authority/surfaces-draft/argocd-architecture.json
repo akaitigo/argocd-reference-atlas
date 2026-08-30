@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "source_id": "argocd-architecture",
+  "source_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/operator-manual/architecture.md",
+  "locked_source_digest": "sha256:222c95420cad310bffb0690bddb066b429d422412a99494fd59b376815cfecc9",
+  "fetch": {
+    "status": "matched",
+    "fetched_digest": "sha256:222c95420cad310bffb0690bddb066b429d422412a99494fd59b376815cfecc9",
+    "locked_digest_match": true,
+    "http_status": null,
+    "final_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/operator-manual/architecture.md",
+    "content_type": "text/markdown; charset=utf-8",
+    "fetched_bytes": 1397,
+    "error_digest": null
+  },
+  "extraction": {
+    "method": "locked-body-locator-context-digest",
+    "tool": "argocd-reference-atlas-authority-locator-v1",
+    "tool_digest": "sha256:53e20736c1f6867e1b680d5e5244b589839b00d1cc82816d5227d798c898366e",
+    "review_status": "automated-unreviewed",
+    "body_storage": "digest-and-locator-context-digest-only"
+  },
+  "candidate_surfaces": [
+    {
+      "edge_id": "edge.source.argocd-architecture.claim.architecture.component-boundaries",
+      "source_id": "argocd-architecture",
+      "reference_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/operator-manual/architecture.md",
+      "locator": "document-root",
+      "pattern_id": "authority/argocd-architecture",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.source.argocd-architecture.claim.architecture.component-boundaries",
+      "capability_id": "capability.architecture.component-boundaries",
+      "target_id": "architecture.control-plane-components",
+      "claim_id": "claim.architecture.component-boundaries",
+      "variant_ids": [
+        "variant.source.argocd-architecture.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "provenance-rights"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:d8838dce2c39a8ee8e01d4463da707f7757689e4e33f5d509e72e591922bdfaa",
+      "locator_status": "root-document",
+      "context_digest": "sha256:222c95420cad310bffb0690bddb066b429d422412a99494fd59b376815cfecc9",
+      "context_start": 0,
+      "context_end": 1397,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    }
+  ]
+}

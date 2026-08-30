@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "source_id": "argocd-private-repositories",
+  "source_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/user-guide/private-repositories.md",
+  "locked_source_digest": "sha256:86352c01bba413368cb53bb76105ff20550c6a5dd7bae546edd6d2fcef2cda38",
+  "fetch": {
+    "status": "matched",
+    "fetched_digest": "sha256:86352c01bba413368cb53bb76105ff20550c6a5dd7bae546edd6d2fcef2cda38",
+    "locked_digest_match": true,
+    "http_status": null,
+    "final_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/user-guide/private-repositories.md",
+    "content_type": "text/markdown; charset=utf-8",
+    "fetched_bytes": 28707,
+    "error_digest": null
+  },
+  "extraction": {
+    "method": "locked-body-locator-context-digest",
+    "tool": "argocd-reference-atlas-authority-locator-v1",
+    "tool_digest": "sha256:53e20736c1f6867e1b680d5e5244b589839b00d1cc82816d5227d798c898366e",
+    "review_status": "automated-unreviewed",
+    "body_storage": "digest-and-locator-context-digest-only"
+  },
+  "candidate_surfaces": [
+    {
+      "edge_id": "edge.connection.repository-auth-matrix.argocd-private-repositories",
+      "source_id": "argocd-private-repositories",
+      "reference_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/user-guide/private-repositories.md",
+      "locator": "document-root",
+      "pattern_id": "connection/connection-repository-auth-matrix",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.connection.repository-auth-matrix.argocd-private-repositories",
+      "capability_id": "capability.connection.repository-cluster-registration",
+      "target_id": "connection.repository-cluster-registration",
+      "claim_id": "claim.connection.register-and-reject",
+      "variant_ids": [
+        "variant.connection.repository-auth-matrix.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "architecture-design",
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:cff3c2697869aec2b4bd3d74586e5f4b111deedd1c1a205e06537217652ca11e",
+      "locator_status": "root-document",
+      "context_digest": "sha256:86352c01bba413368cb53bb76105ff20550c6a5dd7bae546edd6d2fcef2cda38",
+      "context_start": 0,
+      "context_end": 28707,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    },
+    {
+      "edge_id": "edge.connection.repository-secret.argocd-private-repositories",
+      "source_id": "argocd-private-repositories",
+      "reference_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/user-guide/private-repositories.md",
+      "locator": "document-root",
+      "pattern_id": "connection/connection-repository-secret",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.connection.repository-secret.argocd-private-repositories",
+      "capability_id": "capability.connection.repository-cluster-registration",
+      "target_id": "connection.repository-cluster-registration",
+      "claim_id": "claim.connection.register-and-reject",
+      "variant_ids": [
+        "variant.connection.repository-secret.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "architecture-design",
+        "implementation-construction",
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:ab23dc953726eada0340830ec144c191a8451b6b0ad9dc17c8233090db896141",
+      "locator_status": "root-document",
+      "context_digest": "sha256:86352c01bba413368cb53bb76105ff20550c6a5dd7bae546edd6d2fcef2cda38",
+      "context_start": 0,
+      "context_end": 28707,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    }
+  ]
+}

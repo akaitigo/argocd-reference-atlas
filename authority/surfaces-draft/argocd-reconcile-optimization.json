@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "source_id": "argocd-reconcile-optimization",
+  "source_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/operator-manual/reconcile.md",
+  "locked_source_digest": "sha256:c4fc17fb8be192dda4cf7fc49a48b3b10a53a15014a2b5ccc0bc53c4e2b5f061",
+  "fetch": {
+    "status": "matched",
+    "fetched_digest": "sha256:c4fc17fb8be192dda4cf7fc49a48b3b10a53a15014a2b5ccc0bc53c4e2b5f061",
+    "locked_digest_match": true,
+    "http_status": null,
+    "final_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/operator-manual/reconcile.md",
+    "content_type": "text/markdown; charset=utf-8",
+    "fetched_bytes": 6993,
+    "error_digest": null
+  },
+  "extraction": {
+    "method": "locked-body-locator-context-digest",
+    "tool": "argocd-reference-atlas-authority-locator-v1",
+    "tool_digest": "sha256:53e20736c1f6867e1b680d5e5244b589839b00d1cc82816d5227d798c898366e",
+    "review_status": "automated-unreviewed",
+    "body_storage": "digest-and-locator-context-digest-only"
+  },
+  "candidate_surfaces": [
+    {
+      "edge_id": "edge.source.argocd-reconcile-optimization.claim.drift.classify-and-refresh",
+      "source_id": "argocd-reconcile-optimization",
+      "reference_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/operator-manual/reconcile.md",
+      "locator": "document-root",
+      "pattern_id": "authority/argocd-reconcile-optimization",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.source.argocd-reconcile-optimization.claim.drift.classify-and-refresh",
+      "capability_id": "capability.drift.classify-and-refresh",
+      "target_id": "drift.tracking-and-refresh",
+      "claim_id": "claim.drift.classify-and-refresh",
+      "variant_ids": [
+        "variant.source.argocd-reconcile-optimization.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "provenance-rights"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:69639d41e2aa8d83a4016f81ae5f321919267437ac713e0118a8d445e61459b5",
+      "locator_status": "root-document",
+      "context_digest": "sha256:c4fc17fb8be192dda4cf7fc49a48b3b10a53a15014a2b5ccc0bc53c4e2b5f061",
+      "context_start": 0,
+      "context_end": 6993,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    }
+  ]
+}

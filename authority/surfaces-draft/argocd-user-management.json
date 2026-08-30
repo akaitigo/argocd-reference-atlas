@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "source_id": "argocd-user-management",
+  "source_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/operator-manual/user-management/index.md",
+  "locked_source_digest": "sha256:b4dcef526119c3bfdba6cdfba2add187684a915c2127d41c81bf632c5c496fd6",
+  "fetch": {
+    "status": "matched",
+    "fetched_digest": "sha256:b4dcef526119c3bfdba6cdfba2add187684a915c2127d41c81bf632c5c496fd6",
+    "locked_digest_match": true,
+    "http_status": null,
+    "final_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/operator-manual/user-management/index.md",
+    "content_type": "text/markdown; charset=utf-8",
+    "fetched_bytes": 23466,
+    "error_digest": null
+  },
+  "extraction": {
+    "method": "locked-body-locator-context-digest",
+    "tool": "argocd-reference-atlas-authority-locator-v1",
+    "tool_digest": "sha256:53e20736c1f6867e1b680d5e5244b589839b00d1cc82816d5227d798c898366e",
+    "review_status": "automated-unreviewed",
+    "body_storage": "digest-and-locator-context-digest-only"
+  },
+  "candidate_surfaces": [
+    {
+      "edge_id": "edge.auth.local-account.argocd-user-management",
+      "source_id": "argocd-user-management",
+      "reference_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/operator-manual/user-management/index.md",
+      "locator": "document-root",
+      "pattern_id": "auth/auth-local-account",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.auth.local-account.argocd-user-management",
+      "capability_id": "capability.security.identity-authorization-boundary",
+      "target_id": "security.rbac-sso-access-boundary",
+      "claim_id": "claim.security.identity-authorization-boundary",
+      "variant_ids": [
+        "variant.auth.local-account.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "implementation-construction",
+        "orientation-scope",
+        "provenance-rights",
+        "security-privacy-safety"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:6d566b07e56a3b0551a5457e740f8e9e9e1106c2a7164ca1ddaccd691144f323",
+      "locator_status": "root-document",
+      "context_digest": "sha256:b4dcef526119c3bfdba6cdfba2add187684a915c2127d41c81bf632c5c496fd6",
+      "context_start": 0,
+      "context_end": 23465,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    }
+  ]
+}

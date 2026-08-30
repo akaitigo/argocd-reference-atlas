@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "queue_id": "authority-review-4899835d8716e9eb45f6",
+  "batch_id": "review-p0-document-root-3f",
+  "status": "pending-human",
+  "machine_assistance": "priority-cluster-and-batch-proposals-only",
+  "semantic_decisions": "none",
+  "items": [
+    {
+      "anchor_id": "anchor-072554de9a9e7e306ae4",
+      "document_id": "document-argocd-high-availability",
+      "document_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/operator-manual/high_availability.md",
+      "source_ids": [
+        "argocd-high-availability"
+      ],
+      "locked_source_digest": "sha256:b3a02563a4e2fe9d7d0240d93f428609628b1dd07c6806655ca301df7f97d229",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "document-root",
+      "locator_kind": "document-root",
+      "raw_selector": "document-root",
+      "element_name": "document-root",
+      "parent_anchor_id": null,
+      "context_start": 0,
+      "context_end": 37033,
+      "context_unit": "byte",
+      "context_digest": "sha256:b3a02563a4e2fe9d7d0240d93f428609628b1dd07c6806655ca301df7f97d229",
+      "label_digest": null,
+      "existing_mapping_candidate_ids": [
+        "edge.connection.cluster-shard.argocd-high-availability",
+        "edge.ha.application-controller.argocd-high-availability",
+        "edge.ha.sharding.argocd-high-availability"
+      ],
+      "priority": 0,
+      "priority_reasons": [
+        "existing-domain-reference-locator-match"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p0-document-root-3f",
+      "state": "pending-human"
+    }
+  ]
+}

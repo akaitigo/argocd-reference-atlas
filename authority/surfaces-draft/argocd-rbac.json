@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "source_id": "argocd-rbac",
+  "source_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/operator-manual/rbac.md",
+  "locked_source_digest": "sha256:0ea222faed9f5c31dc4bda5747e0c9e2326e60477ea7a7d3fd7ab04a72fd9553",
+  "fetch": {
+    "status": "matched",
+    "fetched_digest": "sha256:0ea222faed9f5c31dc4bda5747e0c9e2326e60477ea7a7d3fd7ab04a72fd9553",
+    "locked_digest_match": true,
+    "http_status": null,
+    "final_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/operator-manual/rbac.md",
+    "content_type": "text/markdown; charset=utf-8",
+    "fetched_bytes": 22296,
+    "error_digest": null
+  },
+  "extraction": {
+    "method": "locked-body-locator-context-digest",
+    "tool": "argocd-reference-atlas-authority-locator-v1",
+    "tool_digest": "sha256:53e20736c1f6867e1b680d5e5244b589839b00d1cc82816d5227d798c898366e",
+    "review_status": "automated-unreviewed",
+    "body_storage": "digest-and-locator-context-digest-only"
+  },
+  "candidate_surfaces": [
+    {
+      "edge_id": "edge.auth.rbac-policy.argocd-rbac",
+      "source_id": "argocd-rbac",
+      "reference_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/operator-manual/rbac.md",
+      "locator": "document-root",
+      "pattern_id": "auth/auth-rbac-policy",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.auth.rbac-policy.argocd-rbac",
+      "capability_id": "capability.security.identity-authorization-boundary",
+      "target_id": "security.rbac-sso-access-boundary",
+      "claim_id": "claim.security.identity-authorization-boundary",
+      "variant_ids": [
+        "variant.auth.rbac-policy.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "implementation-construction",
+        "orientation-scope",
+        "provenance-rights",
+        "security-privacy-safety"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:d5d179b2d1e75ba2c36a820aef26f9676fdbcdff8990bac232d764f4d99bf8f6",
+      "locator_status": "root-document",
+      "context_digest": "sha256:0ea222faed9f5c31dc4bda5747e0c9e2326e60477ea7a7d3fd7ab04a72fd9553",
+      "context_start": 0,
+      "context_end": 22118,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    }
+  ]
+}

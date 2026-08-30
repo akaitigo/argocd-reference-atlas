@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "source_id": "argocd-disaster-recovery",
+  "source_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/operator-manual/disaster_recovery.md",
+  "locked_source_digest": "sha256:855491cfd926034d230bafe4eb79faff40847a55e97515f22fccf4dcf1878bc2",
+  "fetch": {
+    "status": "matched",
+    "fetched_digest": "sha256:855491cfd926034d230bafe4eb79faff40847a55e97515f22fccf4dcf1878bc2",
+    "locked_digest_match": true,
+    "http_status": null,
+    "final_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/operator-manual/disaster_recovery.md",
+    "content_type": "text/markdown; charset=utf-8",
+    "fetched_bytes": 792,
+    "error_digest": null
+  },
+  "extraction": {
+    "method": "locked-body-locator-context-digest",
+    "tool": "argocd-reference-atlas-authority-locator-v1",
+    "tool_digest": "sha256:53e20736c1f6867e1b680d5e5244b589839b00d1cc82816d5227d798c898366e",
+    "review_status": "automated-unreviewed",
+    "body_storage": "digest-and-locator-context-digest-only"
+  },
+  "candidate_surfaces": [
+    {
+      "edge_id": "edge.recovery.export-import.argocd-disaster-recovery",
+      "source_id": "argocd-disaster-recovery",
+      "reference_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/operator-manual/disaster_recovery.md",
+      "locator": "document-root",
+      "pattern_id": "recovery/recovery-export-import",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.recovery.export-import.argocd-disaster-recovery",
+      "capability_id": "capability.recovery.control-plane-restore",
+      "target_id": "recovery.control-plane-restore",
+      "claim_id": "claim.recovery.restore-state",
+      "variant_ids": [
+        "variant.recovery.export-import.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "failure-recovery",
+        "implementation-construction",
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:478b8d2326771ea2731180504c8e2dae2632343a9f6d9e4bb28621266e160669",
+      "locator_status": "root-document",
+      "context_digest": "sha256:855491cfd926034d230bafe4eb79faff40847a55e97515f22fccf4dcf1878bc2",
+      "context_start": 0,
+      "context_end": 792,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    }
+  ]
+}

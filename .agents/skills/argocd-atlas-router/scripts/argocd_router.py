@@ -56,14 +56,15 @@ def load_context(root: Path = DEFAULT_ROOT) -> dict:
         "sources": {source["id"]: source for source in sources["sources"]},
         "authority_review": {
             "body_status": body["status"],
-            "raw_anchors": body["summary"]["raw_anchors"],
+            "raw_anchors": body["summary"]["raw_anchor_candidates"],
             "pending_human": queue["summary"]["pending_human"],
             "human_reviewed": queue["summary"]["human_reviewed"],
             "stale_document_holds": queue["summary"]["stale_document_holds"],
             "decisions": len(decisions["decisions"]),
-            "promoted_controller_behavior_items": queue["summary"]["promoted_controller_behavior_items"],
-            "semantic_surface_credit": queue["summary"]["semantic_surface_credit"],
-            "depth_axis_credit": queue["summary"]["depth_axis_credit"],
+            "promoted_controller_behavior_items": body["summary"]["promoted_surface_artifacts"],
+            # Core v2 Queue件数は人手Decision前の提案母集団であり、Depth creditは常に0。
+            "semantic_surface_credit": 0,
+            "depth_axis_credit": 0,
         },
         "contract_binding": {"path": contract_path.relative_to(root).as_posix(), "digest": sha256_file(contract_path), "bytes": contract_path.stat().st_size},
     }

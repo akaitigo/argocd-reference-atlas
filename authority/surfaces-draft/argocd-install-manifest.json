@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "source_id": "argocd-install-manifest",
+  "source_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/manifests/install.yaml",
+  "locked_source_digest": "sha256:9a87f2b3e14c278f12501eb0ef5c3955b27cf05370ca425381c6a908cf85a5c5",
+  "fetch": {
+    "status": "matched",
+    "fetched_digest": "sha256:9a87f2b3e14c278f12501eb0ef5c3955b27cf05370ca425381c6a908cf85a5c5",
+    "locked_digest_match": true,
+    "http_status": null,
+    "final_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/manifests/install.yaml",
+    "content_type": "application/yaml",
+    "fetched_bytes": 1917766,
+    "error_digest": null
+  },
+  "extraction": {
+    "method": "locked-body-locator-context-digest",
+    "tool": "argocd-reference-atlas-authority-locator-v1",
+    "tool_digest": "sha256:53e20736c1f6867e1b680d5e5244b589839b00d1cc82816d5227d798c898366e",
+    "review_status": "automated-unreviewed",
+    "body_storage": "digest-and-locator-context-digest-only"
+  },
+  "candidate_surfaces": [
+    {
+      "edge_id": "edge.source.argocd-install-manifest.claim.architecture.component-boundaries",
+      "source_id": "argocd-install-manifest",
+      "reference_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/manifests/install.yaml",
+      "locator": "document-root",
+      "pattern_id": "authority/argocd-install-manifest",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.source.argocd-install-manifest.claim.architecture.component-boundaries",
+      "capability_id": "capability.architecture.component-boundaries",
+      "target_id": "architecture.control-plane-components",
+      "claim_id": "claim.architecture.component-boundaries",
+      "variant_ids": [
+        "variant.source.argocd-install-manifest.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "provenance-rights"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:287b9aac598f7e4f9e9f7a71b8aa5e0e1b7797b1d8dd8417df2e2f56cf696d7b",
+      "locator_status": "root-document",
+      "context_digest": "sha256:9a87f2b3e14c278f12501eb0ef5c3955b27cf05370ca425381c6a908cf85a5c5",
+      "context_start": 0,
+      "context_end": 1917766,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    }
+  ]
+}

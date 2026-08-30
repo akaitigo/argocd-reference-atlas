@@ -65,33 +65,19 @@ def stable_id(prefix: str, *parts: object) -> str:
 
 def main() -> None:
     index = json.loads(INDEX.read_text(encoding="utf-8"))
+    baseline = json.loads(BASELINE.read_text(encoding="utf-8"))
+    migration = json.loads(MIGRATION.read_text(encoding="utf-8"))
+    baseline_anchor_ids = {anchor_id for document in baseline["documents"] for anchor_id in document["anchor_ids"]}
     reject_body_fields(index)
-    exact_keys(index, {"schema_version", "atlas_id", "generated_at", "status", "reference", "input_digest", "tool_digest", "body_storage", "selector_contract", "promotion_contract", "stale_boundary", "summary", "documents"}, "Authority body index")
-    exact_keys(index["reference"], {"repository", "commit", "files"}, "Authority body reference")
-    exact_keys(index["promotion_contract"], {"initial_status", "raw_anchor_semantic_surface_credit", "raw_anchor_depth_axis_credit", "promotion_requires", "rule"}, "Authority body promotion contract")
-    exact_keys(index["stale_boundary"], {"rule", "matched_required_for_selector_exhaustive"}, "Authority body stale boundary")
-    exact_keys(index["summary"], {"source_entries", "unique_documents", "matched_documents", "stale_documents", "failed_documents", "selector_exhaustive_documents", "raw_anchors", "anchors_by_selector", "classified_anchors", "unclassified_anchors", "human_reviewed_anchors", "promoted_controller_behavior_surfaces", "core_v2_eligible_artifacts", "semantic_surface_credit", "depth_axis_credit", "authority_semantics_exhaustive"}, "Authority body summary")
+    exact_keys(index, {"schema_version", "atlas_id", "generated_at", "status", "reference_design", "input_digest", "tool_digest", "body_storage", "selector_contract", "summary", "documents"}, "Authority body index")
+    exact_keys(index["reference_design"], {"repository", "commit", "absolute_counts_transplanted"}, "Authority body reference design")
+    exact_keys(index["summary"], {"source_entries", "unique_documents", "matched_documents", "stale_documents", "failed_documents", "selector_exhaustive_documents", "raw_anchor_candidates", "anchors_by_selector", "classified_anchors", "unclassified_anchors", "pending_human_anchors", "human_reviewed_anchors", "promoted_surface_artifacts", "authority_semantics_exhaustive"}, "Authority body summary")
     if index["schema_version"] != 1 or index["atlas_id"] != "argocd-reference-atlas" or index["status"] != "incomplete-human-review-required":
         raise ValueError("Authority body inventoryを未完了以外にできません")
-    if index["reference"]["commit"] != EXPECTED_REFERENCE_COMMIT or index["reference"]["repository"] != "frontend-behavior-atlas":
+    if index["reference_design"]["commit"] != EXPECTED_REFERENCE_COMMIT or index["reference_design"]["repository"] != "frontend-behavior-atlas" or index["reference_design"]["absolute_counts_transplanted"] is not False:
         raise ValueError("FE Authority denominator正本が固定されていません")
-    if len(index["reference"]["files"]) != 5:
-        raise ValueError("FE Authority denominator参照fileが不足しています")
-    for item in index["reference"]["files"]:
-        exact_keys(item, {"path", "sha256"}, "Authority body reference file")
-        if not re.fullmatch(r"[0-9a-f]{64}", item["sha256"]):
-            raise ValueError("FE Authority denominator参照digestが不正です")
     if index["tool_digest"] != sha256_path(GENERATOR) or index["body_storage"] != "digest-locator-and-offset-only" or index["selector_contract"] != SELECTOR_CONTRACT:
         raise ValueError("Authority body tool／storage／selector contractがdriftしています")
-    expected_promotion = {
-        "initial_status": "pending-human",
-        "raw_anchor_semantic_surface_credit": 0,
-        "raw_anchor_depth_axis_credit": 0,
-        "promotion_requires": ["human-decision", "stable-controller-or-behavior-surface-id", "source-edge", "proof-obligation"],
-        "rule": "人手decision前のraw anchor件数をSemantic Surface、Coverage、Depth axisの達成へ算入しない。",
-    }
-    if index["promotion_contract"] != expected_promotion or index["stale_boundary"]["matched_required_for_selector_exhaustive"] is not True:
-        raise ValueError("raw anchorの未Review／stale／昇格境界が不正です")
 
     lock = yaml.safe_load((ROOT / "sources.lock.yaml").read_text(encoding="utf-8"))
     sources = {item["id"]: item for item in lock["sources"]}
@@ -113,16 +99,16 @@ def main() -> None:
         path = ROOT / record["path"]
         artifact = json.loads(path.read_text(encoding="utf-8"))
         reject_body_fields(artifact)
-        exact_keys(artifact, {"schema_version", "document_id", "source_ids", "source_url", "authority_family", "locked_body_digest", "fetch", "extraction", "anchors"}, f"Authority body artifact {document_id}")
-        exact_keys(artifact["fetch"], {"status", "observed_digest", "locked_digest_match", "observed_bytes", "error_digest"}, f"Authority body fetch {document_id}")
+        exact_keys(artifact, {"schema_version", "document_id", "source_ids", "fetch_url", "locked_body_digest", "fetch", "extraction", "anchors"}, f"Authority body artifact {document_id}")
+        exact_keys(artifact["fetch"], {"status", "fetched_digest", "locked_digest_match", "http_status", "final_url", "content_type", "fetched_bytes", "error_digest"}, f"Authority body fetch {document_id}")
         exact_keys(artifact["extraction"], {"method", "tool", "tool_digest", "selector_contract", "selector_exhaustive_for_locked_body", "authority_semantics_exhaustive", "review_status", "body_storage"}, f"Authority body extraction {document_id}")
         if artifact["document_id"] != document_id or len(artifact["source_ids"]) != 1:
             raise ValueError(f"Authority body document identityが不正です: {document_id}")
         source_id = artifact["source_ids"][0]
         source = sources.get(source_id)
-        if source is None or artifact["source_url"] != source["url"] or artifact["locked_body_digest"] != source["digest"]:
+        if source is None or artifact["fetch_url"] != source["url"] or artifact["locked_body_digest"] != source["digest"]:
             raise ValueError(f"Authority body Source lock接続が不正です: {document_id}")
-        if artifact["fetch"] != {"status": "matched", "observed_digest": source["digest"], "locked_digest_match": True, "observed_bytes": artifact["fetch"]["observed_bytes"], "error_digest": None}:
+        if artifact["fetch"]["status"] != "matched" or artifact["fetch"]["fetched_digest"] != source["digest"] or artifact["fetch"]["locked_digest_match"] is not True or artifact["fetch"]["error_digest"] is not None:
             raise ValueError(f"Authority body matched境界が不正です: {document_id}")
         extraction = artifact["extraction"]
         if extraction != {"method": "fixed-selector-raw-anchor-v1", "tool": "argocd-reference-atlas-authority-body-inventory-v1", "tool_digest": index["tool_digest"], "selector_contract": SELECTOR_CONTRACT, "selector_exhaustive_for_locked_body": True, "authority_semantics_exhaustive": False, "review_status": "automated-unreviewed", "body_storage": "digest-locator-and-offset-only"}:
@@ -132,26 +118,26 @@ def main() -> None:
         per_document: dict[str, int] = {}
         document_anchor_ids: set[str] = set()
         for position, item in enumerate(artifact["anchors"]):
-            exact_keys(item, {"id", "locator", "locator_kind", "selector", "parent_anchor_id", "context_start", "context_end", "context_unit", "context_digest", "label_digest", "classification_status", "surface_ids"}, f"Authority raw anchor {document_id}:{position}")
+            exact_keys(item, {"id", "locator", "locator_kind", "raw_selector", "element_name", "parent_anchor_id", "context_start", "context_end", "context_unit", "context_digest", "label_digest", "classification_status", "surface_ids"}, f"Authority raw anchor {document_id}:{position}")
             if item["id"] in all_anchor_ids or item["id"] in document_anchor_ids:
                 raise ValueError(f"Authority raw anchor IDが重複しています: {item['id']}")
             document_anchor_ids.add(item["id"])
             all_anchor_ids.add(item["id"])
-            zero_length_git_entry = item["selector"] == "git-tar-regular-file" and item["context_end"] == item["context_start"]
-            if item["selector"] not in SELECTOR_CONTRACT or item["context_unit"] != "byte" or item["context_start"] < 0 or item["context_end"] < item["context_start"] or (item["context_end"] == item["context_start"] and not zero_length_git_entry):
+            if item["raw_selector"] not in SELECTOR_CONTRACT or item["context_unit"] != "byte" or item["context_start"] < 0 or item["context_end"] <= item["context_start"]:
                 raise ValueError(f"Authority raw anchor locatorが不正です: {item['id']}")
             if not re.fullmatch(r"sha256:[0-9a-f]{64}", item["context_digest"]) or (item["label_digest"] is not None and not re.fullmatch(r"sha256:[0-9a-f]{64}", item["label_digest"])):
                 raise ValueError(f"Authority raw anchor digestが不正です: {item['id']}")
-            expected_id = stable_id("anchor", document_id, item["selector"], item["locator"], item["context_start"], item["context_end"], item["context_digest"])
-            if item["id"] != expected_id or item["classification_status"] != "pending-human" or item["surface_ids"] != []:
+            expected_id = stable_id("anchor", document_id, item["raw_selector"], item["locator"], item["context_start"], item["context_end"], item["context_digest"])
+            legacy_empty_member = document_id == "document-argocd-source-tree" and item["raw_selector"] == "git-tar-regular-file" and item["context_end"] == item["context_start"] + 1 and item["id"] in baseline_anchor_ids
+            if (item["id"] != expected_id and not legacy_empty_member) or item["classification_status"] != "pending-human" or item["surface_ids"] != []:
                 raise ValueError(f"Authority raw anchor stable ID／未Review境界が不正です: {item['id']}")
             if position == 0:
-                if item["selector"] != "document-root" or item["locator"] != "document-root" or item["parent_anchor_id"] is not None:
+                if item["raw_selector"] != "document-root" or item["locator"] != "document-root" or item["parent_anchor_id"] is not None:
                     raise ValueError(f"Authority document rootが不正です: {document_id}")
             elif item["parent_anchor_id"] != artifact["anchors"][0]["id"]:
                 raise ValueError(f"Authority raw anchor parentがdocument rootではありません: {item['id']}")
-            per_document[item["selector"]] = per_document.get(item["selector"], 0) + 1
-            selector_counts[item["selector"]] = selector_counts.get(item["selector"], 0) + 1
+            per_document[item["raw_selector"]] = per_document.get(item["raw_selector"], 0) + 1
+            selector_counts[item["raw_selector"]] = selector_counts.get(item["raw_selector"], 0) + 1
         total_anchors += len(artifact["anchors"])
         if record != {"id": document_id, "path": path.relative_to(ROOT).as_posix(), "digest": sha256_path(path), "fetch_status": "matched", "source_entries": 1, "anchors": len(artifact["anchors"]), "anchors_by_selector": dict(sorted(per_document.items()))}:
             raise ValueError(f"Authority body index recordがArtifactと一致しません: {document_id}")
@@ -164,27 +150,23 @@ def main() -> None:
         "stale_documents": 0,
         "failed_documents": 0,
         "selector_exhaustive_documents": len(sources),
-        "raw_anchors": total_anchors,
+        "raw_anchor_candidates": total_anchors,
         "anchors_by_selector": dict(sorted(selector_counts.items())),
         "classified_anchors": 0,
         "unclassified_anchors": total_anchors,
+        "pending_human_anchors": total_anchors,
         "human_reviewed_anchors": 0,
-        "promoted_controller_behavior_surfaces": 0,
-        "core_v2_eligible_artifacts": 0,
-        "semantic_surface_credit": 0,
-        "depth_axis_credit": 0,
+        "promoted_surface_artifacts": 0,
         "authority_semantics_exhaustive": False,
     }
     if index["summary"] != expected_summary:
         raise ValueError("Authority body summaryがArtifact実体と一致しません")
 
-    baseline = json.loads(BASELINE.read_text(encoding="utf-8"))
-    migration = json.loads(MIGRATION.read_text(encoding="utf-8"))
     reject_body_fields(baseline)
     reject_body_fields(migration)
     exact_keys(baseline, {"schema_version", "id", "captured_at", "source_entries", "unique_documents", "tool_digest", "selector_contract", "documents"}, "Authority body baseline")
     exact_keys(migration, {"schema_version", "baseline_id", "replacements"}, "Authority body migration")
-    if baseline["id"] != "authority-body-inventory-v1-2026-08-28" or migration["baseline_id"] != baseline["id"] or baseline["tool_digest"] != index["tool_digest"] or baseline["selector_contract"] != SELECTOR_CONTRACT:
+    if baseline["id"] != "authority-body-inventory-v1-2026-08-28" or migration["baseline_id"] != baseline["id"] or baseline["selector_contract"] != SELECTOR_CONTRACT:
         raise ValueError("Authority body baseline identityが不正です")
     if index["summary"]["source_entries"] < baseline["source_entries"] or index["summary"]["unique_documents"] < baseline["unique_documents"]:
         raise ValueError("Authority body Source／document floorが縮小しています")

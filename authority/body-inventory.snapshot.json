@@ -3,34 +3,13 @@
   "atlas_id": "argocd-reference-atlas",
   "generated_at": "2026-08-28T00:00:00+09:00",
   "status": "incomplete-human-review-required",
-  "reference": {
+  "reference_design": {
     "repository": "frontend-behavior-atlas",
     "commit": "841ec2fa399606a10305021a8bcd396713b8cee5",
-    "files": [
-      {
-        "path": "scripts/lib/authority-body-inventory.ts",
-        "sha256": "04f62a0b63981c62a7ab90f39637c71745642e84a3bdd4404ce715a0163ebe76"
-      },
-      {
-        "path": "scripts/extract-authority-body-inventory.ts",
-        "sha256": "1ce38aae8e9adf2c8095310bf54348eacc482cb19f5edbd7c013a4bf55e6d38c"
-      },
-      {
-        "path": "scripts/verify-authority-body-inventory.ts",
-        "sha256": "5ba278737bfedae54b3c3b92fdf16a9ecf6b914bcaf0ab2cd04ff0d6ef24884a"
-      },
-      {
-        "path": "scripts/lib/authority-body-baseline.ts",
-        "sha256": "0dc48dc9e62fdc9cd8493e9b5827b4cf5948c4b72df3374d5ebcc73ac344009c"
-      },
-      {
-        "path": "scripts/verify-authority-body-baseline.ts",
-        "sha256": "599d6dee6d34b10f8496309c68e5cd3b8752366238311ecfbda4e2a23a8be897"
-      }
-    ]
+    "absolute_counts_transplanted": false
   },
   "input_digest": "sha256:77a20144d281eacf72bc731bea2fa964577a96968e670740a55450a6a3c5bb8e",
-  "tool_digest": "sha256:9110ce5406c6abcd4e6be3dae9c70a2d3cd733ccd8551ae168f761e94cfd5681",
+  "tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
   "body_storage": "digest-locator-and-offset-only",
   "selector_contract": [
     "document-root",
@@ -39,22 +18,6 @@
     "yaml-mapping-key-line",
     "plain-nonempty-line"
   ],
-  "promotion_contract": {
-    "initial_status": "pending-human",
-    "raw_anchor_semantic_surface_credit": 0,
-    "raw_anchor_depth_axis_credit": 0,
-    "promotion_requires": [
-      "human-decision",
-      "stable-controller-or-behavior-surface-id",
-      "source-edge",
-      "proof-obligation"
-    ],
-    "rule": "人手decision前のraw anchor件数をSemantic Surface、Coverage、Depth axisの達成へ算入しない。"
-  },
-  "stale_boundary": {
-    "rule": "取得digestがSource lockと不一致のdocumentはstaleとし、anchorを生成または昇格しない。Source lock更新は別Epochと人手Reviewを要求する。",
-    "matched_required_for_selector_exhaustive": true
-  },
   "summary": {
     "source_entries": 26,
     "unique_documents": 26,
@@ -62,7 +25,7 @@
     "stale_documents": 0,
     "failed_documents": 0,
     "selector_exhaustive_documents": 26,
-    "raw_anchors": 63889,
+    "raw_anchor_candidates": 63889,
     "anchors_by_selector": {
       "document-root": 26,
       "git-tar-regular-file": 5405,
@@ -72,18 +35,16 @@
     },
     "classified_anchors": 0,
     "unclassified_anchors": 63889,
+    "pending_human_anchors": 63889,
     "human_reviewed_anchors": 0,
-    "promoted_controller_behavior_surfaces": 0,
-    "core_v2_eligible_artifacts": 0,
-    "semantic_surface_credit": 0,
-    "depth_axis_credit": 0,
+    "promoted_surface_artifacts": 0,
     "authority_semantics_exhaustive": false
   },
   "documents": [
     {
       "id": "document-argocd-application-crd",
       "path": "authority/body-inventory-draft/document-argocd-application-crd.json",
-      "digest": "sha256:c8b69e1755bc5d36921776097022db5d5109aadecfd43d592928b623d337e3c2",
+      "digest": "sha256:6153dc3fc716209f6ff684117645cf11a68976e1add769fc9125d1446804f285",
       "fetch_status": "matched",
       "source_entries": 1,
       "anchors": 5403,
@@ -95,7 +56,7 @@
     {
       "id": "document-argocd-application-specification",
       "path": "authority/body-inventory-draft/document-argocd-application-specification.json",
-      "digest": "sha256:8bda2bdef01631b1b1d3d1d4fcc5c494f93aed32b92d1a74e5de075430bf82ee",
+      "digest": "sha256:a58095a22e2e68f06d731594bc1430fb234110811dd33503b357370aae4d6bf6",
       "fetch_status": "matched",
       "source_entries": 1,
       "anchors": 2,
@@ -107,7 +68,7 @@
     {
       "id": "document-argocd-applicationset-crd",
       "path": "authority/body-inventory-draft/document-argocd-applicationset-crd.json",
-      "digest": "sha256:556f18205c45cf359a40e95834b3f8cc95d679791b034e53520238088df8fc98",
+      "digest": "sha256:f979a791d00cd9f0fe537e53cdc60b31c1cedb66107c021fcb5cb2d1e8d824ef",
       "fetch_status": "matched",
       "source_entries": 1,
       "anchors": 22069,
@@ -119,7 +80,7 @@
     {
       "id": "document-argocd-applicationset-introduction",
       "path": "authority/body-inventory-draft/document-argocd-applicationset-introduction.json",
-      "digest": "sha256:03418852701e722a3c39e4b59f90a32730df936d5bdd001b469412dd5f1859fa",
+      "digest": "sha256:2ecaced08bfab36475435032ffb463f6dfdae2772bc4920349bc0b36ad464809",
       "fetch_status": "matched",
       "source_entries": 1,
       "anchors": 5,
@@ -131,7 +92,7 @@
     {
       "id": "document-argocd-applicationset-specification",
       "path": "authority/body-inventory-draft/document-argocd-applicationset-specification.json",
-      "digest": "sha256:a72f752c1611be7a7c330715732d92ae9a6a5699d0d528075e0154121f8db1ef",
+      "digest": "sha256:97da30595128316fe6a0e6249503044f76878066cc9d3d7aef70e10d5f95ce71",
       "fetch_status": "matched",
       "source_entries": 1,
       "anchors": 2,
@@ -143,7 +104,7 @@
     {
       "id": "document-argocd-appproject-crd",
       "path": "authority/body-inventory-draft/document-argocd-appproject-crd.json",
-      "digest": "sha256:21974670cc016a099cb05ff0ac8b6ec69856d40338790998f430b4297294e2ca",
+      "digest": "sha256:b6fdac442891271b09167f9da66013d1b1d4fb6094f322481cb2bcc22b45a507",
       "fetch_status": "matched",
       "source_entries": 1,
       "anchors": 324,
@@ -155,7 +116,7 @@
     {
       "id": "document-argocd-architecture",
       "path": "authority/body-inventory-draft/document-argocd-architecture.json",
-      "digest": "sha256:8eaba9b1af7af0f783959b5ca4dfb9e6434d98477f9aae199c2c0833f5634443",
+      "digest": "sha256:875e778111ab8c7a8c25051553486eead9081c1e6d14980348f798a44b9ea2b0",
       "fetch_status": "matched",
       "source_entries": 1,
       "anchors": 6,
@@ -167,7 +128,7 @@
     {
       "id": "document-argocd-automated-sync",
       "path": "authority/body-inventory-draft/document-argocd-automated-sync.json",
-      "digest": "sha256:cdff1731b3a1645629e9a74f213713d9611ec9b3e3fa48bae03a4f4c9133407b",
+      "digest": "sha256:8b5296053edb0874c7e375618f9540f56bed02e3fcc53d29e9c6bc41ecf87259",
       "fetch_status": "matched",
       "source_entries": 1,
       "anchors": 9,
@@ -179,7 +140,7 @@
     {
       "id": "document-argocd-cluster-management",
       "path": "authority/body-inventory-draft/document-argocd-cluster-management.json",
-      "digest": "sha256:e7759956a2c675e556b986da0f7c81f24a2c9d2e86eb73c7ef0124639805c82d",
+      "digest": "sha256:59a75e7fd7046c47f999c3922d75a8bdc66eecf3f796a15e395dcf171f4bbb43",
       "fetch_status": "matched",
       "source_entries": 1,
       "anchors": 5,
@@ -191,7 +152,7 @@
     {
       "id": "document-argocd-diffing",
       "path": "authority/body-inventory-draft/document-argocd-diffing.json",
-      "digest": "sha256:fdb8177a72d9ee24e8ab0939596de355017475735b569300f64e83f6db8c620a",
+      "digest": "sha256:9f62cb449ccfffc34e88f8a57ab3effb1fd2ff43de9086d7eb951b0d797f353b",
       "fetch_status": "matched",
       "source_entries": 1,
       "anchors": 7,
@@ -203,7 +164,7 @@
     {
       "id": "document-argocd-disaster-recovery",
       "path": "authority/body-inventory-draft/document-argocd-disaster-recovery.json",
-      "digest": "sha256:f0a41119a0b00fea49f2d1c47d9203e8f42de8dc78a658ae9626f600c8d17409",
+      "digest": "sha256:7868cbf0f1e636a8bed4792367846518a43a4a26a721168db80dd66a24015ac2",
       "fetch_status": "matched",
       "source_entries": 1,
       "anchors": 3,
@@ -215,7 +176,7 @@
     {
       "id": "document-argocd-health",
       "path": "authority/body-inventory-draft/document-argocd-health.json",
-      "digest": "sha256:07f941a872ead944def2c5a1509d39f7641e95b1abb44a076bf0a670977780fa",
+      "digest": "sha256:395e3ff994bee4356cc7a0cec4c40eafaaa70173c3c52f8aae4189d3bd1ca6fd",
       "fetch_status": "matched",
       "source_entries": 1,
       "anchors": 24,
@@ -227,7 +188,7 @@
     {
       "id": "document-argocd-high-availability",
       "path": "authority/body-inventory-draft/document-argocd-high-availability.json",
-      "digest": "sha256:275cca6782271e9daec8a5d1fc8661be0fbdc0618e36b7e51212c967d0769f28",
+      "digest": "sha256:4b34bfee0e194a6761e83e31030ec62edbd7279f9ffa014168517cede9f7fbb7",
       "fetch_status": "matched",
       "source_entries": 1,
       "anchors": 35,
@@ -239,7 +200,7 @@
     {
       "id": "document-argocd-install-manifest",
       "path": "authority/body-inventory-draft/document-argocd-install-manifest.json",
-      "digest": "sha256:468435ee46de5d689b8f4da16f426e8f0b438274f154c6ece1030446b8dd76b8",
+      "digest": "sha256:ccf82475f0e33de01b6dee905b5f5611046b4bac00f62c8268b2a7f92c788737",
       "fetch_status": "matched",
       "source_entries": 1,
       "anchors": 30372,
@@ -251,7 +212,7 @@
     {
       "id": "document-argocd-metrics",
       "path": "authority/body-inventory-draft/document-argocd-metrics.json",
-      "digest": "sha256:f6e1dbdd6dbd83caba2a33b8e5d69d725ff388d60572391976c36a13d4d7850c",
+      "digest": "sha256:7a32d6bda4e1ab0a773804c788e18c9ae10fbc2bf827f36d1cf626b422cdabca",
       "fetch_status": "matched",
       "source_entries": 1,
       "anchors": 19,
@@ -263,7 +224,7 @@
     {
       "id": "document-argocd-private-repositories",
       "path": "authority/body-inventory-draft/document-argocd-private-repositories.json",
-      "digest": "sha256:e4da0c92fede4d23a8ca6eb4121e67e6faf0a54440bd3bac94406ee45d0eefd0",
+      "digest": "sha256:c93976676dd37fdd370a77f031c4d3de7367aac638e2b39240eb817898a31624",
       "fetch_status": "matched",
       "source_entries": 1,
       "anchors": 30,
@@ -275,7 +236,7 @@
     {
       "id": "document-argocd-rbac",
       "path": "authority/body-inventory-draft/document-argocd-rbac.json",
-      "digest": "sha256:b048cba94dee28db305403d4720c6ad61282dd77a0cf38cccc3ccefc854e4a8f",
+      "digest": "sha256:4d97bc8cb155d6129f0f07ca1f154d8e138d5a55e43f49f47b398e6f738904a1",
       "fetch_status": "matched",
       "source_entries": 1,
       "anchors": 25,
@@ -287,7 +248,7 @@
     {
       "id": "document-argocd-reconcile-optimization",
       "path": "authority/body-inventory-draft/document-argocd-reconcile-optimization.json",
-      "digest": "sha256:cf0ee69207fa02960e7f954bebb2305fce7865d9e75febb8aa01e44599bc322e",
+      "digest": "sha256:0b2e69c7fa2ab358e0ee4cd0ad4db6f3867a05965e7c40ea89768e9f77b583e0",
       "fetch_status": "matched",
       "source_entries": 1,
       "anchors": 13,
@@ -299,7 +260,7 @@
     {
       "id": "document-argocd-resource-tracking",
       "path": "authority/body-inventory-draft/document-argocd-resource-tracking.json",
-      "digest": "sha256:8184e480ae3b9f1cf053894692df8b439830a40c12c57500ade16a409ccb4a63",
+      "digest": "sha256:80fd2ea47e178035bcdb529fb759e8ba90171c21d0d058612bf5e04b55255512",
       "fetch_status": "matched",
       "source_entries": 1,
       "anchors": 8,
@@ -311,7 +272,7 @@
     {
       "id": "document-argocd-secret-management",
       "path": "authority/body-inventory-draft/document-argocd-secret-management.json",
-      "digest": "sha256:86f5b705f0c6c2f596a7a7ade6ed13979486943f9699a6e4705b943eebf3c997",
+      "digest": "sha256:e9bd308734a5f67459ee87f54f962646db4b066b8d8fbf25476cd4938729ffa4",
       "fetch_status": "matched",
       "source_entries": 1,
       "anchors": 5,
@@ -323,7 +284,7 @@
     {
       "id": "document-argocd-source-tree",
       "path": "authority/body-inventory-draft/document-argocd-source-tree.json",
-      "digest": "sha256:89b0bcf66f571de1edcea4abd4129af68c6f906d0e34c3df39c2c4f1448252cd",
+      "digest": "sha256:6fb0d2a4ec3d57e61a70ac1de6be3616e3885c001104967991d7f51a7d67754a",
       "fetch_status": "matched",
       "source_entries": 1,
       "anchors": 5406,
@@ -335,7 +296,7 @@
     {
       "id": "document-argocd-sync-options",
       "path": "authority/body-inventory-draft/document-argocd-sync-options.json",
-      "digest": "sha256:51a55f579d4a93e527e2de71d406671528ca3fce145ec7c0e7be1b71d802f0eb",
+      "digest": "sha256:3e4203754624ddd17475b08f61fecb876c7559b84b2baf6b1357ddf3faf30280",
       "fetch_status": "matched",
       "source_entries": 1,
       "anchors": 20,
@@ -347,7 +308,7 @@
     {
       "id": "document-argocd-sync-waves",
       "path": "authority/body-inventory-draft/document-argocd-sync-waves.json",
-      "digest": "sha256:acfb52dbbe4bf07d6d1e6ecd8c6cfc74d66b0733b999c8503dafb3c4dce5a25a",
+      "digest": "sha256:0c89249c14acebd4bddd3efa19db05e73fe4058c564f67423533bd254e12fe51",
       "fetch_status": "matched",
       "source_entries": 1,
       "anchors": 15,
@@ -359,7 +320,7 @@
     {
       "id": "document-argocd-upgrade-3-4-to-3-5",
       "path": "authority/body-inventory-draft/document-argocd-upgrade-3-4-to-3-5.json",
-      "digest": "sha256:010f301e659041230250a5e584df4640e5cef029ddfc22cae689daf2042de6cf",
+      "digest": "sha256:cfe8a8f25d257653e8954d94865fecc88f6c76854d748cf939e94cb60fbaac09",
       "fetch_status": "matched",
       "source_entries": 1,
       "anchors": 39,
@@ -371,7 +332,7 @@
     {
       "id": "document-argocd-user-management",
       "path": "authority/body-inventory-draft/document-argocd-user-management.json",
-      "digest": "sha256:6fa7cb5b872fe3ba3f04ae6180b51d2a8232da64ad985415ad016d6738769471",
+      "digest": "sha256:7d11a96c2fe669a6c0a512d79bb3f3370d409f0d29b5c8106dbe27b853df9f05",
       "fetch_status": "matched",
       "source_entries": 1,
       "anchors": 41,
@@ -383,7 +344,7 @@
     {
       "id": "document-argocd-version",
       "path": "authority/body-inventory-draft/document-argocd-version.json",
-      "digest": "sha256:23571dc9b5019d377782e0a8507c7feed3738ba97412206b43f8ccdb8df7e40e",
+      "digest": "sha256:acfb62a106d7bdfef8bbd46c955e78a61982a462f237d35899e99eacdd97ecb7",
       "fetch_status": "matched",
       "source_entries": 1,
       "anchors": 2,

@@ -4,20 +4,22 @@
   "source_ids": [
     "argocd-version"
   ],
-  "source_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/VERSION",
-  "authority_family": "argocd-documentation",
+  "fetch_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/VERSION",
   "locked_body_digest": "sha256:36e68867ce939b2464649670eb1b3f9759d1a99e7326dac3c79d0942e01f5d65",
   "fetch": {
     "status": "matched",
-    "observed_digest": "sha256:36e68867ce939b2464649670eb1b3f9759d1a99e7326dac3c79d0942e01f5d65",
+    "fetched_digest": "sha256:36e68867ce939b2464649670eb1b3f9759d1a99e7326dac3c79d0942e01f5d65",
     "locked_digest_match": true,
-    "observed_bytes": 6,
+    "http_status": null,
+    "final_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/VERSION",
+    "content_type": null,
+    "fetched_bytes": 6,
     "error_digest": null
   },
   "extraction": {
     "method": "fixed-selector-raw-anchor-v1",
     "tool": "argocd-reference-atlas-authority-body-inventory-v1",
-    "tool_digest": "sha256:9110ce5406c6abcd4e6be3dae9c70a2d3cd733ccd8551ae168f761e94cfd5681",
+    "tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
     "selector_contract": [
       "document-root",
       "git-tar-regular-file",
@@ -35,7 +37,8 @@
       "id": "anchor-9795a93b3972934b3833",
       "locator": "document-root",
       "locator_kind": "document-root",
-      "selector": "document-root",
+      "raw_selector": "document-root",
+      "element_name": "document-root",
       "parent_anchor_id": null,
       "context_start": 0,
       "context_end": 6,
@@ -49,7 +52,8 @@
       "id": "anchor-2a7a057a09289ad2feb9",
       "locator": "line:1",
       "locator_kind": "locked-body-offset",
-      "selector": "plain-nonempty-line",
+      "raw_selector": "plain-nonempty-line",
+      "element_name": "line",
       "parent_anchor_id": "anchor-9795a93b3972934b3833",
       "context_start": 0,
       "context_end": 6,

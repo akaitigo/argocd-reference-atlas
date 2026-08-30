@@ -1,0 +1,1104 @@
+{
+  "schema_version": 1,
+  "source_id": "argocd-source-tree",
+  "source_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+  "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+  "fetch": {
+    "status": "matched",
+    "fetched_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+    "locked_digest_match": true,
+    "http_status": null,
+    "final_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+    "content_type": "application/x-tar",
+    "fetched_bytes": 206499840,
+    "error_digest": null
+  },
+  "extraction": {
+    "method": "locked-body-locator-context-digest",
+    "tool": "argocd-reference-atlas-authority-locator-v1",
+    "tool_digest": "sha256:53e20736c1f6867e1b680d5e5244b589839b00d1cc82816d5227d798c898366e",
+    "review_status": "automated-unreviewed",
+    "body_storage": "digest-and-locator-context-digest-only"
+  },
+  "candidate_surfaces": [
+    {
+      "edge_id": "edge.application.multi-source.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "reference_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "locator": "document-root",
+      "pattern_id": "application/application-multi-source",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.application.multi-source.argocd-source-tree",
+      "capability_id": "capability.application.declarative-model",
+      "target_id": "application.declarative-model",
+      "claim_id": "claim.application.desired-state",
+      "variant_ids": [
+        "variant.application.multi-source.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "implementation-construction",
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:35537fce00a2a82b6c90038c2b3056515b4e1307e3dbf27caee29446e7805be1",
+      "locator_status": "root-document",
+      "context_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "context_start": 0,
+      "context_end": 203272487,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    },
+    {
+      "edge_id": "edge.application.operation.refresh.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "reference_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "locator": "document-root",
+      "pattern_id": "application/application-operation-refresh",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.application.operation.refresh.argocd-source-tree",
+      "capability_id": "capability.operations.bounded-runbook",
+      "target_id": "operations.routine-control",
+      "claim_id": "claim.operations.bounded-runbook",
+      "variant_ids": [
+        "variant.application.operation.refresh.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "implementation-construction",
+        "provenance-rights"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:e9ef974967883f7444f381e4062805b5ca419a89ea107247fcb24c680880b426",
+      "locator_status": "root-document",
+      "context_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "context_start": 0,
+      "context_end": 203272487,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    },
+    {
+      "edge_id": "edge.application.operation.sync.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "reference_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "locator": "document-root",
+      "pattern_id": "application/application-operation-sync",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.application.operation.sync.argocd-source-tree",
+      "capability_id": "capability.sync.order-and-policy",
+      "target_id": "sync.order-and-policy",
+      "claim_id": "claim.sync.deterministic-order",
+      "variant_ids": [
+        "variant.application.operation.sync.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "implementation-construction",
+        "provenance-rights"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:2a08a505bf840b38fd5bd4aae8d4162520f5afc9d0677a3cc0b7f3373d13871a",
+      "locator_status": "root-document",
+      "context_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "context_start": 0,
+      "context_end": 203272487,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    },
+    {
+      "edge_id": "edge.application.operation.terminate.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "reference_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "locator": "document-root",
+      "pattern_id": "application/application-operation-terminate",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.application.operation.terminate.argocd-source-tree",
+      "capability_id": "capability.operations.bounded-runbook",
+      "target_id": "operations.routine-control",
+      "claim_id": "claim.operations.bounded-runbook",
+      "variant_ids": [
+        "variant.application.operation.terminate.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "implementation-construction",
+        "provenance-rights"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:7ec4289bb8a03908c9ad84632bdac914650a7df56bfb357da6e7b59bc83f1c98",
+      "locator_status": "root-document",
+      "context_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "context_start": 0,
+      "context_end": 203272487,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    },
+    {
+      "edge_id": "edge.application.operation.wait.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "reference_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "locator": "document-root",
+      "pattern_id": "application/application-operation-wait",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.application.operation.wait.argocd-source-tree",
+      "capability_id": "capability.operations.bounded-runbook",
+      "target_id": "operations.routine-control",
+      "claim_id": "claim.operations.bounded-runbook",
+      "variant_ids": [
+        "variant.application.operation.wait.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "implementation-construction",
+        "provenance-rights"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:c9bca325c3e597deab2b4fafd6bebfecf52eb61c93dec12a4388a844105fc5b6",
+      "locator_status": "root-document",
+      "context_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "context_start": 0,
+      "context_end": 203272487,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    },
+    {
+      "edge_id": "edge.application.resource-actions.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "reference_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "locator": "document-root",
+      "pattern_id": "application/application-resource-actions",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.application.resource-actions.argocd-source-tree",
+      "capability_id": "capability.operations.bounded-runbook",
+      "target_id": "operations.routine-control",
+      "claim_id": "claim.operations.bounded-runbook",
+      "variant_ids": [
+        "variant.application.resource-actions.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "implementation-construction",
+        "provenance-rights"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:5fdffcd23e5680b04b33e0780f7c2ce10cc12e942afbee9be17bdf777cad5253",
+      "locator_status": "root-document",
+      "context_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "context_start": 0,
+      "context_end": 203272487,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    },
+    {
+      "edge_id": "edge.applicationset.any-namespace.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "reference_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "locator": "document-root",
+      "pattern_id": "applicationset/applicationset-any-namespace",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.applicationset.any-namespace.argocd-source-tree",
+      "capability_id": "capability.security.identity-authorization-boundary",
+      "target_id": "security.rbac-sso-access-boundary",
+      "claim_id": "claim.security.identity-authorization-boundary",
+      "variant_ids": [
+        "variant.applicationset.any-namespace.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:9c69a02adf77aef1cb59eb0e8736e0d15a820b348fdf0695bb97539e428811e6",
+      "locator_status": "root-document",
+      "context_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "context_start": 0,
+      "context_end": 203272487,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    },
+    {
+      "edge_id": "edge.applicationset.deletion.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "reference_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "locator": "document-root",
+      "pattern_id": "applicationset/applicationset-deletion",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.applicationset.deletion.argocd-source-tree",
+      "capability_id": "capability.applicationset.generator-templating",
+      "target_id": "applicationset.generator-templating",
+      "claim_id": "claim.applicationset.generated-applications",
+      "variant_ids": [
+        "variant.applicationset.deletion.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:958a09681fa241119d7bdb450a4f25ae73edb297b9a98f4a3e9aaaca230f1331",
+      "locator_status": "root-document",
+      "context_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "context_start": 0,
+      "context_end": 203272487,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    },
+    {
+      "edge_id": "edge.applicationset.generator.cluster.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "reference_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "locator": "document-root",
+      "pattern_id": "applicationset/applicationset-generator-cluster",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.applicationset.generator.cluster.argocd-source-tree",
+      "capability_id": "capability.applicationset.generator-templating",
+      "target_id": "applicationset.generator-templating",
+      "claim_id": "claim.applicationset.generated-applications",
+      "variant_ids": [
+        "variant.applicationset.generator.cluster.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "implementation-construction",
+        "provenance-rights"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:fc5065c529f0d386715fc31869afb61057f3972e472a915d498f3f0fb4abf4bf",
+      "locator_status": "root-document",
+      "context_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "context_start": 0,
+      "context_end": 203272487,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    },
+    {
+      "edge_id": "edge.applicationset.generator.git-directory.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "reference_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "locator": "document-root",
+      "pattern_id": "applicationset/applicationset-generator-git-directory",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.applicationset.generator.git-directory.argocd-source-tree",
+      "capability_id": "capability.applicationset.generator-templating",
+      "target_id": "applicationset.generator-templating",
+      "claim_id": "claim.applicationset.generated-applications",
+      "variant_ids": [
+        "variant.applicationset.generator.git-directory.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "implementation-construction",
+        "provenance-rights"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:2b25469d37e750dfb9d8e415dc523833ce48607e7805d70886f270061d846961",
+      "locator_status": "root-document",
+      "context_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "context_start": 0,
+      "context_end": 203272487,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    },
+    {
+      "edge_id": "edge.applicationset.generator.git-file.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "reference_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "locator": "document-root",
+      "pattern_id": "applicationset/applicationset-generator-git-file",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.applicationset.generator.git-file.argocd-source-tree",
+      "capability_id": "capability.applicationset.generator-templating",
+      "target_id": "applicationset.generator-templating",
+      "claim_id": "claim.applicationset.generated-applications",
+      "variant_ids": [
+        "variant.applicationset.generator.git-file.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "implementation-construction",
+        "provenance-rights"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:56cbfaead2c7fc017f2a12e600b52950e354daac53f64b84e6050ec229604ecf",
+      "locator_status": "root-document",
+      "context_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "context_start": 0,
+      "context_end": 203272487,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    },
+    {
+      "edge_id": "edge.applicationset.generator.list.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "reference_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "locator": "document-root",
+      "pattern_id": "applicationset/applicationset-generator-list",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.applicationset.generator.list.argocd-source-tree",
+      "capability_id": "capability.applicationset.generator-templating",
+      "target_id": "applicationset.generator-templating",
+      "claim_id": "claim.applicationset.generated-applications",
+      "variant_ids": [
+        "variant.applicationset.generator.list.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "implementation-construction",
+        "provenance-rights"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:e8b373b726083d92804d79fbaa438efd6ed67465a61e298561ab04f8ee5833e3",
+      "locator_status": "root-document",
+      "context_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "context_start": 0,
+      "context_end": 203272487,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    },
+    {
+      "edge_id": "edge.applicationset.go-template.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "reference_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "locator": "document-root",
+      "pattern_id": "applicationset/applicationset-go-template",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.applicationset.go-template.argocd-source-tree",
+      "capability_id": "capability.applicationset.generator-templating",
+      "target_id": "applicationset.generator-templating",
+      "claim_id": "claim.applicationset.generated-applications",
+      "variant_ids": [
+        "variant.applicationset.go-template.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "implementation-construction",
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:0baed3e56015e260bcd6f5898f94f9282337bb7d768e2c62cc7db4cfe35b4ef7",
+      "locator_status": "root-document",
+      "context_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "context_start": 0,
+      "context_end": 203272487,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    },
+    {
+      "edge_id": "edge.applicationset.post-selector.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "reference_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "locator": "document-root",
+      "pattern_id": "applicationset/applicationset-post-selector",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.applicationset.post-selector.argocd-source-tree",
+      "capability_id": "capability.applicationset.generator-templating",
+      "target_id": "applicationset.generator-templating",
+      "claim_id": "claim.applicationset.generated-applications",
+      "variant_ids": [
+        "variant.applicationset.post-selector.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:efa981ea64efadf735c078246243143aeed83d0859a3a8ad813940578c3ddfb5",
+      "locator_status": "root-document",
+      "context_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "context_start": 0,
+      "context_end": 203272487,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    },
+    {
+      "edge_id": "edge.applicationset.progressive-sync.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "reference_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "locator": "document-root",
+      "pattern_id": "applicationset/applicationset-progressive-sync",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.applicationset.progressive-sync.argocd-source-tree",
+      "capability_id": "capability.promotion.git-mediated-change",
+      "target_id": "promotion.git-mediated-change",
+      "claim_id": "claim.promotion.git-boundary",
+      "variant_ids": [
+        "variant.applicationset.progressive-sync.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:795b70f3a3a84b8155624323978b163996998f38eb1efccbbe4704028d1ed411",
+      "locator_status": "root-document",
+      "context_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "context_start": 0,
+      "context_end": 203272487,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    },
+    {
+      "edge_id": "edge.applicationset.template.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "reference_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "locator": "document-root",
+      "pattern_id": "applicationset/applicationset-template",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.applicationset.template.argocd-source-tree",
+      "capability_id": "capability.applicationset.generator-templating",
+      "target_id": "applicationset.generator-templating",
+      "claim_id": "claim.applicationset.generated-applications",
+      "variant_ids": [
+        "variant.applicationset.template.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "implementation-construction",
+        "provenance-rights"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:80b68e0f6a160efc1aef5a332c99a8b3319aa976c013393b54754a9b4d095569",
+      "locator_status": "root-document",
+      "context_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "context_start": 0,
+      "context_end": 203272487,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    },
+    {
+      "edge_id": "edge.auth.permission-check.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "reference_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "locator": "document-root",
+      "pattern_id": "auth/auth-permission-check",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.auth.permission-check.argocd-source-tree",
+      "capability_id": "capability.security.identity-authorization-boundary",
+      "target_id": "security.rbac-sso-access-boundary",
+      "claim_id": "claim.security.identity-authorization-boundary",
+      "variant_ids": [
+        "variant.auth.permission-check.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "implementation-construction",
+        "provenance-rights",
+        "security-privacy-safety"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:158c11a34b1121fa45c94b1f721efea922da751b081fd925b9c77d73009df706",
+      "locator_status": "root-document",
+      "context_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "context_start": 0,
+      "context_end": 203272487,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    },
+    {
+      "edge_id": "edge.connection.cluster-auth-rotation.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "reference_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "locator": "document-root",
+      "pattern_id": "connection/connection-cluster-auth-rotation",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.connection.cluster-auth-rotation.argocd-source-tree",
+      "capability_id": "capability.connection.repository-cluster-registration",
+      "target_id": "connection.repository-cluster-registration",
+      "claim_id": "claim.connection.register-and-reject",
+      "variant_ids": [
+        "variant.connection.cluster-auth-rotation.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "architecture-design",
+        "implementation-construction",
+        "provenance-rights"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:233f4147eb2ccd8f2a733adf1db637b3bb2d3e855230ad69fd1b2933a00c5531",
+      "locator_status": "root-document",
+      "context_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "context_start": 0,
+      "context_end": 203272487,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    },
+    {
+      "edge_id": "edge.connection.cluster-namespaces.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "reference_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "locator": "document-root",
+      "pattern_id": "connection/connection-cluster-namespaces",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.connection.cluster-namespaces.argocd-source-tree",
+      "capability_id": "capability.connection.repository-cluster-registration",
+      "target_id": "connection.repository-cluster-registration",
+      "claim_id": "claim.connection.register-and-reject",
+      "variant_ids": [
+        "variant.connection.cluster-namespaces.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "architecture-design",
+        "implementation-construction",
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:fa2aa3d8422ca9c28b3ba36af0d623d15b735f5c13d2d97bdfe6ce26831a3b1f",
+      "locator_status": "root-document",
+      "context_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "context_start": 0,
+      "context_end": 203272487,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    },
+    {
+      "edge_id": "edge.connection.repository-credentials.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "reference_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "locator": "document-root",
+      "pattern_id": "connection/connection-repository-credentials",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.connection.repository-credentials.argocd-source-tree",
+      "capability_id": "capability.connection.repository-cluster-registration",
+      "target_id": "connection.repository-cluster-registration",
+      "claim_id": "claim.connection.register-and-reject",
+      "variant_ids": [
+        "variant.connection.repository-credentials.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "architecture-design",
+        "implementation-construction",
+        "provenance-rights"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:73b1565b1a8415f934b27cc338f0ac91577110aadb3128830adb1a421de3db85",
+      "locator_status": "root-document",
+      "context_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "context_start": 0,
+      "context_end": 203272487,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    },
+    {
+      "edge_id": "edge.connection.repository-tls-ssh.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "reference_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "locator": "document-root",
+      "pattern_id": "connection/connection-repository-tls-ssh",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.connection.repository-tls-ssh.argocd-source-tree",
+      "capability_id": "capability.connection.repository-cluster-registration",
+      "target_id": "connection.repository-cluster-registration",
+      "claim_id": "claim.connection.register-and-reject",
+      "variant_ids": [
+        "variant.connection.repository-tls-ssh.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "architecture-design",
+        "implementation-construction",
+        "provenance-rights"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:4a77b89ea72420ebbec0baa9e08d7376e5af2517312c7f395ea2e29bd9074720",
+      "locator_status": "root-document",
+      "context_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "context_start": 0,
+      "context_end": 203272487,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    },
+    {
+      "edge_id": "edge.diff.server-side.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "reference_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "locator": "document-root",
+      "pattern_id": "diff/diff-server-side",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.diff.server-side.argocd-source-tree",
+      "capability_id": "capability.diff.desired-live-comparison",
+      "target_id": "diff.desired-live-comparison",
+      "claim_id": "claim.diff.detect-drift",
+      "variant_ids": [
+        "variant.diff.server-side.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "implementation-construction",
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:cd900f24cc8fa3b04415af9b7f013656c7ad0842e81bce7435583e531830d9e9",
+      "locator_status": "root-document",
+      "context_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "context_start": 0,
+      "context_end": 203272487,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    },
+    {
+      "edge_id": "edge.extension.config-management-plugin.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "reference_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "locator": "document-root",
+      "pattern_id": "extensions/extension-config-management-plugin",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.extension.config-management-plugin.argocd-source-tree",
+      "capability_id": "capability.security.secret-boundary",
+      "target_id": "security.secret-boundary",
+      "claim_id": "claim.security.no-secret-leak",
+      "variant_ids": [
+        "variant.extension.config-management-plugin.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "implementation-construction",
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:25a58e734a646f70c8517a17f3e7e3eb65c48ca95013b036350ee84d853f2e1b",
+      "locator_status": "root-document",
+      "context_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "context_start": 0,
+      "context_end": 203272487,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    },
+    {
+      "edge_id": "edge.ha.api-server.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "reference_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "locator": "document-root",
+      "pattern_id": "availability/ha-api-server",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.ha.api-server.argocd-source-tree",
+      "capability_id": "capability.availability.component-redundancy",
+      "target_id": "availability.high-availability",
+      "claim_id": "claim.availability.component-redundancy",
+      "variant_ids": [
+        "variant.ha.api-server.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "implementation-construction",
+        "provenance-rights"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:95e51d49eef78e6d6c29609daefdf4d06cf43436985718c71e239ff642023198",
+      "locator_status": "root-document",
+      "context_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "context_start": 0,
+      "context_end": 203272487,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    },
+    {
+      "edge_id": "edge.ha.applicationset-controller.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "reference_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "locator": "document-root",
+      "pattern_id": "availability/ha-applicationset-controller",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.ha.applicationset-controller.argocd-source-tree",
+      "capability_id": "capability.availability.component-redundancy",
+      "target_id": "availability.high-availability",
+      "claim_id": "claim.availability.component-redundancy",
+      "variant_ids": [
+        "variant.ha.applicationset-controller.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "implementation-construction",
+        "provenance-rights"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:213c968d762ff2fd6d037300c94528a3ac12c673abb87b525d37d557a85eb3c8",
+      "locator_status": "root-document",
+      "context_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "context_start": 0,
+      "context_end": 203272487,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    },
+    {
+      "edge_id": "edge.ha.redis.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "reference_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "locator": "document-root",
+      "pattern_id": "availability/ha-redis",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.ha.redis.argocd-source-tree",
+      "capability_id": "capability.availability.component-redundancy",
+      "target_id": "availability.high-availability",
+      "claim_id": "claim.availability.component-redundancy",
+      "variant_ids": [
+        "variant.ha.redis.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "implementation-construction",
+        "provenance-rights"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:3b64b7bb4aa9b287dc00fece73cba48685473232b2a303fb4bb60f54812b1f3e",
+      "locator_status": "root-document",
+      "context_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "context_start": 0,
+      "context_end": 203272487,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    },
+    {
+      "edge_id": "edge.ha.repo-server.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "reference_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "locator": "document-root",
+      "pattern_id": "availability/ha-repo-server",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.ha.repo-server.argocd-source-tree",
+      "capability_id": "capability.availability.component-redundancy",
+      "target_id": "availability.high-availability",
+      "claim_id": "claim.availability.component-redundancy",
+      "variant_ids": [
+        "variant.ha.repo-server.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "implementation-construction",
+        "provenance-rights"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:cb2edbfd62e5a4ee7797743b35e2d2f9f9a5ffd9cb0898514343300e347c2934",
+      "locator_status": "root-document",
+      "context_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "context_start": 0,
+      "context_end": 203272487,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    },
+    {
+      "edge_id": "edge.notifications.controller.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "reference_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "locator": "document-root",
+      "pattern_id": "notifications/notifications-controller",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.notifications.controller.argocd-source-tree",
+      "capability_id": "capability.notifications.local-webhook-delivery",
+      "target_id": "operations.notifications-delivery",
+      "claim_id": "claim.notifications.local-webhook-delivery",
+      "variant_ids": [
+        "variant.notifications.controller.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "implementation-construction",
+        "provenance-rights"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:0abaa541952c4e5a73d04b16fff8f166ed7754fe02701c728c8ea746fd8d1e8d",
+      "locator_status": "root-document",
+      "context_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "context_start": 0,
+      "context_end": 203272487,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    },
+    {
+      "edge_id": "edge.notifications.failure-metrics.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "reference_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "locator": "document-root",
+      "pattern_id": "notifications/notifications-failure-metrics",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.notifications.failure-metrics.argocd-source-tree",
+      "capability_id": "capability.notifications.local-webhook-delivery",
+      "target_id": "operations.notifications-delivery",
+      "claim_id": "claim.notifications.local-webhook-delivery",
+      "variant_ids": [
+        "variant.notifications.failure-metrics.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:47de5b42b2bcc7e5b347e6a51a083f48eeb4e138b30726c6eeea4125580f9371",
+      "locator_status": "root-document",
+      "context_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "context_start": 0,
+      "context_end": 203272487,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    },
+    {
+      "edge_id": "edge.notifications.service-delivery.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "reference_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "locator": "document-root",
+      "pattern_id": "notifications/notifications-service-delivery",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.notifications.service-delivery.argocd-source-tree",
+      "capability_id": "capability.notifications.local-webhook-delivery",
+      "target_id": "operations.notifications-delivery",
+      "claim_id": "claim.notifications.local-webhook-delivery",
+      "variant_ids": [
+        "variant.notifications.service-delivery.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "implementation-construction",
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:9398d38e3687c215e20bf42f4a7401c40ecca3dc231bb99c32ac6f1c5b778d6a",
+      "locator_status": "root-document",
+      "context_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "context_start": 0,
+      "context_end": 203272487,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    },
+    {
+      "edge_id": "edge.notifications.subscription.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "reference_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "locator": "document-root",
+      "pattern_id": "notifications/notifications-subscription",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.notifications.subscription.argocd-source-tree",
+      "capability_id": "capability.notifications.local-webhook-delivery",
+      "target_id": "operations.notifications-delivery",
+      "claim_id": "claim.notifications.local-webhook-delivery",
+      "variant_ids": [
+        "variant.notifications.subscription.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "implementation-construction",
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:6ad2e25f6cb87ff49743d68a4875df2c1c3e37efa8e084058623ba8be3ed134b",
+      "locator_status": "root-document",
+      "context_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "context_start": 0,
+      "context_end": 203272487,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    },
+    {
+      "edge_id": "edge.notifications.trigger-template.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "reference_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "locator": "document-root",
+      "pattern_id": "notifications/notifications-trigger-template",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.notifications.trigger-template.argocd-source-tree",
+      "capability_id": "capability.notifications.local-webhook-delivery",
+      "target_id": "operations.notifications-delivery",
+      "claim_id": "claim.notifications.local-webhook-delivery",
+      "variant_ids": [
+        "variant.notifications.trigger-template.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "implementation-construction",
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:352d7a3bde46a417f91c3e84055d7d7e8abb3963c591f2ecd5eb8f232f839e1a",
+      "locator_status": "root-document",
+      "context_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "context_start": 0,
+      "context_end": 203272487,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    },
+    {
+      "edge_id": "edge.project.destination-boundary.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "reference_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "locator": "document-root",
+      "pattern_id": "project/project-destination-boundary",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.project.destination-boundary.argocd-source-tree",
+      "capability_id": "capability.security.identity-authorization-boundary",
+      "target_id": "security.rbac-sso-access-boundary",
+      "claim_id": "claim.security.identity-authorization-boundary",
+      "variant_ids": [
+        "variant.project.destination-boundary.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "implementation-construction",
+        "provenance-rights"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:5c5bcf321919494e31f883bd5cf41a70e92a2eb09b6d7c948964ab991e30baff",
+      "locator_status": "root-document",
+      "context_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "context_start": 0,
+      "context_end": 203272487,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    },
+    {
+      "edge_id": "edge.project.resource-boundary.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "reference_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "locator": "document-root",
+      "pattern_id": "project/project-resource-boundary",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.project.resource-boundary.argocd-source-tree",
+      "capability_id": "capability.security.identity-authorization-boundary",
+      "target_id": "security.rbac-sso-access-boundary",
+      "claim_id": "claim.security.identity-authorization-boundary",
+      "variant_ids": [
+        "variant.project.resource-boundary.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "implementation-construction",
+        "provenance-rights"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:e6f2358b73dd93fd81682fa16209ec7686cd802790df61b2b9b16ed2e00fc2ef",
+      "locator_status": "root-document",
+      "context_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "context_start": 0,
+      "context_end": 203272487,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    },
+    {
+      "edge_id": "edge.project.roles.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "reference_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "locator": "document-root",
+      "pattern_id": "project/project-roles",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.project.roles.argocd-source-tree",
+      "capability_id": "capability.security.identity-authorization-boundary",
+      "target_id": "security.rbac-sso-access-boundary",
+      "claim_id": "claim.security.identity-authorization-boundary",
+      "variant_ids": [
+        "variant.project.roles.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "implementation-construction",
+        "provenance-rights"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:9836227f9d876550d344487d23c10eadd98fabf9b1c84772b0d201b85d32ed6a",
+      "locator_status": "root-document",
+      "context_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "context_start": 0,
+      "context_end": 203272487,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    },
+    {
+      "edge_id": "edge.project.source-integrity.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "reference_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "locator": "document-root",
+      "pattern_id": "project/project-source-integrity",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.project.source-integrity.argocd-source-tree",
+      "capability_id": "capability.security.secret-boundary",
+      "target_id": "security.secret-boundary",
+      "claim_id": "claim.security.no-secret-leak",
+      "variant_ids": [
+        "variant.project.source-integrity.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "implementation-construction",
+        "provenance-rights"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:cb786d5e60b3311028ba5457789ece29de95e812daeadd127029bbe84d1bcf79",
+      "locator_status": "root-document",
+      "context_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "context_start": 0,
+      "context_end": 203272487,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    },
+    {
+      "edge_id": "edge.project.sync-windows.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "reference_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "locator": "document-root",
+      "pattern_id": "project/project-sync-windows",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.project.sync-windows.argocd-source-tree",
+      "capability_id": "capability.sync.order-and-policy",
+      "target_id": "sync.order-and-policy",
+      "claim_id": "claim.sync.deterministic-order",
+      "variant_ids": [
+        "variant.project.sync-windows.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "implementation-construction",
+        "provenance-rights"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:3d30a6082bcfc3930b7a6dc36f90ca09665700d043b5eff81757c184a332d9e6",
+      "locator_status": "root-document",
+      "context_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "context_start": 0,
+      "context_end": 203272487,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    },
+    {
+      "edge_id": "edge.secret.repository-cluster-boundary.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "reference_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "locator": "document-root",
+      "pattern_id": "secret-boundary/secret-repository-cluster-boundary",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.secret.repository-cluster-boundary.argocd-source-tree",
+      "capability_id": "capability.security.secret-boundary",
+      "target_id": "security.secret-boundary",
+      "claim_id": "claim.security.no-secret-leak",
+      "variant_ids": [
+        "variant.secret.repository-cluster-boundary.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "implementation-construction",
+        "orientation-scope",
+        "provenance-rights",
+        "security-privacy-safety"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:0cab11ccc215e19cc8d91574d9a06fa5a1f6f29e872b5c1481b487c59db7413e",
+      "locator_status": "root-document",
+      "context_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "context_start": 0,
+      "context_end": 203272487,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    }
+  ]
+}

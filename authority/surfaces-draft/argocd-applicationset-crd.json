@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "source_id": "argocd-applicationset-crd",
+  "source_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/manifests/crds/applicationset-crd.yaml",
+  "locked_source_digest": "sha256:7d282054f41ca2b71a22bab04a8caf0000e07e53a62432e6ea292dae5ab4f07d",
+  "fetch": {
+    "status": "matched",
+    "fetched_digest": "sha256:7d282054f41ca2b71a22bab04a8caf0000e07e53a62432e6ea292dae5ab4f07d",
+    "locked_digest_match": true,
+    "http_status": null,
+    "final_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/manifests/crds/applicationset-crd.yaml",
+    "content_type": "application/yaml",
+    "fetched_bytes": 1394817,
+    "error_digest": null
+  },
+  "extraction": {
+    "method": "locked-body-locator-context-digest",
+    "tool": "argocd-reference-atlas-authority-locator-v1",
+    "tool_digest": "sha256:53e20736c1f6867e1b680d5e5244b589839b00d1cc82816d5227d798c898366e",
+    "review_status": "automated-unreviewed",
+    "body_storage": "digest-and-locator-context-digest-only"
+  },
+  "candidate_surfaces": [
+    {
+      "edge_id": "edge.source.argocd-applicationset-crd.claim.applicationset.generated-applications",
+      "source_id": "argocd-applicationset-crd",
+      "reference_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/manifests/crds/applicationset-crd.yaml",
+      "locator": "document-root",
+      "pattern_id": "authority/argocd-applicationset-crd",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.source.argocd-applicationset-crd.claim.applicationset.generated-applications",
+      "capability_id": "capability.applicationset.generator-templating",
+      "target_id": "applicationset.generator-templating",
+      "claim_id": "claim.applicationset.generated-applications",
+      "variant_ids": [
+        "variant.source.argocd-applicationset-crd.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "provenance-rights"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:8607f1c949b8c7cbee05c15b5b7920294b91263edcf067e15bab583f636cb305",
+      "locator_status": "root-document",
+      "context_digest": "sha256:7d282054f41ca2b71a22bab04a8caf0000e07e53a62432e6ea292dae5ab4f07d",
+      "context_start": 0,
+      "context_end": 1394817,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    }
+  ]
+}

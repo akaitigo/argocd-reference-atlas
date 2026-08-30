@@ -16,7 +16,7 @@ ROOT = Path(__file__).resolve().parents[1]
 BODY_INDEX = ROOT / "authority" / "body-inventory.snapshot.json"
 BODY_DIR = ROOT / "authority" / "body-inventory-draft"
 LOCATOR_INDEX = ROOT / "authority" / "extraction.snapshot.json"
-LOCATOR_DIR = ROOT / "authority" / "locators"
+LOCATOR_DIR = ROOT / "authority" / "surfaces-draft"
 QUEUE_INDEX = ROOT / "authority" / "review-queue.snapshot.json"
 QUEUE_DIR = ROOT / "authority" / "review-queue-draft"
 DECISIONS = ROOT / "authority" / "reviews" / "decisions.json"
@@ -33,8 +33,8 @@ TOOL_FILES = [
     ROOT / "scripts" / "validate_authority_review_queue.py",
     ROOT / "scripts" / "test_authority_review_queue.py",
 ]
-DECISION_ACTIONS = {"include", "exclude", "merge", "split"}
-RESULT_TYPES = {"controller-surface", "behavior-surface"}
+DECISION_ACTIONS = {"include", "exclude", "merge", "split", "defer"}
+RESULT_TYPES = {"surface", "atomic-behavior"}
 
 
 def sha256_bytes(value: bytes) -> str:
@@ -109,7 +109,7 @@ def matched_edge_ids(artifact: dict, anchor: dict, by_source_locator: dict[str, 
 def suggested_priority(anchor: dict, edge_ids: list[str]) -> tuple[int, list[str]]:
     if edge_ids:
         return 0, ["existing-domain-reference-locator-match"]
-    if anchor["selector"] in {"markdown-atx-heading-line", "yaml-mapping-key-line", "plain-nonempty-line"}:
+    if anchor["raw_selector"] in {"markdown-atx-heading-line", "yaml-mapping-key-line", "plain-nonempty-line"}:
         return 1, ["semantic-label-anchor-candidate"]
     return 2, ["structural-or-document-anchor-candidate"]
 
@@ -144,13 +144,13 @@ def validate_decisions(decisions: list, item_by_id: dict[str, dict]) -> tuple[se
     for decision in decisions:
         if not isinstance(decision, dict):
             raise ValueError("Review decisionはObjectである必要があります")
-        exact_keys(decision, {"decision_id", "action", "anchor_ids", "source_bindings", "reason", "reviewer", "reviewed_at", "review_method", "mapping", "result_items"}, f"Decision {decision.get('decision_id')}")
+        exact_keys(decision, {"decision_id", "action", "anchor_ids", "source_bindings", "rationale", "reviewer", "reviewed_at", "review_method", "mapping", "result_items"}, f"Decision {decision.get('decision_id')}")
         decision_id = decision["decision_id"]
         if not re.fullmatch(r"decision\.[a-z0-9.-]+", decision_id) or decision_id in seen_decisions or decision["action"] not in DECISION_ACTIONS:
             raise ValueError(f"Decision identity/actionが不正です: {decision_id}")
         seen_decisions.add(decision_id)
         reviewer = decision["reviewer"].strip()
-        if decision["review_method"] != "manual-primary-source" or len(decision["reason"].strip()) < 40 or len(reviewer) < 2 or re.match(r"^(?:auto(?:mated)?|agent|bot|system|machine)(?:$|[-_. ])", reviewer, re.I):
+        if decision["review_method"] != "manual-primary-source" or len(decision["rationale"].strip()) < 40 or len(reviewer) < 2 or re.match(r"^(?:auto(?:mated)?|agent|bot|system|machine)(?:$|[-_. ])", reviewer, re.I):
             raise ValueError(f"人手一次資料review provenanceが不足しています: {decision_id}")
         try:
             reviewed_at = datetime.fromisoformat(decision["reviewed_at"])
@@ -202,8 +202,8 @@ def validate_decisions(decisions: list, item_by_id: dict[str, dict]) -> tuple[se
             raise ValueError(f"Decision mappingとresult集合が一致しません: {decision_id}")
         action = decision["action"]
         mappings = decision["mapping"]
-        if action == "exclude" and (mapped_ids or results):
-            raise ValueError(f"excludeはController/Behavior Surfaceへ昇格できません: {decision_id}")
+        if action in {"exclude", "defer"} and (mapped_ids or results):
+            raise ValueError(f"{action}はSurface／Atomic Behaviorへ昇格できません: {decision_id}")
         if action == "include" and (any(not item["new_item_ids"] for item in mappings) or len(mapped_ids) != sum(len(item["new_item_ids"]) for item in mappings)):
             raise ValueError(f"include mappingが不正です: {decision_id}")
         if action == "merge" and (len(anchor_ids) < 2 or any(not item["new_item_ids"] for item in mappings) or len({tuple(sorted(item["new_item_ids"])) for item in mappings}) != 1):
@@ -227,13 +227,13 @@ def stale_hold(artifact: dict, tool_digest: str) -> dict:
     """stale documentをQueueと昇格経路から隔離するhold recordへ変換する。"""
     return {
         "document_id": artifact["document_id"],
-        "document_url": artifact["source_url"],
+        "document_url": artifact["fetch_url"],
         "source_ids": artifact["source_ids"],
         "locked_source_digest": artifact["locked_body_digest"],
         "inventory_tool_digest": artifact["extraction"]["tool_digest"],
         "review_queue_tool_digest": tool_digest,
         "locator": "document-root",
-        "observed_digest": artifact["fetch"]["observed_digest"],
+        "fetched_digest": artifact["fetch"]["fetched_digest"],
         "status": "hold-stale-document-relock-required",
         "reason": "locked-document-body-digest-mismatch",
     }
@@ -256,7 +256,7 @@ def build_queue() -> tuple[dict, list[dict], dict]:
             continue
         for anchor in artifact["anchors"]:
             if anchor["label_digest"]:
-                key = f"{anchor['selector']}\0{anchor['label_digest']}"
+                key = f"{anchor['raw_selector']}\0{anchor['label_digest']}"
                 label_groups.setdefault(key, []).append(anchor["id"])
     cluster_by_anchor: dict[str, str] = {}
     for key, ids in label_groups.items():
@@ -276,29 +276,30 @@ def build_queue() -> tuple[dict, list[dict], dict]:
         for anchor in artifact["anchors"]:
             edge_ids = matched_edge_ids(artifact, anchor, by_source_locator, by_locator)
             priority, reasons = suggested_priority(anchor, edge_ids)
-            batch_id = suggested_batch_id(priority, anchor["selector"], anchor["id"])
+            batch_id = suggested_batch_id(priority, anchor["raw_selector"], anchor["id"])
             item = {
                 "anchor_id": anchor["id"],
                 "document_id": artifact["document_id"],
-                "document_url": artifact["source_url"],
+                "document_url": artifact["fetch_url"],
                 "source_ids": artifact["source_ids"],
                 "locked_source_digest": artifact["locked_body_digest"],
                 "inventory_tool_digest": artifact["extraction"]["tool_digest"],
                 "review_queue_tool_digest": tool_digest,
                 "locator": anchor["locator"],
                 "locator_kind": anchor["locator_kind"],
-                "selector": anchor["selector"],
+                "raw_selector": anchor["raw_selector"],
+                "element_name": anchor["element_name"],
                 "parent_anchor_id": anchor["parent_anchor_id"],
                 "context_start": anchor["context_start"],
                 "context_end": anchor["context_end"],
                 "context_unit": anchor["context_unit"],
                 "context_digest": anchor["context_digest"],
                 "label_digest": anchor["label_digest"],
-                "existing_reference_edge_ids": edge_ids,
-                "suggested_priority": priority,
+                "existing_mapping_candidate_ids": edge_ids,
+                "priority": priority,
                 "priority_reasons": reasons,
-                "suggested_cluster_id": cluster_by_anchor.get(anchor["id"]),
-                "suggested_batch_id": batch_id,
+                "candidate_cluster_id": cluster_by_anchor.get(anchor["id"]),
+                "batch_id": batch_id,
                 "state": "pending-human",
             }
             grouped.setdefault(batch_id, []).append(item)
@@ -324,8 +325,8 @@ def build_queue() -> tuple[dict, list[dict], dict]:
             "id": batch_id,
             "path": f"authority/review-queue-draft/{batch_id}.json",
             "digest": artifact_digest(batch),
-            "suggested_priority": int(match.group(1)),
-            "selector": match.group(2),
+            "priority": int(match.group(1)),
+            "raw_selector": match.group(2),
             "bucket": match.group(3),
             "items": len(items),
         })
@@ -338,14 +339,13 @@ def build_queue() -> tuple[dict, list[dict], dict]:
         raise ValueError("Authority review decision ledger identity/statusが現Queueと一致しません")
     item_by_id = {item["anchor_id"]: item for batch in batches for item in batch["items"]}
     decided, result_ids = validate_decisions(ledger["decisions"], item_by_id)
-    priority_counts = {str(priority): sum(1 for item in item_by_id.values() if item["suggested_priority"] == priority) for priority in (0, 1, 2)}
-    cluster_ids = {item["suggested_cluster_id"] for item in item_by_id.values() if item["suggested_cluster_id"]}
+    priority_counts = {str(priority): sum(1 for item in item_by_id.values() if item["priority"] == priority) for priority in (0, 1, 2)}
+    cluster_ids = {item["candidate_cluster_id"] for item in item_by_id.values() if item["candidate_cluster_id"]}
     index = {
         "schema_version": 1,
         "atlas_id": "argocd-reference-atlas",
         "generated_at": "2026-08-28T00:00:00+09:00",
         "status": "incomplete-human-review-required",
-        "reference": {"repository": "frontend-behavior-atlas", "commit": REFERENCE_COMMIT, "files": REFERENCE_FILES},
         "queue_id": queue_id,
         "input_digest": input_digest,
         "tool_digest": tool_digest,
@@ -353,28 +353,28 @@ def build_queue() -> tuple[dict, list[dict], dict]:
         "body_storage": "digest-locator-and-offset-only",
         "machine_assistance": "dedupe-candidate-cluster-priority-and-batch-proposals-only",
         "semantic_decisions": "human-only",
-        "depth_credit_rule": "Queue、priority、cluster、batch、pending件数をSemantic Surface、Coverage、Depth axis達成へ算入しない。",
         "summary": {
             "eligible_documents": len({item["document_id"] for item in item_by_id.values()}),
             "queued_anchors": len(item_by_id),
             "pending_human": len(item_by_id) - len(decided),
             "human_reviewed": len(decided),
-            "suggested_priority_counts": priority_counts,
+            "priority_counts": priority_counts,
             "candidate_clusters": len(cluster_ids),
-            "clustered_anchors": sum(1 for item in item_by_id.values() if item["suggested_cluster_id"]),
+            "clustered_anchors": sum(1 for item in item_by_id.values() if item["candidate_cluster_id"]),
             "batches": len(batches),
             "stale_document_holds": len(stale_holds),
+            "unavailable_document_holds": 0,
             "decisions": len(ledger["decisions"]),
             "included": sum(1 for item in ledger["decisions"] if item["action"] == "include"),
             "excluded": sum(1 for item in ledger["decisions"] if item["action"] == "exclude"),
             "merged": sum(1 for item in ledger["decisions"] if item["action"] == "merge"),
             "split": sum(1 for item in ledger["decisions"] if item["action"] == "split"),
-            "promoted_controller_behavior_items": len(result_ids),
-            "semantic_surface_credit": 0,
-            "depth_axis_credit": 0,
+            "deferred": sum(1 for item in ledger["decisions"] if item["action"] == "defer"),
             "authority_semantics_exhaustive": False,
+            "queue_counts_as_depth_achievement": False,
         },
         "batches": records,
         "stale_holds": sorted(stale_holds, key=lambda item: item["document_id"]),
+        "unavailable_holds": [],
     }
     return index, batches, ledger

@@ -2,359 +2,285 @@
   "schema_version": 1,
   "atlas_id": "argocd-reference-atlas",
   "generated_at": "2026-08-28T00:00:00+09:00",
-  "status": "incomplete-human-review-and-exhaustive-inventory-required",
-  "reference": {
-    "repository": "frontend-behavior-atlas",
-    "commit": "841ec2fa399606a10305021a8bcd396713b8cee5",
-    "files": [
-      {
-        "path": "scripts/lib/authority-extraction.ts",
-        "sha256": "eea9e10495383ec3cf89b0d57511ba5438ef1b3ca2e27dbdf57558b1b821c594"
-      },
-      {
-        "path": "scripts/extract-authority-surfaces.ts",
-        "sha256": "786d8f671dbc556e50e832b0cbcfa520b034a3d0126a3138d9c01b9b194ad59b"
-      },
-      {
-        "path": "scripts/verify-authority-extraction.ts",
-        "sha256": "420acbe08bff848786c4a28febb4443c671afdd53ff1643413317a9ce175d9aa"
-      },
-      {
-        "path": "authority/extraction.snapshot.json",
-        "sha256": "ef3d324232f3378909544b5407769e94fc3cc5a1defec968adbb71cb1a947aa8"
-      }
-    ]
-  },
-  "input_digest": "sha256:9b158872790a0d1c44bbb6b58a1c830a7365be9fe0569a1befa8dc65488404cd",
-  "body_storage": "metadata-digest-locator-offset-only",
-  "scope_separation": {
-    "domain_inventory_source": "definitive/surface-inventory.yaml",
-    "authority_reference_edge_classification": "candidate-included-unreviewed",
-    "authority_text_exhaustive_inventory": "not-produced",
-    "rule": "Domain inventoryから既知Source edgeを分類した件数をAuthority本文全体のexhaustive surface denominatorへ転用しない。"
-  },
+  "status": "incomplete-human-review-required",
+  "input_digest": "sha256:a4a12533a391cf87c355fbb0e1be3f91cb25aaac4a307969f1e077523a82e70c",
+  "tool_digest": "sha256:53e20736c1f6867e1b680d5e5244b589839b00d1cc82816d5227d798c898366e",
+  "body_storage": "digest-and-locator-context-digest-only",
   "summary": {
     "locked_sources": 26,
-    "matched_sources": 26,
-    "stale_sources": 0,
+    "fetched_digest_matched": 26,
+    "fetched_digest_stale": 0,
     "fetch_failed": 0,
-    "domain_inventory_items": 100,
-    "authority_reference_edges_classified": 83,
-    "non_authority_runtime_obligations": 17,
-    "unclassified_authority_reference_edges": 0,
-    "root_locators": 26,
-    "file_locators_found": 83,
-    "file_locators_not_found": 0,
+    "candidate_surfaces": 76,
+    "root_locators": 76,
+    "fragments_found": 0,
+    "fragments_not_found": 0,
     "locator_evaluations_deferred": 0,
+    "reference_edges_classified": 76,
+    "unclassified_reference_edges": 0,
     "authority_text_surfaces_exhaustive": false,
-    "authority_text_surface_denominator_closed": false,
     "human_reviewed_surfaces": 0,
     "core_v2_eligible_surfaces": 0
   },
-  "non_authority_inventory_item_ids": [
-    "comparison.runtime-options",
-    "compatibility.argocd-version",
-    "compatibility.kubernetes-version",
-    "ha.host-network",
-    "migration.forward-3.4-3.5",
-    "migration.rollback",
-    "observe.incident",
-    "observe.logs.correlation",
-    "performance.application-scale",
-    "performance.cluster-shard-scale",
-    "performance.cost-baseline",
-    "performance.repository-scale",
-    "recovery.cluster-outage",
-    "recovery.component-failure",
-    "recovery.idp-outage",
-    "recovery.repository-outage",
-    "system.integrated-reference"
-  ],
   "sources": [
     {
       "id": "argocd-application-crd",
-      "path": "authority/locators/argocd-application-crd.json",
-      "digest": "sha256:51609c4813fa2a52d2a53a59aca139779101c070b5c16fff759613d035586285",
+      "path": "authority/surfaces-draft/argocd-application-crd.json",
+      "digest": "sha256:413623f3a7f016110f0f8e177be1ed9d26d970338c543031e8585ccfde9a40b6",
       "locked_digest_match": true,
       "candidate_surfaces": 5,
       "locator_status": {
-        "root-document": 1,
-        "file-found": 5
+        "root-document": 5
       }
     },
     {
       "id": "argocd-application-specification",
-      "path": "authority/locators/argocd-application-specification.json",
-      "digest": "sha256:7a727d2413d51c3b5b15f7cc458f67dc48668b87cce387154d32fd3f173849c0",
+      "path": "authority/surfaces-draft/argocd-application-specification.json",
+      "digest": "sha256:f631f5112569be0df68920ef84cf81d4d1d1c030f9498607f92a147752e0772d",
       "locked_digest_match": true,
-      "candidate_surfaces": 0,
+      "candidate_surfaces": 1,
       "locator_status": {
-        "root-document": 1,
-        "file-found": 0
+        "root-document": 1
       }
     },
     {
       "id": "argocd-applicationset-crd",
-      "path": "authority/locators/argocd-applicationset-crd.json",
-      "digest": "sha256:68fe9fac61b824bdae5c8831a78a7e73e6bae98d659997481792d7f60db196f1",
+      "path": "authority/surfaces-draft/argocd-applicationset-crd.json",
+      "digest": "sha256:e120bc14737a598e963c031688da2c5778aaec8071883f25e2d6e88b09869c85",
       "locked_digest_match": true,
-      "candidate_surfaces": 0,
+      "candidate_surfaces": 1,
       "locator_status": {
-        "root-document": 1,
-        "file-found": 0
+        "root-document": 1
       }
     },
     {
       "id": "argocd-applicationset-introduction",
-      "path": "authority/locators/argocd-applicationset-introduction.json",
-      "digest": "sha256:315015470ad1cb19299dfdfc89a33bbda00b8d16fa80ede36926882aae97e12b",
+      "path": "authority/surfaces-draft/argocd-applicationset-introduction.json",
+      "digest": "sha256:2ab7b663477928360d64683bf6fec86f96cc0efeecd06283b089dce52e9aa7ae",
       "locked_digest_match": true,
-      "candidate_surfaces": 0,
+      "candidate_surfaces": 1,
       "locator_status": {
-        "root-document": 1,
-        "file-found": 0
+        "root-document": 1
       }
     },
     {
       "id": "argocd-applicationset-specification",
-      "path": "authority/locators/argocd-applicationset-specification.json",
-      "digest": "sha256:7239fdffdec36515b03db590683228073f50a2f2d7fc22f9a049faa745c39be4",
+      "path": "authority/surfaces-draft/argocd-applicationset-specification.json",
+      "digest": "sha256:4139bab2063f32248756fc51278a8a32c565faeb033d5c98dc76f94f84ed32e2",
       "locked_digest_match": true,
-      "candidate_surfaces": 0,
+      "candidate_surfaces": 1,
       "locator_status": {
-        "root-document": 1,
-        "file-found": 0
+        "root-document": 1
       }
     },
     {
       "id": "argocd-appproject-crd",
-      "path": "authority/locators/argocd-appproject-crd.json",
-      "digest": "sha256:f3e7ff89f1a24a9930ba62d474371a7e99acfb02f80425c232ba9df687960b8b",
+      "path": "authority/surfaces-draft/argocd-appproject-crd.json",
+      "digest": "sha256:d82767877bdd096baef42377815f6530929e9b8deebfc7ecaa65dfe99fffa843",
       "locked_digest_match": true,
       "candidate_surfaces": 2,
       "locator_status": {
-        "root-document": 1,
-        "file-found": 2
+        "root-document": 2
       }
     },
     {
       "id": "argocd-architecture",
-      "path": "authority/locators/argocd-architecture.json",
-      "digest": "sha256:4dbb65b1215589eb1c895f3de49c0ff48aeaf7794685701c52882f727ff43979",
+      "path": "authority/surfaces-draft/argocd-architecture.json",
+      "digest": "sha256:0ef4ef29f70d314bf01ccb0908a45319221c2538f19c7093b096e67b1deeabde",
       "locked_digest_match": true,
-      "candidate_surfaces": 0,
+      "candidate_surfaces": 1,
       "locator_status": {
-        "root-document": 1,
-        "file-found": 0
+        "root-document": 1
       }
     },
     {
       "id": "argocd-automated-sync",
-      "path": "authority/locators/argocd-automated-sync.json",
-      "digest": "sha256:649414d16b2ba47aff436cde246f5fa8fde8114365c890902b9ecd3b0422a841",
+      "path": "authority/surfaces-draft/argocd-automated-sync.json",
+      "digest": "sha256:73844a1a7d7dbd304ad48530a504410d18c31c0b232df4fd51af2c803213db33",
       "locked_digest_match": true,
       "candidate_surfaces": 1,
       "locator_status": {
-        "root-document": 1,
-        "file-found": 1
+        "root-document": 1
       }
     },
     {
       "id": "argocd-cluster-management",
-      "path": "authority/locators/argocd-cluster-management.json",
-      "digest": "sha256:cc300ce8603d435bbe0f8d3a6ccf79f2714bd4b523294645a8556aa3c1482e6b",
+      "path": "authority/surfaces-draft/argocd-cluster-management.json",
+      "digest": "sha256:68a70d3b4baa34b94f06693502a85f01558fe6b9ab9889ae44d07a1cc603e84a",
       "locked_digest_match": true,
       "candidate_surfaces": 1,
       "locator_status": {
-        "root-document": 1,
-        "file-found": 1
+        "root-document": 1
       }
     },
     {
       "id": "argocd-diffing",
-      "path": "authority/locators/argocd-diffing.json",
-      "digest": "sha256:0eadaf600b87633f42ae56415ed901c216018a2e1d6cb8b461f69bc5a76b0fa7",
+      "path": "authority/surfaces-draft/argocd-diffing.json",
+      "digest": "sha256:149f8209db43cf783fa31622da1072e5c676ce147accc0ed6ffd392f13c4aa11",
       "locked_digest_match": true,
       "candidate_surfaces": 1,
       "locator_status": {
-        "root-document": 1,
-        "file-found": 1
+        "root-document": 1
       }
     },
     {
       "id": "argocd-disaster-recovery",
-      "path": "authority/locators/argocd-disaster-recovery.json",
-      "digest": "sha256:c14b48b1567a0ac491b4952c6ad54b60b77183e03c4b234068e370e12179c935",
+      "path": "authority/surfaces-draft/argocd-disaster-recovery.json",
+      "digest": "sha256:754ea02aafc92ded50b96670a4ebfb5072770a41228511a7e4e86730091ca0b2",
       "locked_digest_match": true,
       "candidate_surfaces": 1,
       "locator_status": {
-        "root-document": 1,
-        "file-found": 1
+        "root-document": 1
       }
     },
     {
       "id": "argocd-health",
-      "path": "authority/locators/argocd-health.json",
-      "digest": "sha256:4c3fb76c08c1787c1ce5976faa517718fef5602c66898e10895f5b245cdfe361",
+      "path": "authority/surfaces-draft/argocd-health.json",
+      "digest": "sha256:1d788602e32d95d75205e94cefdc5a5b80de7712c0404d0492e124d776116603",
       "locked_digest_match": true,
       "candidate_surfaces": 2,
       "locator_status": {
-        "root-document": 1,
-        "file-found": 2
+        "root-document": 2
       }
     },
     {
       "id": "argocd-high-availability",
-      "path": "authority/locators/argocd-high-availability.json",
-      "digest": "sha256:dca760fe991bb427cebedf959145178db22d9a7895dd73cfe715eec4f6e6a5c7",
+      "path": "authority/surfaces-draft/argocd-high-availability.json",
+      "digest": "sha256:5c3332c31b035d20b8ff39ff95439a685c885146ee4729b055b7f5d69df1cea3",
       "locked_digest_match": true,
-      "candidate_surfaces": 4,
+      "candidate_surfaces": 3,
       "locator_status": {
-        "root-document": 1,
-        "file-found": 4
+        "root-document": 3
       }
     },
     {
       "id": "argocd-install-manifest",
-      "path": "authority/locators/argocd-install-manifest.json",
-      "digest": "sha256:8a9946db5d4430336918b581ecf2bf4c25b91cd6177ea61a217c177ee28fa6f0",
+      "path": "authority/surfaces-draft/argocd-install-manifest.json",
+      "digest": "sha256:bf187459ac8c74cca235ca7eff63241a30b32dbd493595fa82f028cb7a333518",
       "locked_digest_match": true,
-      "candidate_surfaces": 0,
+      "candidate_surfaces": 1,
       "locator_status": {
-        "root-document": 1,
-        "file-found": 0
+        "root-document": 1
       }
     },
     {
       "id": "argocd-metrics",
-      "path": "authority/locators/argocd-metrics.json",
-      "digest": "sha256:c1aeda3556c7cb584063df143a4547624cb30b43aa8c5d5aedadd5df4013408d",
+      "path": "authority/surfaces-draft/argocd-metrics.json",
+      "digest": "sha256:0b6a07d24236114f9e476dec7362b74ceb1011c67f31544522ce071423377230",
       "locked_digest_match": true,
       "candidate_surfaces": 4,
       "locator_status": {
-        "root-document": 1,
-        "file-found": 4
+        "root-document": 4
       }
     },
     {
       "id": "argocd-private-repositories",
-      "path": "authority/locators/argocd-private-repositories.json",
-      "digest": "sha256:822aaf7e9c637639c3eb7863dbed929ab7556b21e25a3ed14756d1382c01f316",
+      "path": "authority/surfaces-draft/argocd-private-repositories.json",
+      "digest": "sha256:82184a8f1ab569bd87b528d7b9423583513fb2fb89928ca6c4b6233fc6cdf089",
       "locked_digest_match": true,
       "candidate_surfaces": 2,
       "locator_status": {
-        "root-document": 1,
-        "file-found": 2
+        "root-document": 2
       }
     },
     {
       "id": "argocd-rbac",
-      "path": "authority/locators/argocd-rbac.json",
-      "digest": "sha256:0e5368bc45ea940c479e02fd9edcdbbcdc355b4eded78a80d4501a13a2d5ca03",
+      "path": "authority/surfaces-draft/argocd-rbac.json",
+      "digest": "sha256:804d03621e616230c08b88ec6806f6daf4ddf48238a87055fca257e0e1721ce5",
       "locked_digest_match": true,
-      "candidate_surfaces": 2,
+      "candidate_surfaces": 1,
       "locator_status": {
-        "root-document": 1,
-        "file-found": 2
+        "root-document": 1
       }
     },
     {
       "id": "argocd-reconcile-optimization",
-      "path": "authority/locators/argocd-reconcile-optimization.json",
-      "digest": "sha256:36698079d7c84e3bf22f2ccb0b15656260b1db498f4faec931eea087bc0dbfd0",
+      "path": "authority/surfaces-draft/argocd-reconcile-optimization.json",
+      "digest": "sha256:84fd9e898f4ace9e06e1e948b1e90f5a79d1ed26503a346e2ee920e541076c18",
       "locked_digest_match": true,
-      "candidate_surfaces": 0,
+      "candidate_surfaces": 1,
       "locator_status": {
-        "root-document": 1,
-        "file-found": 0
+        "root-document": 1
       }
     },
     {
       "id": "argocd-resource-tracking",
-      "path": "authority/locators/argocd-resource-tracking.json",
-      "digest": "sha256:a7406d3dc6bce460febf26063207e247f0efb17810e954c1febaf52b997e913c",
+      "path": "authority/surfaces-draft/argocd-resource-tracking.json",
+      "digest": "sha256:91781c0f295e5bdc413f0bbce9586e9b12881c0ab26636f1ff07fdfd6b35eb02",
       "locked_digest_match": true,
       "candidate_surfaces": 1,
       "locator_status": {
-        "root-document": 1,
-        "file-found": 1
+        "root-document": 1
       }
     },
     {
       "id": "argocd-secret-management",
-      "path": "authority/locators/argocd-secret-management.json",
-      "digest": "sha256:4a2a01994f65cf00ca1d74a5fdfc06b8d21600a6d6373fdfa5329fdf84a37337",
+      "path": "authority/surfaces-draft/argocd-secret-management.json",
+      "digest": "sha256:425226284255fef60bf857d15bd9c5780a1fc4dd6b74f4973ea87b990495cb14",
       "locked_digest_match": true,
       "candidate_surfaces": 1,
       "locator_status": {
-        "root-document": 1,
-        "file-found": 1
+        "root-document": 1
       }
     },
     {
       "id": "argocd-source-tree",
-      "path": "authority/locators/argocd-source-tree.json",
-      "digest": "sha256:71ec7ddd9d25e0c986d446cab4460c473f641bd6399a6be8a37528ba05a0d4dd",
+      "path": "authority/surfaces-draft/argocd-source-tree.json",
+      "digest": "sha256:12312976f4966c1003b0ffc43a72c178b98a19c208a2ecfcefb6f88b8ca6cdd2",
       "locked_digest_match": true,
-      "candidate_surfaces": 49,
+      "candidate_surfaces": 38,
       "locator_status": {
-        "root-document": 1,
-        "file-found": 49
+        "root-document": 38
       }
     },
     {
       "id": "argocd-sync-options",
-      "path": "authority/locators/argocd-sync-options.json",
-      "digest": "sha256:33aee4d27ef91f2479fe82ee07b46b3668a2b08a5783cd9f00ab84d5c881f703",
+      "path": "authority/surfaces-draft/argocd-sync-options.json",
+      "digest": "sha256:4ee9646eb5f8e83ad66b24980dab3bfb831a045c8561ba12445f9b167e37ce6d",
       "locked_digest_match": true,
       "candidate_surfaces": 1,
       "locator_status": {
-        "root-document": 1,
-        "file-found": 1
+        "root-document": 1
       }
     },
     {
       "id": "argocd-sync-waves",
-      "path": "authority/locators/argocd-sync-waves.json",
-      "digest": "sha256:f90117bbf718f81c42179bd1c5d57cf4133a374ca1c95b3cd2c1ab89aad584c1",
+      "path": "authority/surfaces-draft/argocd-sync-waves.json",
+      "digest": "sha256:e8188cdd45eeee3e6922816dfa6c3117e194b84fb68e485eff818bc0d0c4a773",
       "locked_digest_match": true,
       "candidate_surfaces": 2,
       "locator_status": {
-        "root-document": 1,
-        "file-found": 2
+        "root-document": 2
       }
     },
     {
       "id": "argocd-upgrade-3-4-to-3-5",
-      "path": "authority/locators/argocd-upgrade-3-4-to-3-5.json",
-      "digest": "sha256:800b9a35726a2a27ca902d1930e6ec752157aa62f8005105144e84d8d567fccf",
+      "path": "authority/surfaces-draft/argocd-upgrade-3-4-to-3-5.json",
+      "digest": "sha256:e5c28e1b37509933424afd27b4f6af2efaf69b571bef3fbafc5f5156ab2792fb",
       "locked_digest_match": true,
       "candidate_surfaces": 1,
       "locator_status": {
-        "root-document": 1,
-        "file-found": 1
+        "root-document": 1
       }
     },
     {
       "id": "argocd-user-management",
-      "path": "authority/locators/argocd-user-management.json",
-      "digest": "sha256:2f93a22bee3d61bd4efe7062a6e9498a6ee0a9efd18a5365cd2ca0511a88e27d",
+      "path": "authority/surfaces-draft/argocd-user-management.json",
+      "digest": "sha256:606e6c94e69fd5b41b50e7e5755c439d591d892fd80eb59dde993c028242fdda",
       "locked_digest_match": true,
-      "candidate_surfaces": 3,
+      "candidate_surfaces": 1,
       "locator_status": {
-        "root-document": 1,
-        "file-found": 3
+        "root-document": 1
       }
     },
     {
       "id": "argocd-version",
-      "path": "authority/locators/argocd-version.json",
-      "digest": "sha256:81cdaa23b28824202f43e5f4731d1e2132da3689918ef85d1de516146cdb7dbd",
+      "path": "authority/surfaces-draft/argocd-version.json",
+      "digest": "sha256:eebfee5fc47868fb3488d6206e134cf69b4f96d53d048ee0bc079fee3bc6d9d8",
       "locked_digest_match": true,
-      "candidate_surfaces": 0,
+      "candidate_surfaces": 1,
       "locator_status": {
-        "root-document": 1,
-        "file-found": 0
+        "root-document": 1
       }
     }
   ]

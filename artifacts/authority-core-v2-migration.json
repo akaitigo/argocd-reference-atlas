@@ -1,0 +1,1787 @@
+{
+  "schema_version": 1,
+  "id": "argocd-authority-core-v2-migration-v1",
+  "status": "passed-lossless-queue-rebatch",
+  "baseline": {
+    "commit": "e3bfc6e",
+    "queue_id": "authority-review-4899835d8716e9eb45f6",
+    "batches": 251
+  },
+  "target": {
+    "core_commit": "072d7ca77981f51754e824d70c6d4ecd55ea67e5",
+    "queue_id": "authority-review-4899835d8716e9eb45f6",
+    "batches": 211
+  },
+  "invariants": {
+    "stable_anchor_identity": "anchor_id",
+    "baseline_anchor_count": 63889,
+    "target_anchor_count": 63889,
+    "retained_anchor_count": 63889,
+    "removed_anchor_count": 0,
+    "added_anchor_count": 0,
+    "population_digest": "sha256:85050f7fba7f23bf4a38127425c42450bd141bc43d6f55d87ac90aab1832dc27",
+    "human_decisions_added": 0,
+    "semantic_depth_credit": 0,
+    "fixture_or_runtime_substitution": false
+  },
+  "reason": "Core v2 Authority Review Queue schemaへ移行し、提案batchを再編した。stable anchor分母とpending-human境界は不変。",
+  "crosswalk": [
+    {
+      "baseline_batch_id": "review-p0-git-regular-file-02",
+      "anchor_count": 1,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-02"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p0-git-regular-file-04",
+      "anchor_count": 1,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-04"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p0-git-regular-file-06",
+      "anchor_count": 1,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-06"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p0-git-regular-file-08",
+      "anchor_count": 1,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-08"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p0-git-regular-file-0a",
+      "anchor_count": 1,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-0a"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p0-git-regular-file-0d",
+      "anchor_count": 2,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-0d"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p0-git-regular-file-0e",
+      "anchor_count": 1,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-0e"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p0-git-regular-file-10",
+      "anchor_count": 2,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-10"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p0-git-regular-file-12",
+      "anchor_count": 2,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-12"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p0-git-regular-file-13",
+      "anchor_count": 1,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-13"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p0-git-regular-file-15",
+      "anchor_count": 1,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-15"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p0-git-regular-file-16",
+      "anchor_count": 1,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-16"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p0-git-regular-file-17",
+      "anchor_count": 1,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-17"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p0-git-regular-file-19",
+      "anchor_count": 2,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-19"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p0-git-regular-file-1a",
+      "anchor_count": 1,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-1a"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p0-git-regular-file-1b",
+      "anchor_count": 1,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-1b"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p0-git-regular-file-1c",
+      "anchor_count": 2,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-1c"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p0-git-regular-file-1f",
+      "anchor_count": 1,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-1f"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p0-git-regular-file-20",
+      "anchor_count": 1,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-20"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p0-git-regular-file-21",
+      "anchor_count": 2,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-21"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p0-git-regular-file-22",
+      "anchor_count": 2,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-22"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p0-git-regular-file-24",
+      "anchor_count": 2,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-24"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p0-git-regular-file-26",
+      "anchor_count": 1,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-26"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p0-git-regular-file-27",
+      "anchor_count": 3,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-27"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p0-git-regular-file-28",
+      "anchor_count": 1,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-28"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p0-git-regular-file-29",
+      "anchor_count": 2,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-29"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p0-git-regular-file-2a",
+      "anchor_count": 3,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-2a"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p0-git-regular-file-2b",
+      "anchor_count": 2,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-2b"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p0-git-regular-file-2c",
+      "anchor_count": 1,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-2c"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p0-git-regular-file-2d",
+      "anchor_count": 1,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-2d"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p0-git-regular-file-2e",
+      "anchor_count": 1,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-2e"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p0-git-regular-file-32",
+      "anchor_count": 1,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-32"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p0-git-regular-file-33",
+      "anchor_count": 2,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-33"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p0-git-regular-file-34",
+      "anchor_count": 1,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-34"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p0-git-regular-file-35",
+      "anchor_count": 1,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-35"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p0-git-regular-file-37",
+      "anchor_count": 1,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-37"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p0-git-regular-file-3b",
+      "anchor_count": 2,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-3b"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p0-git-regular-file-3c",
+      "anchor_count": 1,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-3c"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p0-git-regular-file-3d",
+      "anchor_count": 2,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-3d"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p0-git-regular-file-3e",
+      "anchor_count": 1,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-3e"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-markdown-atx-heading-00",
+      "anchor_count": 4,
+      "core_v2_batch_ids": [
+        "review-p1-markdown-atx-heading-00"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-markdown-atx-heading-01",
+      "anchor_count": 8,
+      "core_v2_batch_ids": [
+        "review-p1-markdown-atx-heading-01"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-markdown-atx-heading-02",
+      "anchor_count": 5,
+      "core_v2_batch_ids": [
+        "review-p1-markdown-atx-heading-02"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-markdown-atx-heading-04",
+      "anchor_count": 3,
+      "core_v2_batch_ids": [
+        "review-p1-markdown-atx-heading-04"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-markdown-atx-heading-05",
+      "anchor_count": 6,
+      "core_v2_batch_ids": [
+        "review-p1-markdown-atx-heading-05"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-markdown-atx-heading-06",
+      "anchor_count": 3,
+      "core_v2_batch_ids": [
+        "review-p1-markdown-atx-heading-06"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-markdown-atx-heading-07",
+      "anchor_count": 3,
+      "core_v2_batch_ids": [
+        "review-p1-markdown-atx-heading-07"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-markdown-atx-heading-08",
+      "anchor_count": 6,
+      "core_v2_batch_ids": [
+        "review-p1-markdown-atx-heading-08"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-markdown-atx-heading-09",
+      "anchor_count": 7,
+      "core_v2_batch_ids": [
+        "review-p1-markdown-atx-heading-09"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-markdown-atx-heading-0a",
+      "anchor_count": 3,
+      "core_v2_batch_ids": [
+        "review-p1-markdown-atx-heading-0a"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-markdown-atx-heading-0b",
+      "anchor_count": 6,
+      "core_v2_batch_ids": [
+        "review-p1-markdown-atx-heading-0b"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-markdown-atx-heading-0c",
+      "anchor_count": 10,
+      "core_v2_batch_ids": [
+        "review-p1-markdown-atx-heading-0c"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-markdown-atx-heading-0d",
+      "anchor_count": 4,
+      "core_v2_batch_ids": [
+        "review-p1-markdown-atx-heading-0d"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-markdown-atx-heading-0e",
+      "anchor_count": 7,
+      "core_v2_batch_ids": [
+        "review-p1-markdown-atx-heading-0e"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-markdown-atx-heading-0f",
+      "anchor_count": 7,
+      "core_v2_batch_ids": [
+        "review-p1-markdown-atx-heading-0f"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-markdown-atx-heading-10",
+      "anchor_count": 5,
+      "core_v2_batch_ids": [
+        "review-p1-markdown-atx-heading-10"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-markdown-atx-heading-11",
+      "anchor_count": 3,
+      "core_v2_batch_ids": [
+        "review-p1-markdown-atx-heading-11"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-markdown-atx-heading-12",
+      "anchor_count": 6,
+      "core_v2_batch_ids": [
+        "review-p1-markdown-atx-heading-12"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-markdown-atx-heading-13",
+      "anchor_count": 3,
+      "core_v2_batch_ids": [
+        "review-p1-markdown-atx-heading-13"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-markdown-atx-heading-14",
+      "anchor_count": 6,
+      "core_v2_batch_ids": [
+        "review-p1-markdown-atx-heading-14"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-markdown-atx-heading-15",
+      "anchor_count": 7,
+      "core_v2_batch_ids": [
+        "review-p1-markdown-atx-heading-15"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-markdown-atx-heading-16",
+      "anchor_count": 2,
+      "core_v2_batch_ids": [
+        "review-p1-markdown-atx-heading-16"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-markdown-atx-heading-17",
+      "anchor_count": 6,
+      "core_v2_batch_ids": [
+        "review-p1-markdown-atx-heading-17"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-markdown-atx-heading-18",
+      "anchor_count": 8,
+      "core_v2_batch_ids": [
+        "review-p1-markdown-atx-heading-18"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-markdown-atx-heading-19",
+      "anchor_count": 4,
+      "core_v2_batch_ids": [
+        "review-p1-markdown-atx-heading-19"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-markdown-atx-heading-1a",
+      "anchor_count": 6,
+      "core_v2_batch_ids": [
+        "review-p1-markdown-atx-heading-1a"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-markdown-atx-heading-1b",
+      "anchor_count": 1,
+      "core_v2_batch_ids": [
+        "review-p1-markdown-atx-heading-1b"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-markdown-atx-heading-1c",
+      "anchor_count": 4,
+      "core_v2_batch_ids": [
+        "review-p1-markdown-atx-heading-1c"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-markdown-atx-heading-1d",
+      "anchor_count": 5,
+      "core_v2_batch_ids": [
+        "review-p1-markdown-atx-heading-1d"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-markdown-atx-heading-1e",
+      "anchor_count": 8,
+      "core_v2_batch_ids": [
+        "review-p1-markdown-atx-heading-1e"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-markdown-atx-heading-1f",
+      "anchor_count": 4,
+      "core_v2_batch_ids": [
+        "review-p1-markdown-atx-heading-1f"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-markdown-atx-heading-21",
+      "anchor_count": 2,
+      "core_v2_batch_ids": [
+        "review-p1-markdown-atx-heading-21"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-markdown-atx-heading-22",
+      "anchor_count": 2,
+      "core_v2_batch_ids": [
+        "review-p1-markdown-atx-heading-22"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-markdown-atx-heading-23",
+      "anchor_count": 1,
+      "core_v2_batch_ids": [
+        "review-p1-markdown-atx-heading-23"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-markdown-atx-heading-24",
+      "anchor_count": 4,
+      "core_v2_batch_ids": [
+        "review-p1-markdown-atx-heading-24"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-markdown-atx-heading-25",
+      "anchor_count": 10,
+      "core_v2_batch_ids": [
+        "review-p1-markdown-atx-heading-25"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-markdown-atx-heading-26",
+      "anchor_count": 7,
+      "core_v2_batch_ids": [
+        "review-p1-markdown-atx-heading-26"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-markdown-atx-heading-27",
+      "anchor_count": 5,
+      "core_v2_batch_ids": [
+        "review-p1-markdown-atx-heading-27"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-markdown-atx-heading-28",
+      "anchor_count": 4,
+      "core_v2_batch_ids": [
+        "review-p1-markdown-atx-heading-28"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-markdown-atx-heading-29",
+      "anchor_count": 10,
+      "core_v2_batch_ids": [
+        "review-p1-markdown-atx-heading-29"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-markdown-atx-heading-2a",
+      "anchor_count": 4,
+      "core_v2_batch_ids": [
+        "review-p1-markdown-atx-heading-2a"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-markdown-atx-heading-2b",
+      "anchor_count": 2,
+      "core_v2_batch_ids": [
+        "review-p1-markdown-atx-heading-2b"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-markdown-atx-heading-2c",
+      "anchor_count": 6,
+      "core_v2_batch_ids": [
+        "review-p1-markdown-atx-heading-2c"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-markdown-atx-heading-2d",
+      "anchor_count": 5,
+      "core_v2_batch_ids": [
+        "review-p1-markdown-atx-heading-2d"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-markdown-atx-heading-2e",
+      "anchor_count": 2,
+      "core_v2_batch_ids": [
+        "review-p1-markdown-atx-heading-2e"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-markdown-atx-heading-2f",
+      "anchor_count": 2,
+      "core_v2_batch_ids": [
+        "review-p1-markdown-atx-heading-2f"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-markdown-atx-heading-30",
+      "anchor_count": 2,
+      "core_v2_batch_ids": [
+        "review-p1-markdown-atx-heading-30"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-markdown-atx-heading-31",
+      "anchor_count": 3,
+      "core_v2_batch_ids": [
+        "review-p1-markdown-atx-heading-31"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-markdown-atx-heading-32",
+      "anchor_count": 4,
+      "core_v2_batch_ids": [
+        "review-p1-markdown-atx-heading-32"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-markdown-atx-heading-33",
+      "anchor_count": 3,
+      "core_v2_batch_ids": [
+        "review-p1-markdown-atx-heading-33"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-markdown-atx-heading-34",
+      "anchor_count": 6,
+      "core_v2_batch_ids": [
+        "review-p1-markdown-atx-heading-34"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-markdown-atx-heading-35",
+      "anchor_count": 6,
+      "core_v2_batch_ids": [
+        "review-p1-markdown-atx-heading-35"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-markdown-atx-heading-36",
+      "anchor_count": 6,
+      "core_v2_batch_ids": [
+        "review-p1-markdown-atx-heading-36"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-markdown-atx-heading-37",
+      "anchor_count": 4,
+      "core_v2_batch_ids": [
+        "review-p1-markdown-atx-heading-37"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-markdown-atx-heading-38",
+      "anchor_count": 8,
+      "core_v2_batch_ids": [
+        "review-p1-markdown-atx-heading-38"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-markdown-atx-heading-39",
+      "anchor_count": 5,
+      "core_v2_batch_ids": [
+        "review-p1-markdown-atx-heading-39"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-markdown-atx-heading-3a",
+      "anchor_count": 1,
+      "core_v2_batch_ids": [
+        "review-p1-markdown-atx-heading-3a"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-markdown-atx-heading-3b",
+      "anchor_count": 3,
+      "core_v2_batch_ids": [
+        "review-p1-markdown-atx-heading-3b"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-markdown-atx-heading-3c",
+      "anchor_count": 3,
+      "core_v2_batch_ids": [
+        "review-p1-markdown-atx-heading-3c"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-markdown-atx-heading-3d",
+      "anchor_count": 4,
+      "core_v2_batch_ids": [
+        "review-p1-markdown-atx-heading-3d"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-markdown-atx-heading-3e",
+      "anchor_count": 6,
+      "core_v2_batch_ids": [
+        "review-p1-markdown-atx-heading-3e"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-markdown-atx-heading-3f",
+      "anchor_count": 3,
+      "core_v2_batch_ids": [
+        "review-p1-markdown-atx-heading-3f"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-plain-nonempty-04",
+      "anchor_count": 1,
+      "core_v2_batch_ids": [
+        "review-p1-plain-nonempty-04"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-yaml-mapping-key-00",
+      "anchor_count": 943,
+      "core_v2_batch_ids": [
+        "review-p1-yaml-mapping-key-00"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-yaml-mapping-key-01",
+      "anchor_count": 900,
+      "core_v2_batch_ids": [
+        "review-p1-yaml-mapping-key-01"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-yaml-mapping-key-02",
+      "anchor_count": 901,
+      "core_v2_batch_ids": [
+        "review-p1-yaml-mapping-key-02"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-yaml-mapping-key-03",
+      "anchor_count": 932,
+      "core_v2_batch_ids": [
+        "review-p1-yaml-mapping-key-03"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-yaml-mapping-key-04",
+      "anchor_count": 886,
+      "core_v2_batch_ids": [
+        "review-p1-yaml-mapping-key-04"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-yaml-mapping-key-05",
+      "anchor_count": 920,
+      "core_v2_batch_ids": [
+        "review-p1-yaml-mapping-key-05"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-yaml-mapping-key-06",
+      "anchor_count": 881,
+      "core_v2_batch_ids": [
+        "review-p1-yaml-mapping-key-06"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-yaml-mapping-key-07",
+      "anchor_count": 888,
+      "core_v2_batch_ids": [
+        "review-p1-yaml-mapping-key-07"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-yaml-mapping-key-08",
+      "anchor_count": 892,
+      "core_v2_batch_ids": [
+        "review-p1-yaml-mapping-key-08"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-yaml-mapping-key-09",
+      "anchor_count": 879,
+      "core_v2_batch_ids": [
+        "review-p1-yaml-mapping-key-09"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-yaml-mapping-key-0a",
+      "anchor_count": 984,
+      "core_v2_batch_ids": [
+        "review-p1-yaml-mapping-key-0a"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-yaml-mapping-key-0b",
+      "anchor_count": 918,
+      "core_v2_batch_ids": [
+        "review-p1-yaml-mapping-key-0b"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-yaml-mapping-key-0c",
+      "anchor_count": 918,
+      "core_v2_batch_ids": [
+        "review-p1-yaml-mapping-key-0c"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-yaml-mapping-key-0d",
+      "anchor_count": 889,
+      "core_v2_batch_ids": [
+        "review-p1-yaml-mapping-key-0d"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-yaml-mapping-key-0e",
+      "anchor_count": 938,
+      "core_v2_batch_ids": [
+        "review-p1-yaml-mapping-key-0e"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-yaml-mapping-key-0f",
+      "anchor_count": 864,
+      "core_v2_batch_ids": [
+        "review-p1-yaml-mapping-key-0f"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-yaml-mapping-key-10",
+      "anchor_count": 915,
+      "core_v2_batch_ids": [
+        "review-p1-yaml-mapping-key-10"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-yaml-mapping-key-11",
+      "anchor_count": 935,
+      "core_v2_batch_ids": [
+        "review-p1-yaml-mapping-key-11"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-yaml-mapping-key-12",
+      "anchor_count": 886,
+      "core_v2_batch_ids": [
+        "review-p1-yaml-mapping-key-12"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-yaml-mapping-key-13",
+      "anchor_count": 932,
+      "core_v2_batch_ids": [
+        "review-p1-yaml-mapping-key-13"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-yaml-mapping-key-14",
+      "anchor_count": 909,
+      "core_v2_batch_ids": [
+        "review-p1-yaml-mapping-key-14"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-yaml-mapping-key-15",
+      "anchor_count": 919,
+      "core_v2_batch_ids": [
+        "review-p1-yaml-mapping-key-15"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-yaml-mapping-key-16",
+      "anchor_count": 857,
+      "core_v2_batch_ids": [
+        "review-p1-yaml-mapping-key-16"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-yaml-mapping-key-17",
+      "anchor_count": 918,
+      "core_v2_batch_ids": [
+        "review-p1-yaml-mapping-key-17"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-yaml-mapping-key-18",
+      "anchor_count": 860,
+      "core_v2_batch_ids": [
+        "review-p1-yaml-mapping-key-18"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-yaml-mapping-key-19",
+      "anchor_count": 922,
+      "core_v2_batch_ids": [
+        "review-p1-yaml-mapping-key-19"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-yaml-mapping-key-1a",
+      "anchor_count": 880,
+      "core_v2_batch_ids": [
+        "review-p1-yaml-mapping-key-1a"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-yaml-mapping-key-1b",
+      "anchor_count": 899,
+      "core_v2_batch_ids": [
+        "review-p1-yaml-mapping-key-1b"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-yaml-mapping-key-1c",
+      "anchor_count": 928,
+      "core_v2_batch_ids": [
+        "review-p1-yaml-mapping-key-1c"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-yaml-mapping-key-1d",
+      "anchor_count": 956,
+      "core_v2_batch_ids": [
+        "review-p1-yaml-mapping-key-1d"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-yaml-mapping-key-1e",
+      "anchor_count": 867,
+      "core_v2_batch_ids": [
+        "review-p1-yaml-mapping-key-1e"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-yaml-mapping-key-1f",
+      "anchor_count": 911,
+      "core_v2_batch_ids": [
+        "review-p1-yaml-mapping-key-1f"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-yaml-mapping-key-20",
+      "anchor_count": 909,
+      "core_v2_batch_ids": [
+        "review-p1-yaml-mapping-key-20"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-yaml-mapping-key-21",
+      "anchor_count": 917,
+      "core_v2_batch_ids": [
+        "review-p1-yaml-mapping-key-21"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-yaml-mapping-key-22",
+      "anchor_count": 944,
+      "core_v2_batch_ids": [
+        "review-p1-yaml-mapping-key-22"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-yaml-mapping-key-23",
+      "anchor_count": 946,
+      "core_v2_batch_ids": [
+        "review-p1-yaml-mapping-key-23"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-yaml-mapping-key-24",
+      "anchor_count": 897,
+      "core_v2_batch_ids": [
+        "review-p1-yaml-mapping-key-24"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-yaml-mapping-key-25",
+      "anchor_count": 936,
+      "core_v2_batch_ids": [
+        "review-p1-yaml-mapping-key-25"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-yaml-mapping-key-26",
+      "anchor_count": 896,
+      "core_v2_batch_ids": [
+        "review-p1-yaml-mapping-key-26"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-yaml-mapping-key-27",
+      "anchor_count": 962,
+      "core_v2_batch_ids": [
+        "review-p1-yaml-mapping-key-27"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-yaml-mapping-key-28",
+      "anchor_count": 894,
+      "core_v2_batch_ids": [
+        "review-p1-yaml-mapping-key-28"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-yaml-mapping-key-29",
+      "anchor_count": 845,
+      "core_v2_batch_ids": [
+        "review-p1-yaml-mapping-key-29"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-yaml-mapping-key-2a",
+      "anchor_count": 867,
+      "core_v2_batch_ids": [
+        "review-p1-yaml-mapping-key-2a"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-yaml-mapping-key-2b",
+      "anchor_count": 900,
+      "core_v2_batch_ids": [
+        "review-p1-yaml-mapping-key-2b"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-yaml-mapping-key-2c",
+      "anchor_count": 914,
+      "core_v2_batch_ids": [
+        "review-p1-yaml-mapping-key-2c"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-yaml-mapping-key-2d",
+      "anchor_count": 914,
+      "core_v2_batch_ids": [
+        "review-p1-yaml-mapping-key-2d"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-yaml-mapping-key-2e",
+      "anchor_count": 895,
+      "core_v2_batch_ids": [
+        "review-p1-yaml-mapping-key-2e"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-yaml-mapping-key-2f",
+      "anchor_count": 908,
+      "core_v2_batch_ids": [
+        "review-p1-yaml-mapping-key-2f"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-yaml-mapping-key-30",
+      "anchor_count": 932,
+      "core_v2_batch_ids": [
+        "review-p1-yaml-mapping-key-30"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-yaml-mapping-key-31",
+      "anchor_count": 913,
+      "core_v2_batch_ids": [
+        "review-p1-yaml-mapping-key-31"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-yaml-mapping-key-32",
+      "anchor_count": 922,
+      "core_v2_batch_ids": [
+        "review-p1-yaml-mapping-key-32"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-yaml-mapping-key-33",
+      "anchor_count": 936,
+      "core_v2_batch_ids": [
+        "review-p1-yaml-mapping-key-33"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-yaml-mapping-key-34",
+      "anchor_count": 879,
+      "core_v2_batch_ids": [
+        "review-p1-yaml-mapping-key-34"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-yaml-mapping-key-35",
+      "anchor_count": 972,
+      "core_v2_batch_ids": [
+        "review-p1-yaml-mapping-key-35"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-yaml-mapping-key-36",
+      "anchor_count": 900,
+      "core_v2_batch_ids": [
+        "review-p1-yaml-mapping-key-36"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-yaml-mapping-key-37",
+      "anchor_count": 871,
+      "core_v2_batch_ids": [
+        "review-p1-yaml-mapping-key-37"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-yaml-mapping-key-38",
+      "anchor_count": 916,
+      "core_v2_batch_ids": [
+        "review-p1-yaml-mapping-key-38"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-yaml-mapping-key-39",
+      "anchor_count": 925,
+      "core_v2_batch_ids": [
+        "review-p1-yaml-mapping-key-39"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-yaml-mapping-key-3a",
+      "anchor_count": 892,
+      "core_v2_batch_ids": [
+        "review-p1-yaml-mapping-key-3a"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-yaml-mapping-key-3b",
+      "anchor_count": 904,
+      "core_v2_batch_ids": [
+        "review-p1-yaml-mapping-key-3b"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-yaml-mapping-key-3c",
+      "anchor_count": 918,
+      "core_v2_batch_ids": [
+        "review-p1-yaml-mapping-key-3c"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-yaml-mapping-key-3d",
+      "anchor_count": 859,
+      "core_v2_batch_ids": [
+        "review-p1-yaml-mapping-key-3d"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-yaml-mapping-key-3e",
+      "anchor_count": 945,
+      "core_v2_batch_ids": [
+        "review-p1-yaml-mapping-key-3e"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p1-yaml-mapping-key-3f",
+      "anchor_count": 909,
+      "core_v2_batch_ids": [
+        "review-p1-yaml-mapping-key-3f"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-document-root-00",
+      "anchor_count": 1,
+      "core_v2_batch_ids": [
+        "review-p0-document-root-00"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-document-root-03",
+      "anchor_count": 1,
+      "core_v2_batch_ids": [
+        "review-p0-document-root-03"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-document-root-0d",
+      "anchor_count": 2,
+      "core_v2_batch_ids": [
+        "review-p0-document-root-0d"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-document-root-13",
+      "anchor_count": 2,
+      "core_v2_batch_ids": [
+        "review-p0-document-root-13"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-document-root-16",
+      "anchor_count": 1,
+      "core_v2_batch_ids": [
+        "review-p0-document-root-16"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-document-root-1d",
+      "anchor_count": 1,
+      "core_v2_batch_ids": [
+        "review-p0-document-root-1d"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-document-root-1e",
+      "anchor_count": 1,
+      "core_v2_batch_ids": [
+        "review-p0-document-root-1e"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-document-root-1f",
+      "anchor_count": 2,
+      "core_v2_batch_ids": [
+        "review-p0-document-root-1f"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-document-root-22",
+      "anchor_count": 1,
+      "core_v2_batch_ids": [
+        "review-p0-document-root-22"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-document-root-25",
+      "anchor_count": 1,
+      "core_v2_batch_ids": [
+        "review-p0-document-root-25"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-document-root-26",
+      "anchor_count": 1,
+      "core_v2_batch_ids": [
+        "review-p0-document-root-26"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-document-root-29",
+      "anchor_count": 1,
+      "core_v2_batch_ids": [
+        "review-p0-document-root-29"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-document-root-2a",
+      "anchor_count": 2,
+      "core_v2_batch_ids": [
+        "review-p0-document-root-2a"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-document-root-2e",
+      "anchor_count": 1,
+      "core_v2_batch_ids": [
+        "review-p0-document-root-2e"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-document-root-30",
+      "anchor_count": 2,
+      "core_v2_batch_ids": [
+        "review-p0-document-root-30"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-document-root-34",
+      "anchor_count": 1,
+      "core_v2_batch_ids": [
+        "review-p0-document-root-34"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-document-root-36",
+      "anchor_count": 1,
+      "core_v2_batch_ids": [
+        "review-p0-document-root-36"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-document-root-37",
+      "anchor_count": 2,
+      "core_v2_batch_ids": [
+        "review-p0-document-root-37"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-document-root-3d",
+      "anchor_count": 1,
+      "core_v2_batch_ids": [
+        "review-p0-document-root-3d"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-document-root-3f",
+      "anchor_count": 1,
+      "core_v2_batch_ids": [
+        "review-p0-document-root-3f"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-git-regular-file-00",
+      "anchor_count": 73,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-00"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-git-regular-file-01",
+      "anchor_count": 86,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-01"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-git-regular-file-02",
+      "anchor_count": 79,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-02"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-git-regular-file-03",
+      "anchor_count": 105,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-03"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-git-regular-file-04",
+      "anchor_count": 102,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-04"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-git-regular-file-05",
+      "anchor_count": 89,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-05"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-git-regular-file-06",
+      "anchor_count": 81,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-06"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-git-regular-file-07",
+      "anchor_count": 87,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-07"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-git-regular-file-08",
+      "anchor_count": 83,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-08"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-git-regular-file-09",
+      "anchor_count": 81,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-09"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-git-regular-file-0a",
+      "anchor_count": 73,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-0a"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-git-regular-file-0b",
+      "anchor_count": 79,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-0b"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-git-regular-file-0c",
+      "anchor_count": 92,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-0c"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-git-regular-file-0d",
+      "anchor_count": 83,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-0d"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-git-regular-file-0e",
+      "anchor_count": 95,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-0e"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-git-regular-file-0f",
+      "anchor_count": 69,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-0f"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-git-regular-file-10",
+      "anchor_count": 88,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-10"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-git-regular-file-11",
+      "anchor_count": 78,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-11"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-git-regular-file-12",
+      "anchor_count": 72,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-12"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-git-regular-file-13",
+      "anchor_count": 102,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-13"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-git-regular-file-14",
+      "anchor_count": 100,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-14"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-git-regular-file-15",
+      "anchor_count": 81,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-15"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-git-regular-file-16",
+      "anchor_count": 83,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-16"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-git-regular-file-17",
+      "anchor_count": 86,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-17"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-git-regular-file-18",
+      "anchor_count": 78,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-18"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-git-regular-file-19",
+      "anchor_count": 77,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-19"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-git-regular-file-1a",
+      "anchor_count": 91,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-1a"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-git-regular-file-1b",
+      "anchor_count": 92,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-1b"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-git-regular-file-1c",
+      "anchor_count": 87,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-1c"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-git-regular-file-1d",
+      "anchor_count": 90,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-1d"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-git-regular-file-1e",
+      "anchor_count": 87,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-1e"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-git-regular-file-1f",
+      "anchor_count": 74,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-1f"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-git-regular-file-20",
+      "anchor_count": 69,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-20"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-git-regular-file-21",
+      "anchor_count": 78,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-21"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-git-regular-file-22",
+      "anchor_count": 89,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-22"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-git-regular-file-23",
+      "anchor_count": 86,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-23"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-git-regular-file-24",
+      "anchor_count": 85,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-24"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-git-regular-file-25",
+      "anchor_count": 81,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-25"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-git-regular-file-26",
+      "anchor_count": 88,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-26"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-git-regular-file-27",
+      "anchor_count": 94,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-27"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-git-regular-file-28",
+      "anchor_count": 85,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-28"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-git-regular-file-29",
+      "anchor_count": 96,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-29"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-git-regular-file-2a",
+      "anchor_count": 81,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-2a"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-git-regular-file-2b",
+      "anchor_count": 94,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-2b"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-git-regular-file-2c",
+      "anchor_count": 84,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-2c"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-git-regular-file-2d",
+      "anchor_count": 75,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-2d"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-git-regular-file-2e",
+      "anchor_count": 83,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-2e"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-git-regular-file-2f",
+      "anchor_count": 88,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-2f"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-git-regular-file-30",
+      "anchor_count": 80,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-30"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-git-regular-file-31",
+      "anchor_count": 90,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-31"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-git-regular-file-32",
+      "anchor_count": 74,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-32"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-git-regular-file-33",
+      "anchor_count": 84,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-33"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-git-regular-file-34",
+      "anchor_count": 76,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-34"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-git-regular-file-35",
+      "anchor_count": 84,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-35"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-git-regular-file-36",
+      "anchor_count": 86,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-36"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-git-regular-file-37",
+      "anchor_count": 93,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-37"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-git-regular-file-38",
+      "anchor_count": 78,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-38"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-git-regular-file-39",
+      "anchor_count": 69,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-39"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-git-regular-file-3a",
+      "anchor_count": 81,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-3a"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-git-regular-file-3b",
+      "anchor_count": 73,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-3b"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-git-regular-file-3c",
+      "anchor_count": 85,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-3c"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-git-regular-file-3d",
+      "anchor_count": 71,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-3d"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-git-regular-file-3e",
+      "anchor_count": 74,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-3e"
+      ]
+    },
+    {
+      "baseline_batch_id": "review-p2-git-regular-file-3f",
+      "anchor_count": 71,
+      "core_v2_batch_ids": [
+        "review-p2-git-regular-file-3f"
+      ]
+    }
+  ]
+}

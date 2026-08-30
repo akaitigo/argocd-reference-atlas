@@ -27,12 +27,12 @@ def main() -> None:
         "action": "include",
         "anchor_ids": [first["anchor_id"]],
         "source_bindings": [review_binding(first)],
-        "reason": "一次資料の固定locatorを人が確認し、Controller Surfaceへ昇格する根拠と境界を記録した。",
+        "rationale": "一次資料の固定locatorを人が確認し、Controller Surfaceへ昇格する根拠と境界を記録した。",
         "reviewer": "human-reviewer-fixture",
         "reviewed_at": "2026-08-28T12:00:00+09:00",
         "review_method": "manual-primary-source",
         "mapping": [{"old_anchor_id": first["anchor_id"], "new_item_ids": ["controller.fixture-surface"]}],
-        "result_items": [{"id": "controller.fixture-surface", "item_type": "controller-surface"}],
+        "result_items": [{"id": "controller.fixture-surface", "item_type": "surface"}],
     }
     decided, promoted = validate_decisions([valid], items)
     if decided != {first["anchor_id"]} or promoted != {"controller.fixture-surface"}:

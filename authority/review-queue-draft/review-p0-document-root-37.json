@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "queue_id": "authority-review-4899835d8716e9eb45f6",
+  "batch_id": "review-p0-document-root-37",
+  "status": "pending-human",
+  "machine_assistance": "priority-cluster-and-batch-proposals-only",
+  "semantic_decisions": "none",
+  "items": [
+    {
+      "anchor_id": "anchor-54c2c659d2668b2172e0",
+      "document_id": "document-argocd-metrics",
+      "document_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/operator-manual/metrics.md",
+      "source_ids": [
+        "argocd-metrics"
+      ],
+      "locked_source_digest": "sha256:1db168b65650393e587a7bbdd1254c8c1e5f7b08b28323f2bbf3fb073b195c38",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "document-root",
+      "locator_kind": "document-root",
+      "raw_selector": "document-root",
+      "element_name": "document-root",
+      "parent_anchor_id": null,
+      "context_start": 0,
+      "context_end": 45399,
+      "context_unit": "byte",
+      "context_digest": "sha256:1db168b65650393e587a7bbdd1254c8c1e5f7b08b28323f2bbf3fb073b195c38",
+      "label_digest": null,
+      "existing_mapping_candidate_ids": [
+        "edge.observe.metrics.applicationset.argocd-metrics",
+        "edge.observe.metrics.controller.argocd-metrics",
+        "edge.observe.metrics.repo-server.argocd-metrics",
+        "edge.observe.metrics.server.argocd-metrics"
+      ],
+      "priority": 0,
+      "priority_reasons": [
+        "existing-domain-reference-locator-match"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p0-document-root-37",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-5e6e5c5c43f2d842370a",
+      "document_id": "document-argocd-appproject-crd",
+      "document_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/manifests/crds/appproject-crd.yaml",
+      "source_ids": [
+        "argocd-appproject-crd"
+      ],
+      "locked_source_digest": "sha256:ab225266944322750136f1198d93786e4a79a0e43c8d149abfba44da30a3eac8",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "document-root",
+      "locator_kind": "document-root",
+      "raw_selector": "document-root",
+      "element_name": "document-root",
+      "parent_anchor_id": null,
+      "context_start": 0,
+      "context_end": 19431,
+      "context_unit": "byte",
+      "context_digest": "sha256:ab225266944322750136f1198d93786e4a79a0e43c8d149abfba44da30a3eac8",
+      "label_digest": null,
+      "existing_mapping_candidate_ids": [
+        "edge.project.orphaned-resources.argocd-appproject-crd",
+        "edge.project.source-boundary.argocd-appproject-crd"
+      ],
+      "priority": 0,
+      "priority_reasons": [
+        "existing-domain-reference-locator-match"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p0-document-root-37",
+      "state": "pending-human"
+    }
+  ]
+}

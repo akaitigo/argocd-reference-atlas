@@ -77,8 +77,9 @@ def anchor(document_id: str, selector: str, locator: str, start: int, end: int, 
     return {
         "id": stable_id("anchor", document_id, selector, locator, start, end, context_digest),
         "locator": locator,
-        "locator_kind": "document-root" if selector == "document-root" else ("git-tree-entry" if selector == "git-tar-regular-file" else "locked-body-offset"),
-        "selector": selector,
+        "locator_kind": "document-root" if selector == "document-root" else ("source-member" if selector == "git-tar-regular-file" else "locked-body-offset"),
+        "raw_selector": selector,
+        "element_name": "document-root" if selector == "document-root" else ("entry" if selector == "git-tar-regular-file" else "line"),
         "parent_anchor_id": parent_anchor_id,
         "context_start": start,
         "context_end": end,
@@ -125,7 +126,7 @@ def archive_anchors(document_id: str, archive: bytes) -> list[dict[str, object]]
             if stream is None:
                 raise ValueError(f"git archive entryを読めません: {member.name}")
             data = stream.read()
-            result.append(anchor(
+            item = anchor(
                 document_id,
                 "git-tar-regular-file",
                 f"tar-entry:{member.name}",
@@ -134,7 +135,15 @@ def archive_anchors(document_id: str, archive: bytes) -> list[dict[str, object]]
                 data,
                 str(root["id"]),
                 member.name.encode(),
-            ))
+            )
+            if member.size == 0:
+                # Core v2は非空offset範囲を要求する。既存stable IDは空member identityで
+                # 保持し、contextだけを直前のtar header byteへ強化する。
+                context_start = max(0, member.offset_data - 1)
+                item["context_start"] = context_start
+                item["context_end"] = context_start + 1
+                item["context_digest"] = sha256_bytes(archive[context_start:context_start + 1])
+            result.append(item)
     return result
 
 
@@ -200,7 +209,7 @@ def main() -> int:
     counts: dict[str, int] = {}
     matched = 0
     for source in sorted(sources, key=lambda item: str(item["id"])):
-        data, suffix, family = source_payload(source, source_tree, archive)
+        data, suffix, _family = source_payload(source, source_tree, archive)
         observed_digest = sha256_bytes(data)
         if observed_digest != source["digest"]:
             raise ValueError(f"固定Authority digestが不一致です: {source['id']}")
@@ -208,19 +217,21 @@ def main() -> int:
         document_id = f"document-{source['id']}"
         anchors = archive_anchors(document_id, data) if suffix == ".tar" else raw_file_anchors(document_id, data, suffix)
         for item in anchors:
-            counts[str(item["selector"])] = counts.get(str(item["selector"]), 0) + 1
+            counts[str(item["raw_selector"])] = counts.get(str(item["raw_selector"]), 0) + 1
         artifact = {
             "schema_version": 1,
             "document_id": document_id,
             "source_ids": [source["id"]],
-            "source_url": source["url"],
-            "authority_family": family,
+            "fetch_url": source["url"],
             "locked_body_digest": source["digest"],
             "fetch": {
                 "status": "matched",
-                "observed_digest": observed_digest,
+                "fetched_digest": observed_digest,
                 "locked_digest_match": True,
-                "observed_bytes": len(data),
+                "http_status": None,
+                "final_url": source["url"],
+                "content_type": "application/x-tar" if suffix == ".tar" else None,
+                "fetched_bytes": len(data),
                 "error_digest": None,
             },
             "extraction": {
@@ -244,7 +255,7 @@ def main() -> int:
             "fetch_status": "matched",
             "source_entries": 1,
             "anchors": len(anchors),
-            "anchors_by_selector": dict(sorted({key: sum(1 for item in anchors if item["selector"] == key) for key in {str(item["selector"]) for item in anchors}}.items())),
+            "anchors_by_selector": dict(sorted({key: sum(1 for item in anchors if item["raw_selector"] == key) for key in {str(item["raw_selector"]) for item in anchors}}.items())),
         })
     expected_files = {f"document-{source['id']}.json" for source in sources}
     for path in ARTIFACT_DIR.glob("*.json"):
@@ -258,15 +269,13 @@ def main() -> int:
         "stale_documents": 0,
         "failed_documents": 0,
         "selector_exhaustive_documents": matched,
-        "raw_anchors": sum(record["anchors"] for record in records),
+        "raw_anchor_candidates": sum(record["anchors"] for record in records),
         "anchors_by_selector": dict(sorted(counts.items())),
         "classified_anchors": 0,
         "unclassified_anchors": sum(record["anchors"] for record in records),
+        "pending_human_anchors": sum(record["anchors"] for record in records),
         "human_reviewed_anchors": 0,
-        "promoted_controller_behavior_surfaces": 0,
-        "core_v2_eligible_artifacts": 0,
-        "semantic_surface_credit": 0,
-        "depth_axis_credit": 0,
+        "promoted_surface_artifacts": 0,
         "authority_semantics_exhaustive": False,
     }
     index = {
@@ -274,29 +283,18 @@ def main() -> int:
         "atlas_id": "argocd-reference-atlas",
         "generated_at": "2026-08-28T00:00:00+09:00",
         "status": "incomplete-human-review-required",
-        "reference": {"repository": "frontend-behavior-atlas", "commit": REFERENCE_COMMIT, "files": REFERENCE_FILES},
+        "reference_design": {"repository": "frontend-behavior-atlas", "commit": REFERENCE_COMMIT, "absolute_counts_transplanted": False},
         "input_digest": canonical_digest({"commit": commit, "sources": [{key: source[key] for key in ("id", "url", "digest")} for source in sources], "selector_contract": SELECTOR_CONTRACT}),
         "tool_digest": tool_digest(),
         "body_storage": "digest-locator-and-offset-only",
         "selector_contract": SELECTOR_CONTRACT,
-        "promotion_contract": {
-            "initial_status": "pending-human",
-            "raw_anchor_semantic_surface_credit": 0,
-            "raw_anchor_depth_axis_credit": 0,
-            "promotion_requires": ["human-decision", "stable-controller-or-behavior-surface-id", "source-edge", "proof-obligation"],
-            "rule": "人手decision前のraw anchor件数をSemantic Surface、Coverage、Depth axisの達成へ算入しない。",
-        },
-        "stale_boundary": {
-            "rule": "取得digestがSource lockと不一致のdocumentはstaleとし、anchorを生成または昇格しない。Source lock更新は別Epochと人手Reviewを要求する。",
-            "matched_required_for_selector_exhaustive": True,
-        },
         "summary": summary,
         "documents": records,
     }
     INDEX.write_text(json.dumps(index, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     if args.initialize_baseline:
         initialize_baseline(index)
-    print(f"Authority body inventory: documents={len(records)} matched={matched} stale=0 anchors={summary['raw_anchors']} pending-human={summary['unclassified_anchors']} semantic-credit=0")
+    print(f"Authority body inventory: documents={len(records)} matched={matched} stale=0 anchors={summary['raw_anchor_candidates']} pending-human={summary['unclassified_anchors']} semantic-credit=0")
     return 0
 
 
