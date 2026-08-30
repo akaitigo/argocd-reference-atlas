@@ -8,7 +8,7 @@ SKILL_EVAL_FILES := $(shell find evals -type f -name '*.skill-eval.json' -print 
 CORE_V1_FILES := migrations/core-v1.yaml provenance.yaml $(wildcard evidence/completion-certificate.json)
 CORE_V2_FILES := definitive.yaml migrations/definitive-v2.yaml evidence/dependency-graph.json $(wildcard non-regression.yaml)
 
-.PHONY: atlas-validate atlas-audit graph-validate definitive-validate core-v2-static scenario-proofs scenario-proofs-validate evidence-dependency evidence-dependency-validate authority-locators authority-validate non-regression-validate evidence-validate skill-validate skill-definitive-eval legal-validate sbom sbom-validate core-v1-graph core-v1-provenance validate check lab-env lab-clean labs labs-dry-run labs-static extended-labs isolated-labs extended-labs-dry-run skill-forward-eval $(addprefix lab-,$(LABS)) $(addprefix extended-lab-,$(EXTENDED_LABS) $(ISOLATED_LABS))
+.PHONY: atlas-validate atlas-audit graph-validate definitive-validate core-v2-static scenario-proofs scenario-proofs-validate scenario-runtime-application-sync-policy-normal evidence-dependency evidence-dependency-validate authority-locators authority-validate non-regression-validate evidence-validate skill-validate skill-definitive-eval legal-validate sbom sbom-validate core-v1-graph core-v1-provenance validate check lab-env lab-clean labs labs-dry-run labs-static extended-labs isolated-labs extended-labs-dry-run skill-forward-eval $(addprefix lab-,$(LABS)) $(addprefix extended-lab-,$(EXTENDED_LABS) $(ISOLATED_LABS))
 
 atlas-validate:
 	test -f "$(ATLAS_CORE)/cmd/atlas/main.go"
@@ -47,6 +47,9 @@ scenario-proofs-validate:
 	python3 scripts/validate_scenario_proofs.py
 	python3 scripts/test_scenario_gap_closure.py
 	python3 scripts/test_atomic_evidence_publish.py
+
+scenario-runtime-application-sync-policy-normal: lab-env
+	python3 scripts/scenarios/run_application_sync_policy_normal.py
 
 evidence-dependency:
 	python3 scripts/evidence_dependency_graph.py generate

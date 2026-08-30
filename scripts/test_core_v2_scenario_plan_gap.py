@@ -23,9 +23,9 @@ def validate(document: dict) -> None:
     preflight = document["runtime_preflight"]
     if document["status"] != "incomplete-no-runtime-substitution":
         raise ValueError("Scenario gap was promoted")
-    if denominator["rows"] != 1000 or denominator["remaining_rows"] != 1000 or denominator["scenario_gaps_open"] != 1000:
+    if denominator["rows"] != 1000 or denominator["remaining_rows"] != 999 or denominator["scenario_gaps_open"] != 1000:
         raise ValueError("Scenario denominator retreated")
-    if gaps["authority_atomic_rows"] != 0 or gaps["approved_variant_denominators"] != 0 or gaps["dedicated_runtime_reports"] != 0:
+    if gaps["authority_atomic_rows"] != 0 or gaps["approved_variant_denominators"] != 0 or gaps["dedicated_runtime_reports"] != 1 or gaps["dedicated_runtime_execution_complete_rows"] != 1:
         raise ValueError("Runtime/Authority gap hidden")
     if migration["required_scenarios"] != CORE_SCENARIOS or migration["explicit_id_mapping"] != {"rejection": "refusal"}:
         raise ValueError("Scenario migration mapping changed")
@@ -38,8 +38,9 @@ def validate(document: dict) -> None:
     if any(gates[name].startswith("passed") for name in ("scenario_trace", "scenario_plan", "evidence_durability")):
         raise ValueError("Unclosed Core Scenario gate was promoted")
     if preflight != {
-        "state": "blocked-no-dedicated-local-kind-runtime-proof",
+        "state": "partial-dedicated-local-kind-runtime-proof",
         "dedicated_local_kind_required": True,
+        "completed_dedicated_rows": 1,
         "external_context_access_forbidden": True,
         "fixture_runtime_credit": False,
     }:
@@ -60,7 +61,7 @@ def main() -> None:
     validate(build())
     rejected("false-complete", lambda value: value.update(status="complete"))
     rejected("denominator-shrink", lambda value: value["denominator"].update(rows=999))
-    rejected("runtime-fabrication", lambda value: value["independent_gaps"].update(dedicated_runtime_reports=1))
+    rejected("runtime-fabrication", lambda value: value["independent_gaps"].update(dedicated_runtime_reports=2))
     rejected("mapping-removal", lambda value: value["core_schema_migration"].update(explicit_id_mapping={}))
     rejected("fixture-substitution", lambda value: value["forbidden_substitutions"].remove("fixture-as-runtime"))
     rejected("gate-false-pass", lambda value: value["core_gate_status"].update(scenario_trace="passed"))

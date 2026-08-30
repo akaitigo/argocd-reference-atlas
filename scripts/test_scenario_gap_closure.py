@@ -59,6 +59,7 @@ def fixture() -> tuple[dict, dict]:
         "reference": {"path": "evidence/scenarios/runtime/reports/test.json", "digest": "sha256:test", "bytes": 1},
         "source_verified": True,
         "harness_verified": True,
+        "oracle_verified": True,
         "artifact_bindings_verified": True,
         "artifact_paths_distinct": True,
         "report": {
@@ -89,6 +90,7 @@ def main() -> None:
     contract, dedicated = fixture()
     positive = module.evaluate_gap_closure("application.spec.sync-policy", "normal", contract, dedicated, expected_components)
     require(positive["scenario_gap_closed"] is True and positive["failed_conditions"] == [], "全Closure条件を満たすpositive fixtureが閉じません")
+    require(positive["dedicated_runtime_execution_complete"] is True, "全Runtime条件を満たすpositive fixtureが実行完了になりません")
 
     mutations = []
     missing_variant = copy.deepcopy(dedicated)

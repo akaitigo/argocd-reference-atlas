@@ -170,11 +170,12 @@
   "scenario_gap_closure": {
     "status": "open",
     "scenario_gap_closed": false,
+    "dedicated_runtime_execution_complete": false,
     "variant_contract": {
       "source": {
         "path": "definitive/scenario-variant-contract.yaml",
-        "digest": "sha256:efca7dae0c6f29293145138aa429a580f3e0aebcc5c0b21aa8c7149afe8ad5b8",
-        "bytes": 1023
+        "digest": "sha256:6407a96f6d206a62fcffeddfa0967097dded3f4b80dda8fcf044664cddda7b26",
+        "bytes": 1503
       },
       "status": "pending-authority-human-review",
       "expected_variant_ids": [],
@@ -261,7 +262,7 @@
     },
     "result": {
       "path": "evidence/reference-system/results.json",
-      "digest": "sha256:e7c6a284053c32852d473540d7f797eb41e42d4dd04c24f1766452580f2f8766",
+      "digest": "sha256:460eea63270e47cb4dd47c59f96713145c8b5b00fb0a336bd82ccff60d737c35",
       "bytes": 125588
     },
     "scenario_row_id": "reference.scenario.boundary",
@@ -280,6 +281,7 @@
     "supporting_real_kubernetes_runtime": true,
     "supporting_runtime_identity_complete": false,
     "scenario_gap_closed": false,
+    "dedicated_runtime_execution_complete": false,
     "authority_atomic_binding": false,
     "completion_eligible": false
   },

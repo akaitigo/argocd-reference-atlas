@@ -69,6 +69,8 @@ def validate_gap_closure(proof: dict[str, Any]) -> None:
             require(bool(value.get("artifacts")), f"Closure Artifact bindingが空です: {proof['id']} {channel}")
     closed = all(conditions.values())
     require(closure.get("scenario_gap_closed") is closed and closure.get("status") == ("closed" if closed else "open"), f"Scenario Closure集計が条件と一致しません: {proof['id']}")
+    runtime_complete = all(value for key, value in conditions.items() if key != "variant_denominator_exhaustive")
+    require(closure.get("dedicated_runtime_execution_complete") is runtime_complete, f"専用Runtime実行完了集計が条件と一致しません: {proof['id']}")
     require(set(closure.get("failed_conditions", [])) == {key for key, value in conditions.items() if not value}, f"Scenario Closure失敗条件が不一致です: {proof['id']}")
     require(closure.get("closure_evidence_source") == "dedicated-surface-scenario-runtime-registry-only", f"Scenario Closure Evidence sourceが不正です: {proof['id']}")
     prohibited = set(closure.get("prohibited_substitutions", []))
@@ -141,12 +143,15 @@ def main() -> None:
     require(index["atomic_publish"]["retention_contract"] == publish_manifest["retention_contract"], "indexとpublish manifestの保持契約が一致しません")
     variant_contract = module.load_yaml(module.VARIANT_CONTRACT)
     runtime_registry = module.load_yaml(module.RUNTIME_REGISTRY)
-    require(variant_contract["reference"]["commit"] == index["reference"]["commit"] and variant_contract["denominator"]["exhaustive"] is False and variant_contract["denominator"]["surface_overrides"] == [], "現行Variant denominatorの未承認境界が不正です")
-    require(runtime_registry["reports"] == [] and runtime_registry["status"] == "incomplete-no-dedicated-runtime-reports", "現行専用Runtime registryの0件境界が不正です")
+    overrides = variant_contract["denominator"]["surface_overrides"]
+    require(variant_contract["reference"]["commit"] == index["reference"]["commit"] and variant_contract["denominator"]["exhaustive"] is False, "現行Variant denominatorの未承認境界が不正です")
+    require(len(overrides) == 1 and overrides[0]["surface_id"] == "application.spec.sync-policy" and overrides[0]["status"] == "runtime-declared-pending-authority-human-review" and overrides[0]["exhaustive_for_completion"] is False, "Runtime宣言VariantとAuthority未承認境界が不正です")
+    require([item["id"] for item in overrides[0]["variants"]] == ["fixed-revision-manual-sync", "fixed-revision-automated-self-heal"], "Runtime宣言Variant集合が不正です")
+    require(len(runtime_registry["reports"]) == 1 and runtime_registry["status"] == "incomplete-authority-review-with-dedicated-runtime-reports", "現行専用Runtime registryの実行件数または未完境界が不正です")
     require(index["source_bindings"]["variant_contract"] == module.binding(module.VARIANT_CONTRACT) and index["source_bindings"]["dedicated_runtime_registry"] == module.binding(module.RUNTIME_REGISTRY), "Variant／専用Runtime contract digestがindexへ接続されていません")
     require(summary["behaviors"] == 100 and summary["scenarios"] == 10 and summary["rows"] == 1000 and summary["dedicated_artifacts"] == 1000, "100 Surface × 10 Scenario分母が不正です")
     require(summary["scenario_gaps_closed"] == 0 and summary["scenario_gaps_open"] == 1000, "専用全Variant RuntimeなしでScenario gapを閉じています")
-    require(summary["variant_denominators_exhaustive"] == 0 and summary["dedicated_runtime_reports"] == 0, "未承認Variant分母または存在しない専用Runtime reportを算入しています")
+    require(summary["variant_denominators_exhaustive"] == 0 and summary["dedicated_runtime_reports"] == 1 and summary["dedicated_runtime_execution_complete_rows"] == 1, "専用Runtime実行またはAuthority未承認分母の集計が不正です")
     require(summary["supporting_runtime_artifacts"] + summary["supporting_artifacts"] + summary["no_supporting_artifacts"] == 1000, "補助Evidence分類が分母を閉じていません")
     floor = baseline["supporting_evidence_floor"]
     require(summary["supporting_runtime_artifacts"] >= floor["supporting_runtime_artifacts"] and summary["supporting_runtime_artifacts"] + summary["supporting_artifacts"] >= floor["supporting_artifacts_total"], "既存Supporting Evidenceが非後退floorを下回っています")
@@ -182,6 +187,10 @@ def main() -> None:
         require((component_identity["component_identity_gap"] is None) == component_identity["component_identity_complete"], f"Controller identity gapが不正です: {proof['id']}")
         validate_observations(module, proof)
         validate_gap_closure(proof)
+        expected_runtime_complete = proof["behavior_id"] == "application.spec.sync-policy" and proof["scenario"] == "normal"
+        require(proof["closure"]["dedicated_runtime_execution_complete"] is expected_runtime_complete, f"専用Runtime実行完了rowが不正です: {proof['id']}")
+        if expected_runtime_complete:
+            require(proof["scenario_gap_closure"]["failed_conditions"] == ["variant_denominator_exhaustive"], "Runtime完了rowがAuthority Gap以外を残しています")
         supporting_status = proof["supporting_evidence_assessment"]["status"]
         if supporting_status == "supporting-runtime-artifact":
             require(bool(proof["evidence_bindings"]) and proof["closure"]["supporting_real_kubernetes_runtime"] is True and proof["closure"]["supporting_runtime_identity_complete"] is True and proof["controller_kubernetes_behavior"]["component_identity_complete"] is True, f"補助Runtime Artifact分類が不正です: {proof['id']}")
@@ -189,14 +198,14 @@ def main() -> None:
             require(bool(proof["evidence_bindings"]) and proof["closure"]["supporting_real_kubernetes_runtime"] is True and (proof["closure"]["supporting_runtime_identity_complete"] is False or proof["controller_kubernetes_behavior"]["component_identity_complete"] is False), f"補助Artifact分類が不正です: {proof['id']}")
         else:
             require(supporting_status == "no-supporting-artifact" and proof["evidence_bindings"] == [] and bool(proof["gaps"]), f"補助ArtifactなしのGapが明示されていません: {proof['id']}")
-        require(proof["status"] == "scenario-gap-open" and proof["closure"]["scenario_gap_closed"] is False, f"現行専用Runtime 0件でScenario gapを閉じています: {proof['id']}")
+        require(proof["status"] == "scenario-gap-open" and proof["closure"]["scenario_gap_closed"] is False, f"Authority未承認状態でScenario gapを閉じています: {proof['id']}")
 
     print(
         "Scenario Proof Matrix validated: "
         f"integrated-audit=10/10 integrated-runtime=0 "
         f"rows={summary['rows']} closed={summary['scenario_gaps_closed']} open={summary['scenario_gaps_open']} "
         f"supporting-runtime={summary['supporting_runtime_artifacts']} supporting-artifact={summary['supporting_artifacts']} "
-        f"authority-atomic=0 completion=0"
+        f"runtime-complete={summary['dedicated_runtime_execution_complete_rows']} authority-atomic=0 completion=0"
     )
 
 

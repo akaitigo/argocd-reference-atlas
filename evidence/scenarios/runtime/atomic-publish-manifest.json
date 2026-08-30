@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "id": "argocd-dedicated-runtime-atomic-publish-v1",
+  "status": "passed",
+  "reference": {
+    "repository": "frontend-behavior-atlas",
+    "commit": "7175de4305afb308722d5b83475e91c18da64957",
+    "contract": "atomic-evidence-retention"
+  },
+  "retention_contract": {
+    "publish_on": "full-run-passed",
+    "failed_run": "retain-prior-success",
+    "swap": "staged-directory-rename-with-rollback",
+    "partial_overwrite": "rejected",
+    "mixed_generation": "rejected"
+  },
+  "artifact_count": 10,
+  "generation_digest": "sha256:fb4b03da5c3b46caa0739a76f20f8c75454e0c483f58e4729b262584d749560a",
+  "artifacts": [
+    {
+      "path": "artifacts/runtime.application-spec-sync-policy.normal.v3-5-2/fixed-revision-automated-self-heal/controller_log.json",
+      "digest": "sha256:b7d0bc9d2d607f5e255a6aebce25d45fabd1b694f6d0fbf098e19d2f797c7c7d",
+      "bytes": 44579
+    },
+    {
+      "path": "artifacts/runtime.application-spec-sync-policy.normal.v3-5-2/fixed-revision-automated-self-heal/metric.json",
+      "digest": "sha256:34ad12108eff580529dbe4c7a12ff2992aeb30a0f7e717e21910b590f8fed388",
+      "bytes": 1024
+    },
+    {
+      "path": "artifacts/runtime.application-spec-sync-policy.normal.v3-5-2/fixed-revision-automated-self-heal/resource_state.json",
+      "digest": "sha256:53dd615b860894158fc8e44ab18a0e4edad5c75c94d12374b62164bfa4f7ce94",
+      "bytes": 5982
+    },
+    {
+      "path": "artifacts/runtime.application-spec-sync-policy.normal.v3-5-2/fixed-revision-automated-self-heal/trace.json",
+      "digest": "sha256:c471691b9639b26eda1cd677c89c2c6fd35787ca605ff1c4f0e89a19aa2b2775",
+      "bytes": 724
+    },
+    {
+      "path": "artifacts/runtime.application-spec-sync-policy.normal.v3-5-2/fixed-revision-manual-sync/controller_log.json",
+      "digest": "sha256:1e5ba31e401413e2a5aafa703f9619704eebdee1bd271c542e0875e47eeaf525",
+      "bytes": 26155
+    },
+    {
+      "path": "artifacts/runtime.application-spec-sync-policy.normal.v3-5-2/fixed-revision-manual-sync/metric.json",
+      "digest": "sha256:e828ee35640fa88221ba651785fd34b500996339cd24416b2bc1c2cf9683238a",
+      "bytes": 1018
+    },
+    {
+      "path": "artifacts/runtime.application-spec-sync-policy.normal.v3-5-2/fixed-revision-manual-sync/resource_state.json",
+      "digest": "sha256:55edc65167abc3a75e2b9f5aa92dfc1ac7262c698532691c4298f64d241d305a",
+      "bytes": 5195
+    },
+    {
+      "path": "artifacts/runtime.application-spec-sync-policy.normal.v3-5-2/fixed-revision-manual-sync/trace.json",
+      "digest": "sha256:e74760fd183b9169d2aa7c2bbbc9ae910101f7e531c03622b7a484a7c97faff3",
+      "bytes": 727
+    },
+    {
+      "path": "index.yaml",
+      "digest": "sha256:e491b3fe8b97752239596323d86a5d2b4203ae958792f29bda9f6fd798999eed",
+      "bytes": 1156
+    },
+    {
+      "path": "reports/runtime.application-spec-sync-policy.normal.v3-5-2.json",
+      "digest": "sha256:985ee0696da162bf62e086bfa63df727bb964beedc48284341ff85bf6c6bbf47",
+      "bytes": 9480
+    }
+  ]
+}

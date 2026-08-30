@@ -9,10 +9,18 @@ denominator:
   source: human-reviewed-authority-atomic-surface-and-domain-variant-contract
   default_status: pending-authority-human-review
   exhaustive: false
-  surface_overrides: []
+  surface_overrides:
+    - surface_id: application.spec.sync-policy
+      status: runtime-declared-pending-authority-human-review
+      exhaustive_for_completion: false
+      declaration_scope: bounded-local-runtime-execution-only
+      variants:
+        - id: fixed-revision-manual-sync
+        - id: fixed-revision-automated-self-heal
 rules:
   - Surfaceごとに人手確認済みの非空Variant集合がapproved-exhaustiveになるまでScenario gapを閉じない。
   - Surface、Scenario、Variantの完全一致を持つ専用実Argo CD／Kubernetes Runtime recordだけを算入する。
   - 全Variantがretry 0かつfirst-attempt passでなければ行全体を閉じない。
   - 各VariantはOracle、Source digest、Harness digest、Runtime identity、4種の専用Artifactを持つ。
   - 統合Reference結果、既存Lab bundle、別Surface／Scenario／VariantのArtifact metadataを代用しない。
+  - runtime-declared Variant集合は専用実行の完了判定にだけ用い、人手Authority Review済みexhaustive分母またはCompletionへ昇格しない。

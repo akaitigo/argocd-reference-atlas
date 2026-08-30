@@ -63,6 +63,7 @@ def build() -> dict:
             "authority_atomic_rows": summary["authority_atomic_bindings"],
             "approved_variant_denominators": summary["variant_denominators_exhaustive"],
             "dedicated_runtime_reports": summary["dedicated_runtime_reports"],
+            "dedicated_runtime_execution_complete_rows": summary["dedicated_runtime_execution_complete_rows"],
             "completion_eligible_rows": summary["completion_eligible_rows"],
             "integrated_runtime_passed": summary["integrated_runtime_passed"],
             "missing_core_artifacts": missing_files,
@@ -74,8 +75,9 @@ def build() -> dict:
             "configured_make_check": "passed",
         },
         "runtime_preflight": {
-            "state": "blocked-no-dedicated-local-kind-runtime-proof",
+            "state": "partial-dedicated-local-kind-runtime-proof",
             "dedicated_local_kind_required": True,
+            "completed_dedicated_rows": plan["summary"]["completed_dedicated_rows"],
             "external_context_access_forbidden": True,
             "fixture_runtime_credit": False,
         },

@@ -266,6 +266,41 @@ def exact_file_binding(value: Any, *, expected_prefix: str | None = None) -> boo
     return path.is_file() and binding(path) == {key: value[key] for key in ("path", "digest", "bytes")}
 
 
+def resolve_json_pointer(value: Any, pointer_value: str) -> Any:
+    if not isinstance(pointer_value, str) or not pointer_value.startswith("/"):
+        raise ValueError(f"Oracle JSON Pointerが不正です: {pointer_value}")
+    current = value
+    for raw in pointer_value[1:].split("/"):
+        token = raw.replace("~1", "/").replace("~0", "~")
+        if isinstance(current, dict) and token in current:
+            current = current[token]
+        elif isinstance(current, list) and token.isdigit() and int(token) < len(current):
+            current = current[int(token)]
+        else:
+            raise ValueError(f"Oracle JSON PointerがArtifactに存在しません: {pointer_value}")
+    return current
+
+
+def validate_runtime_oracle(report_id: str, variant: dict[str, Any]) -> bool:
+    assertions = variant.get("oracle", {}).get("assertions", [])
+    if variant.get("oracle", {}).get("status") != "pass" or not isinstance(assertions, list) or not assertions:
+        return False
+    channels = {"resource_state", "controller_log", "metric", "trace"}
+    observed_channels = set()
+    for assertion in assertions:
+        channel = assertion.get("channel")
+        if channel not in channels or assertion.get("operator") != "equals":
+            raise ValueError(f"Dedicated Runtime Oracle assertionが不正です: {report_id}")
+        artifact = variant.get("artifacts", {}).get(channel, {})
+        if not exact_file_binding(artifact):
+            return False
+        actual = resolve_json_pointer(load_json(ROOT / artifact["path"]), assertion.get("pointer"))
+        if actual != assertion.get("expected"):
+            raise ValueError(f"Dedicated Runtime OracleがArtifact実値と不一致です: {report_id} {channel} {assertion.get('pointer')}")
+        observed_channels.add(channel)
+    return observed_channels == channels
+
+
 def load_dedicated_runtime_reports(registry: dict[str, Any]) -> dict[tuple[str, str], dict[str, Any]]:
     reports: dict[tuple[str, str], dict[str, Any]] = {}
     used_artifact_paths: set[str] = set()
@@ -286,6 +321,7 @@ def load_dedicated_runtime_reports(registry: dict[str, Any]) -> dict[tuple[str, 
         variant_ids: set[str] = set()
         source_verified = bool(variant_records)
         harness_verified = bool(variant_records)
+        oracle_verified = bool(variant_records)
         artifact_bindings_verified = True
         artifact_paths_distinct = True
         for variant in variant_records:
@@ -323,11 +359,16 @@ def load_dedicated_runtime_reports(registry: dict[str, Any]) -> dict[tuple[str, 
                 if isinstance(artifact_path, str):
                     local_paths.add(artifact_path)
                     used_artifact_paths.add(artifact_path)
+            variant_oracle_verified = validate_runtime_oracle(report["id"], variant)
+            oracle_verified = oracle_verified and variant_oracle_verified
+            if variant.get("oracle") and not variant_oracle_verified:
+                raise ValueError(f"Dedicated Runtime Oracle bindingが不正です: {report['id']} {variant_id}")
         reports[key] = {
             "reference": {key: reference[key] for key in ("path", "digest", "bytes")},
             "report": report,
             "source_verified": source_verified,
             "harness_verified": harness_verified,
+            "oracle_verified": oracle_verified,
             "artifact_bindings_verified": artifact_bindings_verified,
             "artifact_paths_distinct": artifact_paths_distinct,
         }
@@ -365,7 +406,7 @@ def evaluate_gap_closure(
     runtime = report.get("runtime_identity", {})
     expected_variants = variant_contract["expected_variant_ids"]
     actual_variants = [record.get("variant_id") for record in records]
-    all_variants = variant_contract["exhaustive"] and sorted(actual_variants) == sorted(expected_variants)
+    all_variants = bool(expected_variants) and sorted(actual_variants) == sorted(expected_variants)
     retry_zero = bool(records) and execution.get("retries") == 0
     first_attempt_pass = bool(records) and all(
         record.get("attempts") == 1
@@ -374,7 +415,7 @@ def evaluate_gap_closure(
         and record.get("error") is None
         for record in records
     )
-    oracle_pass = bool(records) and all(
+    oracle_pass = bool(records) and bool(dedicated and dedicated.get("oracle_verified")) and all(
         record.get("oracle", {}).get("status") == "pass"
         and bool(record.get("oracle", {}).get("assertions"))
         for record in records
@@ -414,6 +455,8 @@ def evaluate_gap_closure(
         "artifact_paths_dedicated_and_distinct": bool(dedicated and dedicated["artifact_bindings_verified"] and dedicated["artifact_paths_distinct"]),
         "integrated_or_other_metadata_reuse_absent": bool(dedicated and dedicated["artifact_bindings_verified"] and dedicated["artifact_paths_distinct"]),
     }
+    runtime_conditions = {key: value for key, value in conditions.items() if key != "variant_denominator_exhaustive"}
+    dedicated_runtime_execution_complete = bool(runtime_conditions) and all(runtime_conditions.values())
     closed = all(conditions.values())
     closure_artifacts = {}
     for channel in channels:
@@ -431,6 +474,7 @@ def evaluate_gap_closure(
     return {
         "status": "closed" if closed else "open",
         "scenario_gap_closed": closed,
+        "dedicated_runtime_execution_complete": dedicated_runtime_execution_complete,
         "variant_contract": variant_contract,
         "dedicated_runtime_report": dedicated["reference"] if dedicated else None,
         "dedicated_runtime_record_ids": [f"{report.get('id')}:{variant}" for variant in actual_variants] if dedicated else [],
@@ -659,6 +703,7 @@ def build_proof(
             "supporting_real_kubernetes_runtime": bool(bound) and all(identity["real_kubernetes_runtime"] for identity in runtime_identities),
             "supporting_runtime_identity_complete": runtime_identity_complete,
             "scenario_gap_closed": scenario_gap_closure["scenario_gap_closed"],
+            "dedicated_runtime_execution_complete": scenario_gap_closure["dedicated_runtime_execution_complete"],
             "authority_atomic_binding": False,
             "completion_eligible": False,
         },
@@ -717,6 +762,7 @@ def build_all() -> tuple[dict[str, Any], list[tuple[Path, dict[str, Any]]]]:
             "supporting_runtime_identity_complete": sum(item["closure"]["supporting_runtime_identity_complete"] for item in rows),
             "authority_atomic_bindings": 0,
             "completion_eligible": 0,
+            "dedicated_runtime_execution_complete": sum(item["scenario_gap_closure"]["dedicated_runtime_execution_complete"] for item in rows),
         }
     files = [{
         "id": proof["id"],
@@ -771,6 +817,7 @@ def build_all() -> tuple[dict[str, Any], list[tuple[Path, dict[str, Any]]]]:
             "scenario_gaps_open": sum(not proof["scenario_gap_closure"]["scenario_gap_closed"] for _, proof in proofs),
             "variant_denominators_exhaustive": sum(proof["scenario_gap_closure"]["variant_contract"]["exhaustive"] for _, proof in proofs) // len(SCENARIOS),
             "dedicated_runtime_reports": len(dedicated_runtime_reports),
+            "dedicated_runtime_execution_complete_rows": sum(proof["scenario_gap_closure"]["dedicated_runtime_execution_complete"] for _, proof in proofs),
             "supporting_runtime_artifacts": supporting_counts["supporting-runtime-artifact"],
             "supporting_artifacts": supporting_counts["supporting-artifact"],
             "no_supporting_artifacts": supporting_counts["no-supporting-artifact"],

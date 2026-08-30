@@ -99,6 +99,7 @@ def build_closure_plan() -> dict[str, Any]:
     for item in index["files"]:
         proof = load(ROOT / item["path"])
         scenario = proof["scenario"]
+        runtime_closure = proof["scenario_gap_closure"]
         rows.append({
             "id": f"closure.{proof['behavior_id']}.{scenario}",
             "pattern_id": proof["behavior_id"],
@@ -108,10 +109,13 @@ def build_closure_plan() -> dict[str, Any]:
             "risk_rank": ranks[scenario],
             "proof": {"path": item["path"], "digest": item["digest"]},
             "variant_denominator": {
-                "status": "pending-authority-human-review",
-                "exhaustive": False,
+                "status": runtime_closure["variant_contract"]["status"],
+                "exhaustive": runtime_closure["variant_contract"]["exhaustive"],
                 "approved_variant_ids": [],
+                "runtime_declared_variant_ids": runtime_closure["variant_contract"]["expected_variant_ids"],
             },
+            "dedicated_runtime_execution_complete": runtime_closure["dedicated_runtime_execution_complete"],
+            "scenario_gap_closed": runtime_closure["scenario_gap_closed"],
             "required_closure": {
                 "all_variants_driven": True,
                 "first_attempt_only": True,
@@ -142,6 +146,7 @@ def build_closure_plan() -> dict[str, Any]:
                 "variant_denominator_status": "pending-authority-human-review",
                 "commit_policy": "one-reviewed-tranche-with-non-regression-runtime-identity-and-oracle-validation",
             })
+    completed_rows = [row["id"] for row in rows if row["dedicated_runtime_execution_complete"]]
     return {
         "schema_version": 1,
         "id": "argocd-scenario-closure-plan-v1",
@@ -169,8 +174,8 @@ def build_closure_plan() -> dict[str, Any]:
             "inherited_gap_rows_at_f055351": len(rows),
         },
         "summary": {
-            "completed_dedicated_rows": 0,
-            "remaining_rows": len(rows),
+            "completed_dedicated_rows": len(completed_rows),
+            "remaining_rows": len(rows) - len(completed_rows),
             "planned_tranches": len(tranches),
             "by_scenario": by_scenario,
         },
@@ -179,7 +184,7 @@ def build_closure_plan() -> dict[str, Any]:
             "approved_variant_denominators": index["summary"]["variant_denominators_exhaustive"],
             "dedicated_runtime_reports": index["summary"]["dedicated_runtime_reports"],
         },
-        "completed_rows": [],
+        "completed_rows": completed_rows,
         "completed_tranches": [],
         "next_tranche": tranches[0] if tranches else None,
         "tranches": tranches,
@@ -192,9 +197,10 @@ def input_specs() -> list[dict[str, Any]]:
     specs = [
         ("source.application", "source", ["atlas/claims/index.yaml", "claims/claim.application.desired-state.claim.yaml", "claims/claim.applicationset.generated-applications.claim.yaml", "claims/claim.reconciliation.convergence.claim.yaml", "definitive/surface-inventory.yaml"]),
         ("source.project-policy", "source", ["atlas.yaml", "definitive.yaml", "migrations/definitive-v2.yaml", "atlas/proof-obligations/index.yaml", "coverage.yaml", "mastery.yaml", "claims/claim.security.identity-authorization-boundary.claim.yaml", "claims/claim.security.no-secret-leak.claim.yaml"]),
-        ("source.manifests", "source", ["integrations/reference-system/manifest.yaml", "environments/kind/source-server.yaml", "scripts/build-local-source.sh"]),
+        ("source.manifests", "source", ["integrations/reference-system/manifest.yaml", "environments/kind/source-server.yaml", "scripts/build-local-source.sh", "fixtures/scenarios/application-sync-policy-normal/configmap.yaml"]),
         ("harness.cluster-labs", "harness", [*lab_specs, "scripts/run-lab.sh", "scripts/run-suite.sh", "scripts/evidence/capture.sh", "scripts/evidence/record.sh", "scripts/evidence/record_extended.py", "scripts/extended/run.sh", "scripts/extended/run-suite.sh"]),
         ("harness.scenario-proof", "harness", ["scripts/generate_scenario_proofs.py", "scripts/validate_scenario_proofs.py", "scripts/test_scenario_gap_closure.py", "scripts/test_atomic_evidence_publish.py", "scripts/lib/atomic_evidence_publish.py", "definitive/scenario-variant-contract.yaml", "evidence/scenarios/runtime/index.yaml"]),
+        ("harness.scenario-runtime", "harness", ["scripts/scenarios/run_application_sync_policy_normal.py", "scripts/generate_scenario_proofs.py", "scripts/validate_scenario_proofs.py", "scripts/lib/atomic_evidence_publish.py", "definitive/scenario-variant-contract.yaml", "fixtures/scenarios/application-sync-policy-normal/configmap.yaml"]),
         ("harness.evidence-dependency", "harness", ["scripts/evidence_dependency_graph.py", "scripts/test_evidence_dependency_graph.py", "docs/EVIDENCE_DEPENDENCY_GRAPH.md"]),
         ("harness.skill-eval", "harness", ["skill.package.yaml", ".agents/skills/argocd-atlas-router/SKILL.md", "evals/router-cases.json", "evals/forward-cases.json", "evals/definitive-forward-cases.json", "scripts/generate_definitive_skill_eval.py", "scripts/grade_definitive_forward_eval.py", "scripts/validate_definitive_skill_eval.py"]),
         ("runtime.controller-components", "runtime", ["sources.lock.yaml", "environments/kind/argocd-v3.5.2.lock", "environments/kind/argocd-v3.5.2-ha.lock"]),
@@ -222,6 +228,7 @@ def discover_required_paths(root: Path) -> set[str]:
     paths = {path.relative_to(root).as_posix() for path in (root / "evidence/records").glob("*.evidence.yaml")}
     paths |= {path.relative_to(root).as_posix() for path in (root / "evidence/raw").glob("*/result.json")}
     paths |= {path.relative_to(root).as_posix() for path in (root / "evidence/scenarios/behaviors").glob("*/*.proof.json")}
+    paths |= {path.relative_to(root).as_posix() for path in (root / "evidence/scenarios/runtime").rglob("*") if path.is_file()}
     for relative in [
         "evidence/reference-system/results.json", "evidence/scenarios/index.json", "evidence/scenarios/atomic-publish-manifest.json",
         "evidence/scenarios/closure-plan.json", "evals/argocd-atlas-router.definitive-skill-eval.json",
@@ -337,13 +344,39 @@ def build_graph() -> dict[str, Any]:
         execution_kind = "derived" if profiles == ["local"] else ("platform" if "container" in profiles else "runtime")
         runs.append(run_document(run_id, execution_kind, " && ".join(sorted({record["command"] for record in group})), started, output_ids, identity))
 
+    runtime_output_ids = []
+    runtime_registry = load(ROOT / "evidence/scenarios/runtime/index.yaml")
+    runtime_run = "run.scenario-runtime.application-sync-policy.normal"
+    runtime_paths = [path.relative_to(ROOT).as_posix() for path in sorted((ROOT / "evidence/scenarios/runtime").rglob("*")) if path.is_file()]
+    for path in runtime_paths:
+        runtime_output_ids.append(add_output(
+            outputs,
+            path,
+            "runtime-evidence",
+            ["harness.scenario-runtime", "source.manifests", "runtime.controller-components", "runtime.argocd-kubernetes", "profile.cluster"],
+            runtime_run,
+        ))
+    runtime_reports = runtime_registry.get("reports", [])
+    runtime_identity = {"profile": "cluster", "first_attempt": True}
+    if runtime_reports:
+        report = load(ROOT / runtime_reports[0]["path"])
+        runtime_identity = {**report["runtime_identity"], "first_attempt": True}
+    runs.append(run_document(
+        runtime_run,
+        "runtime",
+        "make scenario-runtime-application-sync-policy-normal",
+        GENERATED_AT,
+        runtime_output_ids,
+        runtime_identity,
+    ))
+
     scenario_run = "run.scenario-proof-full"
     raw_ids = sorted(artifact_output_ids.values())
-    reference_id = add_output(outputs, "evidence/reference-system/results.json", "reference-system", [*raw_ids, "harness.scenario-proof", "source.manifests"], scenario_run)
+    reference_id = add_output(outputs, "evidence/reference-system/results.json", "reference-system", [*raw_ids, *runtime_output_ids, "harness.scenario-proof", "source.manifests"], scenario_run)
     proof_ids = []
     index = load(INDEX)
     for item in index["files"]:
-        proof_ids.append(add_output(outputs, item["path"], "scenario-proof", [reference_id, "harness.scenario-proof", "runtime.controller-components", "runtime.argocd-kubernetes", "profile.cluster"], scenario_run))
+        proof_ids.append(add_output(outputs, item["path"], "scenario-proof", [reference_id, *runtime_output_ids, "harness.scenario-proof", "runtime.controller-components", "runtime.argocd-kubernetes", "profile.cluster"], scenario_run))
     index_id = add_output(outputs, "evidence/scenarios/index.json", "scenario-proof", [reference_id, *proof_ids, "harness.scenario-proof"], scenario_run)
     manifest_id = add_output(outputs, "evidence/scenarios/atomic-publish-manifest.json", "derived-evidence", [index_id], scenario_run)
     runs.append(run_document(scenario_run, "derived", "make scenario-proofs && make scenario-proofs-validate", GENERATED_AT, [reference_id, *proof_ids, index_id, manifest_id]))
@@ -398,8 +431,13 @@ def build_graph() -> dict[str, Any]:
 
 def validate_closure_plan(root: Path) -> None:
     plan, index = load(root / "evidence/scenarios/closure-plan.json"), load(root / "evidence/scenarios/index.json")
-    if plan["status"] != "incomplete" or plan["summary"]["remaining_rows"] != len(index["files"]):
+    completed = [row["id"] for row in plan["rows"] if row.get("dedicated_runtime_execution_complete") is True]
+    if plan["status"] != "incomplete" or plan["summary"]["remaining_rows"] != len(index["files"]) - len(completed):
         raise DependencyContractError("Closure Planの未完分母がScenario indexと一致しません")
+    if plan["summary"]["completed_dedicated_rows"] != len(completed) or plan["completed_rows"] != completed:
+        raise DependencyContractError("Closure Planの専用Runtime完了row集計が一致しません")
+    if any(row.get("scenario_gap_closed") is True for row in plan["rows"] if row["id"] in completed):
+        raise DependencyContractError("Authority未承認rowをScenario gap closedへ昇格しています")
     if len(plan["rows"]) != len(index["files"]):
         raise DependencyContractError("Closure Plan rowが漏れています")
     if any(tranche["pattern_rows"] > 4 or tranche["variant_denominator_status"] != "pending-authority-human-review" for tranche in plan["tranches"]):

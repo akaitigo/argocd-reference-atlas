@@ -1,18 +1,35 @@
 schema_version: 1
 id: argocd-dedicated-surface-scenario-runtime-registry-v1
 atlas_id: argocd-reference-atlas
-status: incomplete-no-dedicated-runtime-reports
-reports: []
+status: incomplete-authority-review-with-dedicated-runtime-reports
+reports:
+- id: runtime.application-spec-sync-policy.normal.v3-5-2
+  path: evidence/scenarios/runtime/reports/runtime.application-spec-sync-policy.normal.v3-5-2.json
+  digest: sha256:985ee0696da162bf62e086bfa63df727bb964beedc48284341ff85bf6c6bbf47
+  bytes: 9480
 admission_contract:
   report_scope: exact-surface-scenario
-  variant_scope: approved-exhaustive-variant-denominator
+  variant_scope: all-runtime-declared-variants-with-authority-exhaustive-kept-separate
   execution: real-argocd-on-kubernetes
   retries: 0
   attempts: 1
   outcome: expected
   final_status: passed
-  required_artifacts: [resource_state, controller_log, metric, trace]
-  artifact_kinds: [kubernetes-resource-state, argocd-controller-log, argocd-prometheus-metric, scenario-execution-trace]
-  required_bindings: [oracle, source, harness, runtime_identity]
+  required_artifacts:
+  - resource_state
+  - controller_log
+  - metric
+  - trace
+  artifact_kinds:
+  - kubernetes-resource-state
+  - argocd-controller-log
+  - argocd-prometheus-metric
+  - scenario-execution-trace
+  required_bindings:
+  - oracle
+  - source
+  - harness
+  - runtime_identity
   artifact_ownership: exact-report-and-variant-dedicated-path
   metadata_reuse: forbidden
+  authority_completion_credit: forbidden-until-human-reviewed-exhaustive-denominator

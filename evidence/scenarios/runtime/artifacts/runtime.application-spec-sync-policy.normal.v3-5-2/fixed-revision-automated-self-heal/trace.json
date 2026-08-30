@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "surface_id": "application.spec.sync-policy",
+  "scenario": "normal",
+  "variant_id": "fixed-revision-automated-self-heal",
+  "started_at": "2026-08-30T16:14:00.479918Z",
+  "completed_at": "2026-08-30T16:14:03.376944Z",
+  "attempt": 1,
+  "retries": 0,
+  "actions": [
+    {
+      "action": "enable-automated-prune-self-heal",
+      "status": "passed"
+    },
+    {
+      "action": "inject-live-configmap-drift",
+      "status": "passed"
+    },
+    {
+      "action": "observe-controller-self-heal",
+      "status": "passed"
+    }
+  ],
+  "result": {
+    "first_attempt": true,
+    "sync_status": "Synced",
+    "health_status": "Healthy",
+    "live_release": "v1",
+    "autosync_enabled": "true"
+  }
+}

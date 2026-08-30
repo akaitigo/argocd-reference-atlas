@@ -30,9 +30,12 @@ data:
 EOF
 }
 
-for lab in application failure recovery security; do
+for lab in failure recovery security; do
   write_configmap "apps/${lab}" "atlas-${lab}" release v1
 done
+mkdir -p "${work}/apps/application"
+cp "${ATLAS_ROOT}/fixtures/scenarios/application-sync-policy-normal/configmap.yaml" \
+  "${work}/apps/application/configmap.yaml"
 write_configmap apps/reconciliation atlas-reconciliation desired canonical
 write_configmap apps/sync atlas-sync release v1
 write_configmap apps/diff atlas-diff desired git
