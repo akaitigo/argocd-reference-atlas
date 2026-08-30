@@ -1,0 +1,2402 @@
+{
+  "schema_version": 1,
+  "id": "argocd-surface-inventory-readiness-v1",
+  "status": "incomplete-human-authority-review-required",
+  "core_main_commit": "46db1eb0e68d00c09f34994dd66ad6d44d3f6ef1",
+  "inputs": {
+    "authority/extraction.snapshot.json": "sha256:a2d97d0482539ca30946ea49b13b3c700f1afb4311cb6c3232c2473be96eb4e0",
+    "authority/body-inventory.snapshot.json": "sha256:e57ad68b946b1c3ff446ed4ba3e34888ef49f959793863185b554b6954a7bef8",
+    "authority/review-queue.snapshot.json": "sha256:fb2e64d35042921dc001af36fb7042a7ba6c9a253589599e0acac8776ad0cb6a",
+    "definitive/surface-inventory.yaml": "sha256:9e39ab57e12a469e33632ef0f7c4b140f8550527c95ead77606262b83ac8e378"
+  },
+  "policy": {
+    "candidate_mapping_is_authority_promotion": false,
+    "pending_human_anchor_has_semantic_credit": false,
+    "machine_proposal_is_human_decision": false,
+    "root_inventory_publish_is_fail_closed": true,
+    "target_generation_used_for_closure": false,
+    "scope_reduction_used_for_closure": false
+  },
+  "summary": {
+    "locked_candidate_artifacts": 26,
+    "candidate_edges": 91,
+    "candidate_inventory_mapped": 91,
+    "candidate_inventory_unmapped": 0,
+    "candidate_claim_binding_gaps": 15,
+    "domain_inventory_items": 100,
+    "authority_raw_anchors": 63889,
+    "authority_pending_human": 63889,
+    "authority_human_reviewed": 0,
+    "authority_core_v2_eligible_surfaces": 0,
+    "final_authority_artifacts": 0,
+    "final_surface_items": 0,
+    "completion_credit": 0
+  },
+  "root_inventory_gate": {
+    "required_path": "surface.inventory.yaml",
+    "present": false,
+    "emission_allowed": false,
+    "blockers": [
+      "authority-body-pending-human",
+      "authority-review-decisions-zero",
+      "core-v2-eligible-surfaces-zero",
+      "candidate-claim-binding-gaps",
+      "authority-text-not-exhaustive",
+      "authority-semantics-not-exhaustive"
+    ],
+    "expected_next_gate": "authority-human-review"
+  },
+  "candidate_artifacts": [
+    {
+      "source_id": "argocd-application-crd",
+      "path": "authority/surfaces-draft/argocd-application-crd.json",
+      "digest": "sha256:8d4206f7231d9984ad1a8851af7b20e83727269563b0dbce6e1defb6dc4d37c2",
+      "candidate_edges": 5,
+      "review_status": "automated-unreviewed",
+      "promotion_eligible": false
+    },
+    {
+      "source_id": "argocd-application-specification",
+      "path": "authority/surfaces-draft/argocd-application-specification.json",
+      "digest": "sha256:df732a277cdf89e208b445d35e300f5ae4d9f73062b52ec468c5d5f25db53d5b",
+      "candidate_edges": 1,
+      "review_status": "automated-unreviewed",
+      "promotion_eligible": false
+    },
+    {
+      "source_id": "argocd-applicationset-crd",
+      "path": "authority/surfaces-draft/argocd-applicationset-crd.json",
+      "digest": "sha256:f38e54703e63b075c731c7fcfbc27375a7586af90edd46f5515ff26a2ec38616",
+      "candidate_edges": 1,
+      "review_status": "automated-unreviewed",
+      "promotion_eligible": false
+    },
+    {
+      "source_id": "argocd-applicationset-introduction",
+      "path": "authority/surfaces-draft/argocd-applicationset-introduction.json",
+      "digest": "sha256:5d0390072217d6196b02ed85106af4ff975a0419052f2eae4df7f08c96b4bf0a",
+      "candidate_edges": 1,
+      "review_status": "automated-unreviewed",
+      "promotion_eligible": false
+    },
+    {
+      "source_id": "argocd-applicationset-specification",
+      "path": "authority/surfaces-draft/argocd-applicationset-specification.json",
+      "digest": "sha256:9f4cd79b19ffb416a458a93490dbcdcf2019df8907e60aeafa0b39419f4ef09f",
+      "candidate_edges": 1,
+      "review_status": "automated-unreviewed",
+      "promotion_eligible": false
+    },
+    {
+      "source_id": "argocd-appproject-crd",
+      "path": "authority/surfaces-draft/argocd-appproject-crd.json",
+      "digest": "sha256:27242b3b1db5db51e729fc7b432bb05c65f43d952b26f8f4c30ab0d0024d481f",
+      "candidate_edges": 2,
+      "review_status": "automated-unreviewed",
+      "promotion_eligible": false
+    },
+    {
+      "source_id": "argocd-architecture",
+      "path": "authority/surfaces-draft/argocd-architecture.json",
+      "digest": "sha256:01dd52a517c03f8bbe17c6d1dab9f2e4492a33ca230244e677866886b07152eb",
+      "candidate_edges": 1,
+      "review_status": "automated-unreviewed",
+      "promotion_eligible": false
+    },
+    {
+      "source_id": "argocd-automated-sync",
+      "path": "authority/surfaces-draft/argocd-automated-sync.json",
+      "digest": "sha256:eec95491a2288e72fd8d83c11f906c26ef6a3d604ffc16d6e158db7ad70bf0a5",
+      "candidate_edges": 1,
+      "review_status": "automated-unreviewed",
+      "promotion_eligible": false
+    },
+    {
+      "source_id": "argocd-cluster-management",
+      "path": "authority/surfaces-draft/argocd-cluster-management.json",
+      "digest": "sha256:54058a6d977e50de571cfb6931fdfe2ad1b609e14e1a9acd6e951d0cf5b201e1",
+      "candidate_edges": 1,
+      "review_status": "automated-unreviewed",
+      "promotion_eligible": false
+    },
+    {
+      "source_id": "argocd-diffing",
+      "path": "authority/surfaces-draft/argocd-diffing.json",
+      "digest": "sha256:06ba8b46514cb91eb612d6c3790f2bbb1c876fcc9ab5d7050f4144eba9580527",
+      "candidate_edges": 1,
+      "review_status": "automated-unreviewed",
+      "promotion_eligible": false
+    },
+    {
+      "source_id": "argocd-disaster-recovery",
+      "path": "authority/surfaces-draft/argocd-disaster-recovery.json",
+      "digest": "sha256:202a29ac3b30515508bee033c16f1458d90d67ecdec3b8701c7e93c2e7bc6772",
+      "candidate_edges": 1,
+      "review_status": "automated-unreviewed",
+      "promotion_eligible": false
+    },
+    {
+      "source_id": "argocd-health",
+      "path": "authority/surfaces-draft/argocd-health.json",
+      "digest": "sha256:83239fcbed2d4c02328b2d7140a5da6d44c4f69cf8a729c7ef81662abdaf1f39",
+      "candidate_edges": 2,
+      "review_status": "automated-unreviewed",
+      "promotion_eligible": false
+    },
+    {
+      "source_id": "argocd-high-availability",
+      "path": "authority/surfaces-draft/argocd-high-availability.json",
+      "digest": "sha256:d141588e38a967f23d1f230df04238b38b04ae55ef2c3f676651a9dadea2613b",
+      "candidate_edges": 4,
+      "review_status": "automated-unreviewed",
+      "promotion_eligible": false
+    },
+    {
+      "source_id": "argocd-install-manifest",
+      "path": "authority/surfaces-draft/argocd-install-manifest.json",
+      "digest": "sha256:8dc41a81024fc45d67d5c07102606754d2996608b360eb615af453e9c06dac4e",
+      "candidate_edges": 1,
+      "review_status": "automated-unreviewed",
+      "promotion_eligible": false
+    },
+    {
+      "source_id": "argocd-metrics",
+      "path": "authority/surfaces-draft/argocd-metrics.json",
+      "digest": "sha256:bb926e192067353bd0dd44612305b0158b1d92ba75dae2e1aacfe284612bb37f",
+      "candidate_edges": 4,
+      "review_status": "automated-unreviewed",
+      "promotion_eligible": false
+    },
+    {
+      "source_id": "argocd-private-repositories",
+      "path": "authority/surfaces-draft/argocd-private-repositories.json",
+      "digest": "sha256:5e532e48f2ce52b435a8b7396e9d89fedd64eeb9c3d992a186038b439327bf9a",
+      "candidate_edges": 2,
+      "review_status": "automated-unreviewed",
+      "promotion_eligible": false
+    },
+    {
+      "source_id": "argocd-rbac",
+      "path": "authority/surfaces-draft/argocd-rbac.json",
+      "digest": "sha256:3a1441cdcb4f598b31e91fbaf238512f693326aa835c19e6b0ff299bd5c5bf87",
+      "candidate_edges": 2,
+      "review_status": "automated-unreviewed",
+      "promotion_eligible": false
+    },
+    {
+      "source_id": "argocd-reconcile-optimization",
+      "path": "authority/surfaces-draft/argocd-reconcile-optimization.json",
+      "digest": "sha256:1ad2d9c8c31e83ae8fa5a829aea5a074b2d78aae7636c61a60fd44d77ff083df",
+      "candidate_edges": 1,
+      "review_status": "automated-unreviewed",
+      "promotion_eligible": false
+    },
+    {
+      "source_id": "argocd-resource-tracking",
+      "path": "authority/surfaces-draft/argocd-resource-tracking.json",
+      "digest": "sha256:e3086367ac1a035eba182560b66544a33bf9c3a931ce2cda3d96a8ff2eab8579",
+      "candidate_edges": 1,
+      "review_status": "automated-unreviewed",
+      "promotion_eligible": false
+    },
+    {
+      "source_id": "argocd-secret-management",
+      "path": "authority/surfaces-draft/argocd-secret-management.json",
+      "digest": "sha256:56834cdcc7bc6dc0a150ba1271fb0c28179c7729ce4df061f1b03e6c36298e17",
+      "candidate_edges": 1,
+      "review_status": "automated-unreviewed",
+      "promotion_eligible": false
+    },
+    {
+      "source_id": "argocd-source-tree",
+      "path": "authority/surfaces-draft/argocd-source-tree.json",
+      "digest": "sha256:3a6f8fa35889b9c17e0a653cce115dac5812f56d918bec6e2f40a1bb03966dc5",
+      "candidate_edges": 49,
+      "review_status": "automated-unreviewed",
+      "promotion_eligible": false
+    },
+    {
+      "source_id": "argocd-sync-options",
+      "path": "authority/surfaces-draft/argocd-sync-options.json",
+      "digest": "sha256:1b76d4cff1ff4b56c0347008cc536ecc3d0989b1d6e618f41f78104eb5acbcb7",
+      "candidate_edges": 1,
+      "review_status": "automated-unreviewed",
+      "promotion_eligible": false
+    },
+    {
+      "source_id": "argocd-sync-waves",
+      "path": "authority/surfaces-draft/argocd-sync-waves.json",
+      "digest": "sha256:2683e6081a422483fafd5a5e37ef051a3dc41c711b0170c41032f6541233765e",
+      "candidate_edges": 2,
+      "review_status": "automated-unreviewed",
+      "promotion_eligible": false
+    },
+    {
+      "source_id": "argocd-upgrade-3-4-to-3-5",
+      "path": "authority/surfaces-draft/argocd-upgrade-3-4-to-3-5.json",
+      "digest": "sha256:eb8c43c0acde2c8879dd976e4d5d031d67611bd0b5f4a5a38040cce8a33337e7",
+      "candidate_edges": 1,
+      "review_status": "automated-unreviewed",
+      "promotion_eligible": false
+    },
+    {
+      "source_id": "argocd-user-management",
+      "path": "authority/surfaces-draft/argocd-user-management.json",
+      "digest": "sha256:5f7ccf10b008ef16a8815d5cd434d644924116d41a609843321e53b985516805",
+      "candidate_edges": 3,
+      "review_status": "automated-unreviewed",
+      "promotion_eligible": false
+    },
+    {
+      "source_id": "argocd-version",
+      "path": "authority/surfaces-draft/argocd-version.json",
+      "digest": "sha256:4eed749f01e8da2293ace9c56e15f3661e73d247deea53aa8ebaaa1cbd669401",
+      "candidate_edges": 1,
+      "review_status": "automated-unreviewed",
+      "promotion_eligible": false
+    }
+  ],
+  "candidate_mappings": [
+    {
+      "edge_id": "edge.application.spec.destination.argocd-application-crd",
+      "source_id": "argocd-application-crd",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-application-crd.json",
+      "candidate_artifact_digest": "sha256:8d4206f7231d9984ad1a8851af7b20e83727269563b0dbce6e1defb6dc4d37c2",
+      "locator": "document-root",
+      "domain_inventory_item_id": "application.spec.destination",
+      "candidate_behavior_id": "candidate.application.spec.destination.argocd-application-crd",
+      "candidate_variant_ids": [
+        "variant.application.spec.destination.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "implementation-construction",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.application.declarative-model",
+      "candidate_claim_id": "claim.application.desired-state",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.application.spec.project.argocd-application-crd",
+      "source_id": "argocd-application-crd",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-application-crd.json",
+      "candidate_artifact_digest": "sha256:8d4206f7231d9984ad1a8851af7b20e83727269563b0dbce6e1defb6dc4d37c2",
+      "locator": "document-root",
+      "domain_inventory_item_id": "application.spec.project",
+      "candidate_behavior_id": "candidate.application.spec.project.argocd-application-crd",
+      "candidate_variant_ids": [
+        "variant.application.spec.project.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "implementation-construction",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.application.declarative-model",
+      "candidate_claim_id": "claim.application.desired-state",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.application.spec.sources.argocd-application-crd",
+      "source_id": "argocd-application-crd",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-application-crd.json",
+      "candidate_artifact_digest": "sha256:8d4206f7231d9984ad1a8851af7b20e83727269563b0dbce6e1defb6dc4d37c2",
+      "locator": "document-root",
+      "domain_inventory_item_id": "application.spec.sources",
+      "candidate_behavior_id": "candidate.application.spec.sources.argocd-application-crd",
+      "candidate_variant_ids": [
+        "variant.application.spec.sources.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "implementation-construction",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.application.declarative-model",
+      "candidate_claim_id": "claim.application.desired-state",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.application.spec.sync-policy.argocd-application-crd",
+      "source_id": "argocd-application-crd",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-application-crd.json",
+      "candidate_artifact_digest": "sha256:8d4206f7231d9984ad1a8851af7b20e83727269563b0dbce6e1defb6dc4d37c2",
+      "locator": "document-root",
+      "domain_inventory_item_id": "application.spec.sync-policy",
+      "candidate_behavior_id": "candidate.application.spec.sync-policy.argocd-application-crd",
+      "candidate_variant_ids": [
+        "variant.application.spec.sync-policy.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "implementation-construction",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.application.declarative-model",
+      "candidate_claim_id": "claim.application.desired-state",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.sync.retry.argocd-application-crd",
+      "source_id": "argocd-application-crd",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-application-crd.json",
+      "candidate_artifact_digest": "sha256:8d4206f7231d9984ad1a8851af7b20e83727269563b0dbce6e1defb6dc4d37c2",
+      "locator": "document-root",
+      "domain_inventory_item_id": "sync.retry",
+      "candidate_behavior_id": "candidate.sync.retry.argocd-application-crd",
+      "candidate_variant_ids": [
+        "variant.sync.retry.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "implementation-construction",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.recovery.automated-self-heal",
+      "candidate_claim_id": "claim.recovery.automated-self-heal",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.source.argocd-application-specification.claim.application.desired-state",
+      "source_id": "argocd-application-specification",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-application-specification.json",
+      "candidate_artifact_digest": "sha256:df732a277cdf89e208b445d35e300f5ae4d9f73062b52ec468c5d5f25db53d5b",
+      "locator": "document-root",
+      "domain_inventory_item_id": null,
+      "candidate_behavior_id": "candidate.source.argocd-application-specification.claim.application.desired-state",
+      "candidate_variant_ids": [
+        "variant.source.argocd-application-specification.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.application.declarative-model",
+      "candidate_claim_id": "claim.application.desired-state",
+      "candidate_inventory_mapping": "mapped-source-provenance",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.source.argocd-applicationset-crd.claim.applicationset.generated-applications",
+      "source_id": "argocd-applicationset-crd",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-applicationset-crd.json",
+      "candidate_artifact_digest": "sha256:f38e54703e63b075c731c7fcfbc27375a7586af90edd46f5515ff26a2ec38616",
+      "locator": "document-root",
+      "domain_inventory_item_id": null,
+      "candidate_behavior_id": "candidate.source.argocd-applicationset-crd.claim.applicationset.generated-applications",
+      "candidate_variant_ids": [
+        "variant.source.argocd-applicationset-crd.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.applicationset.generator-templating",
+      "candidate_claim_id": "claim.applicationset.generated-applications",
+      "candidate_inventory_mapping": "mapped-source-provenance",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.source.argocd-applicationset-introduction.claim.applicationset.generated-applications",
+      "source_id": "argocd-applicationset-introduction",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-applicationset-introduction.json",
+      "candidate_artifact_digest": "sha256:5d0390072217d6196b02ed85106af4ff975a0419052f2eae4df7f08c96b4bf0a",
+      "locator": "document-root",
+      "domain_inventory_item_id": null,
+      "candidate_behavior_id": "candidate.source.argocd-applicationset-introduction.claim.applicationset.generated-applications",
+      "candidate_variant_ids": [
+        "variant.source.argocd-applicationset-introduction.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.applicationset.generator-templating",
+      "candidate_claim_id": "claim.applicationset.generated-applications",
+      "candidate_inventory_mapping": "mapped-source-provenance",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.source.argocd-applicationset-specification.claim.applicationset.generated-applications",
+      "source_id": "argocd-applicationset-specification",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-applicationset-specification.json",
+      "candidate_artifact_digest": "sha256:9f4cd79b19ffb416a458a93490dbcdcf2019df8907e60aeafa0b39419f4ef09f",
+      "locator": "document-root",
+      "domain_inventory_item_id": null,
+      "candidate_behavior_id": "candidate.source.argocd-applicationset-specification.claim.applicationset.generated-applications",
+      "candidate_variant_ids": [
+        "variant.source.argocd-applicationset-specification.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.applicationset.generator-templating",
+      "candidate_claim_id": "claim.applicationset.generated-applications",
+      "candidate_inventory_mapping": "mapped-source-provenance",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.project.orphaned-resources.argocd-appproject-crd",
+      "source_id": "argocd-appproject-crd",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-appproject-crd.json",
+      "candidate_artifact_digest": "sha256:27242b3b1db5db51e729fc7b432bb05c65f43d952b26f8f4c30ab0d0024d481f",
+      "locator": "document-root",
+      "domain_inventory_item_id": "project.orphaned-resources",
+      "candidate_behavior_id": "candidate.project.orphaned-resources.argocd-appproject-crd",
+      "candidate_variant_ids": [
+        "variant.project.orphaned-resources.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "implementation-construction",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.drift.classify-and-refresh",
+      "candidate_claim_id": "claim.drift.classify-and-refresh",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.project.source-boundary.argocd-appproject-crd",
+      "source_id": "argocd-appproject-crd",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-appproject-crd.json",
+      "candidate_artifact_digest": "sha256:27242b3b1db5db51e729fc7b432bb05c65f43d952b26f8f4c30ab0d0024d481f",
+      "locator": "document-root",
+      "domain_inventory_item_id": "project.source-boundary",
+      "candidate_behavior_id": "candidate.project.source-boundary.argocd-appproject-crd",
+      "candidate_variant_ids": [
+        "variant.project.source-boundary.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "implementation-construction",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.security.identity-authorization-boundary",
+      "candidate_claim_id": "claim.security.identity-authorization-boundary",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.source.argocd-architecture.claim.architecture.component-boundaries",
+      "source_id": "argocd-architecture",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-architecture.json",
+      "candidate_artifact_digest": "sha256:01dd52a517c03f8bbe17c6d1dab9f2e4492a33ca230244e677866886b07152eb",
+      "locator": "document-root",
+      "domain_inventory_item_id": null,
+      "candidate_behavior_id": "candidate.source.argocd-architecture.claim.architecture.component-boundaries",
+      "candidate_variant_ids": [
+        "variant.source.argocd-architecture.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.architecture.component-boundaries",
+      "candidate_claim_id": "claim.architecture.component-boundaries",
+      "candidate_inventory_mapping": "mapped-source-provenance",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.sync.automated-prune-selfheal.argocd-automated-sync",
+      "source_id": "argocd-automated-sync",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-automated-sync.json",
+      "candidate_artifact_digest": "sha256:eec95491a2288e72fd8d83c11f906c26ef6a3d604ffc16d6e158db7ad70bf0a5",
+      "locator": "document-root",
+      "domain_inventory_item_id": "sync.automated-prune-selfheal",
+      "candidate_behavior_id": "candidate.sync.automated-prune-selfheal.argocd-automated-sync",
+      "candidate_variant_ids": [
+        "variant.sync.automated-prune-selfheal.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "implementation-construction",
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.recovery.automated-self-heal",
+      "candidate_claim_id": "claim.recovery.automated-self-heal",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.connection.cluster-secret.argocd-cluster-management",
+      "source_id": "argocd-cluster-management",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-cluster-management.json",
+      "candidate_artifact_digest": "sha256:54058a6d977e50de571cfb6931fdfe2ad1b609e14e1a9acd6e951d0cf5b201e1",
+      "locator": "document-root",
+      "domain_inventory_item_id": "connection.cluster-secret",
+      "candidate_behavior_id": "candidate.connection.cluster-secret.argocd-cluster-management",
+      "candidate_variant_ids": [
+        "variant.connection.cluster-secret.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "architecture-design",
+        "implementation-construction",
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.connection.repository-cluster-registration",
+      "candidate_claim_id": "claim.connection.register-and-reject",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.diff.ignore-rules.argocd-diffing",
+      "source_id": "argocd-diffing",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-diffing.json",
+      "candidate_artifact_digest": "sha256:06ba8b46514cb91eb612d6c3790f2bbb1c876fcc9ab5d7050f4144eba9580527",
+      "locator": "document-root",
+      "domain_inventory_item_id": "diff.ignore-rules",
+      "candidate_behavior_id": "candidate.diff.ignore-rules.argocd-diffing",
+      "candidate_variant_ids": [
+        "variant.diff.ignore-rules.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "implementation-construction",
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.diff.desired-live-comparison",
+      "candidate_claim_id": "claim.diff.detect-drift",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.recovery.export-import.argocd-disaster-recovery",
+      "source_id": "argocd-disaster-recovery",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-disaster-recovery.json",
+      "candidate_artifact_digest": "sha256:202a29ac3b30515508bee033c16f1458d90d67ecdec3b8701c7e93c2e7bc6772",
+      "locator": "document-root",
+      "domain_inventory_item_id": "recovery.export-import",
+      "candidate_behavior_id": "candidate.recovery.export-import.argocd-disaster-recovery",
+      "candidate_variant_ids": [
+        "variant.recovery.export-import.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "failure-recovery",
+        "implementation-construction",
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.recovery.control-plane-restore",
+      "candidate_claim_id": "claim.recovery.restore-state",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.health.built-in.argocd-health",
+      "source_id": "argocd-health",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-health.json",
+      "candidate_artifact_digest": "sha256:83239fcbed2d4c02328b2d7140a5da6d44c4f69cf8a729c7ef81662abdaf1f39",
+      "locator": "document-root",
+      "domain_inventory_item_id": "health.built-in",
+      "candidate_behavior_id": "candidate.health.built-in.argocd-health",
+      "candidate_variant_ids": [
+        "variant.health.built-in.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "implementation-construction",
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.health.resource-assessment",
+      "candidate_claim_id": "claim.health.aggregate-status",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.health.lua-customization.argocd-health",
+      "source_id": "argocd-health",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-health.json",
+      "candidate_artifact_digest": "sha256:83239fcbed2d4c02328b2d7140a5da6d44c4f69cf8a729c7ef81662abdaf1f39",
+      "locator": "document-root",
+      "domain_inventory_item_id": "health.lua-customization",
+      "candidate_behavior_id": "candidate.health.lua-customization.argocd-health",
+      "candidate_variant_ids": [
+        "variant.health.lua-customization.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "implementation-construction",
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.health.resource-assessment",
+      "candidate_claim_id": "claim.health.aggregate-status",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.connection.cluster-shard.argocd-high-availability",
+      "source_id": "argocd-high-availability",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-high-availability.json",
+      "candidate_artifact_digest": "sha256:d141588e38a967f23d1f230df04238b38b04ae55ef2c3f676651a9dadea2613b",
+      "locator": "document-root",
+      "domain_inventory_item_id": "connection.cluster-shard",
+      "candidate_behavior_id": "candidate.connection.cluster-shard.argocd-high-availability",
+      "candidate_variant_ids": [
+        "variant.connection.cluster-shard.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "architecture-design",
+        "implementation-construction",
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.availability.component-redundancy",
+      "candidate_claim_id": "claim.availability.component-redundancy",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.ha.application-controller.argocd-high-availability",
+      "source_id": "argocd-high-availability",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-high-availability.json",
+      "candidate_artifact_digest": "sha256:d141588e38a967f23d1f230df04238b38b04ae55ef2c3f676651a9dadea2613b",
+      "locator": "document-root",
+      "domain_inventory_item_id": "ha.application-controller",
+      "candidate_behavior_id": "candidate.ha.application-controller.argocd-high-availability",
+      "candidate_variant_ids": [
+        "variant.ha.application-controller.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "implementation-construction",
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.availability.component-redundancy",
+      "candidate_claim_id": "claim.availability.component-redundancy",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.ha.cache.argocd-high-availability",
+      "source_id": "argocd-high-availability",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-high-availability.json",
+      "candidate_artifact_digest": "sha256:d141588e38a967f23d1f230df04238b38b04ae55ef2c3f676651a9dadea2613b",
+      "locator": "document-root",
+      "domain_inventory_item_id": "ha.cache",
+      "candidate_behavior_id": "candidate.ha.cache.argocd-high-availability",
+      "candidate_variant_ids": [
+        "variant.ha.cache.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "implementation-construction",
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "unclassified.capability.performance.capacity-cost-baseline",
+      "candidate_claim_id": "unclassified.claim.performance.capacity-cost-baseline",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "gap",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.ha.sharding.argocd-high-availability",
+      "source_id": "argocd-high-availability",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-high-availability.json",
+      "candidate_artifact_digest": "sha256:d141588e38a967f23d1f230df04238b38b04ae55ef2c3f676651a9dadea2613b",
+      "locator": "document-root",
+      "domain_inventory_item_id": "ha.sharding",
+      "candidate_behavior_id": "candidate.ha.sharding.argocd-high-availability",
+      "candidate_variant_ids": [
+        "variant.ha.sharding.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "implementation-construction",
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.availability.component-redundancy",
+      "candidate_claim_id": "claim.availability.component-redundancy",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.source.argocd-install-manifest.claim.architecture.component-boundaries",
+      "source_id": "argocd-install-manifest",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-install-manifest.json",
+      "candidate_artifact_digest": "sha256:8dc41a81024fc45d67d5c07102606754d2996608b360eb615af453e9c06dac4e",
+      "locator": "document-root",
+      "domain_inventory_item_id": null,
+      "candidate_behavior_id": "candidate.source.argocd-install-manifest.claim.architecture.component-boundaries",
+      "candidate_variant_ids": [
+        "variant.source.argocd-install-manifest.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.architecture.component-boundaries",
+      "candidate_claim_id": "claim.architecture.component-boundaries",
+      "candidate_inventory_mapping": "mapped-source-provenance",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.observe.metrics.applicationset.argocd-metrics",
+      "source_id": "argocd-metrics",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-metrics.json",
+      "candidate_artifact_digest": "sha256:bb926e192067353bd0dd44612305b0158b1d92ba75dae2e1aacfe284612bb37f",
+      "locator": "document-root",
+      "domain_inventory_item_id": "observe.metrics.applicationset",
+      "candidate_behavior_id": "candidate.observe.metrics.applicationset.argocd-metrics",
+      "candidate_variant_ids": [
+        "variant.observe.metrics.applicationset.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "operations-observability",
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.observability.correlate-signals",
+      "candidate_claim_id": "claim.observability.correlate-signals",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.observe.metrics.controller.argocd-metrics",
+      "source_id": "argocd-metrics",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-metrics.json",
+      "candidate_artifact_digest": "sha256:bb926e192067353bd0dd44612305b0158b1d92ba75dae2e1aacfe284612bb37f",
+      "locator": "document-root",
+      "domain_inventory_item_id": "observe.metrics.controller",
+      "candidate_behavior_id": "candidate.observe.metrics.controller.argocd-metrics",
+      "candidate_variant_ids": [
+        "variant.observe.metrics.controller.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "operations-observability",
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.observability.correlate-signals",
+      "candidate_claim_id": "claim.observability.correlate-signals",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.observe.metrics.repo-server.argocd-metrics",
+      "source_id": "argocd-metrics",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-metrics.json",
+      "candidate_artifact_digest": "sha256:bb926e192067353bd0dd44612305b0158b1d92ba75dae2e1aacfe284612bb37f",
+      "locator": "document-root",
+      "domain_inventory_item_id": "observe.metrics.repo-server",
+      "candidate_behavior_id": "candidate.observe.metrics.repo-server.argocd-metrics",
+      "candidate_variant_ids": [
+        "variant.observe.metrics.repo-server.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "operations-observability",
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.observability.correlate-signals",
+      "candidate_claim_id": "claim.observability.correlate-signals",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.observe.metrics.server.argocd-metrics",
+      "source_id": "argocd-metrics",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-metrics.json",
+      "candidate_artifact_digest": "sha256:bb926e192067353bd0dd44612305b0158b1d92ba75dae2e1aacfe284612bb37f",
+      "locator": "document-root",
+      "domain_inventory_item_id": "observe.metrics.server",
+      "candidate_behavior_id": "candidate.observe.metrics.server.argocd-metrics",
+      "candidate_variant_ids": [
+        "variant.observe.metrics.server.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "operations-observability",
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.observability.correlate-signals",
+      "candidate_claim_id": "claim.observability.correlate-signals",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.connection.repository-auth-matrix.argocd-private-repositories",
+      "source_id": "argocd-private-repositories",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-private-repositories.json",
+      "candidate_artifact_digest": "sha256:5e532e48f2ce52b435a8b7396e9d89fedd64eeb9c3d992a186038b439327bf9a",
+      "locator": "document-root",
+      "domain_inventory_item_id": "connection.repository-auth-matrix",
+      "candidate_behavior_id": "candidate.connection.repository-auth-matrix.argocd-private-repositories",
+      "candidate_variant_ids": [
+        "variant.connection.repository-auth-matrix.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "architecture-design",
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.connection.repository-cluster-registration",
+      "candidate_claim_id": "claim.connection.register-and-reject",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.connection.repository-secret.argocd-private-repositories",
+      "source_id": "argocd-private-repositories",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-private-repositories.json",
+      "candidate_artifact_digest": "sha256:5e532e48f2ce52b435a8b7396e9d89fedd64eeb9c3d992a186038b439327bf9a",
+      "locator": "document-root",
+      "domain_inventory_item_id": "connection.repository-secret",
+      "candidate_behavior_id": "candidate.connection.repository-secret.argocd-private-repositories",
+      "candidate_variant_ids": [
+        "variant.connection.repository-secret.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "architecture-design",
+        "implementation-construction",
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.connection.repository-cluster-registration",
+      "candidate_claim_id": "claim.connection.register-and-reject",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.auth.claim-mapping.argocd-rbac",
+      "source_id": "argocd-rbac",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-rbac.json",
+      "candidate_artifact_digest": "sha256:3a1441cdcb4f598b31e91fbaf238512f693326aa835c19e6b0ff299bd5c5bf87",
+      "locator": "document-root",
+      "domain_inventory_item_id": "auth.claim-mapping",
+      "candidate_behavior_id": "candidate.auth.claim-mapping.argocd-rbac",
+      "candidate_variant_ids": [
+        "variant.auth.claim-mapping.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "orientation-scope",
+        "provenance-rights",
+        "security-privacy-safety"
+      ],
+      "candidate_capability_id": "unclassified.capability.security.external-idp-interactive-sso",
+      "candidate_claim_id": "unclassified.claim.security.external-idp-interactive-sso",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "gap",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.auth.rbac-policy.argocd-rbac",
+      "source_id": "argocd-rbac",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-rbac.json",
+      "candidate_artifact_digest": "sha256:3a1441cdcb4f598b31e91fbaf238512f693326aa835c19e6b0ff299bd5c5bf87",
+      "locator": "document-root",
+      "domain_inventory_item_id": "auth.rbac-policy",
+      "candidate_behavior_id": "candidate.auth.rbac-policy.argocd-rbac",
+      "candidate_variant_ids": [
+        "variant.auth.rbac-policy.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "implementation-construction",
+        "orientation-scope",
+        "provenance-rights",
+        "security-privacy-safety"
+      ],
+      "candidate_capability_id": "capability.security.identity-authorization-boundary",
+      "candidate_claim_id": "claim.security.identity-authorization-boundary",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.source.argocd-reconcile-optimization.claim.drift.classify-and-refresh",
+      "source_id": "argocd-reconcile-optimization",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-reconcile-optimization.json",
+      "candidate_artifact_digest": "sha256:1ad2d9c8c31e83ae8fa5a829aea5a074b2d78aae7636c61a60fd44d77ff083df",
+      "locator": "document-root",
+      "domain_inventory_item_id": null,
+      "candidate_behavior_id": "candidate.source.argocd-reconcile-optimization.claim.drift.classify-and-refresh",
+      "candidate_variant_ids": [
+        "variant.source.argocd-reconcile-optimization.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.drift.classify-and-refresh",
+      "candidate_claim_id": "claim.drift.classify-and-refresh",
+      "candidate_inventory_mapping": "mapped-source-provenance",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.tracking.methods.argocd-resource-tracking",
+      "source_id": "argocd-resource-tracking",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-resource-tracking.json",
+      "candidate_artifact_digest": "sha256:e3086367ac1a035eba182560b66544a33bf9c3a931ce2cda3d96a8ff2eab8579",
+      "locator": "document-root",
+      "domain_inventory_item_id": "tracking.methods",
+      "candidate_behavior_id": "candidate.tracking.methods.argocd-resource-tracking",
+      "candidate_variant_ids": [
+        "variant.tracking.methods.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "failure-recovery",
+        "implementation-construction",
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.drift.classify-and-refresh",
+      "candidate_claim_id": "claim.drift.classify-and-refresh",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.secret.manifest-generation.argocd-secret-management",
+      "source_id": "argocd-secret-management",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-secret-management.json",
+      "candidate_artifact_digest": "sha256:56834cdcc7bc6dc0a150ba1271fb0c28179c7729ce4df061f1b03e6c36298e17",
+      "locator": "document-root",
+      "domain_inventory_item_id": "secret.manifest-generation",
+      "candidate_behavior_id": "candidate.secret.manifest-generation.argocd-secret-management",
+      "candidate_variant_ids": [
+        "variant.secret.manifest-generation.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "orientation-scope",
+        "provenance-rights",
+        "security-privacy-safety"
+      ],
+      "candidate_capability_id": "capability.security.secret-boundary",
+      "candidate_claim_id": "claim.security.no-secret-leak",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.application.multi-source.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-source-tree.json",
+      "candidate_artifact_digest": "sha256:3a6f8fa35889b9c17e0a653cce115dac5812f56d918bec6e2f40a1bb03966dc5",
+      "locator": "document-root",
+      "domain_inventory_item_id": "application.multi-source",
+      "candidate_behavior_id": "candidate.application.multi-source.argocd-source-tree",
+      "candidate_variant_ids": [
+        "variant.application.multi-source.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "implementation-construction",
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.application.declarative-model",
+      "candidate_claim_id": "claim.application.desired-state",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.application.operation.refresh.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-source-tree.json",
+      "candidate_artifact_digest": "sha256:3a6f8fa35889b9c17e0a653cce115dac5812f56d918bec6e2f40a1bb03966dc5",
+      "locator": "document-root",
+      "domain_inventory_item_id": "application.operation.refresh",
+      "candidate_behavior_id": "candidate.application.operation.refresh.argocd-source-tree",
+      "candidate_variant_ids": [
+        "variant.application.operation.refresh.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "implementation-construction",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.operations.bounded-runbook",
+      "candidate_claim_id": "claim.operations.bounded-runbook",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.application.operation.rollback.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-source-tree.json",
+      "candidate_artifact_digest": "sha256:3a6f8fa35889b9c17e0a653cce115dac5812f56d918bec6e2f40a1bb03966dc5",
+      "locator": "document-root",
+      "domain_inventory_item_id": "application.operation.rollback",
+      "candidate_behavior_id": "candidate.application.operation.rollback.argocd-source-tree",
+      "candidate_variant_ids": [
+        "variant.application.operation.rollback.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "implementation-construction",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "unclassified.capability.migration.multi-version-rollback-matrix",
+      "candidate_claim_id": "unclassified.claim.migration.multi-version-rollback-matrix",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "gap",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.application.operation.sync.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-source-tree.json",
+      "candidate_artifact_digest": "sha256:3a6f8fa35889b9c17e0a653cce115dac5812f56d918bec6e2f40a1bb03966dc5",
+      "locator": "document-root",
+      "domain_inventory_item_id": "application.operation.sync",
+      "candidate_behavior_id": "candidate.application.operation.sync.argocd-source-tree",
+      "candidate_variant_ids": [
+        "variant.application.operation.sync.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "implementation-construction",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.sync.order-and-policy",
+      "candidate_claim_id": "claim.sync.deterministic-order",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.application.operation.terminate.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-source-tree.json",
+      "candidate_artifact_digest": "sha256:3a6f8fa35889b9c17e0a653cce115dac5812f56d918bec6e2f40a1bb03966dc5",
+      "locator": "document-root",
+      "domain_inventory_item_id": "application.operation.terminate",
+      "candidate_behavior_id": "candidate.application.operation.terminate.argocd-source-tree",
+      "candidate_variant_ids": [
+        "variant.application.operation.terminate.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "implementation-construction",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.operations.bounded-runbook",
+      "candidate_claim_id": "claim.operations.bounded-runbook",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.application.operation.wait.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-source-tree.json",
+      "candidate_artifact_digest": "sha256:3a6f8fa35889b9c17e0a653cce115dac5812f56d918bec6e2f40a1bb03966dc5",
+      "locator": "document-root",
+      "domain_inventory_item_id": "application.operation.wait",
+      "candidate_behavior_id": "candidate.application.operation.wait.argocd-source-tree",
+      "candidate_variant_ids": [
+        "variant.application.operation.wait.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "implementation-construction",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.operations.bounded-runbook",
+      "candidate_claim_id": "claim.operations.bounded-runbook",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.application.resource-actions.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-source-tree.json",
+      "candidate_artifact_digest": "sha256:3a6f8fa35889b9c17e0a653cce115dac5812f56d918bec6e2f40a1bb03966dc5",
+      "locator": "document-root",
+      "domain_inventory_item_id": "application.resource-actions",
+      "candidate_behavior_id": "candidate.application.resource-actions.argocd-source-tree",
+      "candidate_variant_ids": [
+        "variant.application.resource-actions.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "implementation-construction",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.operations.bounded-runbook",
+      "candidate_claim_id": "claim.operations.bounded-runbook",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.applicationset.any-namespace.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-source-tree.json",
+      "candidate_artifact_digest": "sha256:3a6f8fa35889b9c17e0a653cce115dac5812f56d918bec6e2f40a1bb03966dc5",
+      "locator": "document-root",
+      "domain_inventory_item_id": "applicationset.any-namespace",
+      "candidate_behavior_id": "candidate.applicationset.any-namespace.argocd-source-tree",
+      "candidate_variant_ids": [
+        "variant.applicationset.any-namespace.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.security.identity-authorization-boundary",
+      "candidate_claim_id": "claim.security.identity-authorization-boundary",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.applicationset.deletion.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-source-tree.json",
+      "candidate_artifact_digest": "sha256:3a6f8fa35889b9c17e0a653cce115dac5812f56d918bec6e2f40a1bb03966dc5",
+      "locator": "document-root",
+      "domain_inventory_item_id": "applicationset.deletion",
+      "candidate_behavior_id": "candidate.applicationset.deletion.argocd-source-tree",
+      "candidate_variant_ids": [
+        "variant.applicationset.deletion.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.applicationset.generator-templating",
+      "candidate_claim_id": "claim.applicationset.generated-applications",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.applicationset.generator.cluster-decision-resource.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-source-tree.json",
+      "candidate_artifact_digest": "sha256:3a6f8fa35889b9c17e0a653cce115dac5812f56d918bec6e2f40a1bb03966dc5",
+      "locator": "document-root",
+      "domain_inventory_item_id": "applicationset.generator.cluster-decision-resource",
+      "candidate_behavior_id": "candidate.applicationset.generator.cluster-decision-resource.argocd-source-tree",
+      "candidate_variant_ids": [
+        "variant.applicationset.generator.cluster-decision-resource.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "implementation-construction",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "unclassified.capability.compatibility.broad-version-generator-matrix",
+      "candidate_claim_id": "unclassified.claim.compatibility.broad-version-generator-matrix",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "gap",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.applicationset.generator.cluster.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-source-tree.json",
+      "candidate_artifact_digest": "sha256:3a6f8fa35889b9c17e0a653cce115dac5812f56d918bec6e2f40a1bb03966dc5",
+      "locator": "document-root",
+      "domain_inventory_item_id": "applicationset.generator.cluster",
+      "candidate_behavior_id": "candidate.applicationset.generator.cluster.argocd-source-tree",
+      "candidate_variant_ids": [
+        "variant.applicationset.generator.cluster.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "implementation-construction",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.applicationset.generator-templating",
+      "candidate_claim_id": "claim.applicationset.generated-applications",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.applicationset.generator.git-directory.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-source-tree.json",
+      "candidate_artifact_digest": "sha256:3a6f8fa35889b9c17e0a653cce115dac5812f56d918bec6e2f40a1bb03966dc5",
+      "locator": "document-root",
+      "domain_inventory_item_id": "applicationset.generator.git-directory",
+      "candidate_behavior_id": "candidate.applicationset.generator.git-directory.argocd-source-tree",
+      "candidate_variant_ids": [
+        "variant.applicationset.generator.git-directory.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "implementation-construction",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.applicationset.generator-templating",
+      "candidate_claim_id": "claim.applicationset.generated-applications",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.applicationset.generator.git-file.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-source-tree.json",
+      "candidate_artifact_digest": "sha256:3a6f8fa35889b9c17e0a653cce115dac5812f56d918bec6e2f40a1bb03966dc5",
+      "locator": "document-root",
+      "domain_inventory_item_id": "applicationset.generator.git-file",
+      "candidate_behavior_id": "candidate.applicationset.generator.git-file.argocd-source-tree",
+      "candidate_variant_ids": [
+        "variant.applicationset.generator.git-file.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "implementation-construction",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.applicationset.generator-templating",
+      "candidate_claim_id": "claim.applicationset.generated-applications",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.applicationset.generator.list.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-source-tree.json",
+      "candidate_artifact_digest": "sha256:3a6f8fa35889b9c17e0a653cce115dac5812f56d918bec6e2f40a1bb03966dc5",
+      "locator": "document-root",
+      "domain_inventory_item_id": "applicationset.generator.list",
+      "candidate_behavior_id": "candidate.applicationset.generator.list.argocd-source-tree",
+      "candidate_variant_ids": [
+        "variant.applicationset.generator.list.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "implementation-construction",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.applicationset.generator-templating",
+      "candidate_claim_id": "claim.applicationset.generated-applications",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.applicationset.generator.matrix.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-source-tree.json",
+      "candidate_artifact_digest": "sha256:3a6f8fa35889b9c17e0a653cce115dac5812f56d918bec6e2f40a1bb03966dc5",
+      "locator": "document-root",
+      "domain_inventory_item_id": "applicationset.generator.matrix",
+      "candidate_behavior_id": "candidate.applicationset.generator.matrix.argocd-source-tree",
+      "candidate_variant_ids": [
+        "variant.applicationset.generator.matrix.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "implementation-construction",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "unclassified.capability.compatibility.broad-version-generator-matrix",
+      "candidate_claim_id": "unclassified.claim.compatibility.broad-version-generator-matrix",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "gap",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.applicationset.generator.merge.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-source-tree.json",
+      "candidate_artifact_digest": "sha256:3a6f8fa35889b9c17e0a653cce115dac5812f56d918bec6e2f40a1bb03966dc5",
+      "locator": "document-root",
+      "domain_inventory_item_id": "applicationset.generator.merge",
+      "candidate_behavior_id": "candidate.applicationset.generator.merge.argocd-source-tree",
+      "candidate_variant_ids": [
+        "variant.applicationset.generator.merge.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "implementation-construction",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "unclassified.capability.compatibility.broad-version-generator-matrix",
+      "candidate_claim_id": "unclassified.claim.compatibility.broad-version-generator-matrix",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "gap",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.applicationset.generator.plugin.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-source-tree.json",
+      "candidate_artifact_digest": "sha256:3a6f8fa35889b9c17e0a653cce115dac5812f56d918bec6e2f40a1bb03966dc5",
+      "locator": "document-root",
+      "domain_inventory_item_id": "applicationset.generator.plugin",
+      "candidate_behavior_id": "candidate.applicationset.generator.plugin.argocd-source-tree",
+      "candidate_variant_ids": [
+        "variant.applicationset.generator.plugin.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "implementation-construction",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "unclassified.capability.compatibility.broad-version-generator-matrix",
+      "candidate_claim_id": "unclassified.claim.compatibility.broad-version-generator-matrix",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "gap",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.applicationset.generator.pull-request.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-source-tree.json",
+      "candidate_artifact_digest": "sha256:3a6f8fa35889b9c17e0a653cce115dac5812f56d918bec6e2f40a1bb03966dc5",
+      "locator": "document-root",
+      "domain_inventory_item_id": "applicationset.generator.pull-request",
+      "candidate_behavior_id": "candidate.applicationset.generator.pull-request.argocd-source-tree",
+      "candidate_variant_ids": [
+        "variant.applicationset.generator.pull-request.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "implementation-construction",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "unclassified.capability.compatibility.broad-version-generator-matrix",
+      "candidate_claim_id": "unclassified.claim.compatibility.broad-version-generator-matrix",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "gap",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.applicationset.generator.scm-provider.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-source-tree.json",
+      "candidate_artifact_digest": "sha256:3a6f8fa35889b9c17e0a653cce115dac5812f56d918bec6e2f40a1bb03966dc5",
+      "locator": "document-root",
+      "domain_inventory_item_id": "applicationset.generator.scm-provider",
+      "candidate_behavior_id": "candidate.applicationset.generator.scm-provider.argocd-source-tree",
+      "candidate_variant_ids": [
+        "variant.applicationset.generator.scm-provider.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "implementation-construction",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "unclassified.capability.compatibility.broad-version-generator-matrix",
+      "candidate_claim_id": "unclassified.claim.compatibility.broad-version-generator-matrix",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "gap",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.applicationset.go-template.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-source-tree.json",
+      "candidate_artifact_digest": "sha256:3a6f8fa35889b9c17e0a653cce115dac5812f56d918bec6e2f40a1bb03966dc5",
+      "locator": "document-root",
+      "domain_inventory_item_id": "applicationset.go-template",
+      "candidate_behavior_id": "candidate.applicationset.go-template.argocd-source-tree",
+      "candidate_variant_ids": [
+        "variant.applicationset.go-template.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "implementation-construction",
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.applicationset.generator-templating",
+      "candidate_claim_id": "claim.applicationset.generated-applications",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.applicationset.post-selector.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-source-tree.json",
+      "candidate_artifact_digest": "sha256:3a6f8fa35889b9c17e0a653cce115dac5812f56d918bec6e2f40a1bb03966dc5",
+      "locator": "document-root",
+      "domain_inventory_item_id": "applicationset.post-selector",
+      "candidate_behavior_id": "candidate.applicationset.post-selector.argocd-source-tree",
+      "candidate_variant_ids": [
+        "variant.applicationset.post-selector.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.applicationset.generator-templating",
+      "candidate_claim_id": "claim.applicationset.generated-applications",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.applicationset.progressive-sync.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-source-tree.json",
+      "candidate_artifact_digest": "sha256:3a6f8fa35889b9c17e0a653cce115dac5812f56d918bec6e2f40a1bb03966dc5",
+      "locator": "document-root",
+      "domain_inventory_item_id": "applicationset.progressive-sync",
+      "candidate_behavior_id": "candidate.applicationset.progressive-sync.argocd-source-tree",
+      "candidate_variant_ids": [
+        "variant.applicationset.progressive-sync.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.promotion.git-mediated-change",
+      "candidate_claim_id": "claim.promotion.git-boundary",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.applicationset.template.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-source-tree.json",
+      "candidate_artifact_digest": "sha256:3a6f8fa35889b9c17e0a653cce115dac5812f56d918bec6e2f40a1bb03966dc5",
+      "locator": "document-root",
+      "domain_inventory_item_id": "applicationset.template",
+      "candidate_behavior_id": "candidate.applicationset.template.argocd-source-tree",
+      "candidate_variant_ids": [
+        "variant.applicationset.template.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "implementation-construction",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.applicationset.generator-templating",
+      "candidate_claim_id": "claim.applicationset.generated-applications",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.auth.login-session.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-source-tree.json",
+      "candidate_artifact_digest": "sha256:3a6f8fa35889b9c17e0a653cce115dac5812f56d918bec6e2f40a1bb03966dc5",
+      "locator": "document-root",
+      "domain_inventory_item_id": "auth.login-session",
+      "candidate_behavior_id": "candidate.auth.login-session.argocd-source-tree",
+      "candidate_variant_ids": [
+        "variant.auth.login-session.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "implementation-construction",
+        "provenance-rights",
+        "security-privacy-safety"
+      ],
+      "candidate_capability_id": "unclassified.capability.security.external-idp-interactive-sso",
+      "candidate_claim_id": "unclassified.claim.security.external-idp-interactive-sso",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "gap",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.auth.permission-check.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-source-tree.json",
+      "candidate_artifact_digest": "sha256:3a6f8fa35889b9c17e0a653cce115dac5812f56d918bec6e2f40a1bb03966dc5",
+      "locator": "document-root",
+      "domain_inventory_item_id": "auth.permission-check",
+      "candidate_behavior_id": "candidate.auth.permission-check.argocd-source-tree",
+      "candidate_variant_ids": [
+        "variant.auth.permission-check.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "implementation-construction",
+        "provenance-rights",
+        "security-privacy-safety"
+      ],
+      "candidate_capability_id": "capability.security.identity-authorization-boundary",
+      "candidate_claim_id": "claim.security.identity-authorization-boundary",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.connection.cluster-auth-rotation.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-source-tree.json",
+      "candidate_artifact_digest": "sha256:3a6f8fa35889b9c17e0a653cce115dac5812f56d918bec6e2f40a1bb03966dc5",
+      "locator": "document-root",
+      "domain_inventory_item_id": "connection.cluster-auth-rotation",
+      "candidate_behavior_id": "candidate.connection.cluster-auth-rotation.argocd-source-tree",
+      "candidate_variant_ids": [
+        "variant.connection.cluster-auth-rotation.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "architecture-design",
+        "implementation-construction",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.connection.repository-cluster-registration",
+      "candidate_claim_id": "claim.connection.register-and-reject",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.connection.cluster-namespaces.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-source-tree.json",
+      "candidate_artifact_digest": "sha256:3a6f8fa35889b9c17e0a653cce115dac5812f56d918bec6e2f40a1bb03966dc5",
+      "locator": "document-root",
+      "domain_inventory_item_id": "connection.cluster-namespaces",
+      "candidate_behavior_id": "candidate.connection.cluster-namespaces.argocd-source-tree",
+      "candidate_variant_ids": [
+        "variant.connection.cluster-namespaces.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "architecture-design",
+        "implementation-construction",
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.connection.repository-cluster-registration",
+      "candidate_claim_id": "claim.connection.register-and-reject",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.connection.repository-credentials.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-source-tree.json",
+      "candidate_artifact_digest": "sha256:3a6f8fa35889b9c17e0a653cce115dac5812f56d918bec6e2f40a1bb03966dc5",
+      "locator": "document-root",
+      "domain_inventory_item_id": "connection.repository-credentials",
+      "candidate_behavior_id": "candidate.connection.repository-credentials.argocd-source-tree",
+      "candidate_variant_ids": [
+        "variant.connection.repository-credentials.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "architecture-design",
+        "implementation-construction",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.connection.repository-cluster-registration",
+      "candidate_claim_id": "claim.connection.register-and-reject",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.connection.repository-tls-ssh.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-source-tree.json",
+      "candidate_artifact_digest": "sha256:3a6f8fa35889b9c17e0a653cce115dac5812f56d918bec6e2f40a1bb03966dc5",
+      "locator": "document-root",
+      "domain_inventory_item_id": "connection.repository-tls-ssh",
+      "candidate_behavior_id": "candidate.connection.repository-tls-ssh.argocd-source-tree",
+      "candidate_variant_ids": [
+        "variant.connection.repository-tls-ssh.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "architecture-design",
+        "implementation-construction",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.connection.repository-cluster-registration",
+      "candidate_claim_id": "claim.connection.register-and-reject",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.diff.server-side.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-source-tree.json",
+      "candidate_artifact_digest": "sha256:3a6f8fa35889b9c17e0a653cce115dac5812f56d918bec6e2f40a1bb03966dc5",
+      "locator": "document-root",
+      "domain_inventory_item_id": "diff.server-side",
+      "candidate_behavior_id": "candidate.diff.server-side.argocd-source-tree",
+      "candidate_variant_ids": [
+        "variant.diff.server-side.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "implementation-construction",
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.diff.desired-live-comparison",
+      "candidate_claim_id": "claim.diff.detect-drift",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.extension.config-management-plugin.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-source-tree.json",
+      "candidate_artifact_digest": "sha256:3a6f8fa35889b9c17e0a653cce115dac5812f56d918bec6e2f40a1bb03966dc5",
+      "locator": "document-root",
+      "domain_inventory_item_id": "extension.config-management-plugin",
+      "candidate_behavior_id": "candidate.extension.config-management-plugin.argocd-source-tree",
+      "candidate_variant_ids": [
+        "variant.extension.config-management-plugin.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "implementation-construction",
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.security.secret-boundary",
+      "candidate_claim_id": "claim.security.no-secret-leak",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.extension.proxy.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-source-tree.json",
+      "candidate_artifact_digest": "sha256:3a6f8fa35889b9c17e0a653cce115dac5812f56d918bec6e2f40a1bb03966dc5",
+      "locator": "document-root",
+      "domain_inventory_item_id": "extension.proxy",
+      "candidate_behavior_id": "candidate.extension.proxy.argocd-source-tree",
+      "candidate_variant_ids": [
+        "variant.extension.proxy.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "implementation-construction",
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "unclassified.capability.compatibility.broad-version-generator-matrix",
+      "candidate_claim_id": "unclassified.claim.compatibility.broad-version-generator-matrix",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "gap",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.extension.ui.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-source-tree.json",
+      "candidate_artifact_digest": "sha256:3a6f8fa35889b9c17e0a653cce115dac5812f56d918bec6e2f40a1bb03966dc5",
+      "locator": "document-root",
+      "domain_inventory_item_id": "extension.ui",
+      "candidate_behavior_id": "candidate.extension.ui.argocd-source-tree",
+      "candidate_variant_ids": [
+        "variant.extension.ui.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "implementation-construction",
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "unclassified.capability.compatibility.broad-version-generator-matrix",
+      "candidate_claim_id": "unclassified.claim.compatibility.broad-version-generator-matrix",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "gap",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.ha.api-server.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-source-tree.json",
+      "candidate_artifact_digest": "sha256:3a6f8fa35889b9c17e0a653cce115dac5812f56d918bec6e2f40a1bb03966dc5",
+      "locator": "document-root",
+      "domain_inventory_item_id": "ha.api-server",
+      "candidate_behavior_id": "candidate.ha.api-server.argocd-source-tree",
+      "candidate_variant_ids": [
+        "variant.ha.api-server.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "implementation-construction",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.availability.component-redundancy",
+      "candidate_claim_id": "claim.availability.component-redundancy",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.ha.applicationset-controller.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-source-tree.json",
+      "candidate_artifact_digest": "sha256:3a6f8fa35889b9c17e0a653cce115dac5812f56d918bec6e2f40a1bb03966dc5",
+      "locator": "document-root",
+      "domain_inventory_item_id": "ha.applicationset-controller",
+      "candidate_behavior_id": "candidate.ha.applicationset-controller.argocd-source-tree",
+      "candidate_variant_ids": [
+        "variant.ha.applicationset-controller.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "implementation-construction",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.availability.component-redundancy",
+      "candidate_claim_id": "claim.availability.component-redundancy",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.ha.redis.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-source-tree.json",
+      "candidate_artifact_digest": "sha256:3a6f8fa35889b9c17e0a653cce115dac5812f56d918bec6e2f40a1bb03966dc5",
+      "locator": "document-root",
+      "domain_inventory_item_id": "ha.redis",
+      "candidate_behavior_id": "candidate.ha.redis.argocd-source-tree",
+      "candidate_variant_ids": [
+        "variant.ha.redis.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "implementation-construction",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.availability.component-redundancy",
+      "candidate_claim_id": "claim.availability.component-redundancy",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.ha.repo-server.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-source-tree.json",
+      "candidate_artifact_digest": "sha256:3a6f8fa35889b9c17e0a653cce115dac5812f56d918bec6e2f40a1bb03966dc5",
+      "locator": "document-root",
+      "domain_inventory_item_id": "ha.repo-server",
+      "candidate_behavior_id": "candidate.ha.repo-server.argocd-source-tree",
+      "candidate_variant_ids": [
+        "variant.ha.repo-server.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "implementation-construction",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.availability.component-redundancy",
+      "candidate_claim_id": "claim.availability.component-redundancy",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.notifications.controller.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-source-tree.json",
+      "candidate_artifact_digest": "sha256:3a6f8fa35889b9c17e0a653cce115dac5812f56d918bec6e2f40a1bb03966dc5",
+      "locator": "document-root",
+      "domain_inventory_item_id": "notifications.controller",
+      "candidate_behavior_id": "candidate.notifications.controller.argocd-source-tree",
+      "candidate_variant_ids": [
+        "variant.notifications.controller.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "implementation-construction",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.notifications.local-webhook-delivery",
+      "candidate_claim_id": "claim.notifications.local-webhook-delivery",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.notifications.failure-metrics.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-source-tree.json",
+      "candidate_artifact_digest": "sha256:3a6f8fa35889b9c17e0a653cce115dac5812f56d918bec6e2f40a1bb03966dc5",
+      "locator": "document-root",
+      "domain_inventory_item_id": "notifications.failure-metrics",
+      "candidate_behavior_id": "candidate.notifications.failure-metrics.argocd-source-tree",
+      "candidate_variant_ids": [
+        "variant.notifications.failure-metrics.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.notifications.local-webhook-delivery",
+      "candidate_claim_id": "claim.notifications.local-webhook-delivery",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.notifications.service-delivery.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-source-tree.json",
+      "candidate_artifact_digest": "sha256:3a6f8fa35889b9c17e0a653cce115dac5812f56d918bec6e2f40a1bb03966dc5",
+      "locator": "document-root",
+      "domain_inventory_item_id": "notifications.service-delivery",
+      "candidate_behavior_id": "candidate.notifications.service-delivery.argocd-source-tree",
+      "candidate_variant_ids": [
+        "variant.notifications.service-delivery.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "implementation-construction",
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.notifications.local-webhook-delivery",
+      "candidate_claim_id": "claim.notifications.local-webhook-delivery",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.notifications.subscription.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-source-tree.json",
+      "candidate_artifact_digest": "sha256:3a6f8fa35889b9c17e0a653cce115dac5812f56d918bec6e2f40a1bb03966dc5",
+      "locator": "document-root",
+      "domain_inventory_item_id": "notifications.subscription",
+      "candidate_behavior_id": "candidate.notifications.subscription.argocd-source-tree",
+      "candidate_variant_ids": [
+        "variant.notifications.subscription.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "implementation-construction",
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.notifications.local-webhook-delivery",
+      "candidate_claim_id": "claim.notifications.local-webhook-delivery",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.notifications.trigger-template.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-source-tree.json",
+      "candidate_artifact_digest": "sha256:3a6f8fa35889b9c17e0a653cce115dac5812f56d918bec6e2f40a1bb03966dc5",
+      "locator": "document-root",
+      "domain_inventory_item_id": "notifications.trigger-template",
+      "candidate_behavior_id": "candidate.notifications.trigger-template.argocd-source-tree",
+      "candidate_variant_ids": [
+        "variant.notifications.trigger-template.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "implementation-construction",
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.notifications.local-webhook-delivery",
+      "candidate_claim_id": "claim.notifications.local-webhook-delivery",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.observe.traces.otlp.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-source-tree.json",
+      "candidate_artifact_digest": "sha256:3a6f8fa35889b9c17e0a653cce115dac5812f56d918bec6e2f40a1bb03966dc5",
+      "locator": "document-root",
+      "domain_inventory_item_id": "observe.traces.otlp",
+      "candidate_behavior_id": "candidate.observe.traces.otlp.argocd-source-tree",
+      "candidate_variant_ids": [
+        "variant.observe.traces.otlp.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "implementation-construction",
+        "operations-observability",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "unclassified.capability.observability.distributed-trace-incident-capacity",
+      "candidate_claim_id": "unclassified.claim.observability.distributed-trace-incident-capacity",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "gap",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.project.destination-boundary.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-source-tree.json",
+      "candidate_artifact_digest": "sha256:3a6f8fa35889b9c17e0a653cce115dac5812f56d918bec6e2f40a1bb03966dc5",
+      "locator": "document-root",
+      "domain_inventory_item_id": "project.destination-boundary",
+      "candidate_behavior_id": "candidate.project.destination-boundary.argocd-source-tree",
+      "candidate_variant_ids": [
+        "variant.project.destination-boundary.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "implementation-construction",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.security.identity-authorization-boundary",
+      "candidate_claim_id": "claim.security.identity-authorization-boundary",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.project.resource-boundary.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-source-tree.json",
+      "candidate_artifact_digest": "sha256:3a6f8fa35889b9c17e0a653cce115dac5812f56d918bec6e2f40a1bb03966dc5",
+      "locator": "document-root",
+      "domain_inventory_item_id": "project.resource-boundary",
+      "candidate_behavior_id": "candidate.project.resource-boundary.argocd-source-tree",
+      "candidate_variant_ids": [
+        "variant.project.resource-boundary.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "implementation-construction",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.security.identity-authorization-boundary",
+      "candidate_claim_id": "claim.security.identity-authorization-boundary",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.project.roles.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-source-tree.json",
+      "candidate_artifact_digest": "sha256:3a6f8fa35889b9c17e0a653cce115dac5812f56d918bec6e2f40a1bb03966dc5",
+      "locator": "document-root",
+      "domain_inventory_item_id": "project.roles",
+      "candidate_behavior_id": "candidate.project.roles.argocd-source-tree",
+      "candidate_variant_ids": [
+        "variant.project.roles.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "implementation-construction",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.security.identity-authorization-boundary",
+      "candidate_claim_id": "claim.security.identity-authorization-boundary",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.project.source-integrity.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-source-tree.json",
+      "candidate_artifact_digest": "sha256:3a6f8fa35889b9c17e0a653cce115dac5812f56d918bec6e2f40a1bb03966dc5",
+      "locator": "document-root",
+      "domain_inventory_item_id": "project.source-integrity",
+      "candidate_behavior_id": "candidate.project.source-integrity.argocd-source-tree",
+      "candidate_variant_ids": [
+        "variant.project.source-integrity.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "implementation-construction",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.security.secret-boundary",
+      "candidate_claim_id": "claim.security.no-secret-leak",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.project.sync-windows.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-source-tree.json",
+      "candidate_artifact_digest": "sha256:3a6f8fa35889b9c17e0a653cce115dac5812f56d918bec6e2f40a1bb03966dc5",
+      "locator": "document-root",
+      "domain_inventory_item_id": "project.sync-windows",
+      "candidate_behavior_id": "candidate.project.sync-windows.argocd-source-tree",
+      "candidate_variant_ids": [
+        "variant.project.sync-windows.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "implementation-construction",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.sync.order-and-policy",
+      "candidate_claim_id": "claim.sync.deterministic-order",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.secret.repository-cluster-boundary.argocd-source-tree",
+      "source_id": "argocd-source-tree",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-source-tree.json",
+      "candidate_artifact_digest": "sha256:3a6f8fa35889b9c17e0a653cce115dac5812f56d918bec6e2f40a1bb03966dc5",
+      "locator": "document-root",
+      "domain_inventory_item_id": "secret.repository-cluster-boundary",
+      "candidate_behavior_id": "candidate.secret.repository-cluster-boundary.argocd-source-tree",
+      "candidate_variant_ids": [
+        "variant.secret.repository-cluster-boundary.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "implementation-construction",
+        "orientation-scope",
+        "provenance-rights",
+        "security-privacy-safety"
+      ],
+      "candidate_capability_id": "capability.security.secret-boundary",
+      "candidate_claim_id": "claim.security.no-secret-leak",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.sync.options.argocd-sync-options",
+      "source_id": "argocd-sync-options",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-sync-options.json",
+      "candidate_artifact_digest": "sha256:1b76d4cff1ff4b56c0347008cc536ecc3d0989b1d6e618f41f78104eb5acbcb7",
+      "locator": "document-root",
+      "domain_inventory_item_id": "sync.options",
+      "candidate_behavior_id": "candidate.sync.options.argocd-sync-options",
+      "candidate_variant_ids": [
+        "variant.sync.options.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "implementation-construction",
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.sync.order-and-policy",
+      "candidate_claim_id": "claim.sync.deterministic-order",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.sync.hooks.argocd-sync-waves",
+      "source_id": "argocd-sync-waves",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-sync-waves.json",
+      "candidate_artifact_digest": "sha256:2683e6081a422483fafd5a5e37ef051a3dc41c711b0170c41032f6541233765e",
+      "locator": "document-root",
+      "domain_inventory_item_id": "sync.hooks",
+      "candidate_behavior_id": "candidate.sync.hooks.argocd-sync-waves",
+      "candidate_variant_ids": [
+        "variant.sync.hooks.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "implementation-construction",
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.sync.hook-wave-lifecycle",
+      "candidate_claim_id": "claim.sync.hook-wave-lifecycle",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.sync.waves.argocd-sync-waves",
+      "source_id": "argocd-sync-waves",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-sync-waves.json",
+      "candidate_artifact_digest": "sha256:2683e6081a422483fafd5a5e37ef051a3dc41c711b0170c41032f6541233765e",
+      "locator": "document-root",
+      "domain_inventory_item_id": "sync.waves",
+      "candidate_behavior_id": "candidate.sync.waves.argocd-sync-waves",
+      "candidate_variant_ids": [
+        "variant.sync.waves.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "implementation-construction",
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.sync.hook-wave-lifecycle",
+      "candidate_claim_id": "claim.sync.hook-wave-lifecycle",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.migration.preflight-backup.argocd-upgrade-3-4-to-3-5",
+      "source_id": "argocd-upgrade-3-4-to-3-5",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-upgrade-3-4-to-3-5.json",
+      "candidate_artifact_digest": "sha256:eb8c43c0acde2c8879dd976e4d5d031d67611bd0b5f4a5a38040cce8a33337e7",
+      "locator": "document-root",
+      "domain_inventory_item_id": "migration.preflight-backup",
+      "candidate_behavior_id": "candidate.migration.preflight-backup.argocd-upgrade-3-4-to-3-5",
+      "candidate_variant_ids": [
+        "variant.migration.preflight-backup.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "migration-evolution-deprecation",
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.migration.preflight-and-verify",
+      "candidate_claim_id": "claim.migration.preflight-and-verify",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.auth.dex-connector.argocd-user-management",
+      "source_id": "argocd-user-management",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-user-management.json",
+      "candidate_artifact_digest": "sha256:5f7ccf10b008ef16a8815d5cd434d644924116d41a609843321e53b985516805",
+      "locator": "document-root",
+      "domain_inventory_item_id": "auth.dex-connector",
+      "candidate_behavior_id": "candidate.auth.dex-connector.argocd-user-management",
+      "candidate_variant_ids": [
+        "variant.auth.dex-connector.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "implementation-construction",
+        "orientation-scope",
+        "provenance-rights",
+        "security-privacy-safety"
+      ],
+      "candidate_capability_id": "unclassified.capability.security.external-idp-interactive-sso",
+      "candidate_claim_id": "unclassified.claim.security.external-idp-interactive-sso",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "gap",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.auth.external-oidc.argocd-user-management",
+      "source_id": "argocd-user-management",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-user-management.json",
+      "candidate_artifact_digest": "sha256:5f7ccf10b008ef16a8815d5cd434d644924116d41a609843321e53b985516805",
+      "locator": "document-root",
+      "domain_inventory_item_id": "auth.external-oidc",
+      "candidate_behavior_id": "candidate.auth.external-oidc.argocd-user-management",
+      "candidate_variant_ids": [
+        "variant.auth.external-oidc.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "implementation-construction",
+        "orientation-scope",
+        "provenance-rights",
+        "security-privacy-safety"
+      ],
+      "candidate_capability_id": "unclassified.capability.security.external-idp-interactive-sso",
+      "candidate_claim_id": "unclassified.claim.security.external-idp-interactive-sso",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "gap",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.auth.local-account.argocd-user-management",
+      "source_id": "argocd-user-management",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-user-management.json",
+      "candidate_artifact_digest": "sha256:5f7ccf10b008ef16a8815d5cd434d644924116d41a609843321e53b985516805",
+      "locator": "document-root",
+      "domain_inventory_item_id": "auth.local-account",
+      "candidate_behavior_id": "candidate.auth.local-account.argocd-user-management",
+      "candidate_variant_ids": [
+        "variant.auth.local-account.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "implementation-construction",
+        "orientation-scope",
+        "provenance-rights",
+        "security-privacy-safety"
+      ],
+      "candidate_capability_id": "capability.security.identity-authorization-boundary",
+      "candidate_claim_id": "claim.security.identity-authorization-boundary",
+      "candidate_inventory_mapping": "mapped-domain-item",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    },
+    {
+      "edge_id": "edge.source.argocd-version.claim.migration.preflight-and-verify",
+      "source_id": "argocd-version",
+      "candidate_artifact_path": "authority/surfaces-draft/argocd-version.json",
+      "candidate_artifact_digest": "sha256:4eed749f01e8da2293ace9c56e15f3661e73d247deea53aa8ebaaa1cbd669401",
+      "locator": "document-root",
+      "domain_inventory_item_id": null,
+      "candidate_behavior_id": "candidate.source.argocd-version.claim.migration.preflight-and-verify",
+      "candidate_variant_ids": [
+        "variant.source.argocd-version.argocd-v3-5-2"
+      ],
+      "candidate_surface_ids": [
+        "provenance-rights"
+      ],
+      "candidate_capability_id": "capability.migration.preflight-and-verify",
+      "candidate_claim_id": "claim.migration.preflight-and-verify",
+      "candidate_inventory_mapping": "mapped-source-provenance",
+      "claim_binding_status": "bound",
+      "authority_semantic_status": "pending-human-review",
+      "final_surface_promoted": false,
+      "completion_credit": false
+    }
+  ],
+  "unmapped_candidate_edge_ids": []
+}

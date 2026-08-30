@@ -43,6 +43,10 @@ INPUT_SPECS = {
         "kind": "harness",
         "members": ["scripts/generate_core_v2_scenario_plan_gap.py", "scripts/test_core_v2_scenario_plan_gap.py"],
     },
+    "harness.surface-inventory-readiness": {
+        "kind": "harness",
+        "members": ["scripts/generate_surface_inventory_readiness.py", "scripts/test_surface_inventory_readiness.py"],
+    },
     "harness.core-v2-dependency-extension": {
         "kind": "harness",
         "members": ["scripts/generate_core_v2_dependency_extension.py", "scripts/test_core_v2_evidence_dependency_extensions.py"],
@@ -56,6 +60,7 @@ AUTHORITY_OUTPUT_PATHS = {
 CORE_V2_OUTPUT_PATHS = {
     "evals/definitive-skill-router.json",
     "artifacts/core-v2/scenario-plan-gap.json",
+    "artifacts/core-v2/surface-inventory-readiness.json",
     "artifacts/core-v2/evidence-dependency-extension.json",
 }
 OUTPUT_PATHS = CORE_V2_OUTPUT_PATHS | AUTHORITY_OUTPUT_PATHS
@@ -83,6 +88,7 @@ def validate_extension(graph: dict) -> None:
     expected_dependencies = {
         "evals/definitive-skill-router.json": "harness.core-v2-skill-router",
         "artifacts/core-v2/scenario-plan-gap.json": "harness.core-v2-scenario-plan",
+        "artifacts/core-v2/surface-inventory-readiness.json": "harness.surface-inventory-readiness",
         "artifacts/core-v2/evidence-dependency-extension.json": "harness.core-v2-dependency-extension",
     }
     for path, dependency in expected_dependencies.items():
@@ -161,15 +167,21 @@ def generate() -> None:
         )
         for path in sorted(AUTHORITY_OUTPUT_PATHS)
     ]
+    readiness_id = contract.add_output(
+        outputs, "artifacts/core-v2/surface-inventory-readiness.json", "derived-evidence",
+        [*authority_ids, "source.authority-lock-inventory", "harness.surface-inventory-readiness"],
+        "run.surface-inventory-readiness",
+    )
     report_id = contract.add_output(
         outputs, "artifacts/core-v2/evidence-dependency-extension.json", "derived-evidence",
-        [router_id, plan_id, *authority_ids, "source.repository-contract", "harness.content-policy", "harness.core-v2-dependency-extension"],
+        [router_id, plan_id, readiness_id, *authority_ids, "source.repository-contract", "harness.content-policy", "harness.core-v2-dependency-extension"],
         "run.core-v2-dependency-extension",
     )
     new_runs = [
         contract.run_document("run.core-v2-skill-router", "derived", "python3 scripts/generate_core_v2_skill_router.py && python3 scripts/test_core_v2_skill_router.py && atlas audit . --gate skill-router", graph["generated_at"], [router_id]),
         contract.run_document("run.core-v2-scenario-plan-gap", "derived", "python3 scripts/generate_core_v2_scenario_plan_gap.py && python3 scripts/test_core_v2_scenario_plan_gap.py", graph["generated_at"], [plan_id]),
         contract.run_document("run.authority-denominator", "derived", "make authority-locators && make authority-validate", graph["generated_at"], authority_ids),
+        contract.run_document("run.surface-inventory-readiness", "derived", "python3 scripts/generate_surface_inventory_readiness.py && python3 scripts/test_surface_inventory_readiness.py", graph["generated_at"], [readiness_id]),
         contract.run_document("run.core-v2-dependency-extension", "derived", "python3 scripts/generate_core_v2_dependency_extension.py && python3 scripts/test_core_v2_evidence_dependency_extensions.py", graph["generated_at"], [report_id]),
     ]
     graph["runs"].extend(new_runs)

@@ -282,8 +282,8 @@
         "evals/definitive-forward-cases.json",
         "evals/forward-cases.json"
       ],
-      "baseline_digest": "sha256:1a24cc39f732b085d6cdf54c5ed84e2fdaa7930717119ab248a846ac2b84c497",
-      "current_digest": "sha256:1a24cc39f732b085d6cdf54c5ed84e2fdaa7930717119ab248a846ac2b84c497",
+      "baseline_digest": "sha256:a39af2de340747592da1382b26943bedd31f7c16249c74c896c73045883ba3e7",
+      "current_digest": "sha256:a39af2de340747592da1382b26943bedd31f7c16249c74c896c73045883ba3e7",
       "observed_at": "2026-08-28T15:48:00Z"
     },
     {
@@ -355,14 +355,25 @@
       "observed_at": "2026-08-28T15:48:00Z"
     },
     {
+      "id": "harness.surface-inventory-readiness",
+      "kind": "harness",
+      "members": [
+        "scripts/generate_surface_inventory_readiness.py",
+        "scripts/test_surface_inventory_readiness.py"
+      ],
+      "baseline_digest": "sha256:c11af427adc0ca9f11343b110bec8b1ca420b8e2d5e95f780f7761b988171705",
+      "current_digest": "sha256:c11af427adc0ca9f11343b110bec8b1ca420b8e2d5e95f780f7761b988171705",
+      "observed_at": "2026-08-28T15:48:00Z"
+    },
+    {
       "id": "harness.core-v2-dependency-extension",
       "kind": "harness",
       "members": [
         "scripts/generate_core_v2_dependency_extension.py",
         "scripts/test_core_v2_evidence_dependency_extensions.py"
       ],
-      "baseline_digest": "sha256:c1d22ad8eefad7cbc3b2cf29c57e26393835d356c4268bb79fea42487bdc3855",
-      "current_digest": "sha256:c1d22ad8eefad7cbc3b2cf29c57e26393835d356c4268bb79fea42487bdc3855",
+      "baseline_digest": "sha256:48bb56dc9be37ad0c7775437ec249ab0329c4655082405d3905f800c6e4a5ee5",
+      "current_digest": "sha256:48bb56dc9be37ad0c7775437ec249ab0329c4655082405d3905f800c6e4a5ee5",
       "observed_at": "2026-08-28T15:48:00Z"
     }
   ],
@@ -384,11 +395,12 @@
       "id": "output.artifacts.core-v2.evidence-dependency-extension.json",
       "kind": "derived-evidence",
       "path": "artifacts/core-v2/evidence-dependency-extension.json",
-      "digest": "sha256:39c00338ead729ba73fcae76aafb0459351f253031617eca3e53643b421a1972",
+      "digest": "sha256:96fcb8b32ba15730688db44eef9fdb757cf207a787bf6d9a8819992b3a54bd8b",
       "depends_on": [
         "harness.content-policy",
         "harness.core-v2-dependency-extension",
         "output.artifacts.core-v2.scenario-plan-gap.json",
+        "output.artifacts.core-v2.surface-inventory-readiness.json",
         "output.authority.extraction.snapshot.json",
         "output.authority.surfaces-draft.argocd-application-crd.json",
         "output.authority.surfaces-draft.argocd-application-specification.json",
@@ -434,6 +446,45 @@
       ],
       "status": "current",
       "run_id": "run.core-v2-scenario-plan-gap"
+    },
+    {
+      "id": "output.artifacts.core-v2.surface-inventory-readiness.json",
+      "kind": "derived-evidence",
+      "path": "artifacts/core-v2/surface-inventory-readiness.json",
+      "digest": "sha256:d661b44833d3cce14e2c9e3bc88927a997c19e9478562d5a83e648a75a6ce018",
+      "depends_on": [
+        "harness.surface-inventory-readiness",
+        "output.authority.extraction.snapshot.json",
+        "output.authority.surfaces-draft.argocd-application-crd.json",
+        "output.authority.surfaces-draft.argocd-application-specification.json",
+        "output.authority.surfaces-draft.argocd-applicationset-crd.json",
+        "output.authority.surfaces-draft.argocd-applicationset-introduction.json",
+        "output.authority.surfaces-draft.argocd-applicationset-specification.json",
+        "output.authority.surfaces-draft.argocd-appproject-crd.json",
+        "output.authority.surfaces-draft.argocd-architecture.json",
+        "output.authority.surfaces-draft.argocd-automated-sync.json",
+        "output.authority.surfaces-draft.argocd-cluster-management.json",
+        "output.authority.surfaces-draft.argocd-diffing.json",
+        "output.authority.surfaces-draft.argocd-disaster-recovery.json",
+        "output.authority.surfaces-draft.argocd-health.json",
+        "output.authority.surfaces-draft.argocd-high-availability.json",
+        "output.authority.surfaces-draft.argocd-install-manifest.json",
+        "output.authority.surfaces-draft.argocd-metrics.json",
+        "output.authority.surfaces-draft.argocd-private-repositories.json",
+        "output.authority.surfaces-draft.argocd-rbac.json",
+        "output.authority.surfaces-draft.argocd-reconcile-optimization.json",
+        "output.authority.surfaces-draft.argocd-resource-tracking.json",
+        "output.authority.surfaces-draft.argocd-secret-management.json",
+        "output.authority.surfaces-draft.argocd-source-tree.json",
+        "output.authority.surfaces-draft.argocd-sync-options.json",
+        "output.authority.surfaces-draft.argocd-sync-waves.json",
+        "output.authority.surfaces-draft.argocd-upgrade-3-4-to-3-5.json",
+        "output.authority.surfaces-draft.argocd-user-management.json",
+        "output.authority.surfaces-draft.argocd-version.json",
+        "source.authority-lock-inventory"
+      ],
+      "status": "current",
+      "run_id": "run.surface-inventory-readiness"
     },
     {
       "id": "output.authority.extraction.snapshot.json",
@@ -139031,7 +139082,7 @@
         },
         {
           "input_id": "harness.core-v2-dependency-extension",
-          "digest": "sha256:c1d22ad8eefad7cbc3b2cf29c57e26393835d356c4268bb79fea42487bdc3855"
+          "digest": "sha256:48bb56dc9be37ad0c7775437ec249ab0329c4655082405d3905f800c6e4a5ee5"
         },
         {
           "input_id": "harness.core-v2-scenario-plan",
@@ -139070,6 +139121,10 @@
           "digest": "sha256:639b4199f906194cafb3430a8459ebab2cc2d4ce4db5e8b5a30799bda6c26e66"
         },
         {
+          "input_id": "harness.surface-inventory-readiness",
+          "digest": "sha256:c11af427adc0ca9f11343b110bec8b1ca420b8e2d5e95f780f7761b988171705"
+        },
+        {
           "input_id": "profile.cluster",
           "digest": "sha256:af5e6f3e4d4bd71dbcf5a33fc4b1f036ee551396f305c21d4636a738897f574c"
         },
@@ -139079,7 +139134,7 @@
         },
         {
           "input_id": "profile.local",
-          "digest": "sha256:1a24cc39f732b085d6cdf54c5ed84e2fdaa7930717119ab248a846ac2b84c497"
+          "digest": "sha256:a39af2de340747592da1382b26943bedd31f7c16249c74c896c73045883ba3e7"
         },
         {
           "input_id": "runtime.argocd-kubernetes",
@@ -139169,7 +139224,7 @@
         },
         {
           "input_id": "profile.local",
-          "digest": "sha256:1a24cc39f732b085d6cdf54c5ed84e2fdaa7930717119ab248a846ac2b84c497"
+          "digest": "sha256:a39af2de340747592da1382b26943bedd31f7c16249c74c896c73045883ba3e7"
         },
         {
           "input_id": "runtime.argocd-kubernetes",
@@ -139215,7 +139270,7 @@
         },
         {
           "input_id": "profile.local",
-          "digest": "sha256:1a24cc39f732b085d6cdf54c5ed84e2fdaa7930717119ab248a846ac2b84c497"
+          "digest": "sha256:a39af2de340747592da1382b26943bedd31f7c16249c74c896c73045883ba3e7"
         },
         {
           "input_id": "source.project-policy",
@@ -139241,7 +139296,7 @@
         },
         {
           "input_id": "profile.local",
-          "digest": "sha256:1a24cc39f732b085d6cdf54c5ed84e2fdaa7930717119ab248a846ac2b84c497"
+          "digest": "sha256:a39af2de340747592da1382b26943bedd31f7c16249c74c896c73045883ba3e7"
         },
         {
           "input_id": "source.project-policy",
@@ -139268,7 +139323,7 @@
         },
         {
           "input_id": "profile.local",
-          "digest": "sha256:1a24cc39f732b085d6cdf54c5ed84e2fdaa7930717119ab248a846ac2b84c497"
+          "digest": "sha256:a39af2de340747592da1382b26943bedd31f7c16249c74c896c73045883ba3e7"
         },
         {
           "input_id": "source.project-policy",
@@ -140418,7 +140473,7 @@
         },
         {
           "input_id": "profile.local",
-          "digest": "sha256:1a24cc39f732b085d6cdf54c5ed84e2fdaa7930717119ab248a846ac2b84c497"
+          "digest": "sha256:a39af2de340747592da1382b26943bedd31f7c16249c74c896c73045883ba3e7"
         },
         {
           "input_id": "source.project-policy",
@@ -140445,7 +140500,7 @@
         },
         {
           "input_id": "profile.local",
-          "digest": "sha256:1a24cc39f732b085d6cdf54c5ed84e2fdaa7930717119ab248a846ac2b84c497"
+          "digest": "sha256:a39af2de340747592da1382b26943bedd31f7c16249c74c896c73045883ba3e7"
         },
         {
           "input_id": "source.project-policy",
@@ -140626,7 +140681,7 @@
         },
         {
           "input_id": "profile.local",
-          "digest": "sha256:1a24cc39f732b085d6cdf54c5ed84e2fdaa7930717119ab248a846ac2b84c497"
+          "digest": "sha256:a39af2de340747592da1382b26943bedd31f7c16249c74c896c73045883ba3e7"
         },
         {
           "input_id": "runtime.argocd-kubernetes",
@@ -140700,7 +140755,7 @@
         },
         {
           "input_id": "profile.local",
-          "digest": "sha256:1a24cc39f732b085d6cdf54c5ed84e2fdaa7930717119ab248a846ac2b84c497"
+          "digest": "sha256:a39af2de340747592da1382b26943bedd31f7c16249c74c896c73045883ba3e7"
         },
         {
           "input_id": "runtime.argocd-kubernetes",
@@ -142056,12 +142111,39 @@
         ],
         "first_attempt": true
       }
+    },
+    {
+      "id": "run.surface-inventory-readiness",
+      "execution_kind": "derived",
+      "command": "python3 scripts/generate_surface_inventory_readiness.py && python3 scripts/test_surface_inventory_readiness.py",
+      "started_at": "2026-08-28T15:48:00Z",
+      "completed_at": "2026-08-28T15:48:01Z",
+      "result": "passed",
+      "attempts": 1,
+      "input_bindings": [
+        {
+          "input_id": "harness.authority-denominator",
+          "digest": "sha256:c02f5138b5aede7491d91f1d2c6f1bd1172fb1ae279f384bd83bb4e8b1560b8e"
+        },
+        {
+          "input_id": "harness.surface-inventory-readiness",
+          "digest": "sha256:c11af427adc0ca9f11343b110bec8b1ca420b8e2d5e95f780f7761b988171705"
+        },
+        {
+          "input_id": "source.authority-lock-inventory",
+          "digest": "sha256:5f9caf48124789f715da24b8bfd23ccb3233ae6b26772cc5c198ac034909d523"
+        }
+      ],
+      "output_ids": [
+        "output.artifacts.core-v2.surface-inventory-readiness.json"
+      ]
     }
   ],
   "required_outputs": [
     "artifacts/authority-body-non-regression-report.json",
     "artifacts/core-v2/evidence-dependency-extension.json",
     "artifacts/core-v2/scenario-plan-gap.json",
+    "artifacts/core-v2/surface-inventory-readiness.json",
     "authority/extraction.snapshot.json",
     "authority/surfaces-draft/argocd-application-crd.json",
     "authority/surfaces-draft/argocd-application-specification.json",
