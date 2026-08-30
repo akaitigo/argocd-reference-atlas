@@ -31,6 +31,10 @@ INPUT_SPECS = {
             "scripts/test_authority_locator_denominator.py",
         ],
     },
+    "harness.content-policy": {
+        "kind": "harness",
+        "members": ["scripts/validate_non_regression.py", "scripts/test_content_policy_scope.py"],
+    },
     "harness.core-v2-skill-router": {
         "kind": "harness",
         "members": ["scripts/generate_core_v2_skill_router.py", "scripts/test_core_v2_skill_router.py"],
@@ -103,6 +107,8 @@ def validate_extension(graph: dict) -> None:
     report = outputs["artifacts/core-v2/evidence-dependency-extension.json"]
     if "source.repository-contract" not in report["depends_on"]:
         raise ValueError("Repository contract is not connected to the extension report")
+    if "harness.content-policy" not in report["depends_on"]:
+        raise ValueError("Content policy harness is not connected to the extension report")
 
 
 def generate() -> None:
@@ -157,7 +163,7 @@ def generate() -> None:
     ]
     report_id = contract.add_output(
         outputs, "artifacts/core-v2/evidence-dependency-extension.json", "derived-evidence",
-        [router_id, plan_id, *authority_ids, "source.repository-contract", "harness.core-v2-dependency-extension"],
+        [router_id, plan_id, *authority_ids, "source.repository-contract", "harness.content-policy", "harness.core-v2-dependency-extension"],
         "run.core-v2-dependency-extension",
     )
     new_runs = [

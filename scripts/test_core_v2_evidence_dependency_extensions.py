@@ -38,7 +38,8 @@ def main() -> None:
     rejected("authority-source-unbound", lambda value: output(value, "authority/extraction.snapshot.json")["depends_on"].remove("source.authority-lock-inventory"))
     rejected("authority-first-attempt-weakened", lambda value: next(item for item in value["runs"] if item["id"] == "run.authority-denominator").update(attempts=2))
     rejected("repository-contract-unbound", lambda value: output(value, "artifacts/core-v2/evidence-dependency-extension.json")["depends_on"].remove("source.repository-contract"))
-    print("Core v2 Evidence Dependency extension fixtures passed: positive=1 negative=10")
+    rejected("content-policy-unbound", lambda value: output(value, "artifacts/core-v2/evidence-dependency-extension.json")["depends_on"].remove("harness.content-policy"))
+    print("Core v2 Evidence Dependency extension fixtures passed: positive=1 negative=11")
 
 
 if __name__ == "__main__":

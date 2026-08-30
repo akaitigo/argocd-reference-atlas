@@ -194,8 +194,8 @@
         "evals/definitive-forward-cases.json",
         "evals/forward-cases.json"
       ],
-      "baseline_digest": "sha256:f3bbf33bd6b6c66c5eefef08edc8a9f34584ed59b8c34c0b21ca92efca5410ea",
-      "current_digest": "sha256:f3bbf33bd6b6c66c5eefef08edc8a9f34584ed59b8c34c0b21ca92efca5410ea",
+      "baseline_digest": "sha256:8f31c98a6f7f928f5c763b2392f953ab194a2de6b8db4ebe357de4ac88e0c14e",
+      "current_digest": "sha256:8f31c98a6f7f928f5c763b2392f953ab194a2de6b8db4ebe357de4ac88e0c14e",
       "observed_at": "2026-08-28T15:48:00Z"
     },
     {
@@ -234,6 +234,17 @@
       "observed_at": "2026-08-28T15:48:00Z"
     },
     {
+      "id": "harness.content-policy",
+      "kind": "harness",
+      "members": [
+        "scripts/validate_non_regression.py",
+        "scripts/test_content_policy_scope.py"
+      ],
+      "baseline_digest": "sha256:feddbb6c2a738fe096fa1d6298c63c8e04fd1b730c537cb32464172d03b15fd1",
+      "current_digest": "sha256:feddbb6c2a738fe096fa1d6298c63c8e04fd1b730c537cb32464172d03b15fd1",
+      "observed_at": "2026-08-28T15:48:00Z"
+    },
+    {
       "id": "harness.core-v2-skill-router",
       "kind": "harness",
       "members": [
@@ -251,8 +262,8 @@
         "scripts/generate_core_v2_scenario_plan_gap.py",
         "scripts/test_core_v2_scenario_plan_gap.py"
       ],
-      "baseline_digest": "sha256:f66a5aff9c746a96059ab7b45419142f80430a25687e9d8cc507ac3a32f2d7a4",
-      "current_digest": "sha256:f66a5aff9c746a96059ab7b45419142f80430a25687e9d8cc507ac3a32f2d7a4",
+      "baseline_digest": "sha256:532aba9e2f5e17c536559f116c5eb5749b6cb5576dbd679fc957f1663cd39ea6",
+      "current_digest": "sha256:532aba9e2f5e17c536559f116c5eb5749b6cb5576dbd679fc957f1663cd39ea6",
       "observed_at": "2026-08-28T15:48:00Z"
     },
     {
@@ -262,8 +273,8 @@
         "scripts/generate_core_v2_dependency_extension.py",
         "scripts/test_core_v2_evidence_dependency_extensions.py"
       ],
-      "baseline_digest": "sha256:aa6f2fbef53430d05131c0946877bc651c79d7a50ed070832bbfd5c10f03ca9f",
-      "current_digest": "sha256:aa6f2fbef53430d05131c0946877bc651c79d7a50ed070832bbfd5c10f03ca9f",
+      "baseline_digest": "sha256:c1d22ad8eefad7cbc3b2cf29c57e26393835d356c4268bb79fea42487bdc3855",
+      "current_digest": "sha256:c1d22ad8eefad7cbc3b2cf29c57e26393835d356c4268bb79fea42487bdc3855",
       "observed_at": "2026-08-28T15:48:00Z"
     }
   ],
@@ -285,8 +296,9 @@
       "id": "output.artifacts.core-v2.evidence-dependency-extension.json",
       "kind": "derived-evidence",
       "path": "artifacts/core-v2/evidence-dependency-extension.json",
-      "digest": "sha256:8efb76131f37266c8509a7140ef35e52d0a5d241663bee2453b963f0af1f6c96",
+      "digest": "sha256:f09c240c5b89ea600c3ea74f364dd24e02873a36937812a6aa24e14ff2263775",
       "depends_on": [
+        "harness.content-policy",
         "harness.core-v2-dependency-extension",
         "output.artifacts.core-v2.scenario-plan-gap.json",
         "output.authority.extraction.snapshot.json",
@@ -326,7 +338,7 @@
       "id": "output.artifacts.core-v2.scenario-plan-gap.json",
       "kind": "closure-plan",
       "path": "artifacts/core-v2/scenario-plan-gap.json",
-      "digest": "sha256:b555b0719b94bac27258536e3f0aca291cc7d68d47948f818eca4702650e1c79",
+      "digest": "sha256:01187ba550242021f27c27e31e559e267172a43ac7105b0b1e5eafa376d34467",
       "depends_on": [
         "harness.core-v2-scenario-plan",
         "output.evidence.scenarios.closure-plan.json",
@@ -17686,12 +17698,16 @@
           "digest": "sha256:62193b98aed7d7b694a0f90abaf52ef163e994a410b96e684d0dd40bf725b4d7"
         },
         {
+          "input_id": "harness.content-policy",
+          "digest": "sha256:feddbb6c2a738fe096fa1d6298c63c8e04fd1b730c537cb32464172d03b15fd1"
+        },
+        {
           "input_id": "harness.core-v2-dependency-extension",
-          "digest": "sha256:aa6f2fbef53430d05131c0946877bc651c79d7a50ed070832bbfd5c10f03ca9f"
+          "digest": "sha256:c1d22ad8eefad7cbc3b2cf29c57e26393835d356c4268bb79fea42487bdc3855"
         },
         {
           "input_id": "harness.core-v2-scenario-plan",
-          "digest": "sha256:f66a5aff9c746a96059ab7b45419142f80430a25687e9d8cc507ac3a32f2d7a4"
+          "digest": "sha256:532aba9e2f5e17c536559f116c5eb5749b6cb5576dbd679fc957f1663cd39ea6"
         },
         {
           "input_id": "harness.core-v2-skill-router",
@@ -17719,7 +17735,7 @@
         },
         {
           "input_id": "profile.local",
-          "digest": "sha256:f3bbf33bd6b6c66c5eefef08edc8a9f34584ed59b8c34c0b21ca92efca5410ea"
+          "digest": "sha256:8f31c98a6f7f928f5c763b2392f953ab194a2de6b8db4ebe357de4ac88e0c14e"
         },
         {
           "input_id": "runtime.argocd-kubernetes",
@@ -17769,7 +17785,7 @@
         },
         {
           "input_id": "harness.core-v2-scenario-plan",
-          "digest": "sha256:f66a5aff9c746a96059ab7b45419142f80430a25687e9d8cc507ac3a32f2d7a4"
+          "digest": "sha256:532aba9e2f5e17c536559f116c5eb5749b6cb5576dbd679fc957f1663cd39ea6"
         },
         {
           "input_id": "harness.evidence-dependency",
@@ -17793,7 +17809,7 @@
         },
         {
           "input_id": "profile.local",
-          "digest": "sha256:f3bbf33bd6b6c66c5eefef08edc8a9f34584ed59b8c34c0b21ca92efca5410ea"
+          "digest": "sha256:8f31c98a6f7f928f5c763b2392f953ab194a2de6b8db4ebe357de4ac88e0c14e"
         },
         {
           "input_id": "runtime.argocd-kubernetes",
@@ -17839,7 +17855,7 @@
         },
         {
           "input_id": "profile.local",
-          "digest": "sha256:f3bbf33bd6b6c66c5eefef08edc8a9f34584ed59b8c34c0b21ca92efca5410ea"
+          "digest": "sha256:8f31c98a6f7f928f5c763b2392f953ab194a2de6b8db4ebe357de4ac88e0c14e"
         },
         {
           "input_id": "source.project-policy",
@@ -17865,7 +17881,7 @@
         },
         {
           "input_id": "profile.local",
-          "digest": "sha256:f3bbf33bd6b6c66c5eefef08edc8a9f34584ed59b8c34c0b21ca92efca5410ea"
+          "digest": "sha256:8f31c98a6f7f928f5c763b2392f953ab194a2de6b8db4ebe357de4ac88e0c14e"
         },
         {
           "input_id": "source.project-policy",
@@ -17892,7 +17908,7 @@
         },
         {
           "input_id": "profile.local",
-          "digest": "sha256:f3bbf33bd6b6c66c5eefef08edc8a9f34584ed59b8c34c0b21ca92efca5410ea"
+          "digest": "sha256:8f31c98a6f7f928f5c763b2392f953ab194a2de6b8db4ebe357de4ac88e0c14e"
         },
         {
           "input_id": "source.project-policy",
@@ -19042,7 +19058,7 @@
         },
         {
           "input_id": "profile.local",
-          "digest": "sha256:f3bbf33bd6b6c66c5eefef08edc8a9f34584ed59b8c34c0b21ca92efca5410ea"
+          "digest": "sha256:8f31c98a6f7f928f5c763b2392f953ab194a2de6b8db4ebe357de4ac88e0c14e"
         },
         {
           "input_id": "source.project-policy",
@@ -19069,7 +19085,7 @@
         },
         {
           "input_id": "profile.local",
-          "digest": "sha256:f3bbf33bd6b6c66c5eefef08edc8a9f34584ed59b8c34c0b21ca92efca5410ea"
+          "digest": "sha256:8f31c98a6f7f928f5c763b2392f953ab194a2de6b8db4ebe357de4ac88e0c14e"
         },
         {
           "input_id": "source.project-policy",
@@ -19234,7 +19250,7 @@
         },
         {
           "input_id": "profile.local",
-          "digest": "sha256:f3bbf33bd6b6c66c5eefef08edc8a9f34584ed59b8c34c0b21ca92efca5410ea"
+          "digest": "sha256:8f31c98a6f7f928f5c763b2392f953ab194a2de6b8db4ebe357de4ac88e0c14e"
         },
         {
           "input_id": "runtime.argocd-kubernetes",
@@ -19292,7 +19308,7 @@
         },
         {
           "input_id": "profile.local",
-          "digest": "sha256:f3bbf33bd6b6c66c5eefef08edc8a9f34584ed59b8c34c0b21ca92efca5410ea"
+          "digest": "sha256:8f31c98a6f7f928f5c763b2392f953ab194a2de6b8db4ebe357de4ac88e0c14e"
         },
         {
           "input_id": "runtime.argocd-kubernetes",

@@ -67,6 +67,18 @@ def build() -> dict:
             "integrated_runtime_passed": summary["integrated_runtime_passed"],
             "missing_core_artifacts": missing_files,
         },
+        "core_gate_status": {
+            "scenario_trace": "blocked-core-schema-migration-and-integrated-runtime-artifacts",
+            "scenario_plan": "blocked-pattern-scenario-runtime-report",
+            "evidence_durability": "blocked-pattern-scenario-runtime-report",
+            "configured_make_check": "passed",
+        },
+        "runtime_preflight": {
+            "state": "blocked-no-dedicated-local-kind-runtime-proof",
+            "dedicated_local_kind_required": True,
+            "external_context_access_forbidden": True,
+            "fixture_runtime_credit": False,
+        },
         "closure_requirements": {
             "first_attempt_only": True,
             "retries": 0,
@@ -86,6 +98,7 @@ def build() -> dict:
             "Core標準Artifactを専用stagingへ加法生成する。",
             "旧row IDから新row IDへの全件Mappingと構造非後退を検証する。",
             "Runtime未実行rowをpattern-specific-gapのまま保持する。",
+            "専用local Kindがない間は外部Contextへ接続せずRuntime Gapを保持する。",
         ],
     }
 

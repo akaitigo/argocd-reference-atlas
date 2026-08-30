@@ -59,6 +59,18 @@
       "artifacts/pattern-scenarios/results.json"
     ]
   },
+  "core_gate_status": {
+    "scenario_trace": "blocked-core-schema-migration-and-integrated-runtime-artifacts",
+    "scenario_plan": "blocked-pattern-scenario-runtime-report",
+    "evidence_durability": "blocked-pattern-scenario-runtime-report",
+    "configured_make_check": "passed"
+  },
+  "runtime_preflight": {
+    "state": "blocked-no-dedicated-local-kind-runtime-proof",
+    "dedicated_local_kind_required": true,
+    "external_context_access_forbidden": true,
+    "fixture_runtime_credit": false
+  },
   "closure_requirements": {
     "first_attempt_only": true,
     "retries": 0,
@@ -81,6 +93,7 @@
   "human_independent_next_actions": [
     "Core標準Artifactを専用stagingへ加法生成する。",
     "旧row IDから新row IDへの全件Mappingと構造非後退を検証する。",
-    "Runtime未実行rowをpattern-specific-gapのまま保持する。"
+    "Runtime未実行rowをpattern-specific-gapのまま保持する。",
+    "専用local Kindがない間は外部Contextへ接続せずRuntime Gapを保持する。"
   ]
 }

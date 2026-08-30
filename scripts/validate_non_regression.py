@@ -8,6 +8,7 @@ from __future__ import annotations
 import hashlib
 import json
 import re
+import subprocess
 from pathlib import Path
 
 import yaml
@@ -64,16 +65,41 @@ def migration_allows(evidence_id: str, old_digest: str, new_digest: str) -> bool
     return False
 
 
-def validate_content_policy() -> None:
-    banned = ("世界" + "一", "決定" + "版", "akaitigo" + "氏", "作者を" + "称賛", "唯" + "一")
-    text_suffixes = {".md", ".yaml", ".yml", ".json", ".py", ".sh"}
-    for path in ROOT.rglob("*"):
-        if not path.is_file() or path.suffix not in text_suffixes or any(part in {".git", ".runtime", ".cache"} for part in path.parts):
+CONTENT_EXCLUDED_ROOTS = {".atlas-core", ".git", ".runtime", ".cache", "vendor", "node_modules"}
+CONTENT_TEXT_SUFFIXES = {".md", ".yaml", ".yml", ".json", ".py", ".sh"}
+
+
+def tracked_publication_paths(root: Path = ROOT) -> list[Path]:
+    result = subprocess.run(
+        ["git", "-C", str(root), "ls-files", "-z"],
+        check=True,
+        capture_output=True,
+    )
+    paths = []
+    for raw in result.stdout.split(b"\0"):
+        if not raw:
             continue
+        relative = Path(raw.decode("utf-8"))
+        if relative.is_absolute() or ".." in relative.parts:
+            raise ValueError(f"git tracked Pathが不正です: {relative}")
+        if relative.suffix in CONTENT_TEXT_SUFFIXES and not any(part in CONTENT_EXCLUDED_ROOTS for part in relative.parts):
+            paths.append(root / relative)
+    return paths
+
+
+def validate_content_policy(root: Path = ROOT, publication_paths=None) -> None:
+    banned = ("世界" + "一", "決定" + "版", "akaitigo" + "氏", "作者を" + "称賛", "唯" + "一")
+    paths = tracked_publication_paths(root) if publication_paths is None else publication_paths
+    for path in paths:
+        relative = path.relative_to(root)
+        if any(part in CONTENT_EXCLUDED_ROOTS for part in relative.parts):
+            continue
+        if not path.is_file() or path.suffix not in CONTENT_TEXT_SUFFIXES:
+            raise ValueError(f"Publication対象のtracked text fileを読めません: {relative}")
         text = path.read_text(encoding="utf-8", errors="ignore")
         for phrase in banned:
             if phrase in text:
-                raise ValueError(f"中立性Policyに反する表現があります: {path.relative_to(ROOT)}: {phrase}")
+                raise ValueError(f"中立性Policyに反する表現があります: {relative}: {phrase}")
 
 
 def main() -> None:

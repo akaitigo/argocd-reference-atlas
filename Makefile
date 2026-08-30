@@ -69,6 +69,7 @@ authority-validate:
 	python3 scripts/test_authority_review_queue.py
 
 non-regression-validate:
+	python3 scripts/test_content_policy_scope.py
 	python3 scripts/validate_non_regression.py
 
 evidence-validate:

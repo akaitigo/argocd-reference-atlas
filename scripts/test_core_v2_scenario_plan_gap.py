@@ -19,6 +19,8 @@ def validate(document: dict) -> None:
     denominator = document["denominator"]
     gaps = document["independent_gaps"]
     migration = document["core_schema_migration"]
+    gates = document["core_gate_status"]
+    preflight = document["runtime_preflight"]
     if document["status"] != "incomplete-no-runtime-substitution":
         raise ValueError("Scenario gap was promoted")
     if denominator["rows"] != 1000 or denominator["remaining_rows"] != 1000 or denominator["scenario_gaps_open"] != 1000:
@@ -31,6 +33,17 @@ def validate(document: dict) -> None:
         "fixture-as-runtime", "metadata-only-as-runtime", "integrated-result-as-pattern-proof", "historical-artifact-as-current-rerun"
     ]:
         raise ValueError("Substitution boundary weakened")
+    if set(gates) != {"scenario_trace", "scenario_plan", "evidence_durability", "configured_make_check"}:
+        raise ValueError("Core Scenario gate denominator retreated")
+    if any(gates[name].startswith("passed") for name in ("scenario_trace", "scenario_plan", "evidence_durability")):
+        raise ValueError("Unclosed Core Scenario gate was promoted")
+    if preflight != {
+        "state": "blocked-no-dedicated-local-kind-runtime-proof",
+        "dedicated_local_kind_required": True,
+        "external_context_access_forbidden": True,
+        "fixture_runtime_credit": False,
+    }:
+        raise ValueError("Runtime preflight boundary changed")
 
 
 def rejected(name: str, mutate) -> None:
@@ -50,7 +63,10 @@ def main() -> None:
     rejected("runtime-fabrication", lambda value: value["independent_gaps"].update(dedicated_runtime_reports=1))
     rejected("mapping-removal", lambda value: value["core_schema_migration"].update(explicit_id_mapping={}))
     rejected("fixture-substitution", lambda value: value["forbidden_substitutions"].remove("fixture-as-runtime"))
-    print("Core v2 Scenario Plan gap fixtures passed: positive=1 negative=5")
+    rejected("gate-false-pass", lambda value: value["core_gate_status"].update(scenario_trace="passed"))
+    rejected("external-context-access", lambda value: value["runtime_preflight"].update(external_context_access_forbidden=False))
+    rejected("fixture-runtime-credit", lambda value: value["runtime_preflight"].update(fixture_runtime_credit=True))
+    print("Core v2 Scenario Plan gap fixtures passed: positive=1 negative=8")
 
 
 if __name__ == "__main__":
