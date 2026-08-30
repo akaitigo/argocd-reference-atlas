@@ -3,6 +3,24 @@
   "id": "argocd-surface-inventory-readiness-v1",
   "status": "incomplete-human-authority-review-required",
   "core_main_commit": "46db1eb0e68d00c09f34994dd66ad6d44d3f6ef1",
+  "core_root_inventory_contract": {
+    "current_main_commit": "46db1eb0e68d00c09f34994dd66ad6d44d3f6ef1",
+    "ci_evidence_dependency_pin": "072d7ca77981f51754e824d70c6d4ecd55ea67e5",
+    "schema_digests": {
+      "schemas/surface-inventory.schema.json": "sha256:e770a4ce03820e272469a7f621e8a4402b90b6ffba31d9ab9658926ee8c38358",
+      "schemas/authority-surfaces.schema.json": "sha256:2ee51ca302ab3f8a7c8643c60e6aa406b9812448eac39159cc78fe7fd8ea5fc2"
+    },
+    "constraints": {
+      "authority_artifacts_min_items": 1,
+      "inventory_items_min_items": 1,
+      "authority_surfaces_min_items": 1,
+      "inventory_classification": "included-only",
+      "review_mapping_must_equal_promoted_surfaces": true,
+      "incomplete_pending_root_representation_supported": false
+    },
+    "honest_root_connection_state": "blocked-no-reviewed-authority-surface",
+    "forbidden_workaround": "unreviewed-candidate-as-included-surface"
+  },
   "inputs": {
     "authority/extraction.snapshot.json": "sha256:a2d97d0482539ca30946ea49b13b3c700f1afb4311cb6c3232c2473be96eb4e0",
     "authority/body-inventory.snapshot.json": "sha256:e57ad68b946b1c3ff446ed4ba3e34888ef49f959793863185b554b6954a7bef8",

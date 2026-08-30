@@ -45,7 +45,7 @@ INPUT_SPECS = {
     },
     "harness.surface-inventory-readiness": {
         "kind": "harness",
-        "members": ["scripts/generate_surface_inventory_readiness.py", "scripts/test_surface_inventory_readiness.py"],
+        "members": ["scripts/generate_surface_inventory_readiness.py", "scripts/test_surface_inventory_readiness.py", ".github/workflows/atlas-validate.yml"],
     },
     "harness.core-v2-dependency-extension": {
         "kind": "harness",

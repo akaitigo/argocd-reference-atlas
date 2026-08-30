@@ -359,10 +359,11 @@
       "kind": "harness",
       "members": [
         "scripts/generate_surface_inventory_readiness.py",
-        "scripts/test_surface_inventory_readiness.py"
+        "scripts/test_surface_inventory_readiness.py",
+        ".github/workflows/atlas-validate.yml"
       ],
-      "baseline_digest": "sha256:c11af427adc0ca9f11343b110bec8b1ca420b8e2d5e95f780f7761b988171705",
-      "current_digest": "sha256:c11af427adc0ca9f11343b110bec8b1ca420b8e2d5e95f780f7761b988171705",
+      "baseline_digest": "sha256:d5e590343750fd4eaf81a3c8c3557ef2de5ff426c83711523fe19564fa4d4a7b",
+      "current_digest": "sha256:d5e590343750fd4eaf81a3c8c3557ef2de5ff426c83711523fe19564fa4d4a7b",
       "observed_at": "2026-08-28T15:48:00Z"
     },
     {
@@ -372,8 +373,8 @@
         "scripts/generate_core_v2_dependency_extension.py",
         "scripts/test_core_v2_evidence_dependency_extensions.py"
       ],
-      "baseline_digest": "sha256:48bb56dc9be37ad0c7775437ec249ab0329c4655082405d3905f800c6e4a5ee5",
-      "current_digest": "sha256:48bb56dc9be37ad0c7775437ec249ab0329c4655082405d3905f800c6e4a5ee5",
+      "baseline_digest": "sha256:47171f7eb701d05fbd456a78ea885854c4314db293d6f24b98dc4be1df95fa8a",
+      "current_digest": "sha256:47171f7eb701d05fbd456a78ea885854c4314db293d6f24b98dc4be1df95fa8a",
       "observed_at": "2026-08-28T15:48:00Z"
     }
   ],
@@ -451,7 +452,7 @@
       "id": "output.artifacts.core-v2.surface-inventory-readiness.json",
       "kind": "derived-evidence",
       "path": "artifacts/core-v2/surface-inventory-readiness.json",
-      "digest": "sha256:d661b44833d3cce14e2c9e3bc88927a997c19e9478562d5a83e648a75a6ce018",
+      "digest": "sha256:5a3bb9164d8e897de0cd5d58ad768fcca41fd899e0d0f1c95d581a171ecd416b",
       "depends_on": [
         "harness.surface-inventory-readiness",
         "output.authority.extraction.snapshot.json",
@@ -139082,7 +139083,7 @@
         },
         {
           "input_id": "harness.core-v2-dependency-extension",
-          "digest": "sha256:48bb56dc9be37ad0c7775437ec249ab0329c4655082405d3905f800c6e4a5ee5"
+          "digest": "sha256:47171f7eb701d05fbd456a78ea885854c4314db293d6f24b98dc4be1df95fa8a"
         },
         {
           "input_id": "harness.core-v2-scenario-plan",
@@ -139122,7 +139123,7 @@
         },
         {
           "input_id": "harness.surface-inventory-readiness",
-          "digest": "sha256:c11af427adc0ca9f11343b110bec8b1ca420b8e2d5e95f780f7761b988171705"
+          "digest": "sha256:d5e590343750fd4eaf81a3c8c3557ef2de5ff426c83711523fe19564fa4d4a7b"
         },
         {
           "input_id": "profile.cluster",
@@ -142127,7 +142128,7 @@
         },
         {
           "input_id": "harness.surface-inventory-readiness",
-          "digest": "sha256:c11af427adc0ca9f11343b110bec8b1ca420b8e2d5e95f780f7761b988171705"
+          "digest": "sha256:d5e590343750fd4eaf81a3c8c3557ef2de5ff426c83711523fe19564fa4d4a7b"
         },
         {
           "input_id": "source.authority-lock-inventory",
