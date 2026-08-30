@@ -47,6 +47,22 @@ INPUT_SPECS = {
         "kind": "harness",
         "members": ["scripts/generate_surface_inventory_readiness.py", "scripts/test_surface_inventory_readiness.py", ".github/workflows/atlas-validate.yml"],
     },
+    "harness.root-surface-inventory": {
+        "kind": "harness",
+        "members": [
+            "definitive/root-surface-inventory-bindings.yaml",
+            "scripts/generate_root_surface_inventory.py",
+            "scripts/test_root_surface_inventory.py",
+        ],
+    },
+    "harness.root-verification-matrix": {
+        "kind": "harness",
+        "members": [
+            "scripts/generate_root_verification_matrix.py",
+            "scripts/test_root_verification_matrix.py",
+            ".github/workflows/atlas-validate.yml",
+        ],
+    },
     "harness.core-v2-dependency-extension": {
         "kind": "harness",
         "members": ["scripts/generate_core_v2_dependency_extension.py", "scripts/test_core_v2_evidence_dependency_extensions.py"],
@@ -61,6 +77,8 @@ CORE_V2_OUTPUT_PATHS = {
     "evals/definitive-skill-router.json",
     "artifacts/core-v2/scenario-plan-gap.json",
     "artifacts/core-v2/surface-inventory-readiness.json",
+    "artifacts/core-v2/root-surface-inventory-closure.json",
+    "artifacts/core-v2/root-verification-matrix-closure.json",
     "artifacts/core-v2/evidence-dependency-extension.json",
 }
 OUTPUT_PATHS = CORE_V2_OUTPUT_PATHS | AUTHORITY_OUTPUT_PATHS
@@ -89,6 +107,8 @@ def validate_extension(graph: dict) -> None:
         "evals/definitive-skill-router.json": "harness.core-v2-skill-router",
         "artifacts/core-v2/scenario-plan-gap.json": "harness.core-v2-scenario-plan",
         "artifacts/core-v2/surface-inventory-readiness.json": "harness.surface-inventory-readiness",
+        "artifacts/core-v2/root-surface-inventory-closure.json": "harness.root-surface-inventory",
+        "artifacts/core-v2/root-verification-matrix-closure.json": "harness.root-verification-matrix",
         "artifacts/core-v2/evidence-dependency-extension.json": "harness.core-v2-dependency-extension",
     }
     for path, dependency in expected_dependencies.items():
@@ -172,9 +192,19 @@ def generate() -> None:
         [*authority_ids, "source.authority-lock-inventory", "harness.surface-inventory-readiness"],
         "run.surface-inventory-readiness",
     )
+    root_inventory_id = contract.add_output(
+        outputs, "artifacts/core-v2/root-surface-inventory-closure.json", "closure-plan",
+        [readiness_id, output_by_path["evidence/scenarios/index.json"], "source.authority-lock-inventory", "harness.root-surface-inventory"],
+        "run.root-surface-inventory-closure",
+    )
+    root_matrix_id = contract.add_output(
+        outputs, "artifacts/core-v2/root-verification-matrix-closure.json", "closure-plan",
+        [root_inventory_id, output_by_path["evidence/scenarios/index.json"], "source.authority-lock-inventory", "harness.root-verification-matrix"],
+        "run.root-verification-matrix-closure",
+    )
     report_id = contract.add_output(
         outputs, "artifacts/core-v2/evidence-dependency-extension.json", "derived-evidence",
-        [router_id, plan_id, readiness_id, *authority_ids, "source.repository-contract", "harness.content-policy", "harness.core-v2-dependency-extension"],
+        [router_id, plan_id, readiness_id, root_inventory_id, root_matrix_id, *authority_ids, "source.repository-contract", "harness.content-policy", "harness.core-v2-dependency-extension"],
         "run.core-v2-dependency-extension",
     )
     new_runs = [
@@ -182,6 +212,8 @@ def generate() -> None:
         contract.run_document("run.core-v2-scenario-plan-gap", "derived", "python3 scripts/generate_core_v2_scenario_plan_gap.py && python3 scripts/test_core_v2_scenario_plan_gap.py", graph["generated_at"], [plan_id]),
         contract.run_document("run.authority-denominator", "derived", "make authority-locators && make authority-validate", graph["generated_at"], authority_ids),
         contract.run_document("run.surface-inventory-readiness", "derived", "python3 scripts/generate_surface_inventory_readiness.py && python3 scripts/test_surface_inventory_readiness.py", graph["generated_at"], [readiness_id]),
+        contract.run_document("run.root-surface-inventory-closure", "derived", "python3 scripts/generate_root_surface_inventory.py && python3 scripts/test_root_surface_inventory.py", graph["generated_at"], [root_inventory_id]),
+        contract.run_document("run.root-verification-matrix-closure", "derived", "python3 scripts/generate_root_verification_matrix.py && python3 scripts/test_root_verification_matrix.py", graph["generated_at"], [root_matrix_id]),
         contract.run_document("run.core-v2-dependency-extension", "derived", "python3 scripts/generate_core_v2_dependency_extension.py && python3 scripts/test_core_v2_evidence_dependency_extensions.py", graph["generated_at"], [report_id]),
     ]
     graph["runs"].extend(new_runs)

@@ -1,0 +1,166 @@
+{
+  "schema_version": 1,
+  "id": "argocd-root-verification-matrix-closure-v1",
+  "status": "blocked-human-authority-and-proof-closure",
+  "inputs": {
+    "definitive/root-surface-inventory-bindings.yaml": "sha256:dfd8b94b10b1cfa769f09af942727982513e07970e79b61b30f47c3c40fb0de1",
+    "artifacts/core-v2/root-surface-inventory-closure.json": "sha256:92ecc67ad0beed471a4417aae48f82046432a58bbeafefd6934219755ad35943",
+    "evidence/scenarios/index.json": "sha256:a933a99aa700b5462429f05fff57b4c068899b024ea8602031863d74b327727e",
+    "authority/reviews/decisions.json": "sha256:6305c95ff8a719f4bded040447874814bec28afd2b9c9e81c3088488f3d4988b",
+    "coverage.yaml": "sha256:7fdd4890ce4fd2e21bccd84cb06bb8ca3d55ba4dbeaa4e9f8af9673f5944bc9d"
+  },
+  "policy": {
+    "ten_classes_per_reviewed_atomic_behavior": true,
+    "generated_candidate_rows_receive_no_credit": true,
+    "unproven_cells_remain_gap": true,
+    "dedicated_proof_evidence_target_claim_required": true,
+    "evidence_reuse_forbidden": true,
+    "runtime_or_platform_execution_required": true,
+    "fixture_or_static_runtime_substitution_forbidden": true,
+    "emit_only_when_all_blockers_closed": true
+  },
+  "denominator": {
+    "scenario_classes": 10,
+    "reviewed_denominator_status": "pending-human-authority-review",
+    "reviewed_atomic_behaviors": 0,
+    "expected_reviewed_matrix_rows": 0,
+    "legacy_candidate_behaviors": 100,
+    "legacy_candidate_rows": 1000,
+    "legacy_candidate_rows_open": 1000,
+    "legacy_rows_completion_credit": 0
+  },
+  "closure": {
+    "root_binding_items": 0,
+    "dedicated_runtime_rows": 13,
+    "authority_atomic_bindings": 0,
+    "completion_eligible_rows": 0,
+    "closed_reviewed_matrix_rows": 0,
+    "remaining_reviewed_matrix_rows": 0
+  },
+  "scenario_classes": [
+    {
+      "scenario": "normal",
+      "core_scenario": "normal",
+      "reviewed_behavior_cells": 0,
+      "legacy_candidate_rows": 100,
+      "dedicated_runtime_rows": 1,
+      "authority_atomic_bindings": 0,
+      "completion_eligible_rows": 0,
+      "status": "gap",
+      "gap": "Human-reviewed Atomic behaviorと専用completion-eligible Proofの接続が未成立。"
+    },
+    {
+      "scenario": "boundary",
+      "core_scenario": "boundary",
+      "reviewed_behavior_cells": 0,
+      "legacy_candidate_rows": 100,
+      "dedicated_runtime_rows": 0,
+      "authority_atomic_bindings": 0,
+      "completion_eligible_rows": 0,
+      "status": "gap",
+      "gap": "Human-reviewed Atomic behaviorと専用completion-eligible Proofの接続が未成立。"
+    },
+    {
+      "scenario": "rejection",
+      "core_scenario": "refusal",
+      "reviewed_behavior_cells": 0,
+      "legacy_candidate_rows": 100,
+      "dedicated_runtime_rows": 0,
+      "authority_atomic_bindings": 0,
+      "completion_eligible_rows": 0,
+      "status": "gap",
+      "gap": "Human-reviewed Atomic behaviorと専用completion-eligible Proofの接続が未成立。"
+    },
+    {
+      "scenario": "failure",
+      "core_scenario": "failure",
+      "reviewed_behavior_cells": 0,
+      "legacy_candidate_rows": 100,
+      "dedicated_runtime_rows": 0,
+      "authority_atomic_bindings": 0,
+      "completion_eligible_rows": 0,
+      "status": "gap",
+      "gap": "Human-reviewed Atomic behaviorと専用completion-eligible Proofの接続が未成立。"
+    },
+    {
+      "scenario": "recovery",
+      "core_scenario": "recovery",
+      "reviewed_behavior_cells": 0,
+      "legacy_candidate_rows": 100,
+      "dedicated_runtime_rows": 0,
+      "authority_atomic_bindings": 0,
+      "completion_eligible_rows": 0,
+      "status": "gap",
+      "gap": "Human-reviewed Atomic behaviorと専用completion-eligible Proofの接続が未成立。"
+    },
+    {
+      "scenario": "migration",
+      "core_scenario": "migration",
+      "reviewed_behavior_cells": 0,
+      "legacy_candidate_rows": 100,
+      "dedicated_runtime_rows": 0,
+      "authority_atomic_bindings": 0,
+      "completion_eligible_rows": 0,
+      "status": "gap",
+      "gap": "Human-reviewed Atomic behaviorと専用completion-eligible Proofの接続が未成立。"
+    },
+    {
+      "scenario": "operations",
+      "core_scenario": "operations",
+      "reviewed_behavior_cells": 0,
+      "legacy_candidate_rows": 100,
+      "dedicated_runtime_rows": 0,
+      "authority_atomic_bindings": 0,
+      "completion_eligible_rows": 0,
+      "status": "gap",
+      "gap": "Human-reviewed Atomic behaviorと専用completion-eligible Proofの接続が未成立。"
+    },
+    {
+      "scenario": "security",
+      "core_scenario": "security",
+      "reviewed_behavior_cells": 0,
+      "legacy_candidate_rows": 100,
+      "dedicated_runtime_rows": 12,
+      "authority_atomic_bindings": 0,
+      "completion_eligible_rows": 0,
+      "status": "gap",
+      "gap": "Human-reviewed Atomic behaviorと専用completion-eligible Proofの接続が未成立。"
+    },
+    {
+      "scenario": "performance",
+      "core_scenario": "performance",
+      "reviewed_behavior_cells": 0,
+      "legacy_candidate_rows": 100,
+      "dedicated_runtime_rows": 0,
+      "authority_atomic_bindings": 0,
+      "completion_eligible_rows": 0,
+      "status": "gap",
+      "gap": "Human-reviewed Atomic behaviorと専用completion-eligible Proofの接続が未成立。"
+    },
+    {
+      "scenario": "compatibility",
+      "core_scenario": "compatibility",
+      "reviewed_behavior_cells": 0,
+      "legacy_candidate_rows": 100,
+      "dedicated_runtime_rows": 0,
+      "authority_atomic_bindings": 0,
+      "completion_eligible_rows": 0,
+      "status": "gap",
+      "gap": "Human-reviewed Atomic behaviorと専用completion-eligible Proofの接続が未成立。"
+    }
+  ],
+  "root_matrix": {
+    "path": "verification.matrix.yaml",
+    "present": false,
+    "emission_eligible": false,
+    "blockers": [
+      "root-surface-inventory-not-emitted",
+      "reviewed-atomic-behaviors-zero",
+      "root-inventory-bindings-zero",
+      "authority-atomic-bindings-zero",
+      "completion-eligible-scenario-rows-zero",
+      "reviewed-matrix-cell-denominator-zero",
+      "authority-human-decisions-not-closed"
+    ]
+  }
+}

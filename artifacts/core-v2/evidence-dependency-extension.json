@@ -3,7 +3,7 @@
   "id": "argocd-evidence-dependency-core-v2-extension-v1",
   "status": "current-additive-extension",
   "core_commit": "072d7ca77981f51754e824d70c6d4ecd55ea67e5",
-  "base_graph_digest": "sha256:54c02421416f2df42af5eac394234a4b617564c76b064cfe63b9e1bcb3ff6e92",
+  "base_graph_digest": "sha256:1b31e63b655a49e8a8a2645a4aa0117d28f2b8addbc9a8b77764eed0064659a7",
   "baseline_input_mutations": 0,
   "added_input_ids": [
     "harness.authority-denominator",
@@ -11,12 +11,16 @@
     "harness.core-v2-dependency-extension",
     "harness.core-v2-scenario-plan",
     "harness.core-v2-skill-router",
+    "harness.root-surface-inventory",
+    "harness.root-verification-matrix",
     "harness.surface-inventory-readiness",
     "source.authority-lock-inventory",
     "source.repository-contract"
   ],
   "added_output_paths": [
     "artifacts/core-v2/evidence-dependency-extension.json",
+    "artifacts/core-v2/root-surface-inventory-closure.json",
+    "artifacts/core-v2/root-verification-matrix-closure.json",
     "artifacts/core-v2/scenario-plan-gap.json",
     "artifacts/core-v2/surface-inventory-readiness.json",
     "authority/extraction.snapshot.json",

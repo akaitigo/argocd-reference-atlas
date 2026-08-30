@@ -42,6 +42,10 @@ jobs:
           python3 scripts/validate_definitive_inventory.py
           python3 scripts/generate_surface_inventory_readiness.py --check
           python3 scripts/test_surface_inventory_readiness.py
+          python3 scripts/generate_root_surface_inventory.py --check
+          python3 scripts/test_root_surface_inventory.py
+          python3 scripts/generate_root_verification_matrix.py --check
+          python3 scripts/test_root_verification_matrix.py
           python3 scripts/validate_scenario_proofs.py
           python3 scripts/test_scenario_gap_closure.py
           python3 scripts/test_atomic_evidence_publish.py

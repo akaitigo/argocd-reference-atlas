@@ -1,0 +1,12 @@
+schema_version: 1
+atlas_id: argocd-reference-atlas
+status: pending-human-authority-review
+policy:
+  source: authority/reviews/decisions.json
+  final_authority_artifact_suffix: .authority-surfaces.yaml
+  candidate_is_final_surface: false
+  machine_proposal_is_human_decision: false
+  dedicated_target_and_claim_required: true
+  ten_scenario_proofs_required: true
+  completion_eligible_runtime_proof_required: true
+items: []
