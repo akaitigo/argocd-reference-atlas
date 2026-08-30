@@ -3,9 +3,25 @@ id: argocd-dedicated-surface-scenario-runtime-registry-v1
 atlas_id: argocd-reference-atlas
 status: incomplete-authority-review-with-dedicated-runtime-reports
 reports:
+- id: runtime.application-multi-source.security.v3-5-2
+  path: evidence/scenarios/runtime/reports/runtime.application-multi-source.security.v3-5-2.json
+  digest: sha256:36cb2bec7783c0cad1a7b00ee6c0803d242a56228dac61bf14b92a32d3d30f68
+  bytes: 9470
+- id: runtime.application-operation-refresh.security.v3-5-2
+  path: evidence/scenarios/runtime/reports/runtime.application-operation-refresh.security.v3-5-2.json
+  digest: sha256:ab859f7d0a40699503cae3251155523d8bea6ba5eb9dc3bad22a689227dc9207
+  bytes: 8749
+- id: runtime.application-operation-rollback.security.v3-5-2
+  path: evidence/scenarios/runtime/reports/runtime.application-operation-rollback.security.v3-5-2.json
+  digest: sha256:df17533a3bbcb58c98727ffa939b07526f73eddc2d1456bf18c28a5bc7d12544
+  bytes: 9087
+- id: runtime.application-operation-sync.security.v3-5-2
+  path: evidence/scenarios/runtime/reports/runtime.application-operation-sync.security.v3-5-2.json
+  digest: sha256:07ec8c5061e4746f23be7853651157de87e30e6d4acd85bc7005f84d558bec34
+  bytes: 8904
 - id: runtime.application-spec-sync-policy.normal.v3-5-2
   path: evidence/scenarios/runtime/reports/runtime.application-spec-sync-policy.normal.v3-5-2.json
-  digest: sha256:985ee0696da162bf62e086bfa63df727bb964beedc48284341ff85bf6c6bbf47
+  digest: sha256:b96fe86e59675edc37215ec57781e4115ad05466a9df608bd1dca0717557e424
   bytes: 9480
 admission_contract:
   report_scope: exact-surface-scenario

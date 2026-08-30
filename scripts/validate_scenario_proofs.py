@@ -145,13 +145,20 @@ def main() -> None:
     runtime_registry = module.load_yaml(module.RUNTIME_REGISTRY)
     overrides = variant_contract["denominator"]["surface_overrides"]
     require(variant_contract["reference"]["commit"] == index["reference"]["commit"] and variant_contract["denominator"]["exhaustive"] is False, "現行Variant denominatorの未承認境界が不正です")
-    require(len(overrides) == 1 and overrides[0]["surface_id"] == "application.spec.sync-policy" and overrides[0]["status"] == "runtime-declared-pending-authority-human-review" and overrides[0]["exhaustive_for_completion"] is False, "Runtime宣言VariantとAuthority未承認境界が不正です")
-    require([item["id"] for item in overrides[0]["variants"]] == ["fixed-revision-manual-sync", "fixed-revision-automated-self-heal"], "Runtime宣言Variant集合が不正です")
-    require(len(runtime_registry["reports"]) == 1 and runtime_registry["status"] == "incomplete-authority-review-with-dedicated-runtime-reports", "現行専用Runtime registryの実行件数または未完境界が不正です")
+    expected_variants = {
+        "application.spec.sync-policy": ["fixed-revision-manual-sync", "fixed-revision-automated-self-heal"],
+        "application.multi-source": ["source-order-a-then-b", "source-order-b-then-a"],
+        "application.operation.refresh": ["rbac-denied-hard-refresh", "rbac-allowed-hard-refresh"],
+        "application.operation.rollback": ["rbac-denied-rollback", "rbac-allowed-rollback"],
+        "application.operation.sync": ["rbac-denied-sync", "rbac-allowed-sync"],
+    }
+    actual_variants = {item["surface_id"]: [variant["id"] for variant in item["variants"]] for item in overrides}
+    require(actual_variants == expected_variants and all(item["status"] == "runtime-declared-pending-authority-human-review" and item["exhaustive_for_completion"] is False for item in overrides), "Runtime宣言VariantとAuthority未承認境界が不正です")
+    require(len(runtime_registry["reports"]) == 5 and runtime_registry["status"] == "incomplete-authority-review-with-dedicated-runtime-reports", "現行専用Runtime registryの実行件数または未完境界が不正です")
     require(index["source_bindings"]["variant_contract"] == module.binding(module.VARIANT_CONTRACT) and index["source_bindings"]["dedicated_runtime_registry"] == module.binding(module.RUNTIME_REGISTRY), "Variant／専用Runtime contract digestがindexへ接続されていません")
     require(summary["behaviors"] == 100 and summary["scenarios"] == 10 and summary["rows"] == 1000 and summary["dedicated_artifacts"] == 1000, "100 Surface × 10 Scenario分母が不正です")
     require(summary["scenario_gaps_closed"] == 0 and summary["scenario_gaps_open"] == 1000, "専用全Variant RuntimeなしでScenario gapを閉じています")
-    require(summary["variant_denominators_exhaustive"] == 0 and summary["dedicated_runtime_reports"] == 1 and summary["dedicated_runtime_execution_complete_rows"] == 1, "専用Runtime実行またはAuthority未承認分母の集計が不正です")
+    require(summary["variant_denominators_exhaustive"] == 0 and summary["dedicated_runtime_reports"] == 5 and summary["dedicated_runtime_execution_complete_rows"] == 5, "専用Runtime実行またはAuthority未承認分母の集計が不正です")
     require(summary["supporting_runtime_artifacts"] + summary["supporting_artifacts"] + summary["no_supporting_artifacts"] == 1000, "補助Evidence分類が分母を閉じていません")
     floor = baseline["supporting_evidence_floor"]
     require(summary["supporting_runtime_artifacts"] >= floor["supporting_runtime_artifacts"] and summary["supporting_runtime_artifacts"] + summary["supporting_artifacts"] >= floor["supporting_artifacts_total"], "既存Supporting Evidenceが非後退floorを下回っています")
@@ -187,7 +194,13 @@ def main() -> None:
         require((component_identity["component_identity_gap"] is None) == component_identity["component_identity_complete"], f"Controller identity gapが不正です: {proof['id']}")
         validate_observations(module, proof)
         validate_gap_closure(proof)
-        expected_runtime_complete = proof["behavior_id"] == "application.spec.sync-policy" and proof["scenario"] == "normal"
+        expected_runtime_complete = (proof["behavior_id"], proof["scenario"]) in {
+            ("application.spec.sync-policy", "normal"),
+            ("application.multi-source", "security"),
+            ("application.operation.refresh", "security"),
+            ("application.operation.rollback", "security"),
+            ("application.operation.sync", "security"),
+        }
         require(proof["closure"]["dedicated_runtime_execution_complete"] is expected_runtime_complete, f"専用Runtime実行完了rowが不正です: {proof['id']}")
         if expected_runtime_complete:
             require(proof["scenario_gap_closure"]["failed_conditions"] == ["variant_denominator_exhaustive"], "Runtime完了rowがAuthority Gap以外を残しています")

@@ -173,7 +173,7 @@
       "id": "artifact-trace",
       "status": "partial",
       "portable_meaning": "各required scenarioのoracle結果をSource/Harness/Runtime/Version/Attemptへ追跡できる専用artifactとして固定する。",
-      "argocd_denominator": {"expression": "all required Surface × Scenario × approved-exhaustive Variant rows", "source": ["definitive/gap-ledger.yaml", "definitive/scenario-variant-contract.yaml", "evidence/scenarios/runtime/index.yaml", "evidence/scenarios/index.json"], "current_observation": "1,000 dedicated Surface×Scenario rows; approved-exhaustive Variant denominators 0, dedicated Runtime reports 0, Scenario gap closure 0/1,000; historical artifacts remain supporting-only; OTLP trace remains incomplete", "closure": "open"},
+      "argocd_denominator": {"expression": "all required Surface × Scenario × approved-exhaustive Variant rows", "source": ["definitive/gap-ledger.yaml", "definitive/scenario-variant-contract.yaml", "evidence/scenarios/runtime/index.yaml", "evidence/scenarios/index.json"], "current_observation": "1,000 dedicated Surface×Scenario rows; dedicated Runtime実行完了5、残995、approved-exhaustive Variant denominators 0、Scenario gap closure 0/1,000; historical artifacts remain supporting-only; OTLP trace remains incomplete", "closure": "open"},
       "proof_unit": "one scenario row x one unique proof/evidence ID x one content-addressed artifact and trace/applicability record",
       "bounded_evidence_ids": ["evidence.reconciliation.v3-5-2", "evidence.observability.v3-5-2", "evidence.high-availability.v3-5-2", "evidence.notifications.v3-5-2"],
       "gap_ids": ["gap.observability-trace-incident", "gap.core-v2-contract"]

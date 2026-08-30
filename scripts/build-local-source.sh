@@ -36,6 +36,10 @@ done
 mkdir -p "${work}/apps/application"
 cp "${ATLAS_ROOT}/fixtures/scenarios/application-sync-policy-normal/configmap.yaml" \
   "${work}/apps/application/configmap.yaml"
+mkdir -p "${work}/apps/security-001"
+cp -R "${ATLAS_ROOT}/fixtures/scenarios/security-001/source-a" "${work}/apps/security-001/source-a"
+cp -R "${ATLAS_ROOT}/fixtures/scenarios/security-001/source-b" "${work}/apps/security-001/source-b"
+cp -R "${ATLAS_ROOT}/fixtures/scenarios/security-001/operations" "${work}/apps/security-001/operations"
 write_configmap apps/reconciliation atlas-reconciliation desired canonical
 write_configmap apps/sync atlas-sync release v1
 write_configmap apps/diff atlas-diff desired git
@@ -63,6 +67,13 @@ EOF
 
 git -C "$work" add apps
 git -C "$work" commit -q -m 'baseline desired state'
+
+git -C "$work" switch -q -c security-001-v2
+sed -i.bak 's/release: v1/release: v2/' "${work}/apps/security-001/operations/configmap.yaml"
+rm -- "${work}/apps/security-001/operations/configmap.yaml.bak"
+git -C "$work" add apps/security-001/operations/configmap.yaml
+git -C "$work" commit -q -m 'security tranche operations revision v2'
+git -C "$work" switch -q main
 
 git -C "$work" switch -q -c sync-failure
 mkdir -p "${work}/apps/sync"

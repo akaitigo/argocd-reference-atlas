@@ -11,7 +11,7 @@
       "level": "info",
       "msg": "Refreshing app status (spec.source differs), level (3)",
       "project": "atlas-application",
-      "time": "2026-08-30T16:07:31Z"
+      "time": "2026-08-30T16:46:00Z"
     },
     {
       "app-namespace": "argocd",
@@ -19,20 +19,20 @@
       "level": "info",
       "msg": "Comparing app state (cluster: https://kubernetes.default.svc, namespace: atlas-application)",
       "project": "atlas-application",
-      "time": "2026-08-30T16:07:31Z"
+      "time": "2026-08-30T16:46:00Z"
     },
     {
       "app-namespace": "argocd",
       "application": "atlas-application",
       "build_options_ms": 0,
       "level": "info",
-      "manifests_ms": 3169,
+      "manifests_ms": 315,
       "msg": "GetRepoObjs stats",
       "plugins_ms": 0,
       "project": "atlas-application",
       "repo_ms": 0,
-      "time": "2026-08-30T16:07:34Z",
-      "time_ms": 3169
+      "time": "2026-08-30T16:46:01Z",
+      "time_ms": 315
     },
     {
       "application": "atlas-application",
@@ -41,7 +41,7 @@
       "level": "info",
       "msg": "Updated sync status:  -> OutOfSync",
       "reason": "ResourceUpdated",
-      "time": "2026-08-30T16:07:34Z",
+      "time": "2026-08-30T16:46:01Z",
       "type": "Normal"
     },
     {
@@ -51,7 +51,7 @@
       "level": "info",
       "msg": "Updated health status:  -> Missing",
       "reason": "ResourceUpdated",
-      "time": "2026-08-30T16:07:34Z",
+      "time": "2026-08-30T16:46:01Z",
       "type": "Normal"
     },
     {
@@ -60,14 +60,14 @@
       "level": "info",
       "msg": "Update successful",
       "project": "atlas-application",
-      "time": "2026-08-30T16:07:34Z"
+      "time": "2026-08-30T16:46:01Z"
     },
     {
       "app-namespace": "argocd",
       "app_status_update_ms": 0,
       "application": "atlas-application",
       "auto_sync_ms": 0,
-      "compare_app_state_ms": 3174,
+      "compare_app_state_ms": 319,
       "comparison-level": 3,
       "comparison_with_nothing_ms": 0,
       "dedup_ms": 0,
@@ -75,23 +75,23 @@
       "dest-namespace": "atlas-application",
       "dest-server": "https://kubernetes.default.svc",
       "diff_ms": 1,
-      "git_ms": 3170,
+      "git_ms": 316,
       "health_ms": 0,
       "level": "info",
       "live_ms": 0,
       "msg": "Reconciliation completed",
-      "normalize_application_ms": 2,
-      "patch_ms": 36,
-      "persist_app_status_ms": 63,
+      "normalize_application_ms": 1,
+      "patch_ms": 15,
+      "persist_app_status_ms": 40,
       "process_finalizers_ms": 0,
       "project": "atlas-application",
       "refresh_app_conditions_ms": 0,
-      "set_app_managed_resources_ms": 4,
+      "set_app_managed_resources_ms": 8,
       "setop_ms": 0,
       "settings_ms": 1,
       "sync_ms": 0,
-      "time": "2026-08-30T16:07:34Z",
-      "time_ms": 3244
+      "time": "2026-08-30T16:46:01Z",
+      "time_ms": 370
     },
     {
       "app-namespace": "argocd",
@@ -99,7 +99,7 @@
       "level": "info",
       "msg": "updated 'argocd/atlas-application' operation (phase: Running)",
       "project": "atlas-application",
-      "time": "2026-08-30T16:07:34Z"
+      "time": "2026-08-30T16:46:01Z"
     },
     {
       "app-namespace": "argocd",
@@ -107,7 +107,7 @@
       "level": "info",
       "msg": "Initialized new operation: {&SyncOperation{Revision:,Prune:true,DryRun:false,SyncStrategy:nil,Resources:[]SyncOperationResource{},Source:nil,Manifests:[],SyncOptions:[],Sources:[]ApplicationSource{},Revisions:[],SelfHealAttemptsCount:0,} { false} [] {0 nil false}}",
       "project": "atlas-application",
-      "time": "2026-08-30T16:07:34Z"
+      "time": "2026-08-30T16:46:01Z"
     },
     {
       "app-namespace": "argocd",
@@ -115,7 +115,7 @@
       "level": "info",
       "msg": "Comparing app state (cluster: https://kubernetes.default.svc, namespace: atlas-application)",
       "project": "atlas-application",
-      "time": "2026-08-30T16:07:34Z"
+      "time": "2026-08-30T16:46:01Z"
     },
     {
       "app-namespace": "argocd",
@@ -127,8 +127,8 @@
       "plugins_ms": 0,
       "project": "atlas-application",
       "repo_ms": 0,
-      "time": "2026-08-30T16:07:34Z",
-      "time_ms": 31
+      "time": "2026-08-30T16:46:01Z",
+      "time_ms": 30
     },
     {
       "app-namespace": "argocd",
@@ -138,8 +138,8 @@
       "project": "atlas-application",
       "skipHooks": false,
       "started": false,
-      "syncId": "00001-TbDvW",
-      "time": "2026-08-30T16:07:34Z"
+      "syncId": "00010-Nafnp",
+      "time": "2026-08-30T16:46:01Z"
     },
     {
       "app-namespace": "argocd",
@@ -147,9 +147,9 @@
       "level": "info",
       "msg": "Tasks (dry-run)",
       "project": "atlas-application",
-      "syncId": "00001-TbDvW",
+      "syncId": "00010-Nafnp",
       "tasks": "[Sync/0 resource /ConfigMap:atlas-application/atlas-application nil->obj (,,)]",
-      "time": "2026-08-30T16:07:34Z"
+      "time": "2026-08-30T16:46:01Z"
     },
     {
       "app-namespace": "argocd",
@@ -157,8 +157,8 @@
       "level": "info",
       "msg": "Updating operation state. phase: Running -> Running, message: '' -> 'one or more tasks are running'",
       "project": "atlas-application",
-      "syncId": "00001-TbDvW",
-      "time": "2026-08-30T16:07:34Z"
+      "syncId": "00010-Nafnp",
+      "time": "2026-08-30T16:46:01Z"
     },
     {
       "app-namespace": "argocd",
@@ -170,8 +170,8 @@
       "namespace": "atlas-application",
       "phase": "Sync",
       "project": "atlas-application",
-      "syncId": "00001-TbDvW",
-      "time": "2026-08-30T16:07:34Z"
+      "syncId": "00010-Nafnp",
+      "time": "2026-08-30T16:46:01Z"
     },
     {
       "app-namespace": "argocd",
@@ -179,18 +179,18 @@
       "level": "info",
       "msg": "Updating operation state. phase: Running -> Succeeded, message: 'one or more tasks are running' -> 'successfully synced (all tasks run)'",
       "project": "atlas-application",
-      "syncId": "00001-TbDvW",
-      "time": "2026-08-30T16:07:34Z"
+      "syncId": "00010-Nafnp",
+      "time": "2026-08-30T16:46:01Z"
     },
     {
       "app-namespace": "argocd",
       "application": "atlas-application",
-      "duration": 184388125,
+      "duration": 224363791,
       "level": "info",
       "msg": "sync/terminate complete",
       "project": "atlas-application",
-      "syncId": "00001-TbDvW",
-      "time": "2026-08-30T16:07:34Z"
+      "syncId": "00010-Nafnp",
+      "time": "2026-08-30T16:46:01Z"
     },
     {
       "app-namespace": "argocd",
@@ -198,33 +198,17 @@
       "level": "info",
       "msg": "updated 'argocd/atlas-application' operation (phase: Succeeded)",
       "project": "atlas-application",
-      "time": "2026-08-30T16:07:34Z"
+      "time": "2026-08-30T16:46:01Z"
     },
     {
       "application": "atlas-application",
       "dest-namespace": "atlas-application",
       "dest-server": "https://kubernetes.default.svc",
       "level": "info",
-      "msg": "Sync operation to f1e20c046600f8830e981b55f73b5a17c5cf0d0f succeeded",
+      "msg": "Sync operation to 90133f1fdd1d60d44c33a4544853f62747b75f18 succeeded",
       "reason": "OperationCompleted",
-      "time": "2026-08-30T16:07:34Z",
+      "time": "2026-08-30T16:46:01Z",
       "type": "Normal"
-    },
-    {
-      "app-namespace": "argocd",
-      "application": "atlas-application",
-      "level": "info",
-      "msg": "Refreshing app status (controller refresh requested), level (3)",
-      "project": "atlas-application",
-      "time": "2026-08-30T16:07:34Z"
-    },
-    {
-      "app-namespace": "argocd",
-      "application": "atlas-application",
-      "level": "info",
-      "msg": "Comparing app state (cluster: https://kubernetes.default.svc, namespace: atlas-application)",
-      "project": "atlas-application",
-      "time": "2026-08-30T16:07:34Z"
     },
     {
       "api-version": "v1",
@@ -239,79 +223,7 @@
       "namespace": "atlas-application",
       "project": "atlas-application",
       "server": "https://kubernetes.default.svc",
-      "time": "2026-08-30T16:07:34Z"
-    },
-    {
-      "app-namespace": "argocd",
-      "application": "atlas-application",
-      "build_options_ms": 0,
-      "level": "info",
-      "manifests_ms": 31,
-      "msg": "GetRepoObjs stats",
-      "plugins_ms": 0,
-      "project": "atlas-application",
-      "repo_ms": 0,
-      "time": "2026-08-30T16:07:34Z",
-      "time_ms": 31
-    },
-    {
-      "application": "atlas-application",
-      "dest-namespace": "atlas-application",
-      "dest-server": "https://kubernetes.default.svc",
-      "level": "info",
-      "msg": "Updated sync status: OutOfSync -> Synced",
-      "reason": "ResourceUpdated",
-      "time": "2026-08-30T16:07:34Z",
-      "type": "Normal"
-    },
-    {
-      "application": "atlas-application",
-      "dest-namespace": "atlas-application",
-      "dest-server": "https://kubernetes.default.svc",
-      "level": "info",
-      "msg": "Updated health status: Missing -> Healthy",
-      "reason": "ResourceUpdated",
-      "time": "2026-08-30T16:07:34Z",
-      "type": "Normal"
-    },
-    {
-      "app-namespace": "argocd",
-      "application": "atlas-application",
-      "level": "info",
-      "msg": "Update successful",
-      "project": "atlas-application",
-      "time": "2026-08-30T16:07:35Z"
-    },
-    {
-      "app-namespace": "argocd",
-      "app_status_update_ms": 0,
-      "application": "atlas-application",
-      "auto_sync_ms": 0,
-      "compare_app_state_ms": 36,
-      "comparison-level": 3,
-      "comparison_with_nothing_ms": 0,
-      "dedup_ms": 0,
-      "dest-name": "",
-      "dest-namespace": "atlas-application",
-      "dest-server": "https://kubernetes.default.svc",
-      "diff_ms": 3,
-      "git_ms": 31,
-      "health_ms": 0,
-      "level": "info",
-      "live_ms": 0,
-      "msg": "Reconciliation completed",
-      "normalize_application_ms": 0,
-      "patch_ms": 29,
-      "persist_app_status_ms": 44,
-      "process_finalizers_ms": 0,
-      "project": "atlas-application",
-      "refresh_app_conditions_ms": 0,
-      "set_app_managed_resources_ms": 5,
-      "setop_ms": 0,
-      "settings_ms": 0,
-      "sync_ms": 0,
-      "time": "2026-08-30T16:07:35Z",
-      "time_ms": 86
+      "time": "2026-08-30T16:46:01Z"
     },
     {
       "app-namespace": "argocd",
@@ -319,7 +231,7 @@
       "level": "info",
       "msg": "Refreshing app status (controller refresh requested), level (1)",
       "project": "atlas-application",
-      "time": "2026-08-30T16:07:35Z"
+      "time": "2026-08-30T16:46:01Z"
     },
     {
       "app-namespace": "argocd",
@@ -327,618 +239,7 @@
       "level": "info",
       "msg": "Comparing app state (cluster: https://kubernetes.default.svc, namespace: atlas-application)",
       "project": "atlas-application",
-      "time": "2026-08-30T16:07:35Z"
-    },
-    {
-      "app-namespace": "argocd",
-      "application": "atlas-application",
-      "build_options_ms": 0,
-      "level": "info",
-      "manifests_ms": 27,
-      "msg": "GetRepoObjs stats",
-      "plugins_ms": 0,
-      "project": "atlas-application",
-      "repo_ms": 0,
-      "time": "2026-08-30T16:07:35Z",
-      "time_ms": 27
-    },
-    {
-      "app-namespace": "argocd",
-      "application": "atlas-application",
-      "level": "info",
-      "msg": "No status changes. Skipping patch",
-      "project": "atlas-application",
-      "time": "2026-08-30T16:07:35Z"
-    },
-    {
-      "app-namespace": "argocd",
-      "app_status_update_ms": 0,
-      "application": "atlas-application",
-      "auto_sync_ms": 0,
-      "compare_app_state_ms": 30,
-      "comparison-level": 1,
-      "comparison_with_nothing_ms": 0,
-      "dedup_ms": 0,
-      "dest-name": "",
-      "dest-namespace": "atlas-application",
-      "dest-server": "https://kubernetes.default.svc",
-      "diff_ms": 1,
-      "git_ms": 27,
-      "health_ms": 0,
-      "level": "info",
-      "live_ms": 0,
-      "msg": "Reconciliation completed",
-      "normalize_application_ms": 1,
-      "patch_ms": 0,
-      "persist_app_status_ms": 0,
-      "process_finalizers_ms": 0,
-      "project": "atlas-application",
-      "refresh_app_conditions_ms": 0,
-      "set_app_managed_resources_ms": 1,
-      "setop_ms": 0,
-      "settings_ms": 0,
-      "sync_ms": 0,
-      "time": "2026-08-30T16:07:35Z",
-      "time_ms": 33
-    },
-    {
-      "app-namespace": "argocd",
-      "application": "atlas-application",
-      "level": "info",
-      "msg": "Refreshing app status (spec.source differs), level (3)",
-      "project": "atlas-application",
-      "time": "2026-08-30T16:13:56Z"
-    },
-    {
-      "app-namespace": "argocd",
-      "application": "atlas-application",
-      "level": "info",
-      "msg": "Comparing app state (cluster: https://kubernetes.default.svc, namespace: atlas-application)",
-      "project": "atlas-application",
-      "time": "2026-08-30T16:13:56Z"
-    },
-    {
-      "app-namespace": "argocd",
-      "application": "atlas-application",
-      "build_options_ms": 0,
-      "level": "info",
-      "manifests_ms": 282,
-      "msg": "GetRepoObjs stats",
-      "plugins_ms": 0,
-      "project": "atlas-application",
-      "repo_ms": 2,
-      "time": "2026-08-30T16:13:56Z",
-      "time_ms": 285
-    },
-    {
-      "application": "atlas-application",
-      "dest-namespace": "atlas-application",
-      "dest-server": "https://kubernetes.default.svc",
-      "level": "info",
-      "msg": "Updated sync status:  -> OutOfSync",
-      "reason": "ResourceUpdated",
-      "time": "2026-08-30T16:13:56Z",
-      "type": "Normal"
-    },
-    {
-      "application": "atlas-application",
-      "dest-namespace": "atlas-application",
-      "dest-server": "https://kubernetes.default.svc",
-      "level": "info",
-      "msg": "Updated health status:  -> Missing",
-      "reason": "ResourceUpdated",
-      "time": "2026-08-30T16:13:56Z",
-      "type": "Normal"
-    },
-    {
-      "app-namespace": "argocd",
-      "application": "atlas-application",
-      "level": "info",
-      "msg": "Update successful",
-      "project": "atlas-application",
-      "time": "2026-08-30T16:13:56Z"
-    },
-    {
-      "app-namespace": "argocd",
-      "app_status_update_ms": 0,
-      "application": "atlas-application",
-      "auto_sync_ms": 0,
-      "compare_app_state_ms": 303,
-      "comparison-level": 3,
-      "comparison_with_nothing_ms": 0,
-      "dedup_ms": 2,
-      "dest-name": "",
-      "dest-namespace": "atlas-application",
-      "dest-server": "https://kubernetes.default.svc",
-      "diff_ms": 4,
-      "git_ms": 287,
-      "health_ms": 0,
-      "level": "info",
-      "live_ms": 1,
-      "msg": "Reconciliation completed",
-      "normalize_application_ms": 0,
-      "patch_ms": 13,
-      "persist_app_status_ms": 52,
-      "process_finalizers_ms": 0,
-      "project": "atlas-application",
-      "refresh_app_conditions_ms": 0,
-      "set_app_managed_resources_ms": 20,
-      "setop_ms": 0,
-      "settings_ms": 6,
-      "sync_ms": 0,
-      "time": "2026-08-30T16:13:56Z",
-      "time_ms": 377
-    },
-    {
-      "app-namespace": "argocd",
-      "application": "atlas-application",
-      "level": "info",
-      "msg": "updated 'argocd/atlas-application' operation (phase: Running)",
-      "project": "atlas-application",
-      "time": "2026-08-30T16:13:56Z"
-    },
-    {
-      "app-namespace": "argocd",
-      "application": "atlas-application",
-      "level": "info",
-      "msg": "Initialized new operation: {&SyncOperation{Revision:,Prune:true,DryRun:false,SyncStrategy:nil,Resources:[]SyncOperationResource{},Source:nil,Manifests:[],SyncOptions:[],Sources:[]ApplicationSource{},Revisions:[],SelfHealAttemptsCount:0,} { false} [] {0 nil false}}",
-      "project": "atlas-application",
-      "time": "2026-08-30T16:13:56Z"
-    },
-    {
-      "app-namespace": "argocd",
-      "application": "atlas-application",
-      "level": "info",
-      "msg": "Comparing app state (cluster: https://kubernetes.default.svc, namespace: atlas-application)",
-      "project": "atlas-application",
-      "time": "2026-08-30T16:13:56Z"
-    },
-    {
-      "app-namespace": "argocd",
-      "application": "atlas-application",
-      "build_options_ms": 0,
-      "level": "info",
-      "manifests_ms": 15,
-      "msg": "GetRepoObjs stats",
-      "plugins_ms": 0,
-      "project": "atlas-application",
-      "repo_ms": 0,
-      "time": "2026-08-30T16:13:56Z",
-      "time_ms": 15
-    },
-    {
-      "app-namespace": "argocd",
-      "application": "atlas-application",
-      "level": "info",
-      "msg": "Syncing",
-      "project": "atlas-application",
-      "skipHooks": false,
-      "started": false,
-      "syncId": "00002-uOgOD",
-      "time": "2026-08-30T16:13:56Z"
-    },
-    {
-      "app-namespace": "argocd",
-      "application": "atlas-application",
-      "level": "info",
-      "msg": "Tasks (dry-run)",
-      "project": "atlas-application",
-      "syncId": "00002-uOgOD",
-      "tasks": "[Sync/0 resource /ConfigMap:atlas-application/atlas-application nil->obj (,,)]",
-      "time": "2026-08-30T16:13:56Z"
-    },
-    {
-      "app-namespace": "argocd",
-      "application": "atlas-application",
-      "level": "info",
-      "msg": "Updating operation state. phase: Running -> Running, message: '' -> 'one or more tasks are running'",
-      "project": "atlas-application",
-      "syncId": "00002-uOgOD",
-      "time": "2026-08-30T16:13:57Z"
-    },
-    {
-      "app-namespace": "argocd",
-      "application": "atlas-application",
-      "kind": "ConfigMap",
-      "level": "info",
-      "msg": "Adding resource result, status: 'Synced', phase: 'Running', message: 'configmap/atlas-application created'",
-      "name": "atlas-application",
-      "namespace": "atlas-application",
-      "phase": "Sync",
-      "project": "atlas-application",
-      "syncId": "00002-uOgOD",
-      "time": "2026-08-30T16:13:57Z"
-    },
-    {
-      "app-namespace": "argocd",
-      "application": "atlas-application",
-      "level": "info",
-      "msg": "Updating operation state. phase: Running -> Succeeded, message: 'one or more tasks are running' -> 'successfully synced (all tasks run)'",
-      "project": "atlas-application",
-      "syncId": "00002-uOgOD",
-      "time": "2026-08-30T16:13:57Z"
-    },
-    {
-      "app-namespace": "argocd",
-      "application": "atlas-application",
-      "duration": 159369167,
-      "level": "info",
-      "msg": "sync/terminate complete",
-      "project": "atlas-application",
-      "syncId": "00002-uOgOD",
-      "time": "2026-08-30T16:13:57Z"
-    },
-    {
-      "app-namespace": "argocd",
-      "application": "atlas-application",
-      "level": "info",
-      "msg": "updated 'argocd/atlas-application' operation (phase: Succeeded)",
-      "project": "atlas-application",
-      "time": "2026-08-30T16:13:57Z"
-    },
-    {
-      "application": "atlas-application",
-      "dest-namespace": "atlas-application",
-      "dest-server": "https://kubernetes.default.svc",
-      "level": "info",
-      "msg": "Sync operation to f1e20c046600f8830e981b55f73b5a17c5cf0d0f succeeded",
-      "reason": "OperationCompleted",
-      "time": "2026-08-30T16:13:57Z",
-      "type": "Normal"
-    },
-    {
-      "app-namespace": "argocd",
-      "application": "atlas-application",
-      "level": "info",
-      "msg": "Refreshing app status (controller refresh requested), level (3)",
-      "project": "atlas-application",
-      "time": "2026-08-30T16:13:57Z"
-    },
-    {
-      "app-namespace": "argocd",
-      "application": "atlas-application",
-      "level": "info",
-      "msg": "Comparing app state (cluster: https://kubernetes.default.svc, namespace: atlas-application)",
-      "project": "atlas-application",
-      "time": "2026-08-30T16:13:57Z"
-    },
-    {
-      "app-namespace": "argocd",
-      "application": "atlas-application",
-      "build_options_ms": 0,
-      "level": "info",
-      "manifests_ms": 23,
-      "msg": "GetRepoObjs stats",
-      "plugins_ms": 0,
-      "project": "atlas-application",
-      "repo_ms": 0,
-      "time": "2026-08-30T16:13:57Z",
-      "time_ms": 23
-    },
-    {
-      "api-version": "v1",
-      "app-namespace": "argocd",
-      "application": "atlas-application",
-      "cluster-name": "",
-      "comparison-level": 1,
-      "kind": "ConfigMap",
-      "level": "info",
-      "msg": "Requesting app refresh caused by object update",
-      "name": "atlas-application",
-      "namespace": "atlas-application",
-      "project": "atlas-application",
-      "server": "https://kubernetes.default.svc",
-      "time": "2026-08-30T16:13:57Z"
-    },
-    {
-      "app-namespace": "argocd",
-      "application": "atlas-application",
-      "level": "info",
-      "msg": "Update successful",
-      "project": "atlas-application",
-      "time": "2026-08-30T16:13:57Z"
-    },
-    {
-      "app-namespace": "argocd",
-      "app_status_update_ms": 0,
-      "application": "atlas-application",
-      "auto_sync_ms": 0,
-      "compare_app_state_ms": 24,
-      "comparison-level": 3,
-      "comparison_with_nothing_ms": 0,
-      "dedup_ms": 0,
-      "dest-name": "",
-      "dest-namespace": "atlas-application",
-      "dest-server": "https://kubernetes.default.svc",
-      "diff_ms": 0,
-      "git_ms": 23,
-      "health_ms": 0,
-      "level": "info",
-      "live_ms": 0,
-      "msg": "Reconciliation completed",
-      "normalize_application_ms": 0,
-      "patch_ms": 19,
-      "persist_app_status_ms": 19,
-      "process_finalizers_ms": 0,
-      "project": "atlas-application",
-      "refresh_app_conditions_ms": 0,
-      "set_app_managed_resources_ms": 0,
-      "setop_ms": 0,
-      "settings_ms": 0,
-      "sync_ms": 0,
-      "time": "2026-08-30T16:13:57Z",
-      "time_ms": 45
-    },
-    {
-      "app-namespace": "argocd",
-      "application": "atlas-application",
-      "level": "info",
-      "msg": "Refreshing app status (controller refresh requested), level (1)",
-      "project": "atlas-application",
-      "time": "2026-08-30T16:13:57Z"
-    },
-    {
-      "app-namespace": "argocd",
-      "application": "atlas-application",
-      "level": "info",
-      "msg": "Comparing app state (cluster: https://kubernetes.default.svc, namespace: atlas-application)",
-      "project": "atlas-application",
-      "time": "2026-08-30T16:13:57Z"
-    },
-    {
-      "app-namespace": "argocd",
-      "application": "atlas-application",
-      "build_options_ms": 0,
-      "level": "info",
-      "manifests_ms": 19,
-      "msg": "GetRepoObjs stats",
-      "plugins_ms": 0,
-      "project": "atlas-application",
-      "repo_ms": 0,
-      "time": "2026-08-30T16:13:57Z",
-      "time_ms": 19
-    },
-    {
-      "application": "atlas-application",
-      "dest-namespace": "atlas-application",
-      "dest-server": "https://kubernetes.default.svc",
-      "level": "info",
-      "msg": "Updated sync status: OutOfSync -> Synced",
-      "reason": "ResourceUpdated",
-      "time": "2026-08-30T16:13:57Z",
-      "type": "Normal"
-    },
-    {
-      "application": "atlas-application",
-      "dest-namespace": "atlas-application",
-      "dest-server": "https://kubernetes.default.svc",
-      "level": "info",
-      "msg": "Updated health status: Missing -> Healthy",
-      "reason": "ResourceUpdated",
-      "time": "2026-08-30T16:13:57Z",
-      "type": "Normal"
-    },
-    {
-      "app-namespace": "argocd",
-      "application": "atlas-application",
-      "level": "info",
-      "msg": "Update successful",
-      "project": "atlas-application",
-      "time": "2026-08-30T16:13:57Z"
-    },
-    {
-      "app-namespace": "argocd",
-      "app_status_update_ms": 0,
-      "application": "atlas-application",
-      "auto_sync_ms": 0,
-      "compare_app_state_ms": 20,
-      "comparison-level": 1,
-      "comparison_with_nothing_ms": 0,
-      "dedup_ms": 0,
-      "dest-name": "",
-      "dest-namespace": "atlas-application",
-      "dest-server": "https://kubernetes.default.svc",
-      "diff_ms": 0,
-      "git_ms": 19,
-      "health_ms": 0,
-      "level": "info",
-      "live_ms": 0,
-      "msg": "Reconciliation completed",
-      "normalize_application_ms": 0,
-      "patch_ms": 26,
-      "persist_app_status_ms": 39,
-      "process_finalizers_ms": 0,
-      "project": "atlas-application",
-      "refresh_app_conditions_ms": 0,
-      "set_app_managed_resources_ms": 5,
-      "setop_ms": 0,
-      "settings_ms": 0,
-      "sync_ms": 0,
-      "time": "2026-08-30T16:13:57Z",
-      "time_ms": 66
-    },
-    {
-      "app-namespace": "argocd",
-      "application": "atlas-application",
-      "level": "info",
-      "msg": "Refreshing app status (hard refresh requested), level (3)",
-      "project": "atlas-application",
-      "time": "2026-08-30T16:13:59Z"
-    },
-    {
-      "app-namespace": "argocd",
-      "application": "atlas-application",
-      "level": "info",
-      "msg": "Comparing app state (cluster: https://kubernetes.default.svc, namespace: atlas-application)",
-      "project": "atlas-application",
-      "time": "2026-08-30T16:13:59Z"
-    },
-    {
-      "app-namespace": "argocd",
-      "application": "atlas-application",
-      "build_options_ms": 0,
-      "level": "info",
-      "manifests_ms": 118,
-      "msg": "GetRepoObjs stats",
-      "plugins_ms": 0,
-      "project": "atlas-application",
-      "repo_ms": 0,
-      "time": "2026-08-30T16:14:00Z",
-      "time_ms": 118
-    },
-    {
-      "app-namespace": "argocd",
-      "application": "atlas-application",
-      "level": "info",
-      "msg": "Update successful",
-      "project": "atlas-application",
-      "time": "2026-08-30T16:14:00Z"
-    },
-    {
-      "app-namespace": "argocd",
-      "app_status_update_ms": 0,
-      "application": "atlas-application",
-      "auto_sync_ms": 0,
-      "compare_app_state_ms": 125,
-      "comparison-level": 3,
-      "comparison_with_nothing_ms": 0,
-      "dedup_ms": 0,
-      "dest-name": "",
-      "dest-namespace": "atlas-application",
-      "dest-server": "https://kubernetes.default.svc",
-      "diff_ms": 1,
-      "git_ms": 119,
-      "health_ms": 0,
-      "level": "info",
-      "live_ms": 0,
-      "msg": "Reconciliation completed",
-      "normalize_application_ms": 0,
-      "patch_ms": 15,
-      "persist_app_status_ms": 16,
-      "process_finalizers_ms": 0,
-      "project": "atlas-application",
-      "refresh_app_conditions_ms": 0,
-      "set_app_managed_resources_ms": 1,
-      "setop_ms": 0,
-      "settings_ms": 2,
-      "sync_ms": 0,
-      "time": "2026-08-30T16:14:00Z",
-      "time_ms": 143
-    },
-    {
-      "app-namespace": "argocd",
-      "application": "atlas-application",
-      "level": "info",
-      "msg": "Enabled automated sync",
-      "project": "atlas-application",
-      "time": "2026-08-30T16:14:00Z"
-    },
-    {
-      "app-namespace": "argocd",
-      "application": "atlas-application",
-      "level": "info",
-      "msg": "Refreshing app status (controller refresh requested), level (2)",
-      "project": "atlas-application",
-      "time": "2026-08-30T16:14:00Z"
-    },
-    {
-      "app-namespace": "argocd",
-      "application": "atlas-application",
-      "level": "info",
-      "msg": "Comparing app state (cluster: https://kubernetes.default.svc, namespace: atlas-application)",
-      "project": "atlas-application",
-      "time": "2026-08-30T16:14:00Z"
-    },
-    {
-      "app-namespace": "argocd",
-      "application": "atlas-application",
-      "build_options_ms": 0,
-      "level": "info",
-      "manifests_ms": 26,
-      "msg": "GetRepoObjs stats",
-      "plugins_ms": 0,
-      "project": "atlas-application",
-      "repo_ms": 0,
-      "time": "2026-08-30T16:14:00Z",
-      "time_ms": 27
-    },
-    {
-      "app-namespace": "argocd",
-      "application": "atlas-application",
-      "level": "info",
-      "msg": "Skipping auto-sync: application status is Synced",
-      "project": "atlas-application",
-      "time": "2026-08-30T16:14:00Z"
-    },
-    {
-      "app-namespace": "argocd",
-      "application": "atlas-application",
-      "level": "info",
-      "msg": "Update successful",
-      "project": "atlas-application",
-      "time": "2026-08-30T16:14:00Z"
-    },
-    {
-      "app-namespace": "argocd",
-      "app_status_update_ms": 0,
-      "application": "atlas-application",
-      "auto_sync_ms": 0,
-      "compare_app_state_ms": 32,
-      "comparison-level": 2,
-      "comparison_with_nothing_ms": 0,
-      "dedup_ms": 0,
-      "dest-name": "",
-      "dest-namespace": "atlas-application",
-      "dest-server": "https://kubernetes.default.svc",
-      "diff_ms": 1,
-      "git_ms": 28,
-      "health_ms": 0,
-      "level": "info",
-      "live_ms": 0,
-      "msg": "Reconciliation completed",
-      "normalize_application_ms": 2,
-      "patch_ms": 54,
-      "persist_app_status_ms": 54,
-      "process_finalizers_ms": 0,
-      "project": "atlas-application",
-      "refresh_app_conditions_ms": 0,
-      "set_app_managed_resources_ms": 2,
-      "setop_ms": 0,
-      "settings_ms": 1,
-      "sync_ms": 0,
-      "time": "2026-08-30T16:14:00Z",
-      "time_ms": 91
-    },
-    {
-      "api-version": "v1",
-      "app-namespace": "argocd",
-      "application": "atlas-application",
-      "cluster-name": "",
-      "comparison-level": 1,
-      "kind": "ConfigMap",
-      "level": "info",
-      "msg": "Requesting app refresh caused by object update",
-      "name": "atlas-application",
-      "namespace": "atlas-application",
-      "project": "atlas-application",
-      "server": "https://kubernetes.default.svc",
-      "time": "2026-08-30T16:14:00Z"
-    },
-    {
-      "app-namespace": "argocd",
-      "application": "atlas-application",
-      "level": "info",
-      "msg": "Refreshing app status (controller refresh requested), level (1)",
-      "project": "atlas-application",
-      "time": "2026-08-30T16:14:00Z"
-    },
-    {
-      "app-namespace": "argocd",
-      "application": "atlas-application",
-      "level": "info",
-      "msg": "Comparing app state (cluster: https://kubernetes.default.svc, namespace: atlas-application)",
-      "project": "atlas-application",
-      "time": "2026-08-30T16:14:00Z"
+      "time": "2026-08-30T16:46:01Z"
     },
     {
       "app-namespace": "argocd",
@@ -950,7 +251,7 @@
       "plugins_ms": 0,
       "project": "atlas-application",
       "repo_ms": 0,
-      "time": "2026-08-30T16:14:00Z",
+      "time": "2026-08-30T16:46:01Z",
       "time_ms": 41
     },
     {
@@ -958,52 +259,20 @@
       "dest-namespace": "atlas-application",
       "dest-server": "https://kubernetes.default.svc",
       "level": "info",
-      "msg": "Initiated automated sync to 'f1e20c046600f8830e981b55f73b5a17c5cf0d0f'",
-      "reason": "OperationStarted",
-      "time": "2026-08-30T16:14:00Z",
+      "msg": "Updated sync status: OutOfSync -> Synced",
+      "reason": "ResourceUpdated",
+      "time": "2026-08-30T16:46:01Z",
       "type": "Normal"
-    },
-    {
-      "app-namespace": "argocd",
-      "application": "atlas-application",
-      "level": "info",
-      "msg": "Initiated automated sync to 'f1e20c046600f8830e981b55f73b5a17c5cf0d0f'",
-      "project": "atlas-application",
-      "time": "2026-08-30T16:14:00Z"
     },
     {
       "application": "atlas-application",
       "dest-namespace": "atlas-application",
       "dest-server": "https://kubernetes.default.svc",
       "level": "info",
-      "msg": "Updated sync status: Synced -> OutOfSync",
+      "msg": "Updated health status: Missing -> Healthy",
       "reason": "ResourceUpdated",
-      "time": "2026-08-30T16:14:00Z",
+      "time": "2026-08-30T16:46:01Z",
       "type": "Normal"
-    },
-    {
-      "app-namespace": "argocd",
-      "application": "atlas-application",
-      "level": "info",
-      "msg": "updated 'argocd/atlas-application' operation (phase: Running)",
-      "project": "atlas-application",
-      "time": "2026-08-30T16:14:00Z"
-    },
-    {
-      "app-namespace": "argocd",
-      "application": "atlas-application",
-      "level": "info",
-      "msg": "Initialized new operation: {&SyncOperation{Revision:f1e20c046600f8830e981b55f73b5a17c5cf0d0f,Prune:true,DryRun:false,SyncStrategy:nil,Resources:[]SyncOperationResource{SyncOperationResource{Group:,Kind:ConfigMap,Name:atlas-application,Namespace:,},},Source:&ApplicationSource{RepoURL:http://source-server.argocd-atlas-source.svc.cluster.local/repo.git,Path:apps/application,TargetRevision:f1e20c046600f8830e981b55f73b5a17c5cf0d0f,Helm:nil,Kustomize:nil,Directory:nil,Plugin:nil,Chart:,Ref:,Name:,TagPrefix:,},Manifests:[],SyncOptions:[CreateNamespace=true],Sources:[]ApplicationSource{},Revisions:[],SelfHealAttemptsCount:1,} { true} [] {5 nil false}}",
-      "project": "atlas-application",
-      "time": "2026-08-30T16:14:00Z"
-    },
-    {
-      "app-namespace": "argocd",
-      "application": "atlas-application",
-      "level": "info",
-      "msg": "Comparing app state (cluster: https://kubernetes.default.svc, namespace: atlas-application)",
-      "project": "atlas-application",
-      "time": "2026-08-30T16:14:00Z"
     },
     {
       "app-namespace": "argocd",
@@ -1011,13 +280,13 @@
       "level": "info",
       "msg": "Update successful",
       "project": "atlas-application",
-      "time": "2026-08-30T16:14:01Z"
+      "time": "2026-08-30T16:46:01Z"
     },
     {
       "app-namespace": "argocd",
       "app_status_update_ms": 0,
       "application": "atlas-application",
-      "auto_sync_ms": 84,
+      "auto_sync_ms": 0,
       "compare_app_state_ms": 45,
       "comparison-level": 1,
       "comparison_with_nothing_ms": 0,
@@ -1026,31 +295,31 @@
       "dest-namespace": "atlas-application",
       "dest-server": "https://kubernetes.default.svc",
       "diff_ms": 1,
-      "git_ms": 42,
+      "git_ms": 43,
       "health_ms": 0,
       "level": "info",
-      "live_ms": 1,
+      "live_ms": 0,
       "msg": "Reconciliation completed",
       "normalize_application_ms": 0,
-      "patch_ms": 71,
-      "persist_app_status_ms": 76,
+      "patch_ms": 18,
+      "persist_app_status_ms": 36,
       "process_finalizers_ms": 0,
       "project": "atlas-application",
       "refresh_app_conditions_ms": 0,
       "set_app_managed_resources_ms": 9,
-      "setop_ms": 70,
+      "setop_ms": 0,
       "settings_ms": 0,
       "sync_ms": 0,
-      "time": "2026-08-30T16:14:01Z",
-      "time_ms": 216
+      "time": "2026-08-30T16:46:01Z",
+      "time_ms": 91
     },
     {
       "app-namespace": "argocd",
       "application": "atlas-application",
       "level": "info",
-      "msg": "Refreshing app status (hard refresh requested), level (3)",
+      "msg": "Refreshing app status (controller refresh requested), level (3)",
       "project": "atlas-application",
-      "time": "2026-08-30T16:14:01Z"
+      "time": "2026-08-30T16:46:01Z"
     },
     {
       "app-namespace": "argocd",
@@ -1058,81 +327,20 @@
       "level": "info",
       "msg": "Comparing app state (cluster: https://kubernetes.default.svc, namespace: atlas-application)",
       "project": "atlas-application",
-      "time": "2026-08-30T16:14:01Z"
+      "time": "2026-08-30T16:46:01Z"
     },
     {
       "app-namespace": "argocd",
       "application": "atlas-application",
       "build_options_ms": 0,
       "level": "info",
-      "manifests_ms": 48,
+      "manifests_ms": 74,
       "msg": "GetRepoObjs stats",
       "plugins_ms": 0,
       "project": "atlas-application",
       "repo_ms": 0,
-      "time": "2026-08-30T16:14:01Z",
-      "time_ms": 48
-    },
-    {
-      "app-namespace": "argocd",
-      "application": "atlas-application",
-      "level": "info",
-      "msg": "Syncing",
-      "project": "atlas-application",
-      "skipHooks": true,
-      "started": false,
-      "syncId": "00003-rGZlb",
-      "time": "2026-08-30T16:14:01Z"
-    },
-    {
-      "app-namespace": "argocd",
-      "application": "atlas-application",
-      "level": "info",
-      "msg": "Namespace already exists",
-      "namespace": "atlas-application",
-      "project": "atlas-application",
-      "syncId": "00003-rGZlb",
-      "time": "2026-08-30T16:14:01Z"
-    },
-    {
-      "app-namespace": "argocd",
-      "application": "atlas-application",
-      "level": "info",
-      "msg": "Tasks (dry-run)",
-      "project": "atlas-application",
-      "syncId": "00003-rGZlb",
-      "tasks": "[Sync/0 resource /ConfigMap:atlas-application/atlas-application obj->obj (,,)]",
-      "time": "2026-08-30T16:14:01Z"
-    },
-    {
-      "app-namespace": "argocd",
-      "application": "atlas-application",
-      "level": "info",
-      "msg": "Updating operation state. phase: Running -> Running, message: '' -> 'one or more tasks are running'",
-      "project": "atlas-application",
-      "syncId": "00003-rGZlb",
-      "time": "2026-08-30T16:14:01Z"
-    },
-    {
-      "app-namespace": "argocd",
-      "application": "atlas-application",
-      "build_options_ms": 0,
-      "level": "info",
-      "manifests_ms": 320,
-      "msg": "GetRepoObjs stats",
-      "plugins_ms": 0,
-      "project": "atlas-application",
-      "repo_ms": 0,
-      "time": "2026-08-30T16:14:01Z",
-      "time_ms": 320
-    },
-    {
-      "app-namespace": "argocd",
-      "application": "atlas-application",
-      "level": "info",
-      "msg": "Skipping auto-sync: another operation is in progress",
-      "project": "atlas-application",
-      "time": "2026-08-30T16:14:01Z"
+      "time": "2026-08-30T16:46:02Z",
+      "time_ms": 75
     },
     {
       "app-namespace": "argocd",
@@ -1140,29 +348,29 @@
       "level": "info",
       "msg": "Update successful",
       "project": "atlas-application",
-      "time": "2026-08-30T16:14:01Z"
+      "time": "2026-08-30T16:46:02Z"
     },
     {
       "app-namespace": "argocd",
       "app_status_update_ms": 0,
       "application": "atlas-application",
       "auto_sync_ms": 0,
-      "compare_app_state_ms": 327,
+      "compare_app_state_ms": 76,
       "comparison-level": 3,
       "comparison_with_nothing_ms": 0,
       "dedup_ms": 0,
       "dest-name": "",
       "dest-namespace": "atlas-application",
       "dest-server": "https://kubernetes.default.svc",
-      "diff_ms": 3,
-      "git_ms": 322,
+      "diff_ms": 0,
+      "git_ms": 75,
       "health_ms": 0,
       "level": "info",
       "live_ms": 0,
       "msg": "Reconciliation completed",
-      "normalize_application_ms": 3,
-      "patch_ms": 39,
-      "persist_app_status_ms": 40,
+      "normalize_application_ms": 0,
+      "patch_ms": 26,
+      "persist_app_status_ms": 26,
       "process_finalizers_ms": 0,
       "project": "atlas-application",
       "refresh_app_conditions_ms": 0,
@@ -1170,66 +378,16 @@
       "setop_ms": 0,
       "settings_ms": 0,
       "sync_ms": 0,
-      "time": "2026-08-30T16:14:01Z",
-      "time_ms": 373
-    },
-    {
-      "app-namespace": "argocd",
-      "application": "atlas-application",
-      "kind": "ConfigMap",
-      "level": "info",
-      "msg": "Adding resource result, status: 'Synced', phase: 'Running', message: 'configmap/atlas-application configured'",
-      "name": "atlas-application",
-      "namespace": "atlas-application",
-      "phase": "Sync",
-      "project": "atlas-application",
-      "syncId": "00003-rGZlb",
-      "time": "2026-08-30T16:14:01Z"
+      "time": "2026-08-30T16:46:02Z",
+      "time_ms": 106
     },
     {
       "app-namespace": "argocd",
       "application": "atlas-application",
       "level": "info",
-      "msg": "Updating operation state. phase: Running -> Succeeded, message: 'one or more tasks are running' -> 'successfully synced (all tasks run)'",
+      "msg": "Refreshing app status (hard refresh requested), level (3)",
       "project": "atlas-application",
-      "syncId": "00003-rGZlb",
-      "time": "2026-08-30T16:14:01Z"
-    },
-    {
-      "app-namespace": "argocd",
-      "application": "atlas-application",
-      "duration": 675416667,
-      "level": "info",
-      "msg": "sync/terminate complete",
-      "project": "atlas-application",
-      "syncId": "00003-rGZlb",
-      "time": "2026-08-30T16:14:01Z"
-    },
-    {
-      "app-namespace": "argocd",
-      "application": "atlas-application",
-      "level": "info",
-      "msg": "updated 'argocd/atlas-application' operation (phase: Succeeded)",
-      "project": "atlas-application",
-      "time": "2026-08-30T16:14:01Z"
-    },
-    {
-      "application": "atlas-application",
-      "dest-namespace": "atlas-application",
-      "dest-server": "https://kubernetes.default.svc",
-      "level": "info",
-      "msg": "Partial sync operation to f1e20c046600f8830e981b55f73b5a17c5cf0d0f succeeded",
-      "reason": "OperationCompleted",
-      "time": "2026-08-30T16:14:01Z",
-      "type": "Normal"
-    },
-    {
-      "app-namespace": "argocd",
-      "application": "atlas-application",
-      "level": "info",
-      "msg": "Refreshing app status (controller refresh requested), level (2)",
-      "project": "atlas-application",
-      "time": "2026-08-30T16:14:01Z"
+      "time": "2026-08-30T16:46:02Z"
     },
     {
       "app-namespace": "argocd",
@@ -1237,7 +395,83 @@
       "level": "info",
       "msg": "Comparing app state (cluster: https://kubernetes.default.svc, namespace: atlas-application)",
       "project": "atlas-application",
-      "time": "2026-08-30T16:14:01Z"
+      "time": "2026-08-30T16:46:02Z"
+    },
+    {
+      "app-namespace": "argocd",
+      "application": "atlas-application",
+      "build_options_ms": 0,
+      "level": "info",
+      "manifests_ms": 446,
+      "msg": "GetRepoObjs stats",
+      "plugins_ms": 0,
+      "project": "atlas-application",
+      "repo_ms": 0,
+      "time": "2026-08-30T16:46:03Z",
+      "time_ms": 446
+    },
+    {
+      "app-namespace": "argocd",
+      "application": "atlas-application",
+      "level": "info",
+      "msg": "Update successful",
+      "project": "atlas-application",
+      "time": "2026-08-30T16:46:03Z"
+    },
+    {
+      "app-namespace": "argocd",
+      "app_status_update_ms": 0,
+      "application": "atlas-application",
+      "auto_sync_ms": 0,
+      "compare_app_state_ms": 450,
+      "comparison-level": 3,
+      "comparison_with_nothing_ms": 0,
+      "dedup_ms": 0,
+      "dest-name": "",
+      "dest-namespace": "atlas-application",
+      "dest-server": "https://kubernetes.default.svc",
+      "diff_ms": 1,
+      "git_ms": 447,
+      "health_ms": 0,
+      "level": "info",
+      "live_ms": 0,
+      "msg": "Reconciliation completed",
+      "normalize_application_ms": 0,
+      "patch_ms": 67,
+      "persist_app_status_ms": 68,
+      "process_finalizers_ms": 0,
+      "project": "atlas-application",
+      "refresh_app_conditions_ms": 0,
+      "set_app_managed_resources_ms": 3,
+      "setop_ms": 0,
+      "settings_ms": 0,
+      "sync_ms": 0,
+      "time": "2026-08-30T16:46:03Z",
+      "time_ms": 523
+    },
+    {
+      "app-namespace": "argocd",
+      "application": "atlas-application",
+      "level": "info",
+      "msg": "Enabled automated sync",
+      "project": "atlas-application",
+      "time": "2026-08-30T16:46:03Z"
+    },
+    {
+      "app-namespace": "argocd",
+      "application": "atlas-application",
+      "level": "info",
+      "msg": "Refreshing app status (controller refresh requested), level (2)",
+      "project": "atlas-application",
+      "time": "2026-08-30T16:46:03Z"
+    },
+    {
+      "app-namespace": "argocd",
+      "application": "atlas-application",
+      "level": "info",
+      "msg": "Comparing app state (cluster: https://kubernetes.default.svc, namespace: atlas-application)",
+      "project": "atlas-application",
+      "time": "2026-08-30T16:46:03Z"
     },
     {
       "api-version": "v1",
@@ -1252,20 +486,334 @@
       "namespace": "atlas-application",
       "project": "atlas-application",
       "server": "https://kubernetes.default.svc",
-      "time": "2026-08-30T16:14:01Z"
+      "time": "2026-08-30T16:46:04Z"
     },
     {
       "app-namespace": "argocd",
       "application": "atlas-application",
       "build_options_ms": 0,
       "level": "info",
-      "manifests_ms": 69,
+      "manifests_ms": 147,
       "msg": "GetRepoObjs stats",
       "plugins_ms": 0,
       "project": "atlas-application",
       "repo_ms": 0,
-      "time": "2026-08-30T16:14:01Z",
-      "time_ms": 70
+      "time": "2026-08-30T16:46:04Z",
+      "time_ms": 147
+    },
+    {
+      "application": "atlas-application",
+      "dest-namespace": "atlas-application",
+      "dest-server": "https://kubernetes.default.svc",
+      "level": "info",
+      "msg": "Initiated automated sync to '90133f1fdd1d60d44c33a4544853f62747b75f18'",
+      "reason": "OperationStarted",
+      "time": "2026-08-30T16:46:04Z",
+      "type": "Normal"
+    },
+    {
+      "app-namespace": "argocd",
+      "application": "atlas-application",
+      "level": "info",
+      "msg": "Initiated automated sync to '90133f1fdd1d60d44c33a4544853f62747b75f18'",
+      "project": "atlas-application",
+      "time": "2026-08-30T16:46:04Z"
+    },
+    {
+      "application": "atlas-application",
+      "dest-namespace": "atlas-application",
+      "dest-server": "https://kubernetes.default.svc",
+      "level": "info",
+      "msg": "Updated sync status: Synced -> OutOfSync",
+      "reason": "ResourceUpdated",
+      "time": "2026-08-30T16:46:04Z",
+      "type": "Normal"
+    },
+    {
+      "app-namespace": "argocd",
+      "application": "atlas-application",
+      "level": "info",
+      "msg": "updated 'argocd/atlas-application' operation (phase: Running)",
+      "project": "atlas-application",
+      "time": "2026-08-30T16:46:04Z"
+    },
+    {
+      "app-namespace": "argocd",
+      "application": "atlas-application",
+      "level": "info",
+      "msg": "Initialized new operation: {&SyncOperation{Revision:90133f1fdd1d60d44c33a4544853f62747b75f18,Prune:true,DryRun:false,SyncStrategy:nil,Resources:[]SyncOperationResource{SyncOperationResource{Group:,Kind:ConfigMap,Name:atlas-application,Namespace:,},},Source:&ApplicationSource{RepoURL:http://source-server.argocd-atlas-source.svc.cluster.local/repo.git,Path:apps/application,TargetRevision:90133f1fdd1d60d44c33a4544853f62747b75f18,Helm:nil,Kustomize:nil,Directory:nil,Plugin:nil,Chart:,Ref:,Name:,TagPrefix:,},Manifests:[],SyncOptions:[CreateNamespace=true],Sources:[]ApplicationSource{},Revisions:[],SelfHealAttemptsCount:1,} { true} [] {5 nil false}}",
+      "project": "atlas-application",
+      "time": "2026-08-30T16:46:04Z"
+    },
+    {
+      "app-namespace": "argocd",
+      "application": "atlas-application",
+      "level": "info",
+      "msg": "Comparing app state (cluster: https://kubernetes.default.svc, namespace: atlas-application)",
+      "project": "atlas-application",
+      "time": "2026-08-30T16:46:04Z"
+    },
+    {
+      "app-namespace": "argocd",
+      "application": "atlas-application",
+      "level": "info",
+      "msg": "Update successful",
+      "project": "atlas-application",
+      "time": "2026-08-30T16:46:04Z"
+    },
+    {
+      "app-namespace": "argocd",
+      "app_status_update_ms": 0,
+      "application": "atlas-application",
+      "auto_sync_ms": 75,
+      "compare_app_state_ms": 155,
+      "comparison-level": 2,
+      "comparison_with_nothing_ms": 0,
+      "dedup_ms": 0,
+      "dest-name": "",
+      "dest-namespace": "atlas-application",
+      "dest-server": "https://kubernetes.default.svc",
+      "diff_ms": 4,
+      "git_ms": 148,
+      "health_ms": 0,
+      "level": "info",
+      "live_ms": 0,
+      "msg": "Reconciliation completed",
+      "normalize_application_ms": 0,
+      "patch_ms": 90,
+      "persist_app_status_ms": 103,
+      "process_finalizers_ms": 0,
+      "project": "atlas-application",
+      "refresh_app_conditions_ms": 0,
+      "set_app_managed_resources_ms": 8,
+      "setop_ms": 45,
+      "settings_ms": 2,
+      "sync_ms": 0,
+      "time": "2026-08-30T16:46:04Z",
+      "time_ms": 344
+    },
+    {
+      "app-namespace": "argocd",
+      "application": "atlas-application",
+      "level": "info",
+      "msg": "Refreshing app status (hard refresh requested), level (3)",
+      "project": "atlas-application",
+      "time": "2026-08-30T16:46:04Z"
+    },
+    {
+      "app-namespace": "argocd",
+      "application": "atlas-application",
+      "level": "info",
+      "msg": "Comparing app state (cluster: https://kubernetes.default.svc, namespace: atlas-application)",
+      "project": "atlas-application",
+      "time": "2026-08-30T16:46:04Z"
+    },
+    {
+      "app-namespace": "argocd",
+      "application": "atlas-application",
+      "build_options_ms": 0,
+      "level": "info",
+      "manifests_ms": 32,
+      "msg": "GetRepoObjs stats",
+      "plugins_ms": 0,
+      "project": "atlas-application",
+      "repo_ms": 0,
+      "time": "2026-08-30T16:46:04Z",
+      "time_ms": 33
+    },
+    {
+      "app-namespace": "argocd",
+      "application": "atlas-application",
+      "level": "info",
+      "msg": "Syncing",
+      "project": "atlas-application",
+      "skipHooks": true,
+      "started": false,
+      "syncId": "00011-jjCtC",
+      "time": "2026-08-30T16:46:04Z"
+    },
+    {
+      "app-namespace": "argocd",
+      "application": "atlas-application",
+      "level": "info",
+      "msg": "Namespace already exists",
+      "namespace": "atlas-application",
+      "project": "atlas-application",
+      "syncId": "00011-jjCtC",
+      "time": "2026-08-30T16:46:04Z"
+    },
+    {
+      "app-namespace": "argocd",
+      "application": "atlas-application",
+      "level": "info",
+      "msg": "Tasks (dry-run)",
+      "project": "atlas-application",
+      "syncId": "00011-jjCtC",
+      "tasks": "[Sync/0 resource /ConfigMap:atlas-application/atlas-application obj->obj (,,)]",
+      "time": "2026-08-30T16:46:04Z"
+    },
+    {
+      "app-namespace": "argocd",
+      "application": "atlas-application",
+      "level": "info",
+      "msg": "Updating operation state. phase: Running -> Running, message: '' -> 'one or more tasks are running'",
+      "project": "atlas-application",
+      "syncId": "00011-jjCtC",
+      "time": "2026-08-30T16:46:04Z"
+    },
+    {
+      "app-namespace": "argocd",
+      "application": "atlas-application",
+      "build_options_ms": 0,
+      "level": "info",
+      "manifests_ms": 122,
+      "msg": "GetRepoObjs stats",
+      "plugins_ms": 0,
+      "project": "atlas-application",
+      "repo_ms": 0,
+      "time": "2026-08-30T16:46:04Z",
+      "time_ms": 123
+    },
+    {
+      "app-namespace": "argocd",
+      "application": "atlas-application",
+      "level": "info",
+      "msg": "Skipping auto-sync: another operation is in progress",
+      "project": "atlas-application",
+      "time": "2026-08-30T16:46:04Z"
+    },
+    {
+      "app-namespace": "argocd",
+      "application": "atlas-application",
+      "level": "info",
+      "msg": "Update successful",
+      "project": "atlas-application",
+      "time": "2026-08-30T16:46:04Z"
+    },
+    {
+      "app-namespace": "argocd",
+      "app_status_update_ms": 0,
+      "application": "atlas-application",
+      "auto_sync_ms": 0,
+      "compare_app_state_ms": 131,
+      "comparison-level": 3,
+      "comparison_with_nothing_ms": 0,
+      "dedup_ms": 0,
+      "dest-name": "",
+      "dest-namespace": "atlas-application",
+      "dest-server": "https://kubernetes.default.svc",
+      "diff_ms": 5,
+      "git_ms": 123,
+      "health_ms": 0,
+      "level": "info",
+      "live_ms": 0,
+      "msg": "Reconciliation completed",
+      "normalize_application_ms": 1,
+      "patch_ms": 53,
+      "persist_app_status_ms": 54,
+      "process_finalizers_ms": 0,
+      "project": "atlas-application",
+      "refresh_app_conditions_ms": 0,
+      "set_app_managed_resources_ms": 1,
+      "setop_ms": 0,
+      "settings_ms": 1,
+      "sync_ms": 0,
+      "time": "2026-08-30T16:46:04Z",
+      "time_ms": 189
+    },
+    {
+      "app-namespace": "argocd",
+      "application": "atlas-application",
+      "kind": "ConfigMap",
+      "level": "info",
+      "msg": "Adding resource result, status: 'Synced', phase: 'Running', message: 'configmap/atlas-application configured'",
+      "name": "atlas-application",
+      "namespace": "atlas-application",
+      "phase": "Sync",
+      "project": "atlas-application",
+      "syncId": "00011-jjCtC",
+      "time": "2026-08-30T16:46:04Z"
+    },
+    {
+      "app-namespace": "argocd",
+      "application": "atlas-application",
+      "level": "info",
+      "msg": "Updating operation state. phase: Running -> Succeeded, message: 'one or more tasks are running' -> 'successfully synced (all tasks run)'",
+      "project": "atlas-application",
+      "syncId": "00011-jjCtC",
+      "time": "2026-08-30T16:46:04Z"
+    },
+    {
+      "app-namespace": "argocd",
+      "application": "atlas-application",
+      "duration": 395154208,
+      "level": "info",
+      "msg": "sync/terminate complete",
+      "project": "atlas-application",
+      "syncId": "00011-jjCtC",
+      "time": "2026-08-30T16:46:04Z"
+    },
+    {
+      "app-namespace": "argocd",
+      "application": "atlas-application",
+      "level": "info",
+      "msg": "Refreshing app status (controller refresh requested), level (1)",
+      "project": "atlas-application",
+      "time": "2026-08-30T16:46:04Z"
+    },
+    {
+      "app-namespace": "argocd",
+      "application": "atlas-application",
+      "level": "info",
+      "msg": "Comparing app state (cluster: https://kubernetes.default.svc, namespace: atlas-application)",
+      "project": "atlas-application",
+      "time": "2026-08-30T16:46:04Z"
+    },
+    {
+      "app-namespace": "argocd",
+      "application": "atlas-application",
+      "level": "info",
+      "msg": "updated 'argocd/atlas-application' operation (phase: Succeeded)",
+      "project": "atlas-application",
+      "time": "2026-08-30T16:46:04Z"
+    },
+    {
+      "application": "atlas-application",
+      "dest-namespace": "atlas-application",
+      "dest-server": "https://kubernetes.default.svc",
+      "level": "info",
+      "msg": "Partial sync operation to 90133f1fdd1d60d44c33a4544853f62747b75f18 succeeded",
+      "reason": "OperationCompleted",
+      "time": "2026-08-30T16:46:04Z",
+      "type": "Normal"
+    },
+    {
+      "api-version": "v1",
+      "app-namespace": "argocd",
+      "application": "atlas-application",
+      "cluster-name": "",
+      "comparison-level": 1,
+      "kind": "ConfigMap",
+      "level": "info",
+      "msg": "Requesting app refresh caused by object update",
+      "name": "atlas-application",
+      "namespace": "atlas-application",
+      "project": "atlas-application",
+      "server": "https://kubernetes.default.svc",
+      "time": "2026-08-30T16:46:04Z"
+    },
+    {
+      "app-namespace": "argocd",
+      "application": "atlas-application",
+      "build_options_ms": 0,
+      "level": "info",
+      "manifests_ms": 99,
+      "msg": "GetRepoObjs stats",
+      "plugins_ms": 0,
+      "project": "atlas-application",
+      "repo_ms": 0,
+      "time": "2026-08-30T16:46:04Z",
+      "time_ms": 100
     },
     {
       "app-namespace": "argocd",
@@ -1273,7 +821,7 @@
       "level": "info",
       "msg": "Skipping auto-sync: application status is Synced",
       "project": "atlas-application",
-      "time": "2026-08-30T16:14:01Z"
+      "time": "2026-08-30T16:46:04Z"
     },
     {
       "application": "atlas-application",
@@ -1282,7 +830,7 @@
       "level": "info",
       "msg": "Updated sync status: OutOfSync -> Synced",
       "reason": "ResourceUpdated",
-      "time": "2026-08-30T16:14:01Z",
+      "time": "2026-08-30T16:46:04Z",
       "type": "Normal"
     },
     {
@@ -1291,46 +839,46 @@
       "level": "info",
       "msg": "Update successful",
       "project": "atlas-application",
-      "time": "2026-08-30T16:14:01Z"
+      "time": "2026-08-30T16:46:04Z"
     },
     {
       "app-namespace": "argocd",
       "app_status_update_ms": 0,
       "application": "atlas-application",
       "auto_sync_ms": 0,
-      "compare_app_state_ms": 72,
-      "comparison-level": 2,
+      "compare_app_state_ms": 105,
+      "comparison-level": 1,
       "comparison_with_nothing_ms": 0,
       "dedup_ms": 0,
       "dest-name": "",
       "dest-namespace": "atlas-application",
       "dest-server": "https://kubernetes.default.svc",
       "diff_ms": 1,
-      "git_ms": 70,
+      "git_ms": 103,
       "health_ms": 0,
       "level": "info",
       "live_ms": 0,
       "msg": "Reconciliation completed",
       "normalize_application_ms": 0,
-      "patch_ms": 23,
-      "persist_app_status_ms": 35,
+      "patch_ms": 62,
+      "persist_app_status_ms": 101,
       "process_finalizers_ms": 0,
       "project": "atlas-application",
       "refresh_app_conditions_ms": 0,
-      "set_app_managed_resources_ms": 3,
+      "set_app_managed_resources_ms": 11,
       "setop_ms": 0,
       "settings_ms": 0,
       "sync_ms": 0,
-      "time": "2026-08-30T16:14:01Z",
-      "time_ms": 111
+      "time": "2026-08-30T16:46:04Z",
+      "time_ms": 218
     },
     {
       "app-namespace": "argocd",
       "application": "atlas-application",
       "level": "info",
-      "msg": "Refreshing app status (controller refresh requested), level (1)",
+      "msg": "Refreshing app status (controller refresh requested), level (2)",
       "project": "atlas-application",
-      "time": "2026-08-30T16:14:01Z"
+      "time": "2026-08-30T16:46:04Z"
     },
     {
       "app-namespace": "argocd",
@@ -1338,20 +886,20 @@
       "level": "info",
       "msg": "Comparing app state (cluster: https://kubernetes.default.svc, namespace: atlas-application)",
       "project": "atlas-application",
-      "time": "2026-08-30T16:14:01Z"
+      "time": "2026-08-30T16:46:04Z"
     },
     {
       "app-namespace": "argocd",
       "application": "atlas-application",
       "build_options_ms": 0,
       "level": "info",
-      "manifests_ms": 39,
+      "manifests_ms": 156,
       "msg": "GetRepoObjs stats",
       "plugins_ms": 0,
       "project": "atlas-application",
       "repo_ms": 0,
-      "time": "2026-08-30T16:14:01Z",
-      "time_ms": 39
+      "time": "2026-08-30T16:46:05Z",
+      "time_ms": 156
     },
     {
       "app-namespace": "argocd",
@@ -1359,7 +907,7 @@
       "level": "info",
       "msg": "Skipping auto-sync: application status is Synced",
       "project": "atlas-application",
-      "time": "2026-08-30T16:14:01Z"
+      "time": "2026-08-30T16:46:05Z"
     },
     {
       "app-namespace": "argocd",
@@ -1367,25 +915,25 @@
       "level": "info",
       "msg": "No status changes. Skipping patch",
       "project": "atlas-application",
-      "time": "2026-08-30T16:14:01Z"
+      "time": "2026-08-30T16:46:05Z"
     },
     {
       "app-namespace": "argocd",
       "app_status_update_ms": 0,
       "application": "atlas-application",
-      "auto_sync_ms": 0,
-      "compare_app_state_ms": 47,
-      "comparison-level": 1,
+      "auto_sync_ms": 3,
+      "compare_app_state_ms": 160,
+      "comparison-level": 2,
       "comparison_with_nothing_ms": 0,
       "dedup_ms": 0,
       "dest-name": "",
       "dest-namespace": "atlas-application",
       "dest-server": "https://kubernetes.default.svc",
       "diff_ms": 0,
-      "git_ms": 41,
+      "git_ms": 158,
       "health_ms": 0,
       "level": "info",
-      "live_ms": 5,
+      "live_ms": 0,
       "msg": "Reconciliation completed",
       "normalize_application_ms": 1,
       "patch_ms": 0,
@@ -1393,12 +941,12 @@
       "process_finalizers_ms": 0,
       "project": "atlas-application",
       "refresh_app_conditions_ms": 0,
-      "set_app_managed_resources_ms": 0,
+      "set_app_managed_resources_ms": 1,
       "setop_ms": 0,
       "settings_ms": 0,
       "sync_ms": 0,
-      "time": "2026-08-30T16:14:01Z",
-      "time_ms": 50
+      "time": "2026-08-30T16:46:05Z",
+      "time_ms": 166
     }
   ]
 }

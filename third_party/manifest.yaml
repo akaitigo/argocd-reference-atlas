@@ -54,6 +54,24 @@
       "digest": "sha256:10462fde94181e3079a0da2d13cf30250448f0a9c9845fad32090d944f01c3e5",
       "size_bytes": 17524898,
       "notes": "Core正式mainのcapture contractでclean commit 090ea3aから生成した機械可読baseline。Runtime Evidenceの代替には使用しない。"
+    },
+    {
+      "id": "core-v2-evidence-dependency-graph-v1",
+      "name": "Core v2 evidence dependency graph",
+      "kind": "generated-artifact",
+      "source_url": "https://github.com/akaitigo/argocd-reference-atlas",
+      "version": "Core v2 / graph-v1 / Argo CD v3.5.2",
+      "retrieved_at": "2026-08-31",
+      "license": "Apache-2.0",
+      "copyright_holder": "Nakayama Ryusei",
+      "redistribution": "allowed",
+      "modified": true,
+      "files": [
+        "evidence/dependency-graph.json"
+      ],
+      "digest": "sha256:153e0fcee45e837d75572b0ea8f87cc0346df96b223563acb8ac8e93a4787d86",
+      "size_bytes": 7630598,
+      "notes": "Core v2 Evidence Dependency Graph契約に従いSubject入力と実Runtime Evidenceから生成した機械可読成果物。第三者本文や秘密情報を含めず、Runtime Evidenceの代替には使用しない。"
     }
   ]
 }

@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "surface_id": "application.operation.sync",
+  "scenario": "security",
+  "variant_id": "rbac-allowed-sync",
+  "started_at": "2026-08-30T16:46:47.748530Z",
+  "completed_at": "2026-08-30T16:46:48.220105Z",
+  "attempt": 1,
+  "retries": 0,
+  "actions": [
+    {
+      "action": "evaluate-argocd-rbac-sync",
+      "subject": "atlas-security-allowed",
+      "decision": "Yes"
+    },
+    {
+      "action": "request-controller-sync-to-v2",
+      "status": "passed"
+    }
+  ],
+  "result": {
+    "first_attempt": true,
+    "synthetic_credential_leak": false,
+    "rbac_decision": "Yes",
+    "sync_requested": true,
+    "live_release": "v2"
+  }
+}

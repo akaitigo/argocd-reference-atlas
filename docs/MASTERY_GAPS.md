@@ -7,7 +7,7 @@
 - 8 Outcomeと14 Surfaceを8 Target Setへ接続
 - Application、ApplicationSet、Connection、Reconciliation、Sync、Hook／Wave、Diff、Health、Promotion、Secret、RBAC／OIDC、HA、Observability、Notification、Drift、Self-heal、Failure、Recovery、Upgrade、Operationsの実行Labと合格Evidence
 - Authority Lock、Capability／Claim／Proof Graph、1 Router Skill、29件の静的Eval Corpus、8件のbounded historical forward Eval、112セルのDefinitive Router契約、10件の独立Forward Eval
-- 10 Scenarioのoffline Evidence integration Auditと、現行100 Surface × 10 Scenarioの1,000専用Proof row。統合結果・既存Lab bundle・別Artifact metadataをClosureへ流用せず、専用全Variant Runtime report 0、Scenario gap closure 0/1,000、Authority atomic binding／Completion eligible 0
+- 10 Scenarioのoffline Evidence integration Auditと、現行100 Surface × 10 Scenarioの1,000専用Proof row。統合結果・既存Lab bundle・別Artifact metadataをClosureへ流用せず、専用全Variant Runtime実行完了5・残995、Scenario gap closure 0/1,000、Authority atomic binding／Completion eligible 0
 - Apache-2.0、NOTICE、第三者Manifest、決定論的SPDX SBOM、DCO／Security方針
 
 ## Definitive Completionを阻止する必須Gap

@@ -14,13 +14,173 @@
     "partial_overwrite": "rejected",
     "mixed_generation": "rejected"
   },
-  "artifact_count": 10,
-  "generation_digest": "sha256:fb4b03da5c3b46caa0739a76f20f8c75454e0c483f58e4729b262584d749560a",
+  "artifact_count": 46,
+  "generation_digest": "sha256:c126e6292fce8c2ea3c0f050d196302be112530b3e12e95bfc86a0cc76fb7fa6",
   "artifacts": [
     {
+      "path": "artifacts/runtime.application-multi-source.security.v3-5-2/source-order-a-then-b/controller_log.json",
+      "digest": "sha256:e97d65111fa818e6caf13b330be5ae1d4eedc1ea08fd6fa2852f425cbc4719d0",
+      "bytes": 71450
+    },
+    {
+      "path": "artifacts/runtime.application-multi-source.security.v3-5-2/source-order-a-then-b/metric.json",
+      "digest": "sha256:3dd6653d80206f46a947c1857f30c9e6761a4485da8584c8c714f1eb4b88b86b",
+      "bytes": 1039
+    },
+    {
+      "path": "artifacts/runtime.application-multi-source.security.v3-5-2/source-order-a-then-b/resource_state.json",
+      "digest": "sha256:123d01f4c0eefd440d06a87cfe00a7d351c140a720defe55959fdbc50ddb811b",
+      "bytes": 13792
+    },
+    {
+      "path": "artifacts/runtime.application-multi-source.security.v3-5-2/source-order-a-then-b/trace.json",
+      "digest": "sha256:4cfb439bbbe2c73b998173814df2a4d807d95f3eafd947a6f20441c85c274433",
+      "bytes": 614
+    },
+    {
+      "path": "artifacts/runtime.application-multi-source.security.v3-5-2/source-order-b-then-a/controller_log.json",
+      "digest": "sha256:8a6619e0987e3121b37c2e84689c8c1314bd6ce2952c0f751f8ddbb37b925eda",
+      "bytes": 84276
+    },
+    {
+      "path": "artifacts/runtime.application-multi-source.security.v3-5-2/source-order-b-then-a/metric.json",
+      "digest": "sha256:60147569804ed4ed7f8291f1b5a67a95d537b98d18628d8ce1271408dc536df9",
+      "bytes": 1039
+    },
+    {
+      "path": "artifacts/runtime.application-multi-source.security.v3-5-2/source-order-b-then-a/resource_state.json",
+      "digest": "sha256:bf4d10ce26c7acf9955ede957328af8f8fba0b3b6be7a977641422cdddf18304",
+      "bytes": 14778
+    },
+    {
+      "path": "artifacts/runtime.application-multi-source.security.v3-5-2/source-order-b-then-a/trace.json",
+      "digest": "sha256:59659e95024a71e37325dd2b137e579ae90ef4799dab96c712598ee2ccda1384",
+      "bytes": 698
+    },
+    {
+      "path": "artifacts/runtime.application-operation-refresh.security.v3-5-2/rbac-allowed-hard-refresh/controller_log.json",
+      "digest": "sha256:a7a1371848fd10f339dd4e6da63e09676218f7048e1d8cdcf5cfffd0551d66be",
+      "bytes": 71838
+    },
+    {
+      "path": "artifacts/runtime.application-operation-refresh.security.v3-5-2/rbac-allowed-hard-refresh/metric.json",
+      "digest": "sha256:deea834fc185a6432c59309b656e3913b6407a1826965a3f5aafe58efa387624",
+      "bytes": 1044
+    },
+    {
+      "path": "artifacts/runtime.application-operation-refresh.security.v3-5-2/rbac-allowed-hard-refresh/resource_state.json",
+      "digest": "sha256:0b4dd876cc9f02c51b10ee9ee9f8ed0edde3c479eca0471b9fa3a22214f076e8",
+      "bytes": 10537
+    },
+    {
+      "path": "artifacts/runtime.application-operation-refresh.security.v3-5-2/rbac-allowed-hard-refresh/trace.json",
+      "digest": "sha256:6d394a50953d603eac161b08dd90e77f1775d99b667fb1c7b97567d0d5c2a818",
+      "bytes": 691
+    },
+    {
+      "path": "artifacts/runtime.application-operation-refresh.security.v3-5-2/rbac-denied-hard-refresh/controller_log.json",
+      "digest": "sha256:56f0ab23fe360fdb58cc4b6c629459782df5b12b241fb9f91e4c91121f8f39c5",
+      "bytes": 69779
+    },
+    {
+      "path": "artifacts/runtime.application-operation-refresh.security.v3-5-2/rbac-denied-hard-refresh/metric.json",
+      "digest": "sha256:595abf70c91335760af3d860ec3e3f134457c91359a9f20d76f30420b779ddda",
+      "bytes": 1043
+    },
+    {
+      "path": "artifacts/runtime.application-operation-refresh.security.v3-5-2/rbac-denied-hard-refresh/resource_state.json",
+      "digest": "sha256:6d48a3d4afb568df8c3c3a689f2e342cfabecac34c093fc4bf1717848e5cdd29",
+      "bytes": 10534
+    },
+    {
+      "path": "artifacts/runtime.application-operation-refresh.security.v3-5-2/rbac-denied-hard-refresh/trace.json",
+      "digest": "sha256:962b868d78b8bba38efbbc2bfe16fd60d6f8b46d39c1778c37ff0a14bcb764ec",
+      "bytes": 659
+    },
+    {
+      "path": "artifacts/runtime.application-operation-rollback.security.v3-5-2/rbac-allowed-rollback/controller_log.json",
+      "digest": "sha256:4cf094e541a1a9f33d1de50aae6f7369c78833e5ee6ea959929a071eb19f8d1f",
+      "bytes": 93082
+    },
+    {
+      "path": "artifacts/runtime.application-operation-rollback.security.v3-5-2/rbac-allowed-rollback/metric.json",
+      "digest": "sha256:ae64dde88053357488b9208c6348f0843b5dd37395670d9811bda0907c9c4269",
+      "bytes": 1047
+    },
+    {
+      "path": "artifacts/runtime.application-operation-rollback.security.v3-5-2/rbac-allowed-rollback/resource_state.json",
+      "digest": "sha256:b6950f8c51db4bc0ff9159ac0bbea7f4ce14805155a973341ee2dd1fe29472ad",
+      "bytes": 11978
+    },
+    {
+      "path": "artifacts/runtime.application-operation-rollback.security.v3-5-2/rbac-allowed-rollback/trace.json",
+      "digest": "sha256:25abdb791adf55f291de279f8a3421153e55b000bf167fc42f1cad0c471e622b",
+      "bytes": 718
+    },
+    {
+      "path": "artifacts/runtime.application-operation-rollback.security.v3-5-2/rbac-denied-rollback/controller_log.json",
+      "digest": "sha256:a46ca873fc6116e17a3ae52b37a476bd8739383a3dc5d5251a6d0ecb79532262",
+      "bytes": 83505
+    },
+    {
+      "path": "artifacts/runtime.application-operation-rollback.security.v3-5-2/rbac-denied-rollback/metric.json",
+      "digest": "sha256:9f0c5a882486bf4829b9c76f27f3c93e228843d1f7bc30990723076bce1a6785",
+      "bytes": 1040
+    },
+    {
+      "path": "artifacts/runtime.application-operation-rollback.security.v3-5-2/rbac-denied-rollback/resource_state.json",
+      "digest": "sha256:fea6b578b924cc206b173011113da82d81aaa7836052a8b169fcba4df94038eb",
+      "bytes": 11085
+    },
+    {
+      "path": "artifacts/runtime.application-operation-rollback.security.v3-5-2/rbac-denied-rollback/trace.json",
+      "digest": "sha256:74483761f23c76256abe72b28c5189b1567c0217a96d545c223310cebe3b009f",
+      "bytes": 681
+    },
+    {
+      "path": "artifacts/runtime.application-operation-sync.security.v3-5-2/rbac-allowed-sync/controller_log.json",
+      "digest": "sha256:a26cc2e987001066a52def07539c1d966b0301af610934658328e279d7b6313b",
+      "bytes": 102330
+    },
+    {
+      "path": "artifacts/runtime.application-operation-sync.security.v3-5-2/rbac-allowed-sync/metric.json",
+      "digest": "sha256:b7b6b14534eb4f6c070416fd274f1b3e16500dffa567990ba81ee1070301b3ab",
+      "bytes": 1033
+    },
+    {
+      "path": "artifacts/runtime.application-operation-sync.security.v3-5-2/rbac-allowed-sync/resource_state.json",
+      "digest": "sha256:4f7812860874c0b6e6a62b568f782720d77e05bc4e7f2e3271c2fbda686bbce9",
+      "bytes": 12513
+    },
+    {
+      "path": "artifacts/runtime.application-operation-sync.security.v3-5-2/rbac-allowed-sync/trace.json",
+      "digest": "sha256:ee6ca67d5a9b24dea571e6514838924d942b335f75dab789357ecc4a7aa061a3",
+      "bytes": 661
+    },
+    {
+      "path": "artifacts/runtime.application-operation-sync.security.v3-5-2/rbac-denied-sync/controller_log.json",
+      "digest": "sha256:0d848524a3ce03f3dc4a039f631d0d6a69dfd4ea7a02913596b6254488627481",
+      "bytes": 93073
+    },
+    {
+      "path": "artifacts/runtime.application-operation-sync.security.v3-5-2/rbac-denied-sync/metric.json",
+      "digest": "sha256:c3307ea20ef7e1d9ad0c57dc5122fffd0054f454df105c14e38175db398db3f3",
+      "bytes": 1038
+    },
+    {
+      "path": "artifacts/runtime.application-operation-sync.security.v3-5-2/rbac-denied-sync/resource_state.json",
+      "digest": "sha256:42b528aac6d9ce878c54966d971ece707cc4bcfe4c44b21d880af73f7ee2530e",
+      "bytes": 11967
+    },
+    {
+      "path": "artifacts/runtime.application-operation-sync.security.v3-5-2/rbac-denied-sync/trace.json",
+      "digest": "sha256:648fd2b994ad114bc93dc0bf4718f0c252b62cbbd8c8341840047e890d0eb819",
+      "bytes": 656
+    },
+    {
       "path": "artifacts/runtime.application-spec-sync-policy.normal.v3-5-2/fixed-revision-automated-self-heal/controller_log.json",
-      "digest": "sha256:b7d0bc9d2d607f5e255a6aebce25d45fabd1b694f6d0fbf098e19d2f797c7c7d",
-      "bytes": 44579
+      "digest": "sha256:29abd58cad890ff0e0e9b0bc7db0f33ed10ab151e07716bbdd6a9421a02988fa",
+      "bytes": 30349
     },
     {
       "path": "artifacts/runtime.application-spec-sync-policy.normal.v3-5-2/fixed-revision-automated-self-heal/metric.json",
@@ -29,18 +189,18 @@
     },
     {
       "path": "artifacts/runtime.application-spec-sync-policy.normal.v3-5-2/fixed-revision-automated-self-heal/resource_state.json",
-      "digest": "sha256:53dd615b860894158fc8e44ab18a0e4edad5c75c94d12374b62164bfa4f7ce94",
+      "digest": "sha256:28d645604f4badd71a0991d9d02cd8f0a6051f064ff91822776b129386534d6b",
       "bytes": 5982
     },
     {
       "path": "artifacts/runtime.application-spec-sync-policy.normal.v3-5-2/fixed-revision-automated-self-heal/trace.json",
-      "digest": "sha256:c471691b9639b26eda1cd677c89c2c6fd35787ca605ff1c4f0e89a19aa2b2775",
+      "digest": "sha256:994a7ac0d0a64faf2bd23767994a942a69eb27345641b9276982c3c1fa729a9a",
       "bytes": 724
     },
     {
       "path": "artifacts/runtime.application-spec-sync-policy.normal.v3-5-2/fixed-revision-manual-sync/controller_log.json",
-      "digest": "sha256:1e5ba31e401413e2a5aafa703f9619704eebdee1bd271c542e0875e47eeaf525",
-      "bytes": 26155
+      "digest": "sha256:dbbb511f771d0a608e9045ec175eabf2d761e63e545c2e21a9eeeeb638e66cd1",
+      "bytes": 14186
     },
     {
       "path": "artifacts/runtime.application-spec-sync-policy.normal.v3-5-2/fixed-revision-manual-sync/metric.json",
@@ -49,22 +209,42 @@
     },
     {
       "path": "artifacts/runtime.application-spec-sync-policy.normal.v3-5-2/fixed-revision-manual-sync/resource_state.json",
-      "digest": "sha256:55edc65167abc3a75e2b9f5aa92dfc1ac7262c698532691c4298f64d241d305a",
-      "bytes": 5195
+      "digest": "sha256:fc7bf2376bd93a640f3224b4f64dae45d65799ed5474bdbdc219cca6be4ce09b",
+      "bytes": 5241
     },
     {
       "path": "artifacts/runtime.application-spec-sync-policy.normal.v3-5-2/fixed-revision-manual-sync/trace.json",
-      "digest": "sha256:e74760fd183b9169d2aa7c2bbbc9ae910101f7e531c03622b7a484a7c97faff3",
+      "digest": "sha256:b76d768c4c9bb43e5faf58cd4e1d9bec77a6c0d1ca22eb42338d5e7990ebd6a9",
       "bytes": 727
     },
     {
       "path": "index.yaml",
-      "digest": "sha256:e491b3fe8b97752239596323d86a5d2b4203ae958792f29bda9f6fd798999eed",
-      "bytes": 1156
+      "digest": "sha256:9cf82915a58e19a050640d1000ef5aa36e6a50ff4ae588cf9ab333fb633832d8",
+      "bytes": 2174
+    },
+    {
+      "path": "reports/runtime.application-multi-source.security.v3-5-2.json",
+      "digest": "sha256:36cb2bec7783c0cad1a7b00ee6c0803d242a56228dac61bf14b92a32d3d30f68",
+      "bytes": 9470
+    },
+    {
+      "path": "reports/runtime.application-operation-refresh.security.v3-5-2.json",
+      "digest": "sha256:ab859f7d0a40699503cae3251155523d8bea6ba5eb9dc3bad22a689227dc9207",
+      "bytes": 8749
+    },
+    {
+      "path": "reports/runtime.application-operation-rollback.security.v3-5-2.json",
+      "digest": "sha256:df17533a3bbcb58c98727ffa939b07526f73eddc2d1456bf18c28a5bc7d12544",
+      "bytes": 9087
+    },
+    {
+      "path": "reports/runtime.application-operation-sync.security.v3-5-2.json",
+      "digest": "sha256:07ec8c5061e4746f23be7853651157de87e30e6d4acd85bc7005f84d558bec34",
+      "bytes": 8904
     },
     {
       "path": "reports/runtime.application-spec-sync-policy.normal.v3-5-2.json",
-      "digest": "sha256:985ee0696da162bf62e086bfa63df727bb964beedc48284341ff85bf6c6bbf47",
+      "digest": "sha256:b96fe86e59675edc37215ec57781e4115ad05466a9df608bd1dca0717557e424",
       "bytes": 9480
     }
   ]

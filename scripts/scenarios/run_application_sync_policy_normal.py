@@ -341,27 +341,17 @@ def publish(captures: dict[str, dict[str, Any]], identity: dict[str, Any]) -> No
         report_path = staging / report_relative
         write_json(report_path, report)
         report_reference = {"id": REPORT_ID, **published_binding(report_path, staging)}
+        existing = yaml.safe_load((OUTPUT / "index.yaml").read_text(encoding="utf-8"))
+        references = [item for item in existing.get("reports", []) if item["id"] != REPORT_ID]
+        references.append(report_reference)
+        references.sort(key=lambda item: item["id"])
         registry = {
             "schema_version": 1,
             "id": "argocd-dedicated-surface-scenario-runtime-registry-v1",
             "atlas_id": "argocd-reference-atlas",
             "status": "incomplete-authority-review-with-dedicated-runtime-reports",
-            "reports": [report_reference],
-            "admission_contract": {
-                "report_scope": "exact-surface-scenario",
-                "variant_scope": "all-runtime-declared-variants-with-authority-exhaustive-kept-separate",
-                "execution": "real-argocd-on-kubernetes",
-                "retries": 0,
-                "attempts": 1,
-                "outcome": "expected",
-                "final_status": "passed",
-                "required_artifacts": ["resource_state", "controller_log", "metric", "trace"],
-                "artifact_kinds": list(ARTIFACT_KINDS.values()),
-                "required_bindings": ["oracle", "source", "harness", "runtime_identity"],
-                "artifact_ownership": "exact-report-and-variant-dedicated-path",
-                "metadata_reuse": "forbidden",
-                "authority_completion_credit": "forbidden-until-human-reviewed-exhaustive-denominator",
-            },
+            "reports": references,
+            "admission_contract": existing["admission_contract"],
         }
         (staging / "index.yaml").write_text(yaml.safe_dump(registry, allow_unicode=True, sort_keys=False), encoding="utf-8")
         expected = [path.relative_to(staging) for path in staging.rglob("*") if path.is_file() and path.relative_to(staging) != manifest_relative]
@@ -377,7 +367,7 @@ def publish(captures: dict[str, dict[str, Any]], identity: dict[str, Any]) -> No
         expected = [path.relative_to(staging) for path in staging.rglob("*") if path.is_file() and path.relative_to(staging) != manifest_relative]
         validate_publish_manifest(staging, manifest_relative, expected)
         registry = yaml.safe_load((staging / "index.yaml").read_text(encoding="utf-8"))
-        if registry["reports"][0]["id"] != REPORT_ID:
+        if REPORT_ID not in {item["id"] for item in registry["reports"]}:
             raise RuntimeError("Dedicated Runtime registryのreport bindingが不正です")
 
     publish_evidence_tree(OUTPUT, STAGING, BACKUP, populate, validate, full_run_passed=True)

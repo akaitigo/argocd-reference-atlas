@@ -17,6 +17,34 @@ denominator:
       variants:
         - id: fixed-revision-manual-sync
         - id: fixed-revision-automated-self-heal
+    - surface_id: application.multi-source
+      status: runtime-declared-pending-authority-human-review
+      exhaustive_for_completion: false
+      declaration_scope: bounded-local-runtime-execution-only
+      variants:
+        - id: source-order-a-then-b
+        - id: source-order-b-then-a
+    - surface_id: application.operation.refresh
+      status: runtime-declared-pending-authority-human-review
+      exhaustive_for_completion: false
+      declaration_scope: bounded-local-runtime-execution-only
+      variants:
+        - id: rbac-denied-hard-refresh
+        - id: rbac-allowed-hard-refresh
+    - surface_id: application.operation.rollback
+      status: runtime-declared-pending-authority-human-review
+      exhaustive_for_completion: false
+      declaration_scope: bounded-local-runtime-execution-only
+      variants:
+        - id: rbac-denied-rollback
+        - id: rbac-allowed-rollback
+    - surface_id: application.operation.sync
+      status: runtime-declared-pending-authority-human-review
+      exhaustive_for_completion: false
+      declaration_scope: bounded-local-runtime-execution-only
+      variants:
+        - id: rbac-denied-sync
+        - id: rbac-allowed-sync
 rules:
   - Surfaceごとに人手確認済みの非空Variant集合がapproved-exhaustiveになるまでScenario gapを閉じない。
   - Surface、Scenario、Variantの完全一致を持つ専用実Argo CD／Kubernetes Runtime recordだけを算入する。

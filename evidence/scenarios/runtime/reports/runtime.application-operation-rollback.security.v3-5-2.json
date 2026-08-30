@@ -1,0 +1,222 @@
+{
+  "schema_version": 1,
+  "id": "runtime.application-operation-rollback.security.v3-5-2",
+  "atlas_id": "argocd-reference-atlas",
+  "surface_id": "application.operation.rollback",
+  "scenario": "security",
+  "status": "passed-runtime-execution-pending-authority-review",
+  "execution": {
+    "command": "make scenario-runtime-security-001",
+    "attempts": 1,
+    "retries": 0,
+    "first_attempt": true
+  },
+  "runtime_identity": {
+    "profile": "cluster",
+    "real_argocd_kubernetes_runtime": true,
+    "cluster_name": "argocd-atlas-v3-5-2",
+    "kubernetes_context": "kind-argocd-atlas-v3-5-2",
+    "argocd_version": "3.5.2",
+    "kubernetes_api_server_version": "v1.34.0",
+    "kubernetes_kubelet_version": "v1.34.0",
+    "cluster_uid": "73aaeb48-a904-4eec-8276-4e0efa5054f3",
+    "topology_digest": "sha256:1789770de4e903bcd23cd5ac5373fd39676242e6b2fa4365a3e323222783dfdb",
+    "observed_argocd_components": [
+      "argocd-application-controller",
+      "argocd-repo-server"
+    ]
+  },
+  "variant_denominator": {
+    "source": "definitive/scenario-variant-contract.yaml",
+    "status": "runtime-declared-pending-authority-human-review",
+    "declared_variant_ids": [
+      "rbac-denied-rollback",
+      "rbac-allowed-rollback"
+    ],
+    "all_declared_variants_executed": true,
+    "authority_exhaustive": false,
+    "completion_eligible": false
+  },
+  "variants": [
+    {
+      "variant_id": "rbac-denied-rollback",
+      "attempts": 1,
+      "outcome": "expected",
+      "final_status": "passed",
+      "error": null,
+      "oracle": {
+        "status": "pass",
+        "assertions": [
+          {
+            "channel": "resource_state",
+            "pointer": "/security/secret_scan_hits",
+            "operator": "equals",
+            "expected": 0
+          },
+          {
+            "channel": "controller_log",
+            "pointer": "/entries/0/application",
+            "operator": "equals",
+            "expected": "atlas-security-operations"
+          },
+          {
+            "channel": "metric",
+            "pointer": "/app_info/labels/name",
+            "operator": "equals",
+            "expected": "atlas-security-operations"
+          },
+          {
+            "channel": "trace",
+            "pointer": "/result/first_attempt",
+            "operator": "equals",
+            "expected": true
+          },
+          {
+            "channel": "resource_state",
+            "pointer": "/rbac/decision",
+            "operator": "equals",
+            "expected": "No"
+          },
+          {
+            "channel": "resource_state",
+            "pointer": "/configmaps/atlas-security-operations/data/release",
+            "operator": "equals",
+            "expected": "v2"
+          }
+        ]
+      },
+      "source": {
+        "path": "fixtures/scenarios/security-001/operations/configmap.yaml",
+        "digest": "sha256:88a5bdb2ff8a62536cb33a2e4dd4b1d5909db56214bd45daff528591ced9999e",
+        "bytes": 95,
+        "owner": "runtime.application-operation-rollback.security.v3-5-2:rbac-denied-rollback:source"
+      },
+      "harness": {
+        "path": "scripts/scenarios/run_security_001.py",
+        "digest": "sha256:2ff8a62cd9e2b4fd03da5c0367c4588a88cec450f079e32590da2e46f983c00f",
+        "bytes": 30253,
+        "owner": "runtime.application-operation-rollback.security.v3-5-2:rbac-denied-rollback:harness"
+      },
+      "artifacts": {
+        "resource_state": {
+          "path": "evidence/scenarios/runtime/artifacts/runtime.application-operation-rollback.security.v3-5-2/rbac-denied-rollback/resource_state.json",
+          "digest": "sha256:fea6b578b924cc206b173011113da82d81aaa7836052a8b169fcba4df94038eb",
+          "bytes": 11085,
+          "kind": "kubernetes-resource-state",
+          "owner": "runtime.application-operation-rollback.security.v3-5-2:rbac-denied-rollback:resource_state"
+        },
+        "controller_log": {
+          "path": "evidence/scenarios/runtime/artifacts/runtime.application-operation-rollback.security.v3-5-2/rbac-denied-rollback/controller_log.json",
+          "digest": "sha256:a46ca873fc6116e17a3ae52b37a476bd8739383a3dc5d5251a6d0ecb79532262",
+          "bytes": 83505,
+          "kind": "argocd-controller-log",
+          "owner": "runtime.application-operation-rollback.security.v3-5-2:rbac-denied-rollback:controller_log"
+        },
+        "metric": {
+          "path": "evidence/scenarios/runtime/artifacts/runtime.application-operation-rollback.security.v3-5-2/rbac-denied-rollback/metric.json",
+          "digest": "sha256:9f0c5a882486bf4829b9c76f27f3c93e228843d1f7bc30990723076bce1a6785",
+          "bytes": 1040,
+          "kind": "argocd-prometheus-metric",
+          "owner": "runtime.application-operation-rollback.security.v3-5-2:rbac-denied-rollback:metric"
+        },
+        "trace": {
+          "path": "evidence/scenarios/runtime/artifacts/runtime.application-operation-rollback.security.v3-5-2/rbac-denied-rollback/trace.json",
+          "digest": "sha256:74483761f23c76256abe72b28c5189b1567c0217a96d545c223310cebe3b009f",
+          "bytes": 681,
+          "kind": "scenario-execution-trace",
+          "owner": "runtime.application-operation-rollback.security.v3-5-2:rbac-denied-rollback:trace"
+        }
+      }
+    },
+    {
+      "variant_id": "rbac-allowed-rollback",
+      "attempts": 1,
+      "outcome": "expected",
+      "final_status": "passed",
+      "error": null,
+      "oracle": {
+        "status": "pass",
+        "assertions": [
+          {
+            "channel": "resource_state",
+            "pointer": "/security/secret_scan_hits",
+            "operator": "equals",
+            "expected": 0
+          },
+          {
+            "channel": "controller_log",
+            "pointer": "/entries/0/application",
+            "operator": "equals",
+            "expected": "atlas-security-operations"
+          },
+          {
+            "channel": "metric",
+            "pointer": "/app_info/labels/name",
+            "operator": "equals",
+            "expected": "atlas-security-operations"
+          },
+          {
+            "channel": "trace",
+            "pointer": "/result/first_attempt",
+            "operator": "equals",
+            "expected": true
+          },
+          {
+            "channel": "resource_state",
+            "pointer": "/rbac/decision",
+            "operator": "equals",
+            "expected": "Yes"
+          },
+          {
+            "channel": "resource_state",
+            "pointer": "/configmaps/atlas-security-operations/data/release",
+            "operator": "equals",
+            "expected": "v1"
+          }
+        ]
+      },
+      "source": {
+        "path": "fixtures/scenarios/security-001/operations/configmap.yaml",
+        "digest": "sha256:88a5bdb2ff8a62536cb33a2e4dd4b1d5909db56214bd45daff528591ced9999e",
+        "bytes": 95,
+        "owner": "runtime.application-operation-rollback.security.v3-5-2:rbac-allowed-rollback:source"
+      },
+      "harness": {
+        "path": "scripts/scenarios/run_security_001.py",
+        "digest": "sha256:2ff8a62cd9e2b4fd03da5c0367c4588a88cec450f079e32590da2e46f983c00f",
+        "bytes": 30253,
+        "owner": "runtime.application-operation-rollback.security.v3-5-2:rbac-allowed-rollback:harness"
+      },
+      "artifacts": {
+        "resource_state": {
+          "path": "evidence/scenarios/runtime/artifacts/runtime.application-operation-rollback.security.v3-5-2/rbac-allowed-rollback/resource_state.json",
+          "digest": "sha256:b6950f8c51db4bc0ff9159ac0bbea7f4ce14805155a973341ee2dd1fe29472ad",
+          "bytes": 11978,
+          "kind": "kubernetes-resource-state",
+          "owner": "runtime.application-operation-rollback.security.v3-5-2:rbac-allowed-rollback:resource_state"
+        },
+        "controller_log": {
+          "path": "evidence/scenarios/runtime/artifacts/runtime.application-operation-rollback.security.v3-5-2/rbac-allowed-rollback/controller_log.json",
+          "digest": "sha256:4cf094e541a1a9f33d1de50aae6f7369c78833e5ee6ea959929a071eb19f8d1f",
+          "bytes": 93082,
+          "kind": "argocd-controller-log",
+          "owner": "runtime.application-operation-rollback.security.v3-5-2:rbac-allowed-rollback:controller_log"
+        },
+        "metric": {
+          "path": "evidence/scenarios/runtime/artifacts/runtime.application-operation-rollback.security.v3-5-2/rbac-allowed-rollback/metric.json",
+          "digest": "sha256:ae64dde88053357488b9208c6348f0843b5dd37395670d9811bda0907c9c4269",
+          "bytes": 1047,
+          "kind": "argocd-prometheus-metric",
+          "owner": "runtime.application-operation-rollback.security.v3-5-2:rbac-allowed-rollback:metric"
+        },
+        "trace": {
+          "path": "evidence/scenarios/runtime/artifacts/runtime.application-operation-rollback.security.v3-5-2/rbac-allowed-rollback/trace.json",
+          "digest": "sha256:25abdb791adf55f291de279f8a3421153e55b000bf167fc42f1cad0c471e622b",
+          "bytes": 718,
+          "kind": "scenario-execution-trace",
+          "owner": "runtime.application-operation-rollback.security.v3-5-2:rbac-allowed-rollback:trace"
+        }
+      }
+    }
+  ]
+}
