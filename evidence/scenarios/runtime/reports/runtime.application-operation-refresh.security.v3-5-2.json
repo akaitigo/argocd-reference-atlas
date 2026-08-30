@@ -19,8 +19,8 @@
     "argocd_version": "3.5.2",
     "kubernetes_api_server_version": "v1.34.0",
     "kubernetes_kubelet_version": "v1.34.0",
-    "cluster_uid": "73aaeb48-a904-4eec-8276-4e0efa5054f3",
-    "topology_digest": "sha256:1789770de4e903bcd23cd5ac5373fd39676242e6b2fa4365a3e323222783dfdb",
+    "cluster_uid": "00b2b62c-ba60-4520-b48e-fa9e550c859d",
+    "topology_digest": "sha256:f27cd86ff879333619bd84e57f310afb261727da44dd06ae2c5e931d6f74dd9e",
     "observed_argocd_components": [
       "argocd-application-controller",
       "argocd-repo-server"
@@ -94,15 +94,15 @@
       "artifacts": {
         "resource_state": {
           "path": "evidence/scenarios/runtime/artifacts/runtime.application-operation-refresh.security.v3-5-2/rbac-denied-hard-refresh/resource_state.json",
-          "digest": "sha256:6d48a3d4afb568df8c3c3a689f2e342cfabecac34c093fc4bf1717848e5cdd29",
+          "digest": "sha256:ccdfe81ff15c4dad339b33cfb1570a430cd172e159e64340a9f515dab4ec1438",
           "bytes": 10534,
           "kind": "kubernetes-resource-state",
           "owner": "runtime.application-operation-refresh.security.v3-5-2:rbac-denied-hard-refresh:resource_state"
         },
         "controller_log": {
           "path": "evidence/scenarios/runtime/artifacts/runtime.application-operation-refresh.security.v3-5-2/rbac-denied-hard-refresh/controller_log.json",
-          "digest": "sha256:56f0ab23fe360fdb58cc4b6c629459782df5b12b241fb9f91e4c91121f8f39c5",
-          "bytes": 69779,
+          "digest": "sha256:9491e60f5d8d56d786329b398bd475aed9b978e8efa2209753b23485b90c7ec8",
+          "bytes": 57472,
           "kind": "argocd-controller-log",
           "owner": "runtime.application-operation-refresh.security.v3-5-2:rbac-denied-hard-refresh:controller_log"
         },
@@ -115,7 +115,7 @@
         },
         "trace": {
           "path": "evidence/scenarios/runtime/artifacts/runtime.application-operation-refresh.security.v3-5-2/rbac-denied-hard-refresh/trace.json",
-          "digest": "sha256:962b868d78b8bba38efbbc2bfe16fd60d6f8b46d39c1778c37ff0a14bcb764ec",
+          "digest": "sha256:cd845aaf495e4ec58999896ecf7a4de7cca3faf678faf464cf61423f9457298c",
           "bytes": 659,
           "kind": "scenario-execution-trace",
           "owner": "runtime.application-operation-refresh.security.v3-5-2:rbac-denied-hard-refresh:trace"
@@ -178,15 +178,15 @@
       "artifacts": {
         "resource_state": {
           "path": "evidence/scenarios/runtime/artifacts/runtime.application-operation-refresh.security.v3-5-2/rbac-allowed-hard-refresh/resource_state.json",
-          "digest": "sha256:0b4dd876cc9f02c51b10ee9ee9f8ed0edde3c479eca0471b9fa3a22214f076e8",
+          "digest": "sha256:3c9c4a4a297d1228685dfc3d172ca90d8e3c84879d3bef05d52107c7557bfa06",
           "bytes": 10537,
           "kind": "kubernetes-resource-state",
           "owner": "runtime.application-operation-refresh.security.v3-5-2:rbac-allowed-hard-refresh:resource_state"
         },
         "controller_log": {
           "path": "evidence/scenarios/runtime/artifacts/runtime.application-operation-refresh.security.v3-5-2/rbac-allowed-hard-refresh/controller_log.json",
-          "digest": "sha256:a7a1371848fd10f339dd4e6da63e09676218f7048e1d8cdcf5cfffd0551d66be",
-          "bytes": 71838,
+          "digest": "sha256:429611b53aece3763de4516623ddfa12d20be038cc0715156e5aa8c449ab797c",
+          "bytes": 59531,
           "kind": "argocd-controller-log",
           "owner": "runtime.application-operation-refresh.security.v3-5-2:rbac-allowed-hard-refresh:controller_log"
         },
@@ -199,7 +199,7 @@
         },
         "trace": {
           "path": "evidence/scenarios/runtime/artifacts/runtime.application-operation-refresh.security.v3-5-2/rbac-allowed-hard-refresh/trace.json",
-          "digest": "sha256:6d394a50953d603eac161b08dd90e77f1775d99b667fb1c7b97567d0d5c2a818",
+          "digest": "sha256:0b433a2a2d6cc762fa093fedfad28b93daefd5dcb078ff6a4429581f31238cd5",
           "bytes": 691,
           "kind": "scenario-execution-trace",
           "owner": "runtime.application-operation-refresh.security.v3-5-2:rbac-allowed-hard-refresh:trace"

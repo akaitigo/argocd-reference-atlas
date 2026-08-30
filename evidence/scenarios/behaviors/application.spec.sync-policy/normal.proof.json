@@ -164,8 +164,8 @@
     "variant_contract": {
       "source": {
         "path": "definitive/scenario-variant-contract.yaml",
-        "digest": "sha256:4a249c04d809c92ba1e7b524bea0e39a6d00b998b3c830b5f42966ec0e06c646",
-        "bytes": 2689
+        "digest": "sha256:cb01fcf41d71cc12a529c43d056e339aa9ce0cd167537667d2456cc08386dd66",
+        "bytes": 3904
       },
       "status": "runtime-declared-pending-authority-human-review",
       "expected_variant_ids": [
@@ -177,7 +177,7 @@
     },
     "dedicated_runtime_report": {
       "path": "evidence/scenarios/runtime/reports/runtime.application-spec-sync-policy.normal.v3-5-2.json",
-      "digest": "sha256:b96fe86e59675edc37215ec57781e4115ad05466a9df608bd1dca0717557e424",
+      "digest": "sha256:55827f3ed6e43d1dc373f6228acb66d04fd3da29f346b0d14ad00909d2db6e5f",
       "bytes": 9480
     },
     "dedicated_runtime_record_ids": [
@@ -232,8 +232,8 @@
       "argocd_version": "3.5.2",
       "kubernetes_api_server_version": "v1.34.0",
       "kubernetes_kubelet_version": "v1.34.0",
-      "cluster_uid": "73aaeb48-a904-4eec-8276-4e0efa5054f3",
-      "topology_digest": "sha256:1789770de4e903bcd23cd5ac5373fd39676242e6b2fa4365a3e323222783dfdb",
+      "cluster_uid": "00b2b62c-ba60-4520-b48e-fa9e550c859d",
+      "topology_digest": "sha256:f27cd86ff879333619bd84e57f310afb261727da44dd06ae2c5e931d6f74dd9e",
       "observed_argocd_components": [
         "argocd-application-controller",
         "argocd-repo-server"
@@ -343,8 +343,8 @@
             "variant_id": "fixed-revision-manual-sync",
             "artifact": {
               "path": "evidence/scenarios/runtime/artifacts/runtime.application-spec-sync-policy.normal.v3-5-2/fixed-revision-manual-sync/resource_state.json",
-              "digest": "sha256:fc7bf2376bd93a640f3224b4f64dae45d65799ed5474bdbdc219cca6be4ce09b",
-              "bytes": 5241,
+              "digest": "sha256:8b2e6209de3da9c9c7eb9dbc288113a9a03bd3a05e22bd990e1647aea28c41c3",
+              "bytes": 5195,
               "kind": "kubernetes-resource-state",
               "owner": "runtime.application-spec-sync-policy.normal.v3-5-2:fixed-revision-manual-sync:resource_state"
             }
@@ -353,7 +353,7 @@
             "variant_id": "fixed-revision-automated-self-heal",
             "artifact": {
               "path": "evidence/scenarios/runtime/artifacts/runtime.application-spec-sync-policy.normal.v3-5-2/fixed-revision-automated-self-heal/resource_state.json",
-              "digest": "sha256:28d645604f4badd71a0991d9d02cd8f0a6051f064ff91822776b129386534d6b",
+              "digest": "sha256:04dc49d278b3768d7d3cf41e088f53e7295dfba32c3e7dcc3bd53bcf4b6fe831",
               "bytes": 5982,
               "kind": "kubernetes-resource-state",
               "owner": "runtime.application-spec-sync-policy.normal.v3-5-2:fixed-revision-automated-self-heal:resource_state"
@@ -369,8 +369,8 @@
             "variant_id": "fixed-revision-manual-sync",
             "artifact": {
               "path": "evidence/scenarios/runtime/artifacts/runtime.application-spec-sync-policy.normal.v3-5-2/fixed-revision-manual-sync/controller_log.json",
-              "digest": "sha256:dbbb511f771d0a608e9045ec175eabf2d761e63e545c2e21a9eeeeb638e66cd1",
-              "bytes": 14186,
+              "digest": "sha256:7b25d5043fa8c6933d1ad2725b90427c273388974e519242fc5cfa421a0210c9",
+              "bytes": 48948,
               "kind": "argocd-controller-log",
               "owner": "runtime.application-spec-sync-policy.normal.v3-5-2:fixed-revision-manual-sync:controller_log"
             }
@@ -379,8 +379,8 @@
             "variant_id": "fixed-revision-automated-self-heal",
             "artifact": {
               "path": "evidence/scenarios/runtime/artifacts/runtime.application-spec-sync-policy.normal.v3-5-2/fixed-revision-automated-self-heal/controller_log.json",
-              "digest": "sha256:29abd58cad890ff0e0e9b0bc7db0f33ed10ab151e07716bbdd6a9421a02988fa",
-              "bytes": 30349,
+              "digest": "sha256:a64f59bc6c1b1965f07c44cbae1bd22d11e04a03b7122b74df4300cd0f53c75c",
+              "bytes": 69723,
               "kind": "argocd-controller-log",
               "owner": "runtime.application-spec-sync-policy.normal.v3-5-2:fixed-revision-automated-self-heal:controller_log"
             }
@@ -421,7 +421,7 @@
             "variant_id": "fixed-revision-manual-sync",
             "artifact": {
               "path": "evidence/scenarios/runtime/artifacts/runtime.application-spec-sync-policy.normal.v3-5-2/fixed-revision-manual-sync/trace.json",
-              "digest": "sha256:b76d768c4c9bb43e5faf58cd4e1d9bec77a6c0d1ca22eb42338d5e7990ebd6a9",
+              "digest": "sha256:2d3f734575499a092447ea5710ec3291e010c253f075dc678aa7d400da0308d8",
               "bytes": 727,
               "kind": "scenario-execution-trace",
               "owner": "runtime.application-spec-sync-policy.normal.v3-5-2:fixed-revision-manual-sync:trace"
@@ -431,7 +431,7 @@
             "variant_id": "fixed-revision-automated-self-heal",
             "artifact": {
               "path": "evidence/scenarios/runtime/artifacts/runtime.application-spec-sync-policy.normal.v3-5-2/fixed-revision-automated-self-heal/trace.json",
-              "digest": "sha256:994a7ac0d0a64faf2bd23767994a942a69eb27345641b9276982c3c1fa729a9a",
+              "digest": "sha256:4acc7ac2c3a1009769230665f01f6f2f91c133f45f6119af5b32cee6ec761797",
               "bytes": 724,
               "kind": "scenario-execution-trace",
               "owner": "runtime.application-spec-sync-policy.normal.v3-5-2:fixed-revision-automated-self-heal:trace"

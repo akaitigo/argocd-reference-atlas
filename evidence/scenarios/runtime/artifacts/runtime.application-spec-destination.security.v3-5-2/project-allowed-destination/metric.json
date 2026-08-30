@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "component": "argocd-application-controller",
+  "surface_id": "application.spec.destination",
+  "scenario": "security",
+  "variant_id": "project-allowed-destination",
+  "app_info": {
+    "sample": "argocd_app_info{autosync_enabled=\"false\",dest_namespace=\"atlas-security-002-destination\",dest_server=\"https://kubernetes.default.svc\",health_status=\"Healthy\",name=\"atlas-security-002-destination\",namespace=\"argocd\",operation=\"\",project=\"atlas-security-002\",repo=\"http://source-server.argocd-atlas-source.svc.cluster.local/repo\",sync_status=\"Synced\"} 1",
+    "labels": {
+      "autosync_enabled": "false",
+      "dest_namespace": "atlas-security-002-destination",
+      "dest_server": "https://kubernetes.default.svc",
+      "health_status": "Healthy",
+      "name": "atlas-security-002-destination",
+      "namespace": "argocd",
+      "operation": "",
+      "project": "atlas-security-002",
+      "repo": "http://source-server.argocd-atlas-source.svc.cluster.local/repo",
+      "sync_status": "Synced"
+    },
+    "value": 1
+  }
+}

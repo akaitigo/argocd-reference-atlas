@@ -87,11 +87,14 @@
     "variant_contract": {
       "source": {
         "path": "definitive/scenario-variant-contract.yaml",
-        "digest": "sha256:4a249c04d809c92ba1e7b524bea0e39a6d00b998b3c830b5f42966ec0e06c646",
-        "bytes": 2689
+        "digest": "sha256:cb01fcf41d71cc12a529c43d056e339aa9ce0cd167537667d2456cc08386dd66",
+        "bytes": 3904
       },
-      "status": "pending-authority-human-review",
-      "expected_variant_ids": [],
+      "status": "runtime-declared-pending-authority-human-review",
+      "expected_variant_ids": [
+        "rbac-denied-wait",
+        "rbac-allowed-wait"
+      ],
       "exhaustive": false,
       "gap": "Authority人手Review済みの非空かつexhaustiveなSurface Variant分母がない。"
     },

@@ -19,8 +19,8 @@
     "argocd_version": "3.5.2",
     "kubernetes_api_server_version": "v1.34.0",
     "kubernetes_kubelet_version": "v1.34.0",
-    "cluster_uid": "73aaeb48-a904-4eec-8276-4e0efa5054f3",
-    "topology_digest": "sha256:1789770de4e903bcd23cd5ac5373fd39676242e6b2fa4365a3e323222783dfdb",
+    "cluster_uid": "00b2b62c-ba60-4520-b48e-fa9e550c859d",
+    "topology_digest": "sha256:f27cd86ff879333619bd84e57f310afb261727da44dd06ae2c5e931d6f74dd9e",
     "observed_argocd_components": [
       "argocd-application-controller",
       "argocd-repo-server"
@@ -100,15 +100,15 @@
       "artifacts": {
         "resource_state": {
           "path": "evidence/scenarios/runtime/artifacts/runtime.application-operation-sync.security.v3-5-2/rbac-denied-sync/resource_state.json",
-          "digest": "sha256:42b528aac6d9ce878c54966d971ece707cc4bcfe4c44b21d880af73f7ee2530e",
+          "digest": "sha256:bcd2ea655f4bf45935c6ddca0df26606d39823d6392db46d3f56fefe50bd1dc8",
           "bytes": 11967,
           "kind": "kubernetes-resource-state",
           "owner": "runtime.application-operation-sync.security.v3-5-2:rbac-denied-sync:resource_state"
         },
         "controller_log": {
           "path": "evidence/scenarios/runtime/artifacts/runtime.application-operation-sync.security.v3-5-2/rbac-denied-sync/controller_log.json",
-          "digest": "sha256:0d848524a3ce03f3dc4a039f631d0d6a69dfd4ea7a02913596b6254488627481",
-          "bytes": 93073,
+          "digest": "sha256:6888fa495ee0e92c033cbe1e5ec8fd114ce821ddf3e2b9382a575ed03ca11901",
+          "bytes": 80765,
           "kind": "argocd-controller-log",
           "owner": "runtime.application-operation-sync.security.v3-5-2:rbac-denied-sync:controller_log"
         },
@@ -121,7 +121,7 @@
         },
         "trace": {
           "path": "evidence/scenarios/runtime/artifacts/runtime.application-operation-sync.security.v3-5-2/rbac-denied-sync/trace.json",
-          "digest": "sha256:648fd2b994ad114bc93dc0bf4718f0c252b62cbbd8c8341840047e890d0eb819",
+          "digest": "sha256:a8bce7c74012af86b4b0327e21f76948523459bbfe8c0c9edc46ee8e495bf33a",
           "bytes": 656,
           "kind": "scenario-execution-trace",
           "owner": "runtime.application-operation-sync.security.v3-5-2:rbac-denied-sync:trace"
@@ -190,15 +190,15 @@
       "artifacts": {
         "resource_state": {
           "path": "evidence/scenarios/runtime/artifacts/runtime.application-operation-sync.security.v3-5-2/rbac-allowed-sync/resource_state.json",
-          "digest": "sha256:4f7812860874c0b6e6a62b568f782720d77e05bc4e7f2e3271c2fbda686bbce9",
+          "digest": "sha256:3038dad8c9e8cb5b396b90acc31bd9878cf86afa670f58a7110b5a04717d78f4",
           "bytes": 12513,
           "kind": "kubernetes-resource-state",
           "owner": "runtime.application-operation-sync.security.v3-5-2:rbac-allowed-sync:resource_state"
         },
         "controller_log": {
           "path": "evidence/scenarios/runtime/artifacts/runtime.application-operation-sync.security.v3-5-2/rbac-allowed-sync/controller_log.json",
-          "digest": "sha256:a26cc2e987001066a52def07539c1d966b0301af610934658328e279d7b6313b",
-          "bytes": 102330,
+          "digest": "sha256:98d3173b48da9a00b6d80987f3c110a27f82ca1e61ab5bcaa2219ad9d4c6bf64",
+          "bytes": 90029,
           "kind": "argocd-controller-log",
           "owner": "runtime.application-operation-sync.security.v3-5-2:rbac-allowed-sync:controller_log"
         },
@@ -211,7 +211,7 @@
         },
         "trace": {
           "path": "evidence/scenarios/runtime/artifacts/runtime.application-operation-sync.security.v3-5-2/rbac-allowed-sync/trace.json",
-          "digest": "sha256:ee6ca67d5a9b24dea571e6514838924d942b335f75dab789357ecc4a7aa061a3",
+          "digest": "sha256:65da9220cf16965659fc7daee095c9c276fee75fa924682c4bb2b3af944997c0",
           "bytes": 661,
           "kind": "scenario-execution-trace",
           "owner": "runtime.application-operation-sync.security.v3-5-2:rbac-allowed-sync:trace"

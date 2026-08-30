@@ -19,8 +19,8 @@
     "argocd_version": "3.5.2",
     "kubernetes_api_server_version": "v1.34.0",
     "kubernetes_kubelet_version": "v1.34.0",
-    "cluster_uid": "73aaeb48-a904-4eec-8276-4e0efa5054f3",
-    "topology_digest": "sha256:1789770de4e903bcd23cd5ac5373fd39676242e6b2fa4365a3e323222783dfdb",
+    "cluster_uid": "00b2b62c-ba60-4520-b48e-fa9e550c859d",
+    "topology_digest": "sha256:f27cd86ff879333619bd84e57f310afb261727da44dd06ae2c5e931d6f74dd9e",
     "observed_argocd_components": [
       "argocd-application-controller",
       "argocd-repo-server"
@@ -100,15 +100,15 @@
       "artifacts": {
         "resource_state": {
           "path": "evidence/scenarios/runtime/artifacts/runtime.application-operation-rollback.security.v3-5-2/rbac-denied-rollback/resource_state.json",
-          "digest": "sha256:fea6b578b924cc206b173011113da82d81aaa7836052a8b169fcba4df94038eb",
+          "digest": "sha256:8eec44fe76257f9f7c3daa5c5d6c325c9a88c3929bd26be6c508e209fe8eb913",
           "bytes": 11085,
           "kind": "kubernetes-resource-state",
           "owner": "runtime.application-operation-rollback.security.v3-5-2:rbac-denied-rollback:resource_state"
         },
         "controller_log": {
           "path": "evidence/scenarios/runtime/artifacts/runtime.application-operation-rollback.security.v3-5-2/rbac-denied-rollback/controller_log.json",
-          "digest": "sha256:a46ca873fc6116e17a3ae52b37a476bd8739383a3dc5d5251a6d0ecb79532262",
-          "bytes": 83505,
+          "digest": "sha256:f78bd1cd79b603a4d7972481f26d247cd408adbaefd0ff55fec73849f17d5674",
+          "bytes": 71198,
           "kind": "argocd-controller-log",
           "owner": "runtime.application-operation-rollback.security.v3-5-2:rbac-denied-rollback:controller_log"
         },
@@ -121,7 +121,7 @@
         },
         "trace": {
           "path": "evidence/scenarios/runtime/artifacts/runtime.application-operation-rollback.security.v3-5-2/rbac-denied-rollback/trace.json",
-          "digest": "sha256:74483761f23c76256abe72b28c5189b1567c0217a96d545c223310cebe3b009f",
+          "digest": "sha256:55fafc22a0e6de210a10867180854ea030a570ed999227bf9bd1372f3607f7f4",
           "bytes": 681,
           "kind": "scenario-execution-trace",
           "owner": "runtime.application-operation-rollback.security.v3-5-2:rbac-denied-rollback:trace"
@@ -190,15 +190,15 @@
       "artifacts": {
         "resource_state": {
           "path": "evidence/scenarios/runtime/artifacts/runtime.application-operation-rollback.security.v3-5-2/rbac-allowed-rollback/resource_state.json",
-          "digest": "sha256:b6950f8c51db4bc0ff9159ac0bbea7f4ce14805155a973341ee2dd1fe29472ad",
+          "digest": "sha256:c91e3c5b18e525636c4f93ae2cabaffe73c7509e5bb32b1629438380bc35e903",
           "bytes": 11978,
           "kind": "kubernetes-resource-state",
           "owner": "runtime.application-operation-rollback.security.v3-5-2:rbac-allowed-rollback:resource_state"
         },
         "controller_log": {
           "path": "evidence/scenarios/runtime/artifacts/runtime.application-operation-rollback.security.v3-5-2/rbac-allowed-rollback/controller_log.json",
-          "digest": "sha256:4cf094e541a1a9f33d1de50aae6f7369c78833e5ee6ea959929a071eb19f8d1f",
-          "bytes": 93082,
+          "digest": "sha256:b4dee6bdbf38fa61f96b2d4cc886ba4ce9fc879ddfb45f4b0895ca03854eefd0",
+          "bytes": 80774,
           "kind": "argocd-controller-log",
           "owner": "runtime.application-operation-rollback.security.v3-5-2:rbac-allowed-rollback:controller_log"
         },
@@ -211,7 +211,7 @@
         },
         "trace": {
           "path": "evidence/scenarios/runtime/artifacts/runtime.application-operation-rollback.security.v3-5-2/rbac-allowed-rollback/trace.json",
-          "digest": "sha256:25abdb791adf55f291de279f8a3421153e55b000bf167fc42f1cad0c471e622b",
+          "digest": "sha256:4bc08b0b925f026dedd4510ca6aa3055653d13c5cf080415499cab61a5d46087",
           "bytes": 718,
           "kind": "scenario-execution-trace",
           "owner": "runtime.application-operation-rollback.security.v3-5-2:rbac-allowed-rollback:trace"

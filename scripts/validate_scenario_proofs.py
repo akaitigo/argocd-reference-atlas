@@ -151,14 +151,18 @@ def main() -> None:
         "application.operation.refresh": ["rbac-denied-hard-refresh", "rbac-allowed-hard-refresh"],
         "application.operation.rollback": ["rbac-denied-rollback", "rbac-allowed-rollback"],
         "application.operation.sync": ["rbac-denied-sync", "rbac-allowed-sync"],
+        "application.operation.terminate": ["rbac-denied-terminate", "rbac-allowed-terminate"],
+        "application.operation.wait": ["rbac-denied-wait", "rbac-allowed-wait"],
+        "application.resource-actions": ["rbac-denied-deployment-restart", "rbac-allowed-deployment-restart"],
+        "application.spec.destination": ["project-denied-destination", "project-allowed-destination"],
     }
     actual_variants = {item["surface_id"]: [variant["id"] for variant in item["variants"]] for item in overrides}
     require(actual_variants == expected_variants and all(item["status"] == "runtime-declared-pending-authority-human-review" and item["exhaustive_for_completion"] is False for item in overrides), "Runtime宣言VariantとAuthority未承認境界が不正です")
-    require(len(runtime_registry["reports"]) == 5 and runtime_registry["status"] == "incomplete-authority-review-with-dedicated-runtime-reports", "現行専用Runtime registryの実行件数または未完境界が不正です")
+    require(len(runtime_registry["reports"]) == 9 and runtime_registry["status"] == "incomplete-authority-review-with-dedicated-runtime-reports", "現行専用Runtime registryの実行件数または未完境界が不正です")
     require(index["source_bindings"]["variant_contract"] == module.binding(module.VARIANT_CONTRACT) and index["source_bindings"]["dedicated_runtime_registry"] == module.binding(module.RUNTIME_REGISTRY), "Variant／専用Runtime contract digestがindexへ接続されていません")
     require(summary["behaviors"] == 100 and summary["scenarios"] == 10 and summary["rows"] == 1000 and summary["dedicated_artifacts"] == 1000, "100 Surface × 10 Scenario分母が不正です")
     require(summary["scenario_gaps_closed"] == 0 and summary["scenario_gaps_open"] == 1000, "専用全Variant RuntimeなしでScenario gapを閉じています")
-    require(summary["variant_denominators_exhaustive"] == 0 and summary["dedicated_runtime_reports"] == 5 and summary["dedicated_runtime_execution_complete_rows"] == 5, "専用Runtime実行またはAuthority未承認分母の集計が不正です")
+    require(summary["variant_denominators_exhaustive"] == 0 and summary["dedicated_runtime_reports"] == 9 and summary["dedicated_runtime_execution_complete_rows"] == 9, "専用Runtime実行またはAuthority未承認分母の集計が不正です")
     require(summary["supporting_runtime_artifacts"] + summary["supporting_artifacts"] + summary["no_supporting_artifacts"] == 1000, "補助Evidence分類が分母を閉じていません")
     floor = baseline["supporting_evidence_floor"]
     require(summary["supporting_runtime_artifacts"] >= floor["supporting_runtime_artifacts"] and summary["supporting_runtime_artifacts"] + summary["supporting_artifacts"] >= floor["supporting_artifacts_total"], "既存Supporting Evidenceが非後退floorを下回っています")
@@ -200,6 +204,10 @@ def main() -> None:
             ("application.operation.refresh", "security"),
             ("application.operation.rollback", "security"),
             ("application.operation.sync", "security"),
+            ("application.operation.terminate", "security"),
+            ("application.operation.wait", "security"),
+            ("application.resource-actions", "security"),
+            ("application.spec.destination", "security"),
         }
         require(proof["closure"]["dedicated_runtime_execution_complete"] is expected_runtime_complete, f"専用Runtime実行完了rowが不正です: {proof['id']}")
         if expected_runtime_complete:

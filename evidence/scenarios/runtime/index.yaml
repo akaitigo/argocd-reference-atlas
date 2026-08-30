@@ -5,23 +5,39 @@ status: incomplete-authority-review-with-dedicated-runtime-reports
 reports:
 - id: runtime.application-multi-source.security.v3-5-2
   path: evidence/scenarios/runtime/reports/runtime.application-multi-source.security.v3-5-2.json
-  digest: sha256:36cb2bec7783c0cad1a7b00ee6c0803d242a56228dac61bf14b92a32d3d30f68
+  digest: sha256:0ca9c364c6c48f549896b5bcc6c1cf513e932e9fa8a36cf183de50cd3438a7a6
   bytes: 9470
 - id: runtime.application-operation-refresh.security.v3-5-2
   path: evidence/scenarios/runtime/reports/runtime.application-operation-refresh.security.v3-5-2.json
-  digest: sha256:ab859f7d0a40699503cae3251155523d8bea6ba5eb9dc3bad22a689227dc9207
+  digest: sha256:684d97dfac846263f589eb9d5095150038e9b68e372bdde7745e4325ee3b24e1
   bytes: 8749
 - id: runtime.application-operation-rollback.security.v3-5-2
   path: evidence/scenarios/runtime/reports/runtime.application-operation-rollback.security.v3-5-2.json
-  digest: sha256:df17533a3bbcb58c98727ffa939b07526f73eddc2d1456bf18c28a5bc7d12544
+  digest: sha256:4041fabc56228ef76c32e2990eef6c8ecf26f3b75c0c097275b1ac70809c10bd
   bytes: 9087
 - id: runtime.application-operation-sync.security.v3-5-2
   path: evidence/scenarios/runtime/reports/runtime.application-operation-sync.security.v3-5-2.json
-  digest: sha256:07ec8c5061e4746f23be7853651157de87e30e6d4acd85bc7005f84d558bec34
-  bytes: 8904
+  digest: sha256:230b5d1f9fb8d44372e0bb84de1ead4e00603063ef975803030e7b8956ff83e5
+  bytes: 8903
+- id: runtime.application-operation-terminate.security.v3-5-2
+  path: evidence/scenarios/runtime/reports/runtime.application-operation-terminate.security.v3-5-2.json
+  digest: sha256:49b042f5ca6d15329cb81c31847bf68488d2df17fdbfa13c90e3499332efedef
+  bytes: 9100
+- id: runtime.application-operation-wait.security.v3-5-2
+  path: evidence/scenarios/runtime/reports/runtime.application-operation-wait.security.v3-5-2.json
+  digest: sha256:ead57bcc038d55c0fccf00baaab9faea25c5806f54dc65914ba8a73bae1c5226
+  bytes: 8848
+- id: runtime.application-resource-actions.security.v3-5-2
+  path: evidence/scenarios/runtime/reports/runtime.application-resource-actions.security.v3-5-2.json
+  digest: sha256:977702ff27370fd03c9cef157df900325b01254d4b38152d7834169c7e5c6184
+  bytes: 9280
+- id: runtime.application-spec-destination.security.v3-5-2
+  path: evidence/scenarios/runtime/reports/runtime.application-spec-destination.security.v3-5-2.json
+  digest: sha256:e6211dc1f875f679c1fb57376c6d7911286fa7c126132649ccda492379959c89
+  bytes: 9665
 - id: runtime.application-spec-sync-policy.normal.v3-5-2
   path: evidence/scenarios/runtime/reports/runtime.application-spec-sync-policy.normal.v3-5-2.json
-  digest: sha256:b96fe86e59675edc37215ec57781e4115ad05466a9df608bd1dca0717557e424
+  digest: sha256:55827f3ed6e43d1dc373f6228acb66d04fd3da29f346b0d14ad00909d2db6e5f
   bytes: 9480
 admission_contract:
   report_scope: exact-surface-scenario

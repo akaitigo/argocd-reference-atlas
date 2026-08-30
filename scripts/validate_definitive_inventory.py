@@ -165,7 +165,7 @@ def main() -> None:
         raise ValueError("100 Surface × 10 Scenario専用Proof分母が不正です")
     if scenario_summary.get("scenario_gaps_closed") != 0 or scenario_summary.get("scenario_gaps_open") != 1000:
         raise ValueError("専用Surface×Scenario×全Variant RuntimeなしでScenario gapを閉じています")
-    if scenario_summary.get("variant_denominators_exhaustive") != 0 or scenario_summary.get("dedicated_runtime_reports") != 5 or scenario_summary.get("dedicated_runtime_execution_complete_rows") != 5:
+    if scenario_summary.get("variant_denominators_exhaustive") != 0 or scenario_summary.get("dedicated_runtime_reports") != 9 or scenario_summary.get("dedicated_runtime_execution_complete_rows") != 9:
         raise ValueError("未承認Variant分母または存在しない専用Runtime reportを算入しています")
     if scenario_summary.get("supporting_runtime_artifacts", 0) + scenario_summary.get("supporting_artifacts", 0) + scenario_summary.get("no_supporting_artifacts", 0) != 1000:
         raise ValueError("既存Artifactの補助Evidence分類が分母を閉じていません")

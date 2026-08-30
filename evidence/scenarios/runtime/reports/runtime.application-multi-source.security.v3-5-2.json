@@ -19,8 +19,8 @@
     "argocd_version": "3.5.2",
     "kubernetes_api_server_version": "v1.34.0",
     "kubernetes_kubelet_version": "v1.34.0",
-    "cluster_uid": "73aaeb48-a904-4eec-8276-4e0efa5054f3",
-    "topology_digest": "sha256:1789770de4e903bcd23cd5ac5373fd39676242e6b2fa4365a3e323222783dfdb",
+    "cluster_uid": "00b2b62c-ba60-4520-b48e-fa9e550c859d",
+    "topology_digest": "sha256:f27cd86ff879333619bd84e57f310afb261727da44dd06ae2c5e931d6f74dd9e",
     "observed_argocd_components": [
       "argocd-application-controller",
       "argocd-repo-server"
@@ -106,15 +106,15 @@
       "artifacts": {
         "resource_state": {
           "path": "evidence/scenarios/runtime/artifacts/runtime.application-multi-source.security.v3-5-2/source-order-a-then-b/resource_state.json",
-          "digest": "sha256:123d01f4c0eefd440d06a87cfe00a7d351c140a720defe55959fdbc50ddb811b",
+          "digest": "sha256:e3682a18fe061dad3427239bcf086ae3d55244574469d7a38db20654d8f8efb8",
           "bytes": 13792,
           "kind": "kubernetes-resource-state",
           "owner": "runtime.application-multi-source.security.v3-5-2:source-order-a-then-b:resource_state"
         },
         "controller_log": {
           "path": "evidence/scenarios/runtime/artifacts/runtime.application-multi-source.security.v3-5-2/source-order-a-then-b/controller_log.json",
-          "digest": "sha256:e97d65111fa818e6caf13b330be5ae1d4eedc1ea08fd6fa2852f425cbc4719d0",
-          "bytes": 71450,
+          "digest": "sha256:95117b6ab41f2671492eaca410d57f7baeb75c3769a9b78a541deddf333a8c06",
+          "bytes": 42037,
           "kind": "argocd-controller-log",
           "owner": "runtime.application-multi-source.security.v3-5-2:source-order-a-then-b:controller_log"
         },
@@ -127,7 +127,7 @@
         },
         "trace": {
           "path": "evidence/scenarios/runtime/artifacts/runtime.application-multi-source.security.v3-5-2/source-order-a-then-b/trace.json",
-          "digest": "sha256:4cfb439bbbe2c73b998173814df2a4d807d95f3eafd947a6f20441c85c274433",
+          "digest": "sha256:cc2192d9beb3aa9c76a1f96bd9f7fa50d0a0efe797a0cfbfc9a6337c2bc7d3fe",
           "bytes": 614,
           "kind": "scenario-execution-trace",
           "owner": "runtime.application-multi-source.security.v3-5-2:source-order-a-then-b:trace"
@@ -202,15 +202,15 @@
       "artifacts": {
         "resource_state": {
           "path": "evidence/scenarios/runtime/artifacts/runtime.application-multi-source.security.v3-5-2/source-order-b-then-a/resource_state.json",
-          "digest": "sha256:bf4d10ce26c7acf9955ede957328af8f8fba0b3b6be7a977641422cdddf18304",
+          "digest": "sha256:848b1cb3125a927d848b612fcac0f073fff1a96648d4a3c139b79742d47858a6",
           "bytes": 14778,
           "kind": "kubernetes-resource-state",
           "owner": "runtime.application-multi-source.security.v3-5-2:source-order-b-then-a:resource_state"
         },
         "controller_log": {
           "path": "evidence/scenarios/runtime/artifacts/runtime.application-multi-source.security.v3-5-2/source-order-b-then-a/controller_log.json",
-          "digest": "sha256:8a6619e0987e3121b37c2e84689c8c1314bd6ce2952c0f751f8ddbb37b925eda",
-          "bytes": 84276,
+          "digest": "sha256:18dab43d19b8ac8c2f910f4a76bd4ebb3f2484a153a34e2050801932354c641d",
+          "bytes": 54854,
           "kind": "argocd-controller-log",
           "owner": "runtime.application-multi-source.security.v3-5-2:source-order-b-then-a:controller_log"
         },
@@ -223,7 +223,7 @@
         },
         "trace": {
           "path": "evidence/scenarios/runtime/artifacts/runtime.application-multi-source.security.v3-5-2/source-order-b-then-a/trace.json",
-          "digest": "sha256:59659e95024a71e37325dd2b137e579ae90ef4799dab96c712598ee2ccda1384",
+          "digest": "sha256:3799e5b42fe9f7e732bc2f6393d594f5bfabd87cdb5db73b3c8343e94a8bcffe",
           "bytes": 698,
           "kind": "scenario-execution-trace",
           "owner": "runtime.application-multi-source.security.v3-5-2:source-order-b-then-a:trace"

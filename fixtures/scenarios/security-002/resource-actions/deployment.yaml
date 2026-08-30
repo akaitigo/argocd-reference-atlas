@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: atlas-security-002-action
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: atlas-security-002-action
+  template:
+    metadata:
+      labels:
+        app: atlas-security-002-action
+    spec:
+      containers:
+        - name: workload
+          image: python:3.13.13-alpine3.23@sha256:420cd0bf0f3998275875e02ecd5808168cf0843cbb4d3c536432f729247b2acc
+          command: ["python", "-c", "import time; time.sleep(3600)"]

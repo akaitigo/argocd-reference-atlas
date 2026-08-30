@@ -83,81 +83,301 @@
   "scenario_gap_closure": {
     "status": "open",
     "scenario_gap_closed": false,
-    "dedicated_runtime_execution_complete": false,
+    "dedicated_runtime_execution_complete": true,
     "variant_contract": {
       "source": {
         "path": "definitive/scenario-variant-contract.yaml",
-        "digest": "sha256:4a249c04d809c92ba1e7b524bea0e39a6d00b998b3c830b5f42966ec0e06c646",
-        "bytes": 2689
+        "digest": "sha256:cb01fcf41d71cc12a529c43d056e339aa9ce0cd167537667d2456cc08386dd66",
+        "bytes": 3904
       },
-      "status": "pending-authority-human-review",
-      "expected_variant_ids": [],
+      "status": "runtime-declared-pending-authority-human-review",
+      "expected_variant_ids": [
+        "rbac-denied-terminate",
+        "rbac-allowed-terminate"
+      ],
       "exhaustive": false,
       "gap": "Authority人手Review済みの非空かつexhaustiveなSurface Variant分母がない。"
     },
-    "dedicated_runtime_report": null,
-    "dedicated_runtime_record_ids": [],
-    "source_bindings": [],
-    "harness_bindings": [],
-    "runtime_identity": null,
-    "oracle_records": [],
+    "dedicated_runtime_report": {
+      "path": "evidence/scenarios/runtime/reports/runtime.application-operation-terminate.security.v3-5-2.json",
+      "digest": "sha256:49b042f5ca6d15329cb81c31847bf68488d2df17fdbfa13c90e3499332efedef",
+      "bytes": 9100
+    },
+    "dedicated_runtime_record_ids": [
+      "runtime.application-operation-terminate.security.v3-5-2:rbac-denied-terminate",
+      "runtime.application-operation-terminate.security.v3-5-2:rbac-allowed-terminate"
+    ],
+    "source_bindings": [
+      {
+        "variant_id": "rbac-denied-terminate",
+        "source": {
+          "path": "fixtures/scenarios/security-002/terminate/hook.yaml",
+          "digest": "sha256:14ec9490f08840d14bdc14eb8962768feb6bc09a3ad897b3155883f2a81821e4",
+          "bytes": 499,
+          "owner": "runtime.application-operation-terminate.security.v3-5-2:rbac-denied-terminate:source"
+        }
+      },
+      {
+        "variant_id": "rbac-allowed-terminate",
+        "source": {
+          "path": "fixtures/scenarios/security-002/terminate/hook.yaml",
+          "digest": "sha256:14ec9490f08840d14bdc14eb8962768feb6bc09a3ad897b3155883f2a81821e4",
+          "bytes": 499,
+          "owner": "runtime.application-operation-terminate.security.v3-5-2:rbac-allowed-terminate:source"
+        }
+      }
+    ],
+    "harness_bindings": [
+      {
+        "variant_id": "rbac-denied-terminate",
+        "harness": {
+          "path": "scripts/scenarios/run_security_002.py",
+          "digest": "sha256:e53994287aecb715adbdfeb22f2f5e7ecc4fe7b54af50beedd6c0594929ec0f1",
+          "bytes": 35856,
+          "owner": "runtime.application-operation-terminate.security.v3-5-2:rbac-denied-terminate:harness"
+        }
+      },
+      {
+        "variant_id": "rbac-allowed-terminate",
+        "harness": {
+          "path": "scripts/scenarios/run_security_002.py",
+          "digest": "sha256:e53994287aecb715adbdfeb22f2f5e7ecc4fe7b54af50beedd6c0594929ec0f1",
+          "bytes": 35856,
+          "owner": "runtime.application-operation-terminate.security.v3-5-2:rbac-allowed-terminate:harness"
+        }
+      }
+    ],
+    "runtime_identity": {
+      "profile": "cluster",
+      "real_argocd_kubernetes_runtime": true,
+      "cluster_name": "argocd-atlas-v3-5-2",
+      "kubernetes_context": "kind-argocd-atlas-v3-5-2",
+      "argocd_version": "3.5.2",
+      "kubernetes_api_server_version": "v1.34.0",
+      "kubernetes_kubelet_version": "v1.34.0",
+      "cluster_uid": "00b2b62c-ba60-4520-b48e-fa9e550c859d",
+      "topology_digest": "sha256:f27cd86ff879333619bd84e57f310afb261727da44dd06ae2c5e931d6f74dd9e",
+      "observed_argocd_components": [
+        "argocd-application-controller",
+        "argocd-repo-server"
+      ]
+    },
+    "oracle_records": [
+      {
+        "variant_id": "rbac-denied-terminate",
+        "oracle": {
+          "status": "pass",
+          "assertions": [
+            {
+              "channel": "resource_state",
+              "pointer": "/security/secret_scan_hits",
+              "operator": "equals",
+              "expected": 0
+            },
+            {
+              "channel": "controller_log",
+              "pointer": "/entries/0/application",
+              "operator": "equals",
+              "expected": "atlas-security-002-terminate"
+            },
+            {
+              "channel": "metric",
+              "pointer": "/app_info/labels/name",
+              "operator": "equals",
+              "expected": "atlas-security-002-terminate"
+            },
+            {
+              "channel": "trace",
+              "pointer": "/result/first_attempt",
+              "operator": "equals",
+              "expected": true
+            },
+            {
+              "channel": "resource_state",
+              "pointer": "/rbac/decision",
+              "operator": "equals",
+              "expected": "No"
+            },
+            {
+              "channel": "resource_state",
+              "pointer": "/observation/operation_running",
+              "operator": "equals",
+              "expected": true
+            }
+          ]
+        }
+      },
+      {
+        "variant_id": "rbac-allowed-terminate",
+        "oracle": {
+          "status": "pass",
+          "assertions": [
+            {
+              "channel": "resource_state",
+              "pointer": "/security/secret_scan_hits",
+              "operator": "equals",
+              "expected": 0
+            },
+            {
+              "channel": "controller_log",
+              "pointer": "/entries/0/application",
+              "operator": "equals",
+              "expected": "atlas-security-002-terminate"
+            },
+            {
+              "channel": "metric",
+              "pointer": "/app_info/labels/name",
+              "operator": "equals",
+              "expected": "atlas-security-002-terminate"
+            },
+            {
+              "channel": "trace",
+              "pointer": "/result/first_attempt",
+              "operator": "equals",
+              "expected": true
+            },
+            {
+              "channel": "resource_state",
+              "pointer": "/rbac/decision",
+              "operator": "equals",
+              "expected": "Yes"
+            },
+            {
+              "channel": "resource_state",
+              "pointer": "/observation/operation_terminated",
+              "operator": "equals",
+              "expected": true
+            }
+          ]
+        }
+      }
+    ],
     "artifacts": {
       "resource_state": {
-        "status": "explicit-gap",
-        "artifacts": [],
-        "gap": "全Variant所有の専用resource_state Artifactが揃っていない。"
+        "status": "artifact",
+        "artifacts": [
+          {
+            "variant_id": "rbac-denied-terminate",
+            "artifact": {
+              "path": "evidence/scenarios/runtime/artifacts/runtime.application-operation-terminate.security.v3-5-2/rbac-denied-terminate/resource_state.json",
+              "digest": "sha256:a15e9aa1ee109b31464caa98b2ab4888c22cf43a9c3bfc5ac68d3c72e16cb321",
+              "bytes": 19859,
+              "kind": "kubernetes-resource-state",
+              "owner": "runtime.application-operation-terminate.security.v3-5-2:rbac-denied-terminate:resource_state"
+            }
+          },
+          {
+            "variant_id": "rbac-allowed-terminate",
+            "artifact": {
+              "path": "evidence/scenarios/runtime/artifacts/runtime.application-operation-terminate.security.v3-5-2/rbac-allowed-terminate/resource_state.json",
+              "digest": "sha256:b17f9cc7d687c89fb1efbf782e10d96a6d0bca14f56bfa3d9c788018d6342146",
+              "bytes": 19376,
+              "kind": "kubernetes-resource-state",
+              "owner": "runtime.application-operation-terminate.security.v3-5-2:rbac-allowed-terminate:resource_state"
+            }
+          }
+        ],
+        "gap": null
       },
       "controller_log": {
-        "status": "explicit-gap",
-        "artifacts": [],
-        "gap": "全Variant所有の専用controller_log Artifactが揃っていない。"
+        "status": "artifact",
+        "artifacts": [
+          {
+            "variant_id": "rbac-denied-terminate",
+            "artifact": {
+              "path": "evidence/scenarios/runtime/artifacts/runtime.application-operation-terminate.security.v3-5-2/rbac-denied-terminate/controller_log.json",
+              "digest": "sha256:f19f4ac29b4c46bffd6d460ff25ec967df44930ff81d8452261d4cff35223210",
+              "bytes": 144235,
+              "kind": "argocd-controller-log",
+              "owner": "runtime.application-operation-terminate.security.v3-5-2:rbac-denied-terminate:controller_log"
+            }
+          },
+          {
+            "variant_id": "rbac-allowed-terminate",
+            "artifact": {
+              "path": "evidence/scenarios/runtime/artifacts/runtime.application-operation-terminate.security.v3-5-2/rbac-allowed-terminate/controller_log.json",
+              "digest": "sha256:a7d6bc731cc77b18d6d6f13dc68e26a06bb212f78abf6eb8e0923e292854ff4c",
+              "bytes": 156798,
+              "kind": "argocd-controller-log",
+              "owner": "runtime.application-operation-terminate.security.v3-5-2:rbac-allowed-terminate:controller_log"
+            }
+          }
+        ],
+        "gap": null
       },
       "metric": {
-        "status": "explicit-gap",
-        "artifacts": [],
-        "gap": "全Variant所有の専用metric Artifactが揃っていない。"
+        "status": "artifact",
+        "artifacts": [
+          {
+            "variant_id": "rbac-denied-terminate",
+            "artifact": {
+              "path": "evidence/scenarios/runtime/artifacts/runtime.application-operation-terminate.security.v3-5-2/rbac-denied-terminate/metric.json",
+              "digest": "sha256:50685c73548d120f838cdf14ac74cf80e291181bab22bcc05f1e00d06009abec",
+              "bytes": 1072,
+              "kind": "argocd-prometheus-metric",
+              "owner": "runtime.application-operation-terminate.security.v3-5-2:rbac-denied-terminate:metric"
+            }
+          },
+          {
+            "variant_id": "rbac-allowed-terminate",
+            "artifact": {
+              "path": "evidence/scenarios/runtime/artifacts/runtime.application-operation-terminate.security.v3-5-2/rbac-allowed-terminate/metric.json",
+              "digest": "sha256:dae62169e5c401bbf9b3d535322c37e72d310b4a09036e8d1d66b718abbe3229",
+              "bytes": 1065,
+              "kind": "argocd-prometheus-metric",
+              "owner": "runtime.application-operation-terminate.security.v3-5-2:rbac-allowed-terminate:metric"
+            }
+          }
+        ],
+        "gap": null
       },
       "trace": {
-        "status": "explicit-gap",
-        "artifacts": [],
-        "gap": "全Variant所有の専用trace Artifactが揃っていない。"
+        "status": "artifact",
+        "artifacts": [
+          {
+            "variant_id": "rbac-denied-terminate",
+            "artifact": {
+              "path": "evidence/scenarios/runtime/artifacts/runtime.application-operation-terminate.security.v3-5-2/rbac-denied-terminate/trace.json",
+              "digest": "sha256:0e373766c7dfad62123c7ae5b5f5fe483258211d49b139ce425e9b1ca61f2d34",
+              "bytes": 647,
+              "kind": "scenario-execution-trace",
+              "owner": "runtime.application-operation-terminate.security.v3-5-2:rbac-denied-terminate:trace"
+            }
+          },
+          {
+            "variant_id": "rbac-allowed-terminate",
+            "artifact": {
+              "path": "evidence/scenarios/runtime/artifacts/runtime.application-operation-terminate.security.v3-5-2/rbac-allowed-terminate/trace.json",
+              "digest": "sha256:c76f1391b919ca6c3752f86ffc283672abea5a95465299a59461a4983d4bc3e3",
+              "bytes": 765,
+              "kind": "scenario-execution-trace",
+              "owner": "runtime.application-operation-terminate.security.v3-5-2:rbac-allowed-terminate:trace"
+            }
+          }
+        ],
+        "gap": null
       }
     },
     "conditions": {
       "variant_denominator_exhaustive": false,
-      "exact_surface_scenario_scope": false,
-      "all_variants_driven": false,
-      "real_argocd_kubernetes_runtime": false,
-      "retry_zero": false,
-      "first_attempt_pass": false,
-      "oracle_pass": false,
-      "source_digest_bound": false,
-      "harness_digest_bound": false,
-      "runtime_identity_complete": false,
-      "per_variant_resource_state_artifact": false,
-      "per_variant_controller_log_artifact": false,
-      "per_variant_metric_artifact": false,
-      "per_variant_trace_artifact": false,
-      "artifact_paths_dedicated_and_distinct": false,
-      "integrated_or_other_metadata_reuse_absent": false
+      "exact_surface_scenario_scope": true,
+      "all_variants_driven": true,
+      "real_argocd_kubernetes_runtime": true,
+      "retry_zero": true,
+      "first_attempt_pass": true,
+      "oracle_pass": true,
+      "source_digest_bound": true,
+      "harness_digest_bound": true,
+      "runtime_identity_complete": true,
+      "per_variant_resource_state_artifact": true,
+      "per_variant_controller_log_artifact": true,
+      "per_variant_metric_artifact": true,
+      "per_variant_trace_artifact": true,
+      "artifact_paths_dedicated_and_distinct": true,
+      "integrated_or_other_metadata_reuse_absent": true
     },
     "failed_conditions": [
-      "variant_denominator_exhaustive",
-      "exact_surface_scenario_scope",
-      "all_variants_driven",
-      "real_argocd_kubernetes_runtime",
-      "retry_zero",
-      "first_attempt_pass",
-      "oracle_pass",
-      "source_digest_bound",
-      "harness_digest_bound",
-      "runtime_identity_complete",
-      "per_variant_resource_state_artifact",
-      "per_variant_controller_log_artifact",
-      "per_variant_metric_artifact",
-      "per_variant_trace_artifact",
-      "artifact_paths_dedicated_and_distinct",
-      "integrated_or_other_metadata_reuse_absent"
+      "variant_denominator_exhaustive"
     ],
     "closure_evidence_source": "dedicated-surface-scenario-runtime-registry-only",
     "prohibited_substitutions": [
@@ -194,7 +414,7 @@
     "supporting_real_kubernetes_runtime": false,
     "supporting_runtime_identity_complete": false,
     "scenario_gap_closed": false,
-    "dedicated_runtime_execution_complete": false,
+    "dedicated_runtime_execution_complete": true,
     "authority_atomic_binding": false,
     "completion_eligible": false
   },
@@ -205,21 +425,6 @@
     "metric: Behavior固有metric Artifactがない。",
     "trace: Behavior固有trace Artifactがない。OTLP traceは別Gapとして未Closure。",
     "closure-condition: variant_denominator_exhaustive",
-    "closure-condition: exact_surface_scenario_scope",
-    "closure-condition: all_variants_driven",
-    "closure-condition: real_argocd_kubernetes_runtime",
-    "closure-condition: retry_zero",
-    "closure-condition: first_attempt_pass",
-    "closure-condition: oracle_pass",
-    "closure-condition: source_digest_bound",
-    "closure-condition: harness_digest_bound",
-    "closure-condition: runtime_identity_complete",
-    "closure-condition: per_variant_resource_state_artifact",
-    "closure-condition: per_variant_controller_log_artifact",
-    "closure-condition: per_variant_metric_artifact",
-    "closure-condition: per_variant_trace_artifact",
-    "closure-condition: artifact_paths_dedicated_and_distinct",
-    "closure-condition: integrated_or_other_metadata_reuse_absent",
     "統合Scenario AuditをBehavior固有Proofへ流用しない。",
     "Authority raw anchorの人手DecisionがなくAtomic behaviorへ昇格していない。"
   ]

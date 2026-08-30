@@ -83,81 +83,301 @@
   "scenario_gap_closure": {
     "status": "open",
     "scenario_gap_closed": false,
-    "dedicated_runtime_execution_complete": false,
+    "dedicated_runtime_execution_complete": true,
     "variant_contract": {
       "source": {
         "path": "definitive/scenario-variant-contract.yaml",
-        "digest": "sha256:4a249c04d809c92ba1e7b524bea0e39a6d00b998b3c830b5f42966ec0e06c646",
-        "bytes": 2689
+        "digest": "sha256:cb01fcf41d71cc12a529c43d056e339aa9ce0cd167537667d2456cc08386dd66",
+        "bytes": 3904
       },
-      "status": "pending-authority-human-review",
-      "expected_variant_ids": [],
+      "status": "runtime-declared-pending-authority-human-review",
+      "expected_variant_ids": [
+        "rbac-denied-wait",
+        "rbac-allowed-wait"
+      ],
       "exhaustive": false,
       "gap": "Authority人手Review済みの非空かつexhaustiveなSurface Variant分母がない。"
     },
-    "dedicated_runtime_report": null,
-    "dedicated_runtime_record_ids": [],
-    "source_bindings": [],
-    "harness_bindings": [],
-    "runtime_identity": null,
-    "oracle_records": [],
+    "dedicated_runtime_report": {
+      "path": "evidence/scenarios/runtime/reports/runtime.application-operation-wait.security.v3-5-2.json",
+      "digest": "sha256:ead57bcc038d55c0fccf00baaab9faea25c5806f54dc65914ba8a73bae1c5226",
+      "bytes": 8848
+    },
+    "dedicated_runtime_record_ids": [
+      "runtime.application-operation-wait.security.v3-5-2:rbac-denied-wait",
+      "runtime.application-operation-wait.security.v3-5-2:rbac-allowed-wait"
+    ],
+    "source_bindings": [
+      {
+        "variant_id": "rbac-denied-wait",
+        "source": {
+          "path": "fixtures/scenarios/security-002/wait/configmap.yaml",
+          "digest": "sha256:926dbb9cee64af4a9c0872047229e198b6a09bdc16e347c616cb9dce999cf64a",
+          "bytes": 94,
+          "owner": "runtime.application-operation-wait.security.v3-5-2:rbac-denied-wait:source"
+        }
+      },
+      {
+        "variant_id": "rbac-allowed-wait",
+        "source": {
+          "path": "fixtures/scenarios/security-002/wait/configmap.yaml",
+          "digest": "sha256:926dbb9cee64af4a9c0872047229e198b6a09bdc16e347c616cb9dce999cf64a",
+          "bytes": 94,
+          "owner": "runtime.application-operation-wait.security.v3-5-2:rbac-allowed-wait:source"
+        }
+      }
+    ],
+    "harness_bindings": [
+      {
+        "variant_id": "rbac-denied-wait",
+        "harness": {
+          "path": "scripts/scenarios/run_security_002.py",
+          "digest": "sha256:e53994287aecb715adbdfeb22f2f5e7ecc4fe7b54af50beedd6c0594929ec0f1",
+          "bytes": 35856,
+          "owner": "runtime.application-operation-wait.security.v3-5-2:rbac-denied-wait:harness"
+        }
+      },
+      {
+        "variant_id": "rbac-allowed-wait",
+        "harness": {
+          "path": "scripts/scenarios/run_security_002.py",
+          "digest": "sha256:e53994287aecb715adbdfeb22f2f5e7ecc4fe7b54af50beedd6c0594929ec0f1",
+          "bytes": 35856,
+          "owner": "runtime.application-operation-wait.security.v3-5-2:rbac-allowed-wait:harness"
+        }
+      }
+    ],
+    "runtime_identity": {
+      "profile": "cluster",
+      "real_argocd_kubernetes_runtime": true,
+      "cluster_name": "argocd-atlas-v3-5-2",
+      "kubernetes_context": "kind-argocd-atlas-v3-5-2",
+      "argocd_version": "3.5.2",
+      "kubernetes_api_server_version": "v1.34.0",
+      "kubernetes_kubelet_version": "v1.34.0",
+      "cluster_uid": "00b2b62c-ba60-4520-b48e-fa9e550c859d",
+      "topology_digest": "sha256:f27cd86ff879333619bd84e57f310afb261727da44dd06ae2c5e931d6f74dd9e",
+      "observed_argocd_components": [
+        "argocd-application-controller",
+        "argocd-repo-server"
+      ]
+    },
+    "oracle_records": [
+      {
+        "variant_id": "rbac-denied-wait",
+        "oracle": {
+          "status": "pass",
+          "assertions": [
+            {
+              "channel": "resource_state",
+              "pointer": "/security/secret_scan_hits",
+              "operator": "equals",
+              "expected": 0
+            },
+            {
+              "channel": "controller_log",
+              "pointer": "/entries/0/application",
+              "operator": "equals",
+              "expected": "atlas-security-002-wait"
+            },
+            {
+              "channel": "metric",
+              "pointer": "/app_info/labels/name",
+              "operator": "equals",
+              "expected": "atlas-security-002-wait"
+            },
+            {
+              "channel": "trace",
+              "pointer": "/result/first_attempt",
+              "operator": "equals",
+              "expected": true
+            },
+            {
+              "channel": "resource_state",
+              "pointer": "/rbac/decision",
+              "operator": "equals",
+              "expected": "No"
+            },
+            {
+              "channel": "resource_state",
+              "pointer": "/observation/wait_error",
+              "operator": "equals",
+              "expected": "permission-denied"
+            }
+          ]
+        }
+      },
+      {
+        "variant_id": "rbac-allowed-wait",
+        "oracle": {
+          "status": "pass",
+          "assertions": [
+            {
+              "channel": "resource_state",
+              "pointer": "/security/secret_scan_hits",
+              "operator": "equals",
+              "expected": 0
+            },
+            {
+              "channel": "controller_log",
+              "pointer": "/entries/0/application",
+              "operator": "equals",
+              "expected": "atlas-security-002-wait"
+            },
+            {
+              "channel": "metric",
+              "pointer": "/app_info/labels/name",
+              "operator": "equals",
+              "expected": "atlas-security-002-wait"
+            },
+            {
+              "channel": "trace",
+              "pointer": "/result/first_attempt",
+              "operator": "equals",
+              "expected": true
+            },
+            {
+              "channel": "resource_state",
+              "pointer": "/rbac/decision",
+              "operator": "equals",
+              "expected": "Yes"
+            },
+            {
+              "channel": "resource_state",
+              "pointer": "/observation/wait_completed",
+              "operator": "equals",
+              "expected": true
+            }
+          ]
+        }
+      }
+    ],
     "artifacts": {
       "resource_state": {
-        "status": "explicit-gap",
-        "artifacts": [],
-        "gap": "全Variant所有の専用resource_state Artifactが揃っていない。"
+        "status": "artifact",
+        "artifacts": [
+          {
+            "variant_id": "rbac-denied-wait",
+            "artifact": {
+              "path": "evidence/scenarios/runtime/artifacts/runtime.application-operation-wait.security.v3-5-2/rbac-denied-wait/resource_state.json",
+              "digest": "sha256:87bbb6cd36b0f6c26571c21a08e8fdf5fedb3dd920a20ab61c77d4f32ad3509c",
+              "bytes": 11577,
+              "kind": "kubernetes-resource-state",
+              "owner": "runtime.application-operation-wait.security.v3-5-2:rbac-denied-wait:resource_state"
+            }
+          },
+          {
+            "variant_id": "rbac-allowed-wait",
+            "artifact": {
+              "path": "evidence/scenarios/runtime/artifacts/runtime.application-operation-wait.security.v3-5-2/rbac-allowed-wait/resource_state.json",
+              "digest": "sha256:36b7f8c53770e1e084245a748e3f76a7971a08da5e7fb83f292a913bf65452c0",
+              "bytes": 11564,
+              "kind": "kubernetes-resource-state",
+              "owner": "runtime.application-operation-wait.security.v3-5-2:rbac-allowed-wait:resource_state"
+            }
+          }
+        ],
+        "gap": null
       },
       "controller_log": {
-        "status": "explicit-gap",
-        "artifacts": [],
-        "gap": "全Variant所有の専用controller_log Artifactが揃っていない。"
+        "status": "artifact",
+        "artifacts": [
+          {
+            "variant_id": "rbac-denied-wait",
+            "artifact": {
+              "path": "evidence/scenarios/runtime/artifacts/runtime.application-operation-wait.security.v3-5-2/rbac-denied-wait/controller_log.json",
+              "digest": "sha256:847d5eb39230c844bea67ed9183a133d47582aad3e6011ecdfbc65b931d553f6",
+              "bytes": 74553,
+              "kind": "argocd-controller-log",
+              "owner": "runtime.application-operation-wait.security.v3-5-2:rbac-denied-wait:controller_log"
+            }
+          },
+          {
+            "variant_id": "rbac-allowed-wait",
+            "artifact": {
+              "path": "evidence/scenarios/runtime/artifacts/runtime.application-operation-wait.security.v3-5-2/rbac-allowed-wait/controller_log.json",
+              "digest": "sha256:57ec63beb46aca2402aab94a5a69879078d2dde8b3cdaa13e55f63ef4fccdd62",
+              "bytes": 74554,
+              "kind": "argocd-controller-log",
+              "owner": "runtime.application-operation-wait.security.v3-5-2:rbac-allowed-wait:controller_log"
+            }
+          }
+        ],
+        "gap": null
       },
       "metric": {
-        "status": "explicit-gap",
-        "artifacts": [],
-        "gap": "全Variant所有の専用metric Artifactが揃っていない。"
+        "status": "artifact",
+        "artifacts": [
+          {
+            "variant_id": "rbac-denied-wait",
+            "artifact": {
+              "path": "evidence/scenarios/runtime/artifacts/runtime.application-operation-wait.security.v3-5-2/rbac-denied-wait/metric.json",
+              "digest": "sha256:acf67c74943d951c9b17fa1f9474b79609dd3a61b45118539382bd19ce8a0b25",
+              "bytes": 1044,
+              "kind": "argocd-prometheus-metric",
+              "owner": "runtime.application-operation-wait.security.v3-5-2:rbac-denied-wait:metric"
+            }
+          },
+          {
+            "variant_id": "rbac-allowed-wait",
+            "artifact": {
+              "path": "evidence/scenarios/runtime/artifacts/runtime.application-operation-wait.security.v3-5-2/rbac-allowed-wait/metric.json",
+              "digest": "sha256:439192e284cf6028cab2884f3eddca2c3c3d94914faeb6578c9beb594eeb702b",
+              "bytes": 1045,
+              "kind": "argocd-prometheus-metric",
+              "owner": "runtime.application-operation-wait.security.v3-5-2:rbac-allowed-wait:metric"
+            }
+          }
+        ],
+        "gap": null
       },
       "trace": {
-        "status": "explicit-gap",
-        "artifacts": [],
-        "gap": "全Variant所有の専用trace Artifactが揃っていない。"
+        "status": "artifact",
+        "artifacts": [
+          {
+            "variant_id": "rbac-denied-wait",
+            "artifact": {
+              "path": "evidence/scenarios/runtime/artifacts/runtime.application-operation-wait.security.v3-5-2/rbac-denied-wait/trace.json",
+              "digest": "sha256:4763a893cb698127235664a15cbda7523c668036e16b3fd117069858bb81232f",
+              "bytes": 623,
+              "kind": "scenario-execution-trace",
+              "owner": "runtime.application-operation-wait.security.v3-5-2:rbac-denied-wait:trace"
+            }
+          },
+          {
+            "variant_id": "rbac-allowed-wait",
+            "artifact": {
+              "path": "evidence/scenarios/runtime/artifacts/runtime.application-operation-wait.security.v3-5-2/rbac-allowed-wait/trace.json",
+              "digest": "sha256:a9258f6a7ac30dda803bacf4e677094856b3ef3b02ca91d660e1dcae95743a38",
+              "bytes": 598,
+              "kind": "scenario-execution-trace",
+              "owner": "runtime.application-operation-wait.security.v3-5-2:rbac-allowed-wait:trace"
+            }
+          }
+        ],
+        "gap": null
       }
     },
     "conditions": {
       "variant_denominator_exhaustive": false,
-      "exact_surface_scenario_scope": false,
-      "all_variants_driven": false,
-      "real_argocd_kubernetes_runtime": false,
-      "retry_zero": false,
-      "first_attempt_pass": false,
-      "oracle_pass": false,
-      "source_digest_bound": false,
-      "harness_digest_bound": false,
-      "runtime_identity_complete": false,
-      "per_variant_resource_state_artifact": false,
-      "per_variant_controller_log_artifact": false,
-      "per_variant_metric_artifact": false,
-      "per_variant_trace_artifact": false,
-      "artifact_paths_dedicated_and_distinct": false,
-      "integrated_or_other_metadata_reuse_absent": false
+      "exact_surface_scenario_scope": true,
+      "all_variants_driven": true,
+      "real_argocd_kubernetes_runtime": true,
+      "retry_zero": true,
+      "first_attempt_pass": true,
+      "oracle_pass": true,
+      "source_digest_bound": true,
+      "harness_digest_bound": true,
+      "runtime_identity_complete": true,
+      "per_variant_resource_state_artifact": true,
+      "per_variant_controller_log_artifact": true,
+      "per_variant_metric_artifact": true,
+      "per_variant_trace_artifact": true,
+      "artifact_paths_dedicated_and_distinct": true,
+      "integrated_or_other_metadata_reuse_absent": true
     },
     "failed_conditions": [
-      "variant_denominator_exhaustive",
-      "exact_surface_scenario_scope",
-      "all_variants_driven",
-      "real_argocd_kubernetes_runtime",
-      "retry_zero",
-      "first_attempt_pass",
-      "oracle_pass",
-      "source_digest_bound",
-      "harness_digest_bound",
-      "runtime_identity_complete",
-      "per_variant_resource_state_artifact",
-      "per_variant_controller_log_artifact",
-      "per_variant_metric_artifact",
-      "per_variant_trace_artifact",
-      "artifact_paths_dedicated_and_distinct",
-      "integrated_or_other_metadata_reuse_absent"
+      "variant_denominator_exhaustive"
     ],
     "closure_evidence_source": "dedicated-surface-scenario-runtime-registry-only",
     "prohibited_substitutions": [
@@ -194,7 +414,7 @@
     "supporting_real_kubernetes_runtime": false,
     "supporting_runtime_identity_complete": false,
     "scenario_gap_closed": false,
-    "dedicated_runtime_execution_complete": false,
+    "dedicated_runtime_execution_complete": true,
     "authority_atomic_binding": false,
     "completion_eligible": false
   },
@@ -205,21 +425,6 @@
     "metric: Behavior固有metric Artifactがない。",
     "trace: Behavior固有trace Artifactがない。OTLP traceは別Gapとして未Closure。",
     "closure-condition: variant_denominator_exhaustive",
-    "closure-condition: exact_surface_scenario_scope",
-    "closure-condition: all_variants_driven",
-    "closure-condition: real_argocd_kubernetes_runtime",
-    "closure-condition: retry_zero",
-    "closure-condition: first_attempt_pass",
-    "closure-condition: oracle_pass",
-    "closure-condition: source_digest_bound",
-    "closure-condition: harness_digest_bound",
-    "closure-condition: runtime_identity_complete",
-    "closure-condition: per_variant_resource_state_artifact",
-    "closure-condition: per_variant_controller_log_artifact",
-    "closure-condition: per_variant_metric_artifact",
-    "closure-condition: per_variant_trace_artifact",
-    "closure-condition: artifact_paths_dedicated_and_distinct",
-    "closure-condition: integrated_or_other_metadata_reuse_absent",
     "統合Scenario AuditをBehavior固有Proofへ流用しない。",
     "Authority raw anchorの人手DecisionがなくAtomic behaviorへ昇格していない。"
   ]
