@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "id": "argocd-evidence-dependency-core-v2-extension-v1",
+  "status": "current-additive-extension",
+  "core_commit": "072d7ca77981f51754e824d70c6d4ecd55ea67e5",
+  "base_graph_digest": "sha256:5c6c5378f83b2105e6d6412beda8ab0d087d29bd7fc74bd605e26c611207401b",
+  "baseline_input_mutations": 0,
+  "added_input_ids": [
+    "harness.core-v2-dependency-extension",
+    "harness.core-v2-scenario-plan",
+    "harness.core-v2-skill-router"
+  ],
+  "added_output_paths": [
+    "artifacts/core-v2/evidence-dependency-extension.json",
+    "artifacts/core-v2/scenario-plan-gap.json",
+    "evals/definitive-skill-router.json"
+  ],
+  "policy": {
+    "monotonic_addition": true,
+    "first_attempt_required": true,
+    "fixture_runtime_substitution_forbidden": true
+  }
+}

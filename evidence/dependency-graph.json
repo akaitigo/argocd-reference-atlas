@@ -194,8 +194,41 @@
         "evals/definitive-forward-cases.json",
         "evals/forward-cases.json"
       ],
-      "baseline_digest": "sha256:9fc9caf662257bc63e1aa99fbaf5912a7281489551e85f468d774bbd638c4bda",
-      "current_digest": "sha256:9fc9caf662257bc63e1aa99fbaf5912a7281489551e85f468d774bbd638c4bda",
+      "baseline_digest": "sha256:dcc9a010858ac08841ad2edb732d779b3195a77ce901b83f5fbda2540ac85d6a",
+      "current_digest": "sha256:dcc9a010858ac08841ad2edb732d779b3195a77ce901b83f5fbda2540ac85d6a",
+      "observed_at": "2026-08-28T15:48:00Z"
+    },
+    {
+      "id": "harness.core-v2-skill-router",
+      "kind": "harness",
+      "members": [
+        "scripts/generate_core_v2_skill_router.py",
+        "scripts/test_core_v2_skill_router.py"
+      ],
+      "baseline_digest": "sha256:a85ec3be079d41cb1dda31bc7d69a120f9d182af00f71c8e86b4648e75705ec6",
+      "current_digest": "sha256:a85ec3be079d41cb1dda31bc7d69a120f9d182af00f71c8e86b4648e75705ec6",
+      "observed_at": "2026-08-28T15:48:00Z"
+    },
+    {
+      "id": "harness.core-v2-scenario-plan",
+      "kind": "harness",
+      "members": [
+        "scripts/generate_core_v2_scenario_plan_gap.py",
+        "scripts/test_core_v2_scenario_plan_gap.py"
+      ],
+      "baseline_digest": "sha256:f66a5aff9c746a96059ab7b45419142f80430a25687e9d8cc507ac3a32f2d7a4",
+      "current_digest": "sha256:f66a5aff9c746a96059ab7b45419142f80430a25687e9d8cc507ac3a32f2d7a4",
+      "observed_at": "2026-08-28T15:48:00Z"
+    },
+    {
+      "id": "harness.core-v2-dependency-extension",
+      "kind": "harness",
+      "members": [
+        "scripts/generate_core_v2_dependency_extension.py",
+        "scripts/test_core_v2_evidence_dependency_extensions.py"
+      ],
+      "baseline_digest": "sha256:f80b3c52f87aa83f681c885a6373249ef96a5458e7c4fe6c197a3ee11619d1f5",
+      "current_digest": "sha256:f80b3c52f87aa83f681c885a6373249ef96a5458e7c4fe6c197a3ee11619d1f5",
       "observed_at": "2026-08-28T15:48:00Z"
     }
   ],
@@ -212,6 +245,32 @@
       ],
       "status": "current",
       "run_id": "run.dependency-migration"
+    },
+    {
+      "id": "output.artifacts.core-v2.evidence-dependency-extension.json",
+      "kind": "derived-evidence",
+      "path": "artifacts/core-v2/evidence-dependency-extension.json",
+      "digest": "sha256:81767fc288ad5a85b5ce697182369d18f12fe44a39cf9d66dfedf08fc46c6f49",
+      "depends_on": [
+        "harness.core-v2-dependency-extension",
+        "output.artifacts.core-v2.scenario-plan-gap.json",
+        "output.evals.definitive-skill-router.json"
+      ],
+      "status": "current",
+      "run_id": "run.core-v2-dependency-extension"
+    },
+    {
+      "id": "output.artifacts.core-v2.scenario-plan-gap.json",
+      "kind": "closure-plan",
+      "path": "artifacts/core-v2/scenario-plan-gap.json",
+      "digest": "sha256:b555b0719b94bac27258536e3f0aca291cc7d68d47948f818eca4702650e1c79",
+      "depends_on": [
+        "harness.core-v2-scenario-plan",
+        "output.evidence.scenarios.closure-plan.json",
+        "output.evidence.scenarios.index.json"
+      ],
+      "status": "current",
+      "run_id": "run.core-v2-scenario-plan-gap"
     },
     {
       "id": "output.evals.argocd-atlas-router.definitive-forward-eval.json",
@@ -240,6 +299,20 @@
       ],
       "status": "current",
       "run_id": "run.definitive-skill-eval"
+    },
+    {
+      "id": "output.evals.definitive-skill-router.json",
+      "kind": "skill-eval",
+      "path": "evals/definitive-skill-router.json",
+      "digest": "sha256:b5280f84ae55f6f7318b552d3a75e852529a23efbd89500a94d6917d6cb28a22",
+      "depends_on": [
+        "harness.core-v2-skill-router",
+        "output.evals.argocd-atlas-router.definitive-skill-eval.json",
+        "profile.local",
+        "source.project-policy"
+      ],
+      "status": "current",
+      "run_id": "run.core-v2-skill-router"
     },
     {
       "id": "output.evidence.certificates.historical.v0.1.0-2026-08-28.completion-certificate.json",
@@ -17161,6 +17234,176 @@
   ],
   "runs": [
     {
+      "id": "run.core-v2-dependency-extension",
+      "execution_kind": "derived",
+      "command": "python3 scripts/generate_core_v2_dependency_extension.py && python3 scripts/test_core_v2_evidence_dependency_extensions.py",
+      "started_at": "2026-08-28T15:48:00Z",
+      "completed_at": "2026-08-28T15:48:01Z",
+      "result": "passed",
+      "attempts": 1,
+      "input_bindings": [
+        {
+          "input_id": "harness.cluster-labs",
+          "digest": "sha256:62193b98aed7d7b694a0f90abaf52ef163e994a410b96e684d0dd40bf725b4d7"
+        },
+        {
+          "input_id": "harness.core-v2-dependency-extension",
+          "digest": "sha256:f80b3c52f87aa83f681c885a6373249ef96a5458e7c4fe6c197a3ee11619d1f5"
+        },
+        {
+          "input_id": "harness.core-v2-scenario-plan",
+          "digest": "sha256:f66a5aff9c746a96059ab7b45419142f80430a25687e9d8cc507ac3a32f2d7a4"
+        },
+        {
+          "input_id": "harness.core-v2-skill-router",
+          "digest": "sha256:a85ec3be079d41cb1dda31bc7d69a120f9d182af00f71c8e86b4648e75705ec6"
+        },
+        {
+          "input_id": "harness.evidence-dependency",
+          "digest": "sha256:cad9991222cd6558be579e1320b680a213acae520faf558b89c01fc1880ecd17"
+        },
+        {
+          "input_id": "harness.scenario-proof",
+          "digest": "sha256:7ef1f25c1acc30ae9407bf1b0896e1d40a3910fa146aa4b07b5a443385721a37"
+        },
+        {
+          "input_id": "harness.skill-eval",
+          "digest": "sha256:639b4199f906194cafb3430a8459ebab2cc2d4ce4db5e8b5a30799bda6c26e66"
+        },
+        {
+          "input_id": "profile.cluster",
+          "digest": "sha256:af5e6f3e4d4bd71dbcf5a33fc4b1f036ee551396f305c21d4636a738897f574c"
+        },
+        {
+          "input_id": "profile.container",
+          "digest": "sha256:d8ba752075a636fe5989e7626bf81ff005bcc8221d258a9727e73e9275ef7042"
+        },
+        {
+          "input_id": "profile.local",
+          "digest": "sha256:dcc9a010858ac08841ad2edb732d779b3195a77ce901b83f5fbda2540ac85d6a"
+        },
+        {
+          "input_id": "runtime.argocd-kubernetes",
+          "digest": "sha256:51011c347d65a7e0b11299a1166e3314a94d6aa1c64f04bc788b5e5dfbcffeb1"
+        },
+        {
+          "input_id": "runtime.controller-components",
+          "digest": "sha256:9751cd5a74a0465783325e9a555d138869db2561fde295c6dc09536d7a3231bc"
+        },
+        {
+          "input_id": "source.application",
+          "digest": "sha256:f19ce5e3657b17ba5d9843afc5c89eb65c384f7087f9b6e74098cd5e180883e5"
+        },
+        {
+          "input_id": "source.manifests",
+          "digest": "sha256:f876048758682a92bdfc758a2c3fc57da1b1eddd95b2199ef00a18f75ad09793"
+        },
+        {
+          "input_id": "source.project-policy",
+          "digest": "sha256:19572bb8ae8a1725d138e1f4ea139fa490a44a1b9e8990d5947479e7d78ff18e"
+        }
+      ],
+      "output_ids": [
+        "output.artifacts.core-v2.evidence-dependency-extension.json"
+      ]
+    },
+    {
+      "id": "run.core-v2-scenario-plan-gap",
+      "execution_kind": "derived",
+      "command": "python3 scripts/generate_core_v2_scenario_plan_gap.py && python3 scripts/test_core_v2_scenario_plan_gap.py",
+      "started_at": "2026-08-28T15:48:00Z",
+      "completed_at": "2026-08-28T15:48:01Z",
+      "result": "passed",
+      "attempts": 1,
+      "input_bindings": [
+        {
+          "input_id": "harness.cluster-labs",
+          "digest": "sha256:62193b98aed7d7b694a0f90abaf52ef163e994a410b96e684d0dd40bf725b4d7"
+        },
+        {
+          "input_id": "harness.core-v2-scenario-plan",
+          "digest": "sha256:f66a5aff9c746a96059ab7b45419142f80430a25687e9d8cc507ac3a32f2d7a4"
+        },
+        {
+          "input_id": "harness.evidence-dependency",
+          "digest": "sha256:cad9991222cd6558be579e1320b680a213acae520faf558b89c01fc1880ecd17"
+        },
+        {
+          "input_id": "harness.scenario-proof",
+          "digest": "sha256:7ef1f25c1acc30ae9407bf1b0896e1d40a3910fa146aa4b07b5a443385721a37"
+        },
+        {
+          "input_id": "harness.skill-eval",
+          "digest": "sha256:639b4199f906194cafb3430a8459ebab2cc2d4ce4db5e8b5a30799bda6c26e66"
+        },
+        {
+          "input_id": "profile.cluster",
+          "digest": "sha256:af5e6f3e4d4bd71dbcf5a33fc4b1f036ee551396f305c21d4636a738897f574c"
+        },
+        {
+          "input_id": "profile.container",
+          "digest": "sha256:d8ba752075a636fe5989e7626bf81ff005bcc8221d258a9727e73e9275ef7042"
+        },
+        {
+          "input_id": "profile.local",
+          "digest": "sha256:dcc9a010858ac08841ad2edb732d779b3195a77ce901b83f5fbda2540ac85d6a"
+        },
+        {
+          "input_id": "runtime.argocd-kubernetes",
+          "digest": "sha256:51011c347d65a7e0b11299a1166e3314a94d6aa1c64f04bc788b5e5dfbcffeb1"
+        },
+        {
+          "input_id": "runtime.controller-components",
+          "digest": "sha256:9751cd5a74a0465783325e9a555d138869db2561fde295c6dc09536d7a3231bc"
+        },
+        {
+          "input_id": "source.application",
+          "digest": "sha256:f19ce5e3657b17ba5d9843afc5c89eb65c384f7087f9b6e74098cd5e180883e5"
+        },
+        {
+          "input_id": "source.manifests",
+          "digest": "sha256:f876048758682a92bdfc758a2c3fc57da1b1eddd95b2199ef00a18f75ad09793"
+        },
+        {
+          "input_id": "source.project-policy",
+          "digest": "sha256:19572bb8ae8a1725d138e1f4ea139fa490a44a1b9e8990d5947479e7d78ff18e"
+        }
+      ],
+      "output_ids": [
+        "output.artifacts.core-v2.scenario-plan-gap.json"
+      ]
+    },
+    {
+      "id": "run.core-v2-skill-router",
+      "execution_kind": "derived",
+      "command": "python3 scripts/generate_core_v2_skill_router.py && python3 scripts/test_core_v2_skill_router.py && atlas audit . --gate skill-router",
+      "started_at": "2026-08-28T15:48:00Z",
+      "completed_at": "2026-08-28T15:48:01Z",
+      "result": "passed",
+      "attempts": 1,
+      "input_bindings": [
+        {
+          "input_id": "harness.core-v2-skill-router",
+          "digest": "sha256:a85ec3be079d41cb1dda31bc7d69a120f9d182af00f71c8e86b4648e75705ec6"
+        },
+        {
+          "input_id": "harness.skill-eval",
+          "digest": "sha256:639b4199f906194cafb3430a8459ebab2cc2d4ce4db5e8b5a30799bda6c26e66"
+        },
+        {
+          "input_id": "profile.local",
+          "digest": "sha256:dcc9a010858ac08841ad2edb732d779b3195a77ce901b83f5fbda2540ac85d6a"
+        },
+        {
+          "input_id": "source.project-policy",
+          "digest": "sha256:19572bb8ae8a1725d138e1f4ea139fa490a44a1b9e8990d5947479e7d78ff18e"
+        }
+      ],
+      "output_ids": [
+        "output.evals.definitive-skill-router.json"
+      ]
+    },
+    {
       "id": "run.definitive-skill-eval",
       "execution_kind": "derived",
       "command": "make skill-definitive-eval && python3 scripts/validate_definitive_skill_eval.py",
@@ -17175,7 +17418,7 @@
         },
         {
           "input_id": "profile.local",
-          "digest": "sha256:9fc9caf662257bc63e1aa99fbaf5912a7281489551e85f468d774bbd638c4bda"
+          "digest": "sha256:dcc9a010858ac08841ad2edb732d779b3195a77ce901b83f5fbda2540ac85d6a"
         },
         {
           "input_id": "source.project-policy",
@@ -17202,7 +17445,7 @@
         },
         {
           "input_id": "profile.local",
-          "digest": "sha256:9fc9caf662257bc63e1aa99fbaf5912a7281489551e85f468d774bbd638c4bda"
+          "digest": "sha256:dcc9a010858ac08841ad2edb732d779b3195a77ce901b83f5fbda2540ac85d6a"
         },
         {
           "input_id": "source.project-policy",
@@ -18352,7 +18595,7 @@
         },
         {
           "input_id": "profile.local",
-          "digest": "sha256:9fc9caf662257bc63e1aa99fbaf5912a7281489551e85f468d774bbd638c4bda"
+          "digest": "sha256:dcc9a010858ac08841ad2edb732d779b3195a77ce901b83f5fbda2540ac85d6a"
         },
         {
           "input_id": "source.project-policy",
@@ -18379,7 +18622,7 @@
         },
         {
           "input_id": "profile.local",
-          "digest": "sha256:9fc9caf662257bc63e1aa99fbaf5912a7281489551e85f468d774bbd638c4bda"
+          "digest": "sha256:dcc9a010858ac08841ad2edb732d779b3195a77ce901b83f5fbda2540ac85d6a"
         },
         {
           "input_id": "source.project-policy",
@@ -18544,7 +18787,7 @@
         },
         {
           "input_id": "profile.local",
-          "digest": "sha256:9fc9caf662257bc63e1aa99fbaf5912a7281489551e85f468d774bbd638c4bda"
+          "digest": "sha256:dcc9a010858ac08841ad2edb732d779b3195a77ce901b83f5fbda2540ac85d6a"
         },
         {
           "input_id": "runtime.argocd-kubernetes",
@@ -18602,7 +18845,7 @@
         },
         {
           "input_id": "profile.local",
-          "digest": "sha256:9fc9caf662257bc63e1aa99fbaf5912a7281489551e85f468d774bbd638c4bda"
+          "digest": "sha256:dcc9a010858ac08841ad2edb732d779b3195a77ce901b83f5fbda2540ac85d6a"
         },
         {
           "input_id": "runtime.argocd-kubernetes",
@@ -19634,8 +19877,11 @@
   ],
   "required_outputs": [
     "artifacts/authority-body-non-regression-report.json",
+    "artifacts/core-v2/evidence-dependency-extension.json",
+    "artifacts/core-v2/scenario-plan-gap.json",
     "evals/argocd-atlas-router.definitive-forward-eval.json",
     "evals/argocd-atlas-router.definitive-skill-eval.json",
+    "evals/definitive-skill-router.json",
     "evidence/certificates/historical/v0.1.0-2026-08-28.completion-certificate.json",
     "evidence/history/v0.1.0/completion-certificate.json",
     "evidence/raw/evidence.access-boundary.v3-5-2/result.json",

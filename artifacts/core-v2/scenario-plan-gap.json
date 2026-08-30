@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "id": "argocd-core-v2-scenario-plan-gap-v1",
+  "status": "incomplete-no-runtime-substitution",
+  "core_commit": "072d7ca77981f51754e824d70c6d4ecd55ea67e5",
+  "inputs": {
+    "evidence/scenarios/index.json": "sha256:f0e78ef7ee5136b119c0f8f0b97b543a14b3035a6aa0ee5ca437bad6369fb35d",
+    "evidence/scenarios/closure-plan.json": "sha256:c5c9083dabf1fd5da2df03340ba34f0066679a590aca0f3c22edacfa9f3b04bf"
+  },
+  "denominator": {
+    "patterns": 100,
+    "scenarios": 10,
+    "rows": 1000,
+    "remaining_rows": 1000,
+    "scenario_gaps_open": 1000,
+    "scenario_gaps_closed": 0
+  },
+  "core_schema_migration": {
+    "current_scenarios": [
+      "boundary",
+      "compatibility",
+      "failure",
+      "migration",
+      "normal",
+      "operations",
+      "performance",
+      "recovery",
+      "rejection",
+      "security"
+    ],
+    "required_scenarios": [
+      "normal",
+      "boundary",
+      "refusal",
+      "failure",
+      "recovery",
+      "migration",
+      "operations",
+      "security",
+      "performance",
+      "compatibility"
+    ],
+    "explicit_id_mapping": {
+      "rejection": "refusal"
+    },
+    "current_rows_preserved": 1000,
+    "coarse_aggregation_forbidden": true,
+    "in_place_overwrite_before_migration_proof": false
+  },
+  "independent_gaps": {
+    "authority_atomic_rows": 0,
+    "approved_variant_denominators": 0,
+    "dedicated_runtime_reports": 0,
+    "completion_eligible_rows": 0,
+    "integrated_runtime_passed": 0,
+    "missing_core_artifacts": [
+      "integrations/reference-system/manifest.json",
+      "artifacts/reference-system/results.json",
+      "artifacts/pattern-scenarios/results.json"
+    ]
+  },
+  "closure_requirements": {
+    "first_attempt_only": true,
+    "retries": 0,
+    "dedicated_runtime_identity": true,
+    "dedicated_oracle": true,
+    "required_trace_streams": [
+      "action",
+      "network",
+      "resource"
+    ],
+    "separate_artifacts_per_variant": true,
+    "source_and_harness_digests": true
+  },
+  "forbidden_substitutions": [
+    "fixture-as-runtime",
+    "metadata-only-as-runtime",
+    "integrated-result-as-pattern-proof",
+    "historical-artifact-as-current-rerun"
+  ],
+  "human_independent_next_actions": [
+    "Core標準Artifactを専用stagingへ加法生成する。",
+    "旧row IDから新row IDへの全件Mappingと構造非後退を検証する。",
+    "Runtime未実行rowをpattern-specific-gapのまま保持する。"
+  ]
+}
