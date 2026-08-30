@@ -158,6 +158,10 @@ def main() -> None:
         "application.spec.project": ["restricted-project-binding", "authorized-project-binding"],
         "application.spec.sources": ["project-denied-multi-source", "project-allowed-multi-source"],
         "applicationset.any-namespace": ["namespace-not-allowlisted", "namespace-allowlisted"],
+        "applicationset.deletion": ["resources-pruned-on-deletion", "resources-preserved-on-deletion"],
+        "applicationset.generator.cluster": ["restricted-cluster-excluded", "approved-cluster-selected"],
+        "applicationset.generator.cluster-decision-resource": ["unregistered-decision-rejected", "registered-decision-selected"],
+        "applicationset.generator.git-directory": ["restricted-directory-excluded", "approved-directory-selected"],
     }
     actual_variants = {item["surface_id"]: [variant["id"] for variant in item["variants"]] for item in overrides}
     require(actual_variants == expected_variants and all(item["status"] == "runtime-declared-pending-authority-human-review" and item["exhaustive_for_completion"] is False for item in overrides), "Runtime宣言VariantとAuthority未承認境界が不正です")

@@ -55,6 +55,9 @@ cp -R "${ATLAS_ROOT}/fixtures/scenarios/security-003/sources-a" "${work}/apps/se
 cp -R "${ATLAS_ROOT}/fixtures/scenarios/security-003/sources-b" "${work}/apps/security-003/sources-b"
 cp -R "${ATLAS_ROOT}/fixtures/scenarios/security-003/sync-policy" "${work}/apps/security-003/sync-policy"
 cp -R "${ATLAS_ROOT}/fixtures/scenarios/security-003/appset-workload" "${work}/apps/security-003/appset-workload"
+mkdir -p "${work}/apps/security-004"
+cp -R "${ATLAS_ROOT}/fixtures/scenarios/security-004/workload" "${work}/apps/security-004/workload"
+cp -R "${ATLAS_ROOT}/fixtures/scenarios/security-004/git-directory" "${work}/apps/security-004/git-directory"
 write_configmap apps/reconciliation atlas-reconciliation desired canonical
 write_configmap apps/sync atlas-sync release v1
 write_configmap apps/diff atlas-diff desired git
