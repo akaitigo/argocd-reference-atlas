@@ -47,6 +47,19 @@ def update_output_digest(graph: dict, relative: str, root: Path) -> None:
     raise AssertionError(f"outputがありません: {relative}")
 
 
+def refresh_fixture_input_bindings(graph: dict, relative: str, root: Path) -> None:
+    for item in graph["inputs"]:
+        if relative not in item["members"]:
+            continue
+        value = contract.aggregate_member_digest(root, item["members"])
+        item["baseline_digest"] = value
+        item["current_digest"] = value
+        for run in graph["runs"]:
+            for binding in run["input_bindings"]:
+                if binding["input_id"] == item["id"]:
+                    binding["digest"] = value
+
+
 def main() -> None:
     graph = contract.load(contract.GRAPH)
     contract.validate_graph(contract.ROOT, graph)
@@ -85,6 +98,7 @@ def main() -> None:
         index["files"] = index["files"][1:]
         replace_json(index_path, index)
         update_output_digest(proof_shrink, "evidence/scenarios/index.json", fixture_root)
+        refresh_fixture_input_bindings(proof_shrink, "evidence/scenarios/index.json", fixture_root)
         require_rejected("proof-structure-shrink", proof_shrink, fixture_root, "scenario-proof-index")
 
         original_index = contract.load(contract.INDEX)

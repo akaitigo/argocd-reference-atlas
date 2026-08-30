@@ -232,8 +232,8 @@
         "scripts/test_evidence_dependency_graph.py",
         "docs/EVIDENCE_DEPENDENCY_GRAPH.md"
       ],
-      "baseline_digest": "sha256:f213768846d045bf050cc0da32f5f4f40b4fe87e295c5a89c1b4b0a67bee3932",
-      "current_digest": "sha256:f213768846d045bf050cc0da32f5f4f40b4fe87e295c5a89c1b4b0a67bee3932",
+      "baseline_digest": "sha256:e259314f7d6576d681ba6bac90d2d9def77a20b1ffa7cab5f134c6bd7cd9c74a",
+      "current_digest": "sha256:e259314f7d6576d681ba6bac90d2d9def77a20b1ffa7cab5f134c6bd7cd9c74a",
       "observed_at": "2026-08-28T15:48:00Z"
     },
     {
@@ -308,8 +308,8 @@
         "evals/definitive-forward-cases.json",
         "evals/forward-cases.json"
       ],
-      "baseline_digest": "sha256:7d536ea73aadd89a719c3a58b926a24f8096869aab449829d0c66aea964775ec",
-      "current_digest": "sha256:7d536ea73aadd89a719c3a58b926a24f8096869aab449829d0c66aea964775ec",
+      "baseline_digest": "sha256:4bfe0ac2b084d636abed30a1f5fcb3c7ac4c02bb4efe4ec6fa4b9e221dc75c39",
+      "current_digest": "sha256:4bfe0ac2b084d636abed30a1f5fcb3c7ac4c02bb4efe4ec6fa4b9e221dc75c39",
       "observed_at": "2026-08-28T15:48:00Z"
     },
     {
@@ -376,8 +376,33 @@
         "scripts/generate_core_v2_scenario_plan_gap.py",
         "scripts/test_core_v2_scenario_plan_gap.py"
       ],
-      "baseline_digest": "sha256:182c89f5b60c4beaed532143f434ec35aafb22f2dc15f1f92eee047a84c5a09e",
-      "current_digest": "sha256:182c89f5b60c4beaed532143f434ec35aafb22f2dc15f1f92eee047a84c5a09e",
+      "baseline_digest": "sha256:03e77801bebda3815c61a67f6bb6e20e91374566b1a55f0a7cfba51321614f22",
+      "current_digest": "sha256:03e77801bebda3815c61a67f6bb6e20e91374566b1a55f0a7cfba51321614f22",
+      "observed_at": "2026-08-28T15:48:00Z"
+    },
+    {
+      "id": "source.core-standard-legacy-scenarios",
+      "kind": "source",
+      "members": [
+        "integrations/reference-system/manifest.yaml",
+        "evidence/reference-system/results.json",
+        "evidence/scenarios/index.json",
+        "evidence/scenarios/runtime/index.yaml"
+      ],
+      "baseline_digest": "sha256:8990f3d18c8276014ac085e9b20e370446e3b5045572d9ab563946cca79d8ab1",
+      "current_digest": "sha256:8990f3d18c8276014ac085e9b20e370446e3b5045572d9ab563946cca79d8ab1",
+      "observed_at": "2026-08-28T15:48:00Z"
+    },
+    {
+      "id": "harness.core-standard-artifacts",
+      "kind": "harness",
+      "members": [
+        "scripts/generate_core_standard_artifacts.py",
+        "scripts/validate_core_standard_artifacts.py",
+        "scripts/test_core_standard_artifacts.py"
+      ],
+      "baseline_digest": "sha256:204ea4d20059ebf30aa87f418ea4bae94f7e07213a9ac5227ad7db972e4c2a13",
+      "current_digest": "sha256:204ea4d20059ebf30aa87f418ea4bae94f7e07213a9ac5227ad7db972e4c2a13",
       "observed_at": "2026-08-28T15:48:00Z"
     },
     {
@@ -423,8 +448,8 @@
         "scripts/generate_core_v2_dependency_extension.py",
         "scripts/test_core_v2_evidence_dependency_extensions.py"
       ],
-      "baseline_digest": "sha256:10c5566730e46ef229bd5cbd29d00e81fcd1e03cb7c2f95b5aa8cd17fb7985ce",
-      "current_digest": "sha256:10c5566730e46ef229bd5cbd29d00e81fcd1e03cb7c2f95b5aa8cd17fb7985ce",
+      "baseline_digest": "sha256:bb8e83a31957addb0583455edd37ec640b3b855ee95ee0655cd28adaefaf59ac",
+      "current_digest": "sha256:bb8e83a31957addb0583455edd37ec640b3b855ee95ee0655cd28adaefaf59ac",
       "observed_at": "2026-08-28T15:48:00Z"
     }
   ],
@@ -443,13 +468,52 @@
       "run_id": "run.dependency-migration"
     },
     {
+      "id": "output.artifacts.core-v2.core-standard-artifacts-publish.json",
+      "kind": "derived-evidence",
+      "path": "artifacts/core-v2/core-standard-artifacts-publish.json",
+      "digest": "sha256:9717766bae20f1fcb7cfa8b10e49b487f0c9f6db587eb665ed1e65619b408c18",
+      "depends_on": [
+        "harness.core-standard-artifacts",
+        "output.artifacts.pattern-scenarios.results.json",
+        "output.artifacts.reference-system.gaps.boundary.screenshot-gap.json",
+        "output.artifacts.reference-system.gaps.boundary.trace-gap.json",
+        "output.artifacts.reference-system.gaps.compatibility.screenshot-gap.json",
+        "output.artifacts.reference-system.gaps.compatibility.trace-gap.json",
+        "output.artifacts.reference-system.gaps.failure.screenshot-gap.json",
+        "output.artifacts.reference-system.gaps.failure.trace-gap.json",
+        "output.artifacts.reference-system.gaps.migration.screenshot-gap.json",
+        "output.artifacts.reference-system.gaps.migration.trace-gap.json",
+        "output.artifacts.reference-system.gaps.normal.screenshot-gap.json",
+        "output.artifacts.reference-system.gaps.normal.trace-gap.json",
+        "output.artifacts.reference-system.gaps.operations.screenshot-gap.json",
+        "output.artifacts.reference-system.gaps.operations.trace-gap.json",
+        "output.artifacts.reference-system.gaps.performance.screenshot-gap.json",
+        "output.artifacts.reference-system.gaps.performance.trace-gap.json",
+        "output.artifacts.reference-system.gaps.recovery.screenshot-gap.json",
+        "output.artifacts.reference-system.gaps.recovery.trace-gap.json",
+        "output.artifacts.reference-system.gaps.refusal.screenshot-gap.json",
+        "output.artifacts.reference-system.gaps.refusal.trace-gap.json",
+        "output.artifacts.reference-system.gaps.security.screenshot-gap.json",
+        "output.artifacts.reference-system.gaps.security.trace-gap.json",
+        "output.artifacts.reference-system.results.json",
+        "output.baselines.scenario-row-id-migration-v1.json",
+        "output.integrations.reference-system.manifest.json",
+        "output.migrations.scenario-class-refusal-v1.json",
+        "profile.local",
+        "source.core-standard-legacy-scenarios"
+      ],
+      "status": "current",
+      "run_id": "run.core-standard-artifacts"
+    },
+    {
       "id": "output.artifacts.core-v2.evidence-dependency-extension.json",
       "kind": "derived-evidence",
       "path": "artifacts/core-v2/evidence-dependency-extension.json",
-      "digest": "sha256:1b8aac96fc96e9c8402487bd55c0bf683dfebbd35e4c59348e164c72b3dca607",
+      "digest": "sha256:6c2f4c1fee25ac3b39c236c651315fbf868badecd567a69df014e0857eeeeac4",
       "depends_on": [
         "harness.content-policy",
         "harness.core-v2-dependency-extension",
+        "output.artifacts.core-v2.core-standard-artifacts-publish.json",
         "output.artifacts.core-v2.root-surface-inventory-closure.json",
         "output.artifacts.core-v2.root-verification-matrix-closure.json",
         "output.artifacts.core-v2.scenario-plan-gap.json",
@@ -519,7 +583,7 @@
       "id": "output.artifacts.core-v2.scenario-plan-gap.json",
       "kind": "closure-plan",
       "path": "artifacts/core-v2/scenario-plan-gap.json",
-      "digest": "sha256:cebc1fa3f687d90799d7f99f9c1b8a139bf5bcb5cd423e02063dbef9a5c484b6",
+      "digest": "sha256:cb1b582440314ba0f4985f9e4ae8b603c9a8c7913c28c257c5eca322e188d565",
       "depends_on": [
         "harness.core-v2-scenario-plan",
         "output.evidence.scenarios.closure-plan.json",
@@ -566,6 +630,315 @@
       ],
       "status": "current",
       "run_id": "run.surface-inventory-readiness"
+    },
+    {
+      "id": "output.artifacts.pattern-scenarios.results.json",
+      "kind": "derived-evidence",
+      "path": "artifacts/pattern-scenarios/results.json",
+      "digest": "sha256:202032bc06f4f4b2c99a4a67063a295b0ff83614f01b36716262662cdff644f4",
+      "depends_on": [
+        "harness.core-standard-artifacts",
+        "output.evidence.scenarios.index.json",
+        "output.evidence.scenarios.runtime.index.yaml",
+        "profile.local",
+        "source.core-standard-legacy-scenarios"
+      ],
+      "status": "current",
+      "run_id": "run.core-standard-artifacts"
+    },
+    {
+      "id": "output.artifacts.reference-system.gaps.boundary.screenshot-gap.json",
+      "kind": "derived-evidence",
+      "path": "artifacts/reference-system/gaps/boundary.screenshot-gap.json",
+      "digest": "sha256:8d3744081595924041d222c55b16a33015aef077d41613e890ada4ca6d5a2f4f",
+      "depends_on": [
+        "harness.core-standard-artifacts",
+        "profile.local",
+        "source.core-standard-legacy-scenarios"
+      ],
+      "status": "current",
+      "run_id": "run.core-standard-artifacts"
+    },
+    {
+      "id": "output.artifacts.reference-system.gaps.boundary.trace-gap.json",
+      "kind": "derived-evidence",
+      "path": "artifacts/reference-system/gaps/boundary.trace-gap.json",
+      "digest": "sha256:ce646c674fb2e9af9f08d8eb01eb3d2ad9ef51e5074ca26291706ff6885056b3",
+      "depends_on": [
+        "harness.core-standard-artifacts",
+        "profile.local",
+        "source.core-standard-legacy-scenarios"
+      ],
+      "status": "current",
+      "run_id": "run.core-standard-artifacts"
+    },
+    {
+      "id": "output.artifacts.reference-system.gaps.compatibility.screenshot-gap.json",
+      "kind": "derived-evidence",
+      "path": "artifacts/reference-system/gaps/compatibility.screenshot-gap.json",
+      "digest": "sha256:36c30b6a7aa2fed53fcf346dfa409b3c935bba1522c1761ad4693f3717584a14",
+      "depends_on": [
+        "harness.core-standard-artifacts",
+        "profile.local",
+        "source.core-standard-legacy-scenarios"
+      ],
+      "status": "current",
+      "run_id": "run.core-standard-artifacts"
+    },
+    {
+      "id": "output.artifacts.reference-system.gaps.compatibility.trace-gap.json",
+      "kind": "derived-evidence",
+      "path": "artifacts/reference-system/gaps/compatibility.trace-gap.json",
+      "digest": "sha256:cdcbe2cf535cfd18e7905f47ab37c74ac4865645c933ef731b8832b19a4e9e5a",
+      "depends_on": [
+        "harness.core-standard-artifacts",
+        "profile.local",
+        "source.core-standard-legacy-scenarios"
+      ],
+      "status": "current",
+      "run_id": "run.core-standard-artifacts"
+    },
+    {
+      "id": "output.artifacts.reference-system.gaps.failure.screenshot-gap.json",
+      "kind": "derived-evidence",
+      "path": "artifacts/reference-system/gaps/failure.screenshot-gap.json",
+      "digest": "sha256:b16f1193e11908e573964a5fcaa5baaeda28df17fd33cb1e012b92a57225e18e",
+      "depends_on": [
+        "harness.core-standard-artifacts",
+        "profile.local",
+        "source.core-standard-legacy-scenarios"
+      ],
+      "status": "current",
+      "run_id": "run.core-standard-artifacts"
+    },
+    {
+      "id": "output.artifacts.reference-system.gaps.failure.trace-gap.json",
+      "kind": "derived-evidence",
+      "path": "artifacts/reference-system/gaps/failure.trace-gap.json",
+      "digest": "sha256:5c24bf9f40114390279a1afecf71e0bb1b7a291fe476521302fa40e2b4e81cbe",
+      "depends_on": [
+        "harness.core-standard-artifacts",
+        "profile.local",
+        "source.core-standard-legacy-scenarios"
+      ],
+      "status": "current",
+      "run_id": "run.core-standard-artifacts"
+    },
+    {
+      "id": "output.artifacts.reference-system.gaps.migration.screenshot-gap.json",
+      "kind": "derived-evidence",
+      "path": "artifacts/reference-system/gaps/migration.screenshot-gap.json",
+      "digest": "sha256:45fea4846ca3257121d4bea1f066a55b9e68d4cdf16d331ea0872a727a08659d",
+      "depends_on": [
+        "harness.core-standard-artifacts",
+        "profile.local",
+        "source.core-standard-legacy-scenarios"
+      ],
+      "status": "current",
+      "run_id": "run.core-standard-artifacts"
+    },
+    {
+      "id": "output.artifacts.reference-system.gaps.migration.trace-gap.json",
+      "kind": "derived-evidence",
+      "path": "artifacts/reference-system/gaps/migration.trace-gap.json",
+      "digest": "sha256:2c3d6f00f10fa3019db7ca283e7e6d05e85fd41dd6f7ef427e34963463951425",
+      "depends_on": [
+        "harness.core-standard-artifacts",
+        "profile.local",
+        "source.core-standard-legacy-scenarios"
+      ],
+      "status": "current",
+      "run_id": "run.core-standard-artifacts"
+    },
+    {
+      "id": "output.artifacts.reference-system.gaps.normal.screenshot-gap.json",
+      "kind": "derived-evidence",
+      "path": "artifacts/reference-system/gaps/normal.screenshot-gap.json",
+      "digest": "sha256:0e7e4c85a3c1e2508741494fad4891dcf7dbfcb03039ce07a4e17364739ff959",
+      "depends_on": [
+        "harness.core-standard-artifacts",
+        "profile.local",
+        "source.core-standard-legacy-scenarios"
+      ],
+      "status": "current",
+      "run_id": "run.core-standard-artifacts"
+    },
+    {
+      "id": "output.artifacts.reference-system.gaps.normal.trace-gap.json",
+      "kind": "derived-evidence",
+      "path": "artifacts/reference-system/gaps/normal.trace-gap.json",
+      "digest": "sha256:6231d5d711be44c6110743f139184305c0cb3fd9316e20767f4aeaa938985d1c",
+      "depends_on": [
+        "harness.core-standard-artifacts",
+        "profile.local",
+        "source.core-standard-legacy-scenarios"
+      ],
+      "status": "current",
+      "run_id": "run.core-standard-artifacts"
+    },
+    {
+      "id": "output.artifacts.reference-system.gaps.operations.screenshot-gap.json",
+      "kind": "derived-evidence",
+      "path": "artifacts/reference-system/gaps/operations.screenshot-gap.json",
+      "digest": "sha256:d356dae8e4d9f0c3febf825da140163a7a3f7514c7b9ef655156f7f539fcbeb3",
+      "depends_on": [
+        "harness.core-standard-artifacts",
+        "profile.local",
+        "source.core-standard-legacy-scenarios"
+      ],
+      "status": "current",
+      "run_id": "run.core-standard-artifacts"
+    },
+    {
+      "id": "output.artifacts.reference-system.gaps.operations.trace-gap.json",
+      "kind": "derived-evidence",
+      "path": "artifacts/reference-system/gaps/operations.trace-gap.json",
+      "digest": "sha256:5686c9be76f6749203abef4e34701817c97d1416ecb9f29b0247518c45040297",
+      "depends_on": [
+        "harness.core-standard-artifacts",
+        "profile.local",
+        "source.core-standard-legacy-scenarios"
+      ],
+      "status": "current",
+      "run_id": "run.core-standard-artifacts"
+    },
+    {
+      "id": "output.artifacts.reference-system.gaps.performance.screenshot-gap.json",
+      "kind": "derived-evidence",
+      "path": "artifacts/reference-system/gaps/performance.screenshot-gap.json",
+      "digest": "sha256:74d158a15fec43d380421e0798bae77773434e343eaba455a017473b95c5e399",
+      "depends_on": [
+        "harness.core-standard-artifacts",
+        "profile.local",
+        "source.core-standard-legacy-scenarios"
+      ],
+      "status": "current",
+      "run_id": "run.core-standard-artifacts"
+    },
+    {
+      "id": "output.artifacts.reference-system.gaps.performance.trace-gap.json",
+      "kind": "derived-evidence",
+      "path": "artifacts/reference-system/gaps/performance.trace-gap.json",
+      "digest": "sha256:3364a25d0060b57bdee827058892052bd327cf88351063d60a138f4371b7ed5b",
+      "depends_on": [
+        "harness.core-standard-artifacts",
+        "profile.local",
+        "source.core-standard-legacy-scenarios"
+      ],
+      "status": "current",
+      "run_id": "run.core-standard-artifacts"
+    },
+    {
+      "id": "output.artifacts.reference-system.gaps.recovery.screenshot-gap.json",
+      "kind": "derived-evidence",
+      "path": "artifacts/reference-system/gaps/recovery.screenshot-gap.json",
+      "digest": "sha256:c1de6455394732c0154e69053f65065d72fee069df9a1eba18e846994e104883",
+      "depends_on": [
+        "harness.core-standard-artifacts",
+        "profile.local",
+        "source.core-standard-legacy-scenarios"
+      ],
+      "status": "current",
+      "run_id": "run.core-standard-artifacts"
+    },
+    {
+      "id": "output.artifacts.reference-system.gaps.recovery.trace-gap.json",
+      "kind": "derived-evidence",
+      "path": "artifacts/reference-system/gaps/recovery.trace-gap.json",
+      "digest": "sha256:5dcfe39727389a17f76257e6280eb6ffe4d64ad2ce16c4108870fd013ddb996e",
+      "depends_on": [
+        "harness.core-standard-artifacts",
+        "profile.local",
+        "source.core-standard-legacy-scenarios"
+      ],
+      "status": "current",
+      "run_id": "run.core-standard-artifacts"
+    },
+    {
+      "id": "output.artifacts.reference-system.gaps.refusal.screenshot-gap.json",
+      "kind": "derived-evidence",
+      "path": "artifacts/reference-system/gaps/refusal.screenshot-gap.json",
+      "digest": "sha256:eafa05f408ac73267c01a4f77b6090805e8376b0a9fca2d6d50374e2c0d857d2",
+      "depends_on": [
+        "harness.core-standard-artifacts",
+        "profile.local",
+        "source.core-standard-legacy-scenarios"
+      ],
+      "status": "current",
+      "run_id": "run.core-standard-artifacts"
+    },
+    {
+      "id": "output.artifacts.reference-system.gaps.refusal.trace-gap.json",
+      "kind": "derived-evidence",
+      "path": "artifacts/reference-system/gaps/refusal.trace-gap.json",
+      "digest": "sha256:144cc9444fe1610a79319be15b8f1b733643e511efe08f03feb57c4662e91f45",
+      "depends_on": [
+        "harness.core-standard-artifacts",
+        "profile.local",
+        "source.core-standard-legacy-scenarios"
+      ],
+      "status": "current",
+      "run_id": "run.core-standard-artifacts"
+    },
+    {
+      "id": "output.artifacts.reference-system.gaps.security.screenshot-gap.json",
+      "kind": "derived-evidence",
+      "path": "artifacts/reference-system/gaps/security.screenshot-gap.json",
+      "digest": "sha256:9b02f06e098acac76a6af553041969651dca9f5daa9830c0debf15f1dbb7bb84",
+      "depends_on": [
+        "harness.core-standard-artifacts",
+        "profile.local",
+        "source.core-standard-legacy-scenarios"
+      ],
+      "status": "current",
+      "run_id": "run.core-standard-artifacts"
+    },
+    {
+      "id": "output.artifacts.reference-system.gaps.security.trace-gap.json",
+      "kind": "derived-evidence",
+      "path": "artifacts/reference-system/gaps/security.trace-gap.json",
+      "digest": "sha256:f3d4029dd46e4a604633d88d47b9c575137a0a7c0c0e0cab55322991eb2186a0",
+      "depends_on": [
+        "harness.core-standard-artifacts",
+        "profile.local",
+        "source.core-standard-legacy-scenarios"
+      ],
+      "status": "current",
+      "run_id": "run.core-standard-artifacts"
+    },
+    {
+      "id": "output.artifacts.reference-system.results.json",
+      "kind": "derived-evidence",
+      "path": "artifacts/reference-system/results.json",
+      "digest": "sha256:8e6e6f0a61b4458703e4b35bb585e820021ec6b49b807abe5b405734eb044705",
+      "depends_on": [
+        "harness.core-standard-artifacts",
+        "output.artifacts.reference-system.gaps.boundary.screenshot-gap.json",
+        "output.artifacts.reference-system.gaps.boundary.trace-gap.json",
+        "output.artifacts.reference-system.gaps.compatibility.screenshot-gap.json",
+        "output.artifacts.reference-system.gaps.compatibility.trace-gap.json",
+        "output.artifacts.reference-system.gaps.failure.screenshot-gap.json",
+        "output.artifacts.reference-system.gaps.failure.trace-gap.json",
+        "output.artifacts.reference-system.gaps.migration.screenshot-gap.json",
+        "output.artifacts.reference-system.gaps.migration.trace-gap.json",
+        "output.artifacts.reference-system.gaps.normal.screenshot-gap.json",
+        "output.artifacts.reference-system.gaps.normal.trace-gap.json",
+        "output.artifacts.reference-system.gaps.operations.screenshot-gap.json",
+        "output.artifacts.reference-system.gaps.operations.trace-gap.json",
+        "output.artifacts.reference-system.gaps.performance.screenshot-gap.json",
+        "output.artifacts.reference-system.gaps.performance.trace-gap.json",
+        "output.artifacts.reference-system.gaps.recovery.screenshot-gap.json",
+        "output.artifacts.reference-system.gaps.recovery.trace-gap.json",
+        "output.artifacts.reference-system.gaps.refusal.screenshot-gap.json",
+        "output.artifacts.reference-system.gaps.refusal.trace-gap.json",
+        "output.artifacts.reference-system.gaps.security.screenshot-gap.json",
+        "output.artifacts.reference-system.gaps.security.trace-gap.json",
+        "output.integrations.reference-system.manifest.json",
+        "profile.local",
+        "source.core-standard-legacy-scenarios"
+      ],
+      "status": "current",
+      "run_id": "run.core-standard-artifacts"
     },
     {
       "id": "output.authority.extraction.snapshot.json",
@@ -890,6 +1263,20 @@
       ],
       "status": "current",
       "run_id": "run.authority-denominator"
+    },
+    {
+      "id": "output.baselines.scenario-row-id-migration-v1.json",
+      "kind": "derived-evidence",
+      "path": "baselines/scenario-row-id-migration-v1.json",
+      "digest": "sha256:eb6da094c8811d72dd74d4ed766b42dd47bbbcf5b7a07472aa80a8f98b310afd",
+      "depends_on": [
+        "harness.core-standard-artifacts",
+        "output.migrations.scenario-class-refusal-v1.json",
+        "profile.local",
+        "source.core-standard-legacy-scenarios"
+      ],
+      "status": "current",
+      "run_id": "run.core-standard-artifacts"
     },
     {
       "id": "output.evals.argocd-atlas-router.definitive-forward-eval.json",
@@ -139078,6 +139465,33 @@
       "run_id": "run.scenario-runtime.security-003"
     },
     {
+      "id": "output.integrations.reference-system.manifest.json",
+      "kind": "derived-evidence",
+      "path": "integrations/reference-system/manifest.json",
+      "digest": "sha256:401d26221be4557ca82a7cfdd9d604ede4ff932283b5d546d3650d662e7f19d2",
+      "depends_on": [
+        "harness.core-standard-artifacts",
+        "profile.local",
+        "source.core-standard-legacy-scenarios"
+      ],
+      "status": "current",
+      "run_id": "run.core-standard-artifacts"
+    },
+    {
+      "id": "output.migrations.scenario-class-refusal-v1.json",
+      "kind": "derived-evidence",
+      "path": "migrations/scenario-class-refusal-v1.json",
+      "digest": "sha256:ed65ebe8edb0165c00c30e3f2fc8e3d1c70da478dccca5ee42f4976d9d57ef4c",
+      "depends_on": [
+        "harness.core-standard-artifacts",
+        "output.evidence.scenarios.index.json",
+        "profile.local",
+        "source.core-standard-legacy-scenarios"
+      ],
+      "status": "current",
+      "run_id": "run.core-standard-artifacts"
+    },
+    {
       "id": "output.provenance.yaml",
       "kind": "derived-evidence",
       "path": "provenance.yaml",
@@ -139141,6 +139555,113 @@
       ]
     },
     {
+      "id": "run.core-standard-artifacts",
+      "execution_kind": "derived",
+      "command": "make core-standard-artifacts",
+      "started_at": "2026-08-28T15:48:00Z",
+      "completed_at": "2026-08-28T15:48:01Z",
+      "result": "passed",
+      "attempts": 1,
+      "input_bindings": [
+        {
+          "input_id": "harness.cluster-labs",
+          "digest": "sha256:62193b98aed7d7b694a0f90abaf52ef163e994a410b96e684d0dd40bf725b4d7"
+        },
+        {
+          "input_id": "harness.core-standard-artifacts",
+          "digest": "sha256:204ea4d20059ebf30aa87f418ea4bae94f7e07213a9ac5227ad7db972e4c2a13"
+        },
+        {
+          "input_id": "harness.scenario-proof",
+          "digest": "sha256:e66a557d7915e76fe7729ed099d43179e578a0b820b1bc4f7179c46fa0a7c60b"
+        },
+        {
+          "input_id": "harness.scenario-runtime",
+          "digest": "sha256:3b8925f30e7c845381bd50c85f7b50cefb1ae5e6894057fd80c6d8765f59d281"
+        },
+        {
+          "input_id": "harness.scenario-runtime.security-001",
+          "digest": "sha256:82906b1554180afc151b1855b0869ab3ea015700ae18b816b3b6c1c6fdcebe5a"
+        },
+        {
+          "input_id": "harness.scenario-runtime.security-002",
+          "digest": "sha256:dd5877b86c59ffa01001a7caf3a22a98794aebeece5f39020f495245204f764b"
+        },
+        {
+          "input_id": "harness.scenario-runtime.security-003",
+          "digest": "sha256:9e2ae81baf6c2d46e7f0ee6136e01d05928304d0f034ec4be9dc06f1ee7f8be2"
+        },
+        {
+          "input_id": "harness.skill-eval",
+          "digest": "sha256:639b4199f906194cafb3430a8459ebab2cc2d4ce4db5e8b5a30799bda6c26e66"
+        },
+        {
+          "input_id": "profile.cluster",
+          "digest": "sha256:284a48bf018b4e856920c2f5f44007396990ec063c7d78eca1cedf5a4c157fa1"
+        },
+        {
+          "input_id": "profile.container",
+          "digest": "sha256:d8ba752075a636fe5989e7626bf81ff005bcc8221d258a9727e73e9275ef7042"
+        },
+        {
+          "input_id": "profile.local",
+          "digest": "sha256:4bfe0ac2b084d636abed30a1f5fcb3c7ac4c02bb4efe4ec6fa4b9e221dc75c39"
+        },
+        {
+          "input_id": "runtime.argocd-kubernetes",
+          "digest": "sha256:51011c347d65a7e0b11299a1166e3314a94d6aa1c64f04bc788b5e5dfbcffeb1"
+        },
+        {
+          "input_id": "runtime.controller-components",
+          "digest": "sha256:9751cd5a74a0465783325e9a555d138869db2561fde295c6dc09536d7a3231bc"
+        },
+        {
+          "input_id": "source.application",
+          "digest": "sha256:f19ce5e3657b17ba5d9843afc5c89eb65c384f7087f9b6e74098cd5e180883e5"
+        },
+        {
+          "input_id": "source.core-standard-legacy-scenarios",
+          "digest": "sha256:8990f3d18c8276014ac085e9b20e370446e3b5045572d9ab563946cca79d8ab1"
+        },
+        {
+          "input_id": "source.manifests",
+          "digest": "sha256:beb8f9d4535d8119ec432ca970597c0f2014d67d3a644ab418fec5a25d586cbd"
+        },
+        {
+          "input_id": "source.project-policy",
+          "digest": "sha256:19572bb8ae8a1725d138e1f4ea139fa490a44a1b9e8990d5947479e7d78ff18e"
+        }
+      ],
+      "output_ids": [
+        "output.artifacts.reference-system.gaps.boundary.screenshot-gap.json",
+        "output.artifacts.reference-system.gaps.boundary.trace-gap.json",
+        "output.artifacts.reference-system.gaps.compatibility.screenshot-gap.json",
+        "output.artifacts.reference-system.gaps.compatibility.trace-gap.json",
+        "output.artifacts.reference-system.gaps.failure.screenshot-gap.json",
+        "output.artifacts.reference-system.gaps.failure.trace-gap.json",
+        "output.artifacts.reference-system.gaps.migration.screenshot-gap.json",
+        "output.artifacts.reference-system.gaps.migration.trace-gap.json",
+        "output.artifacts.reference-system.gaps.normal.screenshot-gap.json",
+        "output.artifacts.reference-system.gaps.normal.trace-gap.json",
+        "output.artifacts.reference-system.gaps.operations.screenshot-gap.json",
+        "output.artifacts.reference-system.gaps.operations.trace-gap.json",
+        "output.artifacts.reference-system.gaps.performance.screenshot-gap.json",
+        "output.artifacts.reference-system.gaps.performance.trace-gap.json",
+        "output.artifacts.reference-system.gaps.recovery.screenshot-gap.json",
+        "output.artifacts.reference-system.gaps.recovery.trace-gap.json",
+        "output.artifacts.reference-system.gaps.refusal.screenshot-gap.json",
+        "output.artifacts.reference-system.gaps.refusal.trace-gap.json",
+        "output.artifacts.reference-system.gaps.security.screenshot-gap.json",
+        "output.artifacts.reference-system.gaps.security.trace-gap.json",
+        "output.integrations.reference-system.manifest.json",
+        "output.artifacts.reference-system.results.json",
+        "output.artifacts.pattern-scenarios.results.json",
+        "output.migrations.scenario-class-refusal-v1.json",
+        "output.baselines.scenario-row-id-migration-v1.json",
+        "output.artifacts.core-v2.core-standard-artifacts-publish.json"
+      ]
+    },
+    {
       "id": "run.core-v2-dependency-extension",
       "execution_kind": "derived",
       "command": "python3 scripts/generate_core_v2_dependency_extension.py && python3 scripts/test_core_v2_evidence_dependency_extensions.py",
@@ -139162,12 +139683,16 @@
           "digest": "sha256:feddbb6c2a738fe096fa1d6298c63c8e04fd1b730c537cb32464172d03b15fd1"
         },
         {
+          "input_id": "harness.core-standard-artifacts",
+          "digest": "sha256:204ea4d20059ebf30aa87f418ea4bae94f7e07213a9ac5227ad7db972e4c2a13"
+        },
+        {
           "input_id": "harness.core-v2-dependency-extension",
-          "digest": "sha256:10c5566730e46ef229bd5cbd29d00e81fcd1e03cb7c2f95b5aa8cd17fb7985ce"
+          "digest": "sha256:bb8e83a31957addb0583455edd37ec640b3b855ee95ee0655cd28adaefaf59ac"
         },
         {
           "input_id": "harness.core-v2-scenario-plan",
-          "digest": "sha256:182c89f5b60c4beaed532143f434ec35aafb22f2dc15f1f92eee047a84c5a09e"
+          "digest": "sha256:03e77801bebda3815c61a67f6bb6e20e91374566b1a55f0a7cfba51321614f22"
         },
         {
           "input_id": "harness.core-v2-skill-router",
@@ -139175,7 +139700,7 @@
         },
         {
           "input_id": "harness.evidence-dependency",
-          "digest": "sha256:f213768846d045bf050cc0da32f5f4f40b4fe87e295c5a89c1b4b0a67bee3932"
+          "digest": "sha256:e259314f7d6576d681ba6bac90d2d9def77a20b1ffa7cab5f134c6bd7cd9c74a"
         },
         {
           "input_id": "harness.root-surface-inventory",
@@ -139223,7 +139748,7 @@
         },
         {
           "input_id": "profile.local",
-          "digest": "sha256:7d536ea73aadd89a719c3a58b926a24f8096869aab449829d0c66aea964775ec"
+          "digest": "sha256:4bfe0ac2b084d636abed30a1f5fcb3c7ac4c02bb4efe4ec6fa4b9e221dc75c39"
         },
         {
           "input_id": "runtime.argocd-kubernetes",
@@ -139240,6 +139765,10 @@
         {
           "input_id": "source.authority-lock-inventory",
           "digest": "sha256:5f9caf48124789f715da24b8bfd23ccb3233ae6b26772cc5c198ac034909d523"
+        },
+        {
+          "input_id": "source.core-standard-legacy-scenarios",
+          "digest": "sha256:8990f3d18c8276014ac085e9b20e370446e3b5045572d9ab563946cca79d8ab1"
         },
         {
           "input_id": "source.manifests",
@@ -139273,11 +139802,11 @@
         },
         {
           "input_id": "harness.core-v2-scenario-plan",
-          "digest": "sha256:182c89f5b60c4beaed532143f434ec35aafb22f2dc15f1f92eee047a84c5a09e"
+          "digest": "sha256:03e77801bebda3815c61a67f6bb6e20e91374566b1a55f0a7cfba51321614f22"
         },
         {
           "input_id": "harness.evidence-dependency",
-          "digest": "sha256:f213768846d045bf050cc0da32f5f4f40b4fe87e295c5a89c1b4b0a67bee3932"
+          "digest": "sha256:e259314f7d6576d681ba6bac90d2d9def77a20b1ffa7cab5f134c6bd7cd9c74a"
         },
         {
           "input_id": "harness.scenario-proof",
@@ -139313,7 +139842,7 @@
         },
         {
           "input_id": "profile.local",
-          "digest": "sha256:7d536ea73aadd89a719c3a58b926a24f8096869aab449829d0c66aea964775ec"
+          "digest": "sha256:4bfe0ac2b084d636abed30a1f5fcb3c7ac4c02bb4efe4ec6fa4b9e221dc75c39"
         },
         {
           "input_id": "runtime.argocd-kubernetes",
@@ -139359,7 +139888,7 @@
         },
         {
           "input_id": "profile.local",
-          "digest": "sha256:7d536ea73aadd89a719c3a58b926a24f8096869aab449829d0c66aea964775ec"
+          "digest": "sha256:4bfe0ac2b084d636abed30a1f5fcb3c7ac4c02bb4efe4ec6fa4b9e221dc75c39"
         },
         {
           "input_id": "source.project-policy",
@@ -139385,7 +139914,7 @@
         },
         {
           "input_id": "profile.local",
-          "digest": "sha256:7d536ea73aadd89a719c3a58b926a24f8096869aab449829d0c66aea964775ec"
+          "digest": "sha256:4bfe0ac2b084d636abed30a1f5fcb3c7ac4c02bb4efe4ec6fa4b9e221dc75c39"
         },
         {
           "input_id": "source.project-policy",
@@ -139408,11 +139937,11 @@
       "input_bindings": [
         {
           "input_id": "harness.evidence-dependency",
-          "digest": "sha256:f213768846d045bf050cc0da32f5f4f40b4fe87e295c5a89c1b4b0a67bee3932"
+          "digest": "sha256:e259314f7d6576d681ba6bac90d2d9def77a20b1ffa7cab5f134c6bd7cd9c74a"
         },
         {
           "input_id": "profile.local",
-          "digest": "sha256:7d536ea73aadd89a719c3a58b926a24f8096869aab449829d0c66aea964775ec"
+          "digest": "sha256:4bfe0ac2b084d636abed30a1f5fcb3c7ac4c02bb4efe4ec6fa4b9e221dc75c39"
         },
         {
           "input_id": "source.project-policy",
@@ -140562,7 +141091,7 @@
         },
         {
           "input_id": "profile.local",
-          "digest": "sha256:7d536ea73aadd89a719c3a58b926a24f8096869aab449829d0c66aea964775ec"
+          "digest": "sha256:4bfe0ac2b084d636abed30a1f5fcb3c7ac4c02bb4efe4ec6fa4b9e221dc75c39"
         },
         {
           "input_id": "source.project-policy",
@@ -140589,7 +141118,7 @@
         },
         {
           "input_id": "profile.local",
-          "digest": "sha256:7d536ea73aadd89a719c3a58b926a24f8096869aab449829d0c66aea964775ec"
+          "digest": "sha256:4bfe0ac2b084d636abed30a1f5fcb3c7ac4c02bb4efe4ec6fa4b9e221dc75c39"
         },
         {
           "input_id": "source.project-policy",
@@ -140778,7 +141307,7 @@
         },
         {
           "input_id": "profile.local",
-          "digest": "sha256:7d536ea73aadd89a719c3a58b926a24f8096869aab449829d0c66aea964775ec"
+          "digest": "sha256:4bfe0ac2b084d636abed30a1f5fcb3c7ac4c02bb4efe4ec6fa4b9e221dc75c39"
         },
         {
           "input_id": "runtime.argocd-kubernetes",
@@ -140872,7 +141401,7 @@
         },
         {
           "input_id": "profile.local",
-          "digest": "sha256:7d536ea73aadd89a719c3a58b926a24f8096869aab449829d0c66aea964775ec"
+          "digest": "sha256:4bfe0ac2b084d636abed30a1f5fcb3c7ac4c02bb4efe4ec6fa4b9e221dc75c39"
         },
         {
           "input_id": "runtime.argocd-kubernetes",
@@ -140918,7 +141447,7 @@
         },
         {
           "input_id": "harness.evidence-dependency",
-          "digest": "sha256:f213768846d045bf050cc0da32f5f4f40b4fe87e295c5a89c1b4b0a67bee3932"
+          "digest": "sha256:e259314f7d6576d681ba6bac90d2d9def77a20b1ffa7cab5f134c6bd7cd9c74a"
         },
         {
           "input_id": "harness.scenario-proof",
@@ -140954,7 +141483,7 @@
         },
         {
           "input_id": "profile.local",
-          "digest": "sha256:7d536ea73aadd89a719c3a58b926a24f8096869aab449829d0c66aea964775ec"
+          "digest": "sha256:4bfe0ac2b084d636abed30a1f5fcb3c7ac4c02bb4efe4ec6fa4b9e221dc75c39"
         },
         {
           "input_id": "runtime.argocd-kubernetes",
@@ -141028,7 +141557,7 @@
         },
         {
           "input_id": "profile.local",
-          "digest": "sha256:7d536ea73aadd89a719c3a58b926a24f8096869aab449829d0c66aea964775ec"
+          "digest": "sha256:4bfe0ac2b084d636abed30a1f5fcb3c7ac4c02bb4efe4ec6fa4b9e221dc75c39"
         },
         {
           "input_id": "runtime.argocd-kubernetes",
@@ -142414,11 +142943,34 @@
   ],
   "required_outputs": [
     "artifacts/authority-body-non-regression-report.json",
+    "artifacts/core-v2/core-standard-artifacts-publish.json",
     "artifacts/core-v2/evidence-dependency-extension.json",
     "artifacts/core-v2/root-surface-inventory-closure.json",
     "artifacts/core-v2/root-verification-matrix-closure.json",
     "artifacts/core-v2/scenario-plan-gap.json",
     "artifacts/core-v2/surface-inventory-readiness.json",
+    "artifacts/pattern-scenarios/results.json",
+    "artifacts/reference-system/gaps/boundary.screenshot-gap.json",
+    "artifacts/reference-system/gaps/boundary.trace-gap.json",
+    "artifacts/reference-system/gaps/compatibility.screenshot-gap.json",
+    "artifacts/reference-system/gaps/compatibility.trace-gap.json",
+    "artifacts/reference-system/gaps/failure.screenshot-gap.json",
+    "artifacts/reference-system/gaps/failure.trace-gap.json",
+    "artifacts/reference-system/gaps/migration.screenshot-gap.json",
+    "artifacts/reference-system/gaps/migration.trace-gap.json",
+    "artifacts/reference-system/gaps/normal.screenshot-gap.json",
+    "artifacts/reference-system/gaps/normal.trace-gap.json",
+    "artifacts/reference-system/gaps/operations.screenshot-gap.json",
+    "artifacts/reference-system/gaps/operations.trace-gap.json",
+    "artifacts/reference-system/gaps/performance.screenshot-gap.json",
+    "artifacts/reference-system/gaps/performance.trace-gap.json",
+    "artifacts/reference-system/gaps/recovery.screenshot-gap.json",
+    "artifacts/reference-system/gaps/recovery.trace-gap.json",
+    "artifacts/reference-system/gaps/refusal.screenshot-gap.json",
+    "artifacts/reference-system/gaps/refusal.trace-gap.json",
+    "artifacts/reference-system/gaps/security.screenshot-gap.json",
+    "artifacts/reference-system/gaps/security.trace-gap.json",
+    "artifacts/reference-system/results.json",
     "authority/extraction.snapshot.json",
     "authority/surfaces-draft/argocd-application-crd.json",
     "authority/surfaces-draft/argocd-application-specification.json",
@@ -142446,6 +142998,7 @@
     "authority/surfaces-draft/argocd-upgrade-3-4-to-3-5.json",
     "authority/surfaces-draft/argocd-user-management.json",
     "authority/surfaces-draft/argocd-version.json",
+    "baselines/scenario-row-id-migration-v1.json",
     "evals/argocd-atlas-router.definitive-forward-eval.json",
     "evals/argocd-atlas-router.definitive-skill-eval.json",
     "evals/definitive-skill-router.json",
@@ -143621,6 +144174,8 @@
     "evidence/scenarios/runtime/reports/runtime.application-spec-sync-policy.normal.v3-5-2.json",
     "evidence/scenarios/runtime/reports/runtime.application-spec-sync-policy.security.v3-5-2.json",
     "evidence/scenarios/runtime/reports/runtime.applicationset-any-namespace.security.v3-5-2.json",
+    "integrations/reference-system/manifest.json",
+    "migrations/scenario-class-refusal-v1.json",
     "provenance.yaml"
   ],
   "structures": [

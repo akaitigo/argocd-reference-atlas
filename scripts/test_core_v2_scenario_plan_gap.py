@@ -21,6 +21,7 @@ def validate(document: dict) -> None:
     migration = document["core_schema_migration"]
     gates = document["core_gate_status"]
     preflight = document["runtime_preflight"]
+    standard = document["core_standard_artifacts"]
     if document["status"] != "incomplete-no-runtime-substitution":
         raise ValueError("Scenario gap was promoted")
     if denominator["rows"] != 1000 or denominator["remaining_rows"] != 987 or denominator["scenario_gaps_open"] != 1000:
@@ -29,6 +30,8 @@ def validate(document: dict) -> None:
         raise ValueError("Runtime/Authority gap hidden")
     if migration["required_scenarios"] != CORE_SCENARIOS or migration["explicit_id_mapping"] != {"rejection": "refusal"}:
         raise ValueError("Scenario migration mapping changed")
+    if migration["full_row_mapping"]["rows"] != 1000 or migration["full_row_mapping"]["renamed_rows"] != 100 or migration["full_row_mapping"]["runtime_credit"] != 0 or not migration["structure_baseline"]["digest"]:
+        raise ValueError("Scenario full-row migration or baseline changed")
     if migration["coarse_aggregation_forbidden"] is not True or document["forbidden_substitutions"] != [
         "fixture-as-runtime", "metadata-only-as-runtime", "integrated-result-as-pattern-proof", "historical-artifact-as-current-rerun"
     ]:
@@ -37,6 +40,10 @@ def validate(document: dict) -> None:
         raise ValueError("Core Scenario gate denominator retreated")
     if any(gates[name].startswith("passed") for name in ("scenario_trace", "scenario_plan", "evidence_durability")):
         raise ValueError("Unclosed Core Scenario gate was promoted")
+    if gaps["missing_core_artifacts"] != [] or standard["manifest"]["status"] != "bounded-integration-proof" or standard["reference_results"]["status"] != "failed" or standard["pattern_results"]["status"] != "failed":
+        raise ValueError("Core standard gap artifact status changed")
+    if standard["reference_results"]["passed"] != 0 or standard["pattern_results"]["records"] != 0 or standard["runtime_credit"] != 0 or standard["completion_eligible"] != 0:
+        raise ValueError("Core standard gap artifact gained runtime/completion credit")
     if preflight != {
         "state": "partial-dedicated-local-kind-runtime-proof",
         "dedicated_local_kind_required": True,
@@ -63,11 +70,14 @@ def main() -> None:
     rejected("denominator-shrink", lambda value: value["denominator"].update(rows=999))
     rejected("runtime-fabrication", lambda value: value["independent_gaps"].update(dedicated_runtime_reports=6))
     rejected("mapping-removal", lambda value: value["core_schema_migration"].update(explicit_id_mapping={}))
+    rejected("full-mapping-retreat", lambda value: value["core_schema_migration"]["full_row_mapping"].update(rows=999))
     rejected("fixture-substitution", lambda value: value["forbidden_substitutions"].remove("fixture-as-runtime"))
     rejected("gate-false-pass", lambda value: value["core_gate_status"].update(scenario_trace="passed"))
     rejected("external-context-access", lambda value: value["runtime_preflight"].update(external_context_access_forbidden=False))
     rejected("fixture-runtime-credit", lambda value: value["runtime_preflight"].update(fixture_runtime_credit=True))
-    print("Core v2 Scenario Plan gap fixtures passed: positive=1 negative=8")
+    rejected("core-standard-runtime-credit", lambda value: value["core_standard_artifacts"].update(runtime_credit=1))
+    rejected("core-standard-false-pass", lambda value: value["core_standard_artifacts"]["pattern_results"].update(status="passed"))
+    print("Core v2 Scenario Plan gap fixtures passed: positive=1 negative=11")
 
 
 if __name__ == "__main__":

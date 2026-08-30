@@ -43,6 +43,17 @@
     "explicit_id_mapping": {
       "rejection": "refusal"
     },
+    "full_row_mapping": {
+      "path": "migrations/scenario-class-refusal-v1.json",
+      "digest": "sha256:ed65ebe8edb0165c00c30e3f2fc8e3d1c70da478dccca5ee42f4976d9d57ef4c",
+      "rows": 1000,
+      "renamed_rows": 100,
+      "runtime_credit": 0
+    },
+    "structure_baseline": {
+      "path": "baselines/scenario-row-id-migration-v1.json",
+      "digest": "sha256:eb6da094c8811d72dd74d4ed766b42dd47bbbcf5b7a07472aa80a8f98b310afd"
+    },
     "current_rows_preserved": 1000,
     "coarse_aggregation_forbidden": true,
     "in_place_overwrite_before_migration_proof": false
@@ -54,17 +65,35 @@
     "dedicated_runtime_execution_complete_rows": 13,
     "completion_eligible_rows": 0,
     "integrated_runtime_passed": 0,
-    "missing_core_artifacts": [
-      "integrations/reference-system/manifest.json",
-      "artifacts/reference-system/results.json",
-      "artifacts/pattern-scenarios/results.json"
-    ]
+    "missing_core_artifacts": []
   },
   "core_gate_status": {
-    "scenario_trace": "blocked-core-schema-migration-and-integrated-runtime-artifacts",
+    "scenario_trace": "blocked-root-scenario-proof-schema-and-runtime-closure",
     "scenario_plan": "blocked-pattern-scenario-runtime-report",
     "evidence_durability": "blocked-pattern-scenario-runtime-report",
     "configured_make_check": "passed"
+  },
+  "core_standard_artifacts": {
+    "manifest": {
+      "path": "integrations/reference-system/manifest.json",
+      "status": "bounded-integration-proof"
+    },
+    "reference_results": {
+      "path": "artifacts/reference-system/results.json",
+      "status": "failed",
+      "passed": 0
+    },
+    "pattern_results": {
+      "path": "artifacts/pattern-scenarios/results.json",
+      "status": "failed",
+      "records": 0
+    },
+    "atomic_publish": {
+      "path": "artifacts/core-v2/core-standard-artifacts-publish.json",
+      "digest": "sha256:9717766bae20f1fcb7cfa8b10e49b487f0c9f6db587eb665ed1e65619b408c18"
+    },
+    "runtime_credit": 0,
+    "completion_eligible": 0
   },
   "runtime_preflight": {
     "state": "partial-dedicated-local-kind-runtime-proof",
@@ -92,10 +121,13 @@
     "integrated-result-as-pattern-proof",
     "historical-artifact-as-current-rerun"
   ],
-  "human_independent_next_actions": [
+  "human_independent_completed_actions": [
     "Core標準Artifactを専用stagingへ加法生成する。",
     "旧row IDから新row IDへの全件Mappingと構造非後退を検証する。",
-    "Runtime未実行rowをpattern-specific-gapのまま保持する。",
-    "専用local Kindがない間は外部Contextへ接続せずRuntime Gapを保持する。"
+    "Runtime未実行rowをpattern-specific-gapのまま保持する。"
+  ],
+  "human_independent_next_actions": [
+    "専用local Kindがない間は外部Contextへ接続せずRuntime Gapを保持する。",
+    "exclusive heavy slot取得後にsecurity-004専用Runtimeを再実行する。"
   ]
 }

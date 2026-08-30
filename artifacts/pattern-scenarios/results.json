@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "id": "argocd-pattern-scenario-runtime-gap-v1",
+  "created_at": "2026-08-31T00:00:00Z",
+  "status": "failed",
+  "command": "python3 scripts/generate_core_standard_artifacts.py",
+  "profile": "gap-only-no-runtime",
+  "counts": {
+    "rows": 0,
+    "variants": 0,
+    "total": 0,
+    "passed": 0,
+    "failed": 0,
+    "flaky": 0,
+    "skipped": 0
+  },
+  "source_digest": "sha256:3ea7f6d12056895d996e8025f46725e48495b118f3a6a16af77f16e4c64ba769",
+  "harness_digest": "sha256:1cbb95a1bdee640059778d5b2688a11be8e2a553ec6173c81b8114947de03152",
+  "environment": {
+    "profile_kind": "gap-only",
+    "real_runtime": false,
+    "runtime_attempts": 0,
+    "retries": 0,
+    "trace_mode": "off",
+    "argocd_version": "v3.5.2",
+    "kubernetes_context": null,
+    "fixture_runtime_credit": false,
+    "integrated_evidence_runtime_credit": false,
+    "historical_evidence_runtime_credit": false,
+    "dedicated_runtime_reports_preserved": 13
+  },
+  "retention_contract": {
+    "publish_on": "full-run-passed",
+    "failed_run": "retain-prior-success",
+    "swap": "staged-directory-rename-with-rollback"
+  },
+  "trace_contract": {
+    "per_variant": true,
+    "required_streams": [
+      "action",
+      "network",
+      "resource"
+    ],
+    "oracle_attachment": "required-but-not-captured"
+  },
+  "completion_limits": [
+    "Core標準Artifactのgap-only投影であり、統合Argo CD Runtimeを実行していない。",
+    "既存Lab、fixture、統合Evidence、historical Evidenceを専用Scenario Runtime creditへ変換しない。",
+    "Authority Human Review、approved Variant denominator、Atomic behavior bindingが0の間はCompletion eligibleを0に保つ。",
+    "Pattern Scenarioの未実行987 rowをgapとして保持し、既存13 dedicated Runtime reportと混同しない。"
+  ],
+  "tests": []
+}

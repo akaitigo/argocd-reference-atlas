@@ -45,7 +45,11 @@ def main() -> None:
     rejected("authority-first-attempt-weakened", lambda value: next(item for item in value["runs"] if item["id"] == "run.authority-denominator").update(attempts=2))
     rejected("repository-contract-unbound", lambda value: output(value, "artifacts/core-v2/evidence-dependency-extension.json")["depends_on"].remove("source.repository-contract"))
     rejected("content-policy-unbound", lambda value: output(value, "artifacts/core-v2/evidence-dependency-extension.json")["depends_on"].remove("harness.content-policy"))
-    print("Core v2 Evidence Dependency extension fixtures passed: positive=1 negative=17")
+    rejected("core-standard-input-retreat", lambda value: value["inputs"].pop(next(index for index, item in enumerate(value["inputs"]) if item["id"] == "harness.core-standard-artifacts")))
+    rejected("core-standard-output-retreat", lambda value: value["outputs"].remove(output(value, "artifacts/pattern-scenarios/results.json")))
+    rejected("core-standard-harness-unbound", lambda value: output(value, "migrations/scenario-class-refusal-v1.json")["depends_on"].remove("harness.core-standard-artifacts"))
+    rejected("core-standard-first-attempt-weakened", lambda value: next(item for item in value["runs"] if item["id"] == "run.core-standard-artifacts").update(attempts=2))
+    print("Core v2 Evidence Dependency extension fixtures passed: positive=1 negative=21")
 
 
 if __name__ == "__main__":

@@ -9,6 +9,7 @@ import json
 from pathlib import Path
 
 import evidence_dependency_graph as contract
+import generate_core_standard_artifacts as core_standard
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -42,6 +43,23 @@ INPUT_SPECS = {
     "harness.core-v2-scenario-plan": {
         "kind": "harness",
         "members": ["scripts/generate_core_v2_scenario_plan_gap.py", "scripts/test_core_v2_scenario_plan_gap.py"],
+    },
+    "source.core-standard-legacy-scenarios": {
+        "kind": "source",
+        "members": [
+            "integrations/reference-system/manifest.yaml",
+            "evidence/reference-system/results.json",
+            "evidence/scenarios/index.json",
+            "evidence/scenarios/runtime/index.yaml",
+        ],
+    },
+    "harness.core-standard-artifacts": {
+        "kind": "harness",
+        "members": [
+            "scripts/generate_core_standard_artifacts.py",
+            "scripts/validate_core_standard_artifacts.py",
+            "scripts/test_core_standard_artifacts.py",
+        ],
     },
     "harness.surface-inventory-readiness": {
         "kind": "harness",
@@ -81,6 +99,8 @@ CORE_V2_OUTPUT_PATHS = {
     "artifacts/core-v2/root-verification-matrix-closure.json",
     "artifacts/core-v2/evidence-dependency-extension.json",
 }
+CORE_STANDARD_OUTPUT_PATHS = {path.as_posix() for path in core_standard.output_paths()}
+CORE_V2_OUTPUT_PATHS |= CORE_STANDARD_OUTPUT_PATHS
 OUTPUT_PATHS = CORE_V2_OUTPUT_PATHS | AUTHORITY_OUTPUT_PATHS
 
 
@@ -118,6 +138,18 @@ def validate_extension(graph: dict) -> None:
         run = runs.get(output["run_id"])
         if run is None or run["attempts"] != 1 or run["result"] != "passed" or output["id"] not in run["output_ids"]:
             raise ValueError(f"Core v2 first-attempt run is invalid: {path}")
+    standard_run = runs.get("run.core-standard-artifacts")
+    if standard_run is None or standard_run["attempts"] != 1 or standard_run["result"] != "passed":
+        raise ValueError("Core standard artifact run binding is invalid")
+    for path in CORE_STANDARD_OUTPUT_PATHS:
+        output = outputs[path]
+        required = {"source.core-standard-legacy-scenarios", "harness.core-standard-artifacts"}
+        if not required <= set(output["depends_on"]):
+            raise ValueError(f"Core standard output dependency is invalid: {path}")
+        if output["run_id"] != standard_run["id"] or output["id"] not in standard_run["output_ids"]:
+            raise ValueError(f"Core standard output run binding is invalid: {path}")
+        if output["digest"] != contract.sha256_file(ROOT / path):
+            raise ValueError(f"Core standard output digest mismatch: {path}")
     authority_run = runs.get("run.authority-denominator")
     if authority_run is None or authority_run["attempts"] != 1 or authority_run["result"] != "passed":
         raise ValueError("Authority denominator first-attempt run is invalid")
@@ -169,6 +201,47 @@ def generate() -> None:
 
     outputs = graph["outputs"]
     output_by_path = {item["path"]: item["id"] for item in outputs}
+    standard_dependencies = ["source.core-standard-legacy-scenarios", "harness.core-standard-artifacts", "profile.local"]
+    standard_ids: dict[str, str] = {}
+    gap_paths = {
+        core_standard.gap_path(scenario, kind).as_posix()
+        for scenario in core_standard.CORE_SCENARIOS
+        for kind in ("trace", "screenshot")
+    }
+    for path in sorted(gap_paths):
+        standard_ids[path] = contract.add_output(outputs, path, "derived-evidence", standard_dependencies, "run.core-standard-artifacts")
+    manifest_path = core_standard.MANIFEST.as_posix()
+    standard_ids[manifest_path] = contract.add_output(outputs, manifest_path, "derived-evidence", standard_dependencies, "run.core-standard-artifacts")
+    reference_path = core_standard.REFERENCE_RESULTS.as_posix()
+    standard_ids[reference_path] = contract.add_output(
+        outputs, reference_path, "derived-evidence",
+        [standard_ids[manifest_path], *[standard_ids[path] for path in sorted(gap_paths)], *standard_dependencies],
+        "run.core-standard-artifacts",
+    )
+    pattern_path = core_standard.PATTERN_RESULTS.as_posix()
+    standard_ids[pattern_path] = contract.add_output(
+        outputs, pattern_path, "derived-evidence",
+        [output_by_path["evidence/scenarios/index.json"], output_by_path["evidence/scenarios/runtime/index.yaml"], *standard_dependencies],
+        "run.core-standard-artifacts",
+    )
+    migration_path = core_standard.MIGRATION.as_posix()
+    standard_ids[migration_path] = contract.add_output(
+        outputs, migration_path, "derived-evidence",
+        [output_by_path["evidence/scenarios/index.json"], *standard_dependencies],
+        "run.core-standard-artifacts",
+    )
+    baseline_path = core_standard.BASELINE.as_posix()
+    standard_ids[baseline_path] = contract.add_output(
+        outputs, baseline_path, "derived-evidence",
+        [standard_ids[migration_path], *standard_dependencies],
+        "run.core-standard-artifacts",
+    )
+    publish_path = core_standard.PUBLISH_MANIFEST.as_posix()
+    standard_ids[publish_path] = contract.add_output(
+        outputs, publish_path, "derived-evidence",
+        [*standard_ids.values(), *standard_dependencies],
+        "run.core-standard-artifacts",
+    )
     router_id = contract.add_output(
         outputs, "evals/definitive-skill-router.json", "skill-eval",
         [output_by_path["evals/argocd-atlas-router.definitive-skill-eval.json"], "harness.core-v2-skill-router", "source.project-policy", "profile.local"],
@@ -204,10 +277,11 @@ def generate() -> None:
     )
     report_id = contract.add_output(
         outputs, "artifacts/core-v2/evidence-dependency-extension.json", "derived-evidence",
-        [router_id, plan_id, readiness_id, root_inventory_id, root_matrix_id, *authority_ids, "source.repository-contract", "harness.content-policy", "harness.core-v2-dependency-extension"],
+        [router_id, plan_id, readiness_id, root_inventory_id, root_matrix_id, standard_ids[publish_path], *authority_ids, "source.repository-contract", "harness.content-policy", "harness.core-v2-dependency-extension"],
         "run.core-v2-dependency-extension",
     )
     new_runs = [
+        contract.run_document("run.core-standard-artifacts", "derived", "make core-standard-artifacts", graph["generated_at"], list(standard_ids.values())),
         contract.run_document("run.core-v2-skill-router", "derived", "python3 scripts/generate_core_v2_skill_router.py && python3 scripts/test_core_v2_skill_router.py && atlas audit . --gate skill-router", graph["generated_at"], [router_id]),
         contract.run_document("run.core-v2-scenario-plan-gap", "derived", "python3 scripts/generate_core_v2_scenario_plan_gap.py && python3 scripts/test_core_v2_scenario_plan_gap.py", graph["generated_at"], [plan_id]),
         contract.run_document("run.authority-denominator", "derived", "make authority-locators && make authority-validate", graph["generated_at"], authority_ids),
