@@ -36,6 +36,24 @@
       "digest": "sha256:ccf82475f0e33de01b6dee905b5f5611046b4bac00f62c8268b2a7f92c788737",
       "size_bytes": 18942037,
       "notes": "第三者本文を含まず、固定selectorのURL、digest、locator、byte offset、pending-human状態だけを保持する。"
+    },
+    {
+      "id": "core-v2-non-regression-baseline-090ea3a",
+      "name": "Core v2 non-regression baseline",
+      "kind": "generated-artifact",
+      "source_url": "https://github.com/akaitigo/reference-atlas-core/tree/072d7ca77981f51754e824d70c6d4ecd55ea67e5",
+      "version": "072d7ca77981f51754e824d70c6d4ecd55ea67e5 / 090ea3a",
+      "retrieved_at": "2026-08-30",
+      "license": "Apache-2.0",
+      "copyright_holder": "Nakayama Ryusei",
+      "redistribution": "allowed",
+      "modified": false,
+      "files": [
+        "baselines/main-090ea3a.core-v2.non-regression-baseline.json"
+      ],
+      "digest": "sha256:10462fde94181e3079a0da2d13cf30250448f0a9c9845fad32090d944f01c3e5",
+      "size_bytes": 17524898,
+      "notes": "Core正式mainのcapture contractでclean commit 090ea3aから生成した機械可読baseline。Runtime Evidenceの代替には使用しない。"
     }
   ]
 }
