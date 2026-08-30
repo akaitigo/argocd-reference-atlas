@@ -5,7 +5,8 @@
   "core_commit": "072d7ca77981f51754e824d70c6d4ecd55ea67e5",
   "inputs": {
     "evidence/scenarios/index.json": "sha256:925134b7591c25117a1ca964b509a621e893fd5bd6e03a86e3fe8c83d1fed325",
-    "evidence/scenarios/closure-plan.json": "sha256:68e5341160195a81206a889b87d6c8f6360e003e5eef57bd963a99e4921cb350"
+    "evidence/scenarios/closure-plan.json": "sha256:68e5341160195a81206a889b87d6c8f6360e003e5eef57bd963a99e4921cb350",
+    "artifacts/core-v2/root-contract-adapter-gap.json": "sha256:fd258cd4d515ccd775cc3b6ed0a6edf874b7178b5c1609195e13f6fe9866bb91"
   },
   "denominator": {
     "patterns": 100,
@@ -95,6 +96,18 @@
     "runtime_credit": 0,
     "completion_eligible": 0
   },
+  "root_contract_adapter": {
+    "path": "artifacts/core-v2/root-contract-adapter-gap.json",
+    "digest": "sha256:fd258cd4d515ccd775cc3b6ed0a6edf874b7178b5c1609195e13f6fe9866bb91",
+    "status": "incomplete-human-and-runtime-gaps",
+    "authority_pending_human": 63889,
+    "semantic_credit": 0,
+    "runtime_credit": 0,
+    "completion_eligible": 0,
+    "root_surface_inventory_emitted": false,
+    "root_verification_matrix_emitted": false,
+    "rejection_to_refusal_rows": 100
+  },
   "runtime_preflight": {
     "state": "partial-dedicated-local-kind-runtime-proof",
     "dedicated_local_kind_required": true,
@@ -124,7 +137,8 @@
   "human_independent_completed_actions": [
     "Core標準Artifactを専用stagingへ加法生成する。",
     "旧row IDから新row IDへの全件Mappingと構造非後退を検証する。",
-    "Runtime未実行rowをpattern-specific-gapのまま保持する。"
+    "Runtime未実行rowをpattern-specific-gapのまま保持する。",
+    "Core標準Artifactとroot inventory／matrix adapterを正本Gapへ束縛する。"
   ],
   "human_independent_next_actions": [
     "専用local Kindがない間は外部Contextへ接続せずRuntime Gapを保持する。",

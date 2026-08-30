@@ -38,6 +38,10 @@ def main() -> None:
     rejected("root-inventory-harness-unbound", lambda value: output(value, "artifacts/core-v2/root-surface-inventory-closure.json")["depends_on"].remove("harness.root-surface-inventory"))
     rejected("root-matrix-output-retreat", lambda value: value["outputs"].remove(output(value, "artifacts/core-v2/root-verification-matrix-closure.json")))
     rejected("root-matrix-harness-unbound", lambda value: output(value, "artifacts/core-v2/root-verification-matrix-closure.json")["depends_on"].remove("harness.root-verification-matrix"))
+    rejected("root-contract-gap-output-retreat", lambda value: value["outputs"].remove(output(value, "artifacts/core-v2/root-contract-adapter-gap.json")))
+    rejected("root-contract-gap-harness-unbound", lambda value: output(value, "artifacts/core-v2/root-contract-adapter-gap.json")["depends_on"].remove("harness.core-v2-root-contract-gap"))
+    rejected("root-contract-gap-matrix-unbound", lambda value: output(value, "artifacts/core-v2/root-contract-adapter-gap.json")["depends_on"].remove(output(value, "artifacts/core-v2/root-verification-matrix-closure.json")["id"]))
+    rejected("scenario-root-gap-unbound", lambda value: output(value, "artifacts/core-v2/scenario-plan-gap.json")["depends_on"].remove(output(value, "artifacts/core-v2/root-contract-adapter-gap.json")["id"]))
     rejected("first-attempt-weakened", lambda value: next(item for item in value["runs"] if item["id"] == "run.core-v2-skill-router").update(attempts=2))
     rejected("authority-input-retreat", lambda value: value["inputs"].pop(next(index for index, item in enumerate(value["inputs"]) if item["id"] == "harness.authority-denominator")))
     rejected("authority-output-retreat", lambda value: value["outputs"].remove(output(value, "authority/extraction.snapshot.json")))
@@ -49,7 +53,7 @@ def main() -> None:
     rejected("core-standard-output-retreat", lambda value: value["outputs"].remove(output(value, "artifacts/pattern-scenarios/results.json")))
     rejected("core-standard-harness-unbound", lambda value: output(value, "migrations/scenario-class-refusal-v1.json")["depends_on"].remove("harness.core-standard-artifacts"))
     rejected("core-standard-first-attempt-weakened", lambda value: next(item for item in value["runs"] if item["id"] == "run.core-standard-artifacts").update(attempts=2))
-    print("Core v2 Evidence Dependency extension fixtures passed: positive=1 negative=21")
+    print("Core v2 Evidence Dependency extension fixtures passed: positive=1 negative=25")
 
 
 if __name__ == "__main__":

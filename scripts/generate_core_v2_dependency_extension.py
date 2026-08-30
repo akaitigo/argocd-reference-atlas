@@ -44,6 +44,10 @@ INPUT_SPECS = {
         "kind": "harness",
         "members": ["scripts/generate_core_v2_scenario_plan_gap.py", "scripts/test_core_v2_scenario_plan_gap.py"],
     },
+    "harness.core-v2-root-contract-gap": {
+        "kind": "harness",
+        "members": ["scripts/generate_core_v2_root_contract_gap.py", "scripts/test_core_v2_root_contract_gap.py"],
+    },
     "source.core-standard-legacy-scenarios": {
         "kind": "source",
         "members": [
@@ -97,6 +101,7 @@ CORE_V2_OUTPUT_PATHS = {
     "artifacts/core-v2/surface-inventory-readiness.json",
     "artifacts/core-v2/root-surface-inventory-closure.json",
     "artifacts/core-v2/root-verification-matrix-closure.json",
+    "artifacts/core-v2/root-contract-adapter-gap.json",
     "artifacts/core-v2/evidence-dependency-extension.json",
 }
 CORE_STANDARD_OUTPUT_PATHS = {path.as_posix() for path in core_standard.output_paths()}
@@ -129,6 +134,7 @@ def validate_extension(graph: dict) -> None:
         "artifacts/core-v2/surface-inventory-readiness.json": "harness.surface-inventory-readiness",
         "artifacts/core-v2/root-surface-inventory-closure.json": "harness.root-surface-inventory",
         "artifacts/core-v2/root-verification-matrix-closure.json": "harness.root-verification-matrix",
+        "artifacts/core-v2/root-contract-adapter-gap.json": "harness.core-v2-root-contract-gap",
         "artifacts/core-v2/evidence-dependency-extension.json": "harness.core-v2-dependency-extension",
     }
     for path, dependency in expected_dependencies.items():
@@ -138,6 +144,23 @@ def validate_extension(graph: dict) -> None:
         run = runs.get(output["run_id"])
         if run is None or run["attempts"] != 1 or run["result"] != "passed" or output["id"] not in run["output_ids"]:
             raise ValueError(f"Core v2 first-attempt run is invalid: {path}")
+    root_gap = outputs["artifacts/core-v2/root-contract-adapter-gap.json"]
+    root_gap_required_paths = {
+        "artifacts/core-v2/root-surface-inventory-closure.json",
+        "artifacts/core-v2/root-verification-matrix-closure.json",
+        "integrations/reference-system/manifest.json",
+        "artifacts/reference-system/results.json",
+        "artifacts/pattern-scenarios/results.json",
+        "migrations/scenario-class-refusal-v1.json",
+        "baselines/scenario-row-id-migration-v1.json",
+        "evidence/scenarios/index.json",
+    }
+    root_gap_required = {outputs[path]["id"] for path in root_gap_required_paths} | {"harness.core-v2-root-contract-gap"}
+    if not root_gap_required <= set(root_gap["depends_on"]):
+        raise ValueError("root contract gap input binding is incomplete")
+    scenario_plan = outputs["artifacts/core-v2/scenario-plan-gap.json"]
+    if root_gap["id"] not in scenario_plan["depends_on"]:
+        raise ValueError("Scenario Plan gap is not bound to the root contract gap")
     standard_run = runs.get("run.core-standard-artifacts")
     if standard_run is None or standard_run["attempts"] != 1 or standard_run["result"] != "passed":
         raise ValueError("Core standard artifact run binding is invalid")
@@ -247,11 +270,6 @@ def generate() -> None:
         [output_by_path["evals/argocd-atlas-router.definitive-skill-eval.json"], "harness.core-v2-skill-router", "source.project-policy", "profile.local"],
         "run.core-v2-skill-router",
     )
-    plan_id = contract.add_output(
-        outputs, "artifacts/core-v2/scenario-plan-gap.json", "closure-plan",
-        [output_by_path["evidence/scenarios/index.json"], output_by_path["evidence/scenarios/closure-plan.json"], "harness.core-v2-scenario-plan"],
-        "run.core-v2-scenario-plan-gap",
-    )
     authority_ids = [
         contract.add_output(
             outputs, path, "derived-evidence",
@@ -275,14 +293,36 @@ def generate() -> None:
         [root_inventory_id, output_by_path["evidence/scenarios/index.json"], "source.authority-lock-inventory", "harness.root-verification-matrix"],
         "run.root-verification-matrix-closure",
     )
+    root_contract_gap_id = contract.add_output(
+        outputs, "artifacts/core-v2/root-contract-adapter-gap.json", "closure-plan",
+        [
+            root_inventory_id, root_matrix_id,
+            standard_ids[manifest_path], standard_ids[reference_path], standard_ids[pattern_path],
+            standard_ids[migration_path], standard_ids[baseline_path],
+            output_by_path["evidence/scenarios/index.json"],
+            "harness.core-v2-root-contract-gap",
+        ],
+        "run.core-v2-root-contract-gap",
+    )
+    plan_id = contract.add_output(
+        outputs, "artifacts/core-v2/scenario-plan-gap.json", "closure-plan",
+        [
+            output_by_path["evidence/scenarios/index.json"],
+            output_by_path["evidence/scenarios/closure-plan.json"],
+            root_contract_gap_id,
+            "harness.core-v2-scenario-plan",
+        ],
+        "run.core-v2-scenario-plan-gap",
+    )
     report_id = contract.add_output(
         outputs, "artifacts/core-v2/evidence-dependency-extension.json", "derived-evidence",
-        [router_id, plan_id, readiness_id, root_inventory_id, root_matrix_id, standard_ids[publish_path], *authority_ids, "source.repository-contract", "harness.content-policy", "harness.core-v2-dependency-extension"],
+        [router_id, plan_id, readiness_id, root_inventory_id, root_matrix_id, root_contract_gap_id, standard_ids[publish_path], *authority_ids, "source.repository-contract", "harness.content-policy", "harness.core-v2-dependency-extension"],
         "run.core-v2-dependency-extension",
     )
     new_runs = [
         contract.run_document("run.core-standard-artifacts", "derived", "make core-standard-artifacts", graph["generated_at"], list(standard_ids.values())),
         contract.run_document("run.core-v2-skill-router", "derived", "python3 scripts/generate_core_v2_skill_router.py && python3 scripts/test_core_v2_skill_router.py && atlas audit . --gate skill-router", graph["generated_at"], [router_id]),
+        contract.run_document("run.core-v2-root-contract-gap", "derived", "make root-contract-adapter-gap", graph["generated_at"], [root_contract_gap_id]),
         contract.run_document("run.core-v2-scenario-plan-gap", "derived", "python3 scripts/generate_core_v2_scenario_plan_gap.py && python3 scripts/test_core_v2_scenario_plan_gap.py", graph["generated_at"], [plan_id]),
         contract.run_document("run.authority-denominator", "derived", "make authority-locators && make authority-validate", graph["generated_at"], authority_ids),
         contract.run_document("run.surface-inventory-readiness", "derived", "python3 scripts/generate_surface_inventory_readiness.py && python3 scripts/test_surface_inventory_readiness.py", graph["generated_at"], [readiness_id]),

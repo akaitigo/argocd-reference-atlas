@@ -22,6 +22,7 @@ def validate(document: dict) -> None:
     gates = document["core_gate_status"]
     preflight = document["runtime_preflight"]
     standard = document["core_standard_artifacts"]
+    root_adapter = document["root_contract_adapter"]
     if document["status"] != "incomplete-no-runtime-substitution":
         raise ValueError("Scenario gap was promoted")
     if denominator["rows"] != 1000 or denominator["remaining_rows"] != 987 or denominator["scenario_gaps_open"] != 1000:
@@ -44,6 +45,19 @@ def validate(document: dict) -> None:
         raise ValueError("Core standard gap artifact status changed")
     if standard["reference_results"]["passed"] != 0 or standard["pattern_results"]["records"] != 0 or standard["runtime_credit"] != 0 or standard["completion_eligible"] != 0:
         raise ValueError("Core standard gap artifact gained runtime/completion credit")
+    if root_adapter != {
+        "path": "artifacts/core-v2/root-contract-adapter-gap.json",
+        "digest": root_adapter["digest"],
+        "status": "incomplete-human-and-runtime-gaps",
+        "authority_pending_human": 63889,
+        "semantic_credit": 0,
+        "runtime_credit": 0,
+        "completion_eligible": 0,
+        "root_surface_inventory_emitted": False,
+        "root_verification_matrix_emitted": False,
+        "rejection_to_refusal_rows": 100,
+    } or not root_adapter["digest"]:
+        raise ValueError("root contract adapter gapが縮小または昇格しています")
     if preflight != {
         "state": "partial-dedicated-local-kind-runtime-proof",
         "dedicated_local_kind_required": True,
@@ -77,7 +91,10 @@ def main() -> None:
     rejected("fixture-runtime-credit", lambda value: value["runtime_preflight"].update(fixture_runtime_credit=True))
     rejected("core-standard-runtime-credit", lambda value: value["core_standard_artifacts"].update(runtime_credit=1))
     rejected("core-standard-false-pass", lambda value: value["core_standard_artifacts"]["pattern_results"].update(status="passed"))
-    print("Core v2 Scenario Plan gap fixtures passed: positive=1 negative=11")
+    rejected("root-adapter-semantic-credit", lambda value: value["root_contract_adapter"].update(semantic_credit=1))
+    rejected("root-adapter-runtime-credit", lambda value: value["root_contract_adapter"].update(runtime_credit=1))
+    rejected("root-adapter-early-emit", lambda value: value["root_contract_adapter"].update(root_surface_inventory_emitted=True))
+    print("Core v2 Scenario Plan gap fixtures passed: positive=1 negative=14")
 
 
 if __name__ == "__main__":

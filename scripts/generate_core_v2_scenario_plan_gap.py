@@ -20,6 +20,7 @@ CORE_PATTERN_RESULTS = ROOT / "artifacts" / "pattern-scenarios" / "results.json"
 SCENARIO_MIGRATION = ROOT / "migrations" / "scenario-class-refusal-v1.json"
 SCENARIO_MIGRATION_BASELINE = ROOT / "baselines" / "scenario-row-id-migration-v1.json"
 CORE_STANDARD_PUBLISH = ROOT / "artifacts" / "core-v2" / "core-standard-artifacts-publish.json"
+ROOT_CONTRACT_ADAPTER = ROOT / "artifacts" / "core-v2" / "root-contract-adapter-gap.json"
 CORE_COMMIT = "072d7ca77981f51754e824d70c6d4ecd55ea67e5"
 CORE_SCENARIOS = ["normal", "boundary", "refusal", "failure", "recovery", "migration", "operations", "security", "performance", "compatibility"]
 
@@ -44,6 +45,7 @@ def build() -> dict:
     reference_results = json.loads(CORE_REFERENCE_RESULTS.read_text()) if CORE_REFERENCE_RESULTS.is_file() else {}
     pattern_results = json.loads(CORE_PATTERN_RESULTS.read_text()) if CORE_PATTERN_RESULTS.is_file() else {}
     migration = json.loads(SCENARIO_MIGRATION.read_text()) if SCENARIO_MIGRATION.is_file() else {}
+    root_adapter = json.loads(ROOT_CONTRACT_ADAPTER.read_text()) if ROOT_CONTRACT_ADAPTER.is_file() else {}
     return {
         "schema_version": 1,
         "id": "argocd-core-v2-scenario-plan-gap-v1",
@@ -52,6 +54,7 @@ def build() -> dict:
         "inputs": {
             "evidence/scenarios/index.json": digest(INDEX),
             "evidence/scenarios/closure-plan.json": digest(PLAN),
+            "artifacts/core-v2/root-contract-adapter-gap.json": digest(ROOT_CONTRACT_ADAPTER),
         },
         "denominator": {
             "patterns": summary["behaviors"],
@@ -103,6 +106,18 @@ def build() -> dict:
             "runtime_credit": 0,
             "completion_eligible": 0,
         },
+        "root_contract_adapter": {
+            "path": ROOT_CONTRACT_ADAPTER.relative_to(ROOT).as_posix(),
+            "digest": digest(ROOT_CONTRACT_ADAPTER),
+            "status": root_adapter.get("status"),
+            "authority_pending_human": root_adapter.get("authority", {}).get("pending_human"),
+            "semantic_credit": root_adapter.get("credit", {}).get("semantic"),
+            "runtime_credit": root_adapter.get("credit", {}).get("runtime"),
+            "completion_eligible": root_adapter.get("credit", {}).get("completion"),
+            "root_surface_inventory_emitted": root_adapter.get("credit", {}).get("root_surface_inventory_emitted"),
+            "root_verification_matrix_emitted": root_adapter.get("credit", {}).get("root_verification_matrix_emitted"),
+            "rejection_to_refusal_rows": root_adapter.get("scenario_migration", {}).get("counts", {}).get("renamed_rejection_to_refusal"),
+        },
         "runtime_preflight": {
             "state": "partial-dedicated-local-kind-runtime-proof",
             "dedicated_local_kind_required": True,
@@ -129,6 +144,7 @@ def build() -> dict:
             "Core標準Artifactを専用stagingへ加法生成する。",
             "旧row IDから新row IDへの全件Mappingと構造非後退を検証する。",
             "Runtime未実行rowをpattern-specific-gapのまま保持する。",
+            "Core標準Artifactとroot inventory／matrix adapterを正本Gapへ束縛する。",
         ],
         "human_independent_next_actions": [
             "専用local Kindがない間は外部Contextへ接続せずRuntime Gapを保持する。",

@@ -1,0 +1,231 @@
+{
+  "schema_version": 1,
+  "id": "argocd-core-v2-root-contract-adapter-gap-v1",
+  "status": "incomplete-human-and-runtime-gaps",
+  "inputs": {
+    "artifacts/core-v2/root-surface-inventory-closure.json": "sha256:dc79604c45739275eef7abc29c12a14444afdbe85e35ec835dfeeda358ff5613",
+    "artifacts/core-v2/root-verification-matrix-closure.json": "sha256:2fe2c250d37454a57045e1caefa52232039e41fe1fc8895199dc3cb38796cc6c",
+    "integrations/reference-system/manifest.json": "sha256:401d26221be4557ca82a7cfdd9d604ede4ff932283b5d546d3650d662e7f19d2",
+    "artifacts/reference-system/results.json": "sha256:8e6e6f0a61b4458703e4b35bb585e820021ec6b49b807abe5b405734eb044705",
+    "artifacts/pattern-scenarios/results.json": "sha256:202032bc06f4f4b2c99a4a67063a295b0ff83614f01b36716262662cdff644f4",
+    "migrations/scenario-class-refusal-v1.json": "sha256:ed65ebe8edb0165c00c30e3f2fc8e3d1c70da478dccca5ee42f4976d9d57ef4c",
+    "baselines/scenario-row-id-migration-v1.json": "sha256:eb6da094c8811d72dd74d4ed766b42dd47bbbcf5b7a07472aa80a8f98b310afd",
+    "evidence/scenarios/index.json": "sha256:925134b7591c25117a1ca964b509a621e893fd5bd6e03a86e3fe8c83d1fed325"
+  },
+  "policy": {
+    "adapter_is_runtime_evidence": false,
+    "adapter_is_human_review": false,
+    "fixture_or_static_runtime_substitution_forbidden": true,
+    "emit_root_contract_only_after_all_blockers_closed": true,
+    "legacy_row_replacement_before_migration_forbidden": true
+  },
+  "authority": {
+    "raw_anchors": 63889,
+    "pending_human": 63889,
+    "human_decisions": 0,
+    "reviewed_atomic_behaviors": 0,
+    "semantic_credit": 0
+  },
+  "scenario_denominator": {
+    "candidate_behaviors": 100,
+    "candidate_rows": 1000,
+    "candidate_rows_open": 1000,
+    "dedicated_runtime_rows": 13,
+    "remaining_runtime_rows": 987,
+    "authority_atomic_bindings": 0,
+    "completion_eligible_rows": 0
+  },
+  "core_standard_artifacts": {
+    "manifest": {
+      "path": "integrations/reference-system/manifest.json",
+      "status": "bounded-integration-proof",
+      "runtime": "gap-only-no-runtime-credit"
+    },
+    "reference_results": {
+      "path": "artifacts/reference-system/results.json",
+      "status": "failed",
+      "counts": {
+        "total": 10,
+        "passed": 0,
+        "failed": 0,
+        "flaky": 0,
+        "skipped": 10
+      }
+    },
+    "pattern_results": {
+      "path": "artifacts/pattern-scenarios/results.json",
+      "status": "failed",
+      "counts": {
+        "rows": 0,
+        "variants": 0,
+        "total": 0,
+        "passed": 0,
+        "failed": 0,
+        "flaky": 0,
+        "skipped": 0
+      }
+    },
+    "runtime_credit": 0,
+    "completion_eligible": 0
+  },
+  "root_adapters": {
+    "surface_inventory": {
+      "path": "artifacts/core-v2/root-surface-inventory-closure.json",
+      "status": "blocked-human-authority-and-proof-closure",
+      "root_path": "surface.inventory.yaml",
+      "present": false,
+      "emission_eligible": false,
+      "blockers": [
+        "authority-text-not-exhaustive",
+        "authority-semantics-not-exhaustive",
+        "authority-human-decisions-not-closed",
+        "reviewed-surface-or-atomic-behavior-zero",
+        "core-v2-eligible-surfaces-zero",
+        "final-authority-artifacts-zero",
+        "root-inventory-bindings-zero",
+        "completion-eligible-scenario-rows-zero"
+      ]
+    },
+    "verification_matrix": {
+      "path": "artifacts/core-v2/root-verification-matrix-closure.json",
+      "status": "blocked-human-authority-and-proof-closure",
+      "root_path": "verification.matrix.yaml",
+      "present": false,
+      "emission_eligible": false,
+      "reviewed_denominator_status": "pending-human-authority-review",
+      "scenario_classes": [
+        {
+          "legacy": "normal",
+          "core": "normal",
+          "status": "gap",
+          "dedicated_runtime_rows": 1,
+          "completion_eligible_rows": 0
+        },
+        {
+          "legacy": "boundary",
+          "core": "boundary",
+          "status": "gap",
+          "dedicated_runtime_rows": 0,
+          "completion_eligible_rows": 0
+        },
+        {
+          "legacy": "rejection",
+          "core": "refusal",
+          "status": "gap",
+          "dedicated_runtime_rows": 0,
+          "completion_eligible_rows": 0
+        },
+        {
+          "legacy": "failure",
+          "core": "failure",
+          "status": "gap",
+          "dedicated_runtime_rows": 0,
+          "completion_eligible_rows": 0
+        },
+        {
+          "legacy": "recovery",
+          "core": "recovery",
+          "status": "gap",
+          "dedicated_runtime_rows": 0,
+          "completion_eligible_rows": 0
+        },
+        {
+          "legacy": "migration",
+          "core": "migration",
+          "status": "gap",
+          "dedicated_runtime_rows": 0,
+          "completion_eligible_rows": 0
+        },
+        {
+          "legacy": "operations",
+          "core": "operations",
+          "status": "gap",
+          "dedicated_runtime_rows": 0,
+          "completion_eligible_rows": 0
+        },
+        {
+          "legacy": "security",
+          "core": "security",
+          "status": "gap",
+          "dedicated_runtime_rows": 12,
+          "completion_eligible_rows": 0
+        },
+        {
+          "legacy": "performance",
+          "core": "performance",
+          "status": "gap",
+          "dedicated_runtime_rows": 0,
+          "completion_eligible_rows": 0
+        },
+        {
+          "legacy": "compatibility",
+          "core": "compatibility",
+          "status": "gap",
+          "dedicated_runtime_rows": 0,
+          "completion_eligible_rows": 0
+        }
+      ],
+      "blockers": [
+        "root-surface-inventory-not-emitted",
+        "reviewed-atomic-behaviors-zero",
+        "root-inventory-bindings-zero",
+        "authority-atomic-bindings-zero",
+        "completion-eligible-scenario-rows-zero",
+        "reviewed-matrix-cell-denominator-zero",
+        "authority-human-decisions-not-closed"
+      ]
+    }
+  },
+  "scenario_migration": {
+    "path": "migrations/scenario-class-refusal-v1.json",
+    "baseline_path": "baselines/scenario-row-id-migration-v1.json",
+    "mapping": {
+      "normal": "normal",
+      "boundary": "boundary",
+      "rejection": "refusal",
+      "failure": "failure",
+      "recovery": "recovery",
+      "migration": "migration",
+      "operations": "operations",
+      "security": "security",
+      "performance": "performance",
+      "compatibility": "compatibility"
+    },
+    "counts": {
+      "old_rows": 1000,
+      "new_rows": 1000,
+      "identity": 900,
+      "renamed_rejection_to_refusal": 100,
+      "runtime_credit": 0,
+      "completion_eligible": 0
+    },
+    "old_set_digest": "sha256:3feb3d263f6aa5383b6529ff39fe8cf643e0b98e816daaba965018a1a9373bc5",
+    "new_set_digest": "sha256:7983c5e95c679d3461819528a9c2ebe347daccbaed34aeede96f4a2920aebfb1"
+  },
+  "credit": {
+    "runtime": 0,
+    "semantic": 0,
+    "completion": 0,
+    "root_surface_inventory_emitted": false,
+    "root_verification_matrix_emitted": false
+  },
+  "blockers": [
+    "core-reference-system-runtime-not-run",
+    "pattern-scenario-runtime-incomplete",
+    "root-surface:authority-text-not-exhaustive",
+    "root-surface:authority-semantics-not-exhaustive",
+    "root-surface:authority-human-decisions-not-closed",
+    "root-surface:reviewed-surface-or-atomic-behavior-zero",
+    "root-surface:core-v2-eligible-surfaces-zero",
+    "root-surface:final-authority-artifacts-zero",
+    "root-surface:root-inventory-bindings-zero",
+    "root-surface:completion-eligible-scenario-rows-zero",
+    "root-matrix:root-surface-inventory-not-emitted",
+    "root-matrix:reviewed-atomic-behaviors-zero",
+    "root-matrix:root-inventory-bindings-zero",
+    "root-matrix:authority-atomic-bindings-zero",
+    "root-matrix:completion-eligible-scenario-rows-zero",
+    "root-matrix:reviewed-matrix-cell-denominator-zero",
+    "root-matrix:authority-human-decisions-not-closed"
+  ]
+}
