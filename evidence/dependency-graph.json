@@ -194,8 +194,43 @@
         "evals/definitive-forward-cases.json",
         "evals/forward-cases.json"
       ],
-      "baseline_digest": "sha256:dcc9a010858ac08841ad2edb732d779b3195a77ce901b83f5fbda2540ac85d6a",
-      "current_digest": "sha256:dcc9a010858ac08841ad2edb732d779b3195a77ce901b83f5fbda2540ac85d6a",
+      "baseline_digest": "sha256:f3bbf33bd6b6c66c5eefef08edc8a9f34584ed59b8c34c0b21ca92efca5410ea",
+      "current_digest": "sha256:f3bbf33bd6b6c66c5eefef08edc8a9f34584ed59b8c34c0b21ca92efca5410ea",
+      "observed_at": "2026-08-28T15:48:00Z"
+    },
+    {
+      "id": "source.repository-contract",
+      "kind": "source",
+      "members": [
+        "repo.yaml"
+      ],
+      "baseline_digest": "sha256:4961ab109a47a4f728b80d9bbebea63d47d4e897fc1789538de6a7b3ffa54e76",
+      "current_digest": "sha256:4961ab109a47a4f728b80d9bbebea63d47d4e897fc1789538de6a7b3ffa54e76",
+      "observed_at": "2026-08-28T15:48:00Z"
+    },
+    {
+      "id": "source.authority-lock-inventory",
+      "kind": "source",
+      "members": [
+        "sources.lock.yaml",
+        "coverage.yaml",
+        "definitive/surface-inventory.yaml",
+        "atlas/claims/index.yaml"
+      ],
+      "baseline_digest": "sha256:5f9caf48124789f715da24b8bfd23ccb3233ae6b26772cc5c198ac034909d523",
+      "current_digest": "sha256:5f9caf48124789f715da24b8bfd23ccb3233ae6b26772cc5c198ac034909d523",
+      "observed_at": "2026-08-28T15:48:00Z"
+    },
+    {
+      "id": "harness.authority-denominator",
+      "kind": "harness",
+      "members": [
+        "scripts/generate_authority_locators.py",
+        "scripts/validate_authority_locators.py",
+        "scripts/test_authority_locator_denominator.py"
+      ],
+      "baseline_digest": "sha256:c02f5138b5aede7491d91f1d2c6f1bd1172fb1ae279f384bd83bb4e8b1560b8e",
+      "current_digest": "sha256:c02f5138b5aede7491d91f1d2c6f1bd1172fb1ae279f384bd83bb4e8b1560b8e",
       "observed_at": "2026-08-28T15:48:00Z"
     },
     {
@@ -227,8 +262,8 @@
         "scripts/generate_core_v2_dependency_extension.py",
         "scripts/test_core_v2_evidence_dependency_extensions.py"
       ],
-      "baseline_digest": "sha256:f80b3c52f87aa83f681c885a6373249ef96a5458e7c4fe6c197a3ee11619d1f5",
-      "current_digest": "sha256:f80b3c52f87aa83f681c885a6373249ef96a5458e7c4fe6c197a3ee11619d1f5",
+      "baseline_digest": "sha256:aa6f2fbef53430d05131c0946877bc651c79d7a50ed070832bbfd5c10f03ca9f",
+      "current_digest": "sha256:aa6f2fbef53430d05131c0946877bc651c79d7a50ed070832bbfd5c10f03ca9f",
       "observed_at": "2026-08-28T15:48:00Z"
     }
   ],
@@ -250,11 +285,39 @@
       "id": "output.artifacts.core-v2.evidence-dependency-extension.json",
       "kind": "derived-evidence",
       "path": "artifacts/core-v2/evidence-dependency-extension.json",
-      "digest": "sha256:81767fc288ad5a85b5ce697182369d18f12fe44a39cf9d66dfedf08fc46c6f49",
+      "digest": "sha256:8efb76131f37266c8509a7140ef35e52d0a5d241663bee2453b963f0af1f6c96",
       "depends_on": [
         "harness.core-v2-dependency-extension",
         "output.artifacts.core-v2.scenario-plan-gap.json",
-        "output.evals.definitive-skill-router.json"
+        "output.authority.extraction.snapshot.json",
+        "output.authority.surfaces-draft.argocd-application-crd.json",
+        "output.authority.surfaces-draft.argocd-application-specification.json",
+        "output.authority.surfaces-draft.argocd-applicationset-crd.json",
+        "output.authority.surfaces-draft.argocd-applicationset-introduction.json",
+        "output.authority.surfaces-draft.argocd-applicationset-specification.json",
+        "output.authority.surfaces-draft.argocd-appproject-crd.json",
+        "output.authority.surfaces-draft.argocd-architecture.json",
+        "output.authority.surfaces-draft.argocd-automated-sync.json",
+        "output.authority.surfaces-draft.argocd-cluster-management.json",
+        "output.authority.surfaces-draft.argocd-diffing.json",
+        "output.authority.surfaces-draft.argocd-disaster-recovery.json",
+        "output.authority.surfaces-draft.argocd-health.json",
+        "output.authority.surfaces-draft.argocd-high-availability.json",
+        "output.authority.surfaces-draft.argocd-install-manifest.json",
+        "output.authority.surfaces-draft.argocd-metrics.json",
+        "output.authority.surfaces-draft.argocd-private-repositories.json",
+        "output.authority.surfaces-draft.argocd-rbac.json",
+        "output.authority.surfaces-draft.argocd-reconcile-optimization.json",
+        "output.authority.surfaces-draft.argocd-resource-tracking.json",
+        "output.authority.surfaces-draft.argocd-secret-management.json",
+        "output.authority.surfaces-draft.argocd-source-tree.json",
+        "output.authority.surfaces-draft.argocd-sync-options.json",
+        "output.authority.surfaces-draft.argocd-sync-waves.json",
+        "output.authority.surfaces-draft.argocd-upgrade-3-4-to-3-5.json",
+        "output.authority.surfaces-draft.argocd-user-management.json",
+        "output.authority.surfaces-draft.argocd-version.json",
+        "output.evals.definitive-skill-router.json",
+        "source.repository-contract"
       ],
       "status": "current",
       "run_id": "run.core-v2-dependency-extension"
@@ -271,6 +334,330 @@
       ],
       "status": "current",
       "run_id": "run.core-v2-scenario-plan-gap"
+    },
+    {
+      "id": "output.authority.extraction.snapshot.json",
+      "kind": "derived-evidence",
+      "path": "authority/extraction.snapshot.json",
+      "digest": "sha256:a2d97d0482539ca30946ea49b13b3c700f1afb4311cb6c3232c2473be96eb4e0",
+      "depends_on": [
+        "harness.authority-denominator",
+        "source.authority-lock-inventory"
+      ],
+      "status": "current",
+      "run_id": "run.authority-denominator"
+    },
+    {
+      "id": "output.authority.surfaces-draft.argocd-application-crd.json",
+      "kind": "derived-evidence",
+      "path": "authority/surfaces-draft/argocd-application-crd.json",
+      "digest": "sha256:8d4206f7231d9984ad1a8851af7b20e83727269563b0dbce6e1defb6dc4d37c2",
+      "depends_on": [
+        "harness.authority-denominator",
+        "source.authority-lock-inventory"
+      ],
+      "status": "current",
+      "run_id": "run.authority-denominator"
+    },
+    {
+      "id": "output.authority.surfaces-draft.argocd-application-specification.json",
+      "kind": "derived-evidence",
+      "path": "authority/surfaces-draft/argocd-application-specification.json",
+      "digest": "sha256:df732a277cdf89e208b445d35e300f5ae4d9f73062b52ec468c5d5f25db53d5b",
+      "depends_on": [
+        "harness.authority-denominator",
+        "source.authority-lock-inventory"
+      ],
+      "status": "current",
+      "run_id": "run.authority-denominator"
+    },
+    {
+      "id": "output.authority.surfaces-draft.argocd-applicationset-crd.json",
+      "kind": "derived-evidence",
+      "path": "authority/surfaces-draft/argocd-applicationset-crd.json",
+      "digest": "sha256:f38e54703e63b075c731c7fcfbc27375a7586af90edd46f5515ff26a2ec38616",
+      "depends_on": [
+        "harness.authority-denominator",
+        "source.authority-lock-inventory"
+      ],
+      "status": "current",
+      "run_id": "run.authority-denominator"
+    },
+    {
+      "id": "output.authority.surfaces-draft.argocd-applicationset-introduction.json",
+      "kind": "derived-evidence",
+      "path": "authority/surfaces-draft/argocd-applicationset-introduction.json",
+      "digest": "sha256:5d0390072217d6196b02ed85106af4ff975a0419052f2eae4df7f08c96b4bf0a",
+      "depends_on": [
+        "harness.authority-denominator",
+        "source.authority-lock-inventory"
+      ],
+      "status": "current",
+      "run_id": "run.authority-denominator"
+    },
+    {
+      "id": "output.authority.surfaces-draft.argocd-applicationset-specification.json",
+      "kind": "derived-evidence",
+      "path": "authority/surfaces-draft/argocd-applicationset-specification.json",
+      "digest": "sha256:9f4cd79b19ffb416a458a93490dbcdcf2019df8907e60aeafa0b39419f4ef09f",
+      "depends_on": [
+        "harness.authority-denominator",
+        "source.authority-lock-inventory"
+      ],
+      "status": "current",
+      "run_id": "run.authority-denominator"
+    },
+    {
+      "id": "output.authority.surfaces-draft.argocd-appproject-crd.json",
+      "kind": "derived-evidence",
+      "path": "authority/surfaces-draft/argocd-appproject-crd.json",
+      "digest": "sha256:27242b3b1db5db51e729fc7b432bb05c65f43d952b26f8f4c30ab0d0024d481f",
+      "depends_on": [
+        "harness.authority-denominator",
+        "source.authority-lock-inventory"
+      ],
+      "status": "current",
+      "run_id": "run.authority-denominator"
+    },
+    {
+      "id": "output.authority.surfaces-draft.argocd-architecture.json",
+      "kind": "derived-evidence",
+      "path": "authority/surfaces-draft/argocd-architecture.json",
+      "digest": "sha256:01dd52a517c03f8bbe17c6d1dab9f2e4492a33ca230244e677866886b07152eb",
+      "depends_on": [
+        "harness.authority-denominator",
+        "source.authority-lock-inventory"
+      ],
+      "status": "current",
+      "run_id": "run.authority-denominator"
+    },
+    {
+      "id": "output.authority.surfaces-draft.argocd-automated-sync.json",
+      "kind": "derived-evidence",
+      "path": "authority/surfaces-draft/argocd-automated-sync.json",
+      "digest": "sha256:eec95491a2288e72fd8d83c11f906c26ef6a3d604ffc16d6e158db7ad70bf0a5",
+      "depends_on": [
+        "harness.authority-denominator",
+        "source.authority-lock-inventory"
+      ],
+      "status": "current",
+      "run_id": "run.authority-denominator"
+    },
+    {
+      "id": "output.authority.surfaces-draft.argocd-cluster-management.json",
+      "kind": "derived-evidence",
+      "path": "authority/surfaces-draft/argocd-cluster-management.json",
+      "digest": "sha256:54058a6d977e50de571cfb6931fdfe2ad1b609e14e1a9acd6e951d0cf5b201e1",
+      "depends_on": [
+        "harness.authority-denominator",
+        "source.authority-lock-inventory"
+      ],
+      "status": "current",
+      "run_id": "run.authority-denominator"
+    },
+    {
+      "id": "output.authority.surfaces-draft.argocd-diffing.json",
+      "kind": "derived-evidence",
+      "path": "authority/surfaces-draft/argocd-diffing.json",
+      "digest": "sha256:06ba8b46514cb91eb612d6c3790f2bbb1c876fcc9ab5d7050f4144eba9580527",
+      "depends_on": [
+        "harness.authority-denominator",
+        "source.authority-lock-inventory"
+      ],
+      "status": "current",
+      "run_id": "run.authority-denominator"
+    },
+    {
+      "id": "output.authority.surfaces-draft.argocd-disaster-recovery.json",
+      "kind": "derived-evidence",
+      "path": "authority/surfaces-draft/argocd-disaster-recovery.json",
+      "digest": "sha256:202a29ac3b30515508bee033c16f1458d90d67ecdec3b8701c7e93c2e7bc6772",
+      "depends_on": [
+        "harness.authority-denominator",
+        "source.authority-lock-inventory"
+      ],
+      "status": "current",
+      "run_id": "run.authority-denominator"
+    },
+    {
+      "id": "output.authority.surfaces-draft.argocd-health.json",
+      "kind": "derived-evidence",
+      "path": "authority/surfaces-draft/argocd-health.json",
+      "digest": "sha256:83239fcbed2d4c02328b2d7140a5da6d44c4f69cf8a729c7ef81662abdaf1f39",
+      "depends_on": [
+        "harness.authority-denominator",
+        "source.authority-lock-inventory"
+      ],
+      "status": "current",
+      "run_id": "run.authority-denominator"
+    },
+    {
+      "id": "output.authority.surfaces-draft.argocd-high-availability.json",
+      "kind": "derived-evidence",
+      "path": "authority/surfaces-draft/argocd-high-availability.json",
+      "digest": "sha256:d141588e38a967f23d1f230df04238b38b04ae55ef2c3f676651a9dadea2613b",
+      "depends_on": [
+        "harness.authority-denominator",
+        "source.authority-lock-inventory"
+      ],
+      "status": "current",
+      "run_id": "run.authority-denominator"
+    },
+    {
+      "id": "output.authority.surfaces-draft.argocd-install-manifest.json",
+      "kind": "derived-evidence",
+      "path": "authority/surfaces-draft/argocd-install-manifest.json",
+      "digest": "sha256:8dc41a81024fc45d67d5c07102606754d2996608b360eb615af453e9c06dac4e",
+      "depends_on": [
+        "harness.authority-denominator",
+        "source.authority-lock-inventory"
+      ],
+      "status": "current",
+      "run_id": "run.authority-denominator"
+    },
+    {
+      "id": "output.authority.surfaces-draft.argocd-metrics.json",
+      "kind": "derived-evidence",
+      "path": "authority/surfaces-draft/argocd-metrics.json",
+      "digest": "sha256:bb926e192067353bd0dd44612305b0158b1d92ba75dae2e1aacfe284612bb37f",
+      "depends_on": [
+        "harness.authority-denominator",
+        "source.authority-lock-inventory"
+      ],
+      "status": "current",
+      "run_id": "run.authority-denominator"
+    },
+    {
+      "id": "output.authority.surfaces-draft.argocd-private-repositories.json",
+      "kind": "derived-evidence",
+      "path": "authority/surfaces-draft/argocd-private-repositories.json",
+      "digest": "sha256:5e532e48f2ce52b435a8b7396e9d89fedd64eeb9c3d992a186038b439327bf9a",
+      "depends_on": [
+        "harness.authority-denominator",
+        "source.authority-lock-inventory"
+      ],
+      "status": "current",
+      "run_id": "run.authority-denominator"
+    },
+    {
+      "id": "output.authority.surfaces-draft.argocd-rbac.json",
+      "kind": "derived-evidence",
+      "path": "authority/surfaces-draft/argocd-rbac.json",
+      "digest": "sha256:3a1441cdcb4f598b31e91fbaf238512f693326aa835c19e6b0ff299bd5c5bf87",
+      "depends_on": [
+        "harness.authority-denominator",
+        "source.authority-lock-inventory"
+      ],
+      "status": "current",
+      "run_id": "run.authority-denominator"
+    },
+    {
+      "id": "output.authority.surfaces-draft.argocd-reconcile-optimization.json",
+      "kind": "derived-evidence",
+      "path": "authority/surfaces-draft/argocd-reconcile-optimization.json",
+      "digest": "sha256:1ad2d9c8c31e83ae8fa5a829aea5a074b2d78aae7636c61a60fd44d77ff083df",
+      "depends_on": [
+        "harness.authority-denominator",
+        "source.authority-lock-inventory"
+      ],
+      "status": "current",
+      "run_id": "run.authority-denominator"
+    },
+    {
+      "id": "output.authority.surfaces-draft.argocd-resource-tracking.json",
+      "kind": "derived-evidence",
+      "path": "authority/surfaces-draft/argocd-resource-tracking.json",
+      "digest": "sha256:e3086367ac1a035eba182560b66544a33bf9c3a931ce2cda3d96a8ff2eab8579",
+      "depends_on": [
+        "harness.authority-denominator",
+        "source.authority-lock-inventory"
+      ],
+      "status": "current",
+      "run_id": "run.authority-denominator"
+    },
+    {
+      "id": "output.authority.surfaces-draft.argocd-secret-management.json",
+      "kind": "derived-evidence",
+      "path": "authority/surfaces-draft/argocd-secret-management.json",
+      "digest": "sha256:56834cdcc7bc6dc0a150ba1271fb0c28179c7729ce4df061f1b03e6c36298e17",
+      "depends_on": [
+        "harness.authority-denominator",
+        "source.authority-lock-inventory"
+      ],
+      "status": "current",
+      "run_id": "run.authority-denominator"
+    },
+    {
+      "id": "output.authority.surfaces-draft.argocd-source-tree.json",
+      "kind": "derived-evidence",
+      "path": "authority/surfaces-draft/argocd-source-tree.json",
+      "digest": "sha256:3a6f8fa35889b9c17e0a653cce115dac5812f56d918bec6e2f40a1bb03966dc5",
+      "depends_on": [
+        "harness.authority-denominator",
+        "source.authority-lock-inventory"
+      ],
+      "status": "current",
+      "run_id": "run.authority-denominator"
+    },
+    {
+      "id": "output.authority.surfaces-draft.argocd-sync-options.json",
+      "kind": "derived-evidence",
+      "path": "authority/surfaces-draft/argocd-sync-options.json",
+      "digest": "sha256:1b76d4cff1ff4b56c0347008cc536ecc3d0989b1d6e618f41f78104eb5acbcb7",
+      "depends_on": [
+        "harness.authority-denominator",
+        "source.authority-lock-inventory"
+      ],
+      "status": "current",
+      "run_id": "run.authority-denominator"
+    },
+    {
+      "id": "output.authority.surfaces-draft.argocd-sync-waves.json",
+      "kind": "derived-evidence",
+      "path": "authority/surfaces-draft/argocd-sync-waves.json",
+      "digest": "sha256:2683e6081a422483fafd5a5e37ef051a3dc41c711b0170c41032f6541233765e",
+      "depends_on": [
+        "harness.authority-denominator",
+        "source.authority-lock-inventory"
+      ],
+      "status": "current",
+      "run_id": "run.authority-denominator"
+    },
+    {
+      "id": "output.authority.surfaces-draft.argocd-upgrade-3-4-to-3-5.json",
+      "kind": "derived-evidence",
+      "path": "authority/surfaces-draft/argocd-upgrade-3-4-to-3-5.json",
+      "digest": "sha256:eb8c43c0acde2c8879dd976e4d5d031d67611bd0b5f4a5a38040cce8a33337e7",
+      "depends_on": [
+        "harness.authority-denominator",
+        "source.authority-lock-inventory"
+      ],
+      "status": "current",
+      "run_id": "run.authority-denominator"
+    },
+    {
+      "id": "output.authority.surfaces-draft.argocd-user-management.json",
+      "kind": "derived-evidence",
+      "path": "authority/surfaces-draft/argocd-user-management.json",
+      "digest": "sha256:5f7ccf10b008ef16a8815d5cd434d644924116d41a609843321e53b985516805",
+      "depends_on": [
+        "harness.authority-denominator",
+        "source.authority-lock-inventory"
+      ],
+      "status": "current",
+      "run_id": "run.authority-denominator"
+    },
+    {
+      "id": "output.authority.surfaces-draft.argocd-version.json",
+      "kind": "derived-evidence",
+      "path": "authority/surfaces-draft/argocd-version.json",
+      "digest": "sha256:4eed749f01e8da2293ace9c56e15f3661e73d247deea53aa8ebaaa1cbd669401",
+      "depends_on": [
+        "harness.authority-denominator",
+        "source.authority-lock-inventory"
+      ],
+      "status": "current",
+      "run_id": "run.authority-denominator"
     },
     {
       "id": "output.evals.argocd-atlas-router.definitive-forward-eval.json",
@@ -17234,6 +17621,54 @@
   ],
   "runs": [
     {
+      "id": "run.authority-denominator",
+      "execution_kind": "derived",
+      "command": "make authority-locators && make authority-validate",
+      "started_at": "2026-08-28T15:48:00Z",
+      "completed_at": "2026-08-28T15:48:01Z",
+      "result": "passed",
+      "attempts": 1,
+      "input_bindings": [
+        {
+          "input_id": "harness.authority-denominator",
+          "digest": "sha256:c02f5138b5aede7491d91f1d2c6f1bd1172fb1ae279f384bd83bb4e8b1560b8e"
+        },
+        {
+          "input_id": "source.authority-lock-inventory",
+          "digest": "sha256:5f9caf48124789f715da24b8bfd23ccb3233ae6b26772cc5c198ac034909d523"
+        }
+      ],
+      "output_ids": [
+        "output.authority.extraction.snapshot.json",
+        "output.authority.surfaces-draft.argocd-application-crd.json",
+        "output.authority.surfaces-draft.argocd-application-specification.json",
+        "output.authority.surfaces-draft.argocd-applicationset-crd.json",
+        "output.authority.surfaces-draft.argocd-applicationset-introduction.json",
+        "output.authority.surfaces-draft.argocd-applicationset-specification.json",
+        "output.authority.surfaces-draft.argocd-appproject-crd.json",
+        "output.authority.surfaces-draft.argocd-architecture.json",
+        "output.authority.surfaces-draft.argocd-automated-sync.json",
+        "output.authority.surfaces-draft.argocd-cluster-management.json",
+        "output.authority.surfaces-draft.argocd-diffing.json",
+        "output.authority.surfaces-draft.argocd-disaster-recovery.json",
+        "output.authority.surfaces-draft.argocd-health.json",
+        "output.authority.surfaces-draft.argocd-high-availability.json",
+        "output.authority.surfaces-draft.argocd-install-manifest.json",
+        "output.authority.surfaces-draft.argocd-metrics.json",
+        "output.authority.surfaces-draft.argocd-private-repositories.json",
+        "output.authority.surfaces-draft.argocd-rbac.json",
+        "output.authority.surfaces-draft.argocd-reconcile-optimization.json",
+        "output.authority.surfaces-draft.argocd-resource-tracking.json",
+        "output.authority.surfaces-draft.argocd-secret-management.json",
+        "output.authority.surfaces-draft.argocd-source-tree.json",
+        "output.authority.surfaces-draft.argocd-sync-options.json",
+        "output.authority.surfaces-draft.argocd-sync-waves.json",
+        "output.authority.surfaces-draft.argocd-upgrade-3-4-to-3-5.json",
+        "output.authority.surfaces-draft.argocd-user-management.json",
+        "output.authority.surfaces-draft.argocd-version.json"
+      ]
+    },
+    {
       "id": "run.core-v2-dependency-extension",
       "execution_kind": "derived",
       "command": "python3 scripts/generate_core_v2_dependency_extension.py && python3 scripts/test_core_v2_evidence_dependency_extensions.py",
@@ -17243,12 +17678,16 @@
       "attempts": 1,
       "input_bindings": [
         {
+          "input_id": "harness.authority-denominator",
+          "digest": "sha256:c02f5138b5aede7491d91f1d2c6f1bd1172fb1ae279f384bd83bb4e8b1560b8e"
+        },
+        {
           "input_id": "harness.cluster-labs",
           "digest": "sha256:62193b98aed7d7b694a0f90abaf52ef163e994a410b96e684d0dd40bf725b4d7"
         },
         {
           "input_id": "harness.core-v2-dependency-extension",
-          "digest": "sha256:f80b3c52f87aa83f681c885a6373249ef96a5458e7c4fe6c197a3ee11619d1f5"
+          "digest": "sha256:aa6f2fbef53430d05131c0946877bc651c79d7a50ed070832bbfd5c10f03ca9f"
         },
         {
           "input_id": "harness.core-v2-scenario-plan",
@@ -17280,7 +17719,7 @@
         },
         {
           "input_id": "profile.local",
-          "digest": "sha256:dcc9a010858ac08841ad2edb732d779b3195a77ce901b83f5fbda2540ac85d6a"
+          "digest": "sha256:f3bbf33bd6b6c66c5eefef08edc8a9f34584ed59b8c34c0b21ca92efca5410ea"
         },
         {
           "input_id": "runtime.argocd-kubernetes",
@@ -17295,12 +17734,20 @@
           "digest": "sha256:f19ce5e3657b17ba5d9843afc5c89eb65c384f7087f9b6e74098cd5e180883e5"
         },
         {
+          "input_id": "source.authority-lock-inventory",
+          "digest": "sha256:5f9caf48124789f715da24b8bfd23ccb3233ae6b26772cc5c198ac034909d523"
+        },
+        {
           "input_id": "source.manifests",
           "digest": "sha256:f876048758682a92bdfc758a2c3fc57da1b1eddd95b2199ef00a18f75ad09793"
         },
         {
           "input_id": "source.project-policy",
           "digest": "sha256:19572bb8ae8a1725d138e1f4ea139fa490a44a1b9e8990d5947479e7d78ff18e"
+        },
+        {
+          "input_id": "source.repository-contract",
+          "digest": "sha256:4961ab109a47a4f728b80d9bbebea63d47d4e897fc1789538de6a7b3ffa54e76"
         }
       ],
       "output_ids": [
@@ -17346,7 +17793,7 @@
         },
         {
           "input_id": "profile.local",
-          "digest": "sha256:dcc9a010858ac08841ad2edb732d779b3195a77ce901b83f5fbda2540ac85d6a"
+          "digest": "sha256:f3bbf33bd6b6c66c5eefef08edc8a9f34584ed59b8c34c0b21ca92efca5410ea"
         },
         {
           "input_id": "runtime.argocd-kubernetes",
@@ -17392,7 +17839,7 @@
         },
         {
           "input_id": "profile.local",
-          "digest": "sha256:dcc9a010858ac08841ad2edb732d779b3195a77ce901b83f5fbda2540ac85d6a"
+          "digest": "sha256:f3bbf33bd6b6c66c5eefef08edc8a9f34584ed59b8c34c0b21ca92efca5410ea"
         },
         {
           "input_id": "source.project-policy",
@@ -17418,7 +17865,7 @@
         },
         {
           "input_id": "profile.local",
-          "digest": "sha256:dcc9a010858ac08841ad2edb732d779b3195a77ce901b83f5fbda2540ac85d6a"
+          "digest": "sha256:f3bbf33bd6b6c66c5eefef08edc8a9f34584ed59b8c34c0b21ca92efca5410ea"
         },
         {
           "input_id": "source.project-policy",
@@ -17445,7 +17892,7 @@
         },
         {
           "input_id": "profile.local",
-          "digest": "sha256:dcc9a010858ac08841ad2edb732d779b3195a77ce901b83f5fbda2540ac85d6a"
+          "digest": "sha256:f3bbf33bd6b6c66c5eefef08edc8a9f34584ed59b8c34c0b21ca92efca5410ea"
         },
         {
           "input_id": "source.project-policy",
@@ -18595,7 +19042,7 @@
         },
         {
           "input_id": "profile.local",
-          "digest": "sha256:dcc9a010858ac08841ad2edb732d779b3195a77ce901b83f5fbda2540ac85d6a"
+          "digest": "sha256:f3bbf33bd6b6c66c5eefef08edc8a9f34584ed59b8c34c0b21ca92efca5410ea"
         },
         {
           "input_id": "source.project-policy",
@@ -18622,7 +19069,7 @@
         },
         {
           "input_id": "profile.local",
-          "digest": "sha256:dcc9a010858ac08841ad2edb732d779b3195a77ce901b83f5fbda2540ac85d6a"
+          "digest": "sha256:f3bbf33bd6b6c66c5eefef08edc8a9f34584ed59b8c34c0b21ca92efca5410ea"
         },
         {
           "input_id": "source.project-policy",
@@ -18787,7 +19234,7 @@
         },
         {
           "input_id": "profile.local",
-          "digest": "sha256:dcc9a010858ac08841ad2edb732d779b3195a77ce901b83f5fbda2540ac85d6a"
+          "digest": "sha256:f3bbf33bd6b6c66c5eefef08edc8a9f34584ed59b8c34c0b21ca92efca5410ea"
         },
         {
           "input_id": "runtime.argocd-kubernetes",
@@ -18845,7 +19292,7 @@
         },
         {
           "input_id": "profile.local",
-          "digest": "sha256:dcc9a010858ac08841ad2edb732d779b3195a77ce901b83f5fbda2540ac85d6a"
+          "digest": "sha256:f3bbf33bd6b6c66c5eefef08edc8a9f34584ed59b8c34c0b21ca92efca5410ea"
         },
         {
           "input_id": "runtime.argocd-kubernetes",
@@ -19879,6 +20326,33 @@
     "artifacts/authority-body-non-regression-report.json",
     "artifacts/core-v2/evidence-dependency-extension.json",
     "artifacts/core-v2/scenario-plan-gap.json",
+    "authority/extraction.snapshot.json",
+    "authority/surfaces-draft/argocd-application-crd.json",
+    "authority/surfaces-draft/argocd-application-specification.json",
+    "authority/surfaces-draft/argocd-applicationset-crd.json",
+    "authority/surfaces-draft/argocd-applicationset-introduction.json",
+    "authority/surfaces-draft/argocd-applicationset-specification.json",
+    "authority/surfaces-draft/argocd-appproject-crd.json",
+    "authority/surfaces-draft/argocd-architecture.json",
+    "authority/surfaces-draft/argocd-automated-sync.json",
+    "authority/surfaces-draft/argocd-cluster-management.json",
+    "authority/surfaces-draft/argocd-diffing.json",
+    "authority/surfaces-draft/argocd-disaster-recovery.json",
+    "authority/surfaces-draft/argocd-health.json",
+    "authority/surfaces-draft/argocd-high-availability.json",
+    "authority/surfaces-draft/argocd-install-manifest.json",
+    "authority/surfaces-draft/argocd-metrics.json",
+    "authority/surfaces-draft/argocd-private-repositories.json",
+    "authority/surfaces-draft/argocd-rbac.json",
+    "authority/surfaces-draft/argocd-reconcile-optimization.json",
+    "authority/surfaces-draft/argocd-resource-tracking.json",
+    "authority/surfaces-draft/argocd-secret-management.json",
+    "authority/surfaces-draft/argocd-source-tree.json",
+    "authority/surfaces-draft/argocd-sync-options.json",
+    "authority/surfaces-draft/argocd-sync-waves.json",
+    "authority/surfaces-draft/argocd-upgrade-3-4-to-3-5.json",
+    "authority/surfaces-draft/argocd-user-management.json",
+    "authority/surfaces-draft/argocd-version.json",
     "evals/argocd-atlas-router.definitive-forward-eval.json",
     "evals/argocd-atlas-router.definitive-skill-eval.json",
     "evals/definitive-skill-router.json",

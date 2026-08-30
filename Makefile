@@ -63,6 +63,7 @@ authority-locators:
 
 authority-validate:
 	python3 scripts/validate_authority_locators.py
+	python3 scripts/test_authority_locator_denominator.py
 	python3 scripts/validate_authority_body_inventory.py
 	python3 scripts/validate_authority_review_queue.py
 	python3 scripts/test_authority_review_queue.py

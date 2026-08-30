@@ -28,6 +28,8 @@ REFERENCE_FILES = [
     {"path": "scripts/verify-authority-extraction.ts", "sha256": "420acbe08bff848786c4a28febb4443c671afdd53ff1643413317a9ce175d9aa"},
     {"path": "authority/extraction.snapshot.json", "sha256": "ef3d324232f3378909544b5407769e94fc3cc5a1defec968adbb71cb1a947aa8"},
 ]
+UNCLASSIFIED_CAPABILITY_PREFIX = "unclassified.capability."
+UNCLASSIFIED_CLAIM_PREFIX = "unclassified.claim."
 
 
 def sha256_bytes(value: bytes) -> str:
@@ -98,6 +100,26 @@ def surface_ids(item: dict[str, str]) -> list[str]:
     return sorted(result)
 
 
+def candidate_claim_binding(
+    item: dict[str, str], targets: dict[str, dict], claims: dict[str, dict]
+) -> tuple[str, str, bool]:
+    """Return an honest binding even when a required Target has no Claim yet.
+
+    Placeholder IDs are schema-valid but deliberately do not identify a real Claim or
+    Capability.  They keep the Authority candidate in the denominator while the
+    summary reports it as an unclassified reference edge.
+    """
+    claim_ids = targets[item["target_id"]].get("claim_ids", [])
+    if claim_ids:
+        claim = claims[claim_ids[0]]
+        return claim["capability_id"], claim["id"], True
+    return (
+        f"{UNCLASSIFIED_CAPABILITY_PREFIX}{item['target_id']}",
+        f"{UNCLASSIFIED_CLAIM_PREFIX}{item['target_id']}",
+        False,
+    )
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--source-tree", required=True, type=Path)
@@ -131,11 +153,9 @@ def main() -> int:
         if not path.is_file():
             raise ValueError(f"Authority locator fileがありません: {locator}")
         source_id = raw_path_to_source.get(locator, "argocd-source-tree")
-        claim_ids = targets[item["target_id"]].get("claim_ids", [])
-        if not claim_ids:
+        capability_id, claim_id, classified = candidate_claim_binding(item, targets, claims)
+        if not classified:
             unclassified_items.append(item["id"])
-            continue
-        claim = claims[claim_ids[0]]
         metadata = {key: item[key] for key in ("id", "area", "kind", "target_id", "state")}
         edges_by_source[source_id].append(
             {
@@ -146,9 +166,9 @@ def main() -> int:
                 "pattern_id": f"{item['area']}/{re.sub(r'[^a-z0-9-]+', '-', item['id']).strip('-')}",
                 "pattern_kind": "atomic",
                 "candidate_behavior_id": f"candidate.{item['id']}.{source_id}",
-                "capability_id": claim["capability_id"],
+                "capability_id": capability_id,
                 "target_id": item["target_id"],
-                "claim_id": claim["id"],
+                "claim_id": claim_id,
                 "variant_ids": [f"variant.{item['id']}.argocd-v3-5-2"],
                 "surface_ids": surface_ids(item),
                 "classification_basis": "domain-contract-projection-unreviewed",
@@ -306,8 +326,8 @@ def main() -> int:
             "fragments_found": 0,
             "fragments_not_found": 0,
             "locator_evaluations_deferred": 0,
-            "reference_edges_classified": candidate_count,
-            "unclassified_reference_edges": 0,
+            "reference_edges_classified": candidate_count - len(unclassified_items),
+            "unclassified_reference_edges": len(unclassified_items),
             "authority_text_surfaces_exhaustive": False,
             "human_reviewed_surfaces": 0,
             "core_v2_eligible_surfaces": 0,
@@ -318,7 +338,8 @@ def main() -> int:
     INDEX.write_text(json.dumps(index, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(
         f"Authority locator snapshot: sources={len(sources)} matched={len(sources)} stale=0 deferred=0 "
-        f"candidate_edges={candidate_count} human_reviewed=0 exhaustive=false"
+        f"candidate_edges={candidate_count} unclassified={len(unclassified_items)} "
+        "human_reviewed=0 exhaustive=false"
     )
     return 0
 

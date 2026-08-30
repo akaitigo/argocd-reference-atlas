@@ -15,15 +15,46 @@ ROOT = Path(__file__).resolve().parents[1]
 GRAPH = ROOT / "evidence" / "dependency-graph.json"
 REPORT = ROOT / "artifacts" / "core-v2" / "evidence-dependency-extension.json"
 INPUT_SPECS = {
-    "harness.core-v2-skill-router": ["scripts/generate_core_v2_skill_router.py", "scripts/test_core_v2_skill_router.py"],
-    "harness.core-v2-scenario-plan": ["scripts/generate_core_v2_scenario_plan_gap.py", "scripts/test_core_v2_scenario_plan_gap.py"],
-    "harness.core-v2-dependency-extension": ["scripts/generate_core_v2_dependency_extension.py", "scripts/test_core_v2_evidence_dependency_extensions.py"],
+    "source.repository-contract": {
+        "kind": "source",
+        "members": ["repo.yaml"],
+    },
+    "source.authority-lock-inventory": {
+        "kind": "source",
+        "members": ["sources.lock.yaml", "coverage.yaml", "definitive/surface-inventory.yaml", "atlas/claims/index.yaml"],
+    },
+    "harness.authority-denominator": {
+        "kind": "harness",
+        "members": [
+            "scripts/generate_authority_locators.py",
+            "scripts/validate_authority_locators.py",
+            "scripts/test_authority_locator_denominator.py",
+        ],
+    },
+    "harness.core-v2-skill-router": {
+        "kind": "harness",
+        "members": ["scripts/generate_core_v2_skill_router.py", "scripts/test_core_v2_skill_router.py"],
+    },
+    "harness.core-v2-scenario-plan": {
+        "kind": "harness",
+        "members": ["scripts/generate_core_v2_scenario_plan_gap.py", "scripts/test_core_v2_scenario_plan_gap.py"],
+    },
+    "harness.core-v2-dependency-extension": {
+        "kind": "harness",
+        "members": ["scripts/generate_core_v2_dependency_extension.py", "scripts/test_core_v2_evidence_dependency_extensions.py"],
+    },
 }
-OUTPUT_PATHS = {
+AUTHORITY_DRAFT_DENOMINATOR = 26
+AUTHORITY_OUTPUT_PATHS = {
+    "authority/extraction.snapshot.json",
+    *(path.relative_to(ROOT).as_posix() for path in (ROOT / "authority" / "surfaces-draft").glob("*.json")),
+}
+CORE_V2_OUTPUT_PATHS = {
     "evals/definitive-skill-router.json",
     "artifacts/core-v2/scenario-plan-gap.json",
     "artifacts/core-v2/evidence-dependency-extension.json",
 }
+OUTPUT_PATHS = CORE_V2_OUTPUT_PATHS | AUTHORITY_OUTPUT_PATHS
 
 
 def pretty(value: dict) -> bytes:
@@ -34,9 +65,12 @@ def validate_extension(graph: dict) -> None:
     inputs = {item["id"]: item for item in graph["inputs"]}
     outputs = {item["path"]: item for item in graph["outputs"]}
     runs = {item["id"]: item for item in graph["runs"]}
-    for identifier, members in INPUT_SPECS.items():
+    if len(AUTHORITY_OUTPUT_PATHS) != AUTHORITY_DRAFT_DENOMINATOR + 1:
+        raise ValueError("Authority draft output denominator retreated")
+    for identifier, spec in INPUT_SPECS.items():
         item = inputs.get(identifier)
-        if item is None or item["members"] != members or item["baseline_digest"] != item["current_digest"]:
+        members = spec["members"]
+        if item is None or item["kind"] != spec["kind"] or item["members"] != members or item["baseline_digest"] != item["current_digest"]:
             raise ValueError(f"Core v2 additive input is invalid: {identifier}")
         if item["current_digest"] != contract.aggregate_member_digest(ROOT, members):
             raise ValueError(f"Core v2 additive input digest mismatch: {identifier}")
@@ -54,15 +88,31 @@ def validate_extension(graph: dict) -> None:
         run = runs.get(output["run_id"])
         if run is None or run["attempts"] != 1 or run["result"] != "passed" or output["id"] not in run["output_ids"]:
             raise ValueError(f"Core v2 first-attempt run is invalid: {path}")
+    authority_run = runs.get("run.authority-denominator")
+    if authority_run is None or authority_run["attempts"] != 1 or authority_run["result"] != "passed":
+        raise ValueError("Authority denominator first-attempt run is invalid")
+    for path in AUTHORITY_OUTPUT_PATHS:
+        output = outputs[path]
+        required = {"source.authority-lock-inventory", "harness.authority-denominator"}
+        if not required <= set(output["depends_on"]):
+            raise ValueError(f"Authority output binding is invalid: {path}")
+        if output["run_id"] != authority_run["id"] or output["id"] not in authority_run["output_ids"]:
+            raise ValueError(f"Authority output run binding is invalid: {path}")
+        if output["digest"] != contract.sha256_file(ROOT / path):
+            raise ValueError(f"Authority output digest mismatch: {path}")
+    report = outputs["artifacts/core-v2/evidence-dependency-extension.json"]
+    if "source.repository-contract" not in report["depends_on"]:
+        raise ValueError("Repository contract is not connected to the extension report")
 
 
 def generate() -> None:
     graph = contract.build_graph()
     base_digest = contract.sha256_bytes(pretty(graph))
-    for identifier, members in INPUT_SPECS.items():
+    for identifier, spec in INPUT_SPECS.items():
+        members = spec["members"]
         member_digest = contract.aggregate_member_digest(ROOT, members)
         graph["inputs"].append({
-            "id": identifier, "kind": "harness", "members": members,
+            "id": identifier, "kind": spec["kind"], "members": members,
             "baseline_digest": member_digest, "current_digest": member_digest,
             "observed_at": graph["generated_at"],
         })
@@ -97,14 +147,23 @@ def generate() -> None:
         [output_by_path["evidence/scenarios/index.json"], output_by_path["evidence/scenarios/closure-plan.json"], "harness.core-v2-scenario-plan"],
         "run.core-v2-scenario-plan-gap",
     )
+    authority_ids = [
+        contract.add_output(
+            outputs, path, "derived-evidence",
+            ["source.authority-lock-inventory", "harness.authority-denominator"],
+            "run.authority-denominator",
+        )
+        for path in sorted(AUTHORITY_OUTPUT_PATHS)
+    ]
     report_id = contract.add_output(
         outputs, "artifacts/core-v2/evidence-dependency-extension.json", "derived-evidence",
-        [router_id, plan_id, "harness.core-v2-dependency-extension"],
+        [router_id, plan_id, *authority_ids, "source.repository-contract", "harness.core-v2-dependency-extension"],
         "run.core-v2-dependency-extension",
     )
     new_runs = [
         contract.run_document("run.core-v2-skill-router", "derived", "python3 scripts/generate_core_v2_skill_router.py && python3 scripts/test_core_v2_skill_router.py && atlas audit . --gate skill-router", graph["generated_at"], [router_id]),
         contract.run_document("run.core-v2-scenario-plan-gap", "derived", "python3 scripts/generate_core_v2_scenario_plan_gap.py && python3 scripts/test_core_v2_scenario_plan_gap.py", graph["generated_at"], [plan_id]),
+        contract.run_document("run.authority-denominator", "derived", "make authority-locators && make authority-validate", graph["generated_at"], authority_ids),
         contract.run_document("run.core-v2-dependency-extension", "derived", "python3 scripts/generate_core_v2_dependency_extension.py && python3 scripts/test_core_v2_evidence_dependency_extensions.py", graph["generated_at"], [report_id]),
     ]
     graph["runs"].extend(new_runs)

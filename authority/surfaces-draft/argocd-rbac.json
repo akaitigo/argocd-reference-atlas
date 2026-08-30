@@ -16,11 +16,40 @@
   "extraction": {
     "method": "locked-body-locator-context-digest",
     "tool": "argocd-reference-atlas-authority-locator-v1",
-    "tool_digest": "sha256:53e20736c1f6867e1b680d5e5244b589839b00d1cc82816d5227d798c898366e",
+    "tool_digest": "sha256:baffc5d0a81bbdd637eef2c3c4d535fcbb01d2566492cd7a6e4de6620df8ca23",
     "review_status": "automated-unreviewed",
     "body_storage": "digest-and-locator-context-digest-only"
   },
   "candidate_surfaces": [
+    {
+      "edge_id": "edge.auth.claim-mapping.argocd-rbac",
+      "source_id": "argocd-rbac",
+      "reference_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/operator-manual/rbac.md",
+      "locator": "document-root",
+      "pattern_id": "auth/auth-claim-mapping",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.auth.claim-mapping.argocd-rbac",
+      "capability_id": "unclassified.capability.security.external-idp-interactive-sso",
+      "target_id": "security.external-idp-interactive-sso",
+      "claim_id": "unclassified.claim.security.external-idp-interactive-sso",
+      "variant_ids": [
+        "variant.auth.claim-mapping.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "orientation-scope",
+        "provenance-rights",
+        "security-privacy-safety"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:c665c676d088c05d0e4621e70fd1f9d7fa0423bb5e39e0bc6597737453029141",
+      "locator_status": "root-document",
+      "context_digest": "sha256:0ea222faed9f5c31dc4bda5747e0c9e2326e60477ea7a7d3fd7ab04a72fd9553",
+      "context_start": 0,
+      "context_end": 22118,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    },
     {
       "edge_id": "edge.auth.rbac-policy.argocd-rbac",
       "source_id": "argocd-rbac",

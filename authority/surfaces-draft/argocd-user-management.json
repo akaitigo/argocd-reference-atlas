@@ -16,11 +16,71 @@
   "extraction": {
     "method": "locked-body-locator-context-digest",
     "tool": "argocd-reference-atlas-authority-locator-v1",
-    "tool_digest": "sha256:53e20736c1f6867e1b680d5e5244b589839b00d1cc82816d5227d798c898366e",
+    "tool_digest": "sha256:baffc5d0a81bbdd637eef2c3c4d535fcbb01d2566492cd7a6e4de6620df8ca23",
     "review_status": "automated-unreviewed",
     "body_storage": "digest-and-locator-context-digest-only"
   },
   "candidate_surfaces": [
+    {
+      "edge_id": "edge.auth.dex-connector.argocd-user-management",
+      "source_id": "argocd-user-management",
+      "reference_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/operator-manual/user-management/index.md",
+      "locator": "document-root",
+      "pattern_id": "auth/auth-dex-connector",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.auth.dex-connector.argocd-user-management",
+      "capability_id": "unclassified.capability.security.external-idp-interactive-sso",
+      "target_id": "security.external-idp-interactive-sso",
+      "claim_id": "unclassified.claim.security.external-idp-interactive-sso",
+      "variant_ids": [
+        "variant.auth.dex-connector.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "implementation-construction",
+        "orientation-scope",
+        "provenance-rights",
+        "security-privacy-safety"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:d354fdf43944f2c20aff090061746f855e64061a8592239776b232f7b420d326",
+      "locator_status": "root-document",
+      "context_digest": "sha256:b4dcef526119c3bfdba6cdfba2add187684a915c2127d41c81bf632c5c496fd6",
+      "context_start": 0,
+      "context_end": 23465,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    },
+    {
+      "edge_id": "edge.auth.external-oidc.argocd-user-management",
+      "source_id": "argocd-user-management",
+      "reference_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/operator-manual/user-management/index.md",
+      "locator": "document-root",
+      "pattern_id": "auth/auth-external-oidc",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.auth.external-oidc.argocd-user-management",
+      "capability_id": "unclassified.capability.security.external-idp-interactive-sso",
+      "target_id": "security.external-idp-interactive-sso",
+      "claim_id": "unclassified.claim.security.external-idp-interactive-sso",
+      "variant_ids": [
+        "variant.auth.external-oidc.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "implementation-construction",
+        "orientation-scope",
+        "provenance-rights",
+        "security-privacy-safety"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:320aea05f651247b45b08ff1c9adc0dafa883a3db88fb106475bbfb52ad97d8c",
+      "locator_status": "root-document",
+      "context_digest": "sha256:b4dcef526119c3bfdba6cdfba2add187684a915c2127d41c81bf632c5c496fd6",
+      "context_start": 0,
+      "context_end": 23465,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    },
     {
       "edge_id": "edge.auth.local-account.argocd-user-management",
       "source_id": "argocd-user-management",

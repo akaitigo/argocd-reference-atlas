@@ -16,7 +16,7 @@
   "extraction": {
     "method": "locked-body-locator-context-digest",
     "tool": "argocd-reference-atlas-authority-locator-v1",
-    "tool_digest": "sha256:53e20736c1f6867e1b680d5e5244b589839b00d1cc82816d5227d798c898366e",
+    "tool_digest": "sha256:baffc5d0a81bbdd637eef2c3c4d535fcbb01d2566492cd7a6e4de6620df8ca23",
     "review_status": "automated-unreviewed",
     "body_storage": "digest-and-locator-context-digest-only"
   },
@@ -72,6 +72,35 @@
       ],
       "classification_basis": "domain-contract-projection-unreviewed",
       "domain_reference_metadata_digest": "sha256:7d5d254d7fc95c71bf6533293ac174a7618064f13199e732cd0f33cf45c473ea",
+      "locator_status": "root-document",
+      "context_digest": "sha256:b3a02563a4e2fe9d7d0240d93f428609628b1dd07c6806655ca301df7f97d229",
+      "context_start": 0,
+      "context_end": 37016,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    },
+    {
+      "edge_id": "edge.ha.cache.argocd-high-availability",
+      "source_id": "argocd-high-availability",
+      "reference_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/operator-manual/high_availability.md",
+      "locator": "document-root",
+      "pattern_id": "availability/ha-cache",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.ha.cache.argocd-high-availability",
+      "capability_id": "unclassified.capability.performance.capacity-cost-baseline",
+      "target_id": "performance.capacity-cost-baseline",
+      "claim_id": "unclassified.claim.performance.capacity-cost-baseline",
+      "variant_ids": [
+        "variant.ha.cache.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "implementation-construction",
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:c7316b6ebc8c9b2e38389c5a37dbd2ffa5dc1a4ae5834cd0108c560ee510665e",
       "locator_status": "root-document",
       "context_digest": "sha256:b3a02563a4e2fe9d7d0240d93f428609628b1dd07c6806655ca301df7f97d229",
       "context_start": 0,
