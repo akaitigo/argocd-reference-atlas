@@ -48,6 +48,10 @@ INPUT_SPECS = {
         "kind": "harness",
         "members": ["scripts/generate_core_v2_root_contract_gap.py", "scripts/test_core_v2_root_contract_gap.py"],
     },
+    "harness.core-v2-scenario-schema-gap": {
+        "kind": "harness",
+        "members": ["scripts/generate_core_v2_scenario_schema_gap.py", "scripts/test_core_v2_scenario_schema_gap.py"],
+    },
     "source.core-standard-legacy-scenarios": {
         "kind": "source",
         "members": [
@@ -102,6 +106,7 @@ CORE_V2_OUTPUT_PATHS = {
     "artifacts/core-v2/root-surface-inventory-closure.json",
     "artifacts/core-v2/root-verification-matrix-closure.json",
     "artifacts/core-v2/root-contract-adapter-gap.json",
+    "artifacts/core-v2/scenario-proof-index-schema-gap.json",
     "artifacts/core-v2/evidence-dependency-extension.json",
 }
 CORE_STANDARD_OUTPUT_PATHS = {path.as_posix() for path in core_standard.output_paths()}
@@ -135,6 +140,7 @@ def validate_extension(graph: dict) -> None:
         "artifacts/core-v2/root-surface-inventory-closure.json": "harness.root-surface-inventory",
         "artifacts/core-v2/root-verification-matrix-closure.json": "harness.root-verification-matrix",
         "artifacts/core-v2/root-contract-adapter-gap.json": "harness.core-v2-root-contract-gap",
+        "artifacts/core-v2/scenario-proof-index-schema-gap.json": "harness.core-v2-scenario-schema-gap",
         "artifacts/core-v2/evidence-dependency-extension.json": "harness.core-v2-dependency-extension",
     }
     for path, dependency in expected_dependencies.items():
@@ -161,6 +167,20 @@ def validate_extension(graph: dict) -> None:
     scenario_plan = outputs["artifacts/core-v2/scenario-plan-gap.json"]
     if root_gap["id"] not in scenario_plan["depends_on"]:
         raise ValueError("Scenario Plan gap is not bound to the root contract gap")
+    schema_gap = outputs["artifacts/core-v2/scenario-proof-index-schema-gap.json"]
+    schema_gap_required_paths = {
+        "evidence/scenarios/index.json",
+        "integrations/reference-system/manifest.json",
+        "artifacts/reference-system/results.json",
+        "artifacts/pattern-scenarios/results.json",
+        "migrations/scenario-class-refusal-v1.json",
+        "baselines/scenario-row-id-migration-v1.json",
+    }
+    schema_gap_required = {outputs[path]["id"] for path in schema_gap_required_paths} | {"harness.core-v2-scenario-schema-gap"}
+    if not schema_gap_required <= set(schema_gap["depends_on"]):
+        raise ValueError("Scenario Schema gap input binding is incomplete")
+    if schema_gap["id"] not in root_gap["depends_on"]:
+        raise ValueError("root contract gap is not bound to the Scenario Schema gap")
     standard_run = runs.get("run.core-standard-artifacts")
     if standard_run is None or standard_run["attempts"] != 1 or standard_run["result"] != "passed":
         raise ValueError("Core standard artifact run binding is invalid")
@@ -265,6 +285,16 @@ def generate() -> None:
         [*standard_ids.values(), *standard_dependencies],
         "run.core-standard-artifacts",
     )
+    scenario_schema_gap_id = contract.add_output(
+        outputs, "artifacts/core-v2/scenario-proof-index-schema-gap.json", "closure-plan",
+        [
+            output_by_path["evidence/scenarios/index.json"],
+            standard_ids[manifest_path], standard_ids[reference_path], standard_ids[pattern_path],
+            standard_ids[migration_path], standard_ids[baseline_path],
+            "harness.core-v2-scenario-schema-gap",
+        ],
+        "run.core-v2-scenario-schema-gap",
+    )
     router_id = contract.add_output(
         outputs, "evals/definitive-skill-router.json", "skill-eval",
         [output_by_path["evals/argocd-atlas-router.definitive-skill-eval.json"], "harness.core-v2-skill-router", "source.project-policy", "profile.local"],
@@ -299,6 +329,7 @@ def generate() -> None:
             root_inventory_id, root_matrix_id,
             standard_ids[manifest_path], standard_ids[reference_path], standard_ids[pattern_path],
             standard_ids[migration_path], standard_ids[baseline_path],
+            scenario_schema_gap_id,
             output_by_path["evidence/scenarios/index.json"],
             "harness.core-v2-root-contract-gap",
         ],
@@ -322,6 +353,7 @@ def generate() -> None:
     new_runs = [
         contract.run_document("run.core-standard-artifacts", "derived", "make core-standard-artifacts", graph["generated_at"], list(standard_ids.values())),
         contract.run_document("run.core-v2-skill-router", "derived", "python3 scripts/generate_core_v2_skill_router.py && python3 scripts/test_core_v2_skill_router.py && atlas audit . --gate skill-router", graph["generated_at"], [router_id]),
+        contract.run_document("run.core-v2-scenario-schema-gap", "derived", "make scenario-proof-index-adapter", graph["generated_at"], [scenario_schema_gap_id]),
         contract.run_document("run.core-v2-root-contract-gap", "derived", "make root-contract-adapter-gap", graph["generated_at"], [root_contract_gap_id]),
         contract.run_document("run.core-v2-scenario-plan-gap", "derived", "python3 scripts/generate_core_v2_scenario_plan_gap.py && python3 scripts/test_core_v2_scenario_plan_gap.py", graph["generated_at"], [plan_id]),
         contract.run_document("run.authority-denominator", "derived", "make authority-locators && make authority-validate", graph["generated_at"], authority_ids),

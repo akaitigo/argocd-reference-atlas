@@ -10,7 +10,8 @@
     "artifacts/pattern-scenarios/results.json": "sha256:202032bc06f4f4b2c99a4a67063a295b0ff83614f01b36716262662cdff644f4",
     "migrations/scenario-class-refusal-v1.json": "sha256:ed65ebe8edb0165c00c30e3f2fc8e3d1c70da478dccca5ee42f4976d9d57ef4c",
     "baselines/scenario-row-id-migration-v1.json": "sha256:eb6da094c8811d72dd74d4ed766b42dd47bbbcf5b7a07472aa80a8f98b310afd",
-    "evidence/scenarios/index.json": "sha256:925134b7591c25117a1ca964b509a621e893fd5bd6e03a86e3fe8c83d1fed325"
+    "evidence/scenarios/index.json": "sha256:925134b7591c25117a1ca964b509a621e893fd5bd6e03a86e3fe8c83d1fed325",
+    "artifacts/core-v2/scenario-proof-index-schema-gap.json": "sha256:db587d11b64736c0c09d0ff1d86a94f1b8ec870b49a7790765adea8a3617bb31"
   },
   "policy": {
     "adapter_is_runtime_evidence": false,
@@ -201,6 +202,18 @@
     },
     "old_set_digest": "sha256:3feb3d263f6aa5383b6529ff39fe8cf643e0b98e816daaba965018a1a9373bc5",
     "new_set_digest": "sha256:7983c5e95c679d3461819528a9c2ebe347daccbaed34aeede96f4a2920aebfb1"
+  },
+  "scenario_schema_adapter": {
+    "path": "artifacts/core-v2/scenario-proof-index-schema-gap.json",
+    "status": "incomplete-schema-valid-staging-not-published",
+    "validated_files": 1001,
+    "validated_rows": 1000,
+    "pattern_specific_gaps": 1000,
+    "canonical_emitted": false,
+    "legacy_index_preserved": true,
+    "runtime_credit": 0,
+    "semantic_credit": 0,
+    "completion_credit": 0
   },
   "credit": {
     "runtime": 0,

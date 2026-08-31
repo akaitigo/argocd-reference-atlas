@@ -56,6 +56,9 @@ def validate(document: dict) -> None:
         "root_surface_inventory_emitted": False,
         "root_verification_matrix_emitted": False,
         "rejection_to_refusal_rows": 100,
+        "scenario_schema_status": "incomplete-schema-valid-staging-not-published",
+        "schema_validated_rows": 1000,
+        "schema_canonical_emitted": False,
     } or not root_adapter["digest"]:
         raise ValueError("root contract adapter gapが縮小または昇格しています")
     if preflight != {
@@ -94,7 +97,9 @@ def main() -> None:
     rejected("root-adapter-semantic-credit", lambda value: value["root_contract_adapter"].update(semantic_credit=1))
     rejected("root-adapter-runtime-credit", lambda value: value["root_contract_adapter"].update(runtime_credit=1))
     rejected("root-adapter-early-emit", lambda value: value["root_contract_adapter"].update(root_surface_inventory_emitted=True))
-    print("Core v2 Scenario Plan gap fixtures passed: positive=1 negative=14")
+    rejected("schema-adapter-row-retreat", lambda value: value["root_contract_adapter"].update(schema_validated_rows=999))
+    rejected("schema-adapter-early-emit", lambda value: value["root_contract_adapter"].update(schema_canonical_emitted=True))
+    print("Core v2 Scenario Plan gap fixtures passed: positive=1 negative=16")
 
 
 if __name__ == "__main__":

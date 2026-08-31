@@ -93,7 +93,7 @@ def build() -> dict:
             "missing_core_artifacts": missing_files,
         },
         "core_gate_status": {
-            "scenario_trace": "blocked-root-scenario-proof-schema-and-runtime-closure",
+            "scenario_trace": "blocked-canonical-schema-publication-and-runtime-closure",
             "scenario_plan": "blocked-pattern-scenario-runtime-report",
             "evidence_durability": "blocked-pattern-scenario-runtime-report",
             "configured_make_check": "passed",
@@ -117,6 +117,9 @@ def build() -> dict:
             "root_surface_inventory_emitted": root_adapter.get("credit", {}).get("root_surface_inventory_emitted"),
             "root_verification_matrix_emitted": root_adapter.get("credit", {}).get("root_verification_matrix_emitted"),
             "rejection_to_refusal_rows": root_adapter.get("scenario_migration", {}).get("counts", {}).get("renamed_rejection_to_refusal"),
+            "scenario_schema_status": root_adapter.get("scenario_schema_adapter", {}).get("status"),
+            "schema_validated_rows": root_adapter.get("scenario_schema_adapter", {}).get("validated_rows"),
+            "schema_canonical_emitted": root_adapter.get("scenario_schema_adapter", {}).get("canonical_emitted"),
         },
         "runtime_preflight": {
             "state": "partial-dedicated-local-kind-runtime-proof",
@@ -145,6 +148,7 @@ def build() -> dict:
             "旧row IDから新row IDへの全件Mappingと構造非後退を検証する。",
             "Runtime未実行rowをpattern-specific-gapのまま保持する。",
             "Core標準Artifactとroot inventory／matrix adapterを正本Gapへ束縛する。",
+            "1000 Scenario rowを専用stagingでCore Schema検証し、未実証canonicalへの早期発行を拒否する。",
         ],
         "human_independent_next_actions": [
             "専用local Kindがない間は外部Contextへ接続せずRuntime Gapを保持する。",

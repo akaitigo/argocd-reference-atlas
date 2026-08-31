@@ -20,6 +20,7 @@ PATTERN_RESULTS = Path("artifacts/pattern-scenarios/results.json")
 MIGRATION = Path("migrations/scenario-class-refusal-v1.json")
 MIGRATION_BASELINE = Path("baselines/scenario-row-id-migration-v1.json")
 SCENARIO_INDEX = Path("evidence/scenarios/index.json")
+SCENARIO_SCHEMA_ADAPTER = Path("artifacts/core-v2/scenario-proof-index-schema-gap.json")
 OUTPUT = Path("artifacts/core-v2/root-contract-adapter-gap.json")
 CORE_SCENARIOS = (
     "normal", "boundary", "refusal", "failure", "recovery",
@@ -58,6 +59,7 @@ def build() -> dict[str, Any]:
     migration = load(MIGRATION)
     baseline = load(MIGRATION_BASELINE)
     scenarios = load(SCENARIO_INDEX)
+    schema_adapter = load(SCENARIO_SCHEMA_ADAPTER)
     matrix_classes = [
         {
             "legacy": item["scenario"],
@@ -83,6 +85,7 @@ def build() -> dict[str, Any]:
             for path in (
                 ROOT_SURFACE, ROOT_MATRIX, CORE_MANIFEST, REFERENCE_RESULTS,
                 PATTERN_RESULTS, MIGRATION, MIGRATION_BASELINE, SCENARIO_INDEX,
+                SCENARIO_SCHEMA_ADAPTER,
             )
         },
         "policy": {
@@ -143,6 +146,18 @@ def build() -> dict[str, Any]:
             "old_set_digest": baseline["old_set_digest"],
             "new_set_digest": baseline["new_set_digest"],
         },
+        "scenario_schema_adapter": {
+            "path": SCENARIO_SCHEMA_ADAPTER.as_posix(),
+            "status": schema_adapter["status"],
+            "validated_files": schema_adapter["schema_validation"]["validated_files"],
+            "validated_rows": schema_adapter["schema_validation"]["row_files"],
+            "pattern_specific_gaps": schema_adapter["denominator"]["pattern_specific_gaps"],
+            "canonical_emitted": schema_adapter["canonical_publication"]["emitted"],
+            "legacy_index_preserved": schema_adapter["canonical_publication"]["legacy_index_preserved"],
+            "runtime_credit": schema_adapter["credit"]["runtime"],
+            "semantic_credit": schema_adapter["credit"]["semantic"],
+            "completion_credit": schema_adapter["credit"]["completion"],
+        },
         "credit": {
             "runtime": 0,
             "semantic": 0,
@@ -160,6 +175,7 @@ def validate(document: dict[str, Any]) -> None:
     standard = document["core_standard_artifacts"]
     adapters = document["root_adapters"]
     migration = document["scenario_migration"]
+    schema_adapter = document["scenario_schema_adapter"]
     credit = document["credit"]
     require(document["status"] == "incomplete-human-and-runtime-gaps" and bool(document["blockers"]), "root契約Gapが完了扱いです")
     require(authority == {"raw_anchors": 63889, "pending_human": 63889, "human_decisions": 0, "reviewed_atomic_behaviors": 0, "semantic_credit": 0}, "Authority denominatorまたはsemantic creditが変化しています")
@@ -176,6 +192,7 @@ def validate(document: dict[str, Any]) -> None:
     require(len(classes) == 10 and [item["core"] for item in classes] == list(CORE_SCENARIOS), "Core 10 Scenario class mappingが不正です")
     require(len({item["core"] for item in classes}) == 10 and all(item["status"] == "gap" for item in classes), "Core Scenario classが重複または昇格しています")
     require(migration["mapping"] == LEGACY_TO_CORE and migration["counts"] == {"old_rows": 1000, "new_rows": 1000, "identity": 900, "renamed_rejection_to_refusal": 100, "runtime_credit": 0, "completion_eligible": 0}, "rejection→refusal全件mappingが非後退ではありません")
+    require(schema_adapter == {"path": "artifacts/core-v2/scenario-proof-index-schema-gap.json", "status": "incomplete-schema-valid-staging-not-published", "validated_files": 1001, "validated_rows": 1000, "pattern_specific_gaps": 1000, "canonical_emitted": False, "legacy_index_preserved": True, "runtime_credit": 0, "semantic_credit": 0, "completion_credit": 0}, "Scenario Schema adapterが縮小または早期発行されています")
     require(credit == {"runtime": 0, "semantic": 0, "completion": 0, "root_surface_inventory_emitted": False, "root_verification_matrix_emitted": False}, "adapterが証明creditを持っています")
     require(document == build(), "root契約Gapが現在inputからの決定論的導出値と一致しません")
 

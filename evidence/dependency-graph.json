@@ -308,8 +308,8 @@
         "evals/definitive-forward-cases.json",
         "evals/forward-cases.json"
       ],
-      "baseline_digest": "sha256:b3a875c5cd73c593343e5181c042856d6b448dbe26df356367e6d0f0a55cf170",
-      "current_digest": "sha256:b3a875c5cd73c593343e5181c042856d6b448dbe26df356367e6d0f0a55cf170",
+      "baseline_digest": "sha256:d9b854361b6f2f5df2338547a6bac1b51a4584b1d03642c5d90d5b5fa29b92aa",
+      "current_digest": "sha256:d9b854361b6f2f5df2338547a6bac1b51a4584b1d03642c5d90d5b5fa29b92aa",
       "observed_at": "2026-08-28T15:48:00Z"
     },
     {
@@ -376,8 +376,8 @@
         "scripts/generate_core_v2_scenario_plan_gap.py",
         "scripts/test_core_v2_scenario_plan_gap.py"
       ],
-      "baseline_digest": "sha256:345530b9430c6aed0ccf2762024080ab73934ed0e0e4d047180ee0ccdbd8ba5f",
-      "current_digest": "sha256:345530b9430c6aed0ccf2762024080ab73934ed0e0e4d047180ee0ccdbd8ba5f",
+      "baseline_digest": "sha256:f2eb99b376e6f2bbb863fd243b00ce00fb27ced0f98b75da55fd4c1a4eba1c9b",
+      "current_digest": "sha256:f2eb99b376e6f2bbb863fd243b00ce00fb27ced0f98b75da55fd4c1a4eba1c9b",
       "observed_at": "2026-08-28T15:48:00Z"
     },
     {
@@ -387,8 +387,19 @@
         "scripts/generate_core_v2_root_contract_gap.py",
         "scripts/test_core_v2_root_contract_gap.py"
       ],
-      "baseline_digest": "sha256:d5991eee0842b881151028a46289dcc52532d8a406f41464ea757f3448f7ded9",
-      "current_digest": "sha256:d5991eee0842b881151028a46289dcc52532d8a406f41464ea757f3448f7ded9",
+      "baseline_digest": "sha256:2e13e01bb45a303d8fdfa6718d96d2a49d4b63c67440ca36a0abcbca96fb7262",
+      "current_digest": "sha256:2e13e01bb45a303d8fdfa6718d96d2a49d4b63c67440ca36a0abcbca96fb7262",
+      "observed_at": "2026-08-28T15:48:00Z"
+    },
+    {
+      "id": "harness.core-v2-scenario-schema-gap",
+      "kind": "harness",
+      "members": [
+        "scripts/generate_core_v2_scenario_schema_gap.py",
+        "scripts/test_core_v2_scenario_schema_gap.py"
+      ],
+      "baseline_digest": "sha256:666ed6875545bfc0be0190ae01c176c4a36828842b78d597f7d550786ec54b30",
+      "current_digest": "sha256:666ed6875545bfc0be0190ae01c176c4a36828842b78d597f7d550786ec54b30",
       "observed_at": "2026-08-28T15:48:00Z"
     },
     {
@@ -459,8 +470,8 @@
         "scripts/generate_core_v2_dependency_extension.py",
         "scripts/test_core_v2_evidence_dependency_extensions.py"
       ],
-      "baseline_digest": "sha256:fb3e181cbdd6c26835ace686023c576b7f066fa6593b08937e56e93d72621a72",
-      "current_digest": "sha256:fb3e181cbdd6c26835ace686023c576b7f066fa6593b08937e56e93d72621a72",
+      "baseline_digest": "sha256:96727628fc75bc3997ee88dfb89ba34ce94d94ac6bb72805bf70281c8785f135",
+      "current_digest": "sha256:96727628fc75bc3997ee88dfb89ba34ce94d94ac6bb72805bf70281c8785f135",
       "observed_at": "2026-08-28T15:48:00Z"
     }
   ],
@@ -520,7 +531,7 @@
       "id": "output.artifacts.core-v2.evidence-dependency-extension.json",
       "kind": "derived-evidence",
       "path": "artifacts/core-v2/evidence-dependency-extension.json",
-      "digest": "sha256:8f334f7d99ac06ebb7a5dde424e79112744493a453fe3b4e2a5142e3a32f7101",
+      "digest": "sha256:6426149708a32d324cc420c57fce4a8ba533f663276777144f3afa83b49dece3",
       "depends_on": [
         "harness.content-policy",
         "harness.core-v2-dependency-extension",
@@ -567,11 +578,12 @@
       "id": "output.artifacts.core-v2.root-contract-adapter-gap.json",
       "kind": "closure-plan",
       "path": "artifacts/core-v2/root-contract-adapter-gap.json",
-      "digest": "sha256:fd258cd4d515ccd775cc3b6ed0a6edf874b7178b5c1609195e13f6fe9866bb91",
+      "digest": "sha256:027e76d1fec32ff4b686d567c7ef00e70ece9fbc7252a8aeea488a0092ced425",
       "depends_on": [
         "harness.core-v2-root-contract-gap",
         "output.artifacts.core-v2.root-surface-inventory-closure.json",
         "output.artifacts.core-v2.root-verification-matrix-closure.json",
+        "output.artifacts.core-v2.scenario-proof-index-schema-gap.json",
         "output.artifacts.pattern-scenarios.results.json",
         "output.artifacts.reference-system.results.json",
         "output.baselines.scenario-row-id-migration-v1.json",
@@ -614,7 +626,7 @@
       "id": "output.artifacts.core-v2.scenario-plan-gap.json",
       "kind": "closure-plan",
       "path": "artifacts/core-v2/scenario-plan-gap.json",
-      "digest": "sha256:3747f04345633dc6fff4413bb4ddfb92b3c3de499c8af9286700c91a3622b5c5",
+      "digest": "sha256:923fe020550c0dfaa61c30236c31753c9962af2f6e56aeee6316f5ec16702ef2",
       "depends_on": [
         "harness.core-v2-scenario-plan",
         "output.artifacts.core-v2.root-contract-adapter-gap.json",
@@ -623,6 +635,23 @@
       ],
       "status": "current",
       "run_id": "run.core-v2-scenario-plan-gap"
+    },
+    {
+      "id": "output.artifacts.core-v2.scenario-proof-index-schema-gap.json",
+      "kind": "closure-plan",
+      "path": "artifacts/core-v2/scenario-proof-index-schema-gap.json",
+      "digest": "sha256:db587d11b64736c0c09d0ff1d86a94f1b8ec870b49a7790765adea8a3617bb31",
+      "depends_on": [
+        "harness.core-v2-scenario-schema-gap",
+        "output.artifacts.pattern-scenarios.results.json",
+        "output.artifacts.reference-system.results.json",
+        "output.baselines.scenario-row-id-migration-v1.json",
+        "output.evidence.scenarios.index.json",
+        "output.integrations.reference-system.manifest.json",
+        "output.migrations.scenario-class-refusal-v1.json"
+      ],
+      "status": "current",
+      "run_id": "run.core-v2-scenario-schema-gap"
     },
     {
       "id": "output.artifacts.core-v2.surface-inventory-readiness.json",
@@ -139637,7 +139666,7 @@
         },
         {
           "input_id": "profile.local",
-          "digest": "sha256:b3a875c5cd73c593343e5181c042856d6b448dbe26df356367e6d0f0a55cf170"
+          "digest": "sha256:d9b854361b6f2f5df2338547a6bac1b51a4584b1d03642c5d90d5b5fa29b92aa"
         },
         {
           "input_id": "runtime.argocd-kubernetes",
@@ -139720,15 +139749,19 @@
         },
         {
           "input_id": "harness.core-v2-dependency-extension",
-          "digest": "sha256:fb3e181cbdd6c26835ace686023c576b7f066fa6593b08937e56e93d72621a72"
+          "digest": "sha256:96727628fc75bc3997ee88dfb89ba34ce94d94ac6bb72805bf70281c8785f135"
         },
         {
           "input_id": "harness.core-v2-root-contract-gap",
-          "digest": "sha256:d5991eee0842b881151028a46289dcc52532d8a406f41464ea757f3448f7ded9"
+          "digest": "sha256:2e13e01bb45a303d8fdfa6718d96d2a49d4b63c67440ca36a0abcbca96fb7262"
         },
         {
           "input_id": "harness.core-v2-scenario-plan",
-          "digest": "sha256:345530b9430c6aed0ccf2762024080ab73934ed0e0e4d047180ee0ccdbd8ba5f"
+          "digest": "sha256:f2eb99b376e6f2bbb863fd243b00ce00fb27ced0f98b75da55fd4c1a4eba1c9b"
+        },
+        {
+          "input_id": "harness.core-v2-scenario-schema-gap",
+          "digest": "sha256:666ed6875545bfc0be0190ae01c176c4a36828842b78d597f7d550786ec54b30"
         },
         {
           "input_id": "harness.core-v2-skill-router",
@@ -139784,7 +139817,7 @@
         },
         {
           "input_id": "profile.local",
-          "digest": "sha256:b3a875c5cd73c593343e5181c042856d6b448dbe26df356367e6d0f0a55cf170"
+          "digest": "sha256:d9b854361b6f2f5df2338547a6bac1b51a4584b1d03642c5d90d5b5fa29b92aa"
         },
         {
           "input_id": "runtime.argocd-kubernetes",
@@ -139846,7 +139879,11 @@
         },
         {
           "input_id": "harness.core-v2-root-contract-gap",
-          "digest": "sha256:d5991eee0842b881151028a46289dcc52532d8a406f41464ea757f3448f7ded9"
+          "digest": "sha256:2e13e01bb45a303d8fdfa6718d96d2a49d4b63c67440ca36a0abcbca96fb7262"
+        },
+        {
+          "input_id": "harness.core-v2-scenario-schema-gap",
+          "digest": "sha256:666ed6875545bfc0be0190ae01c176c4a36828842b78d597f7d550786ec54b30"
         },
         {
           "input_id": "harness.root-surface-inventory",
@@ -139894,7 +139931,7 @@
         },
         {
           "input_id": "profile.local",
-          "digest": "sha256:b3a875c5cd73c593343e5181c042856d6b448dbe26df356367e6d0f0a55cf170"
+          "digest": "sha256:d9b854361b6f2f5df2338547a6bac1b51a4584b1d03642c5d90d5b5fa29b92aa"
         },
         {
           "input_id": "runtime.argocd-kubernetes",
@@ -139952,11 +139989,15 @@
         },
         {
           "input_id": "harness.core-v2-root-contract-gap",
-          "digest": "sha256:d5991eee0842b881151028a46289dcc52532d8a406f41464ea757f3448f7ded9"
+          "digest": "sha256:2e13e01bb45a303d8fdfa6718d96d2a49d4b63c67440ca36a0abcbca96fb7262"
         },
         {
           "input_id": "harness.core-v2-scenario-plan",
-          "digest": "sha256:345530b9430c6aed0ccf2762024080ab73934ed0e0e4d047180ee0ccdbd8ba5f"
+          "digest": "sha256:f2eb99b376e6f2bbb863fd243b00ce00fb27ced0f98b75da55fd4c1a4eba1c9b"
+        },
+        {
+          "input_id": "harness.core-v2-scenario-schema-gap",
+          "digest": "sha256:666ed6875545bfc0be0190ae01c176c4a36828842b78d597f7d550786ec54b30"
         },
         {
           "input_id": "harness.evidence-dependency",
@@ -140008,7 +140049,7 @@
         },
         {
           "input_id": "profile.local",
-          "digest": "sha256:b3a875c5cd73c593343e5181c042856d6b448dbe26df356367e6d0f0a55cf170"
+          "digest": "sha256:d9b854361b6f2f5df2338547a6bac1b51a4584b1d03642c5d90d5b5fa29b92aa"
         },
         {
           "input_id": "runtime.argocd-kubernetes",
@@ -140044,6 +140085,92 @@
       ]
     },
     {
+      "id": "run.core-v2-scenario-schema-gap",
+      "execution_kind": "derived",
+      "command": "make scenario-proof-index-adapter",
+      "started_at": "2026-08-28T15:48:00Z",
+      "completed_at": "2026-08-28T15:48:01Z",
+      "result": "passed",
+      "attempts": 1,
+      "input_bindings": [
+        {
+          "input_id": "harness.cluster-labs",
+          "digest": "sha256:62193b98aed7d7b694a0f90abaf52ef163e994a410b96e684d0dd40bf725b4d7"
+        },
+        {
+          "input_id": "harness.core-standard-artifacts",
+          "digest": "sha256:204ea4d20059ebf30aa87f418ea4bae94f7e07213a9ac5227ad7db972e4c2a13"
+        },
+        {
+          "input_id": "harness.core-v2-scenario-schema-gap",
+          "digest": "sha256:666ed6875545bfc0be0190ae01c176c4a36828842b78d597f7d550786ec54b30"
+        },
+        {
+          "input_id": "harness.scenario-proof",
+          "digest": "sha256:e66a557d7915e76fe7729ed099d43179e578a0b820b1bc4f7179c46fa0a7c60b"
+        },
+        {
+          "input_id": "harness.scenario-runtime",
+          "digest": "sha256:3b8925f30e7c845381bd50c85f7b50cefb1ae5e6894057fd80c6d8765f59d281"
+        },
+        {
+          "input_id": "harness.scenario-runtime.security-001",
+          "digest": "sha256:82906b1554180afc151b1855b0869ab3ea015700ae18b816b3b6c1c6fdcebe5a"
+        },
+        {
+          "input_id": "harness.scenario-runtime.security-002",
+          "digest": "sha256:dd5877b86c59ffa01001a7caf3a22a98794aebeece5f39020f495245204f764b"
+        },
+        {
+          "input_id": "harness.scenario-runtime.security-003",
+          "digest": "sha256:9e2ae81baf6c2d46e7f0ee6136e01d05928304d0f034ec4be9dc06f1ee7f8be2"
+        },
+        {
+          "input_id": "harness.skill-eval",
+          "digest": "sha256:639b4199f906194cafb3430a8459ebab2cc2d4ce4db5e8b5a30799bda6c26e66"
+        },
+        {
+          "input_id": "profile.cluster",
+          "digest": "sha256:284a48bf018b4e856920c2f5f44007396990ec063c7d78eca1cedf5a4c157fa1"
+        },
+        {
+          "input_id": "profile.container",
+          "digest": "sha256:d8ba752075a636fe5989e7626bf81ff005bcc8221d258a9727e73e9275ef7042"
+        },
+        {
+          "input_id": "profile.local",
+          "digest": "sha256:d9b854361b6f2f5df2338547a6bac1b51a4584b1d03642c5d90d5b5fa29b92aa"
+        },
+        {
+          "input_id": "runtime.argocd-kubernetes",
+          "digest": "sha256:51011c347d65a7e0b11299a1166e3314a94d6aa1c64f04bc788b5e5dfbcffeb1"
+        },
+        {
+          "input_id": "runtime.controller-components",
+          "digest": "sha256:9751cd5a74a0465783325e9a555d138869db2561fde295c6dc09536d7a3231bc"
+        },
+        {
+          "input_id": "source.application",
+          "digest": "sha256:f19ce5e3657b17ba5d9843afc5c89eb65c384f7087f9b6e74098cd5e180883e5"
+        },
+        {
+          "input_id": "source.core-standard-legacy-scenarios",
+          "digest": "sha256:8990f3d18c8276014ac085e9b20e370446e3b5045572d9ab563946cca79d8ab1"
+        },
+        {
+          "input_id": "source.manifests",
+          "digest": "sha256:beb8f9d4535d8119ec432ca970597c0f2014d67d3a644ab418fec5a25d586cbd"
+        },
+        {
+          "input_id": "source.project-policy",
+          "digest": "sha256:19572bb8ae8a1725d138e1f4ea139fa490a44a1b9e8990d5947479e7d78ff18e"
+        }
+      ],
+      "output_ids": [
+        "output.artifacts.core-v2.scenario-proof-index-schema-gap.json"
+      ]
+    },
+    {
       "id": "run.core-v2-skill-router",
       "execution_kind": "derived",
       "command": "python3 scripts/generate_core_v2_skill_router.py && python3 scripts/test_core_v2_skill_router.py && atlas audit . --gate skill-router",
@@ -140062,7 +140189,7 @@
         },
         {
           "input_id": "profile.local",
-          "digest": "sha256:b3a875c5cd73c593343e5181c042856d6b448dbe26df356367e6d0f0a55cf170"
+          "digest": "sha256:d9b854361b6f2f5df2338547a6bac1b51a4584b1d03642c5d90d5b5fa29b92aa"
         },
         {
           "input_id": "source.project-policy",
@@ -140088,7 +140215,7 @@
         },
         {
           "input_id": "profile.local",
-          "digest": "sha256:b3a875c5cd73c593343e5181c042856d6b448dbe26df356367e6d0f0a55cf170"
+          "digest": "sha256:d9b854361b6f2f5df2338547a6bac1b51a4584b1d03642c5d90d5b5fa29b92aa"
         },
         {
           "input_id": "source.project-policy",
@@ -140115,7 +140242,7 @@
         },
         {
           "input_id": "profile.local",
-          "digest": "sha256:b3a875c5cd73c593343e5181c042856d6b448dbe26df356367e6d0f0a55cf170"
+          "digest": "sha256:d9b854361b6f2f5df2338547a6bac1b51a4584b1d03642c5d90d5b5fa29b92aa"
         },
         {
           "input_id": "source.project-policy",
@@ -141265,7 +141392,7 @@
         },
         {
           "input_id": "profile.local",
-          "digest": "sha256:b3a875c5cd73c593343e5181c042856d6b448dbe26df356367e6d0f0a55cf170"
+          "digest": "sha256:d9b854361b6f2f5df2338547a6bac1b51a4584b1d03642c5d90d5b5fa29b92aa"
         },
         {
           "input_id": "source.project-policy",
@@ -141292,7 +141419,7 @@
         },
         {
           "input_id": "profile.local",
-          "digest": "sha256:b3a875c5cd73c593343e5181c042856d6b448dbe26df356367e6d0f0a55cf170"
+          "digest": "sha256:d9b854361b6f2f5df2338547a6bac1b51a4584b1d03642c5d90d5b5fa29b92aa"
         },
         {
           "input_id": "source.project-policy",
@@ -141481,7 +141608,7 @@
         },
         {
           "input_id": "profile.local",
-          "digest": "sha256:b3a875c5cd73c593343e5181c042856d6b448dbe26df356367e6d0f0a55cf170"
+          "digest": "sha256:d9b854361b6f2f5df2338547a6bac1b51a4584b1d03642c5d90d5b5fa29b92aa"
         },
         {
           "input_id": "runtime.argocd-kubernetes",
@@ -141575,7 +141702,7 @@
         },
         {
           "input_id": "profile.local",
-          "digest": "sha256:b3a875c5cd73c593343e5181c042856d6b448dbe26df356367e6d0f0a55cf170"
+          "digest": "sha256:d9b854361b6f2f5df2338547a6bac1b51a4584b1d03642c5d90d5b5fa29b92aa"
         },
         {
           "input_id": "runtime.argocd-kubernetes",
@@ -141657,7 +141784,7 @@
         },
         {
           "input_id": "profile.local",
-          "digest": "sha256:b3a875c5cd73c593343e5181c042856d6b448dbe26df356367e6d0f0a55cf170"
+          "digest": "sha256:d9b854361b6f2f5df2338547a6bac1b51a4584b1d03642c5d90d5b5fa29b92aa"
         },
         {
           "input_id": "runtime.argocd-kubernetes",
@@ -141731,7 +141858,7 @@
         },
         {
           "input_id": "profile.local",
-          "digest": "sha256:b3a875c5cd73c593343e5181c042856d6b448dbe26df356367e6d0f0a55cf170"
+          "digest": "sha256:d9b854361b6f2f5df2338547a6bac1b51a4584b1d03642c5d90d5b5fa29b92aa"
         },
         {
           "input_id": "runtime.argocd-kubernetes",
@@ -143123,6 +143250,7 @@
     "artifacts/core-v2/root-surface-inventory-closure.json",
     "artifacts/core-v2/root-verification-matrix-closure.json",
     "artifacts/core-v2/scenario-plan-gap.json",
+    "artifacts/core-v2/scenario-proof-index-schema-gap.json",
     "artifacts/core-v2/surface-inventory-readiness.json",
     "artifacts/pattern-scenarios/results.json",
     "artifacts/reference-system/gaps/boundary.screenshot-gap.json",

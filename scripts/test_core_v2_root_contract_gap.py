@@ -34,8 +34,11 @@ def main() -> None:
     rejected("refusal-mapping-retreat", lambda value: value["scenario_migration"]["mapping"].update(rejection="rejection"))
     rejected("mapping-row-retreat", lambda value: value["scenario_migration"]["counts"].update(new_rows=999))
     rejected("core-class-duplicate", lambda value: value["root_adapters"]["verification_matrix"]["scenario_classes"][2].update(core="boundary"))
+    rejected("schema-adapter-row-retreat", lambda value: value["scenario_schema_adapter"].update(validated_rows=999))
+    rejected("schema-adapter-early-publish", lambda value: value["scenario_schema_adapter"].update(canonical_emitted=True))
+    rejected("schema-adapter-runtime-credit", lambda value: value["scenario_schema_adapter"].update(runtime_credit=1))
     rejected("blocker-retreat", lambda value: value["blockers"].pop())
-    print("Core v2 root contract gap fixtures passed: positive=1 negative=13")
+    print("Core v2 root contract gap fixtures passed: positive=1 negative=16")
 
 
 if __name__ == "__main__":
