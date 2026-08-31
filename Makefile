@@ -39,6 +39,7 @@ definitive-validate:
 	python3 scripts/validate_scenario_proofs.py
 	python3 scripts/test_scenario_gap_closure.py
 	python3 scripts/test_atomic_evidence_publish.py
+	python3 scripts/test_security_004_preflight.py
 
 
 surface-inventory-readiness:
