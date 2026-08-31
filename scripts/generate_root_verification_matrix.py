@@ -18,6 +18,7 @@ from generate_root_surface_inventory import BINDINGS, OUTPUT as INVENTORY_CLOSUR
 
 ROOT = Path(__file__).resolve().parents[1]
 SCENARIOS = ROOT / "evidence/scenarios/index.json"
+CLOSURE_PLAN = ROOT / "evidence/scenarios/closure-plan.json"
 DECISIONS = ROOT / "authority/reviews/decisions.json"
 COVERAGE = ROOT / "coverage.yaml"
 OUTPUT = ROOT / "artifacts/core-v2/root-verification-matrix-closure.json"
@@ -26,7 +27,7 @@ ROOT_MATRIX = ROOT / "verification.matrix.yaml"
 SCENARIO_ORDER = ("normal", "boundary", "rejection", "failure", "recovery", "migration", "operations", "security", "performance", "compatibility")
 CORE_SCENARIO_BY_LEGACY = {scenario: ("refusal" if scenario == "rejection" else scenario) for scenario in SCENARIO_ORDER}
 CORE_SCENARIOS = {"normal", "boundary", "refusal", "failure", "recovery", "migration", "operations", "security", "performance", "compatibility"}
-INPUT_PATHS = [BINDINGS, INVENTORY_CLOSURE, SCENARIOS, DECISIONS, COVERAGE]
+INPUT_PATHS = [BINDINGS, INVENTORY_CLOSURE, SCENARIOS, CLOSURE_PLAN, DECISIONS, COVERAGE]
 
 
 def digest(path: Path) -> str:
@@ -37,6 +38,7 @@ def build() -> dict[str, Any]:
     bindings = load(BINDINGS)
     inventory_closure = load(INVENTORY_CLOSURE)
     scenarios = load(SCENARIOS)
+    closure_plan = load(CLOSURE_PLAN)
     decisions = load(DECISIONS)
     reviewed_behaviors = inventory_closure["closure"]["reviewed_atomic_behaviors"]
     expected_rows = reviewed_behaviors * len(SCENARIO_ORDER)
@@ -107,6 +109,10 @@ def build() -> dict[str, Any]:
             "legacy_candidate_rows": scenarios["summary"]["rows"],
             "legacy_candidate_rows_open": scenarios["summary"]["scenario_gaps_open"],
             "legacy_rows_completion_credit": 0,
+            "runtime_execution_completed_rows": closure_plan["summary"]["runtime_execution_completed_rows"],
+            "runtime_execution_remaining_rows": closure_plan["summary"]["runtime_execution_remaining_rows"],
+            "completion_closed_rows": closure_plan["summary"]["completion_closed_rows"],
+            "completion_remaining_rows": closure_plan["summary"]["completion_remaining_rows"],
         },
         "closure": {
             "root_binding_items": len(bindings["items"]),
@@ -115,6 +121,7 @@ def build() -> dict[str, Any]:
             "completion_eligible_rows": completion_eligible,
             "closed_reviewed_matrix_rows": completion_eligible,
             "remaining_reviewed_matrix_rows": max(expected_rows - completion_eligible, 0),
+            "runtime_only_rows_without_completion_credit": closure_plan["summary"]["runtime_execution_completed_rows"] - completion_eligible,
         },
         "scenario_classes": scenario_classes,
         "root_matrix": {
@@ -175,10 +182,16 @@ def validate(document: dict[str, Any]) -> None:
         raise ValueError("legacy rejectionをCore refusalへ正規化していません")
     if denominator["legacy_candidate_rows"] != 1000 or denominator["legacy_rows_completion_credit"] != 0:
         raise ValueError("既存candidate Matrixをroot達成へ算入しています")
+    if denominator["runtime_execution_completed_rows"] != 13 or denominator["runtime_execution_remaining_rows"] != 987:
+        raise ValueError("runtime実行集計がScenario Planと一致しません")
+    if denominator["completion_closed_rows"] != 0 or denominator["completion_remaining_rows"] != 1000:
+        raise ValueError("completion集計がScenario Planと一致しません")
     if denominator["reviewed_atomic_behaviors"] == 0 and denominator["reviewed_denominator_status"] != "pending-human-authority-review":
         raise ValueError("未成立のreviewed denominatorを確定扱いしています")
     if closure["authority_atomic_bindings"] == 0 and closure["completion_eligible_rows"] != 0:
         raise ValueError("Authority atomic bindingなしでMatrixを閉じています")
+    if closure["runtime_only_rows_without_completion_credit"] != 13:
+        raise ValueError("runtime-only row集計がcompletion creditへ昇格しています")
     if denominator["reviewed_atomic_behaviors"] == 0 and document["root_matrix"]["emission_eligible"]:
         raise ValueError("reviewed Atomic behavior 0でroot Matrixを発行可能にしています")
     if not document["root_matrix"]["emission_eligible"] and document["root_matrix"]["present"]:

@@ -102,6 +102,33 @@ def validate_content_policy(root: Path = ROOT, publication_paths=None) -> None:
                 raise ValueError(f"中立性Policyに反する表現があります: {relative}: {phrase}")
 
 
+def validate_closure_plan_summary(root: Path = ROOT) -> None:
+    plan = load_json(root / "evidence/scenarios/closure-plan.json")
+    summary = plan["summary"]
+    if summary["runtime_execution_completed_rows"] != summary["completed_dedicated_rows"]:
+        raise ValueError("Closure Planのdeprecated completed_dedicated_rowsがruntime集計と一致しません")
+    if summary["runtime_execution_remaining_rows"] != summary["remaining_rows"]:
+        raise ValueError("Closure Planのdeprecated remaining_rowsがruntime集計と一致しません")
+    if summary["completion_closed_rows"] != 0 or summary["completion_remaining_rows"] != 1000:
+        raise ValueError("Closure Planのcompletion集計が非後退baselineと一致しません")
+    if summary["completion_eligible_rows"] != 0:
+        raise ValueError("Closure Planのcompletion eligible rowsが不正です")
+    deprecated = summary["deprecated_fields"]
+    if deprecated["completed_dedicated_rows"] != {
+        "status": "deprecated-exact-derivation",
+        "replacement": "runtime_execution_completed_rows",
+        "value": 13,
+    }:
+        raise ValueError("Closure Planのcompleted_dedicated_rows migrationが不正です")
+    if deprecated["remaining_rows"] != {
+        "status": "deprecated-exact-derivation",
+        "replacement": "runtime_execution_remaining_rows",
+        "value": 987,
+        "not_completion_remaining_rows": True,
+    }:
+        raise ValueError("Closure Planのremaining_rows migrationが不正です")
+
+
 def main() -> None:
     baseline = load_json(BASELINE_PATH)
     targets = index(ROOT / "coverage.yaml", "targets")
@@ -196,6 +223,7 @@ def main() -> None:
     if "kindest/node:v1.34.0" not in (ROOT / "scripts" / "extended" / "isolation.sh").read_text(encoding="utf-8"):
         raise ValueError("baseline Kubernetes v1.34.0実行経路が削除されました")
 
+    validate_closure_plan_summary()
     validate_content_policy()
     print(
         "non-regression baseline validated: "

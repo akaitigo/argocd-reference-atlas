@@ -5,16 +5,55 @@
   "core_commit": "072d7ca77981f51754e824d70c6d4ecd55ea67e5",
   "inputs": {
     "evidence/scenarios/index.json": "sha256:925134b7591c25117a1ca964b509a621e893fd5bd6e03a86e3fe8c83d1fed325",
-    "evidence/scenarios/closure-plan.json": "sha256:68e5341160195a81206a889b87d6c8f6360e003e5eef57bd963a99e4921cb350",
-    "artifacts/core-v2/root-contract-adapter-gap.json": "sha256:d9312577172e1e1642976858bb11b0d41a6a3c8a20610754e127da7cc49afe6c"
+    "evidence/scenarios/closure-plan.json": "sha256:a570d5c8ba4a6760e88cb8be041e58ec7b1a311fabdef5de73cf1aa3b7947392",
+    "artifacts/core-v2/root-contract-adapter-gap.json": "sha256:d0e4e87b6c43c1debc9260401ec44f38d9360e1fcd33a7113688a13b3cffc50b",
+    "integrations/reference-system/manifest.json": "sha256:401d26221be4557ca82a7cfdd9d604ede4ff932283b5d546d3650d662e7f19d2",
+    "artifacts/reference-system/results.json": "sha256:8e6e6f0a61b4458703e4b35bb585e820021ec6b49b807abe5b405734eb044705",
+    "artifacts/pattern-scenarios/results.json": "sha256:202032bc06f4f4b2c99a4a67063a295b0ff83614f01b36716262662cdff644f4",
+    "migrations/scenario-class-refusal-v1.json": "sha256:ed65ebe8edb0165c00c30e3f2fc8e3d1c70da478dccca5ee42f4976d9d57ef4c",
+    "baselines/scenario-row-id-migration-v1.json": "sha256:eb6da094c8811d72dd74d4ed766b42dd47bbbcf5b7a07472aa80a8f98b310afd",
+    "artifacts/core-v2/core-standard-artifacts-publish.json": "sha256:9717766bae20f1fcb7cfa8b10e49b487f0c9f6db587eb665ed1e65619b408c18"
+  },
+  "dependency_contract": {
+    "graph_output": "artifacts/core-v2/scenario-plan-gap.json",
+    "tracked_input_paths": [
+      "evidence/scenarios/index.json",
+      "evidence/scenarios/closure-plan.json",
+      "artifacts/core-v2/root-contract-adapter-gap.json",
+      "integrations/reference-system/manifest.json",
+      "artifacts/reference-system/results.json",
+      "artifacts/pattern-scenarios/results.json",
+      "migrations/scenario-class-refusal-v1.json",
+      "baselines/scenario-row-id-migration-v1.json",
+      "artifacts/core-v2/core-standard-artifacts-publish.json"
+    ],
+    "stale_on_any_input_digest_change": true,
+    "required_rerun": "python3 scripts/generate_core_v2_scenario_plan_gap.py && python3 scripts/validate_core_v2_scenario_plan_gap.py && python3 scripts/test_core_v2_scenario_plan_gap.py",
+    "digest_only_closure_forbidden": true
   },
   "denominator": {
     "patterns": 100,
     "scenarios": 10,
     "rows": 1000,
-    "remaining_rows": 987,
+    "runtime_execution_completed_rows": 13,
+    "runtime_execution_remaining_rows": 987,
+    "completion_closed_rows": 0,
+    "completion_remaining_rows": 1000,
     "scenario_gaps_open": 1000,
-    "scenario_gaps_closed": 0
+    "scenario_gaps_closed": 0,
+    "deprecated_fields": {
+      "completed_dedicated_rows": {
+        "status": "deprecated-exact-derivation",
+        "replacement": "runtime_execution_completed_rows",
+        "value": 13
+      },
+      "remaining_rows": {
+        "status": "deprecated-exact-derivation",
+        "replacement": "runtime_execution_remaining_rows",
+        "value": 987,
+        "not_completion_remaining_rows": true
+      }
+    }
   },
   "core_schema_migration": {
     "current_scenarios": [
@@ -63,7 +102,8 @@
     "authority_atomic_rows": 0,
     "approved_variant_denominators": 0,
     "dedicated_runtime_reports": 13,
-    "dedicated_runtime_execution_complete_rows": 13,
+    "runtime_execution_completed_rows": 13,
+    "runtime_execution_remaining_rows": 987,
     "completion_eligible_rows": 0,
     "integrated_runtime_passed": 0,
     "missing_core_artifacts": []
@@ -98,7 +138,7 @@
   },
   "root_contract_adapter": {
     "path": "artifacts/core-v2/root-contract-adapter-gap.json",
-    "digest": "sha256:d9312577172e1e1642976858bb11b0d41a6a3c8a20610754e127da7cc49afe6c",
+    "digest": "sha256:d0e4e87b6c43c1debc9260401ec44f38d9360e1fcd33a7113688a13b3cffc50b",
     "status": "incomplete-human-and-runtime-gaps",
     "authority_pending_human": 63889,
     "semantic_credit": 0,
@@ -114,7 +154,10 @@
   "runtime_preflight": {
     "state": "partial-dedicated-local-kind-runtime-proof",
     "dedicated_local_kind_required": true,
-    "completed_dedicated_rows": 13,
+    "runtime_execution_completed_rows": 13,
+    "runtime_execution_remaining_rows": 987,
+    "completion_closed_rows": 0,
+    "completion_remaining_rows": 1000,
     "external_context_access_forbidden": true,
     "fixture_runtime_credit": false
   },

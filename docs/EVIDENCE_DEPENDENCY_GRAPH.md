@@ -24,6 +24,16 @@ Application、ApplicationSet、Project、Repository／Cluster接続、sync、dri
 
 `evidence/scenarios/closure-plan.json`はArgo CDの100 Surface × 10 Scenarioをrisk順、同一Scenario内の安定Surface順で全件保持し、1 trancheを最大4 Surfaceに制限します。Authority人手Review済みVariant分母は現在0であるため、`approved_variant_ids`は空、`variant_denominator.status`は`pending-authority-human-review`です。件数のための仮Variantを作らず、全1,000 rowを未完のまま保持します。
 
+Closure Planの集計は次を明示分離します。
+
+- `runtime_execution_completed_rows`: 専用Runtimeを実行できたrow数
+- `runtime_execution_remaining_rows`: 専用Runtime未実行row数
+- `completion_closed_rows`: Authority atomic bindingとVariant denominatorまで閉じたrow数
+- `completion_remaining_rows`: Completionとして未完のrow数
+- `completion_eligible_rows`: Completionへ昇格可能なrow数
+
+既存の`completed_dedicated_rows`と`remaining_rows`は互換のため残しますが、どちらもruntime集計のdeprecated exact derivationです。特に`remaining_rows`は`completion_remaining_rows`ではありません。
+
 Dependency GraphはScenario Proof indexのID、Surface、Target、Target Set、Scenario、Path、Source binding構造と、Closure Planのpolicy、baseline、tranche membership、全row順を構造digestへ固定します。Proof削除、Target差替え、row削除、risk順退避、tranche上限超過は再固定だけでは通りません。
 
 ## 実行

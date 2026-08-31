@@ -155,6 +155,10 @@ def build_closure_plan() -> dict[str, Any]:
             tranche["variant_runs"] = sum(len(row_map[row_id]["variant_denominator"]["runtime_declared_variant_ids"]) for row_id in tranche["row_ids"])
     completed_tranches = [tranche for tranche in tranches if tranche["status"] == "dedicated-runtime-complete-authority-pending"]
     next_tranche = next((tranche for tranche in tranches if tranche["status"] == "planned"), None)
+    runtime_execution_completed_rows = len(completed_rows)
+    runtime_execution_remaining_rows = len(rows) - runtime_execution_completed_rows
+    completion_closed_rows = len([row for row in rows if row["scenario_gap_closed"] is True])
+    completion_remaining_rows = len(rows) - completion_closed_rows
     return {
         "schema_version": 1,
         "id": "argocd-scenario-closure-plan-v1",
@@ -182,8 +186,26 @@ def build_closure_plan() -> dict[str, Any]:
             "inherited_gap_rows_at_f055351": len(rows),
         },
         "summary": {
-            "completed_dedicated_rows": len(completed_rows),
-            "remaining_rows": len(rows) - len(completed_rows),
+            "runtime_execution_completed_rows": runtime_execution_completed_rows,
+            "runtime_execution_remaining_rows": runtime_execution_remaining_rows,
+            "completion_closed_rows": completion_closed_rows,
+            "completion_remaining_rows": completion_remaining_rows,
+            "completion_eligible_rows": index["summary"]["completion_eligible_rows"],
+            "completed_dedicated_rows": runtime_execution_completed_rows,
+            "remaining_rows": runtime_execution_remaining_rows,
+            "deprecated_fields": {
+                "completed_dedicated_rows": {
+                    "status": "deprecated-exact-derivation",
+                    "replacement": "runtime_execution_completed_rows",
+                    "value": runtime_execution_completed_rows,
+                },
+                "remaining_rows": {
+                    "status": "deprecated-exact-derivation",
+                    "replacement": "runtime_execution_remaining_rows",
+                    "value": runtime_execution_remaining_rows,
+                    "not_completion_remaining_rows": True,
+                },
+            },
             "planned_tranches": len(tranches),
             "by_scenario": by_scenario,
         },
@@ -480,9 +502,40 @@ def build_graph() -> dict[str, Any]:
 def validate_closure_plan(root: Path) -> None:
     plan, index = load(root / "evidence/scenarios/closure-plan.json"), load(root / "evidence/scenarios/index.json")
     completed = [row["id"] for row in plan["rows"] if row.get("dedicated_runtime_execution_complete") is True]
-    if plan["status"] != "incomplete" or plan["summary"]["remaining_rows"] != len(index["files"]) - len(completed):
+    completion_closed = [row["id"] for row in plan["rows"] if row.get("scenario_gap_closed") is True]
+    summary = plan["summary"]
+    expected_runtime_remaining = len(index["files"]) - len(completed)
+    expected_completion_remaining = len(index["files"]) - len(completion_closed)
+    if plan["status"] != "incomplete":
+        raise DependencyContractError("Closure Plan statusが不正です")
+    if summary["runtime_execution_completed_rows"] != len(completed) or summary["runtime_execution_remaining_rows"] != expected_runtime_remaining:
+        raise DependencyContractError("Closure Planのruntime実行分母がScenario indexと一致しません")
+    if summary["completion_closed_rows"] != len(completion_closed) or summary["completion_remaining_rows"] != expected_completion_remaining:
+        raise DependencyContractError("Closure Planのcompletion分母がScenario indexと一致しません")
+    if summary["completion_eligible_rows"] != index["summary"]["completion_eligible_rows"]:
+        raise DependencyContractError("Closure Planのcompletion eligible rowsがScenario indexと一致しません")
+    deprecated = summary["deprecated_fields"]
+    if summary["completed_dedicated_rows"] != len(completed) or summary["remaining_rows"] != expected_runtime_remaining:
+        raise DependencyContractError("Closure Planのdeprecated runtime集計が一致しません")
+    if deprecated != {
+        "completed_dedicated_rows": {
+            "status": "deprecated-exact-derivation",
+            "replacement": "runtime_execution_completed_rows",
+            "value": len(completed),
+        },
+        "remaining_rows": {
+            "status": "deprecated-exact-derivation",
+            "replacement": "runtime_execution_remaining_rows",
+            "value": expected_runtime_remaining,
+            "not_completion_remaining_rows": True,
+        },
+    }:
+        raise DependencyContractError("Closure Planのdeprecated field mappingが不正です")
+    if summary["remaining_rows"] == summary["completion_remaining_rows"] and expected_runtime_remaining != expected_completion_remaining:
+        raise DependencyContractError("Closure Planがruntime remainingとcompletion remainingを混同しています")
+    if plan["status"] != "incomplete" or summary["remaining_rows"] != expected_runtime_remaining:
         raise DependencyContractError("Closure Planの未完分母がScenario indexと一致しません")
-    if plan["summary"]["completed_dedicated_rows"] != len(completed) or plan["completed_rows"] != completed:
+    if summary["completed_dedicated_rows"] != len(completed) or plan["completed_rows"] != completed:
         raise DependencyContractError("Closure Planの専用Runtime完了row集計が一致しません")
     if any(row.get("scenario_gap_closed") is True for row in plan["rows"] if row["id"] in completed):
         raise DependencyContractError("Authority未承認rowをScenario gap closedへ昇格しています")

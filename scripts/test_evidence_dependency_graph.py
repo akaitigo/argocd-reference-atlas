@@ -111,7 +111,16 @@ def main() -> None:
         update_output_digest(plan_shrink, "evidence/scenarios/closure-plan.json", fixture_root)
         require_rejected("closure-plan-structure-shrink", plan_shrink, fixture_root, "scenario-closure-plan")
 
-    print("Evidence Dependency negative fixtures passed: positive=1 negative=6")
+        replace_json(plan_path, contract.load(contract.ROOT / "evidence/scenarios/closure-plan.json"))
+        completion_ambiguity = copy.deepcopy(graph)
+        plan = contract.load(plan_path)
+        plan["summary"]["completion_remaining_rows"] = 987
+        plan["summary"]["completion_closed_rows"] = 13
+        replace_json(plan_path, plan)
+        update_output_digest(completion_ambiguity, "evidence/scenarios/closure-plan.json", fixture_root)
+        require_rejected("closure-plan-completion-ambiguity", completion_ambiguity, fixture_root, "completion")
+
+    print("Evidence Dependency negative fixtures passed: positive=1 negative=7")
 
 
 if __name__ == "__main__":

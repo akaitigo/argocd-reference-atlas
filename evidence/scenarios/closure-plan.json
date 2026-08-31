@@ -38,8 +38,26 @@
     "inherited_gap_rows_at_f055351": 1000
   },
   "summary": {
+    "runtime_execution_completed_rows": 13,
+    "runtime_execution_remaining_rows": 987,
+    "completion_closed_rows": 0,
+    "completion_remaining_rows": 1000,
+    "completion_eligible_rows": 0,
     "completed_dedicated_rows": 13,
     "remaining_rows": 987,
+    "deprecated_fields": {
+      "completed_dedicated_rows": {
+        "status": "deprecated-exact-derivation",
+        "replacement": "runtime_execution_completed_rows",
+        "value": 13
+      },
+      "remaining_rows": {
+        "status": "deprecated-exact-derivation",
+        "replacement": "runtime_execution_remaining_rows",
+        "value": 987,
+        "not_completion_remaining_rows": true
+      }
+    },
     "planned_tranches": 250,
     "by_scenario": {
       "security": 100,

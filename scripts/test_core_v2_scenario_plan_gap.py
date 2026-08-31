@@ -12,11 +12,12 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
-from generate_core_v2_scenario_plan_gap import CORE_SCENARIOS, build  # noqa: E402
+from generate_core_v2_scenario_plan_gap import CORE_SCENARIOS, INPUT_PATHS, RERUN_COMMAND, build  # noqa: E402
 
 
 def validate(document: dict) -> None:
     denominator = document["denominator"]
+    dependency = document["dependency_contract"]
     gaps = document["independent_gaps"]
     migration = document["core_schema_migration"]
     gates = document["core_gate_status"]
@@ -25,9 +26,52 @@ def validate(document: dict) -> None:
     root_adapter = document["root_contract_adapter"]
     if document["status"] != "incomplete-no-runtime-substitution":
         raise ValueError("Scenario gap was promoted")
-    if denominator["rows"] != 1000 or denominator["remaining_rows"] != 987 or denominator["scenario_gaps_open"] != 1000:
+    expected_paths = [path.relative_to(ROOT).as_posix() for path in INPUT_PATHS]
+    if list(document["inputs"]) != expected_paths:
+        raise ValueError("Scenario gap inputs are incomplete or reordered")
+    if dependency != {
+        "graph_output": "artifacts/core-v2/scenario-plan-gap.json",
+        "tracked_input_paths": expected_paths,
+        "stale_on_any_input_digest_change": True,
+        "required_rerun": RERUN_COMMAND,
+        "digest_only_closure_forbidden": True,
+    }:
+        raise ValueError("Scenario gap dependency contract changed")
+    if denominator != {
+        "patterns": 100,
+        "scenarios": 10,
+        "rows": 1000,
+        "runtime_execution_completed_rows": 13,
+        "runtime_execution_remaining_rows": 987,
+        "completion_closed_rows": 0,
+        "completion_remaining_rows": 1000,
+        "scenario_gaps_open": 1000,
+        "scenario_gaps_closed": 0,
+        "deprecated_fields": {
+            "completed_dedicated_rows": {
+                "status": "deprecated-exact-derivation",
+                "replacement": "runtime_execution_completed_rows",
+                "value": 13,
+            },
+            "remaining_rows": {
+                "status": "deprecated-exact-derivation",
+                "replacement": "runtime_execution_remaining_rows",
+                "value": 987,
+                "not_completion_remaining_rows": True,
+            },
+        },
+    }:
         raise ValueError("Scenario denominator retreated")
-    if gaps["authority_atomic_rows"] != 0 or gaps["approved_variant_denominators"] != 0 or gaps["dedicated_runtime_reports"] != 13 or gaps["dedicated_runtime_execution_complete_rows"] != 13:
+    if gaps != {
+        "authority_atomic_rows": 0,
+        "approved_variant_denominators": 0,
+        "dedicated_runtime_reports": 13,
+        "runtime_execution_completed_rows": 13,
+        "runtime_execution_remaining_rows": 987,
+        "completion_eligible_rows": 0,
+        "integrated_runtime_passed": 0,
+        "missing_core_artifacts": [],
+    }:
         raise ValueError("Runtime/Authority gap hidden")
     if migration["required_scenarios"] != CORE_SCENARIOS or migration["explicit_id_mapping"] != {"rejection": "refusal"}:
         raise ValueError("Scenario migration mapping changed")
@@ -64,7 +108,10 @@ def validate(document: dict) -> None:
     if preflight != {
         "state": "partial-dedicated-local-kind-runtime-proof",
         "dedicated_local_kind_required": True,
-        "completed_dedicated_rows": 13,
+        "runtime_execution_completed_rows": 13,
+        "runtime_execution_remaining_rows": 987,
+        "completion_closed_rows": 0,
+        "completion_remaining_rows": 1000,
         "external_context_access_forbidden": True,
         "fixture_runtime_credit": False,
     }:
@@ -99,7 +146,16 @@ def main() -> None:
     rejected("root-adapter-early-emit", lambda value: value["root_contract_adapter"].update(root_surface_inventory_emitted=True))
     rejected("schema-adapter-row-retreat", lambda value: value["root_contract_adapter"].update(schema_validated_rows=999))
     rejected("schema-adapter-early-emit", lambda value: value["root_contract_adapter"].update(schema_canonical_emitted=True))
-    print("Core v2 Scenario Plan gap fixtures passed: positive=1 negative=16")
+    rejected("runtime-remaining-used-as-completion-remaining", lambda value: value["denominator"].update(completion_remaining_rows=987))
+    rejected("runtime-complete-promoted-to-completion-closed", lambda value: value["denominator"].update(completion_closed_rows=13))
+    rejected("runtime-complete-promoted-to-authority-atomic", lambda value: value["independent_gaps"].update(authority_atomic_rows=13))
+    rejected("runtime-complete-promoted-to-approved-variants", lambda value: value["independent_gaps"].update(approved_variant_denominators=13))
+    rejected("runtime-complete-promoted-to-completion-eligible", lambda value: value["independent_gaps"].update(completion_eligible_rows=13))
+    rejected("runtime-denominator-drift", lambda value: value["independent_gaps"].update(runtime_execution_remaining_rows=986))
+    rejected("input-retreat", lambda value: value["inputs"].pop("artifacts/core-v2/core-standard-artifacts-publish.json"))
+    rejected("tracked-input-retreat", lambda value: value["dependency_contract"]["tracked_input_paths"].remove("artifacts/reference-system/results.json"))
+    rejected("rerun-contract-retreat", lambda value: value["dependency_contract"].update(required_rerun=""))
+    print("Core v2 Scenario Plan gap fixtures passed: positive=1 negative=25")
 
 
 if __name__ == "__main__":

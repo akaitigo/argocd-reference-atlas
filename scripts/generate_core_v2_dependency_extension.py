@@ -228,6 +228,19 @@ def validate_extension(graph: dict) -> None:
     if not root_gap_required <= set(root_gap["depends_on"]):
         raise ValueError("root contract gap input binding is incomplete")
     scenario_plan = outputs["artifacts/core-v2/scenario-plan-gap.json"]
+    scenario_plan_required_paths = {
+        "evidence/scenarios/index.json",
+        "evidence/scenarios/closure-plan.json",
+        "integrations/reference-system/manifest.json",
+        "artifacts/reference-system/results.json",
+        "artifacts/pattern-scenarios/results.json",
+        "migrations/scenario-class-refusal-v1.json",
+        "baselines/scenario-row-id-migration-v1.json",
+        "artifacts/core-v2/core-standard-artifacts-publish.json",
+    }
+    scenario_plan_required = {outputs[path]["id"] for path in scenario_plan_required_paths} | {root_gap["id"], "harness.core-v2-scenario-plan"}
+    if not scenario_plan_required <= set(scenario_plan["depends_on"]):
+        raise ValueError("Scenario Plan gap stale causes are not fully bound")
     if root_gap["id"] not in scenario_plan["depends_on"]:
         raise ValueError("Scenario Plan gap is not bound to the root contract gap")
     schema_gap = outputs["artifacts/core-v2/scenario-proof-index-schema-gap.json"]
@@ -292,7 +305,7 @@ def validate_extension(graph: dict) -> None:
     if not root_inventory_required <= set(root_inventory["depends_on"]):
         raise ValueError("root Surface Inventory stale causes are not fully bound")
     root_matrix = outputs["artifacts/core-v2/root-verification-matrix-closure.json"]
-    if not {review_snapshot["id"], "source.authority-human-decisions"} <= set(root_matrix["depends_on"]):
+    if not {review_snapshot["id"], outputs["evidence/scenarios/closure-plan.json"]["id"], "source.authority-human-decisions"} <= set(root_matrix["depends_on"]):
         raise ValueError("root Verification Matrix stale causes are not fully bound")
     report = outputs["artifacts/core-v2/evidence-dependency-extension.json"]
     if "source.repository-contract" not in report["depends_on"]:
@@ -431,7 +444,7 @@ def generate() -> None:
     )
     root_matrix_id = contract.add_output(
         outputs, "artifacts/core-v2/root-verification-matrix-closure.json", "closure-plan",
-        [root_inventory_id, output_by_path["evidence/scenarios/index.json"], review_snapshot_id, "source.authority-human-decisions", "source.authority-lock-inventory", "harness.root-verification-matrix"],
+        [root_inventory_id, output_by_path["evidence/scenarios/index.json"], output_by_path["evidence/scenarios/closure-plan.json"], review_snapshot_id, "source.authority-human-decisions", "source.authority-lock-inventory", "harness.root-verification-matrix"],
         "run.root-verification-matrix-closure",
     )
     root_depth_id = contract.add_output(
@@ -457,6 +470,12 @@ def generate() -> None:
         [
             output_by_path["evidence/scenarios/index.json"],
             output_by_path["evidence/scenarios/closure-plan.json"],
+            standard_ids[manifest_path],
+            standard_ids[reference_path],
+            standard_ids[pattern_path],
+            standard_ids[migration_path],
+            standard_ids[baseline_path],
+            standard_ids[publish_path],
             root_contract_gap_id,
             "harness.core-v2-scenario-plan",
         ],
@@ -472,7 +491,7 @@ def generate() -> None:
         contract.run_document("run.core-v2-skill-router", "derived", "python3 scripts/generate_core_v2_skill_router.py && python3 scripts/test_core_v2_skill_router.py && atlas audit . --gate skill-router", graph["generated_at"], [router_id]),
         contract.run_document("run.core-v2-scenario-schema-gap", "derived", "make scenario-proof-index-adapter", graph["generated_at"], [scenario_schema_gap_id]),
         contract.run_document("run.core-v2-root-contract-gap", "derived", "make root-contract-adapter-gap", graph["generated_at"], [root_contract_gap_id]),
-        contract.run_document("run.core-v2-scenario-plan-gap", "derived", "python3 scripts/generate_core_v2_scenario_plan_gap.py && python3 scripts/test_core_v2_scenario_plan_gap.py", graph["generated_at"], [plan_id]),
+        contract.run_document("run.core-v2-scenario-plan-gap", "derived", "make core-v2-scenario-plan-gap", graph["generated_at"], [plan_id]),
         contract.run_document("run.authority-denominator", "derived", "make authority-locators && make authority-validate", graph["generated_at"], [*authority_ids, *body_ids, *review_batch_ids, review_snapshot_id]),
         contract.run_document("run.surface-inventory-readiness", "derived", "python3 scripts/generate_surface_inventory_readiness.py && python3 scripts/test_surface_inventory_readiness.py", graph["generated_at"], [readiness_id]),
         contract.run_document("run.root-surface-inventory-closure", "derived", "python3 scripts/generate_root_surface_inventory.py && python3 scripts/test_root_surface_inventory.py", graph["generated_at"], [root_inventory_id]),

@@ -47,6 +47,7 @@ def main() -> None:
     rejected("root-contract-gap-matrix-unbound", lambda value: output(value, "artifacts/core-v2/root-contract-adapter-gap.json")["depends_on"].remove(output(value, "artifacts/core-v2/root-verification-matrix-closure.json")["id"]))
     rejected("root-contract-gap-depth-unbound", lambda value: output(value, "artifacts/core-v2/root-contract-adapter-gap.json")["depends_on"].remove(output(value, "artifacts/core-v2/root-depth-parity-closure.json")["id"]))
     rejected("scenario-root-gap-unbound", lambda value: output(value, "artifacts/core-v2/scenario-plan-gap.json")["depends_on"].remove(output(value, "artifacts/core-v2/root-contract-adapter-gap.json")["id"]))
+    rejected("scenario-publish-unbound", lambda value: output(value, "artifacts/core-v2/scenario-plan-gap.json")["depends_on"].remove(output(value, "artifacts/core-v2/core-standard-artifacts-publish.json")["id"]))
     rejected("scenario-schema-input-retreat", lambda value: value["inputs"].pop(next(index for index, item in enumerate(value["inputs"]) if item["id"] == "harness.core-v2-scenario-schema-gap")))
     rejected("scenario-schema-output-retreat", lambda value: value["outputs"].remove(output(value, "artifacts/core-v2/scenario-proof-index-schema-gap.json")))
     rejected("scenario-schema-harness-unbound", lambda value: output(value, "artifacts/core-v2/scenario-proof-index-schema-gap.json")["depends_on"].remove("harness.core-v2-scenario-schema-gap"))
@@ -64,13 +65,14 @@ def main() -> None:
     rejected("root-inventory-review-unbound", lambda value: output(value, "artifacts/core-v2/root-surface-inventory-closure.json")["depends_on"].remove(output(value, "authority/review-queue.snapshot.json")["id"]))
     rejected("root-inventory-decisions-unbound", lambda value: output(value, "artifacts/core-v2/root-surface-inventory-closure.json")["depends_on"].remove("source.authority-human-decisions"))
     rejected("root-matrix-decisions-unbound", lambda value: output(value, "artifacts/core-v2/root-verification-matrix-closure.json")["depends_on"].remove("source.authority-human-decisions"))
+    rejected("root-matrix-closure-plan-unbound", lambda value: output(value, "artifacts/core-v2/root-verification-matrix-closure.json")["depends_on"].remove(output(value, "evidence/scenarios/closure-plan.json")["id"]))
     rejected("repository-contract-unbound", lambda value: output(value, "artifacts/core-v2/evidence-dependency-extension.json")["depends_on"].remove("source.repository-contract"))
     rejected("content-policy-unbound", lambda value: output(value, "artifacts/core-v2/evidence-dependency-extension.json")["depends_on"].remove("harness.content-policy"))
     rejected("core-standard-input-retreat", lambda value: value["inputs"].pop(next(index for index, item in enumerate(value["inputs"]) if item["id"] == "harness.core-standard-artifacts")))
     rejected("core-standard-output-retreat", lambda value: value["outputs"].remove(output(value, "artifacts/pattern-scenarios/results.json")))
     rejected("core-standard-harness-unbound", lambda value: output(value, "migrations/scenario-class-refusal-v1.json")["depends_on"].remove("harness.core-standard-artifacts"))
     rejected("core-standard-first-attempt-weakened", lambda value: next(item for item in value["runs"] if item["id"] == "run.core-standard-artifacts").update(attempts=2))
-    print("Core v2 Evidence Dependency extension fixtures passed: positive=1 negative=42")
+    print("Core v2 Evidence Dependency extension fixtures passed: positive=1 negative=44")
 
 
 if __name__ == "__main__":

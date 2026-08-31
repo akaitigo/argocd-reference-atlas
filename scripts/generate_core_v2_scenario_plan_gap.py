@@ -23,6 +23,22 @@ CORE_STANDARD_PUBLISH = ROOT / "artifacts" / "core-v2" / "core-standard-artifact
 ROOT_CONTRACT_ADAPTER = ROOT / "artifacts" / "core-v2" / "root-contract-adapter-gap.json"
 CORE_COMMIT = "072d7ca77981f51754e824d70c6d4ecd55ea67e5"
 CORE_SCENARIOS = ["normal", "boundary", "refusal", "failure", "recovery", "migration", "operations", "security", "performance", "compatibility"]
+INPUT_PATHS = [
+    INDEX,
+    PLAN,
+    ROOT_CONTRACT_ADAPTER,
+    CORE_MANIFEST,
+    CORE_REFERENCE_RESULTS,
+    CORE_PATTERN_RESULTS,
+    SCENARIO_MIGRATION,
+    SCENARIO_MIGRATION_BASELINE,
+    CORE_STANDARD_PUBLISH,
+]
+RERUN_COMMAND = (
+    "python3 scripts/generate_core_v2_scenario_plan_gap.py && "
+    "python3 scripts/validate_core_v2_scenario_plan_gap.py && "
+    "python3 scripts/test_core_v2_scenario_plan_gap.py"
+)
 
 
 def digest(path: Path) -> str:
@@ -51,18 +67,25 @@ def build() -> dict:
         "id": "argocd-core-v2-scenario-plan-gap-v1",
         "status": "incomplete-no-runtime-substitution",
         "core_commit": CORE_COMMIT,
-        "inputs": {
-            "evidence/scenarios/index.json": digest(INDEX),
-            "evidence/scenarios/closure-plan.json": digest(PLAN),
-            "artifacts/core-v2/root-contract-adapter-gap.json": digest(ROOT_CONTRACT_ADAPTER),
+        "inputs": {path.relative_to(ROOT).as_posix(): digest(path) for path in INPUT_PATHS},
+        "dependency_contract": {
+            "graph_output": "artifacts/core-v2/scenario-plan-gap.json",
+            "tracked_input_paths": [path.relative_to(ROOT).as_posix() for path in INPUT_PATHS],
+            "stale_on_any_input_digest_change": True,
+            "required_rerun": RERUN_COMMAND,
+            "digest_only_closure_forbidden": True,
         },
         "denominator": {
             "patterns": summary["behaviors"],
             "scenarios": summary["scenarios"],
             "rows": summary["rows"],
-            "remaining_rows": plan["summary"]["remaining_rows"],
+            "runtime_execution_completed_rows": plan["summary"]["runtime_execution_completed_rows"],
+            "runtime_execution_remaining_rows": plan["summary"]["runtime_execution_remaining_rows"],
+            "completion_closed_rows": plan["summary"]["completion_closed_rows"],
+            "completion_remaining_rows": plan["summary"]["completion_remaining_rows"],
             "scenario_gaps_open": summary["scenario_gaps_open"],
             "scenario_gaps_closed": summary["scenario_gaps_closed"],
+            "deprecated_fields": plan["summary"]["deprecated_fields"],
         },
         "core_schema_migration": {
             "current_scenarios": current_scenarios,
@@ -87,7 +110,8 @@ def build() -> dict:
             "authority_atomic_rows": summary["authority_atomic_bindings"],
             "approved_variant_denominators": summary["variant_denominators_exhaustive"],
             "dedicated_runtime_reports": summary["dedicated_runtime_reports"],
-            "dedicated_runtime_execution_complete_rows": summary["dedicated_runtime_execution_complete_rows"],
+            "runtime_execution_completed_rows": summary["dedicated_runtime_execution_complete_rows"],
+            "runtime_execution_remaining_rows": summary["rows"] - summary["dedicated_runtime_execution_complete_rows"],
             "completion_eligible_rows": summary["completion_eligible_rows"],
             "integrated_runtime_passed": summary["integrated_runtime_passed"],
             "missing_core_artifacts": missing_files,
@@ -124,7 +148,10 @@ def build() -> dict:
         "runtime_preflight": {
             "state": "partial-dedicated-local-kind-runtime-proof",
             "dedicated_local_kind_required": True,
-            "completed_dedicated_rows": plan["summary"]["completed_dedicated_rows"],
+            "runtime_execution_completed_rows": plan["summary"]["runtime_execution_completed_rows"],
+            "runtime_execution_remaining_rows": plan["summary"]["runtime_execution_remaining_rows"],
+            "completion_closed_rows": plan["summary"]["completion_closed_rows"],
+            "completion_remaining_rows": plan["summary"]["completion_remaining_rows"],
             "external_context_access_forbidden": True,
             "fixture_runtime_credit": False,
         },
