@@ -109,7 +109,7 @@ def validate(document: dict[str, Any]) -> None:
     if source["summary"] != {"satisfied": 1, "partial": 15, "missing": 2}:
         raise ValueError("source depth parity summaryが変化しています")
     if source["axis_status"].get("non-regression-gate") != "satisfied":
-        raise ValueError("唯一のsatisfied軸が崩れています")
+        raise ValueError("単独のsatisfied軸が崩れています")
     if len(source["open_axes"]) != 17:
         raise ValueError("open axis countが変化しています")
     if not root_depth["present"] or root_depth["completion_status"] != "incomplete" or root_depth["row_count"] != 0:
