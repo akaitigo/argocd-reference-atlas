@@ -11,16 +11,21 @@
     "artifacts/reference-system/results.json": "sha256:8e6e6f0a61b4458703e4b35bb585e820021ec6b49b807abe5b405734eb044705",
     "artifacts/pattern-scenarios/results.json": "sha256:202032bc06f4f4b2c99a4a67063a295b0ff83614f01b36716262662cdff644f4",
     "definitive/scenario-variant-contract.yaml": "sha256:b2c76378113d3145a77d019d5f490e333a554188773501e68de6ac685cc583dd",
-    "scripts/generate_core_v2_scenario_schema_gap.py": "sha256:8cff8a049dfe2640275d78947dbeb4f744138f5115b7876cfe8f2d517bf32069"
+    "scripts/generate_core_v2_scenario_schema_gap.py": "sha256:49e5d76e4ab2602e6d3ffe0921b9dcda77f58ffb7c5540e5e73274f9e35a2724"
   },
   "staging": {
     "root": ".runtime/core-scenario-proof-index-next",
+    "candidate_root": ".runtime/core-scenario-proof-index-next.staging",
+    "rollback_root": ".runtime/core-scenario-proof-index-next.rollback",
     "generated_files": 1001,
     "index_files": 1,
     "row_files": 1000,
-    "aggregate_digest": "sha256:53e20592a363950d8ec96722b8ad02b9237ce4052ac70672567bf6dddf491c8a",
+    "aggregate_digest": "sha256:c6ed525ae6dd482bc6b0fcb78bd852746e2236e5e0e614f67edc7698d93f7cd6",
+    "promotion": "core-schema-pass-then-atomic-directory-rename",
     "publish_on": "schema-validation-and-runtime-closure",
-    "failed_validation": "retain-prior-report-and-canonical-index"
+    "failed_generation": "discard-candidate-and-retain-prior-staging",
+    "failed_validation": "discard-candidate-and-retain-prior-staging-report-and-canonical-index",
+    "failed_swap": "rollback-prior-staging-and-retain-report-and-canonical-index"
   },
   "schema_validation": {
     "status": "passed",
@@ -59,7 +64,7 @@
   "row_identity": {
     "ids_digest": "sha256:387f5296e3d22c6ba8d3ac149a4103fb2e8bd69777f200260a34ecfd58765a62",
     "paths_digest": "sha256:cf37774a90f5c906023884f660ff78de7a8550cd8b17498fcb64374e53aea541",
-    "digests_digest": "sha256:dbc170956a3ad68dc2fbf9754fb9f306f5eec6b87001ae18b0d2cda29d50170c",
+    "digests_digest": "sha256:3dbfdc847487ef432cb9e5bc19742a7745070d1446ba6e58d745453143867646",
     "mapping_counts": {
       "old_rows": 1000,
       "new_rows": 1000,

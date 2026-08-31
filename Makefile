@@ -67,7 +67,7 @@ core-standard-artifacts:
 scenario-proof-index-adapter:
 	python3 scripts/generate_core_v2_scenario_schema_gap.py --stage
 	cd "$(ATLAS_CORE)" && GOCACHE="$(CURDIR)/.cache/go-build" go build -o "$(CURDIR)/.cache/atlas-core" ./cmd/atlas
-	find "$(CURDIR)/.runtime/core-scenario-proof-index-next/evidence/scenarios" -type f -name '*.json' -print0 | xargs -0 "$(CURDIR)/.cache/atlas-core" validate > "$(CURDIR)/.runtime/core-scenario-proof-index-next/.atlas-validate.log"
+	python3 scripts/generate_core_v2_scenario_schema_gap.py --validate-candidate
 	python3 scripts/generate_core_v2_scenario_schema_gap.py --record-schema-pass
 	python3 scripts/generate_core_v2_scenario_schema_gap.py --publish-report
 	python3 scripts/test_core_v2_scenario_schema_gap.py

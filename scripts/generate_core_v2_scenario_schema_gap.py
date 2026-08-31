@@ -10,6 +10,7 @@ import hashlib
 import json
 import os
 import shutil
+import subprocess
 from pathlib import Path
 from typing import Any
 
@@ -17,8 +18,9 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 CORE_ROOT = ROOT.parent / "reference-atlas-core"
 STAGING = ROOT / ".runtime/core-scenario-proof-index-next"
-RECEIPT = STAGING / ".core-schema-validation.json"
-VALIDATION_LOG = STAGING / ".atlas-validate.log"
+CANDIDATE = ROOT / ".runtime/core-scenario-proof-index-next.staging"
+ROLLBACK = ROOT / ".runtime/core-scenario-proof-index-next.rollback"
+ATLAS_CORE_BINARY = ROOT / ".cache/atlas-core"
 OUTPUT = ROOT / "artifacts/core-v2/scenario-proof-index-schema-gap.json"
 LEGACY_INDEX = Path("evidence/scenarios/index.json")
 MIGRATION = Path("migrations/scenario-class-refusal-v1.json")
@@ -206,13 +208,34 @@ def build_documents() -> dict[Path, bytes]:
     return documents
 
 
-def write_staging(documents: dict[Path, bytes], staging: Path = STAGING) -> None:
-    if staging.exists():
-        shutil.rmtree(staging)
-    for path, payload in documents.items():
-        target = staging / path
-        target.parent.mkdir(parents=True, exist_ok=True)
-        target.write_bytes(payload)
+def receipt_path(staging: Path) -> Path:
+    return staging / ".core-schema-validation.json"
+
+
+def validation_log_path(staging: Path) -> Path:
+    return staging / ".atlas-validate.log"
+
+
+def remove_staging(path: Path) -> None:
+    if path.exists():
+        shutil.rmtree(path)
+
+
+def write_staging(
+    documents: dict[Path, bytes], staging: Path = CANDIDATE, *, inject_failure: bool = False,
+) -> None:
+    remove_staging(staging)
+    try:
+        for index, (path, payload) in enumerate(documents.items()):
+            target = staging / path
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_bytes(payload)
+            if inject_failure and index == 10:
+                raise RuntimeError("injected staging generation failure")
+        validate_staging(documents, staging)
+    except Exception:
+        remove_staging(staging)
+        raise
 
 
 def validate_staging(documents: dict[Path, bytes], staging: Path = STAGING) -> None:
@@ -220,7 +243,7 @@ def validate_staging(documents: dict[Path, bytes], staging: Path = STAGING) -> N
     actual = {
         path.relative_to(staging)
         for path in staging.rglob("*.json")
-        if path not in {RECEIPT}
+        if path.name != ".core-schema-validation.json"
     }
     require(actual == expected, "Scenario Schema staging output集合が不一致です")
     index = load(Path("evidence/scenarios/index.json"), staging)
@@ -244,11 +267,68 @@ def validate_staging(documents: dict[Path, bytes], staging: Path = STAGING) -> N
         require((staging / path).read_bytes() == payload, f"stagingが決定論的生成物と一致しません: {path}")
 
 
-def record_schema_pass(staging: Path = STAGING) -> None:
+def promote_staging(
+    candidate: Path = CANDIDATE,
+    destination: Path = STAGING,
+    rollback: Path = ROLLBACK,
+    *,
+    inject_failure: bool = False,
+) -> None:
+    require(candidate.is_dir(), "Core Schema検証済みcandidate stagingがありません")
+    remove_staging(rollback)
+    previous_moved = False
+    try:
+        if destination.exists():
+            os.replace(destination, rollback)
+            previous_moved = True
+        if inject_failure:
+            raise RuntimeError("injected staging swap failure")
+        os.replace(candidate, destination)
+    except Exception:
+        if destination.exists():
+            remove_staging(destination)
+        if previous_moved and rollback.exists():
+            os.replace(rollback, destination)
+        remove_staging(candidate)
+        raise
+    remove_staging(rollback)
+
+
+def validate_candidate_schema(staging: Path = CANDIDATE, atlas: Path = ATLAS_CORE_BINARY) -> None:
     documents = build_documents()
     validate_staging(documents, staging)
-    require(VALIDATION_LOG.is_file(), "Core Schema validation logがありません")
-    lines = VALIDATION_LOG.read_text(encoding="utf-8").splitlines()
+    files = sorted((staging / "evidence/scenarios").rglob("*.json"))
+    require(len(files) == 1001, "Core Schema candidate file数が1001ではありません")
+    output: list[str] = []
+    try:
+        for offset in range(0, len(files), 200):
+            completed = subprocess.run(
+                [str(atlas), "validate", *(str(path) for path in files[offset:offset + 200])],
+                check=False,
+                capture_output=True,
+                text=True,
+            )
+            if completed.returncode != 0:
+                detail = completed.stderr.strip() or completed.stdout.strip() or "Core Schema validation failed"
+                raise RuntimeError(detail)
+            output.append(completed.stdout)
+        validation_log_path(staging).write_text("".join(output), encoding="utf-8")
+    except Exception:
+        remove_staging(staging)
+        raise
+
+
+def record_schema_pass(
+    staging: Path = CANDIDATE,
+    destination: Path = STAGING,
+    *,
+    inject_swap_failure: bool = False,
+) -> None:
+    documents = build_documents()
+    validate_staging(documents, staging)
+    validation_log = validation_log_path(staging)
+    require(validation_log.is_file(), "Core Schema validation logがありません")
+    lines = validation_log.read_text(encoding="utf-8").splitlines()
     require(len(lines) == 1001, "Core Schema validation件数が1001ではありません")
     require(sum("scenario-proof-index.schema.json" in line for line in lines) == 1, "Scenario index Schema validation receiptが不正です")
     require(sum("scenario-proof-row.schema.json" in line for line in lines) == 1000, "Scenario row Schema validation receiptが不正です")
@@ -261,16 +341,18 @@ def record_schema_pass(staging: Path = STAGING) -> None:
         "index_files": 1,
         "row_files": 1000,
         "staging_aggregate_digest": aggregate(documents),
-        "validation_log_digest": sha256_file(VALIDATION_LOG),
+        "validation_log_digest": sha256_file(validation_log),
     }
-    RECEIPT.write_bytes(json_bytes(receipt))
+    receipt_path(staging).write_bytes(json_bytes(receipt))
+    promote_staging(staging, destination, destination.with_name(destination.name + ".rollback"), inject_failure=inject_swap_failure)
 
 
 def build_report(staging: Path = STAGING) -> dict[str, Any]:
     documents = build_documents()
     validate_staging(documents, staging)
-    require(RECEIPT.is_file(), "Core Schema validation receiptがありません")
-    receipt = json.loads(RECEIPT.read_text(encoding="utf-8"))
+    receipt = receipt_path(staging)
+    require(receipt.is_file(), "Core Schema validation receiptがありません")
+    receipt = json.loads(receipt.read_text(encoding="utf-8"))
     require(receipt["staging_aggregate_digest"] == aggregate(documents) and receipt["validated_files"] == 1001, "Core Schema receiptが現在stagingと一致しません")
     index = json.loads(documents[Path("evidence/scenarios/index.json")])
     file_rows = index["files"]
@@ -283,12 +365,17 @@ def build_report(staging: Path = STAGING) -> dict[str, Any]:
         "inputs": {path: digest for path, digest in index["source_digests"].items()},
         "staging": {
             "root": ".runtime/core-scenario-proof-index-next",
+            "candidate_root": ".runtime/core-scenario-proof-index-next.staging",
+            "rollback_root": ".runtime/core-scenario-proof-index-next.rollback",
             "generated_files": len(documents),
             "index_files": 1,
             "row_files": 1000,
             "aggregate_digest": aggregate(documents),
+            "promotion": "core-schema-pass-then-atomic-directory-rename",
             "publish_on": "schema-validation-and-runtime-closure",
-            "failed_validation": "retain-prior-report-and-canonical-index",
+            "failed_generation": "discard-candidate-and-retain-prior-staging",
+            "failed_validation": "discard-candidate-and-retain-prior-staging-report-and-canonical-index",
+            "failed_swap": "rollback-prior-staging-and-retain-report-and-canonical-index",
         },
         "schema_validation": {
             "status": "passed",
@@ -328,6 +415,9 @@ def build_report(staging: Path = STAGING) -> dict[str, Any]:
 
 def validate_report(report: dict[str, Any]) -> None:
     require(report["status"] == "incomplete-schema-valid-staging-not-published", "Scenario Schema adapterが完了扱いです")
+    staging = report["staging"]
+    require(staging["root"] == ".runtime/core-scenario-proof-index-next" and staging["candidate_root"] == ".runtime/core-scenario-proof-index-next.staging" and staging["rollback_root"] == ".runtime/core-scenario-proof-index-next.rollback", "Scenario Schema staging path契約が不正です")
+    require(staging["promotion"] == "core-schema-pass-then-atomic-directory-rename" and staging["failed_generation"] == "discard-candidate-and-retain-prior-staging" and staging["failed_validation"] == "discard-candidate-and-retain-prior-staging-report-and-canonical-index" and staging["failed_swap"] == "rollback-prior-staging-and-retain-report-and-canonical-index", "Scenario Schema atomic staging契約が縮小しています")
     require(report["schema_validation"]["status"] == "passed" and report["schema_validation"]["validated_files"] == 1001 and report["schema_validation"]["row_files"] == 1000, "Core Schema validation denominatorが不正です")
     denominator = report["denominator"]
     require(denominator["patterns"] == 100 and denominator["rows"] == denominator["dedicated_artifacts"] == denominator["pattern_specific_gaps"] == 1000, "Scenario Schema denominatorが縮小しています")
@@ -353,16 +443,20 @@ def publish_report(report: dict[str, Any], target: Path = OUTPUT, inject_failure
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--stage", action="store_true")
+    parser.add_argument("--validate-candidate", action="store_true")
     parser.add_argument("--record-schema-pass", action="store_true")
     parser.add_argument("--publish-report", action="store_true")
     args = parser.parse_args()
-    if sum((args.stage, args.record_schema_pass, args.publish_report)) != 1:
-        raise ValueError("--stage、--record-schema-pass、--publish-reportのいずれか1つが必要です")
+    if sum((args.stage, args.validate_candidate, args.record_schema_pass, args.publish_report)) != 1:
+        raise ValueError("--stage、--validate-candidate、--record-schema-pass、--publish-reportのいずれか1つが必要です")
     if args.stage:
         documents = build_documents()
         write_staging(documents)
-        validate_staging(documents)
-        print("Core v2 Scenario Schema staged: index=1 rows=1000 runtime_credit=0")
+        validate_staging(documents, CANDIDATE)
+        print("Core v2 Scenario Schema candidate staged: index=1 rows=1000 runtime_credit=0")
+    elif args.validate_candidate:
+        validate_candidate_schema()
+        print("Core v2 Scenario Schema candidate validated: files=1001")
     elif args.record_schema_pass:
         record_schema_pass()
         print("Core v2 Scenario Schema receipt recorded: validated=1001")
