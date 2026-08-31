@@ -26,6 +26,7 @@ ROOT_MATRIX = ROOT / "verification.matrix.yaml"
 SCENARIO_ORDER = ("normal", "boundary", "rejection", "failure", "recovery", "migration", "operations", "security", "performance", "compatibility")
 CORE_SCENARIO_BY_LEGACY = {scenario: ("refusal" if scenario == "rejection" else scenario) for scenario in SCENARIO_ORDER}
 CORE_SCENARIOS = {"normal", "boundary", "refusal", "failure", "recovery", "migration", "operations", "security", "performance", "compatibility"}
+INPUT_PATHS = [BINDINGS, INVENTORY_CLOSURE, SCENARIOS, DECISIONS, COVERAGE]
 
 
 def digest(path: Path) -> str:
@@ -79,7 +80,14 @@ def build() -> dict[str, Any]:
         "schema_version": 1,
         "id": "argocd-root-verification-matrix-closure-v1",
         "status": "ready-to-emit" if not blockers else "blocked-human-authority-and-proof-closure",
-        "inputs": {path.relative_to(ROOT).as_posix(): digest(path) for path in [BINDINGS, INVENTORY_CLOSURE, SCENARIOS, DECISIONS, COVERAGE]},
+        "inputs": {path.relative_to(ROOT).as_posix(): digest(path) for path in INPUT_PATHS},
+        "dependency_contract": {
+            "graph_output": "artifacts/core-v2/root-verification-matrix-closure.json",
+            "tracked_input_paths": [path.relative_to(ROOT).as_posix() for path in INPUT_PATHS],
+            "stale_on_any_input_digest_change": True,
+            "required_rerun": "python3 scripts/generate_root_verification_matrix.py && python3 scripts/test_root_verification_matrix.py",
+            "digest_only_closure_forbidden": True,
+        },
         "policy": {
             "ten_classes_per_reviewed_atomic_behavior": True,
             "generated_candidate_rows_receive_no_credit": True,
@@ -175,6 +183,16 @@ def validate(document: dict[str, Any]) -> None:
         raise ValueError("reviewed Atomic behavior 0でroot Matrixを発行可能にしています")
     if not document["root_matrix"]["emission_eligible"] and document["root_matrix"]["present"]:
         raise ValueError("未完状態でroot Verification Matrixがあります")
+    dependency = document["dependency_contract"]
+    expected_paths = [path.relative_to(ROOT).as_posix() for path in INPUT_PATHS]
+    if dependency != {
+        "graph_output": "artifacts/core-v2/root-verification-matrix-closure.json",
+        "tracked_input_paths": expected_paths,
+        "stale_on_any_input_digest_change": True,
+        "required_rerun": "python3 scripts/generate_root_verification_matrix.py && python3 scripts/test_root_verification_matrix.py",
+        "digest_only_closure_forbidden": True,
+    } or list(document["inputs"]) != expected_paths:
+        raise ValueError("root Verification Matrixのstale Graph契約が不完全です")
 
 
 def main() -> None:

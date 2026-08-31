@@ -40,7 +40,9 @@ def main() -> None:
     rejected("matrix-present-forged", lambda value: value["root_matrix"].update(present=True))
     rejected("blocker-omission", lambda value: value["root_matrix"]["blockers"].pop())
     rejected("scenario-gap-concealed", lambda value: value["scenario_classes"][0].update(status="closed", gap=None))
-    print("Root Verification Matrix fixtures passed: positive=1 negative=12")
+    rejected("stale-input-retreat", lambda value: value["dependency_contract"]["tracked_input_paths"].remove("authority/reviews/decisions.json"))
+    rejected("stale-rerun-omission", lambda value: value["dependency_contract"].update(required_rerun=""))
+    print("Root Verification Matrix fixtures passed: positive=1 negative=14")
 
 
 if __name__ == "__main__":

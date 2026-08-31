@@ -12,6 +12,22 @@
     "evidence/scenarios/index.json": "sha256:925134b7591c25117a1ca964b509a621e893fd5bd6e03a86e3fe8c83d1fed325",
     "coverage.yaml": "sha256:7fdd4890ce4fd2e21bccd84cb06bb8ca3d55ba4dbeaa4e9f8af9673f5944bc9d"
   },
+  "dependency_contract": {
+    "graph_output": "artifacts/core-v2/root-surface-inventory-closure.json",
+    "tracked_input_paths": [
+      "definitive/root-surface-inventory-bindings.yaml",
+      "artifacts/core-v2/surface-inventory-readiness.json",
+      "authority/reviews/decisions.json",
+      "authority/extraction.snapshot.json",
+      "authority/body-inventory.snapshot.json",
+      "authority/review-queue.snapshot.json",
+      "evidence/scenarios/index.json",
+      "coverage.yaml"
+    ],
+    "stale_on_any_input_digest_change": true,
+    "required_rerun": "python3 scripts/generate_root_surface_inventory.py && python3 scripts/test_root_surface_inventory.py",
+    "digest_only_closure_forbidden": true
+  },
   "policy": {
     "emit_only_when_all_blockers_closed": true,
     "unreviewed_candidate_promotion_forbidden": true,

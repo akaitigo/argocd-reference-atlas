@@ -36,7 +36,9 @@ def main() -> None:
     rejected("runtime-completion-forged", lambda value: value["closure"].update(completion_eligible_scenario_rows=1))
     rejected("root-present-forged", lambda value: value["root_inventory"].update(present=True))
     rejected("blocker-omission", lambda value: value["root_inventory"]["blockers"].pop())
-    print("Root Surface Inventory fixtures passed: positive=1 negative=7")
+    rejected("stale-input-retreat", lambda value: value["dependency_contract"]["tracked_input_paths"].remove("authority/reviews/decisions.json"))
+    rejected("stale-rerun-omission", lambda value: value["dependency_contract"].update(required_rerun=""))
+    print("Root Surface Inventory fixtures passed: positive=1 negative=9")
 
 
 if __name__ == "__main__":

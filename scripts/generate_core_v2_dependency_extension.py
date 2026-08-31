@@ -32,6 +32,25 @@ INPUT_SPECS = {
             "scripts/test_authority_locator_denominator.py",
         ],
     },
+    "source.authority-body-baseline": {
+        "kind": "source",
+        "members": ["baselines/authority-body-inventory-v1.json"],
+    },
+    "source.authority-human-decisions": {
+        "kind": "source",
+        "members": ["authority/reviews/decisions.json"],
+    },
+    "harness.authority-body-review": {
+        "kind": "harness",
+        "members": [
+            "scripts/generate_authority_body_inventory.py",
+            "scripts/validate_authority_body_inventory.py",
+            "scripts/authority_review_queue.py",
+            "scripts/generate_authority_review_queue.py",
+            "scripts/validate_authority_review_queue.py",
+            "scripts/test_authority_review_queue.py",
+        ],
+    },
     "harness.content-policy": {
         "kind": "harness",
         "members": ["scripts/validate_non_regression.py", "scripts/test_content_policy_scope.py"],
@@ -95,10 +114,21 @@ INPUT_SPECS = {
     },
 }
 AUTHORITY_DRAFT_DENOMINATOR = 26
+AUTHORITY_BODY_DRAFT_DENOMINATOR = 26
+AUTHORITY_REVIEW_BATCH_DENOMINATOR = 211
 AUTHORITY_OUTPUT_PATHS = {
     "authority/extraction.snapshot.json",
     *(path.relative_to(ROOT).as_posix() for path in (ROOT / "authority" / "surfaces-draft").glob("*.json")),
 }
+AUTHORITY_BODY_OUTPUT_PATHS = {
+    "authority/body-inventory.snapshot.json",
+    *(path.relative_to(ROOT).as_posix() for path in (ROOT / "authority" / "body-inventory-draft").glob("*.json")),
+}
+AUTHORITY_REVIEW_BATCH_PATHS = {
+    path.relative_to(ROOT).as_posix() for path in (ROOT / "authority" / "review-queue-draft").glob("*.json")
+}
+AUTHORITY_REVIEW_OUTPUT_PATHS = {"authority/review-queue.snapshot.json", *AUTHORITY_REVIEW_BATCH_PATHS}
+AUTHORITY_REVIEW_STATE_OUTPUT_PATHS = AUTHORITY_BODY_OUTPUT_PATHS | AUTHORITY_REVIEW_OUTPUT_PATHS
 CORE_V2_OUTPUT_PATHS = {
     "evals/definitive-skill-router.json",
     "artifacts/core-v2/scenario-plan-gap.json",
@@ -111,7 +141,7 @@ CORE_V2_OUTPUT_PATHS = {
 }
 CORE_STANDARD_OUTPUT_PATHS = {path.as_posix() for path in core_standard.output_paths()}
 CORE_V2_OUTPUT_PATHS |= CORE_STANDARD_OUTPUT_PATHS
-OUTPUT_PATHS = CORE_V2_OUTPUT_PATHS | AUTHORITY_OUTPUT_PATHS
+OUTPUT_PATHS = CORE_V2_OUTPUT_PATHS | AUTHORITY_OUTPUT_PATHS | AUTHORITY_REVIEW_STATE_OUTPUT_PATHS
 
 
 def pretty(value: dict) -> bytes:
@@ -124,6 +154,10 @@ def validate_extension(graph: dict) -> None:
     runs = {item["id"]: item for item in graph["runs"]}
     if len(AUTHORITY_OUTPUT_PATHS) != AUTHORITY_DRAFT_DENOMINATOR + 1:
         raise ValueError("Authority draft output denominator retreated")
+    if len(AUTHORITY_BODY_OUTPUT_PATHS) != AUTHORITY_BODY_DRAFT_DENOMINATOR + 1:
+        raise ValueError("Authority body output denominator retreated")
+    if len(AUTHORITY_REVIEW_BATCH_PATHS) != AUTHORITY_REVIEW_BATCH_DENOMINATOR or len(AUTHORITY_REVIEW_OUTPUT_PATHS) != AUTHORITY_REVIEW_BATCH_DENOMINATOR + 1:
+        raise ValueError("Authority review queue output denominator retreated")
     for identifier, spec in INPUT_SPECS.items():
         item = inputs.get(identifier)
         members = spec["members"]
@@ -205,6 +239,32 @@ def validate_extension(graph: dict) -> None:
             raise ValueError(f"Authority output run binding is invalid: {path}")
         if output["digest"] != contract.sha256_file(ROOT / path):
             raise ValueError(f"Authority output digest mismatch: {path}")
+    body_snapshot = outputs["authority/body-inventory.snapshot.json"]
+    body_required = {"source.authority-lock-inventory", "source.authority-body-baseline", "harness.authority-body-review"}
+    for path in AUTHORITY_BODY_OUTPUT_PATHS:
+        output = outputs[path]
+        if not body_required <= set(output["depends_on"]):
+            raise ValueError(f"Authority body output binding is invalid: {path}")
+        if output["run_id"] != authority_run["id"] or output["id"] not in authority_run["output_ids"] or output["digest"] != contract.sha256_file(ROOT / path):
+            raise ValueError(f"Authority body output run/digest binding is invalid: {path}")
+    review_required = {body_snapshot["id"], "source.authority-human-decisions", "harness.authority-body-review"}
+    for path in AUTHORITY_REVIEW_OUTPUT_PATHS:
+        output = outputs[path]
+        if not review_required <= set(output["depends_on"]):
+            raise ValueError(f"Authority review output binding is invalid: {path}")
+        if output["run_id"] != authority_run["id"] or output["id"] not in authority_run["output_ids"] or output["digest"] != contract.sha256_file(ROOT / path):
+            raise ValueError(f"Authority review output run/digest binding is invalid: {path}")
+    review_snapshot = outputs["authority/review-queue.snapshot.json"]
+    review_batch_ids = {outputs[path]["id"] for path in AUTHORITY_REVIEW_BATCH_PATHS}
+    if not review_batch_ids <= set(review_snapshot["depends_on"]):
+        raise ValueError("Authority review snapshot is not bound to every review batch")
+    root_inventory = outputs["artifacts/core-v2/root-surface-inventory-closure.json"]
+    root_inventory_required = {body_snapshot["id"], review_snapshot["id"], "source.authority-human-decisions"}
+    if not root_inventory_required <= set(root_inventory["depends_on"]):
+        raise ValueError("root Surface Inventory stale causes are not fully bound")
+    root_matrix = outputs["artifacts/core-v2/root-verification-matrix-closure.json"]
+    if not {review_snapshot["id"], "source.authority-human-decisions"} <= set(root_matrix["depends_on"]):
+        raise ValueError("root Verification Matrix stale causes are not fully bound")
     report = outputs["artifacts/core-v2/evidence-dependency-extension.json"]
     if "source.repository-contract" not in report["depends_on"]:
         raise ValueError("Repository contract is not connected to the extension report")
@@ -308,6 +368,28 @@ def generate() -> None:
         )
         for path in sorted(AUTHORITY_OUTPUT_PATHS)
     ]
+    body_ids = [
+        contract.add_output(
+            outputs, path, "derived-evidence",
+            ["source.authority-lock-inventory", "source.authority-body-baseline", "harness.authority-body-review"],
+            "run.authority-denominator",
+        )
+        for path in sorted(AUTHORITY_BODY_OUTPUT_PATHS)
+    ]
+    body_snapshot_id = next(outputs_item["id"] for outputs_item in outputs if outputs_item["path"] == "authority/body-inventory.snapshot.json")
+    review_batch_ids = [
+        contract.add_output(
+            outputs, path, "derived-evidence",
+            [body_snapshot_id, "source.authority-human-decisions", "harness.authority-body-review"],
+            "run.authority-denominator",
+        )
+        for path in sorted(AUTHORITY_REVIEW_BATCH_PATHS)
+    ]
+    review_snapshot_id = contract.add_output(
+        outputs, "authority/review-queue.snapshot.json", "derived-evidence",
+        [*review_batch_ids, body_snapshot_id, "source.authority-human-decisions", "harness.authority-body-review"],
+        "run.authority-denominator",
+    )
     readiness_id = contract.add_output(
         outputs, "artifacts/core-v2/surface-inventory-readiness.json", "derived-evidence",
         [*authority_ids, "source.authority-lock-inventory", "harness.surface-inventory-readiness"],
@@ -315,12 +397,12 @@ def generate() -> None:
     )
     root_inventory_id = contract.add_output(
         outputs, "artifacts/core-v2/root-surface-inventory-closure.json", "closure-plan",
-        [readiness_id, output_by_path["evidence/scenarios/index.json"], "source.authority-lock-inventory", "harness.root-surface-inventory"],
+        [readiness_id, output_by_path["evidence/scenarios/index.json"], body_snapshot_id, review_snapshot_id, "source.authority-human-decisions", "source.authority-lock-inventory", "harness.root-surface-inventory"],
         "run.root-surface-inventory-closure",
     )
     root_matrix_id = contract.add_output(
         outputs, "artifacts/core-v2/root-verification-matrix-closure.json", "closure-plan",
-        [root_inventory_id, output_by_path["evidence/scenarios/index.json"], "source.authority-lock-inventory", "harness.root-verification-matrix"],
+        [root_inventory_id, output_by_path["evidence/scenarios/index.json"], review_snapshot_id, "source.authority-human-decisions", "source.authority-lock-inventory", "harness.root-verification-matrix"],
         "run.root-verification-matrix-closure",
     )
     root_contract_gap_id = contract.add_output(
@@ -347,7 +429,7 @@ def generate() -> None:
     )
     report_id = contract.add_output(
         outputs, "artifacts/core-v2/evidence-dependency-extension.json", "derived-evidence",
-        [router_id, plan_id, readiness_id, root_inventory_id, root_matrix_id, root_contract_gap_id, standard_ids[publish_path], *authority_ids, "source.repository-contract", "harness.content-policy", "harness.core-v2-dependency-extension"],
+        [router_id, plan_id, readiness_id, root_inventory_id, root_matrix_id, root_contract_gap_id, standard_ids[publish_path], *authority_ids, *body_ids, *review_batch_ids, review_snapshot_id, "source.repository-contract", "harness.content-policy", "harness.core-v2-dependency-extension"],
         "run.core-v2-dependency-extension",
     )
     new_runs = [
@@ -356,7 +438,7 @@ def generate() -> None:
         contract.run_document("run.core-v2-scenario-schema-gap", "derived", "make scenario-proof-index-adapter", graph["generated_at"], [scenario_schema_gap_id]),
         contract.run_document("run.core-v2-root-contract-gap", "derived", "make root-contract-adapter-gap", graph["generated_at"], [root_contract_gap_id]),
         contract.run_document("run.core-v2-scenario-plan-gap", "derived", "python3 scripts/generate_core_v2_scenario_plan_gap.py && python3 scripts/test_core_v2_scenario_plan_gap.py", graph["generated_at"], [plan_id]),
-        contract.run_document("run.authority-denominator", "derived", "make authority-locators && make authority-validate", graph["generated_at"], authority_ids),
+        contract.run_document("run.authority-denominator", "derived", "make authority-locators && make authority-validate", graph["generated_at"], [*authority_ids, *body_ids, *review_batch_ids, review_snapshot_id]),
         contract.run_document("run.surface-inventory-readiness", "derived", "python3 scripts/generate_surface_inventory_readiness.py && python3 scripts/test_surface_inventory_readiness.py", graph["generated_at"], [readiness_id]),
         contract.run_document("run.root-surface-inventory-closure", "derived", "python3 scripts/generate_root_surface_inventory.py && python3 scripts/test_root_surface_inventory.py", graph["generated_at"], [root_inventory_id]),
         contract.run_document("run.root-verification-matrix-closure", "derived", "python3 scripts/generate_root_verification_matrix.py && python3 scripts/test_root_verification_matrix.py", graph["generated_at"], [root_matrix_id]),

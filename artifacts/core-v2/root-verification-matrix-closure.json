@@ -4,10 +4,23 @@
   "status": "blocked-human-authority-and-proof-closure",
   "inputs": {
     "definitive/root-surface-inventory-bindings.yaml": "sha256:dfd8b94b10b1cfa769f09af942727982513e07970e79b61b30f47c3c40fb0de1",
-    "artifacts/core-v2/root-surface-inventory-closure.json": "sha256:dc79604c45739275eef7abc29c12a14444afdbe85e35ec835dfeeda358ff5613",
+    "artifacts/core-v2/root-surface-inventory-closure.json": "sha256:f798f4d7c3f2a30e90b58f6f160e4fb83b25cc909b8610591e43c782ba6c0f70",
     "evidence/scenarios/index.json": "sha256:925134b7591c25117a1ca964b509a621e893fd5bd6e03a86e3fe8c83d1fed325",
     "authority/reviews/decisions.json": "sha256:6305c95ff8a719f4bded040447874814bec28afd2b9c9e81c3088488f3d4988b",
     "coverage.yaml": "sha256:7fdd4890ce4fd2e21bccd84cb06bb8ca3d55ba4dbeaa4e9f8af9673f5944bc9d"
+  },
+  "dependency_contract": {
+    "graph_output": "artifacts/core-v2/root-verification-matrix-closure.json",
+    "tracked_input_paths": [
+      "definitive/root-surface-inventory-bindings.yaml",
+      "artifacts/core-v2/root-surface-inventory-closure.json",
+      "evidence/scenarios/index.json",
+      "authority/reviews/decisions.json",
+      "coverage.yaml"
+    ],
+    "stale_on_any_input_digest_change": true,
+    "required_rerun": "python3 scripts/generate_root_verification_matrix.py && python3 scripts/test_root_verification_matrix.py",
+    "digest_only_closure_forbidden": true
   },
   "policy": {
     "ten_classes_per_reviewed_atomic_behavior": true,

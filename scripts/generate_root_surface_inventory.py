@@ -26,6 +26,7 @@ COVERAGE = ROOT / "coverage.yaml"
 OUTPUT = ROOT / "artifacts/core-v2/root-surface-inventory-closure.json"
 ROOT_INVENTORY = ROOT / "surface.inventory.yaml"
 EXPECTED_SCENARIOS = {"normal", "boundary", "rejection", "failure", "recovery", "migration", "operations", "security", "performance", "compatibility"}
+INPUT_PATHS = [BINDINGS, READINESS, DECISIONS, EXTRACTION, BODY, REVIEW, SCENARIOS, COVERAGE]
 
 
 def digest(path: Path) -> str:
@@ -140,7 +141,14 @@ def build() -> dict[str, Any]:
         "schema_version": 1,
         "id": "argocd-root-surface-inventory-closure-v1",
         "status": "ready-to-emit" if not blockers else "blocked-human-authority-and-proof-closure",
-        "inputs": {path.relative_to(ROOT).as_posix(): digest(path) for path in [BINDINGS, READINESS, DECISIONS, EXTRACTION, BODY, REVIEW, SCENARIOS, COVERAGE]},
+        "inputs": {path.relative_to(ROOT).as_posix(): digest(path) for path in INPUT_PATHS},
+        "dependency_contract": {
+            "graph_output": "artifacts/core-v2/root-surface-inventory-closure.json",
+            "tracked_input_paths": [path.relative_to(ROOT).as_posix() for path in INPUT_PATHS],
+            "stale_on_any_input_digest_change": True,
+            "required_rerun": "python3 scripts/generate_root_surface_inventory.py && python3 scripts/test_root_surface_inventory.py",
+            "digest_only_closure_forbidden": True,
+        },
         "policy": {
             "emit_only_when_all_blockers_closed": True,
             "unreviewed_candidate_promotion_forbidden": True,
@@ -213,6 +221,16 @@ def validate(document: dict[str, Any]) -> None:
         document["closure"]["semantic_credit"] != 0 or document["root_inventory"]["present"]
     ):
         raise ValueError("未review状態でSemantic creditまたはroot Inventoryがあります")
+    dependency = document["dependency_contract"]
+    expected_paths = [path.relative_to(ROOT).as_posix() for path in INPUT_PATHS]
+    if dependency != {
+        "graph_output": "artifacts/core-v2/root-surface-inventory-closure.json",
+        "tracked_input_paths": expected_paths,
+        "stale_on_any_input_digest_change": True,
+        "required_rerun": "python3 scripts/generate_root_surface_inventory.py && python3 scripts/test_root_surface_inventory.py",
+        "digest_only_closure_forbidden": True,
+    } or list(document["inputs"]) != expected_paths:
+        raise ValueError("root Surface Inventoryのstale Graph契約が不完全です")
 
 
 def main() -> None:
