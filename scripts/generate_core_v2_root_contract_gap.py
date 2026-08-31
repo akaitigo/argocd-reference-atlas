@@ -12,6 +12,7 @@ from typing import Any
 
 
 ROOT = Path(__file__).resolve().parents[1]
+CORE_LOCK = Path("contracts/core-v2-root-admission-lock.json")
 ROOT_SURFACE = Path("artifacts/core-v2/root-surface-inventory-closure.json")
 ROOT_MATRIX = Path("artifacts/core-v2/root-verification-matrix-closure.json")
 CORE_MANIFEST = Path("integrations/reference-system/manifest.json")
@@ -50,7 +51,64 @@ def digest(path: Path) -> str:
     return "sha256:" + hashlib.sha256((ROOT / path).read_bytes()).hexdigest()
 
 
+def digest_absolute(path: Path) -> str:
+    return "sha256:" + hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def core_root() -> Path:
+    candidates = (ROOT / ".atlas-core", ROOT.parent / "reference-atlas-core")
+    lock = load(CORE_LOCK)
+    expected = lock["files"]
+    for candidate in candidates:
+        if all((candidate / relative).is_file() for relative in expected):
+            return candidate
+    raise ValueError("固定Core root契約を検証できるlocal checkoutがありません")
+
+
+def core_schema_admission() -> dict[str, Any]:
+    lock = load(CORE_LOCK)
+    checkout = core_root()
+    observed = {
+        relative: digest_absolute(checkout / relative)
+        for relative in lock["files"]
+    }
+    require(observed == lock["files"], "Core root契約のdigestがsemantic pinと一致しません")
+    surface = json.loads((checkout / "schemas/surface-inventory.schema.json").read_text(encoding="utf-8"))
+    matrix = json.loads((checkout / "schemas/verification-matrix.schema.json").read_text(encoding="utf-8"))
+    surface_items = surface["properties"]["items"]
+    item_properties = surface_items["items"]["properties"]
+    required_then = matrix["properties"]["rows"]["items"]["allOf"][0]["then"]["properties"]
+    observed_surface = {
+        "authority_artifacts_min_items": surface["properties"]["authority_artifacts"]["minItems"],
+        "items_min_items": surface_items["minItems"],
+        "classification": item_properties["classification"]["const"],
+        "variant_ids_min_items": item_properties["variant_ids"]["minItems"],
+        "surface_ids_min_items": item_properties["surface_ids"]["minItems"],
+        "claim_ids_min_items": surface_items["items"]["allOf"][0]["properties"]["claim_ids"]["minItems"],
+    }
+    observed_matrix = {
+        "rows_min_items": matrix["properties"]["rows"]["minItems"],
+        "required_row_proof_obligation": required_then["proof_obligation_id"]["type"] == "string",
+        "required_row_evidence_min_items": required_then["evidence_ids"]["minItems"],
+        "required_row_profile": required_then["profile"]["type"] == "string",
+    }
+    require(observed_surface == lock["surface_inventory_constraints"], "Surface Inventory Schema制約がlockと一致しません")
+    require(observed_matrix == lock["verification_matrix_constraints"], "Verification Matrix Schema制約がlockと一致しません")
+    return {
+        "lock_path": CORE_LOCK.as_posix(),
+        "lock_digest": digest(CORE_LOCK),
+        "semantic_commit": lock["semantic_commit"],
+        "verified_file_digests": observed,
+        "surface_inventory_constraints": observed_surface,
+        "verification_matrix_constraints": observed_matrix,
+        "validator_invariants": lock["validator_invariants"],
+        "placeholder_root_contract_allowed": False,
+        "admission_state": "blocked-human-authority-and-proof-closure",
+    }
+
+
 def build() -> dict[str, Any]:
+    schema_admission = core_schema_admission()
     surface = load(ROOT_SURFACE)
     matrix = load(ROOT_MATRIX)
     manifest = load(CORE_MANIFEST)
@@ -83,6 +141,7 @@ def build() -> dict[str, Any]:
         "inputs": {
             path.as_posix(): digest(path)
             for path in (
+                CORE_LOCK,
                 ROOT_SURFACE, ROOT_MATRIX, CORE_MANIFEST, REFERENCE_RESULTS,
                 PATTERN_RESULTS, MIGRATION, MIGRATION_BASELINE, SCENARIO_INDEX,
                 SCENARIO_SCHEMA_ADAPTER,
@@ -94,7 +153,9 @@ def build() -> dict[str, Any]:
             "fixture_or_static_runtime_substitution_forbidden": True,
             "emit_root_contract_only_after_all_blockers_closed": True,
             "legacy_row_replacement_before_migration_forbidden": True,
+            "empty_or_placeholder_root_contract_forbidden": True,
         },
+        "core_schema_admission": schema_admission,
         "authority": {
             "raw_anchors": surface["denominator"]["authority_raw_anchors"],
             "pending_human": surface["denominator"]["authority_pending_human"],
@@ -170,6 +231,7 @@ def build() -> dict[str, Any]:
 
 
 def validate(document: dict[str, Any]) -> None:
+    schema_admission = document["core_schema_admission"]
     authority = document["authority"]
     scenario = document["scenario_denominator"]
     standard = document["core_standard_artifacts"]
@@ -178,6 +240,11 @@ def validate(document: dict[str, Any]) -> None:
     schema_adapter = document["scenario_schema_adapter"]
     credit = document["credit"]
     require(document["status"] == "incomplete-human-and-runtime-gaps" and bool(document["blockers"]), "root契約Gapが完了扱いです")
+    require(schema_admission["semantic_commit"] == "072d7ca77981f51754e824d70c6d4ecd55ea67e5", "Core semantic pinが変化しています")
+    require(schema_admission["placeholder_root_contract_allowed"] is False and schema_admission["admission_state"] == "blocked-human-authority-and-proof-closure", "placeholder root契約を許可しています")
+    require(schema_admission["surface_inventory_constraints"] == {"authority_artifacts_min_items": 1, "items_min_items": 1, "classification": "included", "variant_ids_min_items": 1, "surface_ids_min_items": 1, "claim_ids_min_items": 1}, "Surface Inventoryの最低契約を弱めています")
+    require(schema_admission["verification_matrix_constraints"] == {"rows_min_items": 1, "required_row_proof_obligation": True, "required_row_evidence_min_items": 1, "required_row_profile": True}, "Verification Matrixの最低契約を弱めています")
+    require(all(schema_admission["validator_invariants"].values()), "Human Review validator不変条件を弱めています")
     require(authority == {"raw_anchors": 63889, "pending_human": 63889, "human_decisions": 0, "reviewed_atomic_behaviors": 0, "semantic_credit": 0}, "Authority denominatorまたはsemantic creditが変化しています")
     require(scenario == {"candidate_behaviors": 100, "candidate_rows": 1000, "candidate_rows_open": 1000, "dedicated_runtime_rows": 13, "remaining_runtime_rows": 987, "authority_atomic_bindings": 0, "completion_eligible_rows": 0}, "Scenario denominatorまたはRuntime Gapが変化しています")
     require(standard["manifest"]["status"] == "bounded-integration-proof" and standard["manifest"]["runtime"] == "gap-only-no-runtime-credit", "Reference manifestがRuntimeを偽装しています")

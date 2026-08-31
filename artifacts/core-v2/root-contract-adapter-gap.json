@@ -3,6 +3,7 @@
   "id": "argocd-core-v2-root-contract-adapter-gap-v1",
   "status": "incomplete-human-and-runtime-gaps",
   "inputs": {
+    "contracts/core-v2-root-admission-lock.json": "sha256:38af98759fa11f31710cc8b1bb193f6060ae947dea99eab28ef85d4ddd0cbb2e",
     "artifacts/core-v2/root-surface-inventory-closure.json": "sha256:f798f4d7c3f2a30e90b58f6f160e4fb83b25cc909b8610591e43c782ba6c0f70",
     "artifacts/core-v2/root-verification-matrix-closure.json": "sha256:7fb5c32d2e98872bf5d2a6e53d288f7817a9c7adfb28cf83a13e52277ee4a2e1",
     "integrations/reference-system/manifest.json": "sha256:401d26221be4557ca82a7cfdd9d604ede4ff932283b5d546d3650d662e7f19d2",
@@ -18,7 +19,39 @@
     "adapter_is_human_review": false,
     "fixture_or_static_runtime_substitution_forbidden": true,
     "emit_root_contract_only_after_all_blockers_closed": true,
-    "legacy_row_replacement_before_migration_forbidden": true
+    "legacy_row_replacement_before_migration_forbidden": true,
+    "empty_or_placeholder_root_contract_forbidden": true
+  },
+  "core_schema_admission": {
+    "lock_path": "contracts/core-v2-root-admission-lock.json",
+    "lock_digest": "sha256:38af98759fa11f31710cc8b1bb193f6060ae947dea99eab28ef85d4ddd0cbb2e",
+    "semantic_commit": "072d7ca77981f51754e824d70c6d4ecd55ea67e5",
+    "verified_file_digests": {
+      "schemas/surface-inventory.schema.json": "sha256:e770a4ce03820e272469a7f621e8a4402b90b6ffba31d9ab9658926ee8c38358",
+      "schemas/verification-matrix.schema.json": "sha256:aad26d99e2faa3b8ec2fa07a4939935e7975cfe59dfce3128ce1b250227485cd",
+      "internal/validate/definitive.go": "sha256:fa43cafc6a94fe36cb92f5f3637ea1c4e7d882ba1d0ded361c6d2c7dc3d17ec6"
+    },
+    "surface_inventory_constraints": {
+      "authority_artifacts_min_items": 1,
+      "items_min_items": 1,
+      "classification": "included",
+      "variant_ids_min_items": 1,
+      "surface_ids_min_items": 1,
+      "claim_ids_min_items": 1
+    },
+    "verification_matrix_constraints": {
+      "rows_min_items": 1,
+      "required_row_proof_obligation": true,
+      "required_row_evidence_min_items": 1,
+      "required_row_profile": true
+    },
+    "validator_invariants": {
+      "review_queue_mapping_required": true,
+      "reviewed_atomic_behavior_required": true,
+      "authority_candidate_is_not_review_decision": true
+    },
+    "placeholder_root_contract_allowed": false,
+    "admission_state": "blocked-human-authority-and-proof-closure"
   },
   "authority": {
     "raw_anchors": 63889,

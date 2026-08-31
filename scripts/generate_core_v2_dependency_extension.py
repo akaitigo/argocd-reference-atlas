@@ -67,6 +67,10 @@ INPUT_SPECS = {
         "kind": "harness",
         "members": ["scripts/generate_core_v2_root_contract_gap.py", "scripts/test_core_v2_root_contract_gap.py"],
     },
+    "source.core-v2-root-admission-lock": {
+        "kind": "source",
+        "members": ["contracts/core-v2-root-admission-lock.json"],
+    },
     "harness.core-v2-scenario-schema-gap": {
         "kind": "harness",
         "members": ["scripts/generate_core_v2_scenario_schema_gap.py", "scripts/test_core_v2_scenario_schema_gap.py"],
@@ -195,7 +199,10 @@ def validate_extension(graph: dict) -> None:
         "baselines/scenario-row-id-migration-v1.json",
         "evidence/scenarios/index.json",
     }
-    root_gap_required = {outputs[path]["id"] for path in root_gap_required_paths} | {"harness.core-v2-root-contract-gap"}
+    root_gap_required = {outputs[path]["id"] for path in root_gap_required_paths} | {
+        "source.core-v2-root-admission-lock",
+        "harness.core-v2-root-contract-gap",
+    }
     if not root_gap_required <= set(root_gap["depends_on"]):
         raise ValueError("root contract gap input binding is incomplete")
     scenario_plan = outputs["artifacts/core-v2/scenario-plan-gap.json"]
@@ -413,6 +420,7 @@ def generate() -> None:
             standard_ids[migration_path], standard_ids[baseline_path],
             scenario_schema_gap_id,
             output_by_path["evidence/scenarios/index.json"],
+            "source.core-v2-root-admission-lock",
             "harness.core-v2-root-contract-gap",
         ],
         "run.core-v2-root-contract-gap",

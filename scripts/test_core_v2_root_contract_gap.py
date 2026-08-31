@@ -25,6 +25,11 @@ def main() -> None:
     rejected("false-complete", lambda value: value.update(status="complete"))
     rejected("authority-denominator-shrink", lambda value: value["authority"].update(raw_anchors=63888))
     rejected("semantic-credit-forged", lambda value: value["authority"].update(semantic_credit=1))
+    rejected("core-pin-substitution", lambda value: value["core_schema_admission"].update(semantic_commit="0" * 40))
+    rejected("surface-min-items-weakened", lambda value: value["core_schema_admission"]["surface_inventory_constraints"].update(items_min_items=0))
+    rejected("matrix-proof-weakened", lambda value: value["core_schema_admission"]["verification_matrix_constraints"].update(required_row_evidence_min_items=0))
+    rejected("validator-review-weakened", lambda value: value["core_schema_admission"]["validator_invariants"].update(review_queue_mapping_required=False))
+    rejected("placeholder-root-admitted", lambda value: value["core_schema_admission"].update(placeholder_root_contract_allowed=True))
     rejected("runtime-denominator-shrink", lambda value: value["scenario_denominator"].update(candidate_rows=999))
     rejected("runtime-credit-forged", lambda value: value["credit"].update(runtime=1))
     rejected("fixture-reference-pass", lambda value: value["core_standard_artifacts"]["reference_results"].update(status="passed"))
@@ -38,7 +43,7 @@ def main() -> None:
     rejected("schema-adapter-early-publish", lambda value: value["scenario_schema_adapter"].update(canonical_emitted=True))
     rejected("schema-adapter-runtime-credit", lambda value: value["scenario_schema_adapter"].update(runtime_credit=1))
     rejected("blocker-retreat", lambda value: value["blockers"].pop())
-    print("Core v2 root contract gap fixtures passed: positive=1 negative=16")
+    print("Core v2 root contract gap fixtures passed: positive=1 negative=21")
 
 
 if __name__ == "__main__":

@@ -422,8 +422,18 @@
         "scripts/generate_core_v2_root_contract_gap.py",
         "scripts/test_core_v2_root_contract_gap.py"
       ],
-      "baseline_digest": "sha256:2e13e01bb45a303d8fdfa6718d96d2a49d4b63c67440ca36a0abcbca96fb7262",
-      "current_digest": "sha256:2e13e01bb45a303d8fdfa6718d96d2a49d4b63c67440ca36a0abcbca96fb7262",
+      "baseline_digest": "sha256:57805a729de15bbef9605d65fb905e9750af5e36aacee4fdfbea56737eddda10",
+      "current_digest": "sha256:57805a729de15bbef9605d65fb905e9750af5e36aacee4fdfbea56737eddda10",
+      "observed_at": "2026-08-28T15:48:00Z"
+    },
+    {
+      "id": "source.core-v2-root-admission-lock",
+      "kind": "source",
+      "members": [
+        "contracts/core-v2-root-admission-lock.json"
+      ],
+      "baseline_digest": "sha256:da1f9220742863d38fbf60546b5b013030ed62eb5e903d9cecc4d398a60d3528",
+      "current_digest": "sha256:da1f9220742863d38fbf60546b5b013030ed62eb5e903d9cecc4d398a60d3528",
       "observed_at": "2026-08-28T15:48:00Z"
     },
     {
@@ -505,8 +515,8 @@
         "scripts/generate_core_v2_dependency_extension.py",
         "scripts/test_core_v2_evidence_dependency_extensions.py"
       ],
-      "baseline_digest": "sha256:82786e28c837990e683d4d4849a9b120836df4c69b36ab586ca7d3419984cf5f",
-      "current_digest": "sha256:82786e28c837990e683d4d4849a9b120836df4c69b36ab586ca7d3419984cf5f",
+      "baseline_digest": "sha256:c76e607b24505f56135f58abab071d197e1bcf6f45bb8a9ed768efe1a82a8c44",
+      "current_digest": "sha256:c76e607b24505f56135f58abab071d197e1bcf6f45bb8a9ed768efe1a82a8c44",
       "observed_at": "2026-08-28T15:48:00Z"
     }
   ],
@@ -566,7 +576,7 @@
       "id": "output.artifacts.core-v2.evidence-dependency-extension.json",
       "kind": "derived-evidence",
       "path": "artifacts/core-v2/evidence-dependency-extension.json",
-      "digest": "sha256:62e5cf209c7601c0ea9aa775f5655ad5135f5a1eb4941d48d550ec94e62fa748",
+      "digest": "sha256:5bb9f7d09677a0f4767ff1a35f1a283dc5801465f6c442e693b6b1d35b141ea5",
       "depends_on": [
         "harness.content-policy",
         "harness.core-v2-dependency-extension",
@@ -852,7 +862,7 @@
       "id": "output.artifacts.core-v2.root-contract-adapter-gap.json",
       "kind": "closure-plan",
       "path": "artifacts/core-v2/root-contract-adapter-gap.json",
-      "digest": "sha256:d1d5a4d51aed6dfb227e010706cbdb2a603f9477e4173ae70dfeeffec46fbc9f",
+      "digest": "sha256:b9cf6df065707fe8b1c93fcc33b1c0eab23acf7a7d650da2dcb35ba9d14c0474",
       "depends_on": [
         "harness.core-v2-root-contract-gap",
         "output.artifacts.core-v2.root-surface-inventory-closure.json",
@@ -863,7 +873,8 @@
         "output.baselines.scenario-row-id-migration-v1.json",
         "output.evidence.scenarios.index.json",
         "output.integrations.reference-system.manifest.json",
-        "output.migrations.scenario-class-refusal-v1.json"
+        "output.migrations.scenario-class-refusal-v1.json",
+        "source.core-v2-root-admission-lock"
       ],
       "status": "current",
       "run_id": "run.core-v2-root-contract-gap"
@@ -905,7 +916,7 @@
       "id": "output.artifacts.core-v2.scenario-plan-gap.json",
       "kind": "closure-plan",
       "path": "artifacts/core-v2/scenario-plan-gap.json",
-      "digest": "sha256:2ca175e742110b4a13c5fdc75c25cceb90bcda24f153cb2cb61dac5100237543",
+      "digest": "sha256:d594b219fd75eb855178e2ee47c47a7df7d4779da9369db619757148a0cfa597",
       "depends_on": [
         "harness.core-v2-scenario-plan",
         "output.artifacts.core-v2.root-contract-adapter-gap.json",
@@ -143601,11 +143612,11 @@
         },
         {
           "input_id": "harness.core-v2-dependency-extension",
-          "digest": "sha256:82786e28c837990e683d4d4849a9b120836df4c69b36ab586ca7d3419984cf5f"
+          "digest": "sha256:c76e607b24505f56135f58abab071d197e1bcf6f45bb8a9ed768efe1a82a8c44"
         },
         {
           "input_id": "harness.core-v2-root-contract-gap",
-          "digest": "sha256:2e13e01bb45a303d8fdfa6718d96d2a49d4b63c67440ca36a0abcbca96fb7262"
+          "digest": "sha256:57805a729de15bbef9605d65fb905e9750af5e36aacee4fdfbea56737eddda10"
         },
         {
           "input_id": "harness.core-v2-scenario-plan",
@@ -143700,6 +143711,10 @@
           "digest": "sha256:8990f3d18c8276014ac085e9b20e370446e3b5045572d9ab563946cca79d8ab1"
         },
         {
+          "input_id": "source.core-v2-root-admission-lock",
+          "digest": "sha256:da1f9220742863d38fbf60546b5b013030ed62eb5e903d9cecc4d398a60d3528"
+        },
+        {
           "input_id": "source.manifests",
           "digest": "sha256:beb8f9d4535d8119ec432ca970597c0f2014d67d3a644ab418fec5a25d586cbd"
         },
@@ -143743,7 +143758,7 @@
         },
         {
           "input_id": "harness.core-v2-root-contract-gap",
-          "digest": "sha256:2e13e01bb45a303d8fdfa6718d96d2a49d4b63c67440ca36a0abcbca96fb7262"
+          "digest": "sha256:57805a729de15bbef9605d65fb905e9750af5e36aacee4fdfbea56737eddda10"
         },
         {
           "input_id": "harness.core-v2-scenario-schema-gap",
@@ -143826,6 +143841,10 @@
           "digest": "sha256:8990f3d18c8276014ac085e9b20e370446e3b5045572d9ab563946cca79d8ab1"
         },
         {
+          "input_id": "source.core-v2-root-admission-lock",
+          "digest": "sha256:da1f9220742863d38fbf60546b5b013030ed62eb5e903d9cecc4d398a60d3528"
+        },
+        {
           "input_id": "source.manifests",
           "digest": "sha256:beb8f9d4535d8119ec432ca970597c0f2014d67d3a644ab418fec5a25d586cbd"
         },
@@ -143865,7 +143884,7 @@
         },
         {
           "input_id": "harness.core-v2-root-contract-gap",
-          "digest": "sha256:2e13e01bb45a303d8fdfa6718d96d2a49d4b63c67440ca36a0abcbca96fb7262"
+          "digest": "sha256:57805a729de15bbef9605d65fb905e9750af5e36aacee4fdfbea56737eddda10"
         },
         {
           "input_id": "harness.core-v2-scenario-plan",
@@ -143954,6 +143973,10 @@
         {
           "input_id": "source.core-standard-legacy-scenarios",
           "digest": "sha256:8990f3d18c8276014ac085e9b20e370446e3b5045572d9ab563946cca79d8ab1"
+        },
+        {
+          "input_id": "source.core-v2-root-admission-lock",
+          "digest": "sha256:da1f9220742863d38fbf60546b5b013030ed62eb5e903d9cecc4d398a60d3528"
         },
         {
           "input_id": "source.manifests",

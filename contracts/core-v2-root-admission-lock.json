@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "id": "argocd-core-v2-root-admission-lock-v1",
+  "core_repository": "akaitigo/reference-atlas-core",
+  "semantic_commit": "072d7ca77981f51754e824d70c6d4ecd55ea67e5",
+  "files": {
+    "schemas/surface-inventory.schema.json": "sha256:e770a4ce03820e272469a7f621e8a4402b90b6ffba31d9ab9658926ee8c38358",
+    "schemas/verification-matrix.schema.json": "sha256:aad26d99e2faa3b8ec2fa07a4939935e7975cfe59dfce3128ce1b250227485cd",
+    "internal/validate/definitive.go": "sha256:fa43cafc6a94fe36cb92f5f3637ea1c4e7d882ba1d0ded361c6d2c7dc3d17ec6"
+  },
+  "surface_inventory_constraints": {
+    "authority_artifacts_min_items": 1,
+    "items_min_items": 1,
+    "classification": "included",
+    "variant_ids_min_items": 1,
+    "surface_ids_min_items": 1,
+    "claim_ids_min_items": 1
+  },
+  "verification_matrix_constraints": {
+    "rows_min_items": 1,
+    "required_row_proof_obligation": true,
+    "required_row_evidence_min_items": 1,
+    "required_row_profile": true
+  },
+  "validator_invariants": {
+    "review_queue_mapping_required": true,
+    "reviewed_atomic_behavior_required": true,
+    "authority_candidate_is_not_review_decision": true
+  }
+}
