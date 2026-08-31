@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "component": "argocd-application-controller",
+  "surface_id": "application.spec.sync-policy",
+  "scenario": "security",
+  "variant_id": "fixed-revision-automated-self-heal",
+  "app_info": {
+    "sample_present": true,
+    "sample": "argocd_app_info{autosync_enabled=\"true\",dest_namespace=\"atlas-security-003-workloads\",dest_server=\"https://kubernetes.default.svc\",health_status=\"Healthy\",name=\"atlas-security-003-sync-policy\",namespace=\"argocd\",operation=\"\",project=\"atlas-security-003-sync-policy\",repo=\"http://source-server.argocd-atlas-source.svc.cluster.local/repo\",sync_status=\"Synced\"} 1",
+    "labels": {
+      "autosync_enabled": "true",
+      "dest_namespace": "atlas-security-003-workloads",
+      "dest_server": "https://kubernetes.default.svc",
+      "health_status": "Healthy",
+      "name": "atlas-security-003-sync-policy",
+      "namespace": "argocd",
+      "operation": "",
+      "project": "atlas-security-003-sync-policy",
+      "repo": "http://source-server.argocd-atlas-source.svc.cluster.local/repo",
+      "sync_status": "Synced"
+    },
+    "value": 1
+  }
+}

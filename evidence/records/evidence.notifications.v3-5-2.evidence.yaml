@@ -1,0 +1,23 @@
+schema_version: 1
+id: evidence.notifications.v3-5-2
+atlas_id: argocd-reference-atlas
+claim_ids: [claim.notifications.local-webhook-delivery]
+kind: test-report
+producer: argocd-atlas-kind-extended-harness
+command: make extended-lab-notifications
+created_at: "2026-08-28T11:42:07Z"
+environment:
+  profile: cluster
+  manifest_digest: sha256:fba4965e0c1ef1f37c6fc36c048093d2e098ff73fbfdc1e398a05a3de348c73e
+  lab: notifications
+  argocd_version: v3.5.2
+source_digest: sha256:fc76f2c5267059ae59c118c9f4924c51e4ca179476a687cced7f43ae1c977674
+harness_digest: sha256:71f3a7c5e7621fed0c5ba32e1945dda96cd6ae4aec18db403ff7cc6baffeb1f8
+harness_path: labs/notifications/lab.yaml
+artifact:
+  uri: evidence/raw/evidence.notifications.v3-5-2/result.json
+  digest: sha256:25af7045326cb82ff7c5556f12840183b443e49a2d1a14200661a250a7eb6550
+  media_type: application/json
+  size_bytes: 189622
+verdict: pass
+retention: git

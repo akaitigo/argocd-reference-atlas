@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "surface_id": "application.operation.sync",
+  "scenario": "security",
+  "variant_id": "rbac-denied-sync",
+  "started_at": "2026-08-30T17:49:01.038545Z",
+  "completed_at": "2026-08-30T17:49:01.903464Z",
+  "attempt": 1,
+  "retries": 0,
+  "actions": [
+    {
+      "action": "evaluate-argocd-rbac-sync",
+      "subject": "atlas-security-denied",
+      "decision": "No"
+    },
+    {
+      "action": "retain-live-v1-after-denial",
+      "status": "passed"
+    }
+  ],
+  "result": {
+    "first_attempt": true,
+    "synthetic_credential_leak": false,
+    "rbac_decision": "No",
+    "sync_requested": false,
+    "live_release": "v1"
+  }
+}

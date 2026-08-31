@@ -1,0 +1,1940 @@
+{
+  "schema_version": 1,
+  "atlas_id": "argocd-reference-atlas",
+  "generated_at": "2026-08-28T00:00:00+09:00",
+  "status": "incomplete-human-review-required",
+  "queue_id": "authority-review-4899835d8716e9eb45f6",
+  "input_digest": "sha256:5306283a39f3734ed53184705121ecd0e09de4e1149859c52e9ba0ee887bd076",
+  "tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+  "decision_ledger": "authority/reviews/decisions.json",
+  "body_storage": "digest-locator-and-offset-only",
+  "machine_assistance": "dedupe-candidate-cluster-priority-and-batch-proposals-only",
+  "semantic_decisions": "human-only",
+  "summary": {
+    "eligible_documents": 26,
+    "queued_anchors": 63889,
+    "pending_human": 63889,
+    "human_reviewed": 0,
+    "priority_counts": {
+      "0": 26,
+      "1": 58458,
+      "2": 5405
+    },
+    "candidate_clusters": 374,
+    "clustered_anchors": 58171,
+    "batches": 211,
+    "stale_document_holds": 0,
+    "unavailable_document_holds": 0,
+    "decisions": 0,
+    "included": 0,
+    "excluded": 0,
+    "merged": 0,
+    "split": 0,
+    "deferred": 0,
+    "authority_semantics_exhaustive": false,
+    "queue_counts_as_depth_achievement": false
+  },
+  "batches": [
+    {
+      "id": "review-p0-document-root-00",
+      "path": "authority/review-queue-draft/review-p0-document-root-00.json",
+      "digest": "sha256:385c50c1c14e9100899f3220a5b98e93f25f606f833a38490f5e61de20501cd2",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "00",
+      "items": 1
+    },
+    {
+      "id": "review-p0-document-root-03",
+      "path": "authority/review-queue-draft/review-p0-document-root-03.json",
+      "digest": "sha256:f37ff31f2712bed6cd683e00f538ecb0f08fbaae64bf82d5e56c8bf068c2f04d",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "03",
+      "items": 1
+    },
+    {
+      "id": "review-p0-document-root-0d",
+      "path": "authority/review-queue-draft/review-p0-document-root-0d.json",
+      "digest": "sha256:dbc48802db764cc3e667776823a9b1243eb811bf0eaa9c360abba8c3bd5729ff",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "0d",
+      "items": 2
+    },
+    {
+      "id": "review-p0-document-root-13",
+      "path": "authority/review-queue-draft/review-p0-document-root-13.json",
+      "digest": "sha256:d324707db4baddfb6efcbfe3ec6880c41b11d61c97b3be4cebaa2e6d587ea304",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "13",
+      "items": 2
+    },
+    {
+      "id": "review-p0-document-root-16",
+      "path": "authority/review-queue-draft/review-p0-document-root-16.json",
+      "digest": "sha256:b3b078a07367e22b0a80a854d04a99ed85b290cd4f78b019ea7155a9e9ca8e26",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "16",
+      "items": 1
+    },
+    {
+      "id": "review-p0-document-root-1d",
+      "path": "authority/review-queue-draft/review-p0-document-root-1d.json",
+      "digest": "sha256:54cac24c96825d3880daab442e7cd1dc7444c436c2ec961d6dfd89b2142daa76",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "1d",
+      "items": 1
+    },
+    {
+      "id": "review-p0-document-root-1e",
+      "path": "authority/review-queue-draft/review-p0-document-root-1e.json",
+      "digest": "sha256:d924d2a8c2ab0e757e3f9c18c89ae05eefc5830f3bce8e367c898c7a0126e790",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "1e",
+      "items": 1
+    },
+    {
+      "id": "review-p0-document-root-1f",
+      "path": "authority/review-queue-draft/review-p0-document-root-1f.json",
+      "digest": "sha256:285452d17dd63b95a9bf7c8ee64eb3cece8a02b6be64d4e246ec994b10ccd35e",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "1f",
+      "items": 2
+    },
+    {
+      "id": "review-p0-document-root-22",
+      "path": "authority/review-queue-draft/review-p0-document-root-22.json",
+      "digest": "sha256:20d59c4a2ff36deee67b3a2a8d702861239ebc2392b577d7a0efe738b511765e",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "22",
+      "items": 1
+    },
+    {
+      "id": "review-p0-document-root-25",
+      "path": "authority/review-queue-draft/review-p0-document-root-25.json",
+      "digest": "sha256:a9dee2bbc82d88df114a3d6b3c2684e3fd3de2eedc62b9bbbfd4db7d99461dd1",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "25",
+      "items": 1
+    },
+    {
+      "id": "review-p0-document-root-26",
+      "path": "authority/review-queue-draft/review-p0-document-root-26.json",
+      "digest": "sha256:2da7abab06a791930da28328d810ff9e333adddcd2c6fdfcb46b22e4ed4ccff9",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "26",
+      "items": 1
+    },
+    {
+      "id": "review-p0-document-root-29",
+      "path": "authority/review-queue-draft/review-p0-document-root-29.json",
+      "digest": "sha256:f94dfdc471fd7029f334dd889a0ee6ae2b2dbdda14d9829ab761426a08667b66",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "29",
+      "items": 1
+    },
+    {
+      "id": "review-p0-document-root-2a",
+      "path": "authority/review-queue-draft/review-p0-document-root-2a.json",
+      "digest": "sha256:dea4549a1c1ee43115fb22fc098dfc77ff5724328d3258a14cb67fb78e76a01a",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "2a",
+      "items": 2
+    },
+    {
+      "id": "review-p0-document-root-2e",
+      "path": "authority/review-queue-draft/review-p0-document-root-2e.json",
+      "digest": "sha256:2e8ddaae5afc50ae24f9031c940b365c0330ed6b595c6a0f9a14f022a0c301ce",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "2e",
+      "items": 1
+    },
+    {
+      "id": "review-p0-document-root-30",
+      "path": "authority/review-queue-draft/review-p0-document-root-30.json",
+      "digest": "sha256:5e174984e4d2d144bbad0fbc5bff5086c9653d6ed906bfb3a2e475dc33318c83",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "30",
+      "items": 2
+    },
+    {
+      "id": "review-p0-document-root-34",
+      "path": "authority/review-queue-draft/review-p0-document-root-34.json",
+      "digest": "sha256:e6215097ee2a9a2a3eb731fcf646e9e11bd656581dc0a7a8b1447b51bb2e0068",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "34",
+      "items": 1
+    },
+    {
+      "id": "review-p0-document-root-36",
+      "path": "authority/review-queue-draft/review-p0-document-root-36.json",
+      "digest": "sha256:1ada672d746f345cced7a773bcb922e8141888573550df6e86d515aa7e88b80d",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "36",
+      "items": 1
+    },
+    {
+      "id": "review-p0-document-root-37",
+      "path": "authority/review-queue-draft/review-p0-document-root-37.json",
+      "digest": "sha256:2061ec8ea07cfec41866fb5a9c46699a24775bbb7ea0ed7a277f86da87614db0",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "37",
+      "items": 2
+    },
+    {
+      "id": "review-p0-document-root-3d",
+      "path": "authority/review-queue-draft/review-p0-document-root-3d.json",
+      "digest": "sha256:768a50095ca623aa7f762c61c0a63d272089a786f6ca85631691fa71c3ae46b6",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "3d",
+      "items": 1
+    },
+    {
+      "id": "review-p0-document-root-3f",
+      "path": "authority/review-queue-draft/review-p0-document-root-3f.json",
+      "digest": "sha256:8e44eaabd2ec54b824e881c3045ca9355ae719ed26e37d26a83517cb265e0cdb",
+      "priority": 0,
+      "raw_selector": "document-root",
+      "bucket": "3f",
+      "items": 1
+    },
+    {
+      "id": "review-p1-markdown-atx-heading-00",
+      "path": "authority/review-queue-draft/review-p1-markdown-atx-heading-00.json",
+      "digest": "sha256:e8481b7b5f90bc794be742f4c1578a3316ced5f046eb3f8637a7119d2b2463ff",
+      "priority": 1,
+      "raw_selector": "markdown-atx-heading",
+      "bucket": "00",
+      "items": 4
+    },
+    {
+      "id": "review-p1-markdown-atx-heading-01",
+      "path": "authority/review-queue-draft/review-p1-markdown-atx-heading-01.json",
+      "digest": "sha256:d84e215777e95f6a6142469a604024fa6a3e9df563df04fe9e38796b580b1044",
+      "priority": 1,
+      "raw_selector": "markdown-atx-heading",
+      "bucket": "01",
+      "items": 8
+    },
+    {
+      "id": "review-p1-markdown-atx-heading-02",
+      "path": "authority/review-queue-draft/review-p1-markdown-atx-heading-02.json",
+      "digest": "sha256:647bdf2f2300e6eca8db9d952f6717eb6507df6b7733a8b522a943dc278ce258",
+      "priority": 1,
+      "raw_selector": "markdown-atx-heading",
+      "bucket": "02",
+      "items": 5
+    },
+    {
+      "id": "review-p1-markdown-atx-heading-04",
+      "path": "authority/review-queue-draft/review-p1-markdown-atx-heading-04.json",
+      "digest": "sha256:11d65b5aa540cb57414659b696ab1107ceb1338efe1414bd4ca025562b6fa0ff",
+      "priority": 1,
+      "raw_selector": "markdown-atx-heading",
+      "bucket": "04",
+      "items": 3
+    },
+    {
+      "id": "review-p1-markdown-atx-heading-05",
+      "path": "authority/review-queue-draft/review-p1-markdown-atx-heading-05.json",
+      "digest": "sha256:2ec457938c5667af15c4205874a93a9b273d5cfb92532676bb80438659338ee7",
+      "priority": 1,
+      "raw_selector": "markdown-atx-heading",
+      "bucket": "05",
+      "items": 6
+    },
+    {
+      "id": "review-p1-markdown-atx-heading-06",
+      "path": "authority/review-queue-draft/review-p1-markdown-atx-heading-06.json",
+      "digest": "sha256:33e0885f0ddcf0c4c1c9dc442fe50e24889b19930a07c60afb00dc6f0e21dc0f",
+      "priority": 1,
+      "raw_selector": "markdown-atx-heading",
+      "bucket": "06",
+      "items": 3
+    },
+    {
+      "id": "review-p1-markdown-atx-heading-07",
+      "path": "authority/review-queue-draft/review-p1-markdown-atx-heading-07.json",
+      "digest": "sha256:367f23ff8147706a0972e612af8a4987e4a19f78debb955f824f47177e2de015",
+      "priority": 1,
+      "raw_selector": "markdown-atx-heading",
+      "bucket": "07",
+      "items": 3
+    },
+    {
+      "id": "review-p1-markdown-atx-heading-08",
+      "path": "authority/review-queue-draft/review-p1-markdown-atx-heading-08.json",
+      "digest": "sha256:a1fc7ca76ef31369eb594abada03f8ff0031fb7d5a4f0091dbb32806549ac799",
+      "priority": 1,
+      "raw_selector": "markdown-atx-heading",
+      "bucket": "08",
+      "items": 6
+    },
+    {
+      "id": "review-p1-markdown-atx-heading-09",
+      "path": "authority/review-queue-draft/review-p1-markdown-atx-heading-09.json",
+      "digest": "sha256:0879d2a693a11374754b4ec95ce9bf40f34f1b42898da4081c1cd8b76e3693f5",
+      "priority": 1,
+      "raw_selector": "markdown-atx-heading",
+      "bucket": "09",
+      "items": 7
+    },
+    {
+      "id": "review-p1-markdown-atx-heading-0a",
+      "path": "authority/review-queue-draft/review-p1-markdown-atx-heading-0a.json",
+      "digest": "sha256:13cf19f3e55742635b78516d13a02ac7cc54858acd7921b04d44da7f43ba6cba",
+      "priority": 1,
+      "raw_selector": "markdown-atx-heading",
+      "bucket": "0a",
+      "items": 3
+    },
+    {
+      "id": "review-p1-markdown-atx-heading-0b",
+      "path": "authority/review-queue-draft/review-p1-markdown-atx-heading-0b.json",
+      "digest": "sha256:f21eed94651ceea4621b6d1fc5e2e8b8496d764c1a7f5d0bfcbbed0b5d713c88",
+      "priority": 1,
+      "raw_selector": "markdown-atx-heading",
+      "bucket": "0b",
+      "items": 6
+    },
+    {
+      "id": "review-p1-markdown-atx-heading-0c",
+      "path": "authority/review-queue-draft/review-p1-markdown-atx-heading-0c.json",
+      "digest": "sha256:63ddfde13959d252ef7063d3955d5c3d229d7d88deac38af4791e58e29acaeea",
+      "priority": 1,
+      "raw_selector": "markdown-atx-heading",
+      "bucket": "0c",
+      "items": 10
+    },
+    {
+      "id": "review-p1-markdown-atx-heading-0d",
+      "path": "authority/review-queue-draft/review-p1-markdown-atx-heading-0d.json",
+      "digest": "sha256:deb12e8095a7d506616a0dab86afabd454978cb53b8ae2cc8763f19f8987de99",
+      "priority": 1,
+      "raw_selector": "markdown-atx-heading",
+      "bucket": "0d",
+      "items": 4
+    },
+    {
+      "id": "review-p1-markdown-atx-heading-0e",
+      "path": "authority/review-queue-draft/review-p1-markdown-atx-heading-0e.json",
+      "digest": "sha256:5b20ff119ceafe29cd26ae528fa365f66c2adc9a59e6b8ec5b51b60b68488620",
+      "priority": 1,
+      "raw_selector": "markdown-atx-heading",
+      "bucket": "0e",
+      "items": 7
+    },
+    {
+      "id": "review-p1-markdown-atx-heading-0f",
+      "path": "authority/review-queue-draft/review-p1-markdown-atx-heading-0f.json",
+      "digest": "sha256:b6f0a1da5104866efb266a037385bf0325ebc27365459010976c9c6b62e50cd8",
+      "priority": 1,
+      "raw_selector": "markdown-atx-heading",
+      "bucket": "0f",
+      "items": 7
+    },
+    {
+      "id": "review-p1-markdown-atx-heading-10",
+      "path": "authority/review-queue-draft/review-p1-markdown-atx-heading-10.json",
+      "digest": "sha256:cb87faca6c3bc2cecf9d3a6f3adbb0bbb5d7741a0d821a5e8808904d804c5953",
+      "priority": 1,
+      "raw_selector": "markdown-atx-heading",
+      "bucket": "10",
+      "items": 5
+    },
+    {
+      "id": "review-p1-markdown-atx-heading-11",
+      "path": "authority/review-queue-draft/review-p1-markdown-atx-heading-11.json",
+      "digest": "sha256:6dcbe1526d57ef0f7b975036534484d4dba92b58cf0687cb1285d13912c2a8d9",
+      "priority": 1,
+      "raw_selector": "markdown-atx-heading",
+      "bucket": "11",
+      "items": 3
+    },
+    {
+      "id": "review-p1-markdown-atx-heading-12",
+      "path": "authority/review-queue-draft/review-p1-markdown-atx-heading-12.json",
+      "digest": "sha256:68d13f662979bf37c5fee03ca341ffbdae7bc46d1308581c127c3b79a5001434",
+      "priority": 1,
+      "raw_selector": "markdown-atx-heading",
+      "bucket": "12",
+      "items": 6
+    },
+    {
+      "id": "review-p1-markdown-atx-heading-13",
+      "path": "authority/review-queue-draft/review-p1-markdown-atx-heading-13.json",
+      "digest": "sha256:6cc00e220230339f416ed3bc848fa5992ba902715d26a38796ea0d2f3f23adb0",
+      "priority": 1,
+      "raw_selector": "markdown-atx-heading",
+      "bucket": "13",
+      "items": 3
+    },
+    {
+      "id": "review-p1-markdown-atx-heading-14",
+      "path": "authority/review-queue-draft/review-p1-markdown-atx-heading-14.json",
+      "digest": "sha256:69f97076a76ab6c6f89d4a43bdd7aeebf24274f21f546b9918ee8fdb6e9a213f",
+      "priority": 1,
+      "raw_selector": "markdown-atx-heading",
+      "bucket": "14",
+      "items": 6
+    },
+    {
+      "id": "review-p1-markdown-atx-heading-15",
+      "path": "authority/review-queue-draft/review-p1-markdown-atx-heading-15.json",
+      "digest": "sha256:6dc885e6a3bdc481e8796e9ad650eb771f27ae23b65b70a9bc22f6327f0a690a",
+      "priority": 1,
+      "raw_selector": "markdown-atx-heading",
+      "bucket": "15",
+      "items": 7
+    },
+    {
+      "id": "review-p1-markdown-atx-heading-16",
+      "path": "authority/review-queue-draft/review-p1-markdown-atx-heading-16.json",
+      "digest": "sha256:66a2368a9ab669d3c65f71b2ac4c5019f0b249d7c658df2b477a79cf3f3d8ecf",
+      "priority": 1,
+      "raw_selector": "markdown-atx-heading",
+      "bucket": "16",
+      "items": 2
+    },
+    {
+      "id": "review-p1-markdown-atx-heading-17",
+      "path": "authority/review-queue-draft/review-p1-markdown-atx-heading-17.json",
+      "digest": "sha256:857b7666c87f5bb06f6ce55c60c4e2f480f7930749d9bf4ceeccb38f6d2a0650",
+      "priority": 1,
+      "raw_selector": "markdown-atx-heading",
+      "bucket": "17",
+      "items": 6
+    },
+    {
+      "id": "review-p1-markdown-atx-heading-18",
+      "path": "authority/review-queue-draft/review-p1-markdown-atx-heading-18.json",
+      "digest": "sha256:119d910fdca457345ebadd0cc44bb66cc7c9a0b9a9e7d0853178db5aed222e14",
+      "priority": 1,
+      "raw_selector": "markdown-atx-heading",
+      "bucket": "18",
+      "items": 8
+    },
+    {
+      "id": "review-p1-markdown-atx-heading-19",
+      "path": "authority/review-queue-draft/review-p1-markdown-atx-heading-19.json",
+      "digest": "sha256:1be69d9e0ef54ad7f9d02601cf9a883a6e4fc49ad0f4160ca156f75253ddf26e",
+      "priority": 1,
+      "raw_selector": "markdown-atx-heading",
+      "bucket": "19",
+      "items": 4
+    },
+    {
+      "id": "review-p1-markdown-atx-heading-1a",
+      "path": "authority/review-queue-draft/review-p1-markdown-atx-heading-1a.json",
+      "digest": "sha256:b87505a28374c7604b43a0466eb2ab8389a47189aa514738ab4c638e2fd988a8",
+      "priority": 1,
+      "raw_selector": "markdown-atx-heading",
+      "bucket": "1a",
+      "items": 6
+    },
+    {
+      "id": "review-p1-markdown-atx-heading-1b",
+      "path": "authority/review-queue-draft/review-p1-markdown-atx-heading-1b.json",
+      "digest": "sha256:88039dc5500475828fc92cd43bce8392e5f775c55df719fec3d7d1f63f488652",
+      "priority": 1,
+      "raw_selector": "markdown-atx-heading",
+      "bucket": "1b",
+      "items": 1
+    },
+    {
+      "id": "review-p1-markdown-atx-heading-1c",
+      "path": "authority/review-queue-draft/review-p1-markdown-atx-heading-1c.json",
+      "digest": "sha256:12ab7f8e55e7eb805705d700c5db4ec29a3167dabf8564e7f47831df9c775a1c",
+      "priority": 1,
+      "raw_selector": "markdown-atx-heading",
+      "bucket": "1c",
+      "items": 4
+    },
+    {
+      "id": "review-p1-markdown-atx-heading-1d",
+      "path": "authority/review-queue-draft/review-p1-markdown-atx-heading-1d.json",
+      "digest": "sha256:f8247bb5edc0953fad832e3d14fde9c0662979550d975e97d70ae6d533797a63",
+      "priority": 1,
+      "raw_selector": "markdown-atx-heading",
+      "bucket": "1d",
+      "items": 5
+    },
+    {
+      "id": "review-p1-markdown-atx-heading-1e",
+      "path": "authority/review-queue-draft/review-p1-markdown-atx-heading-1e.json",
+      "digest": "sha256:af227c5417db44696c940fcc586c76ab7860696afe60f9284f377a039933d181",
+      "priority": 1,
+      "raw_selector": "markdown-atx-heading",
+      "bucket": "1e",
+      "items": 8
+    },
+    {
+      "id": "review-p1-markdown-atx-heading-1f",
+      "path": "authority/review-queue-draft/review-p1-markdown-atx-heading-1f.json",
+      "digest": "sha256:8f69efb862f52aae423121c5ff13bdc0bcf2ca35dde7604a572e6c4431be0f56",
+      "priority": 1,
+      "raw_selector": "markdown-atx-heading",
+      "bucket": "1f",
+      "items": 4
+    },
+    {
+      "id": "review-p1-markdown-atx-heading-21",
+      "path": "authority/review-queue-draft/review-p1-markdown-atx-heading-21.json",
+      "digest": "sha256:b1d79d1ce22a9131dfff82f5d9e78f34952b7cc47a83da625868f77ea4f2d089",
+      "priority": 1,
+      "raw_selector": "markdown-atx-heading",
+      "bucket": "21",
+      "items": 2
+    },
+    {
+      "id": "review-p1-markdown-atx-heading-22",
+      "path": "authority/review-queue-draft/review-p1-markdown-atx-heading-22.json",
+      "digest": "sha256:b27b555c87d1aa5e92cb435f459be062e08e38790db58c3347c7951212ca2344",
+      "priority": 1,
+      "raw_selector": "markdown-atx-heading",
+      "bucket": "22",
+      "items": 2
+    },
+    {
+      "id": "review-p1-markdown-atx-heading-23",
+      "path": "authority/review-queue-draft/review-p1-markdown-atx-heading-23.json",
+      "digest": "sha256:cfea75abf1e6a831c6a04677df51e5c61ca05a2d18b03b5f644555618c8d0aef",
+      "priority": 1,
+      "raw_selector": "markdown-atx-heading",
+      "bucket": "23",
+      "items": 1
+    },
+    {
+      "id": "review-p1-markdown-atx-heading-24",
+      "path": "authority/review-queue-draft/review-p1-markdown-atx-heading-24.json",
+      "digest": "sha256:33b4e4178867c1b3f64515308d9ff213b9bf879bb497339df49491726a07486c",
+      "priority": 1,
+      "raw_selector": "markdown-atx-heading",
+      "bucket": "24",
+      "items": 4
+    },
+    {
+      "id": "review-p1-markdown-atx-heading-25",
+      "path": "authority/review-queue-draft/review-p1-markdown-atx-heading-25.json",
+      "digest": "sha256:202aa7d6b44bdfda25fb4e33d7f02991a6cfda6373be31154db65bc79d31c994",
+      "priority": 1,
+      "raw_selector": "markdown-atx-heading",
+      "bucket": "25",
+      "items": 10
+    },
+    {
+      "id": "review-p1-markdown-atx-heading-26",
+      "path": "authority/review-queue-draft/review-p1-markdown-atx-heading-26.json",
+      "digest": "sha256:7652a17be8583a175714a527b8333ebd93c7b5a0ff7e25b7a04012db474ad762",
+      "priority": 1,
+      "raw_selector": "markdown-atx-heading",
+      "bucket": "26",
+      "items": 7
+    },
+    {
+      "id": "review-p1-markdown-atx-heading-27",
+      "path": "authority/review-queue-draft/review-p1-markdown-atx-heading-27.json",
+      "digest": "sha256:1595151fd667ff3b42210800ec79fb035b5bf0cb2afc7131679bce5145832a66",
+      "priority": 1,
+      "raw_selector": "markdown-atx-heading",
+      "bucket": "27",
+      "items": 5
+    },
+    {
+      "id": "review-p1-markdown-atx-heading-28",
+      "path": "authority/review-queue-draft/review-p1-markdown-atx-heading-28.json",
+      "digest": "sha256:65bc4e0bd87630f474d9ed97d61392fe750e0e062d885a97ddb15dc642b7d4f6",
+      "priority": 1,
+      "raw_selector": "markdown-atx-heading",
+      "bucket": "28",
+      "items": 4
+    },
+    {
+      "id": "review-p1-markdown-atx-heading-29",
+      "path": "authority/review-queue-draft/review-p1-markdown-atx-heading-29.json",
+      "digest": "sha256:3b943831b7c2fe08014c4a24da4d5abc342da15c0b677e8f4f821dc923460f51",
+      "priority": 1,
+      "raw_selector": "markdown-atx-heading",
+      "bucket": "29",
+      "items": 10
+    },
+    {
+      "id": "review-p1-markdown-atx-heading-2a",
+      "path": "authority/review-queue-draft/review-p1-markdown-atx-heading-2a.json",
+      "digest": "sha256:cf2994a389222c37eb8f8f79bccbfd97b6cb0f7f98acd7647a2d69d7a8366d9b",
+      "priority": 1,
+      "raw_selector": "markdown-atx-heading",
+      "bucket": "2a",
+      "items": 4
+    },
+    {
+      "id": "review-p1-markdown-atx-heading-2b",
+      "path": "authority/review-queue-draft/review-p1-markdown-atx-heading-2b.json",
+      "digest": "sha256:c2e22a40ad80f0f2856669500d8d348b9c6dda03c1528d4cf48500f9828daf4d",
+      "priority": 1,
+      "raw_selector": "markdown-atx-heading",
+      "bucket": "2b",
+      "items": 2
+    },
+    {
+      "id": "review-p1-markdown-atx-heading-2c",
+      "path": "authority/review-queue-draft/review-p1-markdown-atx-heading-2c.json",
+      "digest": "sha256:adab207a77023c9cc8fbbc456cb9b4cc93d88473c9ac338da7b423dd8e246a40",
+      "priority": 1,
+      "raw_selector": "markdown-atx-heading",
+      "bucket": "2c",
+      "items": 6
+    },
+    {
+      "id": "review-p1-markdown-atx-heading-2d",
+      "path": "authority/review-queue-draft/review-p1-markdown-atx-heading-2d.json",
+      "digest": "sha256:6073c695977e5ac84d52c03546c27612209d7a7d4ed177d89d77e976de49e4b0",
+      "priority": 1,
+      "raw_selector": "markdown-atx-heading",
+      "bucket": "2d",
+      "items": 5
+    },
+    {
+      "id": "review-p1-markdown-atx-heading-2e",
+      "path": "authority/review-queue-draft/review-p1-markdown-atx-heading-2e.json",
+      "digest": "sha256:c41606c07084ad5b353c24ab5fb1b49443c6f9775e17ffd74ff9b8c42b807828",
+      "priority": 1,
+      "raw_selector": "markdown-atx-heading",
+      "bucket": "2e",
+      "items": 2
+    },
+    {
+      "id": "review-p1-markdown-atx-heading-2f",
+      "path": "authority/review-queue-draft/review-p1-markdown-atx-heading-2f.json",
+      "digest": "sha256:12d430b5a569d570ed547aa6fd7a4818f49357a47bbc3c5059ca0722c39d1fce",
+      "priority": 1,
+      "raw_selector": "markdown-atx-heading",
+      "bucket": "2f",
+      "items": 2
+    },
+    {
+      "id": "review-p1-markdown-atx-heading-30",
+      "path": "authority/review-queue-draft/review-p1-markdown-atx-heading-30.json",
+      "digest": "sha256:c0054f08d5ca22c6c10548ca30c8e7b3402af69c66b6d759b8e8fb0fc866a92d",
+      "priority": 1,
+      "raw_selector": "markdown-atx-heading",
+      "bucket": "30",
+      "items": 2
+    },
+    {
+      "id": "review-p1-markdown-atx-heading-31",
+      "path": "authority/review-queue-draft/review-p1-markdown-atx-heading-31.json",
+      "digest": "sha256:cf34ca660350787660508bcde2ca1aae32f44b87edae7623f875a93729b05057",
+      "priority": 1,
+      "raw_selector": "markdown-atx-heading",
+      "bucket": "31",
+      "items": 3
+    },
+    {
+      "id": "review-p1-markdown-atx-heading-32",
+      "path": "authority/review-queue-draft/review-p1-markdown-atx-heading-32.json",
+      "digest": "sha256:1f4cbdcec19d5100aac323ed352602b6a5b7aa8bd40f7115ddc95617d3057ea8",
+      "priority": 1,
+      "raw_selector": "markdown-atx-heading",
+      "bucket": "32",
+      "items": 4
+    },
+    {
+      "id": "review-p1-markdown-atx-heading-33",
+      "path": "authority/review-queue-draft/review-p1-markdown-atx-heading-33.json",
+      "digest": "sha256:fc70b5addc4ebc8ceb50aa69eb66417b14ce1d009a5fe332daee884bc60d7b0d",
+      "priority": 1,
+      "raw_selector": "markdown-atx-heading",
+      "bucket": "33",
+      "items": 3
+    },
+    {
+      "id": "review-p1-markdown-atx-heading-34",
+      "path": "authority/review-queue-draft/review-p1-markdown-atx-heading-34.json",
+      "digest": "sha256:781ad202bee510de4332ad3f23add47d6a920dd4f7d77d80bde71dd9df1ce1be",
+      "priority": 1,
+      "raw_selector": "markdown-atx-heading",
+      "bucket": "34",
+      "items": 6
+    },
+    {
+      "id": "review-p1-markdown-atx-heading-35",
+      "path": "authority/review-queue-draft/review-p1-markdown-atx-heading-35.json",
+      "digest": "sha256:19fa29a413e233f373052085dd31da66546ed8e133a7a44ac7e049e507116d74",
+      "priority": 1,
+      "raw_selector": "markdown-atx-heading",
+      "bucket": "35",
+      "items": 6
+    },
+    {
+      "id": "review-p1-markdown-atx-heading-36",
+      "path": "authority/review-queue-draft/review-p1-markdown-atx-heading-36.json",
+      "digest": "sha256:978f28cf0bfcfb5f9004c67a9557a09deb6bab552c6ae4f94402c756bf21d787",
+      "priority": 1,
+      "raw_selector": "markdown-atx-heading",
+      "bucket": "36",
+      "items": 6
+    },
+    {
+      "id": "review-p1-markdown-atx-heading-37",
+      "path": "authority/review-queue-draft/review-p1-markdown-atx-heading-37.json",
+      "digest": "sha256:fc172fd8df93bff7041cf1ca0f4a9afc0c32fd18401056b3001ac32c6ed8a17c",
+      "priority": 1,
+      "raw_selector": "markdown-atx-heading",
+      "bucket": "37",
+      "items": 4
+    },
+    {
+      "id": "review-p1-markdown-atx-heading-38",
+      "path": "authority/review-queue-draft/review-p1-markdown-atx-heading-38.json",
+      "digest": "sha256:0560a3d38b53e90cb4b534ba8f5e127adc29896ee2eddd77d6d4824cc261f614",
+      "priority": 1,
+      "raw_selector": "markdown-atx-heading",
+      "bucket": "38",
+      "items": 8
+    },
+    {
+      "id": "review-p1-markdown-atx-heading-39",
+      "path": "authority/review-queue-draft/review-p1-markdown-atx-heading-39.json",
+      "digest": "sha256:0e4e5524a95904f20e2e8960005c31bdf0895390bbc22c00b27cd010b8c5b5af",
+      "priority": 1,
+      "raw_selector": "markdown-atx-heading",
+      "bucket": "39",
+      "items": 5
+    },
+    {
+      "id": "review-p1-markdown-atx-heading-3a",
+      "path": "authority/review-queue-draft/review-p1-markdown-atx-heading-3a.json",
+      "digest": "sha256:682282f1e683c8e49960b924814a633ed2864ed314b7f7401500c472d28fe028",
+      "priority": 1,
+      "raw_selector": "markdown-atx-heading",
+      "bucket": "3a",
+      "items": 1
+    },
+    {
+      "id": "review-p1-markdown-atx-heading-3b",
+      "path": "authority/review-queue-draft/review-p1-markdown-atx-heading-3b.json",
+      "digest": "sha256:4d0b5e6a54220e9368255ec8238a36e3c86c42621d43664e5261b30469edbe42",
+      "priority": 1,
+      "raw_selector": "markdown-atx-heading",
+      "bucket": "3b",
+      "items": 3
+    },
+    {
+      "id": "review-p1-markdown-atx-heading-3c",
+      "path": "authority/review-queue-draft/review-p1-markdown-atx-heading-3c.json",
+      "digest": "sha256:ede377249eaf0b154898e18e19fce58547907ef6af826957d70e05ae6c18044e",
+      "priority": 1,
+      "raw_selector": "markdown-atx-heading",
+      "bucket": "3c",
+      "items": 3
+    },
+    {
+      "id": "review-p1-markdown-atx-heading-3d",
+      "path": "authority/review-queue-draft/review-p1-markdown-atx-heading-3d.json",
+      "digest": "sha256:925263cc743e845505e2e548b003d77ee1cf70809a3d79f68fc73d03cd673b11",
+      "priority": 1,
+      "raw_selector": "markdown-atx-heading",
+      "bucket": "3d",
+      "items": 4
+    },
+    {
+      "id": "review-p1-markdown-atx-heading-3e",
+      "path": "authority/review-queue-draft/review-p1-markdown-atx-heading-3e.json",
+      "digest": "sha256:9b5b3cd4d66d2175475c3bbbfd6a8fbef0e5393414d72678036ede76445727d9",
+      "priority": 1,
+      "raw_selector": "markdown-atx-heading",
+      "bucket": "3e",
+      "items": 6
+    },
+    {
+      "id": "review-p1-markdown-atx-heading-3f",
+      "path": "authority/review-queue-draft/review-p1-markdown-atx-heading-3f.json",
+      "digest": "sha256:5213a75c1c3e7239f778d5be1b4a3445ef3ce29cf91cecad0029c7553f6c443b",
+      "priority": 1,
+      "raw_selector": "markdown-atx-heading",
+      "bucket": "3f",
+      "items": 3
+    },
+    {
+      "id": "review-p1-plain-nonempty-04",
+      "path": "authority/review-queue-draft/review-p1-plain-nonempty-04.json",
+      "digest": "sha256:fcb8b46ba546d709c620f208323fa40d1112022687104044644392d4082fbbf2",
+      "priority": 1,
+      "raw_selector": "plain-nonempty",
+      "bucket": "04",
+      "items": 1
+    },
+    {
+      "id": "review-p1-yaml-mapping-key-00",
+      "path": "authority/review-queue-draft/review-p1-yaml-mapping-key-00.json",
+      "digest": "sha256:6809b755493bf12db1da8f4ff0e35b39a6a768e244ab4850c3584939dfeecabb",
+      "priority": 1,
+      "raw_selector": "yaml-mapping-key",
+      "bucket": "00",
+      "items": 943
+    },
+    {
+      "id": "review-p1-yaml-mapping-key-01",
+      "path": "authority/review-queue-draft/review-p1-yaml-mapping-key-01.json",
+      "digest": "sha256:847621f0b2c0105f39276f8bff7113a3e1a9ead44c4f494d9d82bd67fbf585ee",
+      "priority": 1,
+      "raw_selector": "yaml-mapping-key",
+      "bucket": "01",
+      "items": 900
+    },
+    {
+      "id": "review-p1-yaml-mapping-key-02",
+      "path": "authority/review-queue-draft/review-p1-yaml-mapping-key-02.json",
+      "digest": "sha256:df644746ced452a0aa26aa7ff17dd4b398f2731d663aa789dcc20c01f60c525d",
+      "priority": 1,
+      "raw_selector": "yaml-mapping-key",
+      "bucket": "02",
+      "items": 901
+    },
+    {
+      "id": "review-p1-yaml-mapping-key-03",
+      "path": "authority/review-queue-draft/review-p1-yaml-mapping-key-03.json",
+      "digest": "sha256:0b9bc26a1af5b341a5e2835bb894ab03a81e643b79eb417381893af8e3e725b2",
+      "priority": 1,
+      "raw_selector": "yaml-mapping-key",
+      "bucket": "03",
+      "items": 932
+    },
+    {
+      "id": "review-p1-yaml-mapping-key-04",
+      "path": "authority/review-queue-draft/review-p1-yaml-mapping-key-04.json",
+      "digest": "sha256:1ce50193e9d48c4c94d5a1cb67d07ff9e91f0510bf80919939cbd9298ee5f377",
+      "priority": 1,
+      "raw_selector": "yaml-mapping-key",
+      "bucket": "04",
+      "items": 886
+    },
+    {
+      "id": "review-p1-yaml-mapping-key-05",
+      "path": "authority/review-queue-draft/review-p1-yaml-mapping-key-05.json",
+      "digest": "sha256:e1d11594264529b9ff3535c69553c2302d81f8ba808a69787b66acfa54fac32a",
+      "priority": 1,
+      "raw_selector": "yaml-mapping-key",
+      "bucket": "05",
+      "items": 920
+    },
+    {
+      "id": "review-p1-yaml-mapping-key-06",
+      "path": "authority/review-queue-draft/review-p1-yaml-mapping-key-06.json",
+      "digest": "sha256:301446b00fd5c836beff7bd27578739873ef79d79672a2bf7c2662eaeeffb4ac",
+      "priority": 1,
+      "raw_selector": "yaml-mapping-key",
+      "bucket": "06",
+      "items": 881
+    },
+    {
+      "id": "review-p1-yaml-mapping-key-07",
+      "path": "authority/review-queue-draft/review-p1-yaml-mapping-key-07.json",
+      "digest": "sha256:f9bc202ae522e6c9dffbe310f232934ed08a73d7bd09c11aa81ac553828ae8d8",
+      "priority": 1,
+      "raw_selector": "yaml-mapping-key",
+      "bucket": "07",
+      "items": 888
+    },
+    {
+      "id": "review-p1-yaml-mapping-key-08",
+      "path": "authority/review-queue-draft/review-p1-yaml-mapping-key-08.json",
+      "digest": "sha256:236764b5ad2ca214a2bbd23bd0b9c76d93c793ac95dec2cc0980d690f1ce466d",
+      "priority": 1,
+      "raw_selector": "yaml-mapping-key",
+      "bucket": "08",
+      "items": 892
+    },
+    {
+      "id": "review-p1-yaml-mapping-key-09",
+      "path": "authority/review-queue-draft/review-p1-yaml-mapping-key-09.json",
+      "digest": "sha256:a3f2f9bac8afddd594210877b29bce0a459d10bb4f831775f11650be0cbd3ba7",
+      "priority": 1,
+      "raw_selector": "yaml-mapping-key",
+      "bucket": "09",
+      "items": 879
+    },
+    {
+      "id": "review-p1-yaml-mapping-key-0a",
+      "path": "authority/review-queue-draft/review-p1-yaml-mapping-key-0a.json",
+      "digest": "sha256:cf160394d0c81faecda2f7b933df1c015985e8e8ce2ad2147a91da6c745f0658",
+      "priority": 1,
+      "raw_selector": "yaml-mapping-key",
+      "bucket": "0a",
+      "items": 984
+    },
+    {
+      "id": "review-p1-yaml-mapping-key-0b",
+      "path": "authority/review-queue-draft/review-p1-yaml-mapping-key-0b.json",
+      "digest": "sha256:8a3c1e3ba26ea7b7cbece7b560e742f961a94205a7730df7301f23e559ee6a21",
+      "priority": 1,
+      "raw_selector": "yaml-mapping-key",
+      "bucket": "0b",
+      "items": 918
+    },
+    {
+      "id": "review-p1-yaml-mapping-key-0c",
+      "path": "authority/review-queue-draft/review-p1-yaml-mapping-key-0c.json",
+      "digest": "sha256:d8c433078b9defc0a9d00e42e317026772e65e912a6b5c42c02bdaf11db9e236",
+      "priority": 1,
+      "raw_selector": "yaml-mapping-key",
+      "bucket": "0c",
+      "items": 918
+    },
+    {
+      "id": "review-p1-yaml-mapping-key-0d",
+      "path": "authority/review-queue-draft/review-p1-yaml-mapping-key-0d.json",
+      "digest": "sha256:cf077dae80690c3d6800d8130e46a4c0b6b32ba2d2b898c9c9362ffa0cb34952",
+      "priority": 1,
+      "raw_selector": "yaml-mapping-key",
+      "bucket": "0d",
+      "items": 889
+    },
+    {
+      "id": "review-p1-yaml-mapping-key-0e",
+      "path": "authority/review-queue-draft/review-p1-yaml-mapping-key-0e.json",
+      "digest": "sha256:eaa0fec308aa536e10db0b838a3de2a578db1e15e1dd8f7fc098cdc79e23b2d7",
+      "priority": 1,
+      "raw_selector": "yaml-mapping-key",
+      "bucket": "0e",
+      "items": 938
+    },
+    {
+      "id": "review-p1-yaml-mapping-key-0f",
+      "path": "authority/review-queue-draft/review-p1-yaml-mapping-key-0f.json",
+      "digest": "sha256:ace130df50d2e39710dc8266adcdda0df95bef2745a732fd9a997f74186fe157",
+      "priority": 1,
+      "raw_selector": "yaml-mapping-key",
+      "bucket": "0f",
+      "items": 864
+    },
+    {
+      "id": "review-p1-yaml-mapping-key-10",
+      "path": "authority/review-queue-draft/review-p1-yaml-mapping-key-10.json",
+      "digest": "sha256:42f4c7f5c6c5be17e5e8807be7f891904d1d9e2bf3105b7f45c59fe041f355d3",
+      "priority": 1,
+      "raw_selector": "yaml-mapping-key",
+      "bucket": "10",
+      "items": 915
+    },
+    {
+      "id": "review-p1-yaml-mapping-key-11",
+      "path": "authority/review-queue-draft/review-p1-yaml-mapping-key-11.json",
+      "digest": "sha256:fe583b21ddb2f6fa6a39da53e79c34766c4f69260cf25addb55d35f6fd41993f",
+      "priority": 1,
+      "raw_selector": "yaml-mapping-key",
+      "bucket": "11",
+      "items": 935
+    },
+    {
+      "id": "review-p1-yaml-mapping-key-12",
+      "path": "authority/review-queue-draft/review-p1-yaml-mapping-key-12.json",
+      "digest": "sha256:c91fcfa405034034bd75d2289ecdd0236a123e77a48754c9a15f0eb78d337362",
+      "priority": 1,
+      "raw_selector": "yaml-mapping-key",
+      "bucket": "12",
+      "items": 886
+    },
+    {
+      "id": "review-p1-yaml-mapping-key-13",
+      "path": "authority/review-queue-draft/review-p1-yaml-mapping-key-13.json",
+      "digest": "sha256:bb73492bc5fa0411718532bbbb6e625df15e5936ddb5b07c409275572997ef14",
+      "priority": 1,
+      "raw_selector": "yaml-mapping-key",
+      "bucket": "13",
+      "items": 932
+    },
+    {
+      "id": "review-p1-yaml-mapping-key-14",
+      "path": "authority/review-queue-draft/review-p1-yaml-mapping-key-14.json",
+      "digest": "sha256:6212d9d9884642577f8e07b6f72abdd63a2787968a54b7175532b9ade0a970ac",
+      "priority": 1,
+      "raw_selector": "yaml-mapping-key",
+      "bucket": "14",
+      "items": 909
+    },
+    {
+      "id": "review-p1-yaml-mapping-key-15",
+      "path": "authority/review-queue-draft/review-p1-yaml-mapping-key-15.json",
+      "digest": "sha256:8f0ea6d96ef757b90af2b156a4d11cadbdf7fb6b646584a8cb9de32efe4a3c62",
+      "priority": 1,
+      "raw_selector": "yaml-mapping-key",
+      "bucket": "15",
+      "items": 919
+    },
+    {
+      "id": "review-p1-yaml-mapping-key-16",
+      "path": "authority/review-queue-draft/review-p1-yaml-mapping-key-16.json",
+      "digest": "sha256:faae21f722047dcee6e74f45d6a3bae7a9d51cf36647ae6fb580cc4d3a499370",
+      "priority": 1,
+      "raw_selector": "yaml-mapping-key",
+      "bucket": "16",
+      "items": 857
+    },
+    {
+      "id": "review-p1-yaml-mapping-key-17",
+      "path": "authority/review-queue-draft/review-p1-yaml-mapping-key-17.json",
+      "digest": "sha256:33cc31a0bf95ebe16144064111be2a6200d827ef13f90ce4fb4a2c48d6d5344d",
+      "priority": 1,
+      "raw_selector": "yaml-mapping-key",
+      "bucket": "17",
+      "items": 918
+    },
+    {
+      "id": "review-p1-yaml-mapping-key-18",
+      "path": "authority/review-queue-draft/review-p1-yaml-mapping-key-18.json",
+      "digest": "sha256:e68bd18057acb93dc464276d3a85cc120d225b54e65fb0413ca8587320416c95",
+      "priority": 1,
+      "raw_selector": "yaml-mapping-key",
+      "bucket": "18",
+      "items": 860
+    },
+    {
+      "id": "review-p1-yaml-mapping-key-19",
+      "path": "authority/review-queue-draft/review-p1-yaml-mapping-key-19.json",
+      "digest": "sha256:0f1c3a33ccac73f8b6d6d6d5808cd4d648dcacdc923779286fdbbad200637ac5",
+      "priority": 1,
+      "raw_selector": "yaml-mapping-key",
+      "bucket": "19",
+      "items": 922
+    },
+    {
+      "id": "review-p1-yaml-mapping-key-1a",
+      "path": "authority/review-queue-draft/review-p1-yaml-mapping-key-1a.json",
+      "digest": "sha256:13b14f2757ead002c0b9edcc72806186788ab920980da5758cc8fba3e52f7174",
+      "priority": 1,
+      "raw_selector": "yaml-mapping-key",
+      "bucket": "1a",
+      "items": 880
+    },
+    {
+      "id": "review-p1-yaml-mapping-key-1b",
+      "path": "authority/review-queue-draft/review-p1-yaml-mapping-key-1b.json",
+      "digest": "sha256:66c0ddb283c16f4485e06f31e2c1ee04936ede4462b1ce3fd7873c188d7cd50a",
+      "priority": 1,
+      "raw_selector": "yaml-mapping-key",
+      "bucket": "1b",
+      "items": 899
+    },
+    {
+      "id": "review-p1-yaml-mapping-key-1c",
+      "path": "authority/review-queue-draft/review-p1-yaml-mapping-key-1c.json",
+      "digest": "sha256:44662bfac9a3cd1c05941dc8347b4f45add4fe35a6fb827df81c9b5f00cb661c",
+      "priority": 1,
+      "raw_selector": "yaml-mapping-key",
+      "bucket": "1c",
+      "items": 928
+    },
+    {
+      "id": "review-p1-yaml-mapping-key-1d",
+      "path": "authority/review-queue-draft/review-p1-yaml-mapping-key-1d.json",
+      "digest": "sha256:431aab9717c3470d76819ee5ba1331103a52c55cd5025d3f620b033ca94f9e4c",
+      "priority": 1,
+      "raw_selector": "yaml-mapping-key",
+      "bucket": "1d",
+      "items": 956
+    },
+    {
+      "id": "review-p1-yaml-mapping-key-1e",
+      "path": "authority/review-queue-draft/review-p1-yaml-mapping-key-1e.json",
+      "digest": "sha256:644ca23b62ad454ab86eced6e2ed136024e0a6e7200f1cfc93ba8e5271645d03",
+      "priority": 1,
+      "raw_selector": "yaml-mapping-key",
+      "bucket": "1e",
+      "items": 867
+    },
+    {
+      "id": "review-p1-yaml-mapping-key-1f",
+      "path": "authority/review-queue-draft/review-p1-yaml-mapping-key-1f.json",
+      "digest": "sha256:8bfd0c5b257734fd07fe37fd9531db3769afc3b79edbf54cc675c95194bda01d",
+      "priority": 1,
+      "raw_selector": "yaml-mapping-key",
+      "bucket": "1f",
+      "items": 911
+    },
+    {
+      "id": "review-p1-yaml-mapping-key-20",
+      "path": "authority/review-queue-draft/review-p1-yaml-mapping-key-20.json",
+      "digest": "sha256:f918fbf9540b1c6ca1c17a439b0e4b98a0c16a0b797d430705f0ed4a2a305cbd",
+      "priority": 1,
+      "raw_selector": "yaml-mapping-key",
+      "bucket": "20",
+      "items": 909
+    },
+    {
+      "id": "review-p1-yaml-mapping-key-21",
+      "path": "authority/review-queue-draft/review-p1-yaml-mapping-key-21.json",
+      "digest": "sha256:e42efef24bbcf42b4bd1220d3b6fc398e9689e1466ebe99cf1eb586812016411",
+      "priority": 1,
+      "raw_selector": "yaml-mapping-key",
+      "bucket": "21",
+      "items": 917
+    },
+    {
+      "id": "review-p1-yaml-mapping-key-22",
+      "path": "authority/review-queue-draft/review-p1-yaml-mapping-key-22.json",
+      "digest": "sha256:f1e74657e50dc502b6513066d478d4d1703dd3059bd450372a0c99c5c7e3a04c",
+      "priority": 1,
+      "raw_selector": "yaml-mapping-key",
+      "bucket": "22",
+      "items": 944
+    },
+    {
+      "id": "review-p1-yaml-mapping-key-23",
+      "path": "authority/review-queue-draft/review-p1-yaml-mapping-key-23.json",
+      "digest": "sha256:c4c16183d654481d883e0615e4a1f5caa8a8895bc0194b7b8b28c01b4f305b5d",
+      "priority": 1,
+      "raw_selector": "yaml-mapping-key",
+      "bucket": "23",
+      "items": 946
+    },
+    {
+      "id": "review-p1-yaml-mapping-key-24",
+      "path": "authority/review-queue-draft/review-p1-yaml-mapping-key-24.json",
+      "digest": "sha256:b9ea02aa59f42e28f57d99846232d4287417d088d10b8daaecf6a9a29ce0c0c7",
+      "priority": 1,
+      "raw_selector": "yaml-mapping-key",
+      "bucket": "24",
+      "items": 897
+    },
+    {
+      "id": "review-p1-yaml-mapping-key-25",
+      "path": "authority/review-queue-draft/review-p1-yaml-mapping-key-25.json",
+      "digest": "sha256:80a04a9a1236f24bed5e26cec34321469576253c7475e7b3cf0c7085338745e8",
+      "priority": 1,
+      "raw_selector": "yaml-mapping-key",
+      "bucket": "25",
+      "items": 936
+    },
+    {
+      "id": "review-p1-yaml-mapping-key-26",
+      "path": "authority/review-queue-draft/review-p1-yaml-mapping-key-26.json",
+      "digest": "sha256:1fdbb2e3a10421133b4e97c99d844696986e6596c1cc3ac6a420aa435aec9bf6",
+      "priority": 1,
+      "raw_selector": "yaml-mapping-key",
+      "bucket": "26",
+      "items": 896
+    },
+    {
+      "id": "review-p1-yaml-mapping-key-27",
+      "path": "authority/review-queue-draft/review-p1-yaml-mapping-key-27.json",
+      "digest": "sha256:359ee1a252639f67a032c001aa3673ffd450856b21b2e37cf8622dafa4112cf2",
+      "priority": 1,
+      "raw_selector": "yaml-mapping-key",
+      "bucket": "27",
+      "items": 962
+    },
+    {
+      "id": "review-p1-yaml-mapping-key-28",
+      "path": "authority/review-queue-draft/review-p1-yaml-mapping-key-28.json",
+      "digest": "sha256:0d08b56e0aefa215774ad4b7c5f4f2fc91f2008c919f9df405768259748b53c5",
+      "priority": 1,
+      "raw_selector": "yaml-mapping-key",
+      "bucket": "28",
+      "items": 894
+    },
+    {
+      "id": "review-p1-yaml-mapping-key-29",
+      "path": "authority/review-queue-draft/review-p1-yaml-mapping-key-29.json",
+      "digest": "sha256:54b2160c2b11c1b18211e11bbdaba343ad442a65ce94582947f67ffe1a688986",
+      "priority": 1,
+      "raw_selector": "yaml-mapping-key",
+      "bucket": "29",
+      "items": 845
+    },
+    {
+      "id": "review-p1-yaml-mapping-key-2a",
+      "path": "authority/review-queue-draft/review-p1-yaml-mapping-key-2a.json",
+      "digest": "sha256:9cb5c02048fa2d9669b24e6253bccfaac2af2885c6694dd5b434cb963dea8667",
+      "priority": 1,
+      "raw_selector": "yaml-mapping-key",
+      "bucket": "2a",
+      "items": 867
+    },
+    {
+      "id": "review-p1-yaml-mapping-key-2b",
+      "path": "authority/review-queue-draft/review-p1-yaml-mapping-key-2b.json",
+      "digest": "sha256:19efbdcb38a8a68b1f90ef22d14540f314178378a13fcf83156807729e6cdeba",
+      "priority": 1,
+      "raw_selector": "yaml-mapping-key",
+      "bucket": "2b",
+      "items": 900
+    },
+    {
+      "id": "review-p1-yaml-mapping-key-2c",
+      "path": "authority/review-queue-draft/review-p1-yaml-mapping-key-2c.json",
+      "digest": "sha256:bf9e06729214860059cc9ca3b4af5f8d72ab57364402a108988af3bc7b126ce4",
+      "priority": 1,
+      "raw_selector": "yaml-mapping-key",
+      "bucket": "2c",
+      "items": 914
+    },
+    {
+      "id": "review-p1-yaml-mapping-key-2d",
+      "path": "authority/review-queue-draft/review-p1-yaml-mapping-key-2d.json",
+      "digest": "sha256:6daacba2f5b15f1b4f98104ce7e9f350e31a7cbb0d85d0d5fefbe27e75e1235c",
+      "priority": 1,
+      "raw_selector": "yaml-mapping-key",
+      "bucket": "2d",
+      "items": 914
+    },
+    {
+      "id": "review-p1-yaml-mapping-key-2e",
+      "path": "authority/review-queue-draft/review-p1-yaml-mapping-key-2e.json",
+      "digest": "sha256:5e393171973f8ccc98424e2612aae93941dbe7a482fa839866b0d1ce4766e063",
+      "priority": 1,
+      "raw_selector": "yaml-mapping-key",
+      "bucket": "2e",
+      "items": 895
+    },
+    {
+      "id": "review-p1-yaml-mapping-key-2f",
+      "path": "authority/review-queue-draft/review-p1-yaml-mapping-key-2f.json",
+      "digest": "sha256:4108f947815af29b22ce0db38e9bc482de5e3ede58916ff3fe563a7ea5ddc40e",
+      "priority": 1,
+      "raw_selector": "yaml-mapping-key",
+      "bucket": "2f",
+      "items": 908
+    },
+    {
+      "id": "review-p1-yaml-mapping-key-30",
+      "path": "authority/review-queue-draft/review-p1-yaml-mapping-key-30.json",
+      "digest": "sha256:3da0acb422db798c46687006fb7953e8270fee34a041dc1fe87471344c34dc4b",
+      "priority": 1,
+      "raw_selector": "yaml-mapping-key",
+      "bucket": "30",
+      "items": 932
+    },
+    {
+      "id": "review-p1-yaml-mapping-key-31",
+      "path": "authority/review-queue-draft/review-p1-yaml-mapping-key-31.json",
+      "digest": "sha256:5bd18527927e2d9c08a4857b81f867285ca8fb089171b37105817c4c15f533f2",
+      "priority": 1,
+      "raw_selector": "yaml-mapping-key",
+      "bucket": "31",
+      "items": 913
+    },
+    {
+      "id": "review-p1-yaml-mapping-key-32",
+      "path": "authority/review-queue-draft/review-p1-yaml-mapping-key-32.json",
+      "digest": "sha256:c1496bc5c03b693cb5fd17e13403f60075a0751bb47a8ddff7e299532c69e8aa",
+      "priority": 1,
+      "raw_selector": "yaml-mapping-key",
+      "bucket": "32",
+      "items": 922
+    },
+    {
+      "id": "review-p1-yaml-mapping-key-33",
+      "path": "authority/review-queue-draft/review-p1-yaml-mapping-key-33.json",
+      "digest": "sha256:5416b6cc8fafc80842fe5bde098d9c9e9ef30de6c9b1b547373aae152ec2b1dc",
+      "priority": 1,
+      "raw_selector": "yaml-mapping-key",
+      "bucket": "33",
+      "items": 936
+    },
+    {
+      "id": "review-p1-yaml-mapping-key-34",
+      "path": "authority/review-queue-draft/review-p1-yaml-mapping-key-34.json",
+      "digest": "sha256:5da11028333205c3bd316ce2f8a2b3f1d554671e560243dc3ead411466e08ea7",
+      "priority": 1,
+      "raw_selector": "yaml-mapping-key",
+      "bucket": "34",
+      "items": 879
+    },
+    {
+      "id": "review-p1-yaml-mapping-key-35",
+      "path": "authority/review-queue-draft/review-p1-yaml-mapping-key-35.json",
+      "digest": "sha256:5a26ba736f082cf8da076b799f9dae090e581c8831e5828c9e5ca7436d91d4e8",
+      "priority": 1,
+      "raw_selector": "yaml-mapping-key",
+      "bucket": "35",
+      "items": 972
+    },
+    {
+      "id": "review-p1-yaml-mapping-key-36",
+      "path": "authority/review-queue-draft/review-p1-yaml-mapping-key-36.json",
+      "digest": "sha256:1bc1ce9052373653f41482b9c01d7d45571fbd141225e1c4d3989d66fcef9ac1",
+      "priority": 1,
+      "raw_selector": "yaml-mapping-key",
+      "bucket": "36",
+      "items": 900
+    },
+    {
+      "id": "review-p1-yaml-mapping-key-37",
+      "path": "authority/review-queue-draft/review-p1-yaml-mapping-key-37.json",
+      "digest": "sha256:ae50e9849e11420204cb363c91a695b458b91957f54ca80b0f2d1577e9e534c8",
+      "priority": 1,
+      "raw_selector": "yaml-mapping-key",
+      "bucket": "37",
+      "items": 871
+    },
+    {
+      "id": "review-p1-yaml-mapping-key-38",
+      "path": "authority/review-queue-draft/review-p1-yaml-mapping-key-38.json",
+      "digest": "sha256:1903da3f3deb4f318a16bbd23af76ed9980dba28c3e22be33c35078d94713aac",
+      "priority": 1,
+      "raw_selector": "yaml-mapping-key",
+      "bucket": "38",
+      "items": 916
+    },
+    {
+      "id": "review-p1-yaml-mapping-key-39",
+      "path": "authority/review-queue-draft/review-p1-yaml-mapping-key-39.json",
+      "digest": "sha256:b646a90201b1d0fc66bb21e3f6347438ba389afe3d2c1fdcc96585097b214e37",
+      "priority": 1,
+      "raw_selector": "yaml-mapping-key",
+      "bucket": "39",
+      "items": 925
+    },
+    {
+      "id": "review-p1-yaml-mapping-key-3a",
+      "path": "authority/review-queue-draft/review-p1-yaml-mapping-key-3a.json",
+      "digest": "sha256:1d57ad7c70be79b824ca054cc05c405d182a59dd2442c8caedc87b6a25a01268",
+      "priority": 1,
+      "raw_selector": "yaml-mapping-key",
+      "bucket": "3a",
+      "items": 892
+    },
+    {
+      "id": "review-p1-yaml-mapping-key-3b",
+      "path": "authority/review-queue-draft/review-p1-yaml-mapping-key-3b.json",
+      "digest": "sha256:6b5432f384fd7df2f9feee3a3ba7d495b92047fe87cad20f6a863aa8d4f29aef",
+      "priority": 1,
+      "raw_selector": "yaml-mapping-key",
+      "bucket": "3b",
+      "items": 904
+    },
+    {
+      "id": "review-p1-yaml-mapping-key-3c",
+      "path": "authority/review-queue-draft/review-p1-yaml-mapping-key-3c.json",
+      "digest": "sha256:6a7eede2e04c39f16589224fc856ee2b27fc7d368642c0a0a067cc94737748af",
+      "priority": 1,
+      "raw_selector": "yaml-mapping-key",
+      "bucket": "3c",
+      "items": 918
+    },
+    {
+      "id": "review-p1-yaml-mapping-key-3d",
+      "path": "authority/review-queue-draft/review-p1-yaml-mapping-key-3d.json",
+      "digest": "sha256:6cf6352a6c9e714f4742707ecb6047340c4e42011c23d68e78ab929590ca53b0",
+      "priority": 1,
+      "raw_selector": "yaml-mapping-key",
+      "bucket": "3d",
+      "items": 859
+    },
+    {
+      "id": "review-p1-yaml-mapping-key-3e",
+      "path": "authority/review-queue-draft/review-p1-yaml-mapping-key-3e.json",
+      "digest": "sha256:33b6b9f123be5e8af143db0dd3f7610d097db2a3ca8ebd9e054824156cf9418b",
+      "priority": 1,
+      "raw_selector": "yaml-mapping-key",
+      "bucket": "3e",
+      "items": 945
+    },
+    {
+      "id": "review-p1-yaml-mapping-key-3f",
+      "path": "authority/review-queue-draft/review-p1-yaml-mapping-key-3f.json",
+      "digest": "sha256:8a49df86f926b04c6834998c51f078daab7453e864f78fc3df3a16c9045bd9ca",
+      "priority": 1,
+      "raw_selector": "yaml-mapping-key",
+      "bucket": "3f",
+      "items": 909
+    },
+    {
+      "id": "review-p2-git-regular-file-00",
+      "path": "authority/review-queue-draft/review-p2-git-regular-file-00.json",
+      "digest": "sha256:23270c7072d99e19d51b6cf887b95930f325bda25be0d04397ac2b639f2c5ac2",
+      "priority": 2,
+      "raw_selector": "git-regular-file",
+      "bucket": "00",
+      "items": 73
+    },
+    {
+      "id": "review-p2-git-regular-file-01",
+      "path": "authority/review-queue-draft/review-p2-git-regular-file-01.json",
+      "digest": "sha256:d496b0e9da9834a10a81d1ec43512518da13ee96cd11cf5a5b167b910bca51a6",
+      "priority": 2,
+      "raw_selector": "git-regular-file",
+      "bucket": "01",
+      "items": 86
+    },
+    {
+      "id": "review-p2-git-regular-file-02",
+      "path": "authority/review-queue-draft/review-p2-git-regular-file-02.json",
+      "digest": "sha256:aeab343ab94ab653c98ba518043bb00f5c5bf964e6d3fbe810d1b1b67e5bb0f7",
+      "priority": 2,
+      "raw_selector": "git-regular-file",
+      "bucket": "02",
+      "items": 80
+    },
+    {
+      "id": "review-p2-git-regular-file-03",
+      "path": "authority/review-queue-draft/review-p2-git-regular-file-03.json",
+      "digest": "sha256:8ddc363748b62686519ca9f95dac06fb81843c2364dd3d848389b552754e926d",
+      "priority": 2,
+      "raw_selector": "git-regular-file",
+      "bucket": "03",
+      "items": 105
+    },
+    {
+      "id": "review-p2-git-regular-file-04",
+      "path": "authority/review-queue-draft/review-p2-git-regular-file-04.json",
+      "digest": "sha256:a14393724de3df51b2e9194a0b3d9f7c588818509e3755b23cdc36876c02ea90",
+      "priority": 2,
+      "raw_selector": "git-regular-file",
+      "bucket": "04",
+      "items": 103
+    },
+    {
+      "id": "review-p2-git-regular-file-05",
+      "path": "authority/review-queue-draft/review-p2-git-regular-file-05.json",
+      "digest": "sha256:b39a4c776dfcd757d8d464f1a1adb770a4cb0802ad7530b6aebc26d0f27762d9",
+      "priority": 2,
+      "raw_selector": "git-regular-file",
+      "bucket": "05",
+      "items": 89
+    },
+    {
+      "id": "review-p2-git-regular-file-06",
+      "path": "authority/review-queue-draft/review-p2-git-regular-file-06.json",
+      "digest": "sha256:a26e82f9004ed4c2bcf56ba0b3d58085ae2d1347c7e83f50c64e8224ee172c0b",
+      "priority": 2,
+      "raw_selector": "git-regular-file",
+      "bucket": "06",
+      "items": 82
+    },
+    {
+      "id": "review-p2-git-regular-file-07",
+      "path": "authority/review-queue-draft/review-p2-git-regular-file-07.json",
+      "digest": "sha256:6ed21d4fdbfc625e18e4626fa8f4df3a4b8b0207c690d140004e5b8e54c622ac",
+      "priority": 2,
+      "raw_selector": "git-regular-file",
+      "bucket": "07",
+      "items": 87
+    },
+    {
+      "id": "review-p2-git-regular-file-08",
+      "path": "authority/review-queue-draft/review-p2-git-regular-file-08.json",
+      "digest": "sha256:153fa9a280727bd36de2a5888e28347e090cf530ea927b81d106b44040650770",
+      "priority": 2,
+      "raw_selector": "git-regular-file",
+      "bucket": "08",
+      "items": 84
+    },
+    {
+      "id": "review-p2-git-regular-file-09",
+      "path": "authority/review-queue-draft/review-p2-git-regular-file-09.json",
+      "digest": "sha256:5fa3e6c52a85355edaa27cf9a4570e642f5500f6ddbd44fec2a314f842c680b2",
+      "priority": 2,
+      "raw_selector": "git-regular-file",
+      "bucket": "09",
+      "items": 81
+    },
+    {
+      "id": "review-p2-git-regular-file-0a",
+      "path": "authority/review-queue-draft/review-p2-git-regular-file-0a.json",
+      "digest": "sha256:db48ba1eb7ebdb9aaea3cbc9300f873f56091736d55c3fd21eee33f42f89322f",
+      "priority": 2,
+      "raw_selector": "git-regular-file",
+      "bucket": "0a",
+      "items": 74
+    },
+    {
+      "id": "review-p2-git-regular-file-0b",
+      "path": "authority/review-queue-draft/review-p2-git-regular-file-0b.json",
+      "digest": "sha256:4202098c751cf5ad16e71651d4c9f3e9cc65bfe6c351384682a9a338381aa0b3",
+      "priority": 2,
+      "raw_selector": "git-regular-file",
+      "bucket": "0b",
+      "items": 79
+    },
+    {
+      "id": "review-p2-git-regular-file-0c",
+      "path": "authority/review-queue-draft/review-p2-git-regular-file-0c.json",
+      "digest": "sha256:0fc4738880a84ac2ecbc77ec68539217ffde261d7b2589dfec2617c9e11c24e7",
+      "priority": 2,
+      "raw_selector": "git-regular-file",
+      "bucket": "0c",
+      "items": 92
+    },
+    {
+      "id": "review-p2-git-regular-file-0d",
+      "path": "authority/review-queue-draft/review-p2-git-regular-file-0d.json",
+      "digest": "sha256:c2fefa3df6f0dcd1d7085409fe3eac17faad1e4a10508586f432b260f411c772",
+      "priority": 2,
+      "raw_selector": "git-regular-file",
+      "bucket": "0d",
+      "items": 85
+    },
+    {
+      "id": "review-p2-git-regular-file-0e",
+      "path": "authority/review-queue-draft/review-p2-git-regular-file-0e.json",
+      "digest": "sha256:158a5015f457c730b6c49fb73a6c16d62d66a4ce8548bd0f89af3536cf984edf",
+      "priority": 2,
+      "raw_selector": "git-regular-file",
+      "bucket": "0e",
+      "items": 96
+    },
+    {
+      "id": "review-p2-git-regular-file-0f",
+      "path": "authority/review-queue-draft/review-p2-git-regular-file-0f.json",
+      "digest": "sha256:22aa1f0d0cf344955fe8e81a71b5097ec499bdd50643c08067b355d71066c438",
+      "priority": 2,
+      "raw_selector": "git-regular-file",
+      "bucket": "0f",
+      "items": 69
+    },
+    {
+      "id": "review-p2-git-regular-file-10",
+      "path": "authority/review-queue-draft/review-p2-git-regular-file-10.json",
+      "digest": "sha256:a59851283272cf4fd7575a9287b51d7477d0ac07133d7c3b39222b477171fd87",
+      "priority": 2,
+      "raw_selector": "git-regular-file",
+      "bucket": "10",
+      "items": 90
+    },
+    {
+      "id": "review-p2-git-regular-file-11",
+      "path": "authority/review-queue-draft/review-p2-git-regular-file-11.json",
+      "digest": "sha256:7ab12730789b791cf06adfa36fb86ff1039fe6fe12da644575148fed88ab47ef",
+      "priority": 2,
+      "raw_selector": "git-regular-file",
+      "bucket": "11",
+      "items": 78
+    },
+    {
+      "id": "review-p2-git-regular-file-12",
+      "path": "authority/review-queue-draft/review-p2-git-regular-file-12.json",
+      "digest": "sha256:00c773eeb2d8a5200279cebf460467ef3762b5abc221c24498377db2cc6bc2f2",
+      "priority": 2,
+      "raw_selector": "git-regular-file",
+      "bucket": "12",
+      "items": 74
+    },
+    {
+      "id": "review-p2-git-regular-file-13",
+      "path": "authority/review-queue-draft/review-p2-git-regular-file-13.json",
+      "digest": "sha256:da30c32570db8e81b5f2c2e1112650c6461aa245ed9f5c610f86d1aa9591e9a2",
+      "priority": 2,
+      "raw_selector": "git-regular-file",
+      "bucket": "13",
+      "items": 103
+    },
+    {
+      "id": "review-p2-git-regular-file-14",
+      "path": "authority/review-queue-draft/review-p2-git-regular-file-14.json",
+      "digest": "sha256:3a4cc11968e76f1c2f2533331cd5e3d5f340ac3ac347c4941ca0d548c0fcba3f",
+      "priority": 2,
+      "raw_selector": "git-regular-file",
+      "bucket": "14",
+      "items": 100
+    },
+    {
+      "id": "review-p2-git-regular-file-15",
+      "path": "authority/review-queue-draft/review-p2-git-regular-file-15.json",
+      "digest": "sha256:353785fe0db6c8dcab964bb5a4f6be4cb5d880fa0356505ee669966323224acc",
+      "priority": 2,
+      "raw_selector": "git-regular-file",
+      "bucket": "15",
+      "items": 82
+    },
+    {
+      "id": "review-p2-git-regular-file-16",
+      "path": "authority/review-queue-draft/review-p2-git-regular-file-16.json",
+      "digest": "sha256:34573d6b05e78b4867f9c442a49e46d10801f87f16f3798a5a5aef6a21324685",
+      "priority": 2,
+      "raw_selector": "git-regular-file",
+      "bucket": "16",
+      "items": 84
+    },
+    {
+      "id": "review-p2-git-regular-file-17",
+      "path": "authority/review-queue-draft/review-p2-git-regular-file-17.json",
+      "digest": "sha256:2bf4f1c6bafa00fa4f7a2517f1ca56bcab78042707a22d72b8417514985cc6c0",
+      "priority": 2,
+      "raw_selector": "git-regular-file",
+      "bucket": "17",
+      "items": 87
+    },
+    {
+      "id": "review-p2-git-regular-file-18",
+      "path": "authority/review-queue-draft/review-p2-git-regular-file-18.json",
+      "digest": "sha256:fb37e8f40e5598294bfe466e50e4df3c0efc3792aa010dd0de6c7b22e7b6e333",
+      "priority": 2,
+      "raw_selector": "git-regular-file",
+      "bucket": "18",
+      "items": 78
+    },
+    {
+      "id": "review-p2-git-regular-file-19",
+      "path": "authority/review-queue-draft/review-p2-git-regular-file-19.json",
+      "digest": "sha256:272e8b7feed7aa02cfcabde3bcc58f0e541f56f6754876b4a9985988a9161438",
+      "priority": 2,
+      "raw_selector": "git-regular-file",
+      "bucket": "19",
+      "items": 79
+    },
+    {
+      "id": "review-p2-git-regular-file-1a",
+      "path": "authority/review-queue-draft/review-p2-git-regular-file-1a.json",
+      "digest": "sha256:1f59e1c5ee406420ff2dcaa18ca65b52cdf4640a8c1133e840cb72ef45b436f1",
+      "priority": 2,
+      "raw_selector": "git-regular-file",
+      "bucket": "1a",
+      "items": 92
+    },
+    {
+      "id": "review-p2-git-regular-file-1b",
+      "path": "authority/review-queue-draft/review-p2-git-regular-file-1b.json",
+      "digest": "sha256:83ce5fd208f9e29b6d9fe15ebdd462bb326a355faf4173d8eeb011a54ad97610",
+      "priority": 2,
+      "raw_selector": "git-regular-file",
+      "bucket": "1b",
+      "items": 93
+    },
+    {
+      "id": "review-p2-git-regular-file-1c",
+      "path": "authority/review-queue-draft/review-p2-git-regular-file-1c.json",
+      "digest": "sha256:47221ad88eabace68c1b2803e258a2865cbf7888f4a17e2888818b4104d3c4ef",
+      "priority": 2,
+      "raw_selector": "git-regular-file",
+      "bucket": "1c",
+      "items": 89
+    },
+    {
+      "id": "review-p2-git-regular-file-1d",
+      "path": "authority/review-queue-draft/review-p2-git-regular-file-1d.json",
+      "digest": "sha256:f88fb160a3c54bf07f7b833dcb62f6265e47b15ffea681b09969306d548fccac",
+      "priority": 2,
+      "raw_selector": "git-regular-file",
+      "bucket": "1d",
+      "items": 90
+    },
+    {
+      "id": "review-p2-git-regular-file-1e",
+      "path": "authority/review-queue-draft/review-p2-git-regular-file-1e.json",
+      "digest": "sha256:a8e95807158947ebd8650e75e7f258d86df4e5e7d850b4950456049b4e0d7547",
+      "priority": 2,
+      "raw_selector": "git-regular-file",
+      "bucket": "1e",
+      "items": 87
+    },
+    {
+      "id": "review-p2-git-regular-file-1f",
+      "path": "authority/review-queue-draft/review-p2-git-regular-file-1f.json",
+      "digest": "sha256:23dfbcd2ca8b924dccd53255abfddbe11248d870f6c2dc53803862face45aab6",
+      "priority": 2,
+      "raw_selector": "git-regular-file",
+      "bucket": "1f",
+      "items": 75
+    },
+    {
+      "id": "review-p2-git-regular-file-20",
+      "path": "authority/review-queue-draft/review-p2-git-regular-file-20.json",
+      "digest": "sha256:12d1ced7abe1055b1e76cf3456dedeb617969160aa35f20b3cad11712e4272cf",
+      "priority": 2,
+      "raw_selector": "git-regular-file",
+      "bucket": "20",
+      "items": 70
+    },
+    {
+      "id": "review-p2-git-regular-file-21",
+      "path": "authority/review-queue-draft/review-p2-git-regular-file-21.json",
+      "digest": "sha256:c0f6bc6354f4648046ea74ed2f393a3acd24586f6c1b9f68e01fc61931d868ab",
+      "priority": 2,
+      "raw_selector": "git-regular-file",
+      "bucket": "21",
+      "items": 80
+    },
+    {
+      "id": "review-p2-git-regular-file-22",
+      "path": "authority/review-queue-draft/review-p2-git-regular-file-22.json",
+      "digest": "sha256:58af028e1c1d8f7ca39d12a1b80ade075087092aa61f12b30546df06b0732fef",
+      "priority": 2,
+      "raw_selector": "git-regular-file",
+      "bucket": "22",
+      "items": 91
+    },
+    {
+      "id": "review-p2-git-regular-file-23",
+      "path": "authority/review-queue-draft/review-p2-git-regular-file-23.json",
+      "digest": "sha256:4a11530d143b692357a73371eebafd5d9ba7242b5a50ffbdd647731692f8b5c6",
+      "priority": 2,
+      "raw_selector": "git-regular-file",
+      "bucket": "23",
+      "items": 86
+    },
+    {
+      "id": "review-p2-git-regular-file-24",
+      "path": "authority/review-queue-draft/review-p2-git-regular-file-24.json",
+      "digest": "sha256:66c98b5a7276f4182b896736a81acf6bc7b3c0f9f82006885e919252e4d06284",
+      "priority": 2,
+      "raw_selector": "git-regular-file",
+      "bucket": "24",
+      "items": 87
+    },
+    {
+      "id": "review-p2-git-regular-file-25",
+      "path": "authority/review-queue-draft/review-p2-git-regular-file-25.json",
+      "digest": "sha256:f2e517ba96fd1e01fe7277aff52dfc7fbd39afd5abaa6d024573d0d72ed136a2",
+      "priority": 2,
+      "raw_selector": "git-regular-file",
+      "bucket": "25",
+      "items": 81
+    },
+    {
+      "id": "review-p2-git-regular-file-26",
+      "path": "authority/review-queue-draft/review-p2-git-regular-file-26.json",
+      "digest": "sha256:672b2e7401e2a4ed2681d243527ad9e91922c3464d973af73188ffab3caed493",
+      "priority": 2,
+      "raw_selector": "git-regular-file",
+      "bucket": "26",
+      "items": 89
+    },
+    {
+      "id": "review-p2-git-regular-file-27",
+      "path": "authority/review-queue-draft/review-p2-git-regular-file-27.json",
+      "digest": "sha256:86e7d221b7a4b39416134b67735f4c36545c9bc981870bf2fa544ec8de7fe80d",
+      "priority": 2,
+      "raw_selector": "git-regular-file",
+      "bucket": "27",
+      "items": 97
+    },
+    {
+      "id": "review-p2-git-regular-file-28",
+      "path": "authority/review-queue-draft/review-p2-git-regular-file-28.json",
+      "digest": "sha256:e41223f41b1725b7efa6f7bd7c78ef037462c5d8aaa8609a47eb35336f0db6c9",
+      "priority": 2,
+      "raw_selector": "git-regular-file",
+      "bucket": "28",
+      "items": 86
+    },
+    {
+      "id": "review-p2-git-regular-file-29",
+      "path": "authority/review-queue-draft/review-p2-git-regular-file-29.json",
+      "digest": "sha256:2c52fef4c688617d4a927e5c2d96a76bc7350b959f1221f14cd0a3d0c307e0d1",
+      "priority": 2,
+      "raw_selector": "git-regular-file",
+      "bucket": "29",
+      "items": 98
+    },
+    {
+      "id": "review-p2-git-regular-file-2a",
+      "path": "authority/review-queue-draft/review-p2-git-regular-file-2a.json",
+      "digest": "sha256:e35746c7f77cc9c6fa491f077aa27546c25264c07d4baf1e860a29e40c83e186",
+      "priority": 2,
+      "raw_selector": "git-regular-file",
+      "bucket": "2a",
+      "items": 84
+    },
+    {
+      "id": "review-p2-git-regular-file-2b",
+      "path": "authority/review-queue-draft/review-p2-git-regular-file-2b.json",
+      "digest": "sha256:0b13a78f1ddedbb432e80d6e472e8a94fb0d5b575ee8032877733849513306aa",
+      "priority": 2,
+      "raw_selector": "git-regular-file",
+      "bucket": "2b",
+      "items": 96
+    },
+    {
+      "id": "review-p2-git-regular-file-2c",
+      "path": "authority/review-queue-draft/review-p2-git-regular-file-2c.json",
+      "digest": "sha256:d42697cebb73d5c4b904b8d5fa434a91d789f73b4df530c47c683597b1b60147",
+      "priority": 2,
+      "raw_selector": "git-regular-file",
+      "bucket": "2c",
+      "items": 85
+    },
+    {
+      "id": "review-p2-git-regular-file-2d",
+      "path": "authority/review-queue-draft/review-p2-git-regular-file-2d.json",
+      "digest": "sha256:3fd7aa5b130271417c1ddb172edac564bac47faf84d090ecae416587eac3c8b0",
+      "priority": 2,
+      "raw_selector": "git-regular-file",
+      "bucket": "2d",
+      "items": 76
+    },
+    {
+      "id": "review-p2-git-regular-file-2e",
+      "path": "authority/review-queue-draft/review-p2-git-regular-file-2e.json",
+      "digest": "sha256:f2edbcee6e246d5ee9e76b5ae700be58afbcc20d01b9e9b21c2b7ffb4bed00ad",
+      "priority": 2,
+      "raw_selector": "git-regular-file",
+      "bucket": "2e",
+      "items": 84
+    },
+    {
+      "id": "review-p2-git-regular-file-2f",
+      "path": "authority/review-queue-draft/review-p2-git-regular-file-2f.json",
+      "digest": "sha256:aad3bcedecc6d94ae9d63c142898d45391c04006b686b362ac685170cea7da62",
+      "priority": 2,
+      "raw_selector": "git-regular-file",
+      "bucket": "2f",
+      "items": 88
+    },
+    {
+      "id": "review-p2-git-regular-file-30",
+      "path": "authority/review-queue-draft/review-p2-git-regular-file-30.json",
+      "digest": "sha256:2bdba6d217f96307751ca52283efc6f89e788d704a47b35267b9f66701fbaf47",
+      "priority": 2,
+      "raw_selector": "git-regular-file",
+      "bucket": "30",
+      "items": 80
+    },
+    {
+      "id": "review-p2-git-regular-file-31",
+      "path": "authority/review-queue-draft/review-p2-git-regular-file-31.json",
+      "digest": "sha256:b3f7b6d8ef96431ed3e6df5d270293f6ae76eda7677899aa6a391c977e7d5092",
+      "priority": 2,
+      "raw_selector": "git-regular-file",
+      "bucket": "31",
+      "items": 90
+    },
+    {
+      "id": "review-p2-git-regular-file-32",
+      "path": "authority/review-queue-draft/review-p2-git-regular-file-32.json",
+      "digest": "sha256:54a22475d80f1659e3168e813938632f24c78e4f759b9ea86a65a0cb9809df96",
+      "priority": 2,
+      "raw_selector": "git-regular-file",
+      "bucket": "32",
+      "items": 75
+    },
+    {
+      "id": "review-p2-git-regular-file-33",
+      "path": "authority/review-queue-draft/review-p2-git-regular-file-33.json",
+      "digest": "sha256:7a9085e9bb08118b74eac710b1d50b9a59e3bbabef885a3f911ad63ec63e9ff0",
+      "priority": 2,
+      "raw_selector": "git-regular-file",
+      "bucket": "33",
+      "items": 86
+    },
+    {
+      "id": "review-p2-git-regular-file-34",
+      "path": "authority/review-queue-draft/review-p2-git-regular-file-34.json",
+      "digest": "sha256:18617886a159c0011e2f6506cc7ba5865bc07915dc792ff515162df73c982c18",
+      "priority": 2,
+      "raw_selector": "git-regular-file",
+      "bucket": "34",
+      "items": 77
+    },
+    {
+      "id": "review-p2-git-regular-file-35",
+      "path": "authority/review-queue-draft/review-p2-git-regular-file-35.json",
+      "digest": "sha256:6217dadaa14a03906d7c6f8a367bb76c3a817a2660895915d55fc0bd81019c78",
+      "priority": 2,
+      "raw_selector": "git-regular-file",
+      "bucket": "35",
+      "items": 85
+    },
+    {
+      "id": "review-p2-git-regular-file-36",
+      "path": "authority/review-queue-draft/review-p2-git-regular-file-36.json",
+      "digest": "sha256:a12f88bf07b3ef4f125d76d8195923aed18af5c1720de8da6ac2272b9aec9a99",
+      "priority": 2,
+      "raw_selector": "git-regular-file",
+      "bucket": "36",
+      "items": 86
+    },
+    {
+      "id": "review-p2-git-regular-file-37",
+      "path": "authority/review-queue-draft/review-p2-git-regular-file-37.json",
+      "digest": "sha256:b72ba278e4631069fc8da4682c0482cb1f8a50ac177124ebbb5aa20a8be8336a",
+      "priority": 2,
+      "raw_selector": "git-regular-file",
+      "bucket": "37",
+      "items": 94
+    },
+    {
+      "id": "review-p2-git-regular-file-38",
+      "path": "authority/review-queue-draft/review-p2-git-regular-file-38.json",
+      "digest": "sha256:4cc497de050cd94a291bfa8b1e29fff0e97d6f10d3683f1b47e2980b8280dd02",
+      "priority": 2,
+      "raw_selector": "git-regular-file",
+      "bucket": "38",
+      "items": 78
+    },
+    {
+      "id": "review-p2-git-regular-file-39",
+      "path": "authority/review-queue-draft/review-p2-git-regular-file-39.json",
+      "digest": "sha256:aa13dc9fca4c8eda6cd017850a38d43842a8a30a9fba89c740a02a2c09d14573",
+      "priority": 2,
+      "raw_selector": "git-regular-file",
+      "bucket": "39",
+      "items": 69
+    },
+    {
+      "id": "review-p2-git-regular-file-3a",
+      "path": "authority/review-queue-draft/review-p2-git-regular-file-3a.json",
+      "digest": "sha256:93abaa101fac763881b76e67c8b2935c280c7f399bba4062263c1111d53934dd",
+      "priority": 2,
+      "raw_selector": "git-regular-file",
+      "bucket": "3a",
+      "items": 81
+    },
+    {
+      "id": "review-p2-git-regular-file-3b",
+      "path": "authority/review-queue-draft/review-p2-git-regular-file-3b.json",
+      "digest": "sha256:c27b921e0d94cf56ad94b9d12ec353ab1aec2450e52dc14c7c9ccf277e161923",
+      "priority": 2,
+      "raw_selector": "git-regular-file",
+      "bucket": "3b",
+      "items": 75
+    },
+    {
+      "id": "review-p2-git-regular-file-3c",
+      "path": "authority/review-queue-draft/review-p2-git-regular-file-3c.json",
+      "digest": "sha256:03366e1b137d0d995e31065d58a6a06d103badf79cfa15b411d2d55934ee4d77",
+      "priority": 2,
+      "raw_selector": "git-regular-file",
+      "bucket": "3c",
+      "items": 86
+    },
+    {
+      "id": "review-p2-git-regular-file-3d",
+      "path": "authority/review-queue-draft/review-p2-git-regular-file-3d.json",
+      "digest": "sha256:8af31355152f49e8d9a3fb2a5b80d65791d2343f1988b066aa78f38d0b4a3530",
+      "priority": 2,
+      "raw_selector": "git-regular-file",
+      "bucket": "3d",
+      "items": 73
+    },
+    {
+      "id": "review-p2-git-regular-file-3e",
+      "path": "authority/review-queue-draft/review-p2-git-regular-file-3e.json",
+      "digest": "sha256:0d15858254b821721941cceb9c877684b5ce2b117045cccdb4a53bc470504028",
+      "priority": 2,
+      "raw_selector": "git-regular-file",
+      "bucket": "3e",
+      "items": 75
+    },
+    {
+      "id": "review-p2-git-regular-file-3f",
+      "path": "authority/review-queue-draft/review-p2-git-regular-file-3f.json",
+      "digest": "sha256:b4641f0db0537a17ce353b9c34628dcacc0dd62faad4920483186e4d518010c5",
+      "priority": 2,
+      "raw_selector": "git-regular-file",
+      "bucket": "3f",
+      "items": 71
+    }
+  ],
+  "stale_holds": [],
+  "unavailable_holds": []
+}

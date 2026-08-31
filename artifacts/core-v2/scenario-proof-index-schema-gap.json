@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "id": "argocd-core-v2-scenario-proof-schema-adapter-gap-v1",
+  "status": "incomplete-schema-valid-staging-not-published",
+  "core_commit": "072d7ca77981f51754e824d70c6d4ecd55ea67e5",
+  "inputs": {
+    "evidence/scenarios/index.json": "sha256:925134b7591c25117a1ca964b509a621e893fd5bd6e03a86e3fe8c83d1fed325",
+    "migrations/scenario-class-refusal-v1.json": "sha256:ed65ebe8edb0165c00c30e3f2fc8e3d1c70da478dccca5ee42f4976d9d57ef4c",
+    "baselines/scenario-row-id-migration-v1.json": "sha256:eb6da094c8811d72dd74d4ed766b42dd47bbbcf5b7a07472aa80a8f98b310afd",
+    "integrations/reference-system/manifest.json": "sha256:401d26221be4557ca82a7cfdd9d604ede4ff932283b5d546d3650d662e7f19d2",
+    "artifacts/reference-system/results.json": "sha256:8e6e6f0a61b4458703e4b35bb585e820021ec6b49b807abe5b405734eb044705",
+    "artifacts/pattern-scenarios/results.json": "sha256:202032bc06f4f4b2c99a4a67063a295b0ff83614f01b36716262662cdff644f4",
+    "definitive/scenario-variant-contract.yaml": "sha256:b2c76378113d3145a77d019d5f490e333a554188773501e68de6ac685cc583dd",
+    "scripts/generate_core_v2_scenario_schema_gap.py": "sha256:49e5d76e4ab2602e6d3ffe0921b9dcda77f58ffb7c5540e5e73274f9e35a2724"
+  },
+  "staging": {
+    "root": ".runtime/core-scenario-proof-index-next",
+    "candidate_root": ".runtime/core-scenario-proof-index-next.staging",
+    "rollback_root": ".runtime/core-scenario-proof-index-next.rollback",
+    "generated_files": 1001,
+    "index_files": 1,
+    "row_files": 1000,
+    "aggregate_digest": "sha256:c6ed525ae6dd482bc6b0fcb78bd852746e2236e5e0e614f67edc7698d93f7cd6",
+    "promotion": "core-schema-pass-then-atomic-directory-rename",
+    "publish_on": "schema-validation-and-runtime-closure",
+    "failed_generation": "discard-candidate-and-retain-prior-staging",
+    "failed_validation": "discard-candidate-and-retain-prior-staging-report-and-canonical-index",
+    "failed_swap": "rollback-prior-staging-and-retain-report-and-canonical-index"
+  },
+  "schema_validation": {
+    "status": "passed",
+    "core_commit": "072d7ca77981f51754e824d70c6d4ecd55ea67e5",
+    "index_schema_digest": "sha256:f024e314b7d88bac55552cc9e7255981094eb7b5aba7861101250618d1385ff4",
+    "row_schema_digest": "sha256:eab63dc7ee3974469696dab28a2cc3898abc267a4b87690effdeab3beeefe441",
+    "validated_files": 1001,
+    "index_files": 1,
+    "row_files": 1000
+  },
+  "denominator": {
+    "patterns": 100,
+    "scenarios": 10,
+    "rows": 1000,
+    "dedicated_artifacts": 1000,
+    "pattern_specific_rows": 0,
+    "pattern_specific_runtime_rows": 0,
+    "pattern_specific_capture_rows": 0,
+    "pattern_specific_gaps": 1000,
+    "integrated_trace_rows": 0,
+    "authority_atomic_rows": 0,
+    "completion_eligible_rows": 0
+  },
+  "scenario_classes": [
+    "normal",
+    "boundary",
+    "refusal",
+    "failure",
+    "recovery",
+    "migration",
+    "operations",
+    "security",
+    "performance",
+    "compatibility"
+  ],
+  "row_identity": {
+    "ids_digest": "sha256:387f5296e3d22c6ba8d3ac149a4103fb2e8bd69777f200260a34ecfd58765a62",
+    "paths_digest": "sha256:cf37774a90f5c906023884f660ff78de7a8550cd8b17498fcb64374e53aea541",
+    "digests_digest": "sha256:3dbfdc847487ef432cb9e5bc19742a7745070d1446ba6e58d745453143867646",
+    "mapping_counts": {
+      "old_rows": 1000,
+      "new_rows": 1000,
+      "identity": 900,
+      "renamed_rejection_to_refusal": 100,
+      "runtime_credit": 0,
+      "completion_eligible": 0
+    }
+  },
+  "canonical_publication": {
+    "path": "evidence/scenarios/index.json",
+    "current_digest": "sha256:925134b7591c25117a1ca964b509a621e893fd5bd6e03a86e3fe8c83d1fed325",
+    "emitted": false,
+    "legacy_index_preserved": true,
+    "reason": "Schema適合stagingは実Runtime、Authority Atomic behavior、completion-eligible Proofを持たないためcanonicalへ発行しない。"
+  },
+  "credit": {
+    "runtime": 0,
+    "semantic": 0,
+    "completion": 0
+  },
+  "remaining_gaps": {
+    "authority_pending_human": 63889,
+    "dedicated_runtime_rows": 13,
+    "remaining_runtime_rows": 987,
+    "authority_atomic_rows": 0,
+    "completion_eligible_rows": 0,
+    "integrated_trace_rows": 0
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "surface_id": "application.operation.rollback",
+  "scenario": "security",
+  "variant_id": "rbac-denied-rollback",
+  "started_at": "2026-08-30T17:48:54.768769Z",
+  "completed_at": "2026-08-30T17:48:55.482988Z",
+  "attempt": 1,
+  "retries": 0,
+  "actions": [
+    {
+      "action": "evaluate-argocd-rbac-sync-for-rollback",
+      "subject": "atlas-security-denied",
+      "decision": "No"
+    },
+    {
+      "action": "retain-live-v2-after-denial",
+      "status": "passed"
+    }
+  ],
+  "result": {
+    "first_attempt": true,
+    "synthetic_credential_leak": false,
+    "rbac_decision": "No",
+    "rollback_requested": false,
+    "live_release": "v2"
+  }
+}

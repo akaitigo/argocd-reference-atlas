@@ -1,0 +1,2794 @@
+{
+  "schema_version": 1,
+  "queue_id": "authority-review-4899835d8716e9eb45f6",
+  "batch_id": "review-p2-git-regular-file-2b",
+  "status": "pending-human",
+  "machine_assistance": "priority-cluster-and-batch-proposals-only",
+  "semantic_decisions": "none",
+  "items": [
+    {
+      "anchor_id": "anchor-0117d5bf1f23d954b7ef",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:resource_customizations/argoproj.io/CronWorkflow/testdata/withConditionButHealthyCronWorkflow.yaml",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 193401856,
+      "context_end": 193402186,
+      "context_unit": "byte",
+      "context_digest": "sha256:f8314e40f1186f99c9fd5c6a56ae9f9bcda6eb6e4f51ca22efd33b54f1e55644",
+      "label_digest": "sha256:fe11a27318930b9e00e7e682dc1b3df1586ad5997e59543d62bdbc1d7f369157",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-0249dacdcd2f4d867d31",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:test/e2e/fixture/logging.go",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 198735360,
+      "context_end": 198736292,
+      "context_unit": "byte",
+      "context_digest": "sha256:6b9836b31b7d946016032bc878256f4a43a41e3743502c83f4ec7cfea9aef799",
+      "label_digest": "sha256:33feca4cbbe7c49ea701adc06013026742edf939538be2f496d24cbd2834f6a2",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-07d7229a85e0fcd168d5",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:resource_customizations/operator.victoriametrics.com/_/testdata/healthy.yaml",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 195697664,
+      "context_end": 195699001,
+      "context_unit": "byte",
+      "context_digest": "sha256:3ea5b572ad47feab8d1eea9865b74e2559d5b6185f886b6b42d77ef424a65e45",
+      "label_digest": "sha256:23f10d028971fc6a6d1c2cc1d26035432aba5d8d931923ee3368a41acbe240eb",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-1077a6df109ff905c717",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:resource_customizations/policy.open-cluster-management.io/OperatorPolicy/testdata/degraded.yaml",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 195840512,
+      "context_end": 195842912,
+      "context_unit": "byte",
+      "context_digest": "sha256:3721fa2378a6e845c6d508483b7d9ea67d889dd7ce23119fe18ca790658b7789",
+      "label_digest": "sha256:2cd9b7310c8510f2454f4361ddb83a6f954e5342e70726506470cfe0ce0056bb",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-12f91e52fadceda304d1",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:resource_customizations/core.humio.com/HumioView/testdata/notfound.yaml",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 194191872,
+      "context_end": 194192433,
+      "context_unit": "byte",
+      "context_digest": "sha256:c4e577369d7565c65272a996f65a4f8514f635ee4d4af74b630c8c90095800f7",
+      "label_digest": "sha256:fc74c9db59289be1c45858e5f275f934b826f2dcce25395456036fbeccdb50b0",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-13dd79834f1ab571c09e",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:resource_customizations/astra.netapp.io/ResticVolumeBackup/testdata/degraded.yaml",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 193639424,
+      "context_end": 193642787,
+      "context_unit": "byte",
+      "context_digest": "sha256:1beaf539ba8e1635a61e0b98ffcc6f61337da05f85e449c362ea509987185a13",
+      "label_digest": "sha256:9d8f161a25d99ce7c126c5df836a8b4b40d99fb4addb911a1045ce8a65437b1f",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-17eddfd0eac79adcc069",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:resource_customizations/external-secrets.io/ExternalSecret/actions/testdata/external-secret.yaml",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 194315776,
+      "context_end": 194317216,
+      "context_unit": "byte",
+      "context_digest": "sha256:04c9a623a8c80e784339ca3fe844c293b59d895892188d330da3119e0e1f359a",
+      "label_digest": "sha256:508b64fb56ea83979d947e5b2c95a91e9b58e6fadc7529b9156c94131230b925",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-17f9e08d94fbc83c24fd",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:resource_customizations/rabbitmq.com/Exchange/testdata/healthy.yaml",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 196270592,
+      "context_end": 196271031,
+      "context_unit": "byte",
+      "context_digest": "sha256:19d462d79420011cbbba0d66b1cf8b2944b483b56fa0c8e8f9206ae0723c938c",
+      "label_digest": "sha256:18f2742f9e867c77ed1ee696e5ef854062b4f1b005d08519638861f9a31a9ab1",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-18eb1b1a278897b745de",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:ui/src/app/applications/components/revision-form-field/revision-form-field.tsx",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 201182720,
+      "context_end": 201186846,
+      "context_unit": "byte",
+      "context_digest": "sha256:9fc447f5c5d993f795e7029d533d609179be8e4edcb14fb370d2f50b652a94d1",
+      "label_digest": "sha256:3db7cb072a634074c4f1023d2ec87457c0710b10e91ba3517c6fcd8de0a7e06a",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-1fa4d64eb86cbc8b910d",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:ui/src/app/help/components/help.scss",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 201312768,
+      "context_end": 201314118,
+      "context_unit": "byte",
+      "context_digest": "sha256:08f1c23bbc3de88d8a40858a157a94ba3ee67bffd35d0131c1e7295f48caef28",
+      "label_digest": "sha256:8fbc3e55bb9bbf3b834d24cd9f7b71dc8c82c8522a813b10921456879dcc8c9f",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-242760ad0848f2f7a5f8",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:hack/installers/checksums/helm-v3.6.0-linux-arm64.tar.gz.sha256",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 172544000,
+      "context_end": 172544097,
+      "context_unit": "byte",
+      "context_digest": "sha256:6ce874d930000bc1e7ed178178de2d9d3081698ef933e5872d8d30dd3c647ce2",
+      "label_digest": "sha256:1a6dfd0d0b14d9f60acb90752bb706e107a44e1fe79d8fdbf1cde72941acd76a",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-254f7cd9acb9c80a711d",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:test/e2e/testdata/syncwaves-prune-order/rbac.yaml",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 199385600,
+      "context_end": 199386303,
+      "context_unit": "byte",
+      "context_digest": "sha256:de10cf306fed490ee5de9b0a8f6da1bd222ecb2cb7fb28886c68b66402dc3b71",
+      "label_digest": "sha256:641f3381d1a0854b9b0faf81474f38a457cc4086375a2ecb02c730685cb990f6",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-259e753caab0d95014e4",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:docs/user-guide/commands/argocd_proj_edit.md",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 165692928,
+      "context_end": 165697001,
+      "context_unit": "byte",
+      "context_digest": "sha256:39a943d184d52ef92159dbea3b9336c7d839e704ae7f0957bbf26213488181c1",
+      "label_digest": "sha256:7f8d1367d90cb1e9b9cc3d3e2e4bfa341d19fa2a34b9b3e37dee3db8529f3300",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-2798a6a86a31b401fcbe",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:resource_customizations/numaflow.numaproj.io/MonoVertex/health_test.yaml",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 195359232,
+      "context_end": 195359818,
+      "context_unit": "byte",
+      "context_digest": "sha256:09553ce9fabe9bbfbbf1ac8a8fca676fd6daf2bcefe0d9e37d7b5c281455a17e",
+      "label_digest": "sha256:f54025c680da477c7ba0029bdc66c657ba4e5b54c7693d16272baf7639b60f2d",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-2b567468e26cca38d544",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:docs/developer-guide/use-gitpod.md",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 49691136,
+      "context_end": 49691282,
+      "context_unit": "byte",
+      "context_digest": "sha256:126c02dce387e15549cab9ebeb2a52e4fc835de02aeb425e7dd9b31b39f75b33",
+      "label_digest": "sha256:8bb811a2e39b85dbf03b9e700ad165a2d7bb896f1f735c4453a68acdf13daec7",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-2bd5baf82b4e979e8a09",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:util/config/reader_test.go",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 203790848,
+      "context_end": 203793957,
+      "context_unit": "byte",
+      "context_digest": "sha256:f68ac2fd2c2dc304c0d93756fc0a44048fa9edf1d7974445bc7e3f88c095ec14",
+      "label_digest": "sha256:84c3bf8f9c057bbdee049200f97b10cf98e552c0aa6e772ea94b46a1d0550ed4",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-35f4fe8d11cd832f8bb4",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:resource_customizations/core.gardener.cloud/Shoot/testdata/healthy.yaml",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 194099712,
+      "context_end": 194101323,
+      "context_unit": "byte",
+      "context_digest": "sha256:e91e06fcfa64bde7a84704e09a6d1a0a9a12281be049b7fe6dfbe0210a0822d4",
+      "label_digest": "sha256:c471950114109832ac036b6d67f4cdf54721692c0f664d8f51b92ccf93491858",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-3d6b60dfcb300df2e618",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:resource_customizations/promoter.argoproj.io/PromotionStrategy/testdata/missing-sha-and-not-ready.yaml",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 196138496,
+      "context_end": 196139720,
+      "context_unit": "byte",
+      "context_digest": "sha256:e54715c602f73c6068e803c6f6cce73f2e1e99d6acc6f554df958f5c0f919b40",
+      "label_digest": "sha256:6db23eadd28fc201cb0cf9c27c34c60c7bd625380502fbe7e3d3b7615aa8ef70",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-3e125deb081e14d151df",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:resource_customizations/image.toolkit.fluxcd.io/ImageUpdateAutomation/actions/testdata/reconciled_imageupdateautomation.yaml",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 194759680,
+      "context_end": 194760131,
+      "context_unit": "byte",
+      "context_digest": "sha256:c2d963679e3b431f1c07c9b04e727fdd738a1b25e51801c57ef8658f6b1f992e",
+      "label_digest": "sha256:e67bbac6f1711b0d0f01855cea88a6a66b991a5a6304896825a6ca26ab7140f4",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-402a29c74e053271862f",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:resource_customizations/iam.aws.crossplane.io/Role/health_test.yaml",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 194696704,
+      "context_end": 194697012,
+      "context_unit": "byte",
+      "context_digest": "sha256:e58ad4da98bd848c9a20dee8d9db4f23cbaeea2a8541f85e296845d69b87c3ae",
+      "label_digest": "sha256:022a239a5ea196115fb12a215544229d248d9b3b838ba289158a21826959b7f5",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-40e5b0a4b7193b94dad2",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:resource_customizations/gloo.solo.io/Upstream/testdata/non-namespaced-gloo-warning.yaml",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 194594304,
+      "context_end": 194594641,
+      "context_unit": "byte",
+      "context_digest": "sha256:5edeae2c71026f31c18a6bc75d1bd1f9b8874e5b5c8314089c59a142732a170a",
+      "label_digest": "sha256:e80ae5b859fd096e22e7b8b5a44d94357370446edd503a4efd5cda39c0d03a9f",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-417b9659506226e00aee",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:resource_customizations/platform.confluent.io/KsqlDB/testdata/healthy.yaml",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 195792896,
+      "context_end": 195794305,
+      "context_unit": "byte",
+      "context_digest": "sha256:292c763afc2fde9ebd2245b24f08906e7921c5461c664d9396152df54c0a9868",
+      "label_digest": "sha256:b050d76961dd988f3e89a7884fae95ca70f1e84c05362ee69a6b196f0566e99a",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-42b74133ce0b6e66cb0f",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:pkg/client/clientset/versioned/typed/application/v1alpha1/fake/fake_application_client.go",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 191868416,
+      "context_end": 191869346,
+      "context_unit": "byte",
+      "context_digest": "sha256:22ca227e7e94eceec32140f450f30a5ad9743935fb478b42cc01a2c510b9534d",
+      "label_digest": "sha256:daec9574e0b22f61847cb64c39e715779bd6205e979b55cef1f2a6f514d26b18",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-445f001373720995f8d8",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:reposerver/repository/testdata/helm-with-dependencies-alias/Chart.yaml",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 192985088,
+      "context_end": 192985245,
+      "context_unit": "byte",
+      "context_digest": "sha256:3400b3050ac47e2f4f95e01b2042740b6cc4216b6b0573f81007f9c60fdd723f",
+      "label_digest": "sha256:9808f4742a3bb4b0d4948f5e7de119aa5e9013fd24357ccca3a9fe9bb9bc49ce",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-453a22aef19f385953c4",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:hack/installers/checksums/helm-v4.2.1-darwin-amd64.tar.gz.sha256",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 172571648,
+      "context_end": 172571746,
+      "context_unit": "byte",
+      "context_digest": "sha256:7cdc82ae58e6788ad4214eb68693d380f1a9155811f47201f156036251c6ec02",
+      "label_digest": "sha256:5f225fa33f96e6765b1ae928f53a8901258494032b4cd1391f1f865e6d0c318f",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-4731dc20a6495134d257",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:resource_customizations/gateway.solo.io/Gateway/testdata/gloo-rejected.yaml",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 194473984,
+      "context_end": 194474415,
+      "context_unit": "byte",
+      "context_digest": "sha256:e104198424947b1162cf9cdc6321b62b84e8430f4a7db6e3721efc7bb28d0a82",
+      "label_digest": "sha256:609ba913abb075518459d466cc6c25b0862061354709f5d4de31c1f9429755b6",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-479d1205a158ab726fd1",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:test/e2e/testdata/helm-glob-values/envs/b.yaml",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 199189504,
+      "context_end": 199189516,
+      "context_unit": "byte",
+      "context_digest": "sha256:833136954627211e067091b5b4ffb846e38a27ef88e172ce7e66b1e3dc2e806c",
+      "label_digest": "sha256:b0e4243798554c4a6553aeaacd2883245c72e205b27e1caa4c96602200161f49",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-47b79d81e4dcca703d93",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:resource_customizations/platform.confluent.io/Connector/testdata/connector-failure.yaml",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 195768832,
+      "context_end": 195769599,
+      "context_unit": "byte",
+      "context_digest": "sha256:1486cac16fcefe9b1af18e1a84f3925787e7977d5b98b1702e8e13dd2f6c2b2b",
+      "label_digest": "sha256:daa4fa69f78598993f47030de1e2ccb72580e8402a148f72617b6dcc28718cac",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-487467c8a8aad87336be",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:docs/operator-manual/server-commands/argocd-repo-server.md",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 50737152,
+      "context_end": 50743739,
+      "context_unit": "byte",
+      "context_digest": "sha256:7dfa5ffe4796c05e37e3a1bfe16a9107c70c22d01af75ec6784e6cea45caf770",
+      "label_digest": "sha256:ed150ccb487411e6858d21de8a768c1806f4fd0259a42dbda7e19de169975407",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-4db784ade18841698731",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:applicationset/generators/value_interpolation.go",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 1316352,
+      "context_end": 1317713,
+      "context_unit": "byte",
+      "context_digest": "sha256:eb22dc3dcfb10b80161b353ea0e1b57c60350dcb58fa87394b77a4ea0af1c14a",
+      "label_digest": "sha256:18bd85eb177a703f4182b0e7781bc24d0599f301bf0ee766143638ac5a5c2afc",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-4dda89e5af71e144c889",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:gitops-engine/pkg/diff/testdata/ssd-svc-no-label-config.yaml",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 171081728,
+      "context_end": 171081981,
+      "context_unit": "byte",
+      "context_digest": "sha256:0ba773c8acf80ee51f631876e4271a8fee7f0e7cf8050e7d06ba6010ebc0da61",
+      "label_digest": "sha256:88faa0935000c3e2dd01bb80ae13e0911ecc0fec36c7ef1915a1f23567d0eb65",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-503cf60cde3c08fe55b9",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:docs/user-guide/commands/argocd_cert_add-ssh.md",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 165505536,
+      "context_end": 165509889,
+      "context_unit": "byte",
+      "context_digest": "sha256:c2679741ac5a4cbc0f33f9adcf70a95ede02442063842f50f581204a3f00baa7",
+      "label_digest": "sha256:2cb3b47d471c64d1f13cd01b130780de57a2d055ccd884e56a538359d2eb7a18",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-5728095894dc7d27a54f",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:resource_customizations/camel.apache.org/Integration/testdata/degraded.yaml",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 193757696,
+      "context_end": 193759604,
+      "context_unit": "byte",
+      "context_digest": "sha256:15ae4d4c665680058a7cb5d1854261bfd2c5c92a42a104145b55bb734ab5cc5c",
+      "label_digest": "sha256:d9aff5b445d7c81db722484be9df130419e5f688c9bbcb6a1a350eb5cb00ebee",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-589db5e2b32abbeed995",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:resource_customizations/pkg.crossplane.io/Provider/health_test.yaml",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 195749376,
+      "context_end": 195749927,
+      "context_unit": "byte",
+      "context_digest": "sha256:e1b6d30e59de15594292f7c37bce1dcc5f1e29a7c3b7fa091682bffcbee42177",
+      "label_digest": "sha256:2728ab8f302d601939b40776bbd7e45b8598396957bb1ab67e9b96fa15350c67",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-5c2b516cbad094f3613f",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:resource_customizations/source.toolkit.fluxcd.io/HelmChart/actions/testdata/reconciled_helmchart.yaml",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 196544000,
+      "context_end": 196544339,
+      "context_unit": "byte",
+      "context_digest": "sha256:e75cb65cb36f08fd5edfb59f7c8259cecd7b7b79ca385faa88224422f742660c",
+      "label_digest": "sha256:ff0a34f42d90aa7fa0dd45e0217573f8f50b4db8abad6f953f879542f9eac63d",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-5d2aff8f0fe8d400e1bb",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:util/io/path/resolved_test.go",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 205014528,
+      "context_end": 205020915,
+      "context_unit": "byte",
+      "context_digest": "sha256:1cfec12d0c6c9eef5e6e3091bdf15d446dad65a9b4751ddc30318ea712619ad3",
+      "label_digest": "sha256:cbef89baa1c3f3039b55de52257a243403852d9f59fc1f365d1e1d88aa5b7f89",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-5f77eab5e6b6e0fe0711",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:resource_customizations/astra.netapp.io/Snapshot/testdata/degraded.yaml",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 193663488,
+      "context_end": 193666167,
+      "context_unit": "byte",
+      "context_digest": "sha256:bc7a508e693458bd27bd8e99cbb240804352643f36327059c499817d7a95d687",
+      "label_digest": "sha256:2afc373c1999562a5d1c765a7a1833cac3a7b3aa78d1b87ea8b22db13916e63f",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-5ff728e3a7b389328958",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:resource_customizations/keda.sh/ScaledObject/actions/testdata/scaledobject-paused-replicas.yaml",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 195001856,
+      "context_end": 195002140,
+      "context_unit": "byte",
+      "context_digest": "sha256:927e0561b018351b83c30268ba034c6bc8bee97008066feb607d6cddfa100dd5",
+      "label_digest": "sha256:758f2b74f970ef556d53cca714bee2add96689f9f44bf1fb67ae7070021af23c",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-61fc32bf477eecd4ae6a",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:resource_customizations/projectcontour.io/ExtensionService/testdata/progressing.yaml",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 195980800,
+      "context_end": 195981138,
+      "context_unit": "byte",
+      "context_digest": "sha256:3817aaf13053a9ef7be46ffc41e953153375640950974445ac31294b391dd735",
+      "label_digest": "sha256:d6125521ea77ef797bc867e0b9a7b7d903266fadd0b3aeb06fe1275a8ccc1185",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-636fe6ad91b8e229d597",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:resource_customizations/bitnami.com/SealedSecret/testdata/healthy.yaml",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 193751040,
+      "context_end": 193751563,
+      "context_unit": "byte",
+      "context_digest": "sha256:c727cd123bc97f405034820974a9c6194a258e4a925f41a538b407bb827ba0ca",
+      "label_digest": "sha256:559d6217e244b115feecaa0dd47882f8e4aa0960a281873be61c8aa97f771240",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-688b81f996a20bac039e",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:util/kustomize/testdata/kustomization_yaml_patches/deployment.yaml",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 205153280,
+      "context_end": 205153620,
+      "context_unit": "byte",
+      "context_digest": "sha256:4250a9903302ac8eb0eb1d68bd754904c01dd630d377b17a4dc853311835d920",
+      "label_digest": "sha256:8cb40d9dd29a386551fc37b647389dd25fa783044567f32f4a51590fddfda307",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-6912b116b95da447e6f7",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:resource_customizations/gateway.networking.k8s.io/HTTPRoute/health_test.yaml",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 194454016,
+      "context_end": 194454752,
+      "context_unit": "byte",
+      "context_digest": "sha256:c30b4ac16a33f5e7940675f614ccc0d15c19a552d633200c9bc00920202faff0",
+      "label_digest": "sha256:5ef44f231e6c0e4cfe0b50fedaa4163845305bce4618fdade460334348617359",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-69f046563ce52026914d",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:test/e2e/testdata/duplicated-resources/duplicates-namespaced.yaml",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 199143936,
+      "context_end": 199144972,
+      "context_unit": "byte",
+      "context_digest": "sha256:11386f9ce71b212db02ff2cc07ba9f684d0ccca5f3359539da343deebf5dcfc5",
+      "label_digest": "sha256:3ef36b9037c1e5f9336b035e3b4ea10b4f8b067c10223fd993eeb2ef0e25c1b2",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-6ac7d7fa865a64e86566",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:util/io/files/util.go",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 204991488,
+      "context_end": 204994190,
+      "context_unit": "byte",
+      "context_digest": "sha256:9ebbe4efaff7ca3177fcc547d22d75eee7953c29d6843272cabc412df2f8b01a",
+      "label_digest": "sha256:5d726a71eb3b218ad5ed0d1f5d0bff9368d365ba3e13d6cb8ee94131cfd36247",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-6bd098ff0b014e7cd6a8",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:resource_customizations/_.cnrm.cloud.google.com/_/health.lua",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 193102336,
+      "context_end": 193104181,
+      "context_unit": "byte",
+      "context_digest": "sha256:ac7c09d993719fb909d88460ec55f5f687a0b16124fb2577354700a28d2259c5",
+      "label_digest": "sha256:ea1cf0a67e7c725fd28d1991178fee0abe8044ac8c4e45048d35e420448138a7",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-6e3bffb8e4b32a5c3a92",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:ui/src/assets/images/resources/flagger.app/icon.svg",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 202841600,
+      "context_end": 202850682,
+      "context_unit": "byte",
+      "context_digest": "sha256:403c533eac108c9b341d536749aa5389fd8e5f39c72cb82294470ee969ee1e24",
+      "label_digest": "sha256:95e3bd5430fa1171a79f53833c97292e45a3f295b4c5e302a9abfc86b43dd6b0",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-7122f705c265faa110b2",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:docs/user-guide/commands/argocd_login.md",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 165609984,
+      "context_end": 165614926,
+      "context_unit": "byte",
+      "context_digest": "sha256:6dafeda4864fde46857a6dd93f412d89879b2aab79bf7abaae5650a50b9d2be6",
+      "label_digest": "sha256:d6140e67dc75a5e14383b7f36f1295552b73ddf34967ca1d734dba0c0148b301",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-727c3a8cfdaf3f50e30d",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:docs/snyk/v3.4.3/quay.io_argoproj_argocd_v3.4.3.html",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 163981824,
+      "context_end": 164823556,
+      "context_unit": "byte",
+      "context_digest": "sha256:e1b69a7844c8c8ca104e2beef8e9966e6c2e183bfd7480cdad7c63991781d27b",
+      "label_digest": "sha256:9f96f056ab4122b371e712d8a5fc0e120599d53dbd70194a5177a74936841ee4",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-72ff39ec08001ede3ae0",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:cmd/argocd/commands/admin/repo.go",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 3399680,
+      "context_end": 3408591,
+      "context_unit": "byte",
+      "context_digest": "sha256:827e4152c43aeaef4d46643de42bab227c7e3596cb3982b9985ab885c8e72b3d",
+      "label_digest": "sha256:667adf2824d085efeff7ce304e59e98060281c2741bf39755db16ccfebe66bd5",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-7c248f032fecd82877fc",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:docs/user-guide/commands/argocd_admin_cluster_shards.md",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 165031936,
+      "context_end": 165039973,
+      "context_unit": "byte",
+      "context_digest": "sha256:91105489cc96d4e019cc2365a2a2b89cca148f219e5928138a6439ec23f13f87",
+      "label_digest": "sha256:86449d888b1933ab94fb5dd0fe8daa54d4cab097e774927127543f65a70749c4",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-7e0eb44c56c9a5f91fb7",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:resource_customizations/apiextensions.k8s.io/CustomResourceDefinition/testdata/crd-v1-terminating-timestamp-progressing.yaml",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 193178624,
+      "context_end": 193180238,
+      "context_unit": "byte",
+      "context_digest": "sha256:7abe34de14b9b0696b8c639eefbd3e549b8f1f8dd1cf3a8d326116ca7a272daf",
+      "label_digest": "sha256:c6f44783dc6b58f1aadc76e43af85a8308fc2563207206e07bf5de4c99464c36",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-809434168a2fbc72c1e1",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:applicationset/utils/applicationset_lister.go",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 2333184,
+      "context_end": 2335087,
+      "context_unit": "byte",
+      "context_digest": "sha256:39a901f8d519cad14ffc654fc4b3cce7670b2bed8a14795651cd8539a7a32d0a",
+      "label_digest": "sha256:a18954b1cf9c8ab712aeee44bdd48ab7db00ea2541ac1e3430f5475156e7d643",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-833d430be16eba28d97d",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:controller/cache/cache.go",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 5007360,
+      "context_end": 5041802,
+      "context_unit": "byte",
+      "context_digest": "sha256:2bae0f0f40fa79ef96db2fd562d4e41771141d879302685715ee7fddeefa1be5",
+      "label_digest": "sha256:9d84a09335b303bfb7f7b6dc9eed32b026c4c57778842c48aba95369b91ef126",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-861f135efe82a79c9f70",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:ui/src/app/applications/components/applications-list/flex-top-bar.scss",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 200996864,
+      "context_end": 200997696,
+      "context_unit": "byte",
+      "context_digest": "sha256:79accd2aa6bc7f55bd5312e87c946f71e1db71f9a7a31c14e9fff3e41be094f7",
+      "label_digest": "sha256:f7f4b1d1504eba5407d2ad40eebffd1820288756a14d933e593fbf2ec82e4629",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-89e9ec483f12a2437304",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:ui/src/assets/images/resources/group.svg",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 202851328,
+      "context_end": 202851899,
+      "context_unit": "byte",
+      "context_digest": "sha256:b96c46ea5d5de1d0f986a87f59daf1bdcf7154cc1ceef221856634386d2736ee",
+      "label_digest": "sha256:ecc654244012d8c3ce24cffc9243b0c3824d69a23c02f2310ab4330e8650349b",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-8ad9ac29881bd42c2331",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:docs/operator-manual/cluster-management.md",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 50127872,
+      "context_end": 50129570,
+      "context_unit": "byte",
+      "context_digest": "sha256:371c75bdc483062d34e3c5835ce925f1927e0e7d2d04af121425f3c8ef73e74a",
+      "label_digest": "sha256:fe088f26bdb82a74d983f695f4905caf40378527249226cbb3d25e1b5216d453",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-8b45e523b20956b44ab9",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:resource_customizations/operator.victoriametrics.com/_/testdata/progressing-generation.yaml",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 195699712,
+      "context_end": 195701065,
+      "context_unit": "byte",
+      "context_digest": "sha256:6511465fa48100ead708d1d42c0e3c8832a6ca706d1bd06de9f62abd60e81537",
+      "label_digest": "sha256:7de2b15ef5f74d26b2c1f745900e7ce3f28ce4bd275554d7270257cbbbfc1e9c",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-90341a3c958c65473657",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:resource_customizations/source.toolkit.fluxcd.io/GitRepository/health.lua",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 196526080,
+      "context_end": 196527497,
+      "context_unit": "byte",
+      "context_digest": "sha256:9f60fa1bc6e27f9d79aa41cf2e759668300fba1f0469a7c2a749193201d965be",
+      "label_digest": "sha256:9d80930393857f31b4fe8d18492a0c5c9249ac1578cdfc1523782b7e8b7e7ceb",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-934685bbe4461338149a",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:util/io/files/testdata/app/README.md",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 204983808,
+      "context_end": 204983817,
+      "context_unit": "byte",
+      "context_digest": "sha256:9d30855a2ada542760d1a9de78920f0e1ed6b45c2aa1780ecd90ecfe48994c20",
+      "label_digest": "sha256:d01e0d9407e4fe7de9c1427c3a1d228ab211ea3aa64f6785405f7f3a8039aab5",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-9d403a79a7bb8f8964ee",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:cmd/argocd/commands/admin/cluster_test.go",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 3355136,
+      "context_end": 3357344,
+      "context_unit": "byte",
+      "context_digest": "sha256:86a60ea4b96e3d637471a3ddcc166f93a2db6dc3d256d1be9e9d6969f91a11ae",
+      "label_digest": "sha256:6456371ab4cad049b989a814e8d55cf9ce6fef145ad856fa5a52721e214f717a",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-a07277fc7d53df30f192",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:resource_customizations/apps.openshift.io/DeploymentConfig/testdata/degraded.yaml",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 193254400,
+      "context_end": 193258845,
+      "context_unit": "byte",
+      "context_digest": "sha256:df124c09be0b8ef77f6948af61be7b26ba3c7cb0f35e0d0a496493caed267905",
+      "label_digest": "sha256:fd15bc808d724da3aaae3d38a0b8cd3e56210881de26d31757348c8990ba59e4",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-a4631c34bd0d62e62e9c",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:docs/user-guide/resource_tracking.md",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 166234624,
+      "context_end": 166239661,
+      "context_unit": "byte",
+      "context_digest": "sha256:eb1aed4af06710dc2ca7401a9322c909dce6b55b2d1b300b174fb98daaf6cb4a",
+      "label_digest": "sha256:86cef0838ccf57dfa886844d6d0c4b69c78094f7eeeab58c88d93616141d0e73",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-a63f2cbc05543806128e",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:resource_customizations/cluster.x-k8s.io/MachineDeployment/testdata/progressing_ScalingUp.yaml",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 194036736,
+      "context_end": 194037946,
+      "context_unit": "byte",
+      "context_digest": "sha256:27c03947c630ef6ded9cf481de0f17e2f90d7e78758def96b9a6ee2db6f2e215",
+      "label_digest": "sha256:9a904a1608af616437be4b49e71a81e0f2576e1fb254fe9377a660589b8db2ec",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-a64a6baf4cb96441bb54",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:hack/installers/checksums/kustomize_5.4.2_darwin_amd64.tar.gz.sha256",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 172622848,
+      "context_end": 172622950,
+      "context_unit": "byte",
+      "context_digest": "sha256:3a844504cfe0464da21034f72e746bc632182bd3b3882295a986c739eece537b",
+      "label_digest": "sha256:bd9b7d922d193912f18939d433bc9af2bcfa32cc60a16043de297d732bf2a3d2",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-a93c8d946ba95a7591ec",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:resource_customizations/argoproj.io/CronWorkflow/actions/discovery.lua",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 193386496,
+      "context_end": 193386639,
+      "context_unit": "byte",
+      "context_digest": "sha256:acd9f65133d67859c023f7f302789d7311b53f2a999d34c784d069fb2cd09e5c",
+      "label_digest": "sha256:43eb77de8ee1e69aa8d39c8702a418313d6f497e972d1cae13790d2e8d66a6cc",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-aa77a37f901c36ba524d",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:resource_customizations/rabbitmq.com/Shovel/health.lua",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 196310016,
+      "context_end": 196310697,
+      "context_unit": "byte",
+      "context_digest": "sha256:af0a742c62685b3ff0a0d561493e92c97250cba7dec10dc3b8e51411a39b4a17",
+      "label_digest": "sha256:d4692e3e9be7b02e4833121affb435cf2c534c86cd31a27f59e0206218059469",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-b46c57c2adf38e633aa9",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:server/extension/mocks/RbacEnforcer.go",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 197470720,
+      "context_end": 197473087,
+      "context_unit": "byte",
+      "context_digest": "sha256:f2e79f88a2cd9065dba5ea7cbf4bf817130eb9c52ea24a1d2764542cf51049f3",
+      "label_digest": "sha256:4123716d48fab05ee54834f512ed592a05fb094fddecbdd3046afd76b5f831e5",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-b5a340c568a3df0ad7a4",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:docs/operator-manual/notifications/troubleshooting-commands.md",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 50596864,
+      "context_end": 50609451,
+      "context_unit": "byte",
+      "context_digest": "sha256:6731f953d437d72419d5d1e0d65c61a622771b9fbdce8c87d57a0c9620dff0ca",
+      "label_digest": "sha256:de6577c69c0a583a199448510a36c5da4c6d20eecf0cf351a12affb6dc5731b0",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-b6254f954b9b926b4a79",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:ui/src/app/applications/components/application-resource-tree/application-resource-tree.test.tsx",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 200546304,
+      "context_end": 200549239,
+      "context_unit": "byte",
+      "context_digest": "sha256:29ce642928ee950c4adaf085188c73b61d58dd6f5760a69ab63bbc68e97c7844",
+      "label_digest": "sha256:7a11d0892d321c4805c4677ecb7a29eb1f7b3c7da4f1353fb26d6249a9746bf7",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-b6f1e20057976e6598d7",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:resource_customizations/gateway.solo.io/VirtualHostOption/health.lua",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 194523648,
+      "context_end": 194524805,
+      "context_unit": "byte",
+      "context_digest": "sha256:c37a88772504bab50f04ca4b21677ac83f8d353b01c544a35fe7ea62125d8f70",
+      "label_digest": "sha256:301734a2a8cfd759802efeaff5c722dd2764ace03c341ca12e558a3c567ff8ae",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-b7529a2dc2d649ecf3e6",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:docs/operator-manual/notifications/argocd-notifications-secret.yaml",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 50433536,
+      "context_end": 50433737,
+      "context_unit": "byte",
+      "context_digest": "sha256:e86fec2f2f4c2b7e91c9e791a73b81d2226cf9c67047b30d352d68dd9f2b0b14",
+      "label_digest": "sha256:e6a337bef1ac80db10cc15f651d9bbd8fb85534c9ec9319433edca5eb08e2761",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-bd8d94167c14c17308ee",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:resource_customizations/argoproj.io/CronWorkflow/actions/testdata/workflow.yaml",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 193392640,
+      "context_end": 193393476,
+      "context_unit": "byte",
+      "context_digest": "sha256:72c7ed55a0472efd8f129610587d20c6be4666cc18351a313b248938b2970fd4",
+      "label_digest": "sha256:8ca0da393a1670bdf363892856ce5f52dcb5e6189cdf61e3d2118667f3e38257",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-bec1ca58e2ff58b89705",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:resource_customizations/work.karmada.io/ClusterResourceBinding/testdata/progressing.yaml",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 196703232,
+      "context_end": 196704430,
+      "context_unit": "byte",
+      "context_digest": "sha256:270edbeb07ada44307e74f6cac562929f2b4545be9aedbce041e65ffb5c5d88d",
+      "label_digest": "sha256:d6076727820bfcff9394f864ec5108ba2a84122fd6354ba2f5259e8a290d673f",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-bff9d046f2fc1900fb15",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:resource_customizations/apps/DaemonSet/actions/testdata/daemonset-restarted.yaml",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 193278464,
+      "context_end": 193279779,
+      "context_unit": "byte",
+      "context_digest": "sha256:ca3a604f0c51055fb19e0932ee9f01c5f3bcd923da2871bdcb74bfbfafd86a24",
+      "label_digest": "sha256:90467bdbe4ff4b6f56845fe2e814cb2849f32a09946415b99d93f2258ccfac9d",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-c0a1a6ffeee6066edf5b",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:resource_customizations/gateway.solo.io/RouteTable/testdata/gloo-warning.yaml",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 194518016,
+      "context_end": 194518446,
+      "context_unit": "byte",
+      "context_digest": "sha256:e54a2c775d240ad3b4fdbd56982106d88c097ad100b92077af5fcf08d085d72e",
+      "label_digest": "sha256:67354029b0902fe6e450ba124febe0882e949f2296c51c74ddde2b3c7ee6d66c",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-c0e6fa8a052eb94d0a37",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:util/rbac/rbac_norace_test.go",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 205653504,
+      "context_end": 205658857,
+      "context_unit": "byte",
+      "context_digest": "sha256:de25771c2a3e603e785cfa4c2a6019c0266b52325e6d234b07334ae50c5d331a",
+      "label_digest": "sha256:6c278760eb222f5eca10e3ad3057942eb40b7bdb12ab55c068a721006b25d48c",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-c41b8ff27058ad755821",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:resource_customizations/apiextensions.k8s.io/CustomResourceDefinition/health_test.yaml",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 193158656,
+      "context_end": 193159878,
+      "context_unit": "byte",
+      "context_digest": "sha256:a51b9855f895391424088e2bbba7fe257e5a31e2618d4e0a2871de4b01f6cb08",
+      "label_digest": "sha256:e7bb86d19da186f8e09f7c9c0096a5242ef452e3f6696a9e80fad09b555e6573",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-ca8e138a547b3bc20633",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:test/e2e/testdata/cmp-gitcreds/subdir/special.yaml",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 199092223,
+      "context_end": 199092224,
+      "context_unit": "byte",
+      "context_digest": "sha256:6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+      "label_digest": "sha256:1ff3d5bbae40177f4c1c2546e911caabc6d032e73cb6543d28cad1320d55fdf3",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-d0e6d7da886a365639c0",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:docs/assets/azure-app-registration-secret.png",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 37854720,
+      "context_end": 38136489,
+      "context_unit": "byte",
+      "context_digest": "sha256:036c8ee70bbb11a5d55cce32e295ccaada61aa54fcff5a4a1da8b78109093267",
+      "label_digest": "sha256:d84a97ee9f3340e23a18e758bc6f3b4cda6b723b09711bc40d77ee56f5f29adb",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-d493660d28dbf3f2d6d3",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:resource_customizations/image.toolkit.fluxcd.io/ImageRepository/actions/action_test.yaml",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 194730496,
+      "context_end": 194731482,
+      "context_unit": "byte",
+      "context_digest": "sha256:848ffea422fb03f3e254d747875c16f8af12caba42f00eeccd1ec9682a53a476",
+      "label_digest": "sha256:4c2658fa5770d17780a4e179acac78b005552ab460b20a5884acb264fc5de5aa",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-d81d78008410de779797",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:util/cache/cache_test.go",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 203621376,
+      "context_end": 203627921,
+      "context_unit": "byte",
+      "context_digest": "sha256:74ef4f49eac81977305e17b796da4327f3a1d22907f2133b35294cd7396b9d87",
+      "label_digest": "sha256:171ed7c63e3665fee6a3bb27af31a7bbcae30acfc7c424a8e8b1ed0fbb9d0b57",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-db5c5f07458da3daa642",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:resource_customizations/gateway.networking.k8s.io/GRPCRoute/testdata/degraded_no_message.yaml",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 194414592,
+      "context_end": 194415463,
+      "context_unit": "byte",
+      "context_digest": "sha256:87ddf942e0ea4dc1a9c2ee64cde4c38cddf5b78515b0925fe5ea5433ffb6898a",
+      "label_digest": "sha256:baf7ae35dd87ce91c83ff6a9cf52412e556ab4aca49d08be6df6d2bfde1cffd5",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-dbf17709cf12e3d2c850",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:util/settings/cluster_informer.go",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 205814272,
+      "context_end": 205824003,
+      "context_unit": "byte",
+      "context_digest": "sha256:0ad8feb204c78e37ad84ce7ef2e43d52115ca2b7da12b66d182fc299658dea94",
+      "label_digest": "sha256:e2b0d58a3a90db6298813eb4d26338a5190f918337b8e05534c90380da873628",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-dc65f265f149f2aed395",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:hack/installers/checksums/helm-v3.12.0-linux-amd64.tar.gz.sha256",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 172424192,
+      "context_end": 172424290,
+      "context_unit": "byte",
+      "context_digest": "sha256:7cb8ffa9130a52f0db8911047e70ad787b8fd8c9a168e7c8cf539447575646b7",
+      "label_digest": "sha256:08ea578a4e3edfe188f17230817d20d5db149f242c4803d8fdf5ceb521cd35ef",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-dfe45ff6f283030bf9bb",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:docs/assets/saml-2.png",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 47540224,
+      "context_end": 47664356,
+      "context_unit": "byte",
+      "context_digest": "sha256:6698070abb92240e4135faf8f87ea86011d244fd8ff1692e8f62697d8ca54a7d",
+      "label_digest": "sha256:4854247cb7ae4a3df866e9687621aec15c36350ed3981c7a0afdc1734e0b1609",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-ebc151e3718666de72ca",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:resource_customizations/work.karmada.io/ClusterResourceBinding/testdata/progressing_aggregatedStatus.yaml",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 196705280,
+      "context_end": 196706353,
+      "context_unit": "byte",
+      "context_digest": "sha256:c384e14a6b188f9c773ff9682ac14e3c283255a4b01a61f73596068d045b58cc",
+      "label_digest": "sha256:1180ef73010d10a2b9027585eed482bfa07a8d0900e8c06a8256bbd18f9751fd",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-efe67565c42b489adee2",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:resource_customizations/bitnami.com/SealedSecret/testdata/progressing.yaml",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 193752576,
+      "context_end": 193752912,
+      "context_unit": "byte",
+      "context_digest": "sha256:e68b4550d3c8a5de81cb5569d23da84321db6618c1d81bed080afa37d049d98a",
+      "label_digest": "sha256:03adc41e4b3e95211a84f90f3507fd84a83243c6ed76e91b9e934b7ce04041a8",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-f27bd5ca1b0102a8313f",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:docs/assets/selective-sync.png",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 48218624,
+      "context_end": 48244975,
+      "context_unit": "byte",
+      "context_digest": "sha256:8eba40e9163cb7068b509ee3f93a1074d756d6c3f9be871056aaa3a369470bc2",
+      "label_digest": "sha256:d93141402a6041a37d947d6577debb21413a0914fb3644c811a0baaeddbb40ea",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-f57fbdf7efd37511af17",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:server/metrics/metrics.go",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 197524480,
+      "context_end": 197528792,
+      "context_unit": "byte",
+      "context_digest": "sha256:e6a88394732a6f965f2cc00d37ae2a8f4a663706bc1a0cd86ca24a3f11d28341",
+      "label_digest": "sha256:fb24a922f09c46a70f00f742fb2d6b91d52eb8f1bab5ce24043c47759224ae99",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-f6c76abef73f0b020d07",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:resource_customizations/gateway.networking.k8s.io/GRPCRoute/testdata/healthy.yaml",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 194419200,
+      "context_end": 194420193,
+      "context_unit": "byte",
+      "context_digest": "sha256:e729a980868874434ecc3814207112eba3280f3cf030da50ec184719079c1ffb",
+      "label_digest": "sha256:3bed705eadedb590180c218b0dbfdc4c3071b1de1c2fd76a47abd0d184f0180d",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-f7f842ec2a9cd4e5bcbe",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:hack/generate-proto.sh",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 172354560,
+      "context_end": 172361943,
+      "context_unit": "byte",
+      "context_digest": "sha256:24c3c74aa421e60243a2f99d049906b0f34ab53416db44cc4e71aaba02c513f2",
+      "label_digest": "sha256:ca6e228151df2d3e97189d10df27772341d037199b168cf3d7ceb5999d30feb3",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-f9731a7e803c00febbf8",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:resource_customizations/promoter.argoproj.io/ArgoCDCommitStatus/testdata/no-applications.yaml",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 196003840,
+      "context_end": 196004061,
+      "context_unit": "byte",
+      "context_digest": "sha256:eadf5f41aad0d22afa04a23ccb26932afe4ccbbb4866b58c63e55fd8d2e09283",
+      "label_digest": "sha256:1181bdc7aa746c53d7fe752493b798e46d2444333ffede3b9ba2c8a67b6579dd",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-fa46c48df369ce4d0faf",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:resource_customizations/kiali.io/Kiali/health.lua",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 195021824,
+      "context_end": 195022609,
+      "context_unit": "byte",
+      "context_digest": "sha256:69d5558b9b20bc609028d20323d1e5505c20c2dfad3b70ac41d6fc38d4e47b0e",
+      "label_digest": "sha256:6c85097b09848f350b9ed54486445dfb9ec2cb5e882e3800cc4d8df523b5cf97",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-fac55a974f6b3db998b9",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:resource_customizations/projectcontour.io/HTTPProxy/health_test.yaml",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 195984896,
+      "context_end": 195985626,
+      "context_unit": "byte",
+      "context_digest": "sha256:897d852bd312ae42f30fd4211e258466d7ea2aad1ada3e3b3d5be9f3f4256b04",
+      "label_digest": "sha256:afb2996d316272e4ad65fd4c01ec7c58ea2f4fa54c7dde3e9238b73ccd376063",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-fd59a8014de91c84cb53",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:resource_customizations/apps/StatefulSet/actions/restart/action.lua",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 193311232,
+      "context_end": 193311559,
+      "context_unit": "byte",
+      "context_digest": "sha256:3890bb1b30261b365b016e05c7c9be8538a3510eb66a97956615e85f32ab2470",
+      "label_digest": "sha256:cb95524aa998e013d20d1e9f9597863240cb2b40588c386af7592b336101aa8c",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-fe48c687d2d4d937eb8d",
+      "document_id": "document-argocd-source-tree",
+      "document_url": "https://github.com/argoproj/argo-cd/tree/e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+      "source_ids": [
+        "argocd-source-tree"
+      ],
+      "locked_source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "tar-entry:test/e2e/kustomize_test.go",
+      "locator_kind": "source-member",
+      "raw_selector": "git-tar-regular-file",
+      "element_name": "entry",
+      "parent_anchor_id": "anchor-0f6b4fbe663ca8b5add1",
+      "context_start": 198887936,
+      "context_end": 198900104,
+      "context_unit": "byte",
+      "context_digest": "sha256:b4c8c30a8cf6a9c0ea88d5b326c39977e44d954554b142463c59e40d96e4b665",
+      "label_digest": "sha256:d80cd7310f0968c901002d79fbd102e4d7ea31a054c6387eeb93681846fccd43",
+      "existing_mapping_candidate_ids": [],
+      "priority": 2,
+      "priority_reasons": [
+        "structural-or-document-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p2-git-regular-file-2b",
+      "state": "pending-human"
+    }
+  ]
+}

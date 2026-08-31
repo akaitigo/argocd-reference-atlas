@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "source_id": "argocd-sync-waves",
+  "source_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/user-guide/sync-waves.md",
+  "locked_source_digest": "sha256:2f6dea5a6e4e05c48d45f291d43cc4bd946cb8a7bfdf8dcc37af5b7eaf06d87e",
+  "fetch": {
+    "status": "matched",
+    "observed_digest": "sha256:2f6dea5a6e4e05c48d45f291d43cc4bd946cb8a7bfdf8dcc37af5b7eaf06d87e",
+    "locked_digest_match": true,
+    "observed_bytes": 13495,
+    "content_type": "text/markdown; charset=utf-8",
+    "error_digest": null
+  },
+  "extraction": {
+    "method": "locked-body-file-locator-digest",
+    "tool": "argocd-reference-atlas-authority-locator-v1",
+    "review_status": "automated-unreviewed",
+    "body_storage": "metadata-digest-locator-offset-only"
+  },
+  "document_locator": {
+    "locator": "document-root",
+    "locator_kind": "file-root",
+    "locator_status": "root-document",
+    "context_digest": "sha256:2f6dea5a6e4e05c48d45f291d43cc4bd946cb8a7bfdf8dcc37af5b7eaf06d87e",
+    "context_start": 0,
+    "context_end": 13495,
+    "context_unit": "byte"
+  },
+  "candidate_surfaces": [
+    {
+      "edge_id": "edge.sync.hooks.argocd-sync-waves",
+      "source_id": "argocd-sync-waves",
+      "inventory_item_id": "sync.hooks",
+      "area": "sync",
+      "target_id": "sync.hook-wave-lifecycle",
+      "locator": "docs/user-guide/sync-waves.md",
+      "locator_status": "file-found",
+      "context_digest": "sha256:2f6dea5a6e4e05c48d45f291d43cc4bd946cb8a7bfdf8dcc37af5b7eaf06d87e",
+      "context_start": 0,
+      "context_end": 13495,
+      "context_unit": "byte",
+      "heading_digest": null,
+      "classification_basis": "domain-inventory-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:6fa776065524e710d3f540a7a0639dbd74f8f99e67cb68d20b77aa8b0d0fc795",
+      "classification": "candidate-included-unreviewed"
+    },
+    {
+      "edge_id": "edge.sync.waves.argocd-sync-waves",
+      "source_id": "argocd-sync-waves",
+      "inventory_item_id": "sync.waves",
+      "area": "sync",
+      "target_id": "sync.hook-wave-lifecycle",
+      "locator": "docs/user-guide/sync-waves.md",
+      "locator_status": "file-found",
+      "context_digest": "sha256:2f6dea5a6e4e05c48d45f291d43cc4bd946cb8a7bfdf8dcc37af5b7eaf06d87e",
+      "context_start": 0,
+      "context_end": 13495,
+      "context_unit": "byte",
+      "heading_digest": null,
+      "classification_basis": "domain-inventory-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:ae02934845c0d6f2e50a968d2403099107e65cb859def42e005b8c9112e8bf5f",
+      "classification": "candidate-included-unreviewed"
+    }
+  ]
+}

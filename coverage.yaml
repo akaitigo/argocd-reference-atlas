@@ -1,7 +1,7 @@
 schema_version: 1
 atlas_id: argocd-reference-atlas
 epoch: "2026-08-28"
-authority_lock_digest: sha256:485860cb634a7f6095a629b149cb6f1afe2bb36d8f0bc657f1302f95238113df
+authority_lock_digest: sha256:fc76f2c5267059ae59c118c9f4924c51e4ca179476a687cced7f43ae1c977674
 target_sets:
   - id: control-loop
     title: 宣言状態と制御ループ
@@ -124,12 +124,12 @@ targets:
     claim_ids: [claim.security.no-secret-leak]
     evidence_ids: [evidence.security.v3-5-2]
   - id: failure.degraded-dependency
-    title: 依存障害時の安全な劣化
+    title: Repository依存障害時の安全な劣化
     target_set: resilience
     kind: failure
     requirement: required
-    state: covered
-    rationale: RepositoryまたはControl Planeの一時障害を専用環境で発生させ、誤った成功判定や無制限な外部影響がないことを確認する必要がある。
+    state: partial
+    rationale: Repository sourceの一時停止は実証済みだが、Controller、repo-server、Redis全停止、Network partitionを個別に発生させ、誤った成功判定や無制限な外部影響がないことまで確認する必要がある。
     claim_ids: [claim.failure.safe-degradation]
     evidence_ids: [evidence.failure.v3-5-2]
   - id: recovery.control-plane-restore
@@ -146,7 +146,7 @@ targets:
     target_set: platform-surface
     kind: concept
     requirement: required
-    state: covered
+    state: partial
     rationale: API Server、Repository Server、Application Controllerの責任と資格情報・Manifest・操作の境界を混同せず設計する必要がある。
     claim_ids: [claim.architecture.component-boundaries]
     evidence_ids: [evidence.architecture.v3-5-2, evidence.architecture-container-profile.v3-5-2]
@@ -155,7 +155,7 @@ targets:
     target_set: platform-surface
     kind: capability
     requirement: required
-    state: covered
+    state: partial
     rationale: Generator parameterとTemplateから複数Applicationが生成・更新される境界を固定入力で検証する必要がある。
     claim_ids: [claim.applicationset.generated-applications]
     evidence_ids: [evidence.applicationset.v3-5-2]
@@ -164,7 +164,7 @@ targets:
     target_set: platform-surface
     kind: operation
     requirement: required
-    state: covered
+    state: partial
     rationale: Repository資格情報とCluster接続情報を異なるSecret境界として登録し、到達性と拒否条件を検証する必要がある。
     claim_ids: [claim.connection.register-and-reject]
     evidence_ids: [evidence.connection.v3-5-2]
@@ -173,7 +173,7 @@ targets:
     target_set: delivery
     kind: capability
     requirement: required
-    state: covered
+    state: partial
     rationale: Sync phase、Hook lifecycle、Wave順序を通常Resourceの適用順序と区別し、失敗時の後続処理を検証する必要がある。
     claim_ids: [claim.sync.hook-wave-lifecycle]
     evidence_ids: [evidence.hook-wave.v3-5-2]
@@ -182,7 +182,7 @@ targets:
     target_set: security-boundary
     kind: security
     requirement: required
-    state: covered
+    state: partial
     rationale: SSOで得たIdentity、Argo CD RBAC、RepositoryとClusterのSecret accessを分離し、最小権限と拒否を確認する必要がある。
     claim_ids: [claim.security.identity-authorization-boundary]
     evidence_ids: [evidence.access-boundary.v3-5-2]
@@ -191,7 +191,7 @@ targets:
     target_set: platform-surface
     kind: construction
     requirement: required
-    state: covered
+    state: partial
     rationale: ComponentごとのReplica、Shard、Cache依存と単一障害点を識別し、局所的な障害で継続可能な機能を検証する必要がある。
     claim_ids: [claim.availability.component-redundancy]
     evidence_ids: [evidence.high-availability.v3-5-2]
@@ -200,7 +200,7 @@ targets:
     target_set: operations
     kind: operation
     requirement: required
-    state: covered
+    state: partial
     rationale: Controller、API Server、Repository ServerのMetricと構造化LogをApplication状態および運用判断へ接続する必要がある。
     claim_ids: [claim.observability.correlate-signals]
     evidence_ids: [evidence.observability.v3-5-2]
@@ -209,7 +209,7 @@ targets:
     target_set: operations
     kind: operation
     requirement: required
-    state: covered
+    state: partial
     rationale: Resource tracking、Diff customization、更新無視を区別し、実際のDriftを隠さず不要なRefreshだけを抑制する必要がある。
     claim_ids: [claim.drift.classify-and-refresh]
     evidence_ids: [evidence.drift.v3-5-2]
@@ -218,7 +218,7 @@ targets:
     target_set: operations
     kind: capability
     requirement: required
-    state: covered
+    state: partial
     rationale: Automated sync、prune、selfHeal、retryの個別条件と安全策を固定し、失敗や空集合で破壊的に動かないことを検証する必要がある。
     claim_ids: [claim.recovery.automated-self-heal]
     evidence_ids: [evidence.auto-recovery.v3-5-2]
@@ -227,7 +227,7 @@ targets:
     target_set: evolution
     kind: migration
     requirement: required
-    state: covered
+    state: partial
     rationale: v3.5のBreaking Change、Deprecated Surface、事前Backup、事後検証、Rollback判断を一つの移行手順として閉じる必要がある。
     claim_ids: [claim.migration.preflight-and-verify]
     evidence_ids: [evidence.upgrade-migration.v3-5-2]
@@ -236,7 +236,7 @@ targets:
     target_set: operations
     kind: operation
     requirement: required
-    state: covered
+    state: partial
     rationale: Refresh、Sync、Wait、停止、診断、Backupの事前条件と終了条件を明示し、Operatorが安全に反復できる必要がある。
     claim_ids: [claim.operations.bounded-runbook]
     evidence_ids: [evidence.operations.v3-5-2]
@@ -245,79 +245,88 @@ targets:
     target_set: skill
     kind: skill
     requirement: required
-    state: covered
+    state: partial
     rationale: Agentがv3.5.2のCoverage内外を識別し、設計、診断、移行、安全拒否を正しい正本へ案内できることを評価する必要がある。
     claim_ids: [claim.skill.coverage-grounded-routing]
-    evidence_ids: [evidence.skill-eval.v3-5-2]
+    evidence_ids: [evidence.skill-eval.v3-5-2, evidence.skill-definitive-eval.v3-5-2]
   - id: performance.capacity-cost-baseline
     title: 大規模性能・容量・Cost基準
     target_set: operations
     kind: performance
     requirement: required
-    state: excluded
+    state: missing
     rationale: 固定Epochの単一Mac上Kind実証を大規模本番の性能、容量、Cost保証へ一般化しないため、別Benchmark計画へ明示的に分離する。
     claim_ids: []
     evidence_ids: []
-    exclusion:
-      reason: Application数、Repository数、Shard数を横断する再現可能な専用Capacity環境が本ローカル実証範囲に含まれない。
-      reviewed_at: "2026-08-28"
   - id: compatibility.broad-version-generator-matrix
     title: Kubernetes・Generator・Plugin広域互換Matrix
     target_set: evolution
     kind: compatibility
     requirement: required
-    state: excluded
+    state: missing
     rationale: v3.5.2と固定Fixtureの実証結果を、複数Kubernetes Version、全Generator、Plugin、Extensionの互換保証へ拡張しない。
     claim_ids: []
     evidence_ids: []
-    exclusion:
-      reason: 本EpochはArgo CD v3.5.2と固定したKind/Kubernetes、List generator、Git directory sourceだけを検証対象とする。
-      reviewed_at: "2026-08-28"
   - id: security.external-idp-interactive-sso
     title: 実IdP対話Login・MFA・Group変化
     target_set: security-boundary
     kind: security
     requirement: required
-    state: excluded
+    state: missing
     rationale: 固定Fixture IdentityとOIDC discoveryの結果を、実Identity ProviderのLogin、MFA、Group lifecycleの保証として扱わない。
     claim_ids: []
     evidence_ids: []
-    exclusion:
-      reason: 外部IdP AccountとTenantへの接続はローカル専用・秘密非保持という本Epochの実行境界から除外している。
-      reviewed_at: "2026-08-28"
   - id: availability.host-network-rto-rpo
     title: Host・Node・Network partitionとRTO／RPO
     target_set: resilience
     kind: failure
     requirement: required
-    state: excluded
+    state: missing
     rationale: 単一Docker host上の3 node Kindで得たComponent冗長性を、Host障害、Network partition、RTO／RPO保証へ拡張しない。
     claim_ids: []
     evidence_ids: []
-    exclusion:
-      reason: 独立Hostと制御可能なNetwork fault domainを持つ専用環境がローカル実証範囲に含まれない。
-      reviewed_at: "2026-08-28"
   - id: migration.multi-version-rollback-matrix
     title: 複数Version Upgrade・Rollback Matrix
     target_set: evolution
     kind: migration
     requirement: required
-    state: excluded
+    state: missing
     rationale: v3.4.8からv3.5.2への正方向Fixtureを、全patch、Extension、Rollback組合せの互換保証へ一般化しない。
     claim_ids: []
     evidence_ids: []
-    exclusion:
-      reason: 本Epochは一次資料が定めるv3.4.8からv3.5.2への一経路と停止判断だけを固定している。
-      reviewed_at: "2026-08-28"
   - id: observability.distributed-trace-incident-capacity
     title: 分散Trace・Incident rehearsal・Capacity統合
     target_set: operations
     kind: operation
     requirement: required
-    state: excluded
+    state: missing
     rationale: Component MetricとLogの相関Evidenceを、外部Trace backend、実Incident rehearsal、Capacity SLOの保証へ拡張しない。
     claim_ids: []
     evidence_ids: []
-    exclusion:
-      reason: 外部Telemetry backendと組織固有Incident手順はArgo CD v3.5.2単体のローカルProduct Atlas範囲外である。
-      reviewed_at: "2026-08-28"
+  - id: operations.notifications-delivery
+    title: Notification Trigger・Template・Subscription・Delivery
+    target_set: operations
+    kind: operation
+    requirement: required
+    state: partial
+    rationale: Application annotation、local webhook、HTTP 5xx retry、endpoint回復、delivery/trigger metricは実Controllerで検証する。Global subscription、provider固有認証、rate limit、controller再起動をまたぐdeduplication、全Serviceは未検証である。
+    claim_ids: [claim.notifications.local-webhook-delivery]
+    evidence_ids: [evidence.notifications.v3-5-2]
+  - id: system.integrated-reference-gitops
+    title: 統合Reference GitOps System
+    target_set: platform-surface
+    kind: construction
+    requirement: required
+    state: missing
+    rationale: 個別Fixtureだけでなく、ApplicationSet、Project、multi-source、CMP、RBAC、Notification、Observability、Promotion、Recoveryを同一Systemで接続し、横断不変条件を実証する必要がある。
+    claim_ids: []
+    evidence_ids: []
+  - id: architecture.evidence-backed-comparison
+    title: Evidenceに基づく設計比較
+    target_set: platform-surface
+    kind: concept
+    requirement: required
+    state: missing
+    rationale: 複数の構成方式を前提、利点、制約、failure mode、運用Cost、runtime Evidenceで比較し、単一Fixtureを一般解として扱わないために必要である。
+    claim_ids: []
+    evidence_ids: []

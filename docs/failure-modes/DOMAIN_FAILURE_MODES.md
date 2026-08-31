@@ -26,7 +26,7 @@
 - **Competing hypotheses:** Generator入力、Filter、Refresh、外部API、Template、Ownershipの問題。
 - **Disambiguation:** ApplicationSet Spec、生成Application集合、Owner reference、入力Snapshotを比較する。
 - **Unsafe shortcut:** 生成後Applicationが正常だからGeneratorも正常と断定する。
-- **Evidence limit:** `applicationset.generator-templating`はpartialであり、合格Direct Evidenceはまだない。
+- **Evidence limit:** 固定List generatorの生成・更新・削除にはpass Evidenceがあるが、他Generator、Scale、外部API障害は未証明。
 
 ### `repository-cluster`
 
@@ -74,7 +74,7 @@
 - **Competing hypotheses:** IdP、Claim mapping、Account、RBAC policy、Project scope、Secret lifecycle。
 - **Disambiguation:** 無害なIdentity Fixtureによる許可／拒否MatrixとRedaction結果を確認する。
 - **Unsafe shortcut:** Admin権限付与、Token表示、実利用者で試行する。
-- **Evidence limit:** 合格Direct EvidenceはSecret Canary不在だけ。`security.rbac-sso-access-boundary`はpartial。
+- **Evidence limit:** 固定Identity/RBAC allow-deny、OIDC discovery/provider outageにはpass Evidenceがあるが、interactive login、MFA、Group/Token lifecycleは未証明。
 
 ### `high-availability`
 
@@ -82,7 +82,7 @@
 - **Competing hypotheses:** Stateful dependency、Scheduling、Capacity、Shard、再選出、外部依存。
 - **Disambiguation:** 故障単位、継続率、Queue、Latency、RTO／RPOを同一試験で測る。
 - **Unsafe shortcut:** Pod数、Ready数、単一Pod停止だけでHAを保証する。
-- **Evidence limit:** `availability.high-availability`はpartialで、HA／Capacityの合格Evidenceはない。
+- **Evidence limit:** 3-node KindのReplica、Application Controller/repo-server/Redis master Pod UID交代、Controller復旧後Drift再収束、repo-server Hard Refresh、Redis障害窓中read/metricsにはpass Evidenceがある。全replica停止、shard交代、partition、RTO/RPO、Capacityは未証明。
 
 ### `observability`
 
@@ -114,7 +114,7 @@
 - **Competing hypotheses:** Version skew、Deprecated Surface、Kubernetes互換性、Extension、Data migration。
 - **Disambiguation:** 移行元／先、CRD、API、CLI、Kubernetes、Extension、Backupを固定して差分試験する。
 - **Unsafe shortcut:** Latestへ直接更新、Release noteだけで互換性判断、Backup未検証。
-- **Evidence limit:** `migration.version-upgrade`はpartial。既存v3.5.2のEvidenceだけではVersion間Migrationを証明しない。
+- **Evidence limit:** v3.4.8からv3.5.2への正方向Upgradeにはpass Evidenceがあるが、実Rollback、複数Version/Kubernetes Matrixは未証明。
 
 ### `operations`
 
@@ -125,5 +125,29 @@
 - **Evidence limit:** `operations.routine-control`はpartial。個別Claim Evidenceを統合SLOやOn-call成熟度の証明にしない。
 
 ## Escalation
+
+### `notifications`
+
+- **Symptoms:** 期待した通知が届かない、重複する、誤ったrecipientへ届く、retryが継続する。
+- **Competing hypotheses:** Trigger、Template、Subscription、Service Secret、receiver、rate limit、controller queue。
+- **Disambiguation:** Application event、controller log、delivery metric、local receiver artifactを同一時系列で比較する。
+- **Unsafe shortcut:** 実provider credentialを表示する、第三者宛先へ試験送信する。
+- **Evidence limit:** `evidence.notifications.v3-5-2`はlocal receiverのHTTP 503、retry、回復後deliveryを証明するが、外部provider outage、rate limit、controller再起動時のdeduplication、全Serviceは未証明である。
+
+### `integrated-reference-system`
+
+- **Symptoms:** 個別Labは成功するが横断WorkflowでRevision、権限、通知、復旧が一致しない。
+- **Competing hypotheses:** Fixture分離、Project境界、Source差、Identity差、時刻相関、cleanup競合。
+- **Disambiguation:** 同一Repository、Application集合、Cluster topology、Correlation contextへ戻す。
+- **Unsafe shortcut:** 個別pass verdictを横断不変条件へ合算する。
+- **Evidence limit:** `system.integrated-reference-gitops`はmissing。
+
+### `evidence-comparison`
+
+- **Symptoms:** 比較結果が環境や入力を変えると逆転する、選択根拠が再現できない。
+- **Competing hypotheses:** Version、scale、cache、failure unit、metric、warm-up、samplingの差。
+- **Disambiguation:** 固定条件と同一Scenarioで再実行し、Artifact digestを照合する。
+- **Unsafe shortcut:** 異なる条件の結果を同列に並べる。
+- **Evidence limit:** `architecture.evidence-backed-comparison`はmissing。
 
 秘密、個人情報、未公開脆弱性、権限昇格、第三者環境、不可逆操作が関係する場合は通常のTriageを停止し、`SECURITY.md`と所有者の承認経路へ移します。AtlasのGapが原因で断定できない場合は、必要なTarget、Fixture、Oracle、Evidenceを明示して引き継ぎます。

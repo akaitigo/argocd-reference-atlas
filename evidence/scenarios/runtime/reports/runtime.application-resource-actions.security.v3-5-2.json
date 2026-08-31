@@ -1,0 +1,222 @@
+{
+  "schema_version": 1,
+  "id": "runtime.application-resource-actions.security.v3-5-2",
+  "atlas_id": "argocd-reference-atlas",
+  "surface_id": "application.resource-actions",
+  "scenario": "security",
+  "status": "passed-runtime-execution-pending-authority-review",
+  "execution": {
+    "command": "make scenario-runtime-security-002",
+    "attempts": 1,
+    "retries": 0,
+    "first_attempt": true
+  },
+  "runtime_identity": {
+    "profile": "cluster",
+    "real_argocd_kubernetes_runtime": true,
+    "cluster_name": "argocd-atlas-v3-5-2",
+    "kubernetes_context": "kind-argocd-atlas-v3-5-2",
+    "argocd_version": "3.5.2",
+    "kubernetes_api_server_version": "v1.34.0",
+    "kubernetes_kubelet_version": "v1.34.0",
+    "cluster_uid": "00b2b62c-ba60-4520-b48e-fa9e550c859d",
+    "topology_digest": "sha256:f27cd86ff879333619bd84e57f310afb261727da44dd06ae2c5e931d6f74dd9e",
+    "observed_argocd_components": [
+      "argocd-application-controller",
+      "argocd-repo-server"
+    ]
+  },
+  "variant_denominator": {
+    "source": "definitive/scenario-variant-contract.yaml",
+    "status": "runtime-declared-pending-authority-human-review",
+    "declared_variant_ids": [
+      "rbac-denied-deployment-restart",
+      "rbac-allowed-deployment-restart"
+    ],
+    "all_declared_variants_executed": true,
+    "authority_exhaustive": false,
+    "completion_eligible": false
+  },
+  "variants": [
+    {
+      "variant_id": "rbac-denied-deployment-restart",
+      "attempts": 1,
+      "outcome": "expected",
+      "final_status": "passed",
+      "error": null,
+      "oracle": {
+        "status": "pass",
+        "assertions": [
+          {
+            "channel": "resource_state",
+            "pointer": "/security/secret_scan_hits",
+            "operator": "equals",
+            "expected": 0
+          },
+          {
+            "channel": "controller_log",
+            "pointer": "/entries/0/application",
+            "operator": "equals",
+            "expected": "atlas-security-002-action"
+          },
+          {
+            "channel": "metric",
+            "pointer": "/app_info/labels/name",
+            "operator": "equals",
+            "expected": "atlas-security-002-action"
+          },
+          {
+            "channel": "trace",
+            "pointer": "/result/first_attempt",
+            "operator": "equals",
+            "expected": true
+          },
+          {
+            "channel": "resource_state",
+            "pointer": "/rbac/decision",
+            "operator": "equals",
+            "expected": "No"
+          },
+          {
+            "channel": "resource_state",
+            "pointer": "/observation/restart_annotation_changed",
+            "operator": "equals",
+            "expected": false
+          }
+        ]
+      },
+      "source": {
+        "path": "fixtures/scenarios/security-002/resource-actions/deployment.yaml",
+        "digest": "sha256:f015e37a561f07046a23defd25f0bfef9597584f0100c7468c567ef95680fd03",
+        "bytes": 483,
+        "owner": "runtime.application-resource-actions.security.v3-5-2:rbac-denied-deployment-restart:source"
+      },
+      "harness": {
+        "path": "scripts/scenarios/run_security_002.py",
+        "digest": "sha256:e53994287aecb715adbdfeb22f2f5e7ecc4fe7b54af50beedd6c0594929ec0f1",
+        "bytes": 35856,
+        "owner": "runtime.application-resource-actions.security.v3-5-2:rbac-denied-deployment-restart:harness"
+      },
+      "artifacts": {
+        "resource_state": {
+          "path": "evidence/scenarios/runtime/artifacts/runtime.application-resource-actions.security.v3-5-2/rbac-denied-deployment-restart/resource_state.json",
+          "digest": "sha256:44f27d1caf39e2b98491c5b81c4120daca593ab3cf50fd28dcbf8d36c77e6a13",
+          "bytes": 15879,
+          "kind": "kubernetes-resource-state",
+          "owner": "runtime.application-resource-actions.security.v3-5-2:rbac-denied-deployment-restart:resource_state"
+        },
+        "controller_log": {
+          "path": "evidence/scenarios/runtime/artifacts/runtime.application-resource-actions.security.v3-5-2/rbac-denied-deployment-restart/controller_log.json",
+          "digest": "sha256:075df7cbea7ba5b200f146ac902e51860d18f5039cfc0f5e26ed1e7e0c946010",
+          "bytes": 144463,
+          "kind": "argocd-controller-log",
+          "owner": "runtime.application-resource-actions.security.v3-5-2:rbac-denied-deployment-restart:controller_log"
+        },
+        "metric": {
+          "path": "evidence/scenarios/runtime/artifacts/runtime.application-resource-actions.security.v3-5-2/rbac-denied-deployment-restart/metric.json",
+          "digest": "sha256:29f7e8d1241789f7ddceb534e82b2f3c6166a6188b528caf074f067ff5f6d6ea",
+          "bytes": 1064,
+          "kind": "argocd-prometheus-metric",
+          "owner": "runtime.application-resource-actions.security.v3-5-2:rbac-denied-deployment-restart:metric"
+        },
+        "trace": {
+          "path": "evidence/scenarios/runtime/artifacts/runtime.application-resource-actions.security.v3-5-2/rbac-denied-deployment-restart/trace.json",
+          "digest": "sha256:6cd02f1c34ee3f1f3e6544aa92d0e84412f31db70d7b870db60ca153e362f2ff",
+          "bytes": 633,
+          "kind": "scenario-execution-trace",
+          "owner": "runtime.application-resource-actions.security.v3-5-2:rbac-denied-deployment-restart:trace"
+        }
+      }
+    },
+    {
+      "variant_id": "rbac-allowed-deployment-restart",
+      "attempts": 1,
+      "outcome": "expected",
+      "final_status": "passed",
+      "error": null,
+      "oracle": {
+        "status": "pass",
+        "assertions": [
+          {
+            "channel": "resource_state",
+            "pointer": "/security/secret_scan_hits",
+            "operator": "equals",
+            "expected": 0
+          },
+          {
+            "channel": "controller_log",
+            "pointer": "/entries/0/application",
+            "operator": "equals",
+            "expected": "atlas-security-002-action"
+          },
+          {
+            "channel": "metric",
+            "pointer": "/app_info/labels/name",
+            "operator": "equals",
+            "expected": "atlas-security-002-action"
+          },
+          {
+            "channel": "trace",
+            "pointer": "/result/first_attempt",
+            "operator": "equals",
+            "expected": true
+          },
+          {
+            "channel": "resource_state",
+            "pointer": "/rbac/decision",
+            "operator": "equals",
+            "expected": "Yes"
+          },
+          {
+            "channel": "resource_state",
+            "pointer": "/observation/restart_annotation_changed",
+            "operator": "equals",
+            "expected": true
+          }
+        ]
+      },
+      "source": {
+        "path": "fixtures/scenarios/security-002/resource-actions/deployment.yaml",
+        "digest": "sha256:f015e37a561f07046a23defd25f0bfef9597584f0100c7468c567ef95680fd03",
+        "bytes": 483,
+        "owner": "runtime.application-resource-actions.security.v3-5-2:rbac-allowed-deployment-restart:source"
+      },
+      "harness": {
+        "path": "scripts/scenarios/run_security_002.py",
+        "digest": "sha256:e53994287aecb715adbdfeb22f2f5e7ecc4fe7b54af50beedd6c0594929ec0f1",
+        "bytes": 35856,
+        "owner": "runtime.application-resource-actions.security.v3-5-2:rbac-allowed-deployment-restart:harness"
+      },
+      "artifacts": {
+        "resource_state": {
+          "path": "evidence/scenarios/runtime/artifacts/runtime.application-resource-actions.security.v3-5-2/rbac-allowed-deployment-restart/resource_state.json",
+          "digest": "sha256:91774e43a76f45e954fd6235e12c834107fa755c0414b06ccc47699e394bb7a1",
+          "bytes": 16007,
+          "kind": "kubernetes-resource-state",
+          "owner": "runtime.application-resource-actions.security.v3-5-2:rbac-allowed-deployment-restart:resource_state"
+        },
+        "controller_log": {
+          "path": "evidence/scenarios/runtime/artifacts/runtime.application-resource-actions.security.v3-5-2/rbac-allowed-deployment-restart/controller_log.json",
+          "digest": "sha256:64fd6907873e1bb590bd056dae2b33e5883aaa73f5a44ab03ef40c8f05c7a145",
+          "bytes": 151033,
+          "kind": "argocd-controller-log",
+          "owner": "runtime.application-resource-actions.security.v3-5-2:rbac-allowed-deployment-restart:controller_log"
+        },
+        "metric": {
+          "path": "evidence/scenarios/runtime/artifacts/runtime.application-resource-actions.security.v3-5-2/rbac-allowed-deployment-restart/metric.json",
+          "digest": "sha256:027fd4f81f3834492101bca29b80e7e9fed89bab29d32e7883f31c44fb08be46",
+          "bytes": 1073,
+          "kind": "argocd-prometheus-metric",
+          "owner": "runtime.application-resource-actions.security.v3-5-2:rbac-allowed-deployment-restart:metric"
+        },
+        "trace": {
+          "path": "evidence/scenarios/runtime/artifacts/runtime.application-resource-actions.security.v3-5-2/rbac-allowed-deployment-restart/trace.json",
+          "digest": "sha256:c9838447f4982ef49f289073b2de5084647b9616421ffcd6fd79915c724fc4b8",
+          "bytes": 603,
+          "kind": "scenario-execution-trace",
+          "owner": "runtime.application-resource-actions.security.v3-5-2:rbac-allowed-deployment-restart:trace"
+        }
+      }
+    }
+  ]
+}

@@ -24,6 +24,7 @@ KINDS = {
     "auto-recovery": "recovery",
     "upgrade-migration": "migration",
     "operations": "recovery",
+    "notifications": "test-report",
     "skill-eval": "skill-eval",
 }
 

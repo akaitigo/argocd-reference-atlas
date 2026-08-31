@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "component": "argocd-application-controller",
+  "surface_id": "application.multi-source",
+  "scenario": "security",
+  "variant_id": "source-order-a-then-b",
+  "app_info": {
+    "sample": "argocd_app_info{autosync_enabled=\"false\",dest_namespace=\"atlas-security-workloads\",dest_server=\"https://kubernetes.default.svc\",health_status=\"Healthy\",name=\"atlas-security-multi-source\",namespace=\"argocd\",operation=\"\",project=\"atlas-security\",repo=\"http://source-server.argocd-atlas-source.svc.cluster.local/repo\",sync_status=\"Synced\"} 1",
+    "labels": {
+      "autosync_enabled": "false",
+      "dest_namespace": "atlas-security-workloads",
+      "dest_server": "https://kubernetes.default.svc",
+      "health_status": "Healthy",
+      "name": "atlas-security-multi-source",
+      "namespace": "argocd",
+      "operation": "",
+      "project": "atlas-security",
+      "repo": "http://source-server.argocd-atlas-source.svc.cluster.local/repo",
+      "sync_status": "Synced"
+    },
+    "value": 1
+  }
+}

@@ -1,0 +1,15 @@
+schema_version: 2
+atlas_id: argocd-reference-atlas
+baseline:
+  path: baselines/main-090ea3a.core-v2.non-regression-baseline.json
+  digest: sha256:10462fde94181e3079a0da2d13cf30250448f0a9c9845fad32090d944f01c3e5
+replacements:
+  - collection: authority_extraction
+    old_id: snapshot
+    new_ids: [snapshot]
+    equivalence: equal-or-stronger
+    reason: >-
+      既存76 edgeと26 Sourceを保持したまま、claim未接続Targetに属していた15 candidate edgeを
+      unclassifiedとして母集団へ復元し、欠落を隠さず人手Authority reviewまで未完了として保持する。
+    execution_proof_evidence_ids: [evidence.upgrade-migration.v3-5-2]
+    migration_evidence_ids: [evidence.upgrade-migration.v3-5-2]

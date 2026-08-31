@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "surface_id": "application.resource-actions",
+  "scenario": "security",
+  "variant_id": "rbac-allowed-deployment-restart",
+  "started_at": "2026-08-30T17:49:43.223216Z",
+  "completed_at": "2026-08-30T17:49:43.700326Z",
+  "attempt": 1,
+  "retries": 0,
+  "actions": [
+    {
+      "action": "invoke-deployment-restart",
+      "subject": "atlas-security-002-allowed",
+      "status": "passed"
+    }
+  ],
+  "result": {
+    "first_attempt": true,
+    "ephemeral_token_leak": false,
+    "rbac_decision": "Yes",
+    "action_exit_code": 0,
+    "restart_annotation_changed": true
+  }
+}

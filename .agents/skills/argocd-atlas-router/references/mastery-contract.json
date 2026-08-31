@@ -1,0 +1,694 @@
+{
+  "schema_version": 1,
+  "atlas_id": "argocd-reference-atlas",
+  "generated_at": "2026-08-28T00:00:00+09:00",
+  "reference": {
+    "repository": "frontend-behavior-atlas",
+    "commit": "8a9e34a89a55cc53702032783c06ede7246a286f",
+    "files": [
+      {
+        "path": ".agents/skills/fe-behavior-advisor/references/mastery-contract.json",
+        "sha256": "f2d6ec5bc979cacaee6a8086654449b739d1b88a36134ea8c72b109baf5f376e"
+      },
+      {
+        "path": ".agents/skills/fe-behavior-advisor/scripts/advisor-router.mjs",
+        "sha256": "993326210fecfafa4843d9c11929cddc5bd93c2c9fac6c85a79b9dcf43120c07"
+      },
+      {
+        "path": "scripts/lib/definitive-skill-eval.ts",
+        "sha256": "8209f3deb47eff03a2f88822a7a2af52dd9a3a3d44b74e88e42e84e2c3d1b5b6"
+      },
+      {
+        "path": "scripts/lib/mastery-contract.ts",
+        "sha256": "cf939059fa698e23c97c0cb8f08ff2289d37f9abca145cb8320a59425c41e363"
+      },
+      {
+        "path": "evals/fe-behavior-advisor.definitive-skill-eval.json",
+        "sha256": "566c9f3cea248f49c24f769c88695b10c15bbdb956c08bcfa68dbe7e96c18d0a"
+      }
+    ]
+  },
+  "generated_from": [
+    "mastery.yaml",
+    "coverage.yaml",
+    "sources.lock.yaml",
+    "claims/*.claim.yaml",
+    "evidence/records/*.evidence.yaml"
+  ],
+  "outcomes": [
+    {
+      "id": "understand",
+      "title": "原理・公開境界・責任分担を説明できる",
+      "target_sets": [
+        "control-loop",
+        "delivery",
+        "security-boundary",
+        "resilience",
+        "platform-surface"
+      ]
+    },
+    {
+      "id": "choose",
+      "title": "条件とRiskから構成・同期・昇格・秘密管理方式を選べる",
+      "target_sets": [
+        "delivery",
+        "security-boundary",
+        "resilience",
+        "platform-surface",
+        "evolution"
+      ]
+    },
+    {
+      "id": "build",
+      "title": "固定Versionから宣言的Delivery経路を構築できる",
+      "target_sets": [
+        "control-loop",
+        "delivery",
+        "security-boundary",
+        "platform-surface"
+      ]
+    },
+    {
+      "id": "verify",
+      "title": "主張を再実行可能な試験とEvidenceで反証可能に検証できる",
+      "target_sets": [
+        "control-loop",
+        "delivery",
+        "security-boundary",
+        "resilience",
+        "platform-surface",
+        "operations",
+        "evolution",
+        "skill"
+      ]
+    },
+    {
+      "id": "operate",
+      "title": "状態を観測し安全な同期・昇格・復旧を運用できる",
+      "target_sets": [
+        "delivery",
+        "resilience",
+        "operations"
+      ]
+    },
+    {
+      "id": "troubleshoot",
+      "title": "差分・Health・依存障害を切り分けて再収束できる",
+      "target_sets": [
+        "control-loop",
+        "delivery",
+        "resilience",
+        "operations"
+      ]
+    },
+    {
+      "id": "evolve",
+      "title": "固定Version境界を守り互換性・移行・廃止を判断できる",
+      "target_sets": [
+        "delivery",
+        "resilience",
+        "evolution"
+      ]
+    },
+    {
+      "id": "delegate",
+      "title": "Agentへ安全に委任しCoverage・権限・EvidenceをReviewできる",
+      "target_sets": [
+        "control-loop",
+        "delivery",
+        "security-boundary",
+        "resilience",
+        "platform-surface",
+        "operations",
+        "evolution",
+        "skill"
+      ]
+    }
+  ],
+  "surfaces": [
+    {
+      "id": "orientation-scope",
+      "title": "定義・目的・対象Version・境界",
+      "applicability": "required",
+      "rationale": "Argo CD本体、GitOps一般、周辺製品、対象外Versionを混同せず正しい入口を選ぶために必要である。",
+      "target_sets": [
+        "control-loop",
+        "delivery",
+        "platform-surface"
+      ],
+      "required_deliverables": [
+        "concept",
+        "decision"
+      ]
+    },
+    {
+      "id": "foundations-mechanics",
+      "title": "Reconciliation原理・状態機械・Invariant",
+      "applicability": "required",
+      "rationale": "Application、Desired/Live、Sync、Diff、Healthが異なる状態を表す理由を説明するために必要である。",
+      "target_sets": [
+        "control-loop",
+        "delivery"
+      ],
+      "required_deliverables": [
+        "concept",
+        "lab"
+      ]
+    },
+    {
+      "id": "architecture-design",
+      "title": "Control plane・信頼境界・Repository設計",
+      "applicability": "required",
+      "rationale": "Cluster、Project、Repository、Promotion、Secretの責任と権限を保守可能な境界へ分解するために必要である。",
+      "target_sets": [
+        "control-loop",
+        "security-boundary",
+        "resilience",
+        "platform-surface"
+      ],
+      "required_deliverables": [
+        "decision",
+        "reference-implementation"
+      ]
+    },
+    {
+      "id": "implementation-construction",
+      "title": "宣言的実装・構築・Bootstrap",
+      "applicability": "required",
+      "rationale": "固定SourceとApplication Manifestから実際の同期経路を構築しObservableな状態へ接続するために必要である。",
+      "target_sets": [
+        "control-loop",
+        "delivery",
+        "platform-surface"
+      ],
+      "required_deliverables": [
+        "reference-implementation",
+        "lab"
+      ]
+    },
+    {
+      "id": "testing-verification",
+      "title": "Contract・挙動・拒否・相互作用の検証",
+      "applicability": "required",
+      "rationale": "正常系だけでなく差分、順序、拒否、障害、復旧の主張を反復可能なOracleで確かめるために必要である。",
+      "target_sets": [
+        "control-loop",
+        "delivery",
+        "security-boundary",
+        "resilience",
+        "platform-surface",
+        "operations",
+        "evolution",
+        "skill"
+      ],
+      "required_deliverables": [
+        "test",
+        "evidence"
+      ]
+    },
+    {
+      "id": "failure-recovery",
+      "title": "障害・診断・Backup・Restore",
+      "applicability": "required",
+      "rationale": "RepositoryとControl planeの障害を安全に注入し、管理状態とWorkloadを壊さず復旧するために必要である。",
+      "target_sets": [
+        "resilience",
+        "operations"
+      ],
+      "required_deliverables": [
+        "failure-catalog",
+        "runbook",
+        "evidence"
+      ]
+    },
+    {
+      "id": "operations-observability",
+      "title": "運用・状態・Metric・Log・Trace",
+      "applicability": "required",
+      "rationale": "Sync、Diff、Health、Queue、依存状態を観測し、運用判断とIncident対応へ結び付けるために必要である。",
+      "target_sets": [
+        "delivery",
+        "resilience",
+        "operations"
+      ],
+      "required_deliverables": [
+        "runbook",
+        "evidence"
+      ]
+    },
+    {
+      "id": "security-privacy-safety",
+      "title": "認証・認可・Secret・Supply chain・安全性",
+      "applicability": "required",
+      "rationale": "Repository資格情報、Project境界、Cluster権限、生成処理、Evidenceからの秘密漏洩と権限昇格を防ぐために必要である。",
+      "target_sets": [
+        "security-boundary",
+        "resilience",
+        "platform-surface"
+      ],
+      "required_deliverables": [
+        "security-review",
+        "test",
+        "evidence"
+      ]
+    },
+    {
+      "id": "performance-capacity-cost",
+      "title": "Reconciliation性能・容量・Cost",
+      "applicability": "required",
+      "rationale": "Application数、Repository構成、Cache、Queue、Shardが遅延・Resource消費・運用Costへ与える影響を判断するために必要である。",
+      "target_sets": [
+        "control-loop",
+        "resilience",
+        "platform-surface",
+        "operations"
+      ],
+      "required_deliverables": [
+        "benchmark",
+        "evidence"
+      ]
+    },
+    {
+      "id": "compatibility-integration",
+      "title": "Kubernetes・Source・API・Extension互換性",
+      "applicability": "required",
+      "rationale": "対応Kubernetes、Manifest generator、API、CLI、ExtensionのVersion差と統合境界を検証するために必要である。",
+      "target_sets": [
+        "control-loop",
+        "delivery",
+        "resilience",
+        "platform-surface",
+        "evolution"
+      ],
+      "required_deliverables": [
+        "test",
+        "evidence"
+      ]
+    },
+    {
+      "id": "migration-evolution-deprecation",
+      "title": "Upgrade・Migration・Deprecation",
+      "applicability": "required",
+      "rationale": "minor更新、削除予定Surface、Manifest差分、BackupとRollback条件を明示して安全に進化させるために必要である。",
+      "target_sets": [
+        "delivery",
+        "resilience",
+        "evolution"
+      ],
+      "required_deliverables": [
+        "migration-guide",
+        "test"
+      ]
+    },
+    {
+      "id": "decision-comparison",
+      "title": "選択・比較・Trade-off",
+      "applicability": "required",
+      "rationale": "Topology、Sync option、Promotion、Secret、Recovery方式を同じ制約とFailure modelで比較するために必要である。",
+      "target_sets": [
+        "control-loop",
+        "delivery",
+        "security-boundary",
+        "resilience",
+        "platform-surface",
+        "operations",
+        "evolution"
+      ],
+      "required_deliverables": [
+        "decision",
+        "benchmark"
+      ]
+    },
+    {
+      "id": "provenance-rights",
+      "title": "一次資料・来歴・権利・SBOM",
+      "applicability": "required",
+      "rationale": "固定Versionの根拠、実装の独自性、第三者依存、再配布可否、生成Evidenceの来歴を追跡するために必要である。",
+      "target_sets": [
+        "control-loop",
+        "delivery",
+        "security-boundary",
+        "resilience",
+        "platform-surface",
+        "operations",
+        "evolution",
+        "skill"
+      ],
+      "required_deliverables": [
+        "provenance-record",
+        "evidence"
+      ]
+    },
+    {
+      "id": "agent-skill",
+      "title": "Router Skill・権限境界・評価",
+      "applicability": "required",
+      "rationale": "AgentがCoverage外を捏造せず、適切な設計、Lab、Evidence、Runbookへ到達して安全に委任を実行するために必要である。",
+      "target_sets": [
+        "control-loop",
+        "delivery",
+        "security-boundary",
+        "resilience",
+        "platform-surface",
+        "operations",
+        "evolution",
+        "skill"
+      ],
+      "required_deliverables": [
+        "skill-reference",
+        "skill-eval"
+      ]
+    }
+  ],
+  "execution_contracts": {
+    "understand": {
+      "mode": "design",
+      "mutation_policy": "read-only",
+      "required_output_fields": [
+        "target",
+        "coverage-state",
+        "authority",
+        "runtime-evidence",
+        "boundary"
+      ]
+    },
+    "choose": {
+      "mode": "design",
+      "mutation_policy": "read-only",
+      "required_output_fields": [
+        "target",
+        "bounded-alternatives",
+        "tradeoffs",
+        "coverage-state",
+        "acceptance-criteria"
+      ]
+    },
+    "build": {
+      "mode": "implementation",
+      "mutation_policy": "explicit-authorization-required",
+      "required_output_fields": [
+        "target",
+        "authorized-change-scope",
+        "lab",
+        "runtime-evidence",
+        "verification"
+      ]
+    },
+    "verify": {
+      "mode": "review",
+      "mutation_policy": "read-only",
+      "required_output_fields": [
+        "target",
+        "oracle",
+        "authority",
+        "runtime-evidence",
+        "coverage-gap"
+      ]
+    },
+    "operate": {
+      "mode": "operations",
+      "mutation_policy": "read-only-unless-mutation-requested",
+      "required_output_fields": [
+        "target",
+        "telemetry",
+        "runbook",
+        "stop-condition",
+        "recovery"
+      ]
+    },
+    "troubleshoot": {
+      "mode": "diagnosis",
+      "mutation_policy": "read-only",
+      "required_output_fields": [
+        "target",
+        "reproduction",
+        "failure-stage",
+        "controller-signal",
+        "recovery-condition"
+      ]
+    },
+    "evolve": {
+      "mode": "migration",
+      "mutation_policy": "explicit-authorization-required",
+      "required_output_fields": [
+        "target",
+        "old-new-mapping",
+        "compatibility",
+        "migration-evidence",
+        "rollback"
+      ]
+    },
+    "delegate": {
+      "mode": "review",
+      "mutation_policy": "explicit-authorization-required",
+      "required_output_fields": [
+        "target",
+        "authorized-change-scope",
+        "acceptance-criteria",
+        "stop-condition",
+        "review"
+      ]
+    }
+  },
+  "target_routes": [
+    {
+      "id": "application.declarative-model",
+      "title": "Application宣言モデル",
+      "target_set": "control-loop",
+      "state": "covered",
+      "query": "ApplicationのSource Destination Sync Policyという宣言境界を確認したい"
+    },
+    {
+      "id": "reconciliation.continuous-loop",
+      "title": "継続的Reconciliation",
+      "target_set": "control-loop",
+      "state": "covered",
+      "query": "Live drift後にApplication controllerが再評価して収束する条件を確認したい"
+    },
+    {
+      "id": "sync.order-and-policy",
+      "title": "Sync順序とPolicy",
+      "target_set": "delivery",
+      "state": "covered",
+      "query": "Sync optionとResource適用順序と失敗停止Policyを確認したい"
+    },
+    {
+      "id": "diff.desired-live-comparison",
+      "title": "DesiredとLiveのDiff",
+      "target_set": "delivery",
+      "state": "covered",
+      "query": "Desired manifestとLive resourceの差分とignore境界を確認したい"
+    },
+    {
+      "id": "health.resource-assessment",
+      "title": "Resource Health評価",
+      "target_set": "delivery",
+      "state": "covered",
+      "query": "Child resourceからApplication Healthを集約する挙動を確認したい"
+    },
+    {
+      "id": "promotion.git-mediated-change",
+      "title": "Gitを介したPromotion",
+      "target_set": "delivery",
+      "state": "covered",
+      "query": "Gitの宣言変更を介した環境Promotionを確認したい"
+    },
+    {
+      "id": "security.secret-boundary",
+      "title": "Secret管理責任の境界",
+      "target_set": "security-boundary",
+      "state": "covered",
+      "query": "Repository Cluster Evidence間でSecret平文を残さない境界を確認したい"
+    },
+    {
+      "id": "failure.degraded-dependency",
+      "title": "Repository依存障害時の安全な劣化",
+      "target_set": "resilience",
+      "state": "partial",
+      "query": "Repository依存停止時のArgo CD劣化と誤成功防止を確認したい"
+    },
+    {
+      "id": "recovery.control-plane-restore",
+      "title": "Control Plane状態の復旧",
+      "target_set": "resilience",
+      "state": "covered",
+      "query": "Application ProjectをBackupからRestoreして再構成する条件を確認したい"
+    },
+    {
+      "id": "architecture.control-plane-components",
+      "title": "Control Plane Component Architecture",
+      "target_set": "platform-surface",
+      "state": "partial",
+      "query": "API Server repo-server Application controllerの責任境界を確認したい"
+    },
+    {
+      "id": "applicationset.generator-templating",
+      "title": "ApplicationSet生成とTemplate",
+      "target_set": "platform-surface",
+      "state": "partial",
+      "query": "ApplicationSet Generator入力とTemplate生成集合を確認したい"
+    },
+    {
+      "id": "connection.repository-cluster-registration",
+      "title": "RepositoryとCluster接続",
+      "target_set": "platform-surface",
+      "state": "partial",
+      "query": "Repository資格情報とCluster接続Secretの登録拒否境界を確認したい"
+    },
+    {
+      "id": "sync.hook-wave-lifecycle",
+      "title": "HookとWaveのLifecycle",
+      "target_set": "delivery",
+      "state": "partial",
+      "query": "Sync Hook Phase Waveと後続停止のLifecycleを確認したい"
+    },
+    {
+      "id": "security.rbac-sso-access-boundary",
+      "title": "RBAC・SSO・Secret access境界",
+      "target_set": "security-boundary",
+      "state": "partial",
+      "query": "Identity Argo CD RBAC ProjectとCredential access拒否を確認したい"
+    },
+    {
+      "id": "availability.high-availability",
+      "title": "High Availability構成",
+      "target_set": "platform-surface",
+      "state": "partial",
+      "query": "Argo CD component replica Redis HAと局所障害継続を確認したい"
+    },
+    {
+      "id": "observability.metrics-logs",
+      "title": "MetricとLogによるObservability",
+      "target_set": "operations",
+      "state": "partial",
+      "query": "Controller repo-server API ServerのMetric LogをApplication状態へ相関したい"
+    },
+    {
+      "id": "drift.tracking-and-refresh",
+      "title": "Drift追跡とRefresh",
+      "target_set": "operations",
+      "state": "partial",
+      "query": "Resource trackingとRefresh抑制と実Driftを区別したい"
+    },
+    {
+      "id": "recovery.automated-resynchronization",
+      "title": "自動再同期とSelf-heal",
+      "target_set": "operations",
+      "state": "partial",
+      "query": "Automated sync prune selfHeal retryの安全条件を確認したい"
+    },
+    {
+      "id": "migration.version-upgrade",
+      "title": "v3.4からv3.5へのUpgradeとMigration",
+      "target_set": "evolution",
+      "state": "partial",
+      "query": "Argo CD v3.4.8からv3.5.2へのBackup Upgrade検証を確認したい"
+    },
+    {
+      "id": "operations.routine-control",
+      "title": "日常運用Control",
+      "target_set": "operations",
+      "state": "partial",
+      "query": "Refresh Sync Wait診断Backupの停止条件を確認したい"
+    },
+    {
+      "id": "skill.router-evaluation",
+      "title": "Router SkillのCoverage連動評価",
+      "target_set": "skill",
+      "state": "partial",
+      "query": "Router SkillのCoverage Evidence権限境界を評価したい"
+    },
+    {
+      "id": "performance.capacity-cost-baseline",
+      "title": "大規模性能・容量・Cost基準",
+      "target_set": "operations",
+      "state": "missing",
+      "query": "Application一万件の性能容量Cost基準を確認したい"
+    },
+    {
+      "id": "compatibility.broad-version-generator-matrix",
+      "title": "Kubernetes・Generator・Plugin広域互換Matrix",
+      "target_set": "evolution",
+      "state": "missing",
+      "query": "複数Kubernetes Versionと全ApplicationSet Generator互換を確認したい"
+    },
+    {
+      "id": "security.external-idp-interactive-sso",
+      "title": "実IdP対話Login・MFA・Group変化",
+      "target_set": "security-boundary",
+      "state": "missing",
+      "query": "実IdP login MFA Group Token lifecycleを確認したい"
+    },
+    {
+      "id": "availability.host-network-rto-rpo",
+      "title": "Host・Node・Network partitionとRTO／RPO",
+      "target_set": "resilience",
+      "state": "missing",
+      "query": "Node喪失Network partition時のRTO RPOを確認したい"
+    },
+    {
+      "id": "migration.multi-version-rollback-matrix",
+      "title": "複数Version Upgrade・Rollback Matrix",
+      "target_set": "evolution",
+      "state": "missing",
+      "query": "複数Argo CD Version間の実Rollback Matrixを確認したい"
+    },
+    {
+      "id": "observability.distributed-trace-incident-capacity",
+      "title": "分散Trace・Incident rehearsal・Capacity統合",
+      "target_set": "operations",
+      "state": "missing",
+      "query": "OTLP Trace Incident SLO Telemetry容量を確認したい"
+    },
+    {
+      "id": "operations.notifications-delivery",
+      "title": "Notification Trigger・Template・Subscription・Delivery",
+      "target_set": "operations",
+      "state": "partial",
+      "query": "Notification controllerの配信再試行回復と秘密保護を確認したい"
+    },
+    {
+      "id": "system.integrated-reference-gitops",
+      "title": "統合Reference GitOps System",
+      "target_set": "platform-surface",
+      "state": "missing",
+      "query": "Repository Cluster Identity Notificationを統合したReference Systemを確認したい"
+    },
+    {
+      "id": "architecture.evidence-backed-comparison",
+      "title": "Evidenceに基づく設計比較",
+      "target_set": "platform-surface",
+      "state": "missing",
+      "query": "HA Sharding方式を同一Runtime条件のEvidenceで比較したい"
+    }
+  ],
+  "coverage_policy": {
+    "verified_states": [
+      "covered"
+    ],
+    "gap_states": [
+      "partial",
+      "missing",
+      "planned",
+      "expired"
+    ],
+    "matrix_pass_is_completion": false,
+    "no_match": "coverage-gap"
+  },
+  "decision_boundaries": {
+    "mutation_without_authorization": "blocked",
+    "authority_semantic_decision": "external-human-decision-required",
+    "stale_source_relock_without_explicit_procedure": "blocked",
+    "ambiguous_or_unknown_query": "coverage-gap"
+  },
+  "stop_conditions": [
+    "coverage-gap",
+    "mastery-routing-gap",
+    "unverified-runtime-evidence",
+    "unauthorized-mutation",
+    "external-human-decision-required",
+    "stale-source-relock-explicit-procedure-required",
+    "source-binding-mismatch",
+    "rights-or-sensitive-data-unclear"
+  ]
+}

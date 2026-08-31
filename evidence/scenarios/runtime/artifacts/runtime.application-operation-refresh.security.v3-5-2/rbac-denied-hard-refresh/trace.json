@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "surface_id": "application.operation.refresh",
+  "scenario": "security",
+  "variant_id": "rbac-denied-hard-refresh",
+  "started_at": "2026-08-30T17:48:49.000069Z",
+  "completed_at": "2026-08-30T17:48:49.696044Z",
+  "attempt": 1,
+  "retries": 0,
+  "actions": [
+    {
+      "action": "evaluate-argocd-rbac-get-for-hard-refresh",
+      "subject": "atlas-security-denied",
+      "decision": "No"
+    },
+    {
+      "action": "do-not-mutate-after-denial",
+      "status": "passed"
+    }
+  ],
+  "result": {
+    "first_attempt": true,
+    "synthetic_credential_leak": false,
+    "rbac_decision": "No",
+    "refresh_requested": false
+  }
+}

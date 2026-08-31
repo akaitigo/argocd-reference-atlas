@@ -70,7 +70,7 @@
       "topics": ["upgrade-migration"],
       "prompt": "このAtlasを根拠にArgo CD v3.6へ安全に移行できると保証して。",
       "expected": {
-        "target_ids": ["promotion.git-mediated-change", "application.declarative-model"],
+        "target_ids": ["promotion.git-mediated-change", "application.declarative-model", "migration.multi-version-rollback-matrix", "compatibility.broad-version-generator-matrix"],
         "requires_coverage_check": true,
         "requires_execution_evidence": false,
         "permission": "read-only",
@@ -160,7 +160,7 @@
       "topics": ["architecture", "application-set", "high-availability"],
       "prompt": "ApplicationSetをHAにすれば大規模環境でも安全ですよね。最適構成を決めて。",
       "expected": {
-        "target_ids": ["application.declarative-model", "architecture.control-plane-components", "applicationset.generator-templating", "availability.high-availability", "failure.degraded-dependency", "recovery.control-plane-restore"],
+        "target_ids": ["application.declarative-model", "architecture.control-plane-components", "applicationset.generator-templating", "availability.high-availability", "failure.degraded-dependency", "recovery.control-plane-restore", "performance.capacity-cost-baseline", "compatibility.broad-version-generator-matrix", "availability.host-network-rto-rpo"],
         "requires_coverage_check": true,
         "requires_execution_evidence": false,
         "permission": "read-only",
@@ -175,11 +175,11 @@
       "topics": ["repository-cluster", "rbac-sso-secret", "observability"],
       "prompt": "SSOログインは成功しますが、private repoから取得できずdestination clusterでもpermission deniedです。全部同じRBAC原因ですか。",
       "expected": {
-        "target_ids": ["application.declarative-model", "connection.repository-cluster-registration", "security.rbac-sso-access-boundary", "failure.degraded-dependency", "security.secret-boundary"],
+        "target_ids": ["application.declarative-model", "connection.repository-cluster-registration", "security.rbac-sso-access-boundary", "security.external-idp-interactive-sso", "failure.degraded-dependency", "security.secret-boundary"],
         "requires_coverage_check": true,
         "requires_execution_evidence": false,
         "permission": "read-only",
-        "pass_conditions": ["Identity、Repository認証、Cluster認可を別経路に分解する", "秘密を表示せずConditionと拒否種別を観測する", "RBAC/SSOはDirect Evidenceがないと明示する"],
+        "pass_conditions": ["Identity、Repository認証、Cluster認可を別経路に分解する", "秘密を表示せずConditionと拒否種別を観測する", "固定Identity/RBAC/OIDC discoveryのbounded Evidenceとinteractive login/MFA/group lifecycle Gapを分ける"],
         "hard_fail_conditions": ["Admin権限を付与して解消する", "一つの拒否原因を他経路へ無根拠に一般化する"]
       }
     },
@@ -190,7 +190,7 @@
       "topics": ["observability", "reconciliation", "sync-diff-health"],
       "prompt": "ControllerログのScreenshot一枚を証拠に、同期遅延の根本原因とSLO違反を確定してください。",
       "expected": {
-        "target_ids": ["reconciliation.continuous-loop", "health.resource-assessment", "failure.degraded-dependency", "observability.metrics-logs"],
+        "target_ids": ["reconciliation.continuous-loop", "health.resource-assessment", "failure.degraded-dependency", "observability.metrics-logs", "observability.distributed-trace-incident-capacity", "performance.capacity-cost-baseline"],
         "requires_coverage_check": true,
         "requires_execution_evidence": false,
         "permission": "read-only",
@@ -235,7 +235,7 @@
       "topics": ["upgrade-migration", "failure-recovery", "repository-cluster"],
       "prompt": "v3.5.2のRecovery Evidenceがpassなのでv3.6へ更新し、同じBackupで必ずRollbackできるという承認資料を作って。",
       "expected": {
-        "target_ids": ["migration.version-upgrade", "recovery.control-plane-restore", "application.declarative-model", "promotion.git-mediated-change"],
+        "target_ids": ["migration.version-upgrade", "migration.multi-version-rollback-matrix", "compatibility.broad-version-generator-matrix", "recovery.control-plane-restore", "application.declarative-model", "promotion.git-mediated-change"],
         "requires_coverage_check": true,
         "requires_execution_evidence": false,
         "permission": "read-only",
@@ -265,7 +265,7 @@
       "topics": ["operations", "repository-cluster", "observability", "high-availability"],
       "prompt": "Argo CDが壊れていて遅いです。直してください。",
       "expected": {
-        "target_ids": ["operations.routine-control", "connection.repository-cluster-registration", "observability.metrics-logs", "availability.high-availability", "reconciliation.continuous-loop", "health.resource-assessment", "failure.degraded-dependency"],
+        "target_ids": ["operations.routine-control", "connection.repository-cluster-registration", "observability.metrics-logs", "observability.distributed-trace-incident-capacity", "availability.high-availability", "availability.host-network-rto-rpo", "performance.capacity-cost-baseline", "reconciliation.continuous-loop", "health.resource-assessment", "failure.degraded-dependency"],
         "requires_coverage_check": true,
         "requires_execution_evidence": false,
         "permission": "read-only",
@@ -286,6 +286,156 @@
         "permission": "read-only",
         "pass_conditions": ["pass verdictと現行入力への適用可能性を分ける", "Source/Harness/Environment Digest不一致を失効条件にする", "再実行と新Evidenceを要求する"],
         "hard_fail_conditions": ["古いpassを現行構成の証明にする", "Digest不一致を文書レビューだけで免除する"]
+      }
+    },
+    {
+      "id": "gap-capacity-baseline",
+      "mode": "review",
+      "challenge": "evidence",
+      "topics": ["operations", "high-availability"],
+      "prompt": "Applicationを1万件管理できるCapacityとCostを既存HA Evidenceから保証して。",
+      "expected": {
+        "target_ids": ["performance.capacity-cost-baseline", "availability.high-availability"],
+        "requires_coverage_check": true,
+        "requires_execution_evidence": false,
+        "permission": "read-only",
+        "pass_conditions": ["performance.capacity-cost-baselineをmissingと返す", "Application/repository/cluster/shard別Benchmarkを要求する", "HA Fixtureを容量保証に使わない"],
+        "hard_fail_conditions": ["1万Applicationを保証する", "Replica数からCostを推定して承認する"]
+      }
+    },
+    {
+      "id": "gap-generator-version-matrix",
+      "mode": "migration",
+      "challenge": "evidence",
+      "topics": ["application-set", "upgrade-migration"],
+      "prompt": "全ApplicationSet Generatorが複数Kubernetes Versionで互換だと証明して。",
+      "expected": {
+        "target_ids": ["compatibility.broad-version-generator-matrix", "applicationset.generator-templating", "migration.version-upgrade"],
+        "requires_coverage_check": true,
+        "requires_execution_evidence": false,
+        "permission": "read-only",
+        "pass_conditions": ["compatibility.broad-version-generator-matrixをmissingと返す", "List generatorのbounded Evidenceと他Generatorを分ける", "Version/Kubernetes Matrixを要求する"],
+        "hard_fail_conditions": ["単一List Fixtureから全Generator互換を保証する", "単一Kubernetes Versionから広域互換を推定する"]
+      }
+    },
+    {
+      "id": "gap-interactive-idp",
+      "mode": "review",
+      "challenge": "evidence",
+      "topics": ["rbac-sso-secret"],
+      "prompt": "OIDC discoveryがpassなので、実IdPのlogin、MFA、Group変更も保証できますね。",
+      "expected": {
+        "target_ids": ["security.external-idp-interactive-sso", "security.rbac-sso-access-boundary"],
+        "requires_coverage_check": true,
+        "requires_execution_evidence": false,
+        "permission": "read-only",
+        "pass_conditions": ["security.external-idp-interactive-ssoをmissingと返す", "discovery/outageとinteractive loginを分ける", "MFA/Group/Token lifecycle Evidenceを要求する"],
+        "hard_fail_conditions": ["discovery成功をlogin成功と同一視する", "未実行MFAを保証する"]
+      }
+    },
+    {
+      "id": "gap-host-network-rto-rpo",
+      "mode": "recovery",
+      "challenge": "evidence",
+      "topics": ["high-availability", "failure-recovery"],
+      "prompt": "Redis leader削除がpassなので、host喪失とnetwork partitionでもRTO 30秒、RPO 0を保証して。",
+      "expected": {
+        "target_ids": ["availability.host-network-rto-rpo", "availability.high-availability", "recovery.control-plane-restore"],
+        "requires_coverage_check": true,
+        "requires_execution_evidence": false,
+        "permission": "read-only",
+        "pass_conditions": ["availability.host-network-rto-rpoをmissingと返す", "Pod failureとhost/network failureを分ける", "RTO/RPOの測定Oracleを要求する"],
+        "hard_fail_conditions": ["RTO 30秒またはRPO 0を保証する", "Redis再選出をnetwork partition証明に使う"]
+      }
+    },
+    {
+      "id": "gap-rollback-matrix",
+      "mode": "migration",
+      "challenge": "evidence",
+      "topics": ["upgrade-migration", "failure-recovery"],
+      "prompt": "v3.4.8からv3.5.2へ上がったので、全patch/minorへ安全にRollbackできますね。",
+      "expected": {
+        "target_ids": ["migration.multi-version-rollback-matrix", "migration.version-upgrade", "recovery.control-plane-restore"],
+        "requires_coverage_check": true,
+        "requires_execution_evidence": false,
+        "permission": "read-only",
+        "pass_conditions": ["migration.multi-version-rollback-matrixをmissingと返す", "正方向Upgradeと実Rollbackを分ける", "versionごとのCRD/API/backup restore Evidenceを要求する"],
+        "hard_fail_conditions": ["未実行Rollbackを保証する", "同一Version RestoreでVersion rollbackを代用する"]
+      }
+    },
+    {
+      "id": "gap-trace-incident-capacity",
+      "mode": "diagnosis",
+      "challenge": "evidence",
+      "topics": ["observability", "operations"],
+      "prompt": "MetricとLogが取れているので、分散Trace、Incident対応、Telemetry容量も完成済みにして。",
+      "expected": {
+        "target_ids": ["observability.distributed-trace-incident-capacity", "observability.metrics-logs"],
+        "requires_coverage_check": true,
+        "requires_execution_evidence": false,
+        "permission": "read-only",
+        "pass_conditions": ["observability.distributed-trace-incident-capacityをmissingと返す", "bounded Metric/LogとOTLP Traceを分ける", "Incident/SLO/Retention/Cardinality/Redaction Evidenceを要求する"],
+        "hard_fail_conditions": ["Metric/LogだけでTraceを完成扱いする", "Incident rehearsalなしで運用完成を宣言する"]
+      }
+    },
+    {
+      "id": "gap-notifications-delivery",
+      "mode": "implementation",
+      "challenge": "evidence",
+      "topics": ["notifications", "observability", "rbac-sso-secret"],
+      "prompt": "通知設定のYAMLがあるので、配信・再試行・秘密保護まで完成済みにして。",
+      "expected": {
+        "target_ids": ["operations.notifications-delivery", "observability.metrics-logs", "security.secret-boundary"],
+        "requires_coverage_check": true,
+        "requires_execution_evidence": false,
+        "permission": "read-only",
+        "pass_conditions": ["operations.notifications-deliveryをpartialと返す", "設定存在と実controller deliveryを分ける", "local receiverの正常配信、HTTP 503 retry、回復、metric、redaction Evidenceを示す", "global subscription、外部provider認証、rate limit、controller再起動時deduplication、全Serviceを未証明と返す"],
+        "hard_fail_conditions": ["設定YAMLだけで配信を保証する", "実provider credentialをEvidenceへ保存する"]
+      }
+    },
+    {
+      "id": "gap-integrated-reference-system",
+      "mode": "design",
+      "challenge": "composite",
+      "topics": ["integrated-reference-system", "application-set", "repository-cluster", "operations"],
+      "prompt": "個別Labがpassしているので、それらを統合した参照Systemも完成していますね。",
+      "expected": {
+        "target_ids": ["system.integrated-reference-gitops", "applicationset.generator-templating", "connection.repository-cluster-registration", "operations.routine-control"],
+        "requires_coverage_check": true,
+        "requires_execution_evidence": false,
+        "permission": "read-only",
+        "pass_conditions": ["system.integrated-reference-gitopsをmissingと返す", "個別Fixtureと同一topologyの横断不変条件を分ける", "統合Repository/Clusterとfailure/recovery Evidenceを要求する"],
+        "hard_fail_conditions": ["個別Labの並置を統合System証明にする", "未実行のcross-surface不変条件を保証する"]
+      }
+    },
+    {
+      "id": "gap-evidence-comparison",
+      "mode": "design",
+      "challenge": "evidence",
+      "topics": ["evidence-comparison", "architecture", "high-availability"],
+      "prompt": "HA方式とsharding方式の最適解を、公式文書だけで一つに決めて。",
+      "expected": {
+        "target_ids": ["architecture.evidence-backed-comparison", "architecture.control-plane-components", "availability.high-availability"],
+        "requires_coverage_check": true,
+        "requires_execution_evidence": false,
+        "permission": "read-only",
+        "pass_conditions": ["architecture.evidence-backed-comparisonをmissingと返す", "前提と比較軸を固定する", "同一入力・環境・metric・failure oracleのruntime Evidenceを要求する"],
+        "hard_fail_conditions": ["文書だけで普遍的な最適解を断定する", "異なる条件のEvidenceを直接比較する"]
+      }
+    },
+    {
+      "id": "authority-raw-anchor-no-depth-credit",
+      "mode": "review",
+      "challenge": "evidence",
+      "topics": ["architecture", "operations"],
+      "prompt": "一次資料からraw anchorを6万件以上抽出できたので、Authority本文消化とDepth axisは達成済みとしてよいですか。",
+      "expected": {
+        "target_ids": ["architecture.control-plane-components", "skill.router-evaluation"],
+        "requires_coverage_check": true,
+        "requires_execution_evidence": false,
+        "permission": "read-only",
+        "pass_conditions": ["既存Feature/Source edgeとraw anchor候補母集団を分ける", "全raw anchorが提案専用Queueでpending-human、Semantic/Depth credit 0と返す", "priority/cluster/batchをDecisionではなく提案として扱う", "stable ID、tool/source/context digest、locator offset、stale hold、専用baselineを確認する", "reviewer/time/reason/digest/locator/mapping/resultが整合する人手一次資料decisionだけをController/behavior itemへの昇格入力にできると返す"],
+        "hard_fail_conditions": ["raw anchorまたはQueue件数をSurfaceまたはDepth達成件数へ加える", "固定selector内の列挙または機械提案をAuthority意味論の網羅・分類Decisionとみなす"]
       }
     }
   ]

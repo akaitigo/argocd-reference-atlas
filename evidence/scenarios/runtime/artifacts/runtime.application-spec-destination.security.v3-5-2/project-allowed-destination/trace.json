@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "surface_id": "application.spec.destination",
+  "scenario": "security",
+  "variant_id": "project-allowed-destination",
+  "started_at": "2026-08-30T17:49:34.043926Z",
+  "completed_at": "2026-08-30T17:49:35.953539Z",
+  "attempt": 1,
+  "retries": 0,
+  "actions": [
+    {
+      "action": "allow-project-destination",
+      "status": "passed"
+    },
+    {
+      "action": "sync-through-argocd-api",
+      "status": "passed"
+    }
+  ],
+  "result": {
+    "first_attempt": true,
+    "ephemeral_token_leak": false,
+    "project_destination_allowed": true,
+    "invalid_spec_error": false,
+    "destination_configmap_present": true
+  }
+}

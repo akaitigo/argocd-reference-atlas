@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "id": "argocd-scenario-proof-closure-v1-non-regression",
+  "atlas_id": "argocd-reference-atlas",
+  "source_commit": "9fae2601a019c84bb2af9f7b00621c16a21468bd",
+  "proof_count": 1000,
+  "proof_id_set_digest": "sha256:3feb3d263f6aa5383b6529ff39fe8cf643e0b98e816daaba965018a1a9373bc5",
+  "proof_path_set_digest": "sha256:ee9b8c346ddc8174e87eb755584c50e4236c57ce10e6344b7d1a85d09468d7fa",
+  "supporting_evidence_floor": {
+    "supporting_runtime_artifacts": 20,
+    "supporting_artifacts_total": 176
+  },
+  "rules": [
+    "既存1,000 Proof IDとpathを削除または粗く集約しない。",
+    "既存Supporting Evidenceを専用Runtime Closureへ流用せず保持する。",
+    "ID置換時は旧IDから新IDへのMapping、同等以上の実行Proof、Migration Evidence、理由を別Ledgerへ記録する。"
+  ]
+}

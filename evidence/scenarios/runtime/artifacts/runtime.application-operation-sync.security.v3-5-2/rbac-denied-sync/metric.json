@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "component": "argocd-application-controller",
+  "surface_id": "application.operation.sync",
+  "scenario": "security",
+  "variant_id": "rbac-denied-sync",
+  "app_info": {
+    "sample": "argocd_app_info{autosync_enabled=\"false\",dest_namespace=\"atlas-security-workloads\",dest_server=\"https://kubernetes.default.svc\",health_status=\"Healthy\",name=\"atlas-security-operations\",namespace=\"argocd\",operation=\"\",project=\"atlas-security\",repo=\"http://source-server.argocd-atlas-source.svc.cluster.local/repo\",sync_status=\"OutOfSync\"} 1",
+    "labels": {
+      "autosync_enabled": "false",
+      "dest_namespace": "atlas-security-workloads",
+      "dest_server": "https://kubernetes.default.svc",
+      "health_status": "Healthy",
+      "name": "atlas-security-operations",
+      "namespace": "argocd",
+      "operation": "",
+      "project": "atlas-security",
+      "repo": "http://source-server.argocd-atlas-source.svc.cluster.local/repo",
+      "sync_status": "OutOfSync"
+    },
+    "value": 1
+  }
+}

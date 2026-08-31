@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "source_id": "argocd-upgrade-3-4-to-3-5",
+  "source_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/operator-manual/upgrading/3.4-3.5.md",
+  "locked_source_digest": "sha256:83fb83cd9d56aeebc280f86ae3119b6248e71bcc9292e20f8a5b4ea5d7aa532c",
+  "fetch": {
+    "status": "matched",
+    "observed_digest": "sha256:83fb83cd9d56aeebc280f86ae3119b6248e71bcc9292e20f8a5b4ea5d7aa532c",
+    "locked_digest_match": true,
+    "observed_bytes": 14924,
+    "content_type": "text/markdown; charset=utf-8",
+    "error_digest": null
+  },
+  "extraction": {
+    "method": "locked-body-file-locator-digest",
+    "tool": "argocd-reference-atlas-authority-locator-v1",
+    "review_status": "automated-unreviewed",
+    "body_storage": "metadata-digest-locator-offset-only"
+  },
+  "document_locator": {
+    "locator": "document-root",
+    "locator_kind": "file-root",
+    "locator_status": "root-document",
+    "context_digest": "sha256:83fb83cd9d56aeebc280f86ae3119b6248e71bcc9292e20f8a5b4ea5d7aa532c",
+    "context_start": 0,
+    "context_end": 14924,
+    "context_unit": "byte"
+  },
+  "candidate_surfaces": [
+    {
+      "edge_id": "edge.migration.preflight-backup.argocd-upgrade-3-4-to-3-5",
+      "source_id": "argocd-upgrade-3-4-to-3-5",
+      "inventory_item_id": "migration.preflight-backup",
+      "area": "migration",
+      "target_id": "migration.version-upgrade",
+      "locator": "docs/operator-manual/upgrading/3.4-3.5.md",
+      "locator_status": "file-found",
+      "context_digest": "sha256:83fb83cd9d56aeebc280f86ae3119b6248e71bcc9292e20f8a5b4ea5d7aa532c",
+      "context_start": 0,
+      "context_end": 14924,
+      "context_unit": "byte",
+      "heading_digest": null,
+      "classification_basis": "domain-inventory-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:52f6656979a44ded2ad0bd5a1d7f6945a691a6207ab2a49e9a79012850eace80",
+      "classification": "candidate-included-unreviewed"
+    }
+  ]
+}

@@ -9,7 +9,7 @@ repository:
   default_branch: main
 archetypes: [product]
 stage: 1
-status: complete
+status: incomplete
 language:
   primary: ja
   identifiers: en
@@ -23,12 +23,10 @@ mastery:
   manifest: mastery.yaml
   contract_version: 1.0.0
 scope:
-  statement: Argo CD v3.5.2のArchitecture、ApplicationとApplicationSet、接続、Reconciliation、Sync、Diff、Health、Promotion、認証認可とSecret boundary、HA、Observability、Drift、自動復旧、Failure、Recovery、Upgrade、Operations、Router Skillを、ローカル専用環境で再実行可能なClaimとEvidenceとして検証する。
+  statement: Argo CD v3.5.2のArchitecture、ApplicationとApplicationSet全Generator、Project、Repository／Cluster接続、Reconciliation、Sync／Wave／Hook、Diff、Health、multi-source、Config Management、Promotion、認証認可とSecret boundary、HA／Shard／Cache、Notifications、Observability、Performance、Drift、Failure／Recovery、Upgrade／Rollback、Version互換、統合Reference System、Evidence比較、Router Skillを、ローカル専用環境で再実行可能なClaimとEvidenceとして検証する。
   exclusions:
     - GitOps一般、Kubernetes自体、外部Secret製品、CI製品の包括的な機能比較
     - 公開Cloudまたは第三者が管理するKubernetesクラスタに対する障害注入
-    - Argo CD v3.5.2以外のVersionについて同一結果や互換性を保証すること
-    - 大規模性能・Cost、広域互換Matrix、実IdP、独立Host／Network障害、全Version Rollback Matrixを保証すること
 skills:
   router:
     id: argocd-atlas-router
@@ -36,9 +34,13 @@ skills:
   package_manifest: skill.package.yaml
   evals: evals/
 completion:
-  policy_version: 1.0.0
+  policy_version: 2.0.0
   required_profiles: [local, container, cluster]
+  # Core v1 schemaが要求する将来のactive certificate配置先。status=incompleteの間は存在させない。
   certificate: evidence/completion-certificate.json
+  definitive:
+    manifest: definitive.yaml
+    contract_version: 2.0.0
 license:
   default: Apache-2.0
   notice: NOTICE

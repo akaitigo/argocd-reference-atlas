@@ -121,9 +121,13 @@ def validate() -> None:
     actual_evidence = evidence_ids()
 
     mapped_targets = {scalar(item.get("coverage_target_id", "")) for item in capabilities.values()}
-    covered_targets = {target_id for target_id, item in targets.items() if scalar(item.get("state", "")) == "covered"}
-    if covered_targets != mapped_targets:
-        fail(f"covered Target/Capability対応が一致しません: targets={sorted(covered_targets)}, mapped={sorted(mapped_targets)}")
+    implemented_targets = {
+        target_id
+        for target_id, item in targets.items()
+        if scalar(item.get("state", "")) in {"covered", "partial"}
+    }
+    if implemented_targets != mapped_targets:
+        fail(f"implemented Target/Capability対応が一致しません: targets={sorted(implemented_targets)}, mapped={sorted(mapped_targets)}")
 
     for capability_id, capability in capabilities.items():
         target_id = scalar(capability.get("coverage_target_id", ""))

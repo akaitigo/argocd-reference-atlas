@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "surface_id": "application.multi-source",
+  "scenario": "security",
+  "variant_id": "source-order-b-then-a",
+  "started_at": "2026-08-30T17:48:47.940108Z",
+  "completed_at": "2026-08-30T17:48:48.602952Z",
+  "attempt": 1,
+  "retries": 0,
+  "actions": [
+    {
+      "action": "reverse-multi-source-order",
+      "status": "passed"
+    },
+    {
+      "action": "sync-source-order-b-then-a",
+      "status": "passed"
+    },
+    {
+      "action": "verify-no-credential-leak",
+      "status": "passed"
+    }
+  ],
+  "result": {
+    "first_attempt": true,
+    "synthetic_credential_leak": false,
+    "selected_source": "source-a",
+    "both_unique_resources_present": true
+  }
+}

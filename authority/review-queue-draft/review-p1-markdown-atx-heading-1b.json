@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "queue_id": "authority-review-4899835d8716e9eb45f6",
+  "batch_id": "review-p1-markdown-atx-heading-1b",
+  "status": "pending-human",
+  "machine_assistance": "priority-cluster-and-batch-proposals-only",
+  "semantic_decisions": "none",
+  "items": [
+    {
+      "anchor_id": "anchor-1c494ef0441d480f79ef",
+      "document_id": "document-argocd-resource-tracking",
+      "document_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/user-guide/resource_tracking.md",
+      "source_ids": [
+        "argocd-resource-tracking"
+      ],
+      "locked_source_digest": "sha256:eb1aed4af06710dc2ca7401a9322c909dce6b55b2d1b300b174fb98daaf6cb4a",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "line:1",
+      "locator_kind": "locked-body-offset",
+      "raw_selector": "markdown-atx-heading-line",
+      "element_name": "line",
+      "parent_anchor_id": "anchor-110cc814bb4f7995ad2e",
+      "context_start": 0,
+      "context_end": 20,
+      "context_unit": "byte",
+      "context_digest": "sha256:945d5df496a64406870a07664fcbdc0dae66ce2ff25afa3887600ed40b593c25",
+      "label_digest": "sha256:6857a0db199635721d866e8a93a11343b40903b20e65260e784bcd88c0b67cb1",
+      "existing_mapping_candidate_ids": [],
+      "priority": 1,
+      "priority_reasons": [
+        "semantic-label-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p1-markdown-atx-heading-1b",
+      "state": "pending-human"
+    }
+  ]
+}

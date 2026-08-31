@@ -1,0 +1,431 @@
+{
+  "schema_version": 1,
+  "id": "proof.behavior.application.resource-actions.security",
+  "atlas_id": "argocd-reference-atlas",
+  "generated_at": "2026-08-28T00:00:00+09:00",
+  "behavior_scope": "current-surface-not-human-reviewed-authority-atomic",
+  "behavior_id": "application.resource-actions",
+  "pattern_id": "application.resource-actions",
+  "area": "application",
+  "kind": "cli-api",
+  "target_id": "operations.routine-control",
+  "target_set": "operations",
+  "source_bindings": [],
+  "surface_state": "missing",
+  "scenario": "security",
+  "attempts": 1,
+  "status": "scenario-gap-open",
+  "supporting_evidence_assessment": {
+    "status": "no-supporting-artifact",
+    "closure_credit": false,
+    "reason": "既存Lab Artifactは専用Surface×Scenario×全Variant Runtime reportではないためClosureへ算入しない。"
+  },
+  "authority_binding": {
+    "status": "locked-source-candidate",
+    "source_id": "argocd-source-tree",
+    "source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+    "candidate_locator": "cmd/argocd/commands/app_actions.go",
+    "locator_scope": "locked-argocd-source-tree-candidate",
+    "authority_gap": "人手Review DecisionがなくSource locator候補からAtomic behaviorへ昇格していない。",
+    "review_decision_id": null,
+    "human_reviewed": false,
+    "authority_atomic_binding": false
+  },
+  "controller_kubernetes_behavior": {
+    "expected_argocd_components": [
+      "argocd-application-controller",
+      "argocd-repo-server"
+    ],
+    "observed_argocd_components": [],
+    "component_identity_status": "explicit-gap",
+    "component_identity_complete": false,
+    "component_identity_gap": "期待する全Argo CD component identityをBehavior固有Artifactから確認できない。",
+    "kubernetes_behavior": "application-custom-resource-reconciliation"
+  },
+  "runtime_identity": {
+    "status": "explicit-gap",
+    "argocd_versions": [],
+    "kubernetes_api_server_versions": [],
+    "kubernetes_kubelet_versions": [],
+    "profiles": [],
+    "artifact_evidence_ids": [],
+    "gap": "Behavior固有Runtime ArtifactがなくArgo CD／Kubernetes version identityを確定できない。"
+  },
+  "runtime_identities": [],
+  "evidence_bindings": [],
+  "observations": {
+    "resource_state": {
+      "status": "explicit-gap",
+      "artifact_kind": null,
+      "artifacts": [],
+      "gap": "Behavior固有resource state Artifactがない。"
+    },
+    "controller_log": {
+      "status": "explicit-gap",
+      "artifact_kind": null,
+      "artifacts": [],
+      "gap": "Behavior固有controller log Artifactがない。"
+    },
+    "metric": {
+      "status": "explicit-gap",
+      "artifact_kind": null,
+      "artifacts": [],
+      "gap": "Behavior固有metric Artifactがない。"
+    },
+    "trace": {
+      "status": "explicit-gap",
+      "artifact_kind": null,
+      "artifacts": [],
+      "gap": "Behavior固有trace Artifactがない。OTLP traceは別Gapとして未Closure。"
+    }
+  },
+  "observation_role": "supporting-historical-not-scenario-gap-closure",
+  "scenario_gap_closure": {
+    "status": "open",
+    "scenario_gap_closed": false,
+    "dedicated_runtime_execution_complete": true,
+    "variant_contract": {
+      "source": {
+        "path": "definitive/scenario-variant-contract.yaml",
+        "digest": "sha256:b2c76378113d3145a77d019d5f490e333a554188773501e68de6ac685cc583dd",
+        "bytes": 6097
+      },
+      "status": "runtime-declared-pending-authority-human-review",
+      "expected_variant_ids": [
+        "rbac-denied-deployment-restart",
+        "rbac-allowed-deployment-restart"
+      ],
+      "exhaustive": false,
+      "gap": "Authority人手Review済みの非空かつexhaustiveなSurface Variant分母がない。"
+    },
+    "dedicated_runtime_report": {
+      "path": "evidence/scenarios/runtime/reports/runtime.application-resource-actions.security.v3-5-2.json",
+      "digest": "sha256:977702ff27370fd03c9cef157df900325b01254d4b38152d7834169c7e5c6184",
+      "bytes": 9280
+    },
+    "dedicated_runtime_record_ids": [
+      "runtime.application-resource-actions.security.v3-5-2:rbac-denied-deployment-restart",
+      "runtime.application-resource-actions.security.v3-5-2:rbac-allowed-deployment-restart"
+    ],
+    "source_bindings": [
+      {
+        "variant_id": "rbac-denied-deployment-restart",
+        "source": {
+          "path": "fixtures/scenarios/security-002/resource-actions/deployment.yaml",
+          "digest": "sha256:f015e37a561f07046a23defd25f0bfef9597584f0100c7468c567ef95680fd03",
+          "bytes": 483,
+          "owner": "runtime.application-resource-actions.security.v3-5-2:rbac-denied-deployment-restart:source"
+        }
+      },
+      {
+        "variant_id": "rbac-allowed-deployment-restart",
+        "source": {
+          "path": "fixtures/scenarios/security-002/resource-actions/deployment.yaml",
+          "digest": "sha256:f015e37a561f07046a23defd25f0bfef9597584f0100c7468c567ef95680fd03",
+          "bytes": 483,
+          "owner": "runtime.application-resource-actions.security.v3-5-2:rbac-allowed-deployment-restart:source"
+        }
+      }
+    ],
+    "harness_bindings": [
+      {
+        "variant_id": "rbac-denied-deployment-restart",
+        "harness": {
+          "path": "scripts/scenarios/run_security_002.py",
+          "digest": "sha256:e53994287aecb715adbdfeb22f2f5e7ecc4fe7b54af50beedd6c0594929ec0f1",
+          "bytes": 35856,
+          "owner": "runtime.application-resource-actions.security.v3-5-2:rbac-denied-deployment-restart:harness"
+        }
+      },
+      {
+        "variant_id": "rbac-allowed-deployment-restart",
+        "harness": {
+          "path": "scripts/scenarios/run_security_002.py",
+          "digest": "sha256:e53994287aecb715adbdfeb22f2f5e7ecc4fe7b54af50beedd6c0594929ec0f1",
+          "bytes": 35856,
+          "owner": "runtime.application-resource-actions.security.v3-5-2:rbac-allowed-deployment-restart:harness"
+        }
+      }
+    ],
+    "runtime_identity": {
+      "profile": "cluster",
+      "real_argocd_kubernetes_runtime": true,
+      "cluster_name": "argocd-atlas-v3-5-2",
+      "kubernetes_context": "kind-argocd-atlas-v3-5-2",
+      "argocd_version": "3.5.2",
+      "kubernetes_api_server_version": "v1.34.0",
+      "kubernetes_kubelet_version": "v1.34.0",
+      "cluster_uid": "00b2b62c-ba60-4520-b48e-fa9e550c859d",
+      "topology_digest": "sha256:f27cd86ff879333619bd84e57f310afb261727da44dd06ae2c5e931d6f74dd9e",
+      "observed_argocd_components": [
+        "argocd-application-controller",
+        "argocd-repo-server"
+      ]
+    },
+    "oracle_records": [
+      {
+        "variant_id": "rbac-denied-deployment-restart",
+        "oracle": {
+          "status": "pass",
+          "assertions": [
+            {
+              "channel": "resource_state",
+              "pointer": "/security/secret_scan_hits",
+              "operator": "equals",
+              "expected": 0
+            },
+            {
+              "channel": "controller_log",
+              "pointer": "/entries/0/application",
+              "operator": "equals",
+              "expected": "atlas-security-002-action"
+            },
+            {
+              "channel": "metric",
+              "pointer": "/app_info/labels/name",
+              "operator": "equals",
+              "expected": "atlas-security-002-action"
+            },
+            {
+              "channel": "trace",
+              "pointer": "/result/first_attempt",
+              "operator": "equals",
+              "expected": true
+            },
+            {
+              "channel": "resource_state",
+              "pointer": "/rbac/decision",
+              "operator": "equals",
+              "expected": "No"
+            },
+            {
+              "channel": "resource_state",
+              "pointer": "/observation/restart_annotation_changed",
+              "operator": "equals",
+              "expected": false
+            }
+          ]
+        }
+      },
+      {
+        "variant_id": "rbac-allowed-deployment-restart",
+        "oracle": {
+          "status": "pass",
+          "assertions": [
+            {
+              "channel": "resource_state",
+              "pointer": "/security/secret_scan_hits",
+              "operator": "equals",
+              "expected": 0
+            },
+            {
+              "channel": "controller_log",
+              "pointer": "/entries/0/application",
+              "operator": "equals",
+              "expected": "atlas-security-002-action"
+            },
+            {
+              "channel": "metric",
+              "pointer": "/app_info/labels/name",
+              "operator": "equals",
+              "expected": "atlas-security-002-action"
+            },
+            {
+              "channel": "trace",
+              "pointer": "/result/first_attempt",
+              "operator": "equals",
+              "expected": true
+            },
+            {
+              "channel": "resource_state",
+              "pointer": "/rbac/decision",
+              "operator": "equals",
+              "expected": "Yes"
+            },
+            {
+              "channel": "resource_state",
+              "pointer": "/observation/restart_annotation_changed",
+              "operator": "equals",
+              "expected": true
+            }
+          ]
+        }
+      }
+    ],
+    "artifacts": {
+      "resource_state": {
+        "status": "artifact",
+        "artifacts": [
+          {
+            "variant_id": "rbac-denied-deployment-restart",
+            "artifact": {
+              "path": "evidence/scenarios/runtime/artifacts/runtime.application-resource-actions.security.v3-5-2/rbac-denied-deployment-restart/resource_state.json",
+              "digest": "sha256:44f27d1caf39e2b98491c5b81c4120daca593ab3cf50fd28dcbf8d36c77e6a13",
+              "bytes": 15879,
+              "kind": "kubernetes-resource-state",
+              "owner": "runtime.application-resource-actions.security.v3-5-2:rbac-denied-deployment-restart:resource_state"
+            }
+          },
+          {
+            "variant_id": "rbac-allowed-deployment-restart",
+            "artifact": {
+              "path": "evidence/scenarios/runtime/artifacts/runtime.application-resource-actions.security.v3-5-2/rbac-allowed-deployment-restart/resource_state.json",
+              "digest": "sha256:91774e43a76f45e954fd6235e12c834107fa755c0414b06ccc47699e394bb7a1",
+              "bytes": 16007,
+              "kind": "kubernetes-resource-state",
+              "owner": "runtime.application-resource-actions.security.v3-5-2:rbac-allowed-deployment-restart:resource_state"
+            }
+          }
+        ],
+        "gap": null
+      },
+      "controller_log": {
+        "status": "artifact",
+        "artifacts": [
+          {
+            "variant_id": "rbac-denied-deployment-restart",
+            "artifact": {
+              "path": "evidence/scenarios/runtime/artifacts/runtime.application-resource-actions.security.v3-5-2/rbac-denied-deployment-restart/controller_log.json",
+              "digest": "sha256:075df7cbea7ba5b200f146ac902e51860d18f5039cfc0f5e26ed1e7e0c946010",
+              "bytes": 144463,
+              "kind": "argocd-controller-log",
+              "owner": "runtime.application-resource-actions.security.v3-5-2:rbac-denied-deployment-restart:controller_log"
+            }
+          },
+          {
+            "variant_id": "rbac-allowed-deployment-restart",
+            "artifact": {
+              "path": "evidence/scenarios/runtime/artifacts/runtime.application-resource-actions.security.v3-5-2/rbac-allowed-deployment-restart/controller_log.json",
+              "digest": "sha256:64fd6907873e1bb590bd056dae2b33e5883aaa73f5a44ab03ef40c8f05c7a145",
+              "bytes": 151033,
+              "kind": "argocd-controller-log",
+              "owner": "runtime.application-resource-actions.security.v3-5-2:rbac-allowed-deployment-restart:controller_log"
+            }
+          }
+        ],
+        "gap": null
+      },
+      "metric": {
+        "status": "artifact",
+        "artifacts": [
+          {
+            "variant_id": "rbac-denied-deployment-restart",
+            "artifact": {
+              "path": "evidence/scenarios/runtime/artifacts/runtime.application-resource-actions.security.v3-5-2/rbac-denied-deployment-restart/metric.json",
+              "digest": "sha256:29f7e8d1241789f7ddceb534e82b2f3c6166a6188b528caf074f067ff5f6d6ea",
+              "bytes": 1064,
+              "kind": "argocd-prometheus-metric",
+              "owner": "runtime.application-resource-actions.security.v3-5-2:rbac-denied-deployment-restart:metric"
+            }
+          },
+          {
+            "variant_id": "rbac-allowed-deployment-restart",
+            "artifact": {
+              "path": "evidence/scenarios/runtime/artifacts/runtime.application-resource-actions.security.v3-5-2/rbac-allowed-deployment-restart/metric.json",
+              "digest": "sha256:027fd4f81f3834492101bca29b80e7e9fed89bab29d32e7883f31c44fb08be46",
+              "bytes": 1073,
+              "kind": "argocd-prometheus-metric",
+              "owner": "runtime.application-resource-actions.security.v3-5-2:rbac-allowed-deployment-restart:metric"
+            }
+          }
+        ],
+        "gap": null
+      },
+      "trace": {
+        "status": "artifact",
+        "artifacts": [
+          {
+            "variant_id": "rbac-denied-deployment-restart",
+            "artifact": {
+              "path": "evidence/scenarios/runtime/artifacts/runtime.application-resource-actions.security.v3-5-2/rbac-denied-deployment-restart/trace.json",
+              "digest": "sha256:6cd02f1c34ee3f1f3e6544aa92d0e84412f31db70d7b870db60ca153e362f2ff",
+              "bytes": 633,
+              "kind": "scenario-execution-trace",
+              "owner": "runtime.application-resource-actions.security.v3-5-2:rbac-denied-deployment-restart:trace"
+            }
+          },
+          {
+            "variant_id": "rbac-allowed-deployment-restart",
+            "artifact": {
+              "path": "evidence/scenarios/runtime/artifacts/runtime.application-resource-actions.security.v3-5-2/rbac-allowed-deployment-restart/trace.json",
+              "digest": "sha256:c9838447f4982ef49f289073b2de5084647b9616421ffcd6fd79915c724fc4b8",
+              "bytes": 603,
+              "kind": "scenario-execution-trace",
+              "owner": "runtime.application-resource-actions.security.v3-5-2:rbac-allowed-deployment-restart:trace"
+            }
+          }
+        ],
+        "gap": null
+      }
+    },
+    "conditions": {
+      "variant_denominator_exhaustive": false,
+      "exact_surface_scenario_scope": true,
+      "all_variants_driven": true,
+      "real_argocd_kubernetes_runtime": true,
+      "retry_zero": true,
+      "first_attempt_pass": true,
+      "oracle_pass": true,
+      "source_digest_bound": true,
+      "harness_digest_bound": true,
+      "runtime_identity_complete": true,
+      "per_variant_resource_state_artifact": true,
+      "per_variant_controller_log_artifact": true,
+      "per_variant_metric_artifact": true,
+      "per_variant_trace_artifact": true,
+      "artifact_paths_dedicated_and_distinct": true,
+      "integrated_or_other_metadata_reuse_absent": true
+    },
+    "failed_conditions": [
+      "variant_denominator_exhaustive"
+    ],
+    "closure_evidence_source": "dedicated-surface-scenario-runtime-registry-only",
+    "prohibited_substitutions": [
+      "integrated-reference-result",
+      "historical-bundle-evidence",
+      "other-surface-scenario-variant-artifact-metadata",
+      "mock-or-static-runtime"
+    ]
+  },
+  "integrated_reference": {
+    "manifest": {
+      "path": "integrations/reference-system/manifest.yaml",
+      "digest": "sha256:ca3e64e1255d4f81d68102aea59fa07009416b499fa16b16633c6e2ddaeddab0",
+      "bytes": 5536
+    },
+    "result": {
+      "path": "evidence/reference-system/results.json",
+      "digest": "sha256:460eea63270e47cb4dd47c59f96713145c8b5b00fb0a336bd82ccff60d737c35",
+      "bytes": 125588
+    },
+    "scenario_row_id": "reference.scenario.security",
+    "outcome": "bounded-evidence-audit",
+    "attempts": 1,
+    "final_status": "evaluated",
+    "runtime_attempts": 0,
+    "scenario_evaluated": true,
+    "single_topology_execution": false,
+    "used_as_behavior_specific_evidence": false
+  },
+  "closure": {
+    "dedicated_row": true,
+    "dedicated_artifact": true,
+    "supporting_behavior_specific_evidence": false,
+    "supporting_real_kubernetes_runtime": false,
+    "supporting_runtime_identity_complete": false,
+    "scenario_gap_closed": false,
+    "dedicated_runtime_execution_complete": true,
+    "authority_atomic_binding": false,
+    "completion_eligible": false
+  },
+  "gaps": [
+    "Behavior固有の当該Scenario Evidenceがない。",
+    "resource_state: Behavior固有resource state Artifactがない。",
+    "controller_log: Behavior固有controller log Artifactがない。",
+    "metric: Behavior固有metric Artifactがない。",
+    "trace: Behavior固有trace Artifactがない。OTLP traceは別Gapとして未Closure。",
+    "closure-condition: variant_denominator_exhaustive",
+    "統合Scenario AuditをBehavior固有Proofへ流用しない。",
+    "Authority raw anchorの人手DecisionがなくAtomic behaviorへ昇格していない。"
+  ]
+}

@@ -1,0 +1,3140 @@
+{
+  "schema_version": 1,
+  "id": "argocd-reference-system-scenario-contract-v1",
+  "atlas_id": "argocd-reference-atlas",
+  "generated_at": "2026-08-28T00:00:00+09:00",
+  "status": "incomplete-single-topology-runtime-and-authority-atomic",
+  "reference": {
+    "repository": "frontend-behavior-atlas",
+    "commit": "f2e4c4b19156f8e993f48cdcbce23679ad881924",
+    "files": {
+      "docs/REFERENCE_SYSTEM.md": "sha256:5562aa75e57c518c402c31d97885083bed3d1e3abc0af2ecade5c5cb3f188d49",
+      "docs/DEFINITIVE_GATE_V2_REFERENCE.md": "sha256:8e6ec1b9277d5bf0a7d8a36618c42212b2037ca43643e64ec0e79150de19a690",
+      "scripts/lib/scenario-proof.ts": "sha256:8b89ff8d0f042b181abe22a2fb1280546f7534f0525a931c6437a177fdb2432f",
+      "scripts/verify-pattern-scenario-evidence.ts": "sha256:3643d1dd6ab6830d1a729fc0684a6691e8fc7af4b2d85bae3e5ec01d89113469",
+      "scripts/verify-scenario-proofs.ts": "sha256:d6192f7da3b160300690f3a4168846711b366b77f8fc6c28918733db221005cd",
+      "scripts/test-scenario-proofs.ts": "sha256:78e578e66df9d6d3bb59d52f32440e6fd03bf492a67be96afdcea7f2a71d0628",
+      "playwright.pattern-scenario.config.ts": "sha256:93360ee588f65f04692500106e94a4e2e0be9b75645fe87f8fbe87245cb7716a"
+    }
+  },
+  "execution": {
+    "command": "make scenario-proofs",
+    "mode": "offline-bound-evidence-integration",
+    "scenario_order": [
+      "normal",
+      "boundary",
+      "rejection",
+      "failure",
+      "recovery",
+      "migration",
+      "operations",
+      "security",
+      "performance",
+      "compatibility"
+    ],
+    "source_bindings": {
+      "manifest": {
+        "path": "integrations/reference-system/manifest.yaml",
+        "digest": "sha256:ca3e64e1255d4f81d68102aea59fa07009416b499fa16b16633c6e2ddaeddab0",
+        "bytes": 5536
+      },
+      "surface_inventory": {
+        "path": "definitive/surface-inventory.yaml",
+        "digest": "sha256:9e39ab57e12a469e33632ef0f7c4b140f8550527c95ead77606262b83ac8e378",
+        "bytes": 26710
+      },
+      "sources_lock": {
+        "path": "sources.lock.yaml",
+        "digest": "sha256:fc76f2c5267059ae59c118c9f4924c51e4ca179476a687cced7f43ae1c977674",
+        "bytes": 10499
+      },
+      "environment_lock": {
+        "path": "environments/kind/argocd-v3.5.2.lock",
+        "digest": "sha256:91f435bad9af7bb58e403882efa4e0c874d7bcb8703081733da5bbfd0ab48a2c",
+        "bytes": 573
+      },
+      "generator": {
+        "path": "scripts/generate_scenario_proofs.py",
+        "digest": "sha256:3c58998a341ba400082707809f98d7184a8f16ae5f42a82b01d7e556a5b9efc6",
+        "bytes": 50184
+      }
+    }
+  },
+  "counts": {
+    "total": 10,
+    "evaluated": 10,
+    "bounded_component_evidence": 10,
+    "integrated_runtime_passed": 0,
+    "single_topology_executed": 0,
+    "completion_eligible": 0
+  },
+  "tests": [
+    {
+      "id": "reference.scenario.normal",
+      "scenario": "normal",
+      "execution": "offline-bound-evidence-integration",
+      "outcome": "bounded-evidence-audit",
+      "attempts": 1,
+      "final_status": "evaluated",
+      "runtime_attempts": 0,
+      "status": "bounded-component-evidence",
+      "component_evidence_ids": [
+        "evidence.application.v3-5-2",
+        "evidence.applicationset.v3-5-2",
+        "evidence.reconciliation.v3-5-2",
+        "evidence.sync.v3-5-2",
+        "evidence.health.v3-5-2",
+        "evidence.notifications.v3-5-2"
+      ],
+      "controller_components": [
+        "argocd-application-controller",
+        "argocd-applicationset-controller",
+        "argocd-notifications-controller"
+      ],
+      "kubernetes_behaviors": [
+        "custom-resource-reconciliation",
+        "desired-live-convergence",
+        "workload-health-assessment"
+      ],
+      "assertions": [
+        "application-synced-healthy",
+        "generated-application-state",
+        "reconciliation-converged"
+      ],
+      "runtime_identities": [
+        {
+          "profile": "cluster",
+          "producer": "argocd-atlas-kind-harness",
+          "command": "make lab-application",
+          "manifest_digest": "sha256:c7c7fb796abc20741fc9c71e4ec8553e70a32783aab5faf9ea4789d3e1d8e1ee",
+          "cluster_name": "argocd-atlas-v3-5-2",
+          "kubernetes_context": "kind-argocd-atlas-v3-5-2",
+          "argocd_version": "v3.5.2",
+          "kubernetes_api_server_versions": [
+            "v1.34.1"
+          ],
+          "kubernetes_kubelet_versions": [
+            "v1.34.0"
+          ],
+          "kubernetes_node_image_version": "v1.34.0",
+          "kubernetes_environment_lock": {
+            "path": "environments/kind/argocd-v3.5.2.lock",
+            "digest": "sha256:91f435bad9af7bb58e403882efa4e0c874d7bcb8703081733da5bbfd0ab48a2c",
+            "bytes": 573
+          },
+          "observed_components": [
+            "argocd-application-controller",
+            "argocd-repo-server"
+          ],
+          "real_kubernetes_runtime": true,
+          "version_identity_complete": true
+        },
+        {
+          "profile": "cluster",
+          "producer": "argocd-atlas-kind-extended-harness",
+          "command": "make extended-lab-applicationset",
+          "manifest_digest": "sha256:fba4965e0c1ef1f37c6fc36c048093d2e098ff73fbfdc1e398a05a3de348c73e",
+          "cluster_name": null,
+          "kubernetes_context": null,
+          "argocd_version": "v3.5.2",
+          "kubernetes_api_server_versions": [],
+          "kubernetes_kubelet_versions": [],
+          "kubernetes_node_image_version": "v1.34.0",
+          "kubernetes_environment_lock": {
+            "path": "environments/kind/argocd-v3.5.2.lock",
+            "digest": "sha256:91f435bad9af7bb58e403882efa4e0c874d7bcb8703081733da5bbfd0ab48a2c",
+            "bytes": 573
+          },
+          "observed_components": [
+            "argocd-application-controller",
+            "argocd-applicationset-controller",
+            "argocd-notifications-controller",
+            "argocd-repo-server",
+            "argocd-server"
+          ],
+          "real_kubernetes_runtime": true,
+          "version_identity_complete": false
+        },
+        {
+          "profile": "cluster",
+          "producer": "argocd-atlas-kind-harness",
+          "command": "make lab-reconciliation",
+          "manifest_digest": "sha256:c7c7fb796abc20741fc9c71e4ec8553e70a32783aab5faf9ea4789d3e1d8e1ee",
+          "cluster_name": "argocd-atlas-v3-5-2",
+          "kubernetes_context": "kind-argocd-atlas-v3-5-2",
+          "argocd_version": "v3.5.2",
+          "kubernetes_api_server_versions": [
+            "v1.34.1"
+          ],
+          "kubernetes_kubelet_versions": [
+            "v1.34.0"
+          ],
+          "kubernetes_node_image_version": "v1.34.0",
+          "kubernetes_environment_lock": {
+            "path": "environments/kind/argocd-v3.5.2.lock",
+            "digest": "sha256:91f435bad9af7bb58e403882efa4e0c874d7bcb8703081733da5bbfd0ab48a2c",
+            "bytes": 573
+          },
+          "observed_components": [
+            "argocd-application-controller",
+            "argocd-repo-server"
+          ],
+          "real_kubernetes_runtime": true,
+          "version_identity_complete": true
+        },
+        {
+          "profile": "cluster",
+          "producer": "argocd-atlas-kind-harness",
+          "command": "make lab-sync",
+          "manifest_digest": "sha256:c7c7fb796abc20741fc9c71e4ec8553e70a32783aab5faf9ea4789d3e1d8e1ee",
+          "cluster_name": "argocd-atlas-v3-5-2",
+          "kubernetes_context": "kind-argocd-atlas-v3-5-2",
+          "argocd_version": "v3.5.2",
+          "kubernetes_api_server_versions": [
+            "v1.34.1"
+          ],
+          "kubernetes_kubelet_versions": [
+            "v1.34.0"
+          ],
+          "kubernetes_node_image_version": "v1.34.0",
+          "kubernetes_environment_lock": {
+            "path": "environments/kind/argocd-v3.5.2.lock",
+            "digest": "sha256:91f435bad9af7bb58e403882efa4e0c874d7bcb8703081733da5bbfd0ab48a2c",
+            "bytes": 573
+          },
+          "observed_components": [
+            "argocd-application-controller",
+            "argocd-repo-server"
+          ],
+          "real_kubernetes_runtime": true,
+          "version_identity_complete": true
+        },
+        {
+          "profile": "cluster",
+          "producer": "argocd-atlas-kind-harness",
+          "command": "make lab-health",
+          "manifest_digest": "sha256:c7c7fb796abc20741fc9c71e4ec8553e70a32783aab5faf9ea4789d3e1d8e1ee",
+          "cluster_name": "argocd-atlas-v3-5-2",
+          "kubernetes_context": "kind-argocd-atlas-v3-5-2",
+          "argocd_version": "v3.5.2",
+          "kubernetes_api_server_versions": [
+            "v1.34.1"
+          ],
+          "kubernetes_kubelet_versions": [
+            "v1.34.0"
+          ],
+          "kubernetes_node_image_version": "v1.34.0",
+          "kubernetes_environment_lock": {
+            "path": "environments/kind/argocd-v3.5.2.lock",
+            "digest": "sha256:91f435bad9af7bb58e403882efa4e0c874d7bcb8703081733da5bbfd0ab48a2c",
+            "bytes": 573
+          },
+          "observed_components": [
+            "argocd-application-controller",
+            "argocd-repo-server"
+          ],
+          "real_kubernetes_runtime": true,
+          "version_identity_complete": true
+        },
+        {
+          "profile": "cluster",
+          "producer": "argocd-atlas-kind-extended-harness",
+          "command": "make extended-lab-notifications",
+          "manifest_digest": "sha256:fba4965e0c1ef1f37c6fc36c048093d2e098ff73fbfdc1e398a05a3de348c73e",
+          "cluster_name": null,
+          "kubernetes_context": null,
+          "argocd_version": "v3.5.2",
+          "kubernetes_api_server_versions": [],
+          "kubernetes_kubelet_versions": [],
+          "kubernetes_node_image_version": "v1.34.0",
+          "kubernetes_environment_lock": {
+            "path": "environments/kind/argocd-v3.5.2.lock",
+            "digest": "sha256:91f435bad9af7bb58e403882efa4e0c874d7bcb8703081733da5bbfd0ab48a2c",
+            "bytes": 573
+          },
+          "observed_components": [
+            "argocd-application-controller",
+            "argocd-applicationset-controller",
+            "argocd-notifications-controller",
+            "argocd-repo-server",
+            "argocd-server"
+          ],
+          "real_kubernetes_runtime": true,
+          "version_identity_complete": false
+        }
+      ],
+      "artifact_bindings": [
+        {
+          "path": "evidence/raw/evidence.application.v3-5-2/result.json",
+          "digest": "sha256:0a05bcd6a68a6d839c85ecd3b8d1a0015d2b863df39ef87112c81ace6922e922",
+          "bytes": 51127
+        },
+        {
+          "path": "evidence/raw/evidence.applicationset.v3-5-2/result.json",
+          "digest": "sha256:60cd2340ee3b3d239c897271c4bccd10b4390e9aca4f3882e4370fa0b5a9f0f6",
+          "bytes": 169691
+        },
+        {
+          "path": "evidence/raw/evidence.reconciliation.v3-5-2/result.json",
+          "digest": "sha256:198eb01b96dbd52ee1cb634e286fc18a7e5c53b68170bfa32f86e5d3f22e6abf",
+          "bytes": 51899
+        },
+        {
+          "path": "evidence/raw/evidence.sync.v3-5-2/result.json",
+          "digest": "sha256:04e188eaa1c8cfca6c90c7a1b87494166a6eb67c95ba4b9cbf69021cc934bcad",
+          "bytes": 58481
+        },
+        {
+          "path": "evidence/raw/evidence.health.v3-5-2/result.json",
+          "digest": "sha256:e7fc692c01b10030734baecfe4a0d687d3a797f8f688872aaae3fb3aba157899",
+          "bytes": 73414
+        },
+        {
+          "path": "evidence/raw/evidence.notifications.v3-5-2/result.json",
+          "digest": "sha256:25af7045326cb82ff7c5556f12840183b443e49a2d1a14200661a250a7eb6550",
+          "bytes": 189622
+        }
+      ],
+      "observations": {
+        "resource_state": {
+          "status": "artifact",
+          "artifact_kind": "resource-state-json",
+          "artifacts": [
+            {
+              "evidence_id": "evidence.application.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.application.v3-5-2/result.json",
+                "digest": "sha256:0a05bcd6a68a6d839c85ecd3b8d1a0015d2b863df39ef87112c81ace6922e922",
+                "bytes": 51127
+              },
+              "json_pointers": [
+                "/application",
+                "/application/status",
+                "/application/status/health/status",
+                "/application/status/operationState",
+                "/application/status/operationState/syncResult/resources",
+                "/application/status/operationState/syncResult/resources/0/status",
+                "/application/status/resources",
+                "/application/status/resources/0/status"
+              ]
+            },
+            {
+              "evidence_id": "evidence.applicationset.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.applicationset.v3-5-2/result.json",
+                "digest": "sha256:60cd2340ee3b3d239c897271c4bccd10b4390e9aca4f3882e4370fa0b5a9f0f6",
+                "bytes": 169691
+              },
+              "json_pointers": [
+                "/applications",
+                "/applications/items/0/status",
+                "/applications/items/0/status/health/status",
+                "/applications/items/0/status/operationState",
+                "/applications/items/0/status/operationState/syncResult/resources",
+                "/applications/items/0/status/operationState/syncResult/resources/0/status",
+                "/applications/items/0/status/resources",
+                "/applications/items/0/status/resources/0/status"
+              ]
+            },
+            {
+              "evidence_id": "evidence.reconciliation.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.reconciliation.v3-5-2/result.json",
+                "digest": "sha256:198eb01b96dbd52ee1cb634e286fc18a7e5c53b68170bfa32f86e5d3f22e6abf",
+                "bytes": 51899
+              },
+              "json_pointers": [
+                "/application",
+                "/application/status",
+                "/application/status/health/status",
+                "/application/status/operationState",
+                "/application/status/operationState/syncResult/resources",
+                "/application/status/operationState/syncResult/resources/0/status",
+                "/application/status/resources",
+                "/application/status/resources/0/status"
+              ]
+            },
+            {
+              "evidence_id": "evidence.sync.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.sync.v3-5-2/result.json",
+                "digest": "sha256:04e188eaa1c8cfca6c90c7a1b87494166a6eb67c95ba4b9cbf69021cc934bcad",
+                "bytes": 58481
+              },
+              "json_pointers": [
+                "/application",
+                "/application/status",
+                "/application/status/health/status",
+                "/application/status/operationState",
+                "/application/status/operationState/syncResult/resources",
+                "/application/status/operationState/syncResult/resources/0/status",
+                "/application/status/operationState/syncResult/resources/1/status",
+                "/application/status/operationState/syncResult/resources/2/status"
+              ]
+            },
+            {
+              "evidence_id": "evidence.health.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.health.v3-5-2/result.json",
+                "digest": "sha256:e7fc692c01b10030734baecfe4a0d687d3a797f8f688872aaae3fb3aba157899",
+                "bytes": 73414
+              },
+              "json_pointers": [
+                "/application",
+                "/application/status",
+                "/application/status/health/status",
+                "/application/status/operationState",
+                "/application/status/operationState/syncResult/resources",
+                "/application/status/operationState/syncResult/resources/0/status",
+                "/application/status/resources",
+                "/application/status/resources/0/status"
+              ]
+            },
+            {
+              "evidence_id": "evidence.notifications.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.notifications.v3-5-2/result.json",
+                "digest": "sha256:25af7045326cb82ff7c5556f12840183b443e49a2d1a14200661a250a7eb6550",
+                "bytes": 189622
+              },
+              "json_pointers": [
+                "/applications",
+                "/applications/items/0/status",
+                "/applications/items/0/status/health/status",
+                "/applications/items/0/status/operationState",
+                "/applications/items/0/status/operationState/syncResult/resources",
+                "/applications/items/0/status/operationState/syncResult/resources/0/status",
+                "/applications/items/0/status/resources",
+                "/applications/items/0/status/resources/0/status"
+              ]
+            }
+          ],
+          "gap": null
+        },
+        "controller_log": {
+          "status": "explicit-gap",
+          "artifact_kind": null,
+          "artifacts": [],
+          "gap": "Behavior固有controller log Artifactがない。"
+        },
+        "metric": {
+          "status": "artifact",
+          "artifact_kind": "metric-sample",
+          "artifacts": [
+            {
+              "evidence_id": "evidence.notifications.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.notifications.v3-5-2/result.json",
+                "digest": "sha256:25af7045326cb82ff7c5556f12840183b443e49a2d1a14200661a250a7eb6550",
+                "bytes": 189622
+              },
+              "json_pointers": [
+                "/trace/notifications/assertions/controller_metrics_present",
+                "/trace/notifications/metric_samples",
+                "/trace/notifications/metrics_digest"
+              ]
+            }
+          ],
+          "gap": null
+        },
+        "trace": {
+          "status": "artifact",
+          "artifact_kind": "structured-lab-trace-not-otlp",
+          "artifacts": [
+            {
+              "evidence_id": "evidence.applicationset.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.applicationset.v3-5-2/result.json",
+                "digest": "sha256:60cd2340ee3b3d239c897271c4bccd10b4390e9aca4f3882e4370fa0b5a9f0f6",
+                "bytes": 169691
+              },
+              "json_pointers": [
+                "/trace"
+              ]
+            },
+            {
+              "evidence_id": "evidence.reconciliation.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.reconciliation.v3-5-2/result.json",
+                "digest": "sha256:198eb01b96dbd52ee1cb634e286fc18a7e5c53b68170bfa32f86e5d3f22e6abf",
+                "bytes": 51899
+              },
+              "json_pointers": [
+                "/trace"
+              ]
+            },
+            {
+              "evidence_id": "evidence.sync.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.sync.v3-5-2/result.json",
+                "digest": "sha256:04e188eaa1c8cfca6c90c7a1b87494166a6eb67c95ba4b9cbf69021cc934bcad",
+                "bytes": 58481
+              },
+              "json_pointers": [
+                "/trace"
+              ]
+            },
+            {
+              "evidence_id": "evidence.notifications.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.notifications.v3-5-2/result.json",
+                "digest": "sha256:25af7045326cb82ff7c5556f12840183b443e49a2d1a14200661a250a7eb6550",
+                "bytes": 189622
+              },
+              "json_pointers": [
+                "/trace"
+              ]
+            }
+          ],
+          "gap": null
+        }
+      },
+      "single_topology_execution": false,
+      "integrated_runtime_proof": false,
+      "completion_eligible": false,
+      "gaps": [
+        "single-topology-runtime-execution-not-performed"
+      ]
+    },
+    {
+      "id": "reference.scenario.boundary",
+      "scenario": "boundary",
+      "execution": "offline-bound-evidence-integration",
+      "outcome": "bounded-evidence-audit",
+      "attempts": 1,
+      "final_status": "evaluated",
+      "runtime_attempts": 0,
+      "status": "bounded-component-evidence",
+      "component_evidence_ids": [
+        "evidence.access-boundary.v3-5-2",
+        "evidence.connection.v3-5-2",
+        "evidence.diff.v3-5-2",
+        "evidence.hook-wave.v3-5-2"
+      ],
+      "controller_components": [
+        "argocd-server",
+        "argocd-application-controller",
+        "argocd-repo-server"
+      ],
+      "kubernetes_behaviors": [
+        "rbac-admission-boundary",
+        "namespace-scope",
+        "ordered-resource-application"
+      ],
+      "assertions": [
+        "allow-deny-distinction",
+        "namespace-boundary",
+        "bounded-diff-and-wave"
+      ],
+      "runtime_identities": [
+        {
+          "profile": "cluster",
+          "producer": "argocd-atlas-kind-extended-harness",
+          "command": "make extended-lab-access-boundary",
+          "manifest_digest": "sha256:fba4965e0c1ef1f37c6fc36c048093d2e098ff73fbfdc1e398a05a3de348c73e",
+          "cluster_name": null,
+          "kubernetes_context": null,
+          "argocd_version": "v3.5.2",
+          "kubernetes_api_server_versions": [],
+          "kubernetes_kubelet_versions": [],
+          "kubernetes_node_image_version": "v1.34.0",
+          "kubernetes_environment_lock": {
+            "path": "environments/kind/argocd-v3.5.2.lock",
+            "digest": "sha256:91f435bad9af7bb58e403882efa4e0c874d7bcb8703081733da5bbfd0ab48a2c",
+            "bytes": 573
+          },
+          "observed_components": [
+            "argocd-application-controller",
+            "argocd-applicationset-controller",
+            "argocd-notifications-controller",
+            "argocd-repo-server",
+            "argocd-server"
+          ],
+          "real_kubernetes_runtime": true,
+          "version_identity_complete": false
+        },
+        {
+          "profile": "cluster",
+          "producer": "argocd-atlas-kind-extended-harness",
+          "command": "make extended-lab-connection",
+          "manifest_digest": "sha256:fba4965e0c1ef1f37c6fc36c048093d2e098ff73fbfdc1e398a05a3de348c73e",
+          "cluster_name": null,
+          "kubernetes_context": null,
+          "argocd_version": "v3.5.2",
+          "kubernetes_api_server_versions": [],
+          "kubernetes_kubelet_versions": [],
+          "kubernetes_node_image_version": "v1.34.0",
+          "kubernetes_environment_lock": {
+            "path": "environments/kind/argocd-v3.5.2.lock",
+            "digest": "sha256:91f435bad9af7bb58e403882efa4e0c874d7bcb8703081733da5bbfd0ab48a2c",
+            "bytes": 573
+          },
+          "observed_components": [
+            "argocd-application-controller",
+            "argocd-applicationset-controller",
+            "argocd-notifications-controller",
+            "argocd-repo-server",
+            "argocd-server"
+          ],
+          "real_kubernetes_runtime": true,
+          "version_identity_complete": false
+        },
+        {
+          "profile": "cluster",
+          "producer": "argocd-atlas-kind-harness",
+          "command": "make lab-diff",
+          "manifest_digest": "sha256:c7c7fb796abc20741fc9c71e4ec8553e70a32783aab5faf9ea4789d3e1d8e1ee",
+          "cluster_name": "argocd-atlas-v3-5-2",
+          "kubernetes_context": "kind-argocd-atlas-v3-5-2",
+          "argocd_version": "v3.5.2",
+          "kubernetes_api_server_versions": [
+            "v1.34.1"
+          ],
+          "kubernetes_kubelet_versions": [
+            "v1.34.0"
+          ],
+          "kubernetes_node_image_version": "v1.34.0",
+          "kubernetes_environment_lock": {
+            "path": "environments/kind/argocd-v3.5.2.lock",
+            "digest": "sha256:91f435bad9af7bb58e403882efa4e0c874d7bcb8703081733da5bbfd0ab48a2c",
+            "bytes": 573
+          },
+          "observed_components": [
+            "argocd-application-controller",
+            "argocd-repo-server"
+          ],
+          "real_kubernetes_runtime": true,
+          "version_identity_complete": true
+        },
+        {
+          "profile": "cluster",
+          "producer": "argocd-atlas-kind-extended-harness",
+          "command": "make extended-lab-hook-wave",
+          "manifest_digest": "sha256:fba4965e0c1ef1f37c6fc36c048093d2e098ff73fbfdc1e398a05a3de348c73e",
+          "cluster_name": null,
+          "kubernetes_context": null,
+          "argocd_version": "v3.5.2",
+          "kubernetes_api_server_versions": [],
+          "kubernetes_kubelet_versions": [],
+          "kubernetes_node_image_version": "v1.34.0",
+          "kubernetes_environment_lock": {
+            "path": "environments/kind/argocd-v3.5.2.lock",
+            "digest": "sha256:91f435bad9af7bb58e403882efa4e0c874d7bcb8703081733da5bbfd0ab48a2c",
+            "bytes": 573
+          },
+          "observed_components": [
+            "argocd-application-controller",
+            "argocd-applicationset-controller",
+            "argocd-notifications-controller",
+            "argocd-repo-server",
+            "argocd-server"
+          ],
+          "real_kubernetes_runtime": true,
+          "version_identity_complete": false
+        }
+      ],
+      "artifact_bindings": [
+        {
+          "path": "evidence/raw/evidence.access-boundary.v3-5-2/result.json",
+          "digest": "sha256:d6ea44ed81d3c64ac5df56192a2554b750d2e7ebb9f7a9c94e8c71493f7e119c",
+          "bytes": 192412
+        },
+        {
+          "path": "evidence/raw/evidence.connection.v3-5-2/result.json",
+          "digest": "sha256:43284faa25ee4e41ffd22a0078e1a9159293b33ebe4a5f3d163cda19d718a59c",
+          "bytes": 177737
+        },
+        {
+          "path": "evidence/raw/evidence.diff.v3-5-2/result.json",
+          "digest": "sha256:5a18652055ce087f8baf7e2e03d5d0339bc982288ba93a4348fd9a6405216d7e",
+          "bytes": 51522
+        },
+        {
+          "path": "evidence/raw/evidence.hook-wave.v3-5-2/result.json",
+          "digest": "sha256:af5255f15a12c857a38d70810f9a926d387c20d27dfeb8517a97e27116558603",
+          "bytes": 173346
+        }
+      ],
+      "observations": {
+        "resource_state": {
+          "status": "artifact",
+          "artifact_kind": "resource-state-json",
+          "artifacts": [
+            {
+              "evidence_id": "evidence.access-boundary.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.access-boundary.v3-5-2/result.json",
+                "digest": "sha256:d6ea44ed81d3c64ac5df56192a2554b750d2e7ebb9f7a9c94e8c71493f7e119c",
+                "bytes": 192412
+              },
+              "json_pointers": [
+                "/applications",
+                "/applicationsets",
+                "/projects",
+                "/topology/items/0/status",
+                "/topology/items/0/status/conditions/0/status",
+                "/topology/items/0/status/conditions/1/status",
+                "/topology/items/1/status",
+                "/topology/items/1/status/conditions/0/status"
+              ]
+            },
+            {
+              "evidence_id": "evidence.connection.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.connection.v3-5-2/result.json",
+                "digest": "sha256:43284faa25ee4e41ffd22a0078e1a9159293b33ebe4a5f3d163cda19d718a59c",
+                "bytes": 177737
+              },
+              "json_pointers": [
+                "/applications",
+                "/applications/items/0/status",
+                "/applications/items/0/status/health/status",
+                "/applications/items/0/status/operationState",
+                "/applications/items/0/status/operationState/syncResult/resources",
+                "/applications/items/0/status/operationState/syncResult/resources/0/status",
+                "/applications/items/0/status/resources",
+                "/applications/items/0/status/resources/0/status"
+              ]
+            },
+            {
+              "evidence_id": "evidence.diff.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.diff.v3-5-2/result.json",
+                "digest": "sha256:5a18652055ce087f8baf7e2e03d5d0339bc982288ba93a4348fd9a6405216d7e",
+                "bytes": 51522
+              },
+              "json_pointers": [
+                "/application",
+                "/application/status",
+                "/application/status/health/status",
+                "/application/status/operationState",
+                "/application/status/operationState/syncResult/resources",
+                "/application/status/operationState/syncResult/resources/0/status",
+                "/application/status/resources",
+                "/application/status/resources/0/status"
+              ]
+            },
+            {
+              "evidence_id": "evidence.hook-wave.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.hook-wave.v3-5-2/result.json",
+                "digest": "sha256:af5255f15a12c857a38d70810f9a926d387c20d27dfeb8517a97e27116558603",
+                "bytes": 173346
+              },
+              "json_pointers": [
+                "/applications",
+                "/applications/items/0/status",
+                "/applications/items/0/status/health/status",
+                "/applications/items/0/status/operationState",
+                "/applications/items/0/status/operationState/syncResult/resources",
+                "/applications/items/0/status/operationState/syncResult/resources/0/status",
+                "/applications/items/0/status/operationState/syncResult/resources/1/status",
+                "/applications/items/0/status/operationState/syncResult/resources/2/status"
+              ]
+            }
+          ],
+          "gap": null
+        },
+        "controller_log": {
+          "status": "explicit-gap",
+          "artifact_kind": null,
+          "artifacts": [],
+          "gap": "Behavior固有controller log Artifactがない。"
+        },
+        "metric": {
+          "status": "explicit-gap",
+          "artifact_kind": null,
+          "artifacts": [],
+          "gap": "Behavior固有metric Artifactがない。"
+        },
+        "trace": {
+          "status": "artifact",
+          "artifact_kind": "structured-lab-trace-not-otlp",
+          "artifacts": [
+            {
+              "evidence_id": "evidence.access-boundary.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.access-boundary.v3-5-2/result.json",
+                "digest": "sha256:d6ea44ed81d3c64ac5df56192a2554b750d2e7ebb9f7a9c94e8c71493f7e119c",
+                "bytes": 192412
+              },
+              "json_pointers": [
+                "/trace"
+              ]
+            },
+            {
+              "evidence_id": "evidence.connection.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.connection.v3-5-2/result.json",
+                "digest": "sha256:43284faa25ee4e41ffd22a0078e1a9159293b33ebe4a5f3d163cda19d718a59c",
+                "bytes": 177737
+              },
+              "json_pointers": [
+                "/trace"
+              ]
+            },
+            {
+              "evidence_id": "evidence.diff.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.diff.v3-5-2/result.json",
+                "digest": "sha256:5a18652055ce087f8baf7e2e03d5d0339bc982288ba93a4348fd9a6405216d7e",
+                "bytes": 51522
+              },
+              "json_pointers": [
+                "/trace"
+              ]
+            },
+            {
+              "evidence_id": "evidence.hook-wave.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.hook-wave.v3-5-2/result.json",
+                "digest": "sha256:af5255f15a12c857a38d70810f9a926d387c20d27dfeb8517a97e27116558603",
+                "bytes": 173346
+              },
+              "json_pointers": [
+                "/trace"
+              ]
+            }
+          ],
+          "gap": null
+        }
+      },
+      "single_topology_execution": false,
+      "integrated_runtime_proof": false,
+      "completion_eligible": false,
+      "gaps": [
+        "single-topology-runtime-execution-not-performed"
+      ]
+    },
+    {
+      "id": "reference.scenario.rejection",
+      "scenario": "rejection",
+      "execution": "offline-bound-evidence-integration",
+      "outcome": "bounded-evidence-audit",
+      "attempts": 1,
+      "final_status": "evaluated",
+      "runtime_attempts": 0,
+      "status": "bounded-component-evidence",
+      "component_evidence_ids": [
+        "evidence.access-boundary.v3-5-2",
+        "evidence.connection.v3-5-2",
+        "evidence.security.v3-5-2"
+      ],
+      "controller_components": [
+        "argocd-server",
+        "argocd-application-controller",
+        "argocd-repo-server"
+      ],
+      "kubernetes_behaviors": [
+        "authorization-rejection",
+        "unreachable-endpoint-rejection",
+        "secret-data-boundary"
+      ],
+      "assertions": [
+        "unauthorized-request-rejected",
+        "unreachable-target-not-success",
+        "secret-not-disclosed"
+      ],
+      "runtime_identities": [
+        {
+          "profile": "cluster",
+          "producer": "argocd-atlas-kind-extended-harness",
+          "command": "make extended-lab-access-boundary",
+          "manifest_digest": "sha256:fba4965e0c1ef1f37c6fc36c048093d2e098ff73fbfdc1e398a05a3de348c73e",
+          "cluster_name": null,
+          "kubernetes_context": null,
+          "argocd_version": "v3.5.2",
+          "kubernetes_api_server_versions": [],
+          "kubernetes_kubelet_versions": [],
+          "kubernetes_node_image_version": "v1.34.0",
+          "kubernetes_environment_lock": {
+            "path": "environments/kind/argocd-v3.5.2.lock",
+            "digest": "sha256:91f435bad9af7bb58e403882efa4e0c874d7bcb8703081733da5bbfd0ab48a2c",
+            "bytes": 573
+          },
+          "observed_components": [
+            "argocd-application-controller",
+            "argocd-applicationset-controller",
+            "argocd-notifications-controller",
+            "argocd-repo-server",
+            "argocd-server"
+          ],
+          "real_kubernetes_runtime": true,
+          "version_identity_complete": false
+        },
+        {
+          "profile": "cluster",
+          "producer": "argocd-atlas-kind-extended-harness",
+          "command": "make extended-lab-connection",
+          "manifest_digest": "sha256:fba4965e0c1ef1f37c6fc36c048093d2e098ff73fbfdc1e398a05a3de348c73e",
+          "cluster_name": null,
+          "kubernetes_context": null,
+          "argocd_version": "v3.5.2",
+          "kubernetes_api_server_versions": [],
+          "kubernetes_kubelet_versions": [],
+          "kubernetes_node_image_version": "v1.34.0",
+          "kubernetes_environment_lock": {
+            "path": "environments/kind/argocd-v3.5.2.lock",
+            "digest": "sha256:91f435bad9af7bb58e403882efa4e0c874d7bcb8703081733da5bbfd0ab48a2c",
+            "bytes": 573
+          },
+          "observed_components": [
+            "argocd-application-controller",
+            "argocd-applicationset-controller",
+            "argocd-notifications-controller",
+            "argocd-repo-server",
+            "argocd-server"
+          ],
+          "real_kubernetes_runtime": true,
+          "version_identity_complete": false
+        },
+        {
+          "profile": "cluster",
+          "producer": "argocd-atlas-kind-harness",
+          "command": "make lab-security",
+          "manifest_digest": "sha256:c7c7fb796abc20741fc9c71e4ec8553e70a32783aab5faf9ea4789d3e1d8e1ee",
+          "cluster_name": "argocd-atlas-v3-5-2",
+          "kubernetes_context": "kind-argocd-atlas-v3-5-2",
+          "argocd_version": "v3.5.2",
+          "kubernetes_api_server_versions": [
+            "v1.34.1"
+          ],
+          "kubernetes_kubelet_versions": [
+            "v1.34.0"
+          ],
+          "kubernetes_node_image_version": "v1.34.0",
+          "kubernetes_environment_lock": {
+            "path": "environments/kind/argocd-v3.5.2.lock",
+            "digest": "sha256:91f435bad9af7bb58e403882efa4e0c874d7bcb8703081733da5bbfd0ab48a2c",
+            "bytes": 573
+          },
+          "observed_components": [
+            "argocd-application-controller",
+            "argocd-repo-server"
+          ],
+          "real_kubernetes_runtime": true,
+          "version_identity_complete": true
+        }
+      ],
+      "artifact_bindings": [
+        {
+          "path": "evidence/raw/evidence.access-boundary.v3-5-2/result.json",
+          "digest": "sha256:d6ea44ed81d3c64ac5df56192a2554b750d2e7ebb9f7a9c94e8c71493f7e119c",
+          "bytes": 192412
+        },
+        {
+          "path": "evidence/raw/evidence.connection.v3-5-2/result.json",
+          "digest": "sha256:43284faa25ee4e41ffd22a0078e1a9159293b33ebe4a5f3d163cda19d718a59c",
+          "bytes": 177737
+        },
+        {
+          "path": "evidence/raw/evidence.security.v3-5-2/result.json",
+          "digest": "sha256:43f49900cca996064ccf415c37dfca9131570a6f19c40da96975c2ae51211c8d",
+          "bytes": 51244
+        }
+      ],
+      "observations": {
+        "resource_state": {
+          "status": "artifact",
+          "artifact_kind": "resource-state-json",
+          "artifacts": [
+            {
+              "evidence_id": "evidence.access-boundary.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.access-boundary.v3-5-2/result.json",
+                "digest": "sha256:d6ea44ed81d3c64ac5df56192a2554b750d2e7ebb9f7a9c94e8c71493f7e119c",
+                "bytes": 192412
+              },
+              "json_pointers": [
+                "/applications",
+                "/applicationsets",
+                "/projects",
+                "/topology/items/0/status",
+                "/topology/items/0/status/conditions/0/status",
+                "/topology/items/0/status/conditions/1/status",
+                "/topology/items/1/status",
+                "/topology/items/1/status/conditions/0/status"
+              ]
+            },
+            {
+              "evidence_id": "evidence.connection.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.connection.v3-5-2/result.json",
+                "digest": "sha256:43284faa25ee4e41ffd22a0078e1a9159293b33ebe4a5f3d163cda19d718a59c",
+                "bytes": 177737
+              },
+              "json_pointers": [
+                "/applications",
+                "/applications/items/0/status",
+                "/applications/items/0/status/health/status",
+                "/applications/items/0/status/operationState",
+                "/applications/items/0/status/operationState/syncResult/resources",
+                "/applications/items/0/status/operationState/syncResult/resources/0/status",
+                "/applications/items/0/status/resources",
+                "/applications/items/0/status/resources/0/status"
+              ]
+            },
+            {
+              "evidence_id": "evidence.security.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.security.v3-5-2/result.json",
+                "digest": "sha256:43f49900cca996064ccf415c37dfca9131570a6f19c40da96975c2ae51211c8d",
+                "bytes": 51244
+              },
+              "json_pointers": [
+                "/application",
+                "/application/status",
+                "/application/status/health/status",
+                "/application/status/operationState",
+                "/application/status/operationState/syncResult/resources",
+                "/application/status/operationState/syncResult/resources/0/status",
+                "/application/status/resources",
+                "/application/status/resources/0/status"
+              ]
+            }
+          ],
+          "gap": null
+        },
+        "controller_log": {
+          "status": "explicit-gap",
+          "artifact_kind": null,
+          "artifacts": [],
+          "gap": "Behavior固有controller log Artifactがない。"
+        },
+        "metric": {
+          "status": "explicit-gap",
+          "artifact_kind": null,
+          "artifacts": [],
+          "gap": "Behavior固有metric Artifactがない。"
+        },
+        "trace": {
+          "status": "artifact",
+          "artifact_kind": "structured-lab-trace-not-otlp",
+          "artifacts": [
+            {
+              "evidence_id": "evidence.access-boundary.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.access-boundary.v3-5-2/result.json",
+                "digest": "sha256:d6ea44ed81d3c64ac5df56192a2554b750d2e7ebb9f7a9c94e8c71493f7e119c",
+                "bytes": 192412
+              },
+              "json_pointers": [
+                "/trace"
+              ]
+            },
+            {
+              "evidence_id": "evidence.connection.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.connection.v3-5-2/result.json",
+                "digest": "sha256:43284faa25ee4e41ffd22a0078e1a9159293b33ebe4a5f3d163cda19d718a59c",
+                "bytes": 177737
+              },
+              "json_pointers": [
+                "/trace"
+              ]
+            },
+            {
+              "evidence_id": "evidence.security.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.security.v3-5-2/result.json",
+                "digest": "sha256:43f49900cca996064ccf415c37dfca9131570a6f19c40da96975c2ae51211c8d",
+                "bytes": 51244
+              },
+              "json_pointers": [
+                "/trace"
+              ]
+            }
+          ],
+          "gap": null
+        }
+      },
+      "single_topology_execution": false,
+      "integrated_runtime_proof": false,
+      "completion_eligible": false,
+      "gaps": [
+        "single-topology-runtime-execution-not-performed"
+      ]
+    },
+    {
+      "id": "reference.scenario.failure",
+      "scenario": "failure",
+      "execution": "offline-bound-evidence-integration",
+      "outcome": "bounded-evidence-audit",
+      "attempts": 1,
+      "final_status": "evaluated",
+      "runtime_attempts": 0,
+      "status": "bounded-component-evidence",
+      "component_evidence_ids": [
+        "evidence.failure.v3-5-2",
+        "evidence.high-availability.v3-5-2",
+        "evidence.notifications.v3-5-2",
+        "evidence.access-boundary.v3-5-2"
+      ],
+      "controller_components": [
+        "argocd-application-controller",
+        "argocd-repo-server",
+        "argocd-notifications-controller",
+        "redis-ha"
+      ],
+      "kubernetes_behaviors": [
+        "pod-replacement",
+        "dependency-outage",
+        "service-delivery-failure"
+      ],
+      "assertions": [
+        "failure-visible",
+        "stale-state-not-success",
+        "failure-window-preserved"
+      ],
+      "runtime_identities": [
+        {
+          "profile": "cluster",
+          "producer": "argocd-atlas-kind-harness",
+          "command": "make lab-failure",
+          "manifest_digest": "sha256:c7c7fb796abc20741fc9c71e4ec8553e70a32783aab5faf9ea4789d3e1d8e1ee",
+          "cluster_name": "argocd-atlas-v3-5-2",
+          "kubernetes_context": "kind-argocd-atlas-v3-5-2",
+          "argocd_version": "v3.5.2",
+          "kubernetes_api_server_versions": [
+            "v1.34.1"
+          ],
+          "kubernetes_kubelet_versions": [
+            "v1.34.0"
+          ],
+          "kubernetes_node_image_version": "v1.34.0",
+          "kubernetes_environment_lock": {
+            "path": "environments/kind/argocd-v3.5.2.lock",
+            "digest": "sha256:91f435bad9af7bb58e403882efa4e0c874d7bcb8703081733da5bbfd0ab48a2c",
+            "bytes": 573
+          },
+          "observed_components": [
+            "argocd-application-controller",
+            "argocd-repo-server"
+          ],
+          "real_kubernetes_runtime": true,
+          "version_identity_complete": true
+        },
+        {
+          "profile": "cluster",
+          "producer": "argocd-atlas-kind-extended-harness",
+          "command": "make extended-lab-high-availability",
+          "manifest_digest": "sha256:1af964eee23cfbcb7396b665987d664419c4db509c3766576757728ec9e6fb80",
+          "cluster_name": null,
+          "kubernetes_context": null,
+          "argocd_version": "v3.5.2",
+          "kubernetes_api_server_versions": [],
+          "kubernetes_kubelet_versions": [],
+          "kubernetes_node_image_version": "v1.34.0",
+          "kubernetes_environment_lock": {
+            "path": "environments/kind/argocd-v3.5.2.lock",
+            "digest": "sha256:91f435bad9af7bb58e403882efa4e0c874d7bcb8703081733da5bbfd0ab48a2c",
+            "bytes": 573
+          },
+          "observed_components": [
+            "argocd-application-controller",
+            "argocd-applicationset-controller",
+            "argocd-notifications-controller",
+            "argocd-repo-server",
+            "argocd-server",
+            "redis-ha"
+          ],
+          "real_kubernetes_runtime": true,
+          "version_identity_complete": false
+        },
+        {
+          "profile": "cluster",
+          "producer": "argocd-atlas-kind-extended-harness",
+          "command": "make extended-lab-notifications",
+          "manifest_digest": "sha256:fba4965e0c1ef1f37c6fc36c048093d2e098ff73fbfdc1e398a05a3de348c73e",
+          "cluster_name": null,
+          "kubernetes_context": null,
+          "argocd_version": "v3.5.2",
+          "kubernetes_api_server_versions": [],
+          "kubernetes_kubelet_versions": [],
+          "kubernetes_node_image_version": "v1.34.0",
+          "kubernetes_environment_lock": {
+            "path": "environments/kind/argocd-v3.5.2.lock",
+            "digest": "sha256:91f435bad9af7bb58e403882efa4e0c874d7bcb8703081733da5bbfd0ab48a2c",
+            "bytes": 573
+          },
+          "observed_components": [
+            "argocd-application-controller",
+            "argocd-applicationset-controller",
+            "argocd-notifications-controller",
+            "argocd-repo-server",
+            "argocd-server"
+          ],
+          "real_kubernetes_runtime": true,
+          "version_identity_complete": false
+        },
+        {
+          "profile": "cluster",
+          "producer": "argocd-atlas-kind-extended-harness",
+          "command": "make extended-lab-access-boundary",
+          "manifest_digest": "sha256:fba4965e0c1ef1f37c6fc36c048093d2e098ff73fbfdc1e398a05a3de348c73e",
+          "cluster_name": null,
+          "kubernetes_context": null,
+          "argocd_version": "v3.5.2",
+          "kubernetes_api_server_versions": [],
+          "kubernetes_kubelet_versions": [],
+          "kubernetes_node_image_version": "v1.34.0",
+          "kubernetes_environment_lock": {
+            "path": "environments/kind/argocd-v3.5.2.lock",
+            "digest": "sha256:91f435bad9af7bb58e403882efa4e0c874d7bcb8703081733da5bbfd0ab48a2c",
+            "bytes": 573
+          },
+          "observed_components": [
+            "argocd-application-controller",
+            "argocd-applicationset-controller",
+            "argocd-notifications-controller",
+            "argocd-repo-server",
+            "argocd-server"
+          ],
+          "real_kubernetes_runtime": true,
+          "version_identity_complete": false
+        }
+      ],
+      "artifact_bindings": [
+        {
+          "path": "evidence/raw/evidence.failure.v3-5-2/result.json",
+          "digest": "sha256:58949503ed287a1622a8bd04b420fa8b8b3490fb5d77e010655ec9bba16020bd",
+          "bytes": 51991
+        },
+        {
+          "path": "evidence/raw/evidence.high-availability.v3-5-2/result.json",
+          "digest": "sha256:6fe217a67aa7f956f53f627a06cce1a982ee77cf2264ecc31b1fc88d49b8f249",
+          "bytes": 191957
+        },
+        {
+          "path": "evidence/raw/evidence.notifications.v3-5-2/result.json",
+          "digest": "sha256:25af7045326cb82ff7c5556f12840183b443e49a2d1a14200661a250a7eb6550",
+          "bytes": 189622
+        },
+        {
+          "path": "evidence/raw/evidence.access-boundary.v3-5-2/result.json",
+          "digest": "sha256:d6ea44ed81d3c64ac5df56192a2554b750d2e7ebb9f7a9c94e8c71493f7e119c",
+          "bytes": 192412
+        }
+      ],
+      "observations": {
+        "resource_state": {
+          "status": "artifact",
+          "artifact_kind": "resource-state-json",
+          "artifacts": [
+            {
+              "evidence_id": "evidence.failure.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.failure.v3-5-2/result.json",
+                "digest": "sha256:58949503ed287a1622a8bd04b420fa8b8b3490fb5d77e010655ec9bba16020bd",
+                "bytes": 51991
+              },
+              "json_pointers": [
+                "/application",
+                "/application/status",
+                "/application/status/health/status",
+                "/application/status/operationState",
+                "/application/status/operationState/syncResult/resources",
+                "/application/status/operationState/syncResult/resources/0/status",
+                "/application/status/resources",
+                "/application/status/resources/0/status"
+              ]
+            },
+            {
+              "evidence_id": "evidence.high-availability.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.high-availability.v3-5-2/result.json",
+                "digest": "sha256:6fe217a67aa7f956f53f627a06cce1a982ee77cf2264ecc31b1fc88d49b8f249",
+                "bytes": 191957
+              },
+              "json_pointers": [
+                "/applications",
+                "/applications/items/0/status",
+                "/applications/items/0/status/health/status",
+                "/applications/items/0/status/operationState",
+                "/applications/items/0/status/operationState/syncResult/resources",
+                "/applications/items/0/status/operationState/syncResult/resources/0/status",
+                "/applications/items/0/status/resources",
+                "/applications/items/0/status/resources/0/status"
+              ]
+            },
+            {
+              "evidence_id": "evidence.notifications.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.notifications.v3-5-2/result.json",
+                "digest": "sha256:25af7045326cb82ff7c5556f12840183b443e49a2d1a14200661a250a7eb6550",
+                "bytes": 189622
+              },
+              "json_pointers": [
+                "/applications",
+                "/applications/items/0/status",
+                "/applications/items/0/status/health/status",
+                "/applications/items/0/status/operationState",
+                "/applications/items/0/status/operationState/syncResult/resources",
+                "/applications/items/0/status/operationState/syncResult/resources/0/status",
+                "/applications/items/0/status/resources",
+                "/applications/items/0/status/resources/0/status"
+              ]
+            },
+            {
+              "evidence_id": "evidence.access-boundary.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.access-boundary.v3-5-2/result.json",
+                "digest": "sha256:d6ea44ed81d3c64ac5df56192a2554b750d2e7ebb9f7a9c94e8c71493f7e119c",
+                "bytes": 192412
+              },
+              "json_pointers": [
+                "/applications",
+                "/applicationsets",
+                "/projects",
+                "/topology/items/0/status",
+                "/topology/items/0/status/conditions/0/status",
+                "/topology/items/0/status/conditions/1/status",
+                "/topology/items/1/status",
+                "/topology/items/1/status/conditions/0/status"
+              ]
+            }
+          ],
+          "gap": null
+        },
+        "controller_log": {
+          "status": "explicit-gap",
+          "artifact_kind": null,
+          "artifacts": [],
+          "gap": "Behavior固有controller log Artifactがない。"
+        },
+        "metric": {
+          "status": "artifact",
+          "artifact_kind": "metric-sample",
+          "artifacts": [
+            {
+              "evidence_id": "evidence.high-availability.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.high-availability.v3-5-2/result.json",
+                "digest": "sha256:6fe217a67aa7f956f53f627a06cce1a982ee77cf2264ecc31b1fc88d49b8f249",
+                "bytes": 191957
+              },
+              "json_pointers": [
+                "/trace/high_availability/redis/outage_window/server_metric_reads_failed",
+                "/trace/high_availability/redis/outage_window/server_metric_reads_succeeded"
+              ]
+            },
+            {
+              "evidence_id": "evidence.notifications.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.notifications.v3-5-2/result.json",
+                "digest": "sha256:25af7045326cb82ff7c5556f12840183b443e49a2d1a14200661a250a7eb6550",
+                "bytes": 189622
+              },
+              "json_pointers": [
+                "/trace/notifications/assertions/controller_metrics_present",
+                "/trace/notifications/metric_samples",
+                "/trace/notifications/metrics_digest"
+              ]
+            }
+          ],
+          "gap": null
+        },
+        "trace": {
+          "status": "artifact",
+          "artifact_kind": "structured-lab-trace-not-otlp",
+          "artifacts": [
+            {
+              "evidence_id": "evidence.failure.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.failure.v3-5-2/result.json",
+                "digest": "sha256:58949503ed287a1622a8bd04b420fa8b8b3490fb5d77e010655ec9bba16020bd",
+                "bytes": 51991
+              },
+              "json_pointers": [
+                "/trace"
+              ]
+            },
+            {
+              "evidence_id": "evidence.high-availability.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.high-availability.v3-5-2/result.json",
+                "digest": "sha256:6fe217a67aa7f956f53f627a06cce1a982ee77cf2264ecc31b1fc88d49b8f249",
+                "bytes": 191957
+              },
+              "json_pointers": [
+                "/trace"
+              ]
+            },
+            {
+              "evidence_id": "evidence.notifications.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.notifications.v3-5-2/result.json",
+                "digest": "sha256:25af7045326cb82ff7c5556f12840183b443e49a2d1a14200661a250a7eb6550",
+                "bytes": 189622
+              },
+              "json_pointers": [
+                "/trace"
+              ]
+            },
+            {
+              "evidence_id": "evidence.access-boundary.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.access-boundary.v3-5-2/result.json",
+                "digest": "sha256:d6ea44ed81d3c64ac5df56192a2554b750d2e7ebb9f7a9c94e8c71493f7e119c",
+                "bytes": 192412
+              },
+              "json_pointers": [
+                "/trace"
+              ]
+            }
+          ],
+          "gap": null
+        }
+      },
+      "single_topology_execution": false,
+      "integrated_runtime_proof": false,
+      "completion_eligible": false,
+      "gaps": [
+        "single-topology-runtime-execution-not-performed"
+      ]
+    },
+    {
+      "id": "reference.scenario.recovery",
+      "scenario": "recovery",
+      "execution": "offline-bound-evidence-integration",
+      "outcome": "bounded-evidence-audit",
+      "attempts": 1,
+      "final_status": "evaluated",
+      "runtime_attempts": 0,
+      "status": "bounded-component-evidence",
+      "component_evidence_ids": [
+        "evidence.auto-recovery.v3-5-2",
+        "evidence.recovery.v3-5-2",
+        "evidence.high-availability.v3-5-2",
+        "evidence.notifications.v3-5-2",
+        "evidence.failure.v3-5-2"
+      ],
+      "controller_components": [
+        "argocd-application-controller",
+        "argocd-repo-server",
+        "argocd-notifications-controller",
+        "redis-ha"
+      ],
+      "kubernetes_behaviors": [
+        "self-heal-reconciliation",
+        "pod-replacement",
+        "state-restore"
+      ],
+      "assertions": [
+        "desired-state-restored",
+        "replacement-observed",
+        "endpoint-recovery-delivered"
+      ],
+      "runtime_identities": [
+        {
+          "profile": "cluster",
+          "producer": "argocd-atlas-kind-extended-harness",
+          "command": "make extended-lab-auto-recovery",
+          "manifest_digest": "sha256:fba4965e0c1ef1f37c6fc36c048093d2e098ff73fbfdc1e398a05a3de348c73e",
+          "cluster_name": null,
+          "kubernetes_context": null,
+          "argocd_version": "v3.5.2",
+          "kubernetes_api_server_versions": [],
+          "kubernetes_kubelet_versions": [],
+          "kubernetes_node_image_version": "v1.34.0",
+          "kubernetes_environment_lock": {
+            "path": "environments/kind/argocd-v3.5.2.lock",
+            "digest": "sha256:91f435bad9af7bb58e403882efa4e0c874d7bcb8703081733da5bbfd0ab48a2c",
+            "bytes": 573
+          },
+          "observed_components": [
+            "argocd-application-controller",
+            "argocd-applicationset-controller",
+            "argocd-notifications-controller",
+            "argocd-repo-server",
+            "argocd-server"
+          ],
+          "real_kubernetes_runtime": true,
+          "version_identity_complete": false
+        },
+        {
+          "profile": "cluster",
+          "producer": "argocd-atlas-kind-harness",
+          "command": "make lab-recovery",
+          "manifest_digest": "sha256:c7c7fb796abc20741fc9c71e4ec8553e70a32783aab5faf9ea4789d3e1d8e1ee",
+          "cluster_name": "argocd-atlas-v3-5-2",
+          "kubernetes_context": "kind-argocd-atlas-v3-5-2",
+          "argocd_version": "v3.5.2",
+          "kubernetes_api_server_versions": [
+            "v1.34.1"
+          ],
+          "kubernetes_kubelet_versions": [
+            "v1.34.0"
+          ],
+          "kubernetes_node_image_version": "v1.34.0",
+          "kubernetes_environment_lock": {
+            "path": "environments/kind/argocd-v3.5.2.lock",
+            "digest": "sha256:91f435bad9af7bb58e403882efa4e0c874d7bcb8703081733da5bbfd0ab48a2c",
+            "bytes": 573
+          },
+          "observed_components": [
+            "argocd-application-controller",
+            "argocd-repo-server"
+          ],
+          "real_kubernetes_runtime": true,
+          "version_identity_complete": true
+        },
+        {
+          "profile": "cluster",
+          "producer": "argocd-atlas-kind-extended-harness",
+          "command": "make extended-lab-high-availability",
+          "manifest_digest": "sha256:1af964eee23cfbcb7396b665987d664419c4db509c3766576757728ec9e6fb80",
+          "cluster_name": null,
+          "kubernetes_context": null,
+          "argocd_version": "v3.5.2",
+          "kubernetes_api_server_versions": [],
+          "kubernetes_kubelet_versions": [],
+          "kubernetes_node_image_version": "v1.34.0",
+          "kubernetes_environment_lock": {
+            "path": "environments/kind/argocd-v3.5.2.lock",
+            "digest": "sha256:91f435bad9af7bb58e403882efa4e0c874d7bcb8703081733da5bbfd0ab48a2c",
+            "bytes": 573
+          },
+          "observed_components": [
+            "argocd-application-controller",
+            "argocd-applicationset-controller",
+            "argocd-notifications-controller",
+            "argocd-repo-server",
+            "argocd-server",
+            "redis-ha"
+          ],
+          "real_kubernetes_runtime": true,
+          "version_identity_complete": false
+        },
+        {
+          "profile": "cluster",
+          "producer": "argocd-atlas-kind-extended-harness",
+          "command": "make extended-lab-notifications",
+          "manifest_digest": "sha256:fba4965e0c1ef1f37c6fc36c048093d2e098ff73fbfdc1e398a05a3de348c73e",
+          "cluster_name": null,
+          "kubernetes_context": null,
+          "argocd_version": "v3.5.2",
+          "kubernetes_api_server_versions": [],
+          "kubernetes_kubelet_versions": [],
+          "kubernetes_node_image_version": "v1.34.0",
+          "kubernetes_environment_lock": {
+            "path": "environments/kind/argocd-v3.5.2.lock",
+            "digest": "sha256:91f435bad9af7bb58e403882efa4e0c874d7bcb8703081733da5bbfd0ab48a2c",
+            "bytes": 573
+          },
+          "observed_components": [
+            "argocd-application-controller",
+            "argocd-applicationset-controller",
+            "argocd-notifications-controller",
+            "argocd-repo-server",
+            "argocd-server"
+          ],
+          "real_kubernetes_runtime": true,
+          "version_identity_complete": false
+        },
+        {
+          "profile": "cluster",
+          "producer": "argocd-atlas-kind-harness",
+          "command": "make lab-failure",
+          "manifest_digest": "sha256:c7c7fb796abc20741fc9c71e4ec8553e70a32783aab5faf9ea4789d3e1d8e1ee",
+          "cluster_name": "argocd-atlas-v3-5-2",
+          "kubernetes_context": "kind-argocd-atlas-v3-5-2",
+          "argocd_version": "v3.5.2",
+          "kubernetes_api_server_versions": [
+            "v1.34.1"
+          ],
+          "kubernetes_kubelet_versions": [
+            "v1.34.0"
+          ],
+          "kubernetes_node_image_version": "v1.34.0",
+          "kubernetes_environment_lock": {
+            "path": "environments/kind/argocd-v3.5.2.lock",
+            "digest": "sha256:91f435bad9af7bb58e403882efa4e0c874d7bcb8703081733da5bbfd0ab48a2c",
+            "bytes": 573
+          },
+          "observed_components": [
+            "argocd-application-controller",
+            "argocd-repo-server"
+          ],
+          "real_kubernetes_runtime": true,
+          "version_identity_complete": true
+        }
+      ],
+      "artifact_bindings": [
+        {
+          "path": "evidence/raw/evidence.auto-recovery.v3-5-2/result.json",
+          "digest": "sha256:b3af7188f84822f1c5cfc1d5145d4949e1e43f1fedd57570b6ce4810481a76e8",
+          "bytes": 169535
+        },
+        {
+          "path": "evidence/raw/evidence.recovery.v3-5-2/result.json",
+          "digest": "sha256:1ce151748b3ea147fabfeb66db0a620abb33f62edbaa312844942511fde950a7",
+          "bytes": 55248
+        },
+        {
+          "path": "evidence/raw/evidence.high-availability.v3-5-2/result.json",
+          "digest": "sha256:6fe217a67aa7f956f53f627a06cce1a982ee77cf2264ecc31b1fc88d49b8f249",
+          "bytes": 191957
+        },
+        {
+          "path": "evidence/raw/evidence.notifications.v3-5-2/result.json",
+          "digest": "sha256:25af7045326cb82ff7c5556f12840183b443e49a2d1a14200661a250a7eb6550",
+          "bytes": 189622
+        },
+        {
+          "path": "evidence/raw/evidence.failure.v3-5-2/result.json",
+          "digest": "sha256:58949503ed287a1622a8bd04b420fa8b8b3490fb5d77e010655ec9bba16020bd",
+          "bytes": 51991
+        }
+      ],
+      "observations": {
+        "resource_state": {
+          "status": "artifact",
+          "artifact_kind": "resource-state-json",
+          "artifacts": [
+            {
+              "evidence_id": "evidence.auto-recovery.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.auto-recovery.v3-5-2/result.json",
+                "digest": "sha256:b3af7188f84822f1c5cfc1d5145d4949e1e43f1fedd57570b6ce4810481a76e8",
+                "bytes": 169535
+              },
+              "json_pointers": [
+                "/applications",
+                "/applications/items/0/status",
+                "/applications/items/0/status/health/status",
+                "/applications/items/0/status/operationState",
+                "/applications/items/0/status/operationState/operation/sync/resources",
+                "/applications/items/0/status/operationState/syncResult/resources",
+                "/applications/items/0/status/operationState/syncResult/resources/0/status",
+                "/applications/items/0/status/resources"
+              ]
+            },
+            {
+              "evidence_id": "evidence.recovery.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.recovery.v3-5-2/result.json",
+                "digest": "sha256:1ce151748b3ea147fabfeb66db0a620abb33f62edbaa312844942511fde950a7",
+                "bytes": 55248
+              },
+              "json_pointers": [
+                "/application",
+                "/application/status",
+                "/application/status/health/status",
+                "/application/status/resources",
+                "/application/status/resources/0/status",
+                "/application/status/sync/status",
+                "/controller/status",
+                "/nodes"
+              ]
+            },
+            {
+              "evidence_id": "evidence.high-availability.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.high-availability.v3-5-2/result.json",
+                "digest": "sha256:6fe217a67aa7f956f53f627a06cce1a982ee77cf2264ecc31b1fc88d49b8f249",
+                "bytes": 191957
+              },
+              "json_pointers": [
+                "/applications",
+                "/applications/items/0/status",
+                "/applications/items/0/status/health/status",
+                "/applications/items/0/status/operationState",
+                "/applications/items/0/status/operationState/syncResult/resources",
+                "/applications/items/0/status/operationState/syncResult/resources/0/status",
+                "/applications/items/0/status/resources",
+                "/applications/items/0/status/resources/0/status"
+              ]
+            },
+            {
+              "evidence_id": "evidence.notifications.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.notifications.v3-5-2/result.json",
+                "digest": "sha256:25af7045326cb82ff7c5556f12840183b443e49a2d1a14200661a250a7eb6550",
+                "bytes": 189622
+              },
+              "json_pointers": [
+                "/applications",
+                "/applications/items/0/status",
+                "/applications/items/0/status/health/status",
+                "/applications/items/0/status/operationState",
+                "/applications/items/0/status/operationState/syncResult/resources",
+                "/applications/items/0/status/operationState/syncResult/resources/0/status",
+                "/applications/items/0/status/resources",
+                "/applications/items/0/status/resources/0/status"
+              ]
+            },
+            {
+              "evidence_id": "evidence.failure.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.failure.v3-5-2/result.json",
+                "digest": "sha256:58949503ed287a1622a8bd04b420fa8b8b3490fb5d77e010655ec9bba16020bd",
+                "bytes": 51991
+              },
+              "json_pointers": [
+                "/application",
+                "/application/status",
+                "/application/status/health/status",
+                "/application/status/operationState",
+                "/application/status/operationState/syncResult/resources",
+                "/application/status/operationState/syncResult/resources/0/status",
+                "/application/status/resources",
+                "/application/status/resources/0/status"
+              ]
+            }
+          ],
+          "gap": null
+        },
+        "controller_log": {
+          "status": "explicit-gap",
+          "artifact_kind": null,
+          "artifacts": [],
+          "gap": "Behavior固有controller log Artifactがない。"
+        },
+        "metric": {
+          "status": "artifact",
+          "artifact_kind": "metric-sample",
+          "artifacts": [
+            {
+              "evidence_id": "evidence.high-availability.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.high-availability.v3-5-2/result.json",
+                "digest": "sha256:6fe217a67aa7f956f53f627a06cce1a982ee77cf2264ecc31b1fc88d49b8f249",
+                "bytes": 191957
+              },
+              "json_pointers": [
+                "/trace/high_availability/redis/outage_window/server_metric_reads_failed",
+                "/trace/high_availability/redis/outage_window/server_metric_reads_succeeded"
+              ]
+            },
+            {
+              "evidence_id": "evidence.notifications.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.notifications.v3-5-2/result.json",
+                "digest": "sha256:25af7045326cb82ff7c5556f12840183b443e49a2d1a14200661a250a7eb6550",
+                "bytes": 189622
+              },
+              "json_pointers": [
+                "/trace/notifications/assertions/controller_metrics_present",
+                "/trace/notifications/metric_samples",
+                "/trace/notifications/metrics_digest"
+              ]
+            }
+          ],
+          "gap": null
+        },
+        "trace": {
+          "status": "artifact",
+          "artifact_kind": "structured-lab-trace-not-otlp",
+          "artifacts": [
+            {
+              "evidence_id": "evidence.auto-recovery.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.auto-recovery.v3-5-2/result.json",
+                "digest": "sha256:b3af7188f84822f1c5cfc1d5145d4949e1e43f1fedd57570b6ce4810481a76e8",
+                "bytes": 169535
+              },
+              "json_pointers": [
+                "/trace"
+              ]
+            },
+            {
+              "evidence_id": "evidence.recovery.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.recovery.v3-5-2/result.json",
+                "digest": "sha256:1ce151748b3ea147fabfeb66db0a620abb33f62edbaa312844942511fde950a7",
+                "bytes": 55248
+              },
+              "json_pointers": [
+                "/trace"
+              ]
+            },
+            {
+              "evidence_id": "evidence.high-availability.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.high-availability.v3-5-2/result.json",
+                "digest": "sha256:6fe217a67aa7f956f53f627a06cce1a982ee77cf2264ecc31b1fc88d49b8f249",
+                "bytes": 191957
+              },
+              "json_pointers": [
+                "/trace"
+              ]
+            },
+            {
+              "evidence_id": "evidence.notifications.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.notifications.v3-5-2/result.json",
+                "digest": "sha256:25af7045326cb82ff7c5556f12840183b443e49a2d1a14200661a250a7eb6550",
+                "bytes": 189622
+              },
+              "json_pointers": [
+                "/trace"
+              ]
+            },
+            {
+              "evidence_id": "evidence.failure.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.failure.v3-5-2/result.json",
+                "digest": "sha256:58949503ed287a1622a8bd04b420fa8b8b3490fb5d77e010655ec9bba16020bd",
+                "bytes": 51991
+              },
+              "json_pointers": [
+                "/trace"
+              ]
+            }
+          ],
+          "gap": null
+        }
+      },
+      "single_topology_execution": false,
+      "integrated_runtime_proof": false,
+      "completion_eligible": false,
+      "gaps": [
+        "single-topology-runtime-execution-not-performed"
+      ]
+    },
+    {
+      "id": "reference.scenario.migration",
+      "scenario": "migration",
+      "execution": "offline-bound-evidence-integration",
+      "outcome": "bounded-evidence-audit",
+      "attempts": 1,
+      "final_status": "evaluated",
+      "runtime_attempts": 0,
+      "status": "bounded-component-evidence",
+      "component_evidence_ids": [
+        "evidence.upgrade-migration.v3-5-2",
+        "evidence.promotion.v3-5-2",
+        "evidence.recovery.v3-5-2"
+      ],
+      "controller_components": [
+        "argocd-application-controller",
+        "argocd-server",
+        "argocd-repo-server"
+      ],
+      "kubernetes_behaviors": [
+        "crd-version-continuity",
+        "declarative-state-transition",
+        "export-import"
+      ],
+      "assertions": [
+        "forward-upgrade-bounded",
+        "git-mediated-change",
+        "restore-digest-preserved"
+      ],
+      "runtime_identities": [
+        {
+          "profile": "cluster",
+          "producer": "argocd-atlas-kind-extended-harness",
+          "command": "make extended-lab-upgrade-migration",
+          "manifest_digest": "sha256:39af380f11956c83641d08da483fcd828edfc784e77f327468e92736d00f1f3e",
+          "cluster_name": null,
+          "kubernetes_context": null,
+          "argocd_version": "v3.4.8-to-v3.5.2",
+          "kubernetes_api_server_versions": [],
+          "kubernetes_kubelet_versions": [],
+          "kubernetes_node_image_version": "v1.34.0",
+          "kubernetes_environment_lock": {
+            "path": "environments/kind/argocd-v3.5.2.lock",
+            "digest": "sha256:91f435bad9af7bb58e403882efa4e0c874d7bcb8703081733da5bbfd0ab48a2c",
+            "bytes": 573
+          },
+          "observed_components": [
+            "argocd-application-controller",
+            "argocd-applicationset-controller",
+            "argocd-notifications-controller",
+            "argocd-repo-server",
+            "argocd-server"
+          ],
+          "real_kubernetes_runtime": true,
+          "version_identity_complete": false
+        },
+        {
+          "profile": "cluster",
+          "producer": "argocd-atlas-kind-harness",
+          "command": "make lab-promotion",
+          "manifest_digest": "sha256:c7c7fb796abc20741fc9c71e4ec8553e70a32783aab5faf9ea4789d3e1d8e1ee",
+          "cluster_name": "argocd-atlas-v3-5-2",
+          "kubernetes_context": "kind-argocd-atlas-v3-5-2",
+          "argocd_version": "v3.5.2",
+          "kubernetes_api_server_versions": [
+            "v1.34.1"
+          ],
+          "kubernetes_kubelet_versions": [
+            "v1.34.0"
+          ],
+          "kubernetes_node_image_version": "v1.34.0",
+          "kubernetes_environment_lock": {
+            "path": "environments/kind/argocd-v3.5.2.lock",
+            "digest": "sha256:91f435bad9af7bb58e403882efa4e0c874d7bcb8703081733da5bbfd0ab48a2c",
+            "bytes": 573
+          },
+          "observed_components": [
+            "argocd-application-controller",
+            "argocd-repo-server"
+          ],
+          "real_kubernetes_runtime": true,
+          "version_identity_complete": true
+        },
+        {
+          "profile": "cluster",
+          "producer": "argocd-atlas-kind-harness",
+          "command": "make lab-recovery",
+          "manifest_digest": "sha256:c7c7fb796abc20741fc9c71e4ec8553e70a32783aab5faf9ea4789d3e1d8e1ee",
+          "cluster_name": "argocd-atlas-v3-5-2",
+          "kubernetes_context": "kind-argocd-atlas-v3-5-2",
+          "argocd_version": "v3.5.2",
+          "kubernetes_api_server_versions": [
+            "v1.34.1"
+          ],
+          "kubernetes_kubelet_versions": [
+            "v1.34.0"
+          ],
+          "kubernetes_node_image_version": "v1.34.0",
+          "kubernetes_environment_lock": {
+            "path": "environments/kind/argocd-v3.5.2.lock",
+            "digest": "sha256:91f435bad9af7bb58e403882efa4e0c874d7bcb8703081733da5bbfd0ab48a2c",
+            "bytes": 573
+          },
+          "observed_components": [
+            "argocd-application-controller",
+            "argocd-repo-server"
+          ],
+          "real_kubernetes_runtime": true,
+          "version_identity_complete": true
+        }
+      ],
+      "artifact_bindings": [
+        {
+          "path": "evidence/raw/evidence.upgrade-migration.v3-5-2/result.json",
+          "digest": "sha256:4e52548e5b48e5ea031cb8b9a0eddbc9f40a21f5f010de0bd54a535ffd3e2e80",
+          "bytes": 167879
+        },
+        {
+          "path": "evidence/raw/evidence.promotion.v3-5-2/result.json",
+          "digest": "sha256:ca502bf39eeb209ab733e43d529fa12ef48eef19ae2eac31552714598c15ac11",
+          "bytes": 51745
+        },
+        {
+          "path": "evidence/raw/evidence.recovery.v3-5-2/result.json",
+          "digest": "sha256:1ce151748b3ea147fabfeb66db0a620abb33f62edbaa312844942511fde950a7",
+          "bytes": 55248
+        }
+      ],
+      "observations": {
+        "resource_state": {
+          "status": "artifact",
+          "artifact_kind": "resource-state-json",
+          "artifacts": [
+            {
+              "evidence_id": "evidence.upgrade-migration.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.upgrade-migration.v3-5-2/result.json",
+                "digest": "sha256:4e52548e5b48e5ea031cb8b9a0eddbc9f40a21f5f010de0bd54a535ffd3e2e80",
+                "bytes": 167879
+              },
+              "json_pointers": [
+                "/applications",
+                "/applications/items/0/status",
+                "/applications/items/0/status/health/status",
+                "/applications/items/0/status/operationState",
+                "/applications/items/0/status/operationState/syncResult/resources",
+                "/applications/items/0/status/operationState/syncResult/resources/0/status",
+                "/applications/items/0/status/resources",
+                "/applications/items/0/status/resources/0/status"
+              ]
+            },
+            {
+              "evidence_id": "evidence.promotion.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.promotion.v3-5-2/result.json",
+                "digest": "sha256:ca502bf39eeb209ab733e43d529fa12ef48eef19ae2eac31552714598c15ac11",
+                "bytes": 51745
+              },
+              "json_pointers": [
+                "/application",
+                "/application/status",
+                "/application/status/health/status",
+                "/application/status/operationState",
+                "/application/status/operationState/syncResult/resources",
+                "/application/status/operationState/syncResult/resources/0/status",
+                "/application/status/resources",
+                "/application/status/resources/0/status"
+              ]
+            },
+            {
+              "evidence_id": "evidence.recovery.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.recovery.v3-5-2/result.json",
+                "digest": "sha256:1ce151748b3ea147fabfeb66db0a620abb33f62edbaa312844942511fde950a7",
+                "bytes": 55248
+              },
+              "json_pointers": [
+                "/application",
+                "/application/status",
+                "/application/status/health/status",
+                "/application/status/resources",
+                "/application/status/resources/0/status",
+                "/application/status/sync/status",
+                "/controller/status",
+                "/nodes"
+              ]
+            }
+          ],
+          "gap": null
+        },
+        "controller_log": {
+          "status": "explicit-gap",
+          "artifact_kind": null,
+          "artifacts": [],
+          "gap": "Behavior固有controller log Artifactがない。"
+        },
+        "metric": {
+          "status": "explicit-gap",
+          "artifact_kind": null,
+          "artifacts": [],
+          "gap": "Behavior固有metric Artifactがない。"
+        },
+        "trace": {
+          "status": "artifact",
+          "artifact_kind": "structured-lab-trace-not-otlp",
+          "artifacts": [
+            {
+              "evidence_id": "evidence.upgrade-migration.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.upgrade-migration.v3-5-2/result.json",
+                "digest": "sha256:4e52548e5b48e5ea031cb8b9a0eddbc9f40a21f5f010de0bd54a535ffd3e2e80",
+                "bytes": 167879
+              },
+              "json_pointers": [
+                "/trace"
+              ]
+            },
+            {
+              "evidence_id": "evidence.promotion.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.promotion.v3-5-2/result.json",
+                "digest": "sha256:ca502bf39eeb209ab733e43d529fa12ef48eef19ae2eac31552714598c15ac11",
+                "bytes": 51745
+              },
+              "json_pointers": [
+                "/trace"
+              ]
+            },
+            {
+              "evidence_id": "evidence.recovery.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.recovery.v3-5-2/result.json",
+                "digest": "sha256:1ce151748b3ea147fabfeb66db0a620abb33f62edbaa312844942511fde950a7",
+                "bytes": 55248
+              },
+              "json_pointers": [
+                "/trace"
+              ]
+            }
+          ],
+          "gap": null
+        }
+      },
+      "single_topology_execution": false,
+      "integrated_runtime_proof": false,
+      "completion_eligible": false,
+      "gaps": [
+        "single-topology-runtime-execution-not-performed"
+      ]
+    },
+    {
+      "id": "reference.scenario.operations",
+      "scenario": "operations",
+      "execution": "offline-bound-evidence-integration",
+      "outcome": "bounded-evidence-audit",
+      "attempts": 1,
+      "final_status": "evaluated",
+      "runtime_attempts": 0,
+      "status": "bounded-component-evidence",
+      "component_evidence_ids": [
+        "evidence.operations.v3-5-2",
+        "evidence.observability.v3-5-2",
+        "evidence.drift.v3-5-2",
+        "evidence.high-availability.v3-5-2"
+      ],
+      "controller_components": [
+        "argocd-application-controller",
+        "argocd-server",
+        "argocd-repo-server"
+      ],
+      "kubernetes_behaviors": [
+        "bounded-wait",
+        "status-refresh",
+        "pod-readiness"
+      ],
+      "assertions": [
+        "finite-command-result",
+        "state-log-metric-correlation",
+        "cleanup-bounded"
+      ],
+      "runtime_identities": [
+        {
+          "profile": "cluster",
+          "producer": "argocd-atlas-kind-extended-harness",
+          "command": "make extended-lab-operations",
+          "manifest_digest": "sha256:fba4965e0c1ef1f37c6fc36c048093d2e098ff73fbfdc1e398a05a3de348c73e",
+          "cluster_name": null,
+          "kubernetes_context": null,
+          "argocd_version": "v3.5.2",
+          "kubernetes_api_server_versions": [],
+          "kubernetes_kubelet_versions": [],
+          "kubernetes_node_image_version": "v1.34.0",
+          "kubernetes_environment_lock": {
+            "path": "environments/kind/argocd-v3.5.2.lock",
+            "digest": "sha256:91f435bad9af7bb58e403882efa4e0c874d7bcb8703081733da5bbfd0ab48a2c",
+            "bytes": 573
+          },
+          "observed_components": [
+            "argocd-application-controller",
+            "argocd-applicationset-controller",
+            "argocd-notifications-controller",
+            "argocd-repo-server",
+            "argocd-server"
+          ],
+          "real_kubernetes_runtime": true,
+          "version_identity_complete": false
+        },
+        {
+          "profile": "cluster",
+          "producer": "argocd-atlas-kind-extended-harness",
+          "command": "make extended-lab-observability",
+          "manifest_digest": "sha256:fba4965e0c1ef1f37c6fc36c048093d2e098ff73fbfdc1e398a05a3de348c73e",
+          "cluster_name": null,
+          "kubernetes_context": null,
+          "argocd_version": "v3.5.2",
+          "kubernetes_api_server_versions": [],
+          "kubernetes_kubelet_versions": [],
+          "kubernetes_node_image_version": "v1.34.0",
+          "kubernetes_environment_lock": {
+            "path": "environments/kind/argocd-v3.5.2.lock",
+            "digest": "sha256:91f435bad9af7bb58e403882efa4e0c874d7bcb8703081733da5bbfd0ab48a2c",
+            "bytes": 573
+          },
+          "observed_components": [
+            "argocd-application-controller",
+            "argocd-applicationset-controller",
+            "argocd-notifications-controller",
+            "argocd-repo-server",
+            "argocd-server"
+          ],
+          "real_kubernetes_runtime": true,
+          "version_identity_complete": false
+        },
+        {
+          "profile": "cluster",
+          "producer": "argocd-atlas-kind-extended-harness",
+          "command": "make extended-lab-drift",
+          "manifest_digest": "sha256:fba4965e0c1ef1f37c6fc36c048093d2e098ff73fbfdc1e398a05a3de348c73e",
+          "cluster_name": null,
+          "kubernetes_context": null,
+          "argocd_version": "v3.5.2",
+          "kubernetes_api_server_versions": [],
+          "kubernetes_kubelet_versions": [],
+          "kubernetes_node_image_version": "v1.34.0",
+          "kubernetes_environment_lock": {
+            "path": "environments/kind/argocd-v3.5.2.lock",
+            "digest": "sha256:91f435bad9af7bb58e403882efa4e0c874d7bcb8703081733da5bbfd0ab48a2c",
+            "bytes": 573
+          },
+          "observed_components": [
+            "argocd-application-controller",
+            "argocd-applicationset-controller",
+            "argocd-notifications-controller",
+            "argocd-repo-server",
+            "argocd-server"
+          ],
+          "real_kubernetes_runtime": true,
+          "version_identity_complete": false
+        },
+        {
+          "profile": "cluster",
+          "producer": "argocd-atlas-kind-extended-harness",
+          "command": "make extended-lab-high-availability",
+          "manifest_digest": "sha256:1af964eee23cfbcb7396b665987d664419c4db509c3766576757728ec9e6fb80",
+          "cluster_name": null,
+          "kubernetes_context": null,
+          "argocd_version": "v3.5.2",
+          "kubernetes_api_server_versions": [],
+          "kubernetes_kubelet_versions": [],
+          "kubernetes_node_image_version": "v1.34.0",
+          "kubernetes_environment_lock": {
+            "path": "environments/kind/argocd-v3.5.2.lock",
+            "digest": "sha256:91f435bad9af7bb58e403882efa4e0c874d7bcb8703081733da5bbfd0ab48a2c",
+            "bytes": 573
+          },
+          "observed_components": [
+            "argocd-application-controller",
+            "argocd-applicationset-controller",
+            "argocd-notifications-controller",
+            "argocd-repo-server",
+            "argocd-server",
+            "redis-ha"
+          ],
+          "real_kubernetes_runtime": true,
+          "version_identity_complete": false
+        }
+      ],
+      "artifact_bindings": [
+        {
+          "path": "evidence/raw/evidence.operations.v3-5-2/result.json",
+          "digest": "sha256:5968b4e4b75f4aae7558133d98e953638d5c30881a25832eddb0e43a6ed74b52",
+          "bytes": 167869
+        },
+        {
+          "path": "evidence/raw/evidence.observability.v3-5-2/result.json",
+          "digest": "sha256:098cf152a2c95f7c82311a6e2d29b0f46da85e267bccd03cc6bb1399e9e454d1",
+          "bytes": 185797
+        },
+        {
+          "path": "evidence/raw/evidence.drift.v3-5-2/result.json",
+          "digest": "sha256:37ae3fe3310efa64e41cfd9ba96a6ec42c76f74259839d2ce00bde031a3aae26",
+          "bytes": 168372
+        },
+        {
+          "path": "evidence/raw/evidence.high-availability.v3-5-2/result.json",
+          "digest": "sha256:6fe217a67aa7f956f53f627a06cce1a982ee77cf2264ecc31b1fc88d49b8f249",
+          "bytes": 191957
+        }
+      ],
+      "observations": {
+        "resource_state": {
+          "status": "artifact",
+          "artifact_kind": "resource-state-json",
+          "artifacts": [
+            {
+              "evidence_id": "evidence.operations.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.operations.v3-5-2/result.json",
+                "digest": "sha256:5968b4e4b75f4aae7558133d98e953638d5c30881a25832eddb0e43a6ed74b52",
+                "bytes": 167869
+              },
+              "json_pointers": [
+                "/applications",
+                "/applications/items/0/status",
+                "/applications/items/0/status/health/status",
+                "/applications/items/0/status/operationState",
+                "/applications/items/0/status/operationState/syncResult/resources",
+                "/applications/items/0/status/operationState/syncResult/resources/0/status",
+                "/applications/items/0/status/resources",
+                "/applications/items/0/status/resources/0/status"
+              ]
+            },
+            {
+              "evidence_id": "evidence.observability.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.observability.v3-5-2/result.json",
+                "digest": "sha256:098cf152a2c95f7c82311a6e2d29b0f46da85e267bccd03cc6bb1399e9e454d1",
+                "bytes": 185797
+              },
+              "json_pointers": [
+                "/applications",
+                "/applications/items/0/status",
+                "/applications/items/0/status/health/status",
+                "/applications/items/0/status/operationState",
+                "/applications/items/0/status/operationState/syncResult/resources",
+                "/applications/items/0/status/operationState/syncResult/resources/0/status",
+                "/applications/items/0/status/resources",
+                "/applications/items/0/status/resources/0/status"
+              ]
+            },
+            {
+              "evidence_id": "evidence.drift.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.drift.v3-5-2/result.json",
+                "digest": "sha256:37ae3fe3310efa64e41cfd9ba96a6ec42c76f74259839d2ce00bde031a3aae26",
+                "bytes": 168372
+              },
+              "json_pointers": [
+                "/applications",
+                "/applications/items/0/status",
+                "/applications/items/0/status/health/status",
+                "/applications/items/0/status/operationState",
+                "/applications/items/0/status/operationState/syncResult/resources",
+                "/applications/items/0/status/operationState/syncResult/resources/0/status",
+                "/applications/items/0/status/resources",
+                "/applications/items/0/status/resources/0/status"
+              ]
+            },
+            {
+              "evidence_id": "evidence.high-availability.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.high-availability.v3-5-2/result.json",
+                "digest": "sha256:6fe217a67aa7f956f53f627a06cce1a982ee77cf2264ecc31b1fc88d49b8f249",
+                "bytes": 191957
+              },
+              "json_pointers": [
+                "/applications",
+                "/applications/items/0/status",
+                "/applications/items/0/status/health/status",
+                "/applications/items/0/status/operationState",
+                "/applications/items/0/status/operationState/syncResult/resources",
+                "/applications/items/0/status/operationState/syncResult/resources/0/status",
+                "/applications/items/0/status/resources",
+                "/applications/items/0/status/resources/0/status"
+              ]
+            }
+          ],
+          "gap": null
+        },
+        "controller_log": {
+          "status": "artifact",
+          "artifact_kind": "controller-log",
+          "artifacts": [
+            {
+              "evidence_id": "evidence.observability.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.observability.v3-5-2/result.json",
+                "digest": "sha256:098cf152a2c95f7c82311a6e2d29b0f46da85e267bccd03cc6bb1399e9e454d1",
+                "bytes": 185797
+              },
+              "json_pointers": [
+                "/trace/observability/component_logs"
+              ]
+            }
+          ],
+          "gap": null
+        },
+        "metric": {
+          "status": "artifact",
+          "artifact_kind": "metric-sample",
+          "artifacts": [
+            {
+              "evidence_id": "evidence.observability.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.observability.v3-5-2/result.json",
+                "digest": "sha256:098cf152a2c95f7c82311a6e2d29b0f46da85e267bccd03cc6bb1399e9e454d1",
+                "bytes": 185797
+              },
+              "json_pointers": [
+                "/trace/observability/controller_metric_sample",
+                "/trace/observability/repo_metric_sample",
+                "/trace/observability/server_metric_sample"
+              ]
+            },
+            {
+              "evidence_id": "evidence.high-availability.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.high-availability.v3-5-2/result.json",
+                "digest": "sha256:6fe217a67aa7f956f53f627a06cce1a982ee77cf2264ecc31b1fc88d49b8f249",
+                "bytes": 191957
+              },
+              "json_pointers": [
+                "/trace/high_availability/redis/outage_window/server_metric_reads_failed",
+                "/trace/high_availability/redis/outage_window/server_metric_reads_succeeded"
+              ]
+            }
+          ],
+          "gap": null
+        },
+        "trace": {
+          "status": "artifact",
+          "artifact_kind": "structured-lab-trace-not-otlp",
+          "artifacts": [
+            {
+              "evidence_id": "evidence.operations.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.operations.v3-5-2/result.json",
+                "digest": "sha256:5968b4e4b75f4aae7558133d98e953638d5c30881a25832eddb0e43a6ed74b52",
+                "bytes": 167869
+              },
+              "json_pointers": [
+                "/trace"
+              ]
+            },
+            {
+              "evidence_id": "evidence.observability.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.observability.v3-5-2/result.json",
+                "digest": "sha256:098cf152a2c95f7c82311a6e2d29b0f46da85e267bccd03cc6bb1399e9e454d1",
+                "bytes": 185797
+              },
+              "json_pointers": [
+                "/trace"
+              ]
+            },
+            {
+              "evidence_id": "evidence.drift.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.drift.v3-5-2/result.json",
+                "digest": "sha256:37ae3fe3310efa64e41cfd9ba96a6ec42c76f74259839d2ce00bde031a3aae26",
+                "bytes": 168372
+              },
+              "json_pointers": [
+                "/trace"
+              ]
+            },
+            {
+              "evidence_id": "evidence.high-availability.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.high-availability.v3-5-2/result.json",
+                "digest": "sha256:6fe217a67aa7f956f53f627a06cce1a982ee77cf2264ecc31b1fc88d49b8f249",
+                "bytes": 191957
+              },
+              "json_pointers": [
+                "/trace"
+              ]
+            }
+          ],
+          "gap": null
+        }
+      },
+      "single_topology_execution": false,
+      "integrated_runtime_proof": false,
+      "completion_eligible": false,
+      "gaps": [
+        "single-topology-runtime-execution-not-performed"
+      ]
+    },
+    {
+      "id": "reference.scenario.security",
+      "scenario": "security",
+      "execution": "offline-bound-evidence-integration",
+      "outcome": "bounded-evidence-audit",
+      "attempts": 1,
+      "final_status": "evaluated",
+      "runtime_attempts": 0,
+      "status": "bounded-component-evidence",
+      "component_evidence_ids": [
+        "evidence.security.v3-5-2",
+        "evidence.access-boundary.v3-5-2",
+        "evidence.connection.v3-5-2",
+        "evidence.notifications.v3-5-2"
+      ],
+      "controller_components": [
+        "argocd-server",
+        "argocd-application-controller",
+        "argocd-repo-server",
+        "argocd-notifications-controller"
+      ],
+      "kubernetes_behaviors": [
+        "secret-reference-boundary",
+        "rbac-policy-enforcement",
+        "namespace-scope"
+      ],
+      "assertions": [
+        "secret-value-not-retained",
+        "denied-identity-rejected",
+        "credential-boundary-explicit"
+      ],
+      "runtime_identities": [
+        {
+          "profile": "cluster",
+          "producer": "argocd-atlas-kind-harness",
+          "command": "make lab-security",
+          "manifest_digest": "sha256:c7c7fb796abc20741fc9c71e4ec8553e70a32783aab5faf9ea4789d3e1d8e1ee",
+          "cluster_name": "argocd-atlas-v3-5-2",
+          "kubernetes_context": "kind-argocd-atlas-v3-5-2",
+          "argocd_version": "v3.5.2",
+          "kubernetes_api_server_versions": [
+            "v1.34.1"
+          ],
+          "kubernetes_kubelet_versions": [
+            "v1.34.0"
+          ],
+          "kubernetes_node_image_version": "v1.34.0",
+          "kubernetes_environment_lock": {
+            "path": "environments/kind/argocd-v3.5.2.lock",
+            "digest": "sha256:91f435bad9af7bb58e403882efa4e0c874d7bcb8703081733da5bbfd0ab48a2c",
+            "bytes": 573
+          },
+          "observed_components": [
+            "argocd-application-controller",
+            "argocd-repo-server"
+          ],
+          "real_kubernetes_runtime": true,
+          "version_identity_complete": true
+        },
+        {
+          "profile": "cluster",
+          "producer": "argocd-atlas-kind-extended-harness",
+          "command": "make extended-lab-access-boundary",
+          "manifest_digest": "sha256:fba4965e0c1ef1f37c6fc36c048093d2e098ff73fbfdc1e398a05a3de348c73e",
+          "cluster_name": null,
+          "kubernetes_context": null,
+          "argocd_version": "v3.5.2",
+          "kubernetes_api_server_versions": [],
+          "kubernetes_kubelet_versions": [],
+          "kubernetes_node_image_version": "v1.34.0",
+          "kubernetes_environment_lock": {
+            "path": "environments/kind/argocd-v3.5.2.lock",
+            "digest": "sha256:91f435bad9af7bb58e403882efa4e0c874d7bcb8703081733da5bbfd0ab48a2c",
+            "bytes": 573
+          },
+          "observed_components": [
+            "argocd-application-controller",
+            "argocd-applicationset-controller",
+            "argocd-notifications-controller",
+            "argocd-repo-server",
+            "argocd-server"
+          ],
+          "real_kubernetes_runtime": true,
+          "version_identity_complete": false
+        },
+        {
+          "profile": "cluster",
+          "producer": "argocd-atlas-kind-extended-harness",
+          "command": "make extended-lab-connection",
+          "manifest_digest": "sha256:fba4965e0c1ef1f37c6fc36c048093d2e098ff73fbfdc1e398a05a3de348c73e",
+          "cluster_name": null,
+          "kubernetes_context": null,
+          "argocd_version": "v3.5.2",
+          "kubernetes_api_server_versions": [],
+          "kubernetes_kubelet_versions": [],
+          "kubernetes_node_image_version": "v1.34.0",
+          "kubernetes_environment_lock": {
+            "path": "environments/kind/argocd-v3.5.2.lock",
+            "digest": "sha256:91f435bad9af7bb58e403882efa4e0c874d7bcb8703081733da5bbfd0ab48a2c",
+            "bytes": 573
+          },
+          "observed_components": [
+            "argocd-application-controller",
+            "argocd-applicationset-controller",
+            "argocd-notifications-controller",
+            "argocd-repo-server",
+            "argocd-server"
+          ],
+          "real_kubernetes_runtime": true,
+          "version_identity_complete": false
+        },
+        {
+          "profile": "cluster",
+          "producer": "argocd-atlas-kind-extended-harness",
+          "command": "make extended-lab-notifications",
+          "manifest_digest": "sha256:fba4965e0c1ef1f37c6fc36c048093d2e098ff73fbfdc1e398a05a3de348c73e",
+          "cluster_name": null,
+          "kubernetes_context": null,
+          "argocd_version": "v3.5.2",
+          "kubernetes_api_server_versions": [],
+          "kubernetes_kubelet_versions": [],
+          "kubernetes_node_image_version": "v1.34.0",
+          "kubernetes_environment_lock": {
+            "path": "environments/kind/argocd-v3.5.2.lock",
+            "digest": "sha256:91f435bad9af7bb58e403882efa4e0c874d7bcb8703081733da5bbfd0ab48a2c",
+            "bytes": 573
+          },
+          "observed_components": [
+            "argocd-application-controller",
+            "argocd-applicationset-controller",
+            "argocd-notifications-controller",
+            "argocd-repo-server",
+            "argocd-server"
+          ],
+          "real_kubernetes_runtime": true,
+          "version_identity_complete": false
+        }
+      ],
+      "artifact_bindings": [
+        {
+          "path": "evidence/raw/evidence.security.v3-5-2/result.json",
+          "digest": "sha256:43f49900cca996064ccf415c37dfca9131570a6f19c40da96975c2ae51211c8d",
+          "bytes": 51244
+        },
+        {
+          "path": "evidence/raw/evidence.access-boundary.v3-5-2/result.json",
+          "digest": "sha256:d6ea44ed81d3c64ac5df56192a2554b750d2e7ebb9f7a9c94e8c71493f7e119c",
+          "bytes": 192412
+        },
+        {
+          "path": "evidence/raw/evidence.connection.v3-5-2/result.json",
+          "digest": "sha256:43284faa25ee4e41ffd22a0078e1a9159293b33ebe4a5f3d163cda19d718a59c",
+          "bytes": 177737
+        },
+        {
+          "path": "evidence/raw/evidence.notifications.v3-5-2/result.json",
+          "digest": "sha256:25af7045326cb82ff7c5556f12840183b443e49a2d1a14200661a250a7eb6550",
+          "bytes": 189622
+        }
+      ],
+      "observations": {
+        "resource_state": {
+          "status": "artifact",
+          "artifact_kind": "resource-state-json",
+          "artifacts": [
+            {
+              "evidence_id": "evidence.security.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.security.v3-5-2/result.json",
+                "digest": "sha256:43f49900cca996064ccf415c37dfca9131570a6f19c40da96975c2ae51211c8d",
+                "bytes": 51244
+              },
+              "json_pointers": [
+                "/application",
+                "/application/status",
+                "/application/status/health/status",
+                "/application/status/operationState",
+                "/application/status/operationState/syncResult/resources",
+                "/application/status/operationState/syncResult/resources/0/status",
+                "/application/status/resources",
+                "/application/status/resources/0/status"
+              ]
+            },
+            {
+              "evidence_id": "evidence.access-boundary.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.access-boundary.v3-5-2/result.json",
+                "digest": "sha256:d6ea44ed81d3c64ac5df56192a2554b750d2e7ebb9f7a9c94e8c71493f7e119c",
+                "bytes": 192412
+              },
+              "json_pointers": [
+                "/applications",
+                "/applicationsets",
+                "/projects",
+                "/topology/items/0/status",
+                "/topology/items/0/status/conditions/0/status",
+                "/topology/items/0/status/conditions/1/status",
+                "/topology/items/1/status",
+                "/topology/items/1/status/conditions/0/status"
+              ]
+            },
+            {
+              "evidence_id": "evidence.connection.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.connection.v3-5-2/result.json",
+                "digest": "sha256:43284faa25ee4e41ffd22a0078e1a9159293b33ebe4a5f3d163cda19d718a59c",
+                "bytes": 177737
+              },
+              "json_pointers": [
+                "/applications",
+                "/applications/items/0/status",
+                "/applications/items/0/status/health/status",
+                "/applications/items/0/status/operationState",
+                "/applications/items/0/status/operationState/syncResult/resources",
+                "/applications/items/0/status/operationState/syncResult/resources/0/status",
+                "/applications/items/0/status/resources",
+                "/applications/items/0/status/resources/0/status"
+              ]
+            },
+            {
+              "evidence_id": "evidence.notifications.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.notifications.v3-5-2/result.json",
+                "digest": "sha256:25af7045326cb82ff7c5556f12840183b443e49a2d1a14200661a250a7eb6550",
+                "bytes": 189622
+              },
+              "json_pointers": [
+                "/applications",
+                "/applications/items/0/status",
+                "/applications/items/0/status/health/status",
+                "/applications/items/0/status/operationState",
+                "/applications/items/0/status/operationState/syncResult/resources",
+                "/applications/items/0/status/operationState/syncResult/resources/0/status",
+                "/applications/items/0/status/resources",
+                "/applications/items/0/status/resources/0/status"
+              ]
+            }
+          ],
+          "gap": null
+        },
+        "controller_log": {
+          "status": "explicit-gap",
+          "artifact_kind": null,
+          "artifacts": [],
+          "gap": "Behavior固有controller log Artifactがない。"
+        },
+        "metric": {
+          "status": "artifact",
+          "artifact_kind": "metric-sample",
+          "artifacts": [
+            {
+              "evidence_id": "evidence.notifications.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.notifications.v3-5-2/result.json",
+                "digest": "sha256:25af7045326cb82ff7c5556f12840183b443e49a2d1a14200661a250a7eb6550",
+                "bytes": 189622
+              },
+              "json_pointers": [
+                "/trace/notifications/assertions/controller_metrics_present",
+                "/trace/notifications/metric_samples",
+                "/trace/notifications/metrics_digest"
+              ]
+            }
+          ],
+          "gap": null
+        },
+        "trace": {
+          "status": "artifact",
+          "artifact_kind": "structured-lab-trace-not-otlp",
+          "artifacts": [
+            {
+              "evidence_id": "evidence.security.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.security.v3-5-2/result.json",
+                "digest": "sha256:43f49900cca996064ccf415c37dfca9131570a6f19c40da96975c2ae51211c8d",
+                "bytes": 51244
+              },
+              "json_pointers": [
+                "/trace"
+              ]
+            },
+            {
+              "evidence_id": "evidence.access-boundary.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.access-boundary.v3-5-2/result.json",
+                "digest": "sha256:d6ea44ed81d3c64ac5df56192a2554b750d2e7ebb9f7a9c94e8c71493f7e119c",
+                "bytes": 192412
+              },
+              "json_pointers": [
+                "/trace"
+              ]
+            },
+            {
+              "evidence_id": "evidence.connection.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.connection.v3-5-2/result.json",
+                "digest": "sha256:43284faa25ee4e41ffd22a0078e1a9159293b33ebe4a5f3d163cda19d718a59c",
+                "bytes": 177737
+              },
+              "json_pointers": [
+                "/trace"
+              ]
+            },
+            {
+              "evidence_id": "evidence.notifications.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.notifications.v3-5-2/result.json",
+                "digest": "sha256:25af7045326cb82ff7c5556f12840183b443e49a2d1a14200661a250a7eb6550",
+                "bytes": 189622
+              },
+              "json_pointers": [
+                "/trace"
+              ]
+            }
+          ],
+          "gap": null
+        }
+      },
+      "single_topology_execution": false,
+      "integrated_runtime_proof": false,
+      "completion_eligible": false,
+      "gaps": [
+        "single-topology-runtime-execution-not-performed"
+      ]
+    },
+    {
+      "id": "reference.scenario.performance",
+      "scenario": "performance",
+      "execution": "offline-bound-evidence-integration",
+      "outcome": "bounded-evidence-audit",
+      "attempts": 1,
+      "final_status": "evaluated",
+      "runtime_attempts": 0,
+      "status": "bounded-component-evidence",
+      "component_evidence_ids": [
+        "evidence.observability.v3-5-2",
+        "evidence.high-availability.v3-5-2"
+      ],
+      "controller_components": [
+        "argocd-application-controller",
+        "argocd-server",
+        "argocd-repo-server"
+      ],
+      "kubernetes_behaviors": [
+        "controller-queue-observation",
+        "resource-consumption-observation"
+      ],
+      "assertions": [
+        "metrics-artifact-bound",
+        "capacity-benchmark-gap-explicit"
+      ],
+      "runtime_identities": [
+        {
+          "profile": "cluster",
+          "producer": "argocd-atlas-kind-extended-harness",
+          "command": "make extended-lab-observability",
+          "manifest_digest": "sha256:fba4965e0c1ef1f37c6fc36c048093d2e098ff73fbfdc1e398a05a3de348c73e",
+          "cluster_name": null,
+          "kubernetes_context": null,
+          "argocd_version": "v3.5.2",
+          "kubernetes_api_server_versions": [],
+          "kubernetes_kubelet_versions": [],
+          "kubernetes_node_image_version": "v1.34.0",
+          "kubernetes_environment_lock": {
+            "path": "environments/kind/argocd-v3.5.2.lock",
+            "digest": "sha256:91f435bad9af7bb58e403882efa4e0c874d7bcb8703081733da5bbfd0ab48a2c",
+            "bytes": 573
+          },
+          "observed_components": [
+            "argocd-application-controller",
+            "argocd-applicationset-controller",
+            "argocd-notifications-controller",
+            "argocd-repo-server",
+            "argocd-server"
+          ],
+          "real_kubernetes_runtime": true,
+          "version_identity_complete": false
+        },
+        {
+          "profile": "cluster",
+          "producer": "argocd-atlas-kind-extended-harness",
+          "command": "make extended-lab-high-availability",
+          "manifest_digest": "sha256:1af964eee23cfbcb7396b665987d664419c4db509c3766576757728ec9e6fb80",
+          "cluster_name": null,
+          "kubernetes_context": null,
+          "argocd_version": "v3.5.2",
+          "kubernetes_api_server_versions": [],
+          "kubernetes_kubelet_versions": [],
+          "kubernetes_node_image_version": "v1.34.0",
+          "kubernetes_environment_lock": {
+            "path": "environments/kind/argocd-v3.5.2.lock",
+            "digest": "sha256:91f435bad9af7bb58e403882efa4e0c874d7bcb8703081733da5bbfd0ab48a2c",
+            "bytes": 573
+          },
+          "observed_components": [
+            "argocd-application-controller",
+            "argocd-applicationset-controller",
+            "argocd-notifications-controller",
+            "argocd-repo-server",
+            "argocd-server",
+            "redis-ha"
+          ],
+          "real_kubernetes_runtime": true,
+          "version_identity_complete": false
+        }
+      ],
+      "artifact_bindings": [
+        {
+          "path": "evidence/raw/evidence.observability.v3-5-2/result.json",
+          "digest": "sha256:098cf152a2c95f7c82311a6e2d29b0f46da85e267bccd03cc6bb1399e9e454d1",
+          "bytes": 185797
+        },
+        {
+          "path": "evidence/raw/evidence.high-availability.v3-5-2/result.json",
+          "digest": "sha256:6fe217a67aa7f956f53f627a06cce1a982ee77cf2264ecc31b1fc88d49b8f249",
+          "bytes": 191957
+        }
+      ],
+      "observations": {
+        "resource_state": {
+          "status": "artifact",
+          "artifact_kind": "resource-state-json",
+          "artifacts": [
+            {
+              "evidence_id": "evidence.observability.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.observability.v3-5-2/result.json",
+                "digest": "sha256:098cf152a2c95f7c82311a6e2d29b0f46da85e267bccd03cc6bb1399e9e454d1",
+                "bytes": 185797
+              },
+              "json_pointers": [
+                "/applications",
+                "/applications/items/0/status",
+                "/applications/items/0/status/health/status",
+                "/applications/items/0/status/operationState",
+                "/applications/items/0/status/operationState/syncResult/resources",
+                "/applications/items/0/status/operationState/syncResult/resources/0/status",
+                "/applications/items/0/status/resources",
+                "/applications/items/0/status/resources/0/status"
+              ]
+            },
+            {
+              "evidence_id": "evidence.high-availability.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.high-availability.v3-5-2/result.json",
+                "digest": "sha256:6fe217a67aa7f956f53f627a06cce1a982ee77cf2264ecc31b1fc88d49b8f249",
+                "bytes": 191957
+              },
+              "json_pointers": [
+                "/applications",
+                "/applications/items/0/status",
+                "/applications/items/0/status/health/status",
+                "/applications/items/0/status/operationState",
+                "/applications/items/0/status/operationState/syncResult/resources",
+                "/applications/items/0/status/operationState/syncResult/resources/0/status",
+                "/applications/items/0/status/resources",
+                "/applications/items/0/status/resources/0/status"
+              ]
+            }
+          ],
+          "gap": null
+        },
+        "controller_log": {
+          "status": "artifact",
+          "artifact_kind": "controller-log",
+          "artifacts": [
+            {
+              "evidence_id": "evidence.observability.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.observability.v3-5-2/result.json",
+                "digest": "sha256:098cf152a2c95f7c82311a6e2d29b0f46da85e267bccd03cc6bb1399e9e454d1",
+                "bytes": 185797
+              },
+              "json_pointers": [
+                "/trace/observability/component_logs"
+              ]
+            }
+          ],
+          "gap": null
+        },
+        "metric": {
+          "status": "artifact",
+          "artifact_kind": "metric-sample",
+          "artifacts": [
+            {
+              "evidence_id": "evidence.observability.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.observability.v3-5-2/result.json",
+                "digest": "sha256:098cf152a2c95f7c82311a6e2d29b0f46da85e267bccd03cc6bb1399e9e454d1",
+                "bytes": 185797
+              },
+              "json_pointers": [
+                "/trace/observability/controller_metric_sample",
+                "/trace/observability/repo_metric_sample",
+                "/trace/observability/server_metric_sample"
+              ]
+            },
+            {
+              "evidence_id": "evidence.high-availability.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.high-availability.v3-5-2/result.json",
+                "digest": "sha256:6fe217a67aa7f956f53f627a06cce1a982ee77cf2264ecc31b1fc88d49b8f249",
+                "bytes": 191957
+              },
+              "json_pointers": [
+                "/trace/high_availability/redis/outage_window/server_metric_reads_failed",
+                "/trace/high_availability/redis/outage_window/server_metric_reads_succeeded"
+              ]
+            }
+          ],
+          "gap": null
+        },
+        "trace": {
+          "status": "artifact",
+          "artifact_kind": "structured-lab-trace-not-otlp",
+          "artifacts": [
+            {
+              "evidence_id": "evidence.observability.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.observability.v3-5-2/result.json",
+                "digest": "sha256:098cf152a2c95f7c82311a6e2d29b0f46da85e267bccd03cc6bb1399e9e454d1",
+                "bytes": 185797
+              },
+              "json_pointers": [
+                "/trace"
+              ]
+            },
+            {
+              "evidence_id": "evidence.high-availability.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.high-availability.v3-5-2/result.json",
+                "digest": "sha256:6fe217a67aa7f956f53f627a06cce1a982ee77cf2264ecc31b1fc88d49b8f249",
+                "bytes": 191957
+              },
+              "json_pointers": [
+                "/trace"
+              ]
+            }
+          ],
+          "gap": null
+        }
+      },
+      "single_topology_execution": false,
+      "integrated_runtime_proof": false,
+      "completion_eligible": false,
+      "gaps": [
+        "single-topology-runtime-execution-not-performed",
+        "capacity-benchmark-and-regression-baseline-missing"
+      ]
+    },
+    {
+      "id": "reference.scenario.compatibility",
+      "scenario": "compatibility",
+      "execution": "offline-bound-evidence-integration",
+      "outcome": "bounded-evidence-audit",
+      "attempts": 1,
+      "final_status": "evaluated",
+      "runtime_attempts": 0,
+      "status": "bounded-component-evidence",
+      "component_evidence_ids": [
+        "evidence.upgrade-migration.v3-5-2",
+        "evidence.applicationset.v3-5-2"
+      ],
+      "controller_components": [
+        "argocd-application-controller",
+        "argocd-applicationset-controller",
+        "argocd-server"
+      ],
+      "kubernetes_behaviors": [
+        "argocd-version-transition",
+        "kubernetes-version-binding",
+        "generator-compatibility"
+      ],
+      "assertions": [
+        "single-upgrade-path-bound",
+        "broad-version-matrix-gap-explicit"
+      ],
+      "runtime_identities": [
+        {
+          "profile": "cluster",
+          "producer": "argocd-atlas-kind-extended-harness",
+          "command": "make extended-lab-upgrade-migration",
+          "manifest_digest": "sha256:39af380f11956c83641d08da483fcd828edfc784e77f327468e92736d00f1f3e",
+          "cluster_name": null,
+          "kubernetes_context": null,
+          "argocd_version": "v3.4.8-to-v3.5.2",
+          "kubernetes_api_server_versions": [],
+          "kubernetes_kubelet_versions": [],
+          "kubernetes_node_image_version": "v1.34.0",
+          "kubernetes_environment_lock": {
+            "path": "environments/kind/argocd-v3.5.2.lock",
+            "digest": "sha256:91f435bad9af7bb58e403882efa4e0c874d7bcb8703081733da5bbfd0ab48a2c",
+            "bytes": 573
+          },
+          "observed_components": [
+            "argocd-application-controller",
+            "argocd-applicationset-controller",
+            "argocd-notifications-controller",
+            "argocd-repo-server",
+            "argocd-server"
+          ],
+          "real_kubernetes_runtime": true,
+          "version_identity_complete": false
+        },
+        {
+          "profile": "cluster",
+          "producer": "argocd-atlas-kind-extended-harness",
+          "command": "make extended-lab-applicationset",
+          "manifest_digest": "sha256:fba4965e0c1ef1f37c6fc36c048093d2e098ff73fbfdc1e398a05a3de348c73e",
+          "cluster_name": null,
+          "kubernetes_context": null,
+          "argocd_version": "v3.5.2",
+          "kubernetes_api_server_versions": [],
+          "kubernetes_kubelet_versions": [],
+          "kubernetes_node_image_version": "v1.34.0",
+          "kubernetes_environment_lock": {
+            "path": "environments/kind/argocd-v3.5.2.lock",
+            "digest": "sha256:91f435bad9af7bb58e403882efa4e0c874d7bcb8703081733da5bbfd0ab48a2c",
+            "bytes": 573
+          },
+          "observed_components": [
+            "argocd-application-controller",
+            "argocd-applicationset-controller",
+            "argocd-notifications-controller",
+            "argocd-repo-server",
+            "argocd-server"
+          ],
+          "real_kubernetes_runtime": true,
+          "version_identity_complete": false
+        }
+      ],
+      "artifact_bindings": [
+        {
+          "path": "evidence/raw/evidence.upgrade-migration.v3-5-2/result.json",
+          "digest": "sha256:4e52548e5b48e5ea031cb8b9a0eddbc9f40a21f5f010de0bd54a535ffd3e2e80",
+          "bytes": 167879
+        },
+        {
+          "path": "evidence/raw/evidence.applicationset.v3-5-2/result.json",
+          "digest": "sha256:60cd2340ee3b3d239c897271c4bccd10b4390e9aca4f3882e4370fa0b5a9f0f6",
+          "bytes": 169691
+        }
+      ],
+      "observations": {
+        "resource_state": {
+          "status": "artifact",
+          "artifact_kind": "resource-state-json",
+          "artifacts": [
+            {
+              "evidence_id": "evidence.upgrade-migration.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.upgrade-migration.v3-5-2/result.json",
+                "digest": "sha256:4e52548e5b48e5ea031cb8b9a0eddbc9f40a21f5f010de0bd54a535ffd3e2e80",
+                "bytes": 167879
+              },
+              "json_pointers": [
+                "/applications",
+                "/applications/items/0/status",
+                "/applications/items/0/status/health/status",
+                "/applications/items/0/status/operationState",
+                "/applications/items/0/status/operationState/syncResult/resources",
+                "/applications/items/0/status/operationState/syncResult/resources/0/status",
+                "/applications/items/0/status/resources",
+                "/applications/items/0/status/resources/0/status"
+              ]
+            },
+            {
+              "evidence_id": "evidence.applicationset.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.applicationset.v3-5-2/result.json",
+                "digest": "sha256:60cd2340ee3b3d239c897271c4bccd10b4390e9aca4f3882e4370fa0b5a9f0f6",
+                "bytes": 169691
+              },
+              "json_pointers": [
+                "/applications",
+                "/applications/items/0/status",
+                "/applications/items/0/status/health/status",
+                "/applications/items/0/status/operationState",
+                "/applications/items/0/status/operationState/syncResult/resources",
+                "/applications/items/0/status/operationState/syncResult/resources/0/status",
+                "/applications/items/0/status/resources",
+                "/applications/items/0/status/resources/0/status"
+              ]
+            }
+          ],
+          "gap": null
+        },
+        "controller_log": {
+          "status": "explicit-gap",
+          "artifact_kind": null,
+          "artifacts": [],
+          "gap": "Behavior固有controller log Artifactがない。"
+        },
+        "metric": {
+          "status": "explicit-gap",
+          "artifact_kind": null,
+          "artifacts": [],
+          "gap": "Behavior固有metric Artifactがない。"
+        },
+        "trace": {
+          "status": "artifact",
+          "artifact_kind": "structured-lab-trace-not-otlp",
+          "artifacts": [
+            {
+              "evidence_id": "evidence.upgrade-migration.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.upgrade-migration.v3-5-2/result.json",
+                "digest": "sha256:4e52548e5b48e5ea031cb8b9a0eddbc9f40a21f5f010de0bd54a535ffd3e2e80",
+                "bytes": 167879
+              },
+              "json_pointers": [
+                "/trace"
+              ]
+            },
+            {
+              "evidence_id": "evidence.applicationset.v3-5-2",
+              "artifact": {
+                "path": "evidence/raw/evidence.applicationset.v3-5-2/result.json",
+                "digest": "sha256:60cd2340ee3b3d239c897271c4bccd10b4390e9aca4f3882e4370fa0b5a9f0f6",
+                "bytes": 169691
+              },
+              "json_pointers": [
+                "/trace"
+              ]
+            }
+          ],
+          "gap": null
+        }
+      },
+      "single_topology_execution": false,
+      "integrated_runtime_proof": false,
+      "completion_eligible": false,
+      "gaps": [
+        "single-topology-runtime-execution-not-performed",
+        "broad-argocd-kubernetes-version-matrix-missing"
+      ]
+    }
+  ],
+  "completion_limits": [
+    "10 Scenarioのoffline evidence integrationは、同一Repositoryと同一Cluster topologyでの統合Runtime実行を証明しない。",
+    "Scenario統合結果を各SurfaceまたはBehavior固有Proofへ自動昇格しない。",
+    "Surface Scenario gapは承認済み全Variantの専用実Runtime、retry 0、Oracle、Source/Harness digest、Runtime identity、4専用Artifactが揃う場合だけ閉じる。",
+    "既存Lab bundle、統合結果、別Surface／Scenario／VariantのArtifact metadataをClosureへ流用しない。",
+    "Authority raw anchorの人手Decisionがないため、Authority atomic bindingとcompletion eligibleは0を維持する。",
+    "Performance、広域Compatibility、OTLP trace、実IdP、host/network partitionのGapを既存Artifactで代用しない。"
+  ]
+}

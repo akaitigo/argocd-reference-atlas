@@ -177,3 +177,33 @@
 5. 完了条件をUser outcomeとEvidenceで定義し、Command成功だけで閉じない。
 
 **停止:** 対象集合が曖昧、権限不明、SLO／Impact未評価、監査記録を残せない場合。
+
+## Notification
+
+**Anchor:** `operations.notifications-delivery`はpartialです。`evidence.notifications.v3-5-2`がlocal receiverの正常配信、HTTP 503 retry、回復後配信、metricを固定し、`observability.metrics-logs`と`security.secret-boundary`が隣接します。
+
+1. Trigger、Template、Subscription、Service、対象Application、local receiverを固定する。
+2. Notification controllerのreconciliation、delivery result、retry、metricを同一時系列で取得する。
+3. receiver artifactへCredentialやSecret dataを保存せず、成功・拒否・provider outage・復旧を分ける。
+
+**停止:** 実provider credential、第三者宛先、送信範囲、rate limit、cleanupが未確認の場合。
+
+## 統合Reference
+
+**Anchor:** `system.integrated-reference-gitops`はmissingです。個別Targetのpass Evidenceを統合証明へ一般化しません。
+
+1. 単一Repositoryと専用Kind topologyにApplicationSet、Project、multi-source、CMP、RBAC、Notification、Observabilityを接続する。
+2. Promotion、drift、dependency failure、backup/restoreを同じApplication群とRevisionへ結び付ける。
+3. cross-surface不変条件とArtifact digestを一つの実行記録で検証する。
+
+**停止:** 個別Fixtureしかなく、同一topologyで横断状態を観測できない場合。
+
+## Evidence比較
+
+**Anchor:** `architecture.evidence-backed-comparison`はmissingです。
+
+1. 比較する方式、固定入力、環境、version、metric、failure unitを明示する。
+2. 各方式を同じScenarioとOracleで実行し、resource state、log、metric、trace、artifactを保存する。
+3. 選択条件と非保証条件を結果から分離する。
+
+**停止:** 条件が異なるEvidence、一次資料だけの推測、単一Fixtureの結果では比較を閉じません。

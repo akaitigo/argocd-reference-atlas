@@ -6,18 +6,21 @@
 
 通常Labは`kind-argocd-atlas-v3-5-2`、HA Labは3 nodeの`kind-argocd-atlas-ha-v3-5-2`、Upgrade Labは`kind-argocd-atlas-upgrade-v3-4-8`で実行しました。各clusterはEvidence生成後に削除し、元のkubectl contextへ復元しました。
 
-## 合格したTarget
+## 固定FixtureでpassしたEvidence
 
 - Application、ApplicationSet、Repository／Cluster connection
 - Reconciliation、Sync、Hook／Wave、Diff、Health、Promotion、Drift、Automated self-heal
 - Secret boundary、Fixture Identity、RBAC、ローカルOIDC discoveryとprovider outage
 - Dependency failure、Control Plane state restore、Operations export／import
 - Controller／API Server／Repository ServerのMetricとLog
-- 3 node上のHA replica、Redis leader削除、障害窓中read、Replica回復
+- Notification controllerからlocal receiverへの正常配信、HTTP 503による6回の試行、receiver回復後の配信、trigger／delivery metric
+- 3 node上のHA replica、Application Controller/repo-server/Redis master Pod UID交代、Controller復旧後Drift再収束、repo-server復旧後Hard Refresh、Redis障害窓中read/metrics、Replica回復
 - v3.4.8からv3.5.2への実Upgrade、主要CR spec、Application Sync／Health維持
-- 1 Router Skillの独立forward Eval
+- 1 Router Skillの8件bounded historical forward Eval
+- 8 Outcome × 14 Surfaceの112セルRouter契約、7境界Case、全30 Target state、10件独立Forward Eval（Matrix／Forward passはCompletionへ算入しない）
+- 10 Scenarioのoffline Evidence integration Auditと、現行100 Surface × 10 Scenarioの1,000専用Proof row。既存Evidenceは20 supporting-runtime／156 supporting-artifact／824 no-supportingとして保持するがClosure creditは0。承認済み全Variantの専用Runtime reportが0件のためScenario gapは0 closed／1,000 open。単一Topology Runtime成功とCompletion eligibleも0
 
-各結果は`evidence/raw/`のJSONと`evidence/records/`のCore Evidence recordへ保存しています。RecordはSource、Harness、Environment Manifest、ArtifactのSHA-256を保持し、CIはArtifact digest、size、JSON構文を再計算します。
+各結果は`evidence/raw/`のJSONと`evidence/records/`のCore Evidence recordへ保存しています。RecordはSource、Harness、Environment Manifest、ArtifactのSHA-256を保持し、CIはArtifact digest、size、JSON構文を再計算します。`coverage.yaml`が`partial`または`missing`とするTargetは、ここに固定Fixtureのpass EvidenceがあってもTarget全体がclosedであることを意味しません。
 
 ## 実行中に反証されたHarness仮定
 
@@ -27,6 +30,8 @@
 - OIDC provider outageはEndpointだけでなくprovider Pod消失まで待たないとraceした。
 - RBAC deny判定のCLI exit code 1は期待する拒否として明示的に扱う必要があった。
 - 公式HA manifestの3-way anti-affinityには3つのschedulable nodeが必要だった。
+- shell文字列の`\n`はNotification ConfigMapで改行として解釈されず、YAMLを実改行で生成する必要があった。
+- v3.5.2 runtime decoderは公式文書例の`1s`をretry durationとして受理せず、nanosecond整数値を受理した。
 
 これらはHarnessを修正し、同じLabを再実行して合格した後にEvidence化しました。
 
@@ -36,4 +41,5 @@
 - Access Boundaryは固定Fixture Identity、RBAC、OIDC discovery／outageを対象とし、実IdPとの対話Login、MFA、Group変更は未実施です。
 - Upgradeは固定Fixtureのv3.4.8からv3.5.2への正方向実行です。Rollback判断点は記録しましたが、全Version／ExtensionのRollback Matrixではありません。
 - Performance、Capacity、Cost、複数Kubernetes Version、全Generator／Plugin互換性は未証明です。
-- GitHub上のCI、Release、署名、Completion Certificate、公開は実施していません。
+- Notification EvidenceはApplication annotationとlocal webhook serviceに限定されます。global subscription、外部provider認証、rate limit、controller再起動時のdeduplication、全Notification Serviceは未証明です。
+- GitHub Repositoryとv0.1.0 Completion Certificateは公開済みですが、限定FixtureとCore v1 Gateに対するbounded historical recordであり、Definitive完成を証明しません。

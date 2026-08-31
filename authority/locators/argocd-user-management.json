@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "source_id": "argocd-user-management",
+  "source_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/operator-manual/user-management/index.md",
+  "locked_source_digest": "sha256:b4dcef526119c3bfdba6cdfba2add187684a915c2127d41c81bf632c5c496fd6",
+  "fetch": {
+    "status": "matched",
+    "observed_digest": "sha256:b4dcef526119c3bfdba6cdfba2add187684a915c2127d41c81bf632c5c496fd6",
+    "locked_digest_match": true,
+    "observed_bytes": 23466,
+    "content_type": "text/markdown; charset=utf-8",
+    "error_digest": null
+  },
+  "extraction": {
+    "method": "locked-body-file-locator-digest",
+    "tool": "argocd-reference-atlas-authority-locator-v1",
+    "review_status": "automated-unreviewed",
+    "body_storage": "metadata-digest-locator-offset-only"
+  },
+  "document_locator": {
+    "locator": "document-root",
+    "locator_kind": "file-root",
+    "locator_status": "root-document",
+    "context_digest": "sha256:b4dcef526119c3bfdba6cdfba2add187684a915c2127d41c81bf632c5c496fd6",
+    "context_start": 0,
+    "context_end": 23466,
+    "context_unit": "byte"
+  },
+  "candidate_surfaces": [
+    {
+      "edge_id": "edge.auth.dex-connector.argocd-user-management",
+      "source_id": "argocd-user-management",
+      "inventory_item_id": "auth.dex-connector",
+      "area": "auth",
+      "target_id": "security.external-idp-interactive-sso",
+      "locator": "docs/operator-manual/user-management/index.md",
+      "locator_status": "file-found",
+      "context_digest": "sha256:b4dcef526119c3bfdba6cdfba2add187684a915c2127d41c81bf632c5c496fd6",
+      "context_start": 0,
+      "context_end": 23466,
+      "context_unit": "byte",
+      "heading_digest": null,
+      "classification_basis": "domain-inventory-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:d354fdf43944f2c20aff090061746f855e64061a8592239776b232f7b420d326",
+      "classification": "candidate-included-unreviewed"
+    },
+    {
+      "edge_id": "edge.auth.external-oidc.argocd-user-management",
+      "source_id": "argocd-user-management",
+      "inventory_item_id": "auth.external-oidc",
+      "area": "auth",
+      "target_id": "security.external-idp-interactive-sso",
+      "locator": "docs/operator-manual/user-management/index.md",
+      "locator_status": "file-found",
+      "context_digest": "sha256:b4dcef526119c3bfdba6cdfba2add187684a915c2127d41c81bf632c5c496fd6",
+      "context_start": 0,
+      "context_end": 23466,
+      "context_unit": "byte",
+      "heading_digest": null,
+      "classification_basis": "domain-inventory-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:320aea05f651247b45b08ff1c9adc0dafa883a3db88fb106475bbfb52ad97d8c",
+      "classification": "candidate-included-unreviewed"
+    },
+    {
+      "edge_id": "edge.auth.local-account.argocd-user-management",
+      "source_id": "argocd-user-management",
+      "inventory_item_id": "auth.local-account",
+      "area": "auth",
+      "target_id": "security.rbac-sso-access-boundary",
+      "locator": "docs/operator-manual/user-management/index.md",
+      "locator_status": "file-found",
+      "context_digest": "sha256:b4dcef526119c3bfdba6cdfba2add187684a915c2127d41c81bf632c5c496fd6",
+      "context_start": 0,
+      "context_end": 23466,
+      "context_unit": "byte",
+      "heading_digest": null,
+      "classification_basis": "domain-inventory-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:6d566b07e56a3b0551a5457e740f8e9e9e1106c2a7164ca1ddaccd691144f323",
+      "classification": "candidate-included-unreviewed"
+    }
+  ]
+}

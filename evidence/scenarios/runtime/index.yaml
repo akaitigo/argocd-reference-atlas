@@ -1,0 +1,83 @@
+schema_version: 1
+id: argocd-dedicated-surface-scenario-runtime-registry-v1
+atlas_id: argocd-reference-atlas
+status: incomplete-authority-review-with-dedicated-runtime-reports
+reports:
+- id: runtime.application-multi-source.security.v3-5-2
+  path: evidence/scenarios/runtime/reports/runtime.application-multi-source.security.v3-5-2.json
+  digest: sha256:0ca9c364c6c48f549896b5bcc6c1cf513e932e9fa8a36cf183de50cd3438a7a6
+  bytes: 9470
+- id: runtime.application-operation-refresh.security.v3-5-2
+  path: evidence/scenarios/runtime/reports/runtime.application-operation-refresh.security.v3-5-2.json
+  digest: sha256:684d97dfac846263f589eb9d5095150038e9b68e372bdde7745e4325ee3b24e1
+  bytes: 8749
+- id: runtime.application-operation-rollback.security.v3-5-2
+  path: evidence/scenarios/runtime/reports/runtime.application-operation-rollback.security.v3-5-2.json
+  digest: sha256:4041fabc56228ef76c32e2990eef6c8ecf26f3b75c0c097275b1ac70809c10bd
+  bytes: 9087
+- id: runtime.application-operation-sync.security.v3-5-2
+  path: evidence/scenarios/runtime/reports/runtime.application-operation-sync.security.v3-5-2.json
+  digest: sha256:230b5d1f9fb8d44372e0bb84de1ead4e00603063ef975803030e7b8956ff83e5
+  bytes: 8903
+- id: runtime.application-operation-terminate.security.v3-5-2
+  path: evidence/scenarios/runtime/reports/runtime.application-operation-terminate.security.v3-5-2.json
+  digest: sha256:49b042f5ca6d15329cb81c31847bf68488d2df17fdbfa13c90e3499332efedef
+  bytes: 9100
+- id: runtime.application-operation-wait.security.v3-5-2
+  path: evidence/scenarios/runtime/reports/runtime.application-operation-wait.security.v3-5-2.json
+  digest: sha256:ead57bcc038d55c0fccf00baaab9faea25c5806f54dc65914ba8a73bae1c5226
+  bytes: 8848
+- id: runtime.application-resource-actions.security.v3-5-2
+  path: evidence/scenarios/runtime/reports/runtime.application-resource-actions.security.v3-5-2.json
+  digest: sha256:977702ff27370fd03c9cef157df900325b01254d4b38152d7834169c7e5c6184
+  bytes: 9280
+- id: runtime.application-spec-destination.security.v3-5-2
+  path: evidence/scenarios/runtime/reports/runtime.application-spec-destination.security.v3-5-2.json
+  digest: sha256:e6211dc1f875f679c1fb57376c6d7911286fa7c126132649ccda492379959c89
+  bytes: 9665
+- id: runtime.application-spec-project.security.v3-5-2
+  path: evidence/scenarios/runtime/reports/runtime.application-spec-project.security.v3-5-2.json
+  digest: sha256:efc03b9d4663eddfd7345e95abe329e4d4c277a9f0b0434d3397b41121c6465c
+  bytes: 9121
+- id: runtime.application-spec-sources.security.v3-5-2
+  path: evidence/scenarios/runtime/reports/runtime.application-spec-sources.security.v3-5-2.json
+  digest: sha256:84bc10e2b0d1092ebcc1a27f8772b9f6f02d8bf8cb5b897e279efe10f0b85495
+  bytes: 9326
+- id: runtime.application-spec-sync-policy.normal.v3-5-2
+  path: evidence/scenarios/runtime/reports/runtime.application-spec-sync-policy.normal.v3-5-2.json
+  digest: sha256:55827f3ed6e43d1dc373f6228acb66d04fd3da29f346b0d14ad00909d2db6e5f
+  bytes: 9480
+- id: runtime.application-spec-sync-policy.security.v3-5-2
+  path: evidence/scenarios/runtime/reports/runtime.application-spec-sync-policy.security.v3-5-2.json
+  digest: sha256:d8074c0e84a7b77db09e6dd219a4d46116a270f7c2fa0848db2eec1f1a4ab0ab
+  bytes: 10041
+- id: runtime.applicationset-any-namespace.security.v3-5-2
+  path: evidence/scenarios/runtime/reports/runtime.applicationset-any-namespace.security.v3-5-2.json
+  digest: sha256:468da5585a4b519bbd26ba79c88ae2b69b1b2f33b64ea4f64ee44fcb53474099
+  bytes: 9139
+admission_contract:
+  report_scope: exact-surface-scenario
+  variant_scope: all-runtime-declared-variants-with-authority-exhaustive-kept-separate
+  execution: real-argocd-on-kubernetes
+  retries: 0
+  attempts: 1
+  outcome: expected
+  final_status: passed
+  required_artifacts:
+  - resource_state
+  - controller_log
+  - metric
+  - trace
+  artifact_kinds:
+  - kubernetes-resource-state
+  - argocd-controller-log
+  - argocd-prometheus-metric
+  - scenario-execution-trace
+  required_bindings:
+  - oracle
+  - source
+  - harness
+  - runtime_identity
+  artifact_ownership: exact-report-and-variant-dedicated-path
+  metadata_reuse: forbidden
+  authority_completion_credit: forbidden-until-human-reviewed-exhaustive-denominator

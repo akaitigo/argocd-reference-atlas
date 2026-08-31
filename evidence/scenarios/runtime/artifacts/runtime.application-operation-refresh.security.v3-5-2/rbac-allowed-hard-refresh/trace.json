@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "surface_id": "application.operation.refresh",
+  "scenario": "security",
+  "variant_id": "rbac-allowed-hard-refresh",
+  "started_at": "2026-08-30T17:48:50.349128Z",
+  "completed_at": "2026-08-30T17:48:50.937369Z",
+  "attempt": 1,
+  "retries": 0,
+  "actions": [
+    {
+      "action": "evaluate-argocd-rbac-get-for-hard-refresh",
+      "subject": "atlas-security-allowed",
+      "decision": "Yes"
+    },
+    {
+      "action": "request-hard-refresh",
+      "status": "passed"
+    }
+  ],
+  "result": {
+    "first_attempt": true,
+    "synthetic_credential_leak": false,
+    "rbac_decision": "Yes",
+    "refresh_requested": true,
+    "reconciled_at_changed": true
+  }
+}

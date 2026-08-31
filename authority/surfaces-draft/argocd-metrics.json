@@ -1,0 +1,141 @@
+{
+  "schema_version": 1,
+  "source_id": "argocd-metrics",
+  "source_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/operator-manual/metrics.md",
+  "locked_source_digest": "sha256:1db168b65650393e587a7bbdd1254c8c1e5f7b08b28323f2bbf3fb073b195c38",
+  "fetch": {
+    "status": "matched",
+    "fetched_digest": "sha256:1db168b65650393e587a7bbdd1254c8c1e5f7b08b28323f2bbf3fb073b195c38",
+    "locked_digest_match": true,
+    "http_status": null,
+    "final_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/operator-manual/metrics.md",
+    "content_type": "text/markdown; charset=utf-8",
+    "fetched_bytes": 45399,
+    "error_digest": null
+  },
+  "extraction": {
+    "method": "locked-body-locator-context-digest",
+    "tool": "argocd-reference-atlas-authority-locator-v1",
+    "tool_digest": "sha256:baffc5d0a81bbdd637eef2c3c4d535fcbb01d2566492cd7a6e4de6620df8ca23",
+    "review_status": "automated-unreviewed",
+    "body_storage": "digest-and-locator-context-digest-only"
+  },
+  "candidate_surfaces": [
+    {
+      "edge_id": "edge.observe.metrics.applicationset.argocd-metrics",
+      "source_id": "argocd-metrics",
+      "reference_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/operator-manual/metrics.md",
+      "locator": "document-root",
+      "pattern_id": "observability/observe-metrics-applicationset",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.observe.metrics.applicationset.argocd-metrics",
+      "capability_id": "capability.observability.correlate-signals",
+      "target_id": "observability.metrics-logs",
+      "claim_id": "claim.observability.correlate-signals",
+      "variant_ids": [
+        "variant.observe.metrics.applicationset.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "operations-observability",
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:93cc37981306f9efc6cab687584734e6cd578aa211b29b2281a2675cb41bfdc9",
+      "locator_status": "root-document",
+      "context_digest": "sha256:1db168b65650393e587a7bbdd1254c8c1e5f7b08b28323f2bbf3fb073b195c38",
+      "context_start": 0,
+      "context_end": 45397,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    },
+    {
+      "edge_id": "edge.observe.metrics.controller.argocd-metrics",
+      "source_id": "argocd-metrics",
+      "reference_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/operator-manual/metrics.md",
+      "locator": "document-root",
+      "pattern_id": "observability/observe-metrics-controller",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.observe.metrics.controller.argocd-metrics",
+      "capability_id": "capability.observability.correlate-signals",
+      "target_id": "observability.metrics-logs",
+      "claim_id": "claim.observability.correlate-signals",
+      "variant_ids": [
+        "variant.observe.metrics.controller.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "operations-observability",
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:89a6ca97160aa9197c18c8ecf28722a3d00a277df2bef6238d1892b3dd783a1b",
+      "locator_status": "root-document",
+      "context_digest": "sha256:1db168b65650393e587a7bbdd1254c8c1e5f7b08b28323f2bbf3fb073b195c38",
+      "context_start": 0,
+      "context_end": 45397,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    },
+    {
+      "edge_id": "edge.observe.metrics.repo-server.argocd-metrics",
+      "source_id": "argocd-metrics",
+      "reference_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/operator-manual/metrics.md",
+      "locator": "document-root",
+      "pattern_id": "observability/observe-metrics-repo-server",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.observe.metrics.repo-server.argocd-metrics",
+      "capability_id": "capability.observability.correlate-signals",
+      "target_id": "observability.metrics-logs",
+      "claim_id": "claim.observability.correlate-signals",
+      "variant_ids": [
+        "variant.observe.metrics.repo-server.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "operations-observability",
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:90c7f5adb1ddc5a9a2a0c5cca1facd27b428a54fc33206de55de580bd3bfa79c",
+      "locator_status": "root-document",
+      "context_digest": "sha256:1db168b65650393e587a7bbdd1254c8c1e5f7b08b28323f2bbf3fb073b195c38",
+      "context_start": 0,
+      "context_end": 45397,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    },
+    {
+      "edge_id": "edge.observe.metrics.server.argocd-metrics",
+      "source_id": "argocd-metrics",
+      "reference_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/operator-manual/metrics.md",
+      "locator": "document-root",
+      "pattern_id": "observability/observe-metrics-server",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.observe.metrics.server.argocd-metrics",
+      "capability_id": "capability.observability.correlate-signals",
+      "target_id": "observability.metrics-logs",
+      "claim_id": "claim.observability.correlate-signals",
+      "variant_ids": [
+        "variant.observe.metrics.server.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "operations-observability",
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:d65a1257a0439873f67fd11b8ef674b841347068a1a16e4fc56988c99a3aa87b",
+      "locator_status": "root-document",
+      "context_digest": "sha256:1db168b65650393e587a7bbdd1254c8c1e5f7b08b28323f2bbf3fb073b195c38",
+      "context_start": 0,
+      "context_end": 45397,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    }
+  ]
+}

@@ -10,6 +10,7 @@ setup_environment() {
   require_commands kind kubectl curl git shasum
   local current_context previous_context_file
   previous_context_file="${RUNTIME_DIR}/previous-kube-context"
+  mkdir -p "${RUNTIME_DIR}"
   current_context=$(kubectl config current-context 2>/dev/null || true)
   if [[ -n "$current_context" && "$current_context" != "$EXPECTED_CONTEXT" ]]; then
     printf '%s\n' "$current_context" >"$previous_context_file"

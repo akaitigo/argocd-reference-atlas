@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "document_id": "document-argocd-version",
+  "source_ids": [
+    "argocd-version"
+  ],
+  "fetch_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/VERSION",
+  "locked_body_digest": "sha256:36e68867ce939b2464649670eb1b3f9759d1a99e7326dac3c79d0942e01f5d65",
+  "fetch": {
+    "status": "matched",
+    "fetched_digest": "sha256:36e68867ce939b2464649670eb1b3f9759d1a99e7326dac3c79d0942e01f5d65",
+    "locked_digest_match": true,
+    "http_status": null,
+    "final_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/VERSION",
+    "content_type": null,
+    "fetched_bytes": 6,
+    "error_digest": null
+  },
+  "extraction": {
+    "method": "fixed-selector-raw-anchor-v1",
+    "tool": "argocd-reference-atlas-authority-body-inventory-v1",
+    "tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+    "selector_contract": [
+      "document-root",
+      "git-tar-regular-file",
+      "markdown-atx-heading-line",
+      "yaml-mapping-key-line",
+      "plain-nonempty-line"
+    ],
+    "selector_exhaustive_for_locked_body": true,
+    "authority_semantics_exhaustive": false,
+    "review_status": "automated-unreviewed",
+    "body_storage": "digest-locator-and-offset-only"
+  },
+  "anchors": [
+    {
+      "id": "anchor-9795a93b3972934b3833",
+      "locator": "document-root",
+      "locator_kind": "document-root",
+      "raw_selector": "document-root",
+      "element_name": "document-root",
+      "parent_anchor_id": null,
+      "context_start": 0,
+      "context_end": 6,
+      "context_unit": "byte",
+      "context_digest": "sha256:36e68867ce939b2464649670eb1b3f9759d1a99e7326dac3c79d0942e01f5d65",
+      "label_digest": null,
+      "classification_status": "pending-human",
+      "surface_ids": []
+    },
+    {
+      "id": "anchor-2a7a057a09289ad2feb9",
+      "locator": "line:1",
+      "locator_kind": "locked-body-offset",
+      "raw_selector": "plain-nonempty-line",
+      "element_name": "line",
+      "parent_anchor_id": "anchor-9795a93b3972934b3833",
+      "context_start": 0,
+      "context_end": 6,
+      "context_unit": "byte",
+      "context_digest": "sha256:36e68867ce939b2464649670eb1b3f9759d1a99e7326dac3c79d0942e01f5d65",
+      "label_digest": "sha256:d653f63bceb81ce54e243688df0bc06d5a2f908f296cb7309dd6a29f8011027f",
+      "classification_status": "pending-human",
+      "surface_ids": []
+    }
+  ]
+}

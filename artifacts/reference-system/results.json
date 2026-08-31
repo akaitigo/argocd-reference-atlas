@@ -1,0 +1,267 @@
+{
+  "schema_version": 1,
+  "id": "argocd-core-reference-system-gap-contract-v1",
+  "created_at": "2026-08-31T00:00:00Z",
+  "status": "failed",
+  "command": "python3 scripts/generate_core_standard_artifacts.py",
+  "profile": "gap-only-no-runtime",
+  "counts": {
+    "total": 10,
+    "passed": 0,
+    "failed": 0,
+    "flaky": 0,
+    "skipped": 10
+  },
+  "duration_ms": 1,
+  "source_digest": "sha256:ef93df4ca53faa42ff08dc68b5dd9fc0c1af114e50d6bdc667481facbe5e69d6",
+  "harness_digest": "sha256:1cbb95a1bdee640059778d5b2688a11be8e2a553ec6173c81b8114947de03152",
+  "environment": {
+    "profile_kind": "gap-only",
+    "real_runtime": false,
+    "runtime_attempts": 0,
+    "retries": 0,
+    "trace_mode": "off",
+    "argocd_version": "v3.5.2",
+    "kubernetes_context": null,
+    "fixture_runtime_credit": false,
+    "integrated_evidence_runtime_credit": false,
+    "historical_evidence_runtime_credit": false
+  },
+  "trace_contract": {
+    "per_scenario": true,
+    "required_streams": [
+      "action",
+      "network",
+      "resource"
+    ],
+    "console_events": "required-but-not-captured"
+  },
+  "completion_limits": [
+    "Core標準Artifactのgap-only投影であり、統合Argo CD Runtimeを実行していない。",
+    "既存Lab、fixture、統合Evidence、historical Evidenceを専用Scenario Runtime creditへ変換しない。",
+    "Authority Human Review、approved Variant denominator、Atomic behavior bindingが0の間はCompletion eligibleを0に保つ。",
+    "Pattern Scenarioの未実行987 rowをgapとして保持し、既存13 dedicated Runtime reportと混同しない。"
+  ],
+  "tests": [
+    {
+      "id": "argocd.reference-system.normal.gap",
+      "scenario": "normal",
+      "title": "normal integrated Runtime gap",
+      "file": "integrations/reference-system/manifest.yaml",
+      "line": 1,
+      "outcome": "not-run-core-standard-gap",
+      "attempts": 1,
+      "duration_ms": 0,
+      "final_status": "skipped",
+      "error": "専用統合Runtimeは未実行。gap-only ArtifactはRuntime Evidenceではない。",
+      "trace": {
+        "path": "artifacts/reference-system/gaps/normal.trace-gap.json",
+        "digest": "sha256:6231d5d711be44c6110743f139184305c0cb3fd9316e20767f4aeaa938985d1c",
+        "bytes": 266
+      },
+      "screenshot": {
+        "path": "artifacts/reference-system/gaps/normal.screenshot-gap.json",
+        "digest": "sha256:0e7e4c85a3c1e2508741494fad4891dcf7dbfcb03039ce07a4e17364739ff959",
+        "bytes": 174
+      }
+    },
+    {
+      "id": "argocd.reference-system.boundary.gap",
+      "scenario": "boundary",
+      "title": "boundary integrated Runtime gap",
+      "file": "integrations/reference-system/manifest.yaml",
+      "line": 1,
+      "outcome": "not-run-core-standard-gap",
+      "attempts": 1,
+      "duration_ms": 0,
+      "final_status": "skipped",
+      "error": "専用統合Runtimeは未実行。gap-only ArtifactはRuntime Evidenceではない。",
+      "trace": {
+        "path": "artifacts/reference-system/gaps/boundary.trace-gap.json",
+        "digest": "sha256:ce646c674fb2e9af9f08d8eb01eb3d2ad9ef51e5074ca26291706ff6885056b3",
+        "bytes": 268
+      },
+      "screenshot": {
+        "path": "artifacts/reference-system/gaps/boundary.screenshot-gap.json",
+        "digest": "sha256:8d3744081595924041d222c55b16a33015aef077d41613e890ada4ca6d5a2f4f",
+        "bytes": 176
+      }
+    },
+    {
+      "id": "argocd.reference-system.refusal.gap",
+      "scenario": "refusal",
+      "title": "refusal integrated Runtime gap",
+      "file": "integrations/reference-system/manifest.yaml",
+      "line": 1,
+      "outcome": "not-run-core-standard-gap",
+      "attempts": 1,
+      "duration_ms": 0,
+      "final_status": "skipped",
+      "error": "専用統合Runtimeは未実行。gap-only ArtifactはRuntime Evidenceではない。",
+      "trace": {
+        "path": "artifacts/reference-system/gaps/refusal.trace-gap.json",
+        "digest": "sha256:144cc9444fe1610a79319be15b8f1b733643e511efe08f03feb57c4662e91f45",
+        "bytes": 267
+      },
+      "screenshot": {
+        "path": "artifacts/reference-system/gaps/refusal.screenshot-gap.json",
+        "digest": "sha256:eafa05f408ac73267c01a4f77b6090805e8376b0a9fca2d6d50374e2c0d857d2",
+        "bytes": 175
+      }
+    },
+    {
+      "id": "argocd.reference-system.failure.gap",
+      "scenario": "failure",
+      "title": "failure integrated Runtime gap",
+      "file": "integrations/reference-system/manifest.yaml",
+      "line": 1,
+      "outcome": "not-run-core-standard-gap",
+      "attempts": 1,
+      "duration_ms": 0,
+      "final_status": "skipped",
+      "error": "専用統合Runtimeは未実行。gap-only ArtifactはRuntime Evidenceではない。",
+      "trace": {
+        "path": "artifacts/reference-system/gaps/failure.trace-gap.json",
+        "digest": "sha256:5c24bf9f40114390279a1afecf71e0bb1b7a291fe476521302fa40e2b4e81cbe",
+        "bytes": 267
+      },
+      "screenshot": {
+        "path": "artifacts/reference-system/gaps/failure.screenshot-gap.json",
+        "digest": "sha256:b16f1193e11908e573964a5fcaa5baaeda28df17fd33cb1e012b92a57225e18e",
+        "bytes": 175
+      }
+    },
+    {
+      "id": "argocd.reference-system.recovery.gap",
+      "scenario": "recovery",
+      "title": "recovery integrated Runtime gap",
+      "file": "integrations/reference-system/manifest.yaml",
+      "line": 1,
+      "outcome": "not-run-core-standard-gap",
+      "attempts": 1,
+      "duration_ms": 0,
+      "final_status": "skipped",
+      "error": "専用統合Runtimeは未実行。gap-only ArtifactはRuntime Evidenceではない。",
+      "trace": {
+        "path": "artifacts/reference-system/gaps/recovery.trace-gap.json",
+        "digest": "sha256:5dcfe39727389a17f76257e6280eb6ffe4d64ad2ce16c4108870fd013ddb996e",
+        "bytes": 268
+      },
+      "screenshot": {
+        "path": "artifacts/reference-system/gaps/recovery.screenshot-gap.json",
+        "digest": "sha256:c1de6455394732c0154e69053f65065d72fee069df9a1eba18e846994e104883",
+        "bytes": 176
+      }
+    },
+    {
+      "id": "argocd.reference-system.migration.gap",
+      "scenario": "migration",
+      "title": "migration integrated Runtime gap",
+      "file": "integrations/reference-system/manifest.yaml",
+      "line": 1,
+      "outcome": "not-run-core-standard-gap",
+      "attempts": 1,
+      "duration_ms": 0,
+      "final_status": "skipped",
+      "error": "専用統合Runtimeは未実行。gap-only ArtifactはRuntime Evidenceではない。",
+      "trace": {
+        "path": "artifacts/reference-system/gaps/migration.trace-gap.json",
+        "digest": "sha256:2c3d6f00f10fa3019db7ca283e7e6d05e85fd41dd6f7ef427e34963463951425",
+        "bytes": 269
+      },
+      "screenshot": {
+        "path": "artifacts/reference-system/gaps/migration.screenshot-gap.json",
+        "digest": "sha256:45fea4846ca3257121d4bea1f066a55b9e68d4cdf16d331ea0872a727a08659d",
+        "bytes": 177
+      }
+    },
+    {
+      "id": "argocd.reference-system.operations.gap",
+      "scenario": "operations",
+      "title": "operations integrated Runtime gap",
+      "file": "integrations/reference-system/manifest.yaml",
+      "line": 1,
+      "outcome": "not-run-core-standard-gap",
+      "attempts": 1,
+      "duration_ms": 0,
+      "final_status": "skipped",
+      "error": "専用統合Runtimeは未実行。gap-only ArtifactはRuntime Evidenceではない。",
+      "trace": {
+        "path": "artifacts/reference-system/gaps/operations.trace-gap.json",
+        "digest": "sha256:5686c9be76f6749203abef4e34701817c97d1416ecb9f29b0247518c45040297",
+        "bytes": 270
+      },
+      "screenshot": {
+        "path": "artifacts/reference-system/gaps/operations.screenshot-gap.json",
+        "digest": "sha256:d356dae8e4d9f0c3febf825da140163a7a3f7514c7b9ef655156f7f539fcbeb3",
+        "bytes": 178
+      }
+    },
+    {
+      "id": "argocd.reference-system.security.gap",
+      "scenario": "security",
+      "title": "security integrated Runtime gap",
+      "file": "integrations/reference-system/manifest.yaml",
+      "line": 1,
+      "outcome": "not-run-core-standard-gap",
+      "attempts": 1,
+      "duration_ms": 0,
+      "final_status": "skipped",
+      "error": "専用統合Runtimeは未実行。gap-only ArtifactはRuntime Evidenceではない。",
+      "trace": {
+        "path": "artifacts/reference-system/gaps/security.trace-gap.json",
+        "digest": "sha256:f3d4029dd46e4a604633d88d47b9c575137a0a7c0c0e0cab55322991eb2186a0",
+        "bytes": 268
+      },
+      "screenshot": {
+        "path": "artifacts/reference-system/gaps/security.screenshot-gap.json",
+        "digest": "sha256:9b02f06e098acac76a6af553041969651dca9f5daa9830c0debf15f1dbb7bb84",
+        "bytes": 176
+      }
+    },
+    {
+      "id": "argocd.reference-system.performance.gap",
+      "scenario": "performance",
+      "title": "performance integrated Runtime gap",
+      "file": "integrations/reference-system/manifest.yaml",
+      "line": 1,
+      "outcome": "not-run-core-standard-gap",
+      "attempts": 1,
+      "duration_ms": 0,
+      "final_status": "skipped",
+      "error": "専用統合Runtimeは未実行。gap-only ArtifactはRuntime Evidenceではない。",
+      "trace": {
+        "path": "artifacts/reference-system/gaps/performance.trace-gap.json",
+        "digest": "sha256:3364a25d0060b57bdee827058892052bd327cf88351063d60a138f4371b7ed5b",
+        "bytes": 271
+      },
+      "screenshot": {
+        "path": "artifacts/reference-system/gaps/performance.screenshot-gap.json",
+        "digest": "sha256:74d158a15fec43d380421e0798bae77773434e343eaba455a017473b95c5e399",
+        "bytes": 179
+      }
+    },
+    {
+      "id": "argocd.reference-system.compatibility.gap",
+      "scenario": "compatibility",
+      "title": "compatibility integrated Runtime gap",
+      "file": "integrations/reference-system/manifest.yaml",
+      "line": 1,
+      "outcome": "not-run-core-standard-gap",
+      "attempts": 1,
+      "duration_ms": 0,
+      "final_status": "skipped",
+      "error": "専用統合Runtimeは未実行。gap-only ArtifactはRuntime Evidenceではない。",
+      "trace": {
+        "path": "artifacts/reference-system/gaps/compatibility.trace-gap.json",
+        "digest": "sha256:cdcbe2cf535cfd18e7905f47ab37c74ac4865645c933ef731b8832b19a4e9e5a",
+        "bytes": 273
+      },
+      "screenshot": {
+        "path": "artifacts/reference-system/gaps/compatibility.screenshot-gap.json",
+        "digest": "sha256:36c30b6a7aa2fed53fcf346dfa409b3c935bba1522c1761ad4693f3717584a14",
+        "bytes": 181
+      }
+    }
+  ]
+}

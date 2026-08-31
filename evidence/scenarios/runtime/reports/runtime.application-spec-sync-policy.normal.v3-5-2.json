@@ -1,0 +1,228 @@
+{
+  "schema_version": 1,
+  "id": "runtime.application-spec-sync-policy.normal.v3-5-2",
+  "atlas_id": "argocd-reference-atlas",
+  "surface_id": "application.spec.sync-policy",
+  "scenario": "normal",
+  "status": "passed-runtime-execution-pending-authority-review",
+  "execution": {
+    "command": "make scenario-runtime-application-sync-policy-normal",
+    "attempts": 1,
+    "retries": 0,
+    "first_attempt": true
+  },
+  "runtime_identity": {
+    "profile": "cluster",
+    "real_argocd_kubernetes_runtime": true,
+    "cluster_name": "argocd-atlas-v3-5-2",
+    "kubernetes_context": "kind-argocd-atlas-v3-5-2",
+    "argocd_version": "3.5.2",
+    "kubernetes_api_server_version": "v1.34.0",
+    "kubernetes_kubelet_version": "v1.34.0",
+    "cluster_uid": "00b2b62c-ba60-4520-b48e-fa9e550c859d",
+    "topology_digest": "sha256:f27cd86ff879333619bd84e57f310afb261727da44dd06ae2c5e931d6f74dd9e",
+    "observed_argocd_components": [
+      "argocd-application-controller",
+      "argocd-repo-server"
+    ]
+  },
+  "variant_denominator": {
+    "source": "definitive/scenario-variant-contract.yaml",
+    "status": "runtime-declared-pending-authority-human-review",
+    "declared_variant_ids": [
+      "fixed-revision-manual-sync",
+      "fixed-revision-automated-self-heal"
+    ],
+    "all_declared_variants_executed": true,
+    "authority_exhaustive": false,
+    "completion_eligible": false
+  },
+  "variants": [
+    {
+      "variant_id": "fixed-revision-manual-sync",
+      "attempts": 1,
+      "outcome": "expected",
+      "final_status": "passed",
+      "error": null,
+      "oracle": {
+        "status": "pass",
+        "assertions": [
+          {
+            "channel": "resource_state",
+            "pointer": "/application/status/sync/status",
+            "operator": "equals",
+            "expected": "Synced"
+          },
+          {
+            "channel": "resource_state",
+            "pointer": "/application/status/health/status",
+            "operator": "equals",
+            "expected": "Healthy"
+          },
+          {
+            "channel": "resource_state",
+            "pointer": "/configmap/data/release",
+            "operator": "equals",
+            "expected": "v1"
+          },
+          {
+            "channel": "controller_log",
+            "pointer": "/entries/0/application",
+            "operator": "equals",
+            "expected": "atlas-application"
+          },
+          {
+            "channel": "metric",
+            "pointer": "/app_info/labels/autosync_enabled",
+            "operator": "equals",
+            "expected": "false"
+          },
+          {
+            "channel": "trace",
+            "pointer": "/result/first_attempt",
+            "operator": "equals",
+            "expected": true
+          }
+        ]
+      },
+      "source": {
+        "path": "fixtures/scenarios/application-sync-policy-normal/configmap.yaml",
+        "digest": "sha256:afa1d4696e14c643d39305bb0c8b89b06baa8b0623921c004be52c9ce52ebb2a",
+        "bytes": 87,
+        "owner": "runtime.application-spec-sync-policy.normal.v3-5-2:fixed-revision-manual-sync:source"
+      },
+      "harness": {
+        "path": "scripts/scenarios/run_application_sync_policy_normal.py",
+        "digest": "sha256:802d5e20ab87a0ffa6052898905fb0cbdc7ed4cbc84d4f6382cae5eae77905c1",
+        "bytes": 17837,
+        "owner": "runtime.application-spec-sync-policy.normal.v3-5-2:fixed-revision-manual-sync:harness"
+      },
+      "artifacts": {
+        "resource_state": {
+          "path": "evidence/scenarios/runtime/artifacts/runtime.application-spec-sync-policy.normal.v3-5-2/fixed-revision-manual-sync/resource_state.json",
+          "digest": "sha256:8b2e6209de3da9c9c7eb9dbc288113a9a03bd3a05e22bd990e1647aea28c41c3",
+          "bytes": 5195,
+          "kind": "kubernetes-resource-state",
+          "owner": "runtime.application-spec-sync-policy.normal.v3-5-2:fixed-revision-manual-sync:resource_state"
+        },
+        "controller_log": {
+          "path": "evidence/scenarios/runtime/artifacts/runtime.application-spec-sync-policy.normal.v3-5-2/fixed-revision-manual-sync/controller_log.json",
+          "digest": "sha256:7b25d5043fa8c6933d1ad2725b90427c273388974e519242fc5cfa421a0210c9",
+          "bytes": 48948,
+          "kind": "argocd-controller-log",
+          "owner": "runtime.application-spec-sync-policy.normal.v3-5-2:fixed-revision-manual-sync:controller_log"
+        },
+        "metric": {
+          "path": "evidence/scenarios/runtime/artifacts/runtime.application-spec-sync-policy.normal.v3-5-2/fixed-revision-manual-sync/metric.json",
+          "digest": "sha256:e828ee35640fa88221ba651785fd34b500996339cd24416b2bc1c2cf9683238a",
+          "bytes": 1018,
+          "kind": "argocd-prometheus-metric",
+          "owner": "runtime.application-spec-sync-policy.normal.v3-5-2:fixed-revision-manual-sync:metric"
+        },
+        "trace": {
+          "path": "evidence/scenarios/runtime/artifacts/runtime.application-spec-sync-policy.normal.v3-5-2/fixed-revision-manual-sync/trace.json",
+          "digest": "sha256:2d3f734575499a092447ea5710ec3291e010c253f075dc678aa7d400da0308d8",
+          "bytes": 727,
+          "kind": "scenario-execution-trace",
+          "owner": "runtime.application-spec-sync-policy.normal.v3-5-2:fixed-revision-manual-sync:trace"
+        }
+      }
+    },
+    {
+      "variant_id": "fixed-revision-automated-self-heal",
+      "attempts": 1,
+      "outcome": "expected",
+      "final_status": "passed",
+      "error": null,
+      "oracle": {
+        "status": "pass",
+        "assertions": [
+          {
+            "channel": "resource_state",
+            "pointer": "/application/status/sync/status",
+            "operator": "equals",
+            "expected": "Synced"
+          },
+          {
+            "channel": "resource_state",
+            "pointer": "/application/status/health/status",
+            "operator": "equals",
+            "expected": "Healthy"
+          },
+          {
+            "channel": "resource_state",
+            "pointer": "/configmap/data/release",
+            "operator": "equals",
+            "expected": "v1"
+          },
+          {
+            "channel": "controller_log",
+            "pointer": "/entries/0/application",
+            "operator": "equals",
+            "expected": "atlas-application"
+          },
+          {
+            "channel": "metric",
+            "pointer": "/app_info/labels/autosync_enabled",
+            "operator": "equals",
+            "expected": "true"
+          },
+          {
+            "channel": "trace",
+            "pointer": "/result/first_attempt",
+            "operator": "equals",
+            "expected": true
+          },
+          {
+            "channel": "resource_state",
+            "pointer": "/application/spec/syncPolicy/automated/selfHeal",
+            "operator": "equals",
+            "expected": true
+          }
+        ]
+      },
+      "source": {
+        "path": "fixtures/scenarios/application-sync-policy-normal/configmap.yaml",
+        "digest": "sha256:afa1d4696e14c643d39305bb0c8b89b06baa8b0623921c004be52c9ce52ebb2a",
+        "bytes": 87,
+        "owner": "runtime.application-spec-sync-policy.normal.v3-5-2:fixed-revision-automated-self-heal:source"
+      },
+      "harness": {
+        "path": "scripts/scenarios/run_application_sync_policy_normal.py",
+        "digest": "sha256:802d5e20ab87a0ffa6052898905fb0cbdc7ed4cbc84d4f6382cae5eae77905c1",
+        "bytes": 17837,
+        "owner": "runtime.application-spec-sync-policy.normal.v3-5-2:fixed-revision-automated-self-heal:harness"
+      },
+      "artifacts": {
+        "resource_state": {
+          "path": "evidence/scenarios/runtime/artifacts/runtime.application-spec-sync-policy.normal.v3-5-2/fixed-revision-automated-self-heal/resource_state.json",
+          "digest": "sha256:04dc49d278b3768d7d3cf41e088f53e7295dfba32c3e7dcc3bd53bcf4b6fe831",
+          "bytes": 5982,
+          "kind": "kubernetes-resource-state",
+          "owner": "runtime.application-spec-sync-policy.normal.v3-5-2:fixed-revision-automated-self-heal:resource_state"
+        },
+        "controller_log": {
+          "path": "evidence/scenarios/runtime/artifacts/runtime.application-spec-sync-policy.normal.v3-5-2/fixed-revision-automated-self-heal/controller_log.json",
+          "digest": "sha256:a64f59bc6c1b1965f07c44cbae1bd22d11e04a03b7122b74df4300cd0f53c75c",
+          "bytes": 69723,
+          "kind": "argocd-controller-log",
+          "owner": "runtime.application-spec-sync-policy.normal.v3-5-2:fixed-revision-automated-self-heal:controller_log"
+        },
+        "metric": {
+          "path": "evidence/scenarios/runtime/artifacts/runtime.application-spec-sync-policy.normal.v3-5-2/fixed-revision-automated-self-heal/metric.json",
+          "digest": "sha256:34ad12108eff580529dbe4c7a12ff2992aeb30a0f7e717e21910b590f8fed388",
+          "bytes": 1024,
+          "kind": "argocd-prometheus-metric",
+          "owner": "runtime.application-spec-sync-policy.normal.v3-5-2:fixed-revision-automated-self-heal:metric"
+        },
+        "trace": {
+          "path": "evidence/scenarios/runtime/artifacts/runtime.application-spec-sync-policy.normal.v3-5-2/fixed-revision-automated-self-heal/trace.json",
+          "digest": "sha256:4acc7ac2c3a1009769230665f01f6f2f91c133f45f6119af5b32cee6ec761797",
+          "bytes": 724,
+          "kind": "scenario-execution-trace",
+          "owner": "runtime.application-spec-sync-policy.normal.v3-5-2:fixed-revision-automated-self-heal:trace"
+        }
+      }
+    }
+  ]
+}

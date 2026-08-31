@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "queue_id": "authority-review-4899835d8716e9eb45f6",
+  "batch_id": "review-p0-document-root-25",
+  "status": "pending-human",
+  "machine_assistance": "priority-cluster-and-batch-proposals-only",
+  "semantic_decisions": "none",
+  "items": [
+    {
+      "anchor_id": "anchor-2cb527d7c7669f19e0d6",
+      "document_id": "document-argocd-application-crd",
+      "document_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/manifests/crds/application-crd.yaml",
+      "source_ids": [
+        "argocd-application-crd"
+      ],
+      "locked_source_digest": "sha256:5dde0e229249b6b707beb98674c1deae3949d5c319a6c45b9f5a80c99618e40c",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "document-root",
+      "locator_kind": "document-root",
+      "raw_selector": "document-root",
+      "element_name": "document-root",
+      "parent_anchor_id": null,
+      "context_start": 0,
+      "context_end": 405924,
+      "context_unit": "byte",
+      "context_digest": "sha256:5dde0e229249b6b707beb98674c1deae3949d5c319a6c45b9f5a80c99618e40c",
+      "label_digest": null,
+      "existing_mapping_candidate_ids": [
+        "edge.application.spec.destination.argocd-application-crd",
+        "edge.application.spec.project.argocd-application-crd",
+        "edge.application.spec.sources.argocd-application-crd",
+        "edge.application.spec.sync-policy.argocd-application-crd",
+        "edge.sync.retry.argocd-application-crd"
+      ],
+      "priority": 0,
+      "priority_reasons": [
+        "existing-domain-reference-locator-match"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p0-document-root-25",
+      "state": "pending-human"
+    }
+  ]
+}

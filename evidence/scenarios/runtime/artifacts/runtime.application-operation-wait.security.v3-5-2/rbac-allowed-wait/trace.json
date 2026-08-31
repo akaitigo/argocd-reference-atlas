@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "surface_id": "application.operation.wait",
+  "scenario": "security",
+  "variant_id": "rbac-allowed-wait",
+  "started_at": "2026-08-30T17:49:38.410451Z",
+  "completed_at": "2026-08-30T17:49:38.804806Z",
+  "attempt": 1,
+  "retries": 0,
+  "actions": [
+    {
+      "action": "invoke-argocd-app-wait",
+      "subject": "atlas-security-002-allowed",
+      "status": "passed"
+    }
+  ],
+  "result": {
+    "first_attempt": true,
+    "ephemeral_token_leak": false,
+    "rbac_decision": "Yes",
+    "wait_exit_code": 0,
+    "wait_completed": true,
+    "synced_healthy": true
+  }
+}

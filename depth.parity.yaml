@@ -1,0 +1,15 @@
+schema_version: 2
+atlas_id: argocd-reference-atlas
+epoch: "2026-08-28"
+completion_status: incomplete
+reference:
+  id: fe-depth-reference-v1
+  path: authority/FE_DEPTH_REFERENCE.json
+  digest: sha256:2452696f9807b7d4a8ffb22b3ba37f079a25a34ac2370d78423445b96064582a
+  repository: frontend-behavior-atlas
+  commit: 4a0b2df8e2091a963bd0e0e1bbccef9c84b49a45
+  status_at_commit: incomplete
+denominator_policy:
+  source: authority-derived-subject-surface-inventory
+  transplant_absolute_counts: false
+rows: []

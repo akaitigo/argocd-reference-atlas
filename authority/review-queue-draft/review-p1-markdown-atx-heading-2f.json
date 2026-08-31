@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "queue_id": "authority-review-4899835d8716e9eb45f6",
+  "batch_id": "review-p1-markdown-atx-heading-2f",
+  "status": "pending-human",
+  "machine_assistance": "priority-cluster-and-batch-proposals-only",
+  "semantic_decisions": "none",
+  "items": [
+    {
+      "anchor_id": "anchor-709114e09eb983d14c9a",
+      "document_id": "document-argocd-automated-sync",
+      "document_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/user-guide/auto_sync.md",
+      "source_ids": [
+        "argocd-automated-sync"
+      ],
+      "locked_source_digest": "sha256:c0c61f455bbab02f09d82b15d9788c4d38badf38b70b478e31f263ab24fdde28",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "line:1",
+      "locator_kind": "locked-body-offset",
+      "raw_selector": "markdown-atx-heading-line",
+      "element_name": "line",
+      "parent_anchor_id": "anchor-52bc761aaeb220d26e9e",
+      "context_start": 0,
+      "context_end": 24,
+      "context_unit": "byte",
+      "context_digest": "sha256:498fe5e553c5ce5805b44a000f984bb3787fb0411230fc52137802c5d1db836d",
+      "label_digest": "sha256:f6c7a9ce2bc04aa21bd6a67b66c8b478881dae724651fa8e83027409b03d522c",
+      "existing_mapping_candidate_ids": [],
+      "priority": 1,
+      "priority_reasons": [
+        "semantic-label-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p1-markdown-atx-heading-2f",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-d89bf9461c36ba43cbda",
+      "document_id": "document-argocd-sync-waves",
+      "document_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/user-guide/sync-waves.md",
+      "source_ids": [
+        "argocd-sync-waves"
+      ],
+      "locked_source_digest": "sha256:2f6dea5a6e4e05c48d45f291d43cc4bd946cb8a7bfdf8dcc37af5b7eaf06d87e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "line:57",
+      "locator_kind": "locked-body-offset",
+      "raw_selector": "markdown-atx-heading-line",
+      "element_name": "line",
+      "parent_anchor_id": "anchor-75527509e9b5df5a9c7f",
+      "context_start": 5775,
+      "context_end": 5809,
+      "context_unit": "byte",
+      "context_digest": "sha256:73b7d66bb0c0de87710d41c1fa751dde7f6be1d3e1aadc2a3e95ddd038faae48",
+      "label_digest": "sha256:51f32dee9795537dee1572ba32be847da9eeb76f820a0f9d2f170e9db40a3b12",
+      "existing_mapping_candidate_ids": [],
+      "priority": 1,
+      "priority_reasons": [
+        "semantic-label-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p1-markdown-atx-heading-2f",
+      "state": "pending-human"
+    }
+  ]
+}

@@ -1,0 +1,139 @@
+{
+  "schema_version": 1,
+  "surface_id": "application.spec.sync-policy",
+  "scenario": "normal",
+  "variant_id": "fixed-revision-manual-sync",
+  "application": {
+    "apiVersion": "argoproj.io/v1alpha1",
+    "kind": "Application",
+    "metadata": {
+      "annotations": {
+        "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"argoproj.io/v1alpha1\",\"kind\":\"Application\",\"metadata\":{\"annotations\":{},\"name\":\"atlas-application\",\"namespace\":\"argocd\"},\"spec\":{\"destination\":{\"namespace\":\"atlas-application\",\"server\":\"https://kubernetes.default.svc\"},\"ignoreDifferences\":[],\"project\":\"atlas-application\",\"source\":{\"path\":\"apps/application\",\"repoURL\":\"http://source-server.argocd-atlas-source.svc.cluster.local/repo.git\",\"targetRevision\":\"32238803403f2d8ad837104d9ad32b8724b277c1\"},\"syncPolicy\":{\"syncOptions\":[\"CreateNamespace=true\"]}}}\n"
+      },
+      "creationTimestamp": "2026-08-30T17:48:16Z",
+      "generation": 8,
+      "name": "atlas-application",
+      "namespace": "argocd",
+      "resourceVersion": "4117",
+      "uid": "669dbda6-432f-4363-ace9-f5e01bc33c9b"
+    },
+    "spec": {
+      "destination": {
+        "namespace": "atlas-application",
+        "server": "https://kubernetes.default.svc"
+      },
+      "ignoreDifferences": [],
+      "project": "atlas-application",
+      "source": {
+        "path": "apps/application",
+        "repoURL": "http://source-server.argocd-atlas-source.svc.cluster.local/repo.git",
+        "targetRevision": "32238803403f2d8ad837104d9ad32b8724b277c1"
+      },
+      "syncPolicy": {
+        "syncOptions": [
+          "CreateNamespace=true"
+        ]
+      }
+    },
+    "status": {
+      "controllerNamespace": "argocd",
+      "health": {
+        "lastTransitionTime": "2026-08-30T17:48:16Z",
+        "status": "Healthy"
+      },
+      "history": [
+        {
+          "deployStartedAt": "2026-08-30T17:48:16Z",
+          "deployedAt": "2026-08-30T17:48:16Z",
+          "id": 0,
+          "initiatedBy": {},
+          "revision": "32238803403f2d8ad837104d9ad32b8724b277c1",
+          "source": {
+            "path": "apps/application",
+            "repoURL": "http://source-server.argocd-atlas-source.svc.cluster.local/repo.git",
+            "targetRevision": "32238803403f2d8ad837104d9ad32b8724b277c1"
+          }
+        }
+      ],
+      "operationState": {
+        "finishedAt": "2026-08-30T17:48:16Z",
+        "message": "successfully synced (all tasks run)",
+        "operation": {
+          "initiatedBy": {},
+          "retry": {},
+          "sync": {
+            "prune": true
+          }
+        },
+        "phase": "Succeeded",
+        "startedAt": "2026-08-30T17:48:16Z",
+        "syncResult": {
+          "resources": [
+            {
+              "group": "",
+              "hookPhase": "Running",
+              "kind": "ConfigMap",
+              "message": "configmap/atlas-application created",
+              "name": "atlas-application",
+              "namespace": "atlas-application",
+              "status": "Synced",
+              "syncPhase": "Sync",
+              "version": "v1"
+            }
+          ],
+          "revision": "32238803403f2d8ad837104d9ad32b8724b277c1",
+          "source": {
+            "path": "apps/application",
+            "repoURL": "http://source-server.argocd-atlas-source.svc.cluster.local/repo.git",
+            "targetRevision": "32238803403f2d8ad837104d9ad32b8724b277c1"
+          }
+        }
+      },
+      "reconciledAt": "2026-08-30T17:48:19Z",
+      "resourceHealthSource": "appTree",
+      "resources": [
+        {
+          "kind": "ConfigMap",
+          "name": "atlas-application",
+          "namespace": "atlas-application",
+          "status": "Synced",
+          "version": "v1"
+        }
+      ],
+      "sourceType": "Directory",
+      "sync": {
+        "comparedTo": {
+          "destination": {
+            "namespace": "atlas-application",
+            "server": "https://kubernetes.default.svc"
+          },
+          "source": {
+            "path": "apps/application",
+            "repoURL": "http://source-server.argocd-atlas-source.svc.cluster.local/repo.git",
+            "targetRevision": "32238803403f2d8ad837104d9ad32b8724b277c1"
+          }
+        },
+        "revision": "32238803403f2d8ad837104d9ad32b8724b277c1",
+        "status": "Synced"
+      }
+    }
+  },
+  "configmap": {
+    "apiVersion": "v1",
+    "data": {
+      "release": "v1"
+    },
+    "kind": "ConfigMap",
+    "metadata": {
+      "annotations": {
+        "argocd.argoproj.io/tracking-id": "atlas-application:/ConfigMap:atlas-application/atlas-application",
+        "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"data\":{\"release\":\"v1\"},\"kind\":\"ConfigMap\",\"metadata\":{\"annotations\":{\"argocd.argoproj.io/tracking-id\":\"atlas-application:/ConfigMap:atlas-application/atlas-application\"},\"name\":\"atlas-application\",\"namespace\":\"atlas-application\"}}\n"
+      },
+      "creationTimestamp": "2026-08-30T17:48:16Z",
+      "name": "atlas-application",
+      "namespace": "atlas-application",
+      "resourceVersion": "4105",
+      "uid": "40424eb1-8b07-44cf-b623-922dfe4d9c17"
+    }
+  }
+}

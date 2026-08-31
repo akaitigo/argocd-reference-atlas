@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "surface_id": "application.spec.sync-policy",
+  "scenario": "normal",
+  "variant_id": "fixed-revision-manual-sync",
+  "started_at": "2026-08-30T17:48:14.953638Z",
+  "completed_at": "2026-08-30T17:48:19.973526Z",
+  "attempt": 1,
+  "retries": 0,
+  "actions": [
+    {
+      "action": "create-application-with-fixed-revision-and-manual-policy",
+      "status": "passed"
+    },
+    {
+      "action": "request-manual-sync",
+      "status": "passed"
+    },
+    {
+      "action": "observe-synced-healthy",
+      "status": "passed"
+    }
+  ],
+  "result": {
+    "first_attempt": true,
+    "sync_status": "Synced",
+    "health_status": "Healthy",
+    "live_release": "v1",
+    "autosync_enabled": "false"
+  }
+}

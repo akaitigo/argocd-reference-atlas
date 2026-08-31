@@ -1,0 +1,225 @@
+{
+  "schema_version": 1,
+  "id": "runtime.applicationset-any-namespace.security.v3-5-2",
+  "atlas_id": "argocd-reference-atlas",
+  "surface_id": "applicationset.any-namespace",
+  "scenario": "security",
+  "status": "passed-runtime-execution-pending-authority-review",
+  "execution": {
+    "command": "make scenario-runtime-security-003",
+    "attempts": 1,
+    "retries": 0,
+    "first_attempt": true
+  },
+  "runtime_identity": {
+    "profile": "cluster",
+    "real_argocd_kubernetes_runtime": true,
+    "cluster_name": "argocd-atlas-v3-5-2",
+    "kubernetes_context": "kind-argocd-atlas-v3-5-2",
+    "argocd_version": "3.5.2",
+    "kubernetes_api_server_version": "v1.34.0",
+    "kubernetes_kubelet_version": "v1.34.0",
+    "cluster_uid": "72ccbe2b-84df-443c-8a36-b27ccd178635",
+    "topology_digest": "sha256:c801daf9153ab9cb3b3b9f736218a1a039abfa92adf37afc99813ba8383bb7f1",
+    "observed_argocd_components": [
+      "argocd-application-controller",
+      "argocd-applicationset-controller",
+      "argocd-repo-server"
+    ]
+  },
+  "variant_denominator": {
+    "source": "definitive/scenario-variant-contract.yaml",
+    "status": "runtime-declared-pending-authority-human-review",
+    "declared_variant_ids": [
+      "namespace-not-allowlisted",
+      "namespace-allowlisted"
+    ],
+    "all_declared_variants_executed": true,
+    "authority_exhaustive": false,
+    "completion_eligible": false
+  },
+  "variants": [
+    {
+      "variant_id": "namespace-not-allowlisted",
+      "attempts": 1,
+      "outcome": "expected",
+      "final_status": "passed",
+      "error": null,
+      "oracle": {
+        "status": "pass",
+        "assertions": [
+          {
+            "channel": "resource_state",
+            "pointer": "/security/secret_scan_hits",
+            "operator": "equals",
+            "expected": 0
+          },
+          {
+            "channel": "controller_log",
+            "pointer": "/components/0",
+            "operator": "equals",
+            "expected": "argocd-applicationset-controller"
+          },
+          {
+            "channel": "trace",
+            "pointer": "/result/first_attempt",
+            "operator": "equals",
+            "expected": true
+          },
+          {
+            "channel": "resource_state",
+            "pointer": "/tenant_application_names",
+            "operator": "equals",
+            "expected": []
+          },
+          {
+            "channel": "metric",
+            "pointer": "/app_info/sample_present",
+            "operator": "equals",
+            "expected": false
+          }
+        ]
+      },
+      "source": {
+        "path": "fixtures/scenarios/security-003/applicationset.yaml",
+        "digest": "sha256:fdfcdf52e745d94986048439b8e5dcbde555f8fe6cf40bde2c351ed6c8186d08",
+        "bytes": 666,
+        "owner": "runtime.applicationset-any-namespace.security.v3-5-2:namespace-not-allowlisted:source"
+      },
+      "harness": {
+        "path": "scripts/scenarios/run_security_003.py",
+        "digest": "sha256:227bc77f6ea536661cc5eafc57248b10588fcdc46668e2c26434b5765a6bde73",
+        "bytes": 42581,
+        "owner": "runtime.applicationset-any-namespace.security.v3-5-2:namespace-not-allowlisted:harness"
+      },
+      "artifacts": {
+        "resource_state": {
+          "path": "evidence/scenarios/runtime/artifacts/runtime.applicationset-any-namespace.security.v3-5-2/namespace-not-allowlisted/resource_state.json",
+          "digest": "sha256:9a1004783a279a7e1beea4d2e51f92ff4922f064e25fd77fe04e285ff8cabbcf",
+          "bytes": 4584,
+          "kind": "kubernetes-resource-state",
+          "owner": "runtime.applicationset-any-namespace.security.v3-5-2:namespace-not-allowlisted:resource_state"
+        },
+        "controller_log": {
+          "path": "evidence/scenarios/runtime/artifacts/runtime.applicationset-any-namespace.security.v3-5-2/namespace-not-allowlisted/controller_log.json",
+          "digest": "sha256:7721e894beb1a3452a27d991c3500c7d2003b6ba81a5042057f8ce9cba820ae5",
+          "bytes": 37623,
+          "kind": "argocd-controller-log",
+          "owner": "runtime.applicationset-any-namespace.security.v3-5-2:namespace-not-allowlisted:controller_log"
+        },
+        "metric": {
+          "path": "evidence/scenarios/runtime/artifacts/runtime.applicationset-any-namespace.security.v3-5-2/namespace-not-allowlisted/metric.json",
+          "digest": "sha256:4e6fe989cceae6113583ed7e942420c66f7a75cb74560ba03848c0e7edefde90",
+          "bytes": 296,
+          "kind": "argocd-prometheus-metric",
+          "owner": "runtime.applicationset-any-namespace.security.v3-5-2:namespace-not-allowlisted:metric"
+        },
+        "trace": {
+          "path": "evidence/scenarios/runtime/artifacts/runtime.applicationset-any-namespace.security.v3-5-2/namespace-not-allowlisted/trace.json",
+          "digest": "sha256:75829bb4b41ba1f8a54130691075f291d87f4d5c64cf2551e29ba18feedc16bc",
+          "bytes": 581,
+          "kind": "scenario-execution-trace",
+          "owner": "runtime.applicationset-any-namespace.security.v3-5-2:namespace-not-allowlisted:trace"
+        }
+      }
+    },
+    {
+      "variant_id": "namespace-allowlisted",
+      "attempts": 1,
+      "outcome": "expected",
+      "final_status": "passed",
+      "error": null,
+      "oracle": {
+        "status": "pass",
+        "assertions": [
+          {
+            "channel": "resource_state",
+            "pointer": "/security/secret_scan_hits",
+            "operator": "equals",
+            "expected": 0
+          },
+          {
+            "channel": "controller_log",
+            "pointer": "/components/0",
+            "operator": "equals",
+            "expected": "argocd-applicationset-controller"
+          },
+          {
+            "channel": "trace",
+            "pointer": "/result/first_attempt",
+            "operator": "equals",
+            "expected": true
+          },
+          {
+            "channel": "resource_state",
+            "pointer": "/tenant_application_names",
+            "operator": "equals",
+            "expected": [
+              "atlas-security-003-generated"
+            ]
+          },
+          {
+            "channel": "resource_state",
+            "pointer": "/observation/scm_providers_enabled",
+            "operator": "equals",
+            "expected": false
+          },
+          {
+            "channel": "metric",
+            "pointer": "/app_info/sample_present",
+            "operator": "equals",
+            "expected": true
+          },
+          {
+            "channel": "metric",
+            "pointer": "/app_info/labels/name",
+            "operator": "equals",
+            "expected": "atlas-security-003-generated"
+          }
+        ]
+      },
+      "source": {
+        "path": "fixtures/scenarios/security-003/applicationset.yaml",
+        "digest": "sha256:fdfcdf52e745d94986048439b8e5dcbde555f8fe6cf40bde2c351ed6c8186d08",
+        "bytes": 666,
+        "owner": "runtime.applicationset-any-namespace.security.v3-5-2:namespace-allowlisted:source"
+      },
+      "harness": {
+        "path": "scripts/scenarios/run_security_003.py",
+        "digest": "sha256:227bc77f6ea536661cc5eafc57248b10588fcdc46668e2c26434b5765a6bde73",
+        "bytes": 42581,
+        "owner": "runtime.applicationset-any-namespace.security.v3-5-2:namespace-allowlisted:harness"
+      },
+      "artifacts": {
+        "resource_state": {
+          "path": "evidence/scenarios/runtime/artifacts/runtime.applicationset-any-namespace.security.v3-5-2/namespace-allowlisted/resource_state.json",
+          "digest": "sha256:c509f8d19285a6cec46943ded291b57bd885c37940ed9b085550b1b732a358f7",
+          "bytes": 10938,
+          "kind": "kubernetes-resource-state",
+          "owner": "runtime.applicationset-any-namespace.security.v3-5-2:namespace-allowlisted:resource_state"
+        },
+        "controller_log": {
+          "path": "evidence/scenarios/runtime/artifacts/runtime.applicationset-any-namespace.security.v3-5-2/namespace-allowlisted/controller_log.json",
+          "digest": "sha256:ba59079f731afd3c08a6ee5919d0d45bbf36c2916a6ce6d94560ecae38be7560",
+          "bytes": 36259,
+          "kind": "argocd-controller-log",
+          "owner": "runtime.applicationset-any-namespace.security.v3-5-2:namespace-allowlisted:controller_log"
+        },
+        "metric": {
+          "path": "evidence/scenarios/runtime/artifacts/runtime.applicationset-any-namespace.security.v3-5-2/namespace-allowlisted/metric.json",
+          "digest": "sha256:4f87e5e154e235ce8417ef73898df6ddd4e79ee067fd81d3830ae5b089bb3993",
+          "bytes": 1139,
+          "kind": "argocd-prometheus-metric",
+          "owner": "runtime.applicationset-any-namespace.security.v3-5-2:namespace-allowlisted:metric"
+        },
+        "trace": {
+          "path": "evidence/scenarios/runtime/artifacts/runtime.applicationset-any-namespace.security.v3-5-2/namespace-allowlisted/trace.json",
+          "digest": "sha256:f3722e5431172e315a7068950f058a1971cafa4215d4cb9e883d0246b2bd2b64",
+          "bytes": 877,
+          "kind": "scenario-execution-trace",
+          "owner": "runtime.applicationset-any-namespace.security.v3-5-2:namespace-allowlisted:trace"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,419 @@
+{
+  "schema_version": 1,
+  "id": "proof.behavior.application.operation.refresh.security",
+  "atlas_id": "argocd-reference-atlas",
+  "generated_at": "2026-08-28T00:00:00+09:00",
+  "behavior_scope": "current-surface-not-human-reviewed-authority-atomic",
+  "behavior_id": "application.operation.refresh",
+  "pattern_id": "application.operation.refresh",
+  "area": "application",
+  "kind": "cli-api",
+  "target_id": "operations.routine-control",
+  "target_set": "operations",
+  "source_bindings": [],
+  "surface_state": "partial",
+  "scenario": "security",
+  "attempts": 1,
+  "status": "scenario-gap-open",
+  "supporting_evidence_assessment": {
+    "status": "no-supporting-artifact",
+    "closure_credit": false,
+    "reason": "既存Lab Artifactは専用Surface×Scenario×全Variant Runtime reportではないためClosureへ算入しない。"
+  },
+  "authority_binding": {
+    "status": "locked-source-candidate",
+    "source_id": "argocd-source-tree",
+    "source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+    "candidate_locator": "cmd/argocd/commands/app.go",
+    "locator_scope": "locked-argocd-source-tree-candidate",
+    "authority_gap": "人手Review DecisionがなくSource locator候補からAtomic behaviorへ昇格していない。",
+    "review_decision_id": null,
+    "human_reviewed": false,
+    "authority_atomic_binding": false
+  },
+  "controller_kubernetes_behavior": {
+    "expected_argocd_components": [
+      "argocd-application-controller",
+      "argocd-repo-server"
+    ],
+    "observed_argocd_components": [],
+    "component_identity_status": "explicit-gap",
+    "component_identity_complete": false,
+    "component_identity_gap": "期待する全Argo CD component identityをBehavior固有Artifactから確認できない。",
+    "kubernetes_behavior": "application-custom-resource-reconciliation"
+  },
+  "runtime_identity": {
+    "status": "explicit-gap",
+    "argocd_versions": [],
+    "kubernetes_api_server_versions": [],
+    "kubernetes_kubelet_versions": [],
+    "profiles": [],
+    "artifact_evidence_ids": [],
+    "gap": "Behavior固有Runtime ArtifactがなくArgo CD／Kubernetes version identityを確定できない。"
+  },
+  "runtime_identities": [],
+  "evidence_bindings": [],
+  "observations": {
+    "resource_state": {
+      "status": "explicit-gap",
+      "artifact_kind": null,
+      "artifacts": [],
+      "gap": "Behavior固有resource state Artifactがない。"
+    },
+    "controller_log": {
+      "status": "explicit-gap",
+      "artifact_kind": null,
+      "artifacts": [],
+      "gap": "Behavior固有controller log Artifactがない。"
+    },
+    "metric": {
+      "status": "explicit-gap",
+      "artifact_kind": null,
+      "artifacts": [],
+      "gap": "Behavior固有metric Artifactがない。"
+    },
+    "trace": {
+      "status": "explicit-gap",
+      "artifact_kind": null,
+      "artifacts": [],
+      "gap": "Behavior固有trace Artifactがない。OTLP traceは別Gapとして未Closure。"
+    }
+  },
+  "observation_role": "supporting-historical-not-scenario-gap-closure",
+  "scenario_gap_closure": {
+    "status": "open",
+    "scenario_gap_closed": false,
+    "dedicated_runtime_execution_complete": true,
+    "variant_contract": {
+      "source": {
+        "path": "definitive/scenario-variant-contract.yaml",
+        "digest": "sha256:b2c76378113d3145a77d019d5f490e333a554188773501e68de6ac685cc583dd",
+        "bytes": 6097
+      },
+      "status": "runtime-declared-pending-authority-human-review",
+      "expected_variant_ids": [
+        "rbac-denied-hard-refresh",
+        "rbac-allowed-hard-refresh"
+      ],
+      "exhaustive": false,
+      "gap": "Authority人手Review済みの非空かつexhaustiveなSurface Variant分母がない。"
+    },
+    "dedicated_runtime_report": {
+      "path": "evidence/scenarios/runtime/reports/runtime.application-operation-refresh.security.v3-5-2.json",
+      "digest": "sha256:684d97dfac846263f589eb9d5095150038e9b68e372bdde7745e4325ee3b24e1",
+      "bytes": 8749
+    },
+    "dedicated_runtime_record_ids": [
+      "runtime.application-operation-refresh.security.v3-5-2:rbac-denied-hard-refresh",
+      "runtime.application-operation-refresh.security.v3-5-2:rbac-allowed-hard-refresh"
+    ],
+    "source_bindings": [
+      {
+        "variant_id": "rbac-denied-hard-refresh",
+        "source": {
+          "path": "fixtures/scenarios/security-001/operations/configmap.yaml",
+          "digest": "sha256:88a5bdb2ff8a62536cb33a2e4dd4b1d5909db56214bd45daff528591ced9999e",
+          "bytes": 95,
+          "owner": "runtime.application-operation-refresh.security.v3-5-2:rbac-denied-hard-refresh:source"
+        }
+      },
+      {
+        "variant_id": "rbac-allowed-hard-refresh",
+        "source": {
+          "path": "fixtures/scenarios/security-001/operations/configmap.yaml",
+          "digest": "sha256:88a5bdb2ff8a62536cb33a2e4dd4b1d5909db56214bd45daff528591ced9999e",
+          "bytes": 95,
+          "owner": "runtime.application-operation-refresh.security.v3-5-2:rbac-allowed-hard-refresh:source"
+        }
+      }
+    ],
+    "harness_bindings": [
+      {
+        "variant_id": "rbac-denied-hard-refresh",
+        "harness": {
+          "path": "scripts/scenarios/run_security_001.py",
+          "digest": "sha256:2ff8a62cd9e2b4fd03da5c0367c4588a88cec450f079e32590da2e46f983c00f",
+          "bytes": 30253,
+          "owner": "runtime.application-operation-refresh.security.v3-5-2:rbac-denied-hard-refresh:harness"
+        }
+      },
+      {
+        "variant_id": "rbac-allowed-hard-refresh",
+        "harness": {
+          "path": "scripts/scenarios/run_security_001.py",
+          "digest": "sha256:2ff8a62cd9e2b4fd03da5c0367c4588a88cec450f079e32590da2e46f983c00f",
+          "bytes": 30253,
+          "owner": "runtime.application-operation-refresh.security.v3-5-2:rbac-allowed-hard-refresh:harness"
+        }
+      }
+    ],
+    "runtime_identity": {
+      "profile": "cluster",
+      "real_argocd_kubernetes_runtime": true,
+      "cluster_name": "argocd-atlas-v3-5-2",
+      "kubernetes_context": "kind-argocd-atlas-v3-5-2",
+      "argocd_version": "3.5.2",
+      "kubernetes_api_server_version": "v1.34.0",
+      "kubernetes_kubelet_version": "v1.34.0",
+      "cluster_uid": "00b2b62c-ba60-4520-b48e-fa9e550c859d",
+      "topology_digest": "sha256:f27cd86ff879333619bd84e57f310afb261727da44dd06ae2c5e931d6f74dd9e",
+      "observed_argocd_components": [
+        "argocd-application-controller",
+        "argocd-repo-server"
+      ]
+    },
+    "oracle_records": [
+      {
+        "variant_id": "rbac-denied-hard-refresh",
+        "oracle": {
+          "status": "pass",
+          "assertions": [
+            {
+              "channel": "resource_state",
+              "pointer": "/security/secret_scan_hits",
+              "operator": "equals",
+              "expected": 0
+            },
+            {
+              "channel": "controller_log",
+              "pointer": "/entries/0/application",
+              "operator": "equals",
+              "expected": "atlas-security-operations"
+            },
+            {
+              "channel": "metric",
+              "pointer": "/app_info/labels/name",
+              "operator": "equals",
+              "expected": "atlas-security-operations"
+            },
+            {
+              "channel": "trace",
+              "pointer": "/result/first_attempt",
+              "operator": "equals",
+              "expected": true
+            },
+            {
+              "channel": "resource_state",
+              "pointer": "/rbac/decision",
+              "operator": "equals",
+              "expected": "No"
+            }
+          ]
+        }
+      },
+      {
+        "variant_id": "rbac-allowed-hard-refresh",
+        "oracle": {
+          "status": "pass",
+          "assertions": [
+            {
+              "channel": "resource_state",
+              "pointer": "/security/secret_scan_hits",
+              "operator": "equals",
+              "expected": 0
+            },
+            {
+              "channel": "controller_log",
+              "pointer": "/entries/0/application",
+              "operator": "equals",
+              "expected": "atlas-security-operations"
+            },
+            {
+              "channel": "metric",
+              "pointer": "/app_info/labels/name",
+              "operator": "equals",
+              "expected": "atlas-security-operations"
+            },
+            {
+              "channel": "trace",
+              "pointer": "/result/first_attempt",
+              "operator": "equals",
+              "expected": true
+            },
+            {
+              "channel": "resource_state",
+              "pointer": "/rbac/decision",
+              "operator": "equals",
+              "expected": "Yes"
+            }
+          ]
+        }
+      }
+    ],
+    "artifacts": {
+      "resource_state": {
+        "status": "artifact",
+        "artifacts": [
+          {
+            "variant_id": "rbac-denied-hard-refresh",
+            "artifact": {
+              "path": "evidence/scenarios/runtime/artifacts/runtime.application-operation-refresh.security.v3-5-2/rbac-denied-hard-refresh/resource_state.json",
+              "digest": "sha256:ccdfe81ff15c4dad339b33cfb1570a430cd172e159e64340a9f515dab4ec1438",
+              "bytes": 10534,
+              "kind": "kubernetes-resource-state",
+              "owner": "runtime.application-operation-refresh.security.v3-5-2:rbac-denied-hard-refresh:resource_state"
+            }
+          },
+          {
+            "variant_id": "rbac-allowed-hard-refresh",
+            "artifact": {
+              "path": "evidence/scenarios/runtime/artifacts/runtime.application-operation-refresh.security.v3-5-2/rbac-allowed-hard-refresh/resource_state.json",
+              "digest": "sha256:3c9c4a4a297d1228685dfc3d172ca90d8e3c84879d3bef05d52107c7557bfa06",
+              "bytes": 10537,
+              "kind": "kubernetes-resource-state",
+              "owner": "runtime.application-operation-refresh.security.v3-5-2:rbac-allowed-hard-refresh:resource_state"
+            }
+          }
+        ],
+        "gap": null
+      },
+      "controller_log": {
+        "status": "artifact",
+        "artifacts": [
+          {
+            "variant_id": "rbac-denied-hard-refresh",
+            "artifact": {
+              "path": "evidence/scenarios/runtime/artifacts/runtime.application-operation-refresh.security.v3-5-2/rbac-denied-hard-refresh/controller_log.json",
+              "digest": "sha256:9491e60f5d8d56d786329b398bd475aed9b978e8efa2209753b23485b90c7ec8",
+              "bytes": 57472,
+              "kind": "argocd-controller-log",
+              "owner": "runtime.application-operation-refresh.security.v3-5-2:rbac-denied-hard-refresh:controller_log"
+            }
+          },
+          {
+            "variant_id": "rbac-allowed-hard-refresh",
+            "artifact": {
+              "path": "evidence/scenarios/runtime/artifacts/runtime.application-operation-refresh.security.v3-5-2/rbac-allowed-hard-refresh/controller_log.json",
+              "digest": "sha256:429611b53aece3763de4516623ddfa12d20be038cc0715156e5aa8c449ab797c",
+              "bytes": 59531,
+              "kind": "argocd-controller-log",
+              "owner": "runtime.application-operation-refresh.security.v3-5-2:rbac-allowed-hard-refresh:controller_log"
+            }
+          }
+        ],
+        "gap": null
+      },
+      "metric": {
+        "status": "artifact",
+        "artifacts": [
+          {
+            "variant_id": "rbac-denied-hard-refresh",
+            "artifact": {
+              "path": "evidence/scenarios/runtime/artifacts/runtime.application-operation-refresh.security.v3-5-2/rbac-denied-hard-refresh/metric.json",
+              "digest": "sha256:595abf70c91335760af3d860ec3e3f134457c91359a9f20d76f30420b779ddda",
+              "bytes": 1043,
+              "kind": "argocd-prometheus-metric",
+              "owner": "runtime.application-operation-refresh.security.v3-5-2:rbac-denied-hard-refresh:metric"
+            }
+          },
+          {
+            "variant_id": "rbac-allowed-hard-refresh",
+            "artifact": {
+              "path": "evidence/scenarios/runtime/artifacts/runtime.application-operation-refresh.security.v3-5-2/rbac-allowed-hard-refresh/metric.json",
+              "digest": "sha256:deea834fc185a6432c59309b656e3913b6407a1826965a3f5aafe58efa387624",
+              "bytes": 1044,
+              "kind": "argocd-prometheus-metric",
+              "owner": "runtime.application-operation-refresh.security.v3-5-2:rbac-allowed-hard-refresh:metric"
+            }
+          }
+        ],
+        "gap": null
+      },
+      "trace": {
+        "status": "artifact",
+        "artifacts": [
+          {
+            "variant_id": "rbac-denied-hard-refresh",
+            "artifact": {
+              "path": "evidence/scenarios/runtime/artifacts/runtime.application-operation-refresh.security.v3-5-2/rbac-denied-hard-refresh/trace.json",
+              "digest": "sha256:cd845aaf495e4ec58999896ecf7a4de7cca3faf678faf464cf61423f9457298c",
+              "bytes": 659,
+              "kind": "scenario-execution-trace",
+              "owner": "runtime.application-operation-refresh.security.v3-5-2:rbac-denied-hard-refresh:trace"
+            }
+          },
+          {
+            "variant_id": "rbac-allowed-hard-refresh",
+            "artifact": {
+              "path": "evidence/scenarios/runtime/artifacts/runtime.application-operation-refresh.security.v3-5-2/rbac-allowed-hard-refresh/trace.json",
+              "digest": "sha256:0b433a2a2d6cc762fa093fedfad28b93daefd5dcb078ff6a4429581f31238cd5",
+              "bytes": 691,
+              "kind": "scenario-execution-trace",
+              "owner": "runtime.application-operation-refresh.security.v3-5-2:rbac-allowed-hard-refresh:trace"
+            }
+          }
+        ],
+        "gap": null
+      }
+    },
+    "conditions": {
+      "variant_denominator_exhaustive": false,
+      "exact_surface_scenario_scope": true,
+      "all_variants_driven": true,
+      "real_argocd_kubernetes_runtime": true,
+      "retry_zero": true,
+      "first_attempt_pass": true,
+      "oracle_pass": true,
+      "source_digest_bound": true,
+      "harness_digest_bound": true,
+      "runtime_identity_complete": true,
+      "per_variant_resource_state_artifact": true,
+      "per_variant_controller_log_artifact": true,
+      "per_variant_metric_artifact": true,
+      "per_variant_trace_artifact": true,
+      "artifact_paths_dedicated_and_distinct": true,
+      "integrated_or_other_metadata_reuse_absent": true
+    },
+    "failed_conditions": [
+      "variant_denominator_exhaustive"
+    ],
+    "closure_evidence_source": "dedicated-surface-scenario-runtime-registry-only",
+    "prohibited_substitutions": [
+      "integrated-reference-result",
+      "historical-bundle-evidence",
+      "other-surface-scenario-variant-artifact-metadata",
+      "mock-or-static-runtime"
+    ]
+  },
+  "integrated_reference": {
+    "manifest": {
+      "path": "integrations/reference-system/manifest.yaml",
+      "digest": "sha256:ca3e64e1255d4f81d68102aea59fa07009416b499fa16b16633c6e2ddaeddab0",
+      "bytes": 5536
+    },
+    "result": {
+      "path": "evidence/reference-system/results.json",
+      "digest": "sha256:460eea63270e47cb4dd47c59f96713145c8b5b00fb0a336bd82ccff60d737c35",
+      "bytes": 125588
+    },
+    "scenario_row_id": "reference.scenario.security",
+    "outcome": "bounded-evidence-audit",
+    "attempts": 1,
+    "final_status": "evaluated",
+    "runtime_attempts": 0,
+    "scenario_evaluated": true,
+    "single_topology_execution": false,
+    "used_as_behavior_specific_evidence": false
+  },
+  "closure": {
+    "dedicated_row": true,
+    "dedicated_artifact": true,
+    "supporting_behavior_specific_evidence": false,
+    "supporting_real_kubernetes_runtime": false,
+    "supporting_runtime_identity_complete": false,
+    "scenario_gap_closed": false,
+    "dedicated_runtime_execution_complete": true,
+    "authority_atomic_binding": false,
+    "completion_eligible": false
+  },
+  "gaps": [
+    "Behavior固有の当該Scenario Evidenceがない。",
+    "resource_state: Behavior固有resource state Artifactがない。",
+    "controller_log: Behavior固有controller log Artifactがない。",
+    "metric: Behavior固有metric Artifactがない。",
+    "trace: Behavior固有trace Artifactがない。OTLP traceは別Gapとして未Closure。",
+    "closure-condition: variant_denominator_exhaustive",
+    "統合Scenario AuditをBehavior固有Proofへ流用しない。",
+    "Authority raw anchorの人手DecisionがなくAtomic behaviorへ昇格していない。"
+  ]
+}

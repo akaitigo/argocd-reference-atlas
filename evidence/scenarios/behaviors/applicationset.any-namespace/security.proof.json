@@ -1,0 +1,433 @@
+{
+  "schema_version": 1,
+  "id": "proof.behavior.applicationset.any-namespace.security",
+  "atlas_id": "argocd-reference-atlas",
+  "generated_at": "2026-08-28T00:00:00+09:00",
+  "behavior_scope": "current-surface-not-human-reviewed-authority-atomic",
+  "behavior_id": "applicationset.any-namespace",
+  "pattern_id": "applicationset.any-namespace",
+  "area": "applicationset",
+  "kind": "docs",
+  "target_id": "security.rbac-sso-access-boundary",
+  "target_set": "security-boundary",
+  "source_bindings": [],
+  "surface_state": "missing",
+  "scenario": "security",
+  "attempts": 1,
+  "status": "scenario-gap-open",
+  "supporting_evidence_assessment": {
+    "status": "no-supporting-artifact",
+    "closure_credit": false,
+    "reason": "既存Lab Artifactは専用Surface×Scenario×全Variant Runtime reportではないためClosureへ算入しない。"
+  },
+  "authority_binding": {
+    "status": "locked-source-candidate",
+    "source_id": "argocd-source-tree",
+    "source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+    "candidate_locator": "docs/operator-manual/applicationset/Appset-Any-Namespace.md",
+    "locator_scope": "locked-argocd-source-tree-candidate",
+    "authority_gap": "人手Review DecisionがなくSource locator候補からAtomic behaviorへ昇格していない。",
+    "review_decision_id": null,
+    "human_reviewed": false,
+    "authority_atomic_binding": false
+  },
+  "controller_kubernetes_behavior": {
+    "expected_argocd_components": [
+      "argocd-applicationset-controller"
+    ],
+    "observed_argocd_components": [],
+    "component_identity_status": "explicit-gap",
+    "component_identity_complete": false,
+    "component_identity_gap": "期待する全Argo CD component identityをBehavior固有Artifactから確認できない。",
+    "kubernetes_behavior": "applicationset-custom-resource-reconciliation"
+  },
+  "runtime_identity": {
+    "status": "explicit-gap",
+    "argocd_versions": [],
+    "kubernetes_api_server_versions": [],
+    "kubernetes_kubelet_versions": [],
+    "profiles": [],
+    "artifact_evidence_ids": [],
+    "gap": "Behavior固有Runtime ArtifactがなくArgo CD／Kubernetes version identityを確定できない。"
+  },
+  "runtime_identities": [],
+  "evidence_bindings": [],
+  "observations": {
+    "resource_state": {
+      "status": "explicit-gap",
+      "artifact_kind": null,
+      "artifacts": [],
+      "gap": "Behavior固有resource state Artifactがない。"
+    },
+    "controller_log": {
+      "status": "explicit-gap",
+      "artifact_kind": null,
+      "artifacts": [],
+      "gap": "Behavior固有controller log Artifactがない。"
+    },
+    "metric": {
+      "status": "explicit-gap",
+      "artifact_kind": null,
+      "artifacts": [],
+      "gap": "Behavior固有metric Artifactがない。"
+    },
+    "trace": {
+      "status": "explicit-gap",
+      "artifact_kind": null,
+      "artifacts": [],
+      "gap": "Behavior固有trace Artifactがない。OTLP traceは別Gapとして未Closure。"
+    }
+  },
+  "observation_role": "supporting-historical-not-scenario-gap-closure",
+  "scenario_gap_closure": {
+    "status": "open",
+    "scenario_gap_closed": false,
+    "dedicated_runtime_execution_complete": true,
+    "variant_contract": {
+      "source": {
+        "path": "definitive/scenario-variant-contract.yaml",
+        "digest": "sha256:b2c76378113d3145a77d019d5f490e333a554188773501e68de6ac685cc583dd",
+        "bytes": 6097
+      },
+      "status": "runtime-declared-pending-authority-human-review",
+      "expected_variant_ids": [
+        "namespace-not-allowlisted",
+        "namespace-allowlisted"
+      ],
+      "exhaustive": false,
+      "gap": "Authority人手Review済みの非空かつexhaustiveなSurface Variant分母がない。"
+    },
+    "dedicated_runtime_report": {
+      "path": "evidence/scenarios/runtime/reports/runtime.applicationset-any-namespace.security.v3-5-2.json",
+      "digest": "sha256:468da5585a4b519bbd26ba79c88ae2b69b1b2f33b64ea4f64ee44fcb53474099",
+      "bytes": 9139
+    },
+    "dedicated_runtime_record_ids": [
+      "runtime.applicationset-any-namespace.security.v3-5-2:namespace-not-allowlisted",
+      "runtime.applicationset-any-namespace.security.v3-5-2:namespace-allowlisted"
+    ],
+    "source_bindings": [
+      {
+        "variant_id": "namespace-not-allowlisted",
+        "source": {
+          "path": "fixtures/scenarios/security-003/applicationset.yaml",
+          "digest": "sha256:fdfcdf52e745d94986048439b8e5dcbde555f8fe6cf40bde2c351ed6c8186d08",
+          "bytes": 666,
+          "owner": "runtime.applicationset-any-namespace.security.v3-5-2:namespace-not-allowlisted:source"
+        }
+      },
+      {
+        "variant_id": "namespace-allowlisted",
+        "source": {
+          "path": "fixtures/scenarios/security-003/applicationset.yaml",
+          "digest": "sha256:fdfcdf52e745d94986048439b8e5dcbde555f8fe6cf40bde2c351ed6c8186d08",
+          "bytes": 666,
+          "owner": "runtime.applicationset-any-namespace.security.v3-5-2:namespace-allowlisted:source"
+        }
+      }
+    ],
+    "harness_bindings": [
+      {
+        "variant_id": "namespace-not-allowlisted",
+        "harness": {
+          "path": "scripts/scenarios/run_security_003.py",
+          "digest": "sha256:227bc77f6ea536661cc5eafc57248b10588fcdc46668e2c26434b5765a6bde73",
+          "bytes": 42581,
+          "owner": "runtime.applicationset-any-namespace.security.v3-5-2:namespace-not-allowlisted:harness"
+        }
+      },
+      {
+        "variant_id": "namespace-allowlisted",
+        "harness": {
+          "path": "scripts/scenarios/run_security_003.py",
+          "digest": "sha256:227bc77f6ea536661cc5eafc57248b10588fcdc46668e2c26434b5765a6bde73",
+          "bytes": 42581,
+          "owner": "runtime.applicationset-any-namespace.security.v3-5-2:namespace-allowlisted:harness"
+        }
+      }
+    ],
+    "runtime_identity": {
+      "profile": "cluster",
+      "real_argocd_kubernetes_runtime": true,
+      "cluster_name": "argocd-atlas-v3-5-2",
+      "kubernetes_context": "kind-argocd-atlas-v3-5-2",
+      "argocd_version": "3.5.2",
+      "kubernetes_api_server_version": "v1.34.0",
+      "kubernetes_kubelet_version": "v1.34.0",
+      "cluster_uid": "72ccbe2b-84df-443c-8a36-b27ccd178635",
+      "topology_digest": "sha256:c801daf9153ab9cb3b3b9f736218a1a039abfa92adf37afc99813ba8383bb7f1",
+      "observed_argocd_components": [
+        "argocd-application-controller",
+        "argocd-applicationset-controller",
+        "argocd-repo-server"
+      ]
+    },
+    "oracle_records": [
+      {
+        "variant_id": "namespace-not-allowlisted",
+        "oracle": {
+          "status": "pass",
+          "assertions": [
+            {
+              "channel": "resource_state",
+              "pointer": "/security/secret_scan_hits",
+              "operator": "equals",
+              "expected": 0
+            },
+            {
+              "channel": "controller_log",
+              "pointer": "/components/0",
+              "operator": "equals",
+              "expected": "argocd-applicationset-controller"
+            },
+            {
+              "channel": "trace",
+              "pointer": "/result/first_attempt",
+              "operator": "equals",
+              "expected": true
+            },
+            {
+              "channel": "resource_state",
+              "pointer": "/tenant_application_names",
+              "operator": "equals",
+              "expected": []
+            },
+            {
+              "channel": "metric",
+              "pointer": "/app_info/sample_present",
+              "operator": "equals",
+              "expected": false
+            }
+          ]
+        }
+      },
+      {
+        "variant_id": "namespace-allowlisted",
+        "oracle": {
+          "status": "pass",
+          "assertions": [
+            {
+              "channel": "resource_state",
+              "pointer": "/security/secret_scan_hits",
+              "operator": "equals",
+              "expected": 0
+            },
+            {
+              "channel": "controller_log",
+              "pointer": "/components/0",
+              "operator": "equals",
+              "expected": "argocd-applicationset-controller"
+            },
+            {
+              "channel": "trace",
+              "pointer": "/result/first_attempt",
+              "operator": "equals",
+              "expected": true
+            },
+            {
+              "channel": "resource_state",
+              "pointer": "/tenant_application_names",
+              "operator": "equals",
+              "expected": [
+                "atlas-security-003-generated"
+              ]
+            },
+            {
+              "channel": "resource_state",
+              "pointer": "/observation/scm_providers_enabled",
+              "operator": "equals",
+              "expected": false
+            },
+            {
+              "channel": "metric",
+              "pointer": "/app_info/sample_present",
+              "operator": "equals",
+              "expected": true
+            },
+            {
+              "channel": "metric",
+              "pointer": "/app_info/labels/name",
+              "operator": "equals",
+              "expected": "atlas-security-003-generated"
+            }
+          ]
+        }
+      }
+    ],
+    "artifacts": {
+      "resource_state": {
+        "status": "artifact",
+        "artifacts": [
+          {
+            "variant_id": "namespace-not-allowlisted",
+            "artifact": {
+              "path": "evidence/scenarios/runtime/artifacts/runtime.applicationset-any-namespace.security.v3-5-2/namespace-not-allowlisted/resource_state.json",
+              "digest": "sha256:9a1004783a279a7e1beea4d2e51f92ff4922f064e25fd77fe04e285ff8cabbcf",
+              "bytes": 4584,
+              "kind": "kubernetes-resource-state",
+              "owner": "runtime.applicationset-any-namespace.security.v3-5-2:namespace-not-allowlisted:resource_state"
+            }
+          },
+          {
+            "variant_id": "namespace-allowlisted",
+            "artifact": {
+              "path": "evidence/scenarios/runtime/artifacts/runtime.applicationset-any-namespace.security.v3-5-2/namespace-allowlisted/resource_state.json",
+              "digest": "sha256:c509f8d19285a6cec46943ded291b57bd885c37940ed9b085550b1b732a358f7",
+              "bytes": 10938,
+              "kind": "kubernetes-resource-state",
+              "owner": "runtime.applicationset-any-namespace.security.v3-5-2:namespace-allowlisted:resource_state"
+            }
+          }
+        ],
+        "gap": null
+      },
+      "controller_log": {
+        "status": "artifact",
+        "artifacts": [
+          {
+            "variant_id": "namespace-not-allowlisted",
+            "artifact": {
+              "path": "evidence/scenarios/runtime/artifacts/runtime.applicationset-any-namespace.security.v3-5-2/namespace-not-allowlisted/controller_log.json",
+              "digest": "sha256:7721e894beb1a3452a27d991c3500c7d2003b6ba81a5042057f8ce9cba820ae5",
+              "bytes": 37623,
+              "kind": "argocd-controller-log",
+              "owner": "runtime.applicationset-any-namespace.security.v3-5-2:namespace-not-allowlisted:controller_log"
+            }
+          },
+          {
+            "variant_id": "namespace-allowlisted",
+            "artifact": {
+              "path": "evidence/scenarios/runtime/artifacts/runtime.applicationset-any-namespace.security.v3-5-2/namespace-allowlisted/controller_log.json",
+              "digest": "sha256:ba59079f731afd3c08a6ee5919d0d45bbf36c2916a6ce6d94560ecae38be7560",
+              "bytes": 36259,
+              "kind": "argocd-controller-log",
+              "owner": "runtime.applicationset-any-namespace.security.v3-5-2:namespace-allowlisted:controller_log"
+            }
+          }
+        ],
+        "gap": null
+      },
+      "metric": {
+        "status": "artifact",
+        "artifacts": [
+          {
+            "variant_id": "namespace-not-allowlisted",
+            "artifact": {
+              "path": "evidence/scenarios/runtime/artifacts/runtime.applicationset-any-namespace.security.v3-5-2/namespace-not-allowlisted/metric.json",
+              "digest": "sha256:4e6fe989cceae6113583ed7e942420c66f7a75cb74560ba03848c0e7edefde90",
+              "bytes": 296,
+              "kind": "argocd-prometheus-metric",
+              "owner": "runtime.applicationset-any-namespace.security.v3-5-2:namespace-not-allowlisted:metric"
+            }
+          },
+          {
+            "variant_id": "namespace-allowlisted",
+            "artifact": {
+              "path": "evidence/scenarios/runtime/artifacts/runtime.applicationset-any-namespace.security.v3-5-2/namespace-allowlisted/metric.json",
+              "digest": "sha256:4f87e5e154e235ce8417ef73898df6ddd4e79ee067fd81d3830ae5b089bb3993",
+              "bytes": 1139,
+              "kind": "argocd-prometheus-metric",
+              "owner": "runtime.applicationset-any-namespace.security.v3-5-2:namespace-allowlisted:metric"
+            }
+          }
+        ],
+        "gap": null
+      },
+      "trace": {
+        "status": "artifact",
+        "artifacts": [
+          {
+            "variant_id": "namespace-not-allowlisted",
+            "artifact": {
+              "path": "evidence/scenarios/runtime/artifacts/runtime.applicationset-any-namespace.security.v3-5-2/namespace-not-allowlisted/trace.json",
+              "digest": "sha256:75829bb4b41ba1f8a54130691075f291d87f4d5c64cf2551e29ba18feedc16bc",
+              "bytes": 581,
+              "kind": "scenario-execution-trace",
+              "owner": "runtime.applicationset-any-namespace.security.v3-5-2:namespace-not-allowlisted:trace"
+            }
+          },
+          {
+            "variant_id": "namespace-allowlisted",
+            "artifact": {
+              "path": "evidence/scenarios/runtime/artifacts/runtime.applicationset-any-namespace.security.v3-5-2/namespace-allowlisted/trace.json",
+              "digest": "sha256:f3722e5431172e315a7068950f058a1971cafa4215d4cb9e883d0246b2bd2b64",
+              "bytes": 877,
+              "kind": "scenario-execution-trace",
+              "owner": "runtime.applicationset-any-namespace.security.v3-5-2:namespace-allowlisted:trace"
+            }
+          }
+        ],
+        "gap": null
+      }
+    },
+    "conditions": {
+      "variant_denominator_exhaustive": false,
+      "exact_surface_scenario_scope": true,
+      "all_variants_driven": true,
+      "real_argocd_kubernetes_runtime": true,
+      "retry_zero": true,
+      "first_attempt_pass": true,
+      "oracle_pass": true,
+      "source_digest_bound": true,
+      "harness_digest_bound": true,
+      "runtime_identity_complete": true,
+      "per_variant_resource_state_artifact": true,
+      "per_variant_controller_log_artifact": true,
+      "per_variant_metric_artifact": true,
+      "per_variant_trace_artifact": true,
+      "artifact_paths_dedicated_and_distinct": true,
+      "integrated_or_other_metadata_reuse_absent": true
+    },
+    "failed_conditions": [
+      "variant_denominator_exhaustive"
+    ],
+    "closure_evidence_source": "dedicated-surface-scenario-runtime-registry-only",
+    "prohibited_substitutions": [
+      "integrated-reference-result",
+      "historical-bundle-evidence",
+      "other-surface-scenario-variant-artifact-metadata",
+      "mock-or-static-runtime"
+    ]
+  },
+  "integrated_reference": {
+    "manifest": {
+      "path": "integrations/reference-system/manifest.yaml",
+      "digest": "sha256:ca3e64e1255d4f81d68102aea59fa07009416b499fa16b16633c6e2ddaeddab0",
+      "bytes": 5536
+    },
+    "result": {
+      "path": "evidence/reference-system/results.json",
+      "digest": "sha256:460eea63270e47cb4dd47c59f96713145c8b5b00fb0a336bd82ccff60d737c35",
+      "bytes": 125588
+    },
+    "scenario_row_id": "reference.scenario.security",
+    "outcome": "bounded-evidence-audit",
+    "attempts": 1,
+    "final_status": "evaluated",
+    "runtime_attempts": 0,
+    "scenario_evaluated": true,
+    "single_topology_execution": false,
+    "used_as_behavior_specific_evidence": false
+  },
+  "closure": {
+    "dedicated_row": true,
+    "dedicated_artifact": true,
+    "supporting_behavior_specific_evidence": false,
+    "supporting_real_kubernetes_runtime": false,
+    "supporting_runtime_identity_complete": false,
+    "scenario_gap_closed": false,
+    "dedicated_runtime_execution_complete": true,
+    "authority_atomic_binding": false,
+    "completion_eligible": false
+  },
+  "gaps": [
+    "Behavior固有の当該Scenario Evidenceがない。",
+    "resource_state: Behavior固有resource state Artifactがない。",
+    "controller_log: Behavior固有controller log Artifactがない。",
+    "metric: Behavior固有metric Artifactがない。",
+    "trace: Behavior固有trace Artifactがない。OTLP traceは別Gapとして未Closure。",
+    "closure-condition: variant_denominator_exhaustive",
+    "統合Scenario AuditをBehavior固有Proofへ流用しない。",
+    "Authority raw anchorの人手DecisionがなくAtomic behaviorへ昇格していない。"
+  ]
+}

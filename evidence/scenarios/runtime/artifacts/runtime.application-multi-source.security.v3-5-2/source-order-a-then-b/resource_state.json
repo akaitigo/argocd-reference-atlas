@@ -1,0 +1,312 @@
+{
+  "schema_version": 1,
+  "surface_id": "application.multi-source",
+  "scenario": "security",
+  "variant_id": "source-order-a-then-b",
+  "application": {
+    "apiVersion": "argoproj.io/v1alpha1",
+    "kind": "Application",
+    "metadata": {
+      "annotations": {
+        "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"argoproj.io/v1alpha1\",\"kind\":\"Application\",\"metadata\":{\"annotations\":{},\"name\":\"atlas-security-multi-source\",\"namespace\":\"argocd\"},\"spec\":{\"destination\":{\"namespace\":\"atlas-security-workloads\",\"server\":\"https://kubernetes.default.svc\"},\"project\":\"atlas-security\",\"sources\":[{\"path\":\"apps/security-001/source-a\",\"repoURL\":\"http://source-server.argocd-atlas-source.svc.cluster.local/repo.git\",\"targetRevision\":\"32238803403f2d8ad837104d9ad32b8724b277c1\"},{\"path\":\"apps/security-001/source-b\",\"repoURL\":\"http://source-server.argocd-atlas-source.svc.cluster.local/repo.git\",\"targetRevision\":\"32238803403f2d8ad837104d9ad32b8724b277c1\"}],\"syncPolicy\":{\"syncOptions\":[\"CreateNamespace=true\"]}}}\n"
+      },
+      "creationTimestamp": "2026-08-30T17:48:39Z",
+      "generation": 8,
+      "name": "atlas-security-multi-source",
+      "namespace": "argocd",
+      "resourceVersion": "4196",
+      "uid": "1ecde395-006f-403a-b36e-3f1ada535393"
+    },
+    "spec": {
+      "destination": {
+        "namespace": "atlas-security-workloads",
+        "server": "https://kubernetes.default.svc"
+      },
+      "project": "atlas-security",
+      "sources": [
+        {
+          "path": "apps/security-001/source-a",
+          "repoURL": "http://source-server.argocd-atlas-source.svc.cluster.local/repo.git",
+          "targetRevision": "32238803403f2d8ad837104d9ad32b8724b277c1"
+        },
+        {
+          "path": "apps/security-001/source-b",
+          "repoURL": "http://source-server.argocd-atlas-source.svc.cluster.local/repo.git",
+          "targetRevision": "32238803403f2d8ad837104d9ad32b8724b277c1"
+        }
+      ],
+      "syncPolicy": {
+        "syncOptions": [
+          "CreateNamespace=true"
+        ]
+      }
+    },
+    "status": {
+      "conditions": [
+        {
+          "lastTransitionTime": "2026-08-30T17:48:40Z",
+          "message": "Resource /ConfigMap/atlas-security-workloads/atlas-security-shared appeared 2 times among application resources.",
+          "type": "RepeatedResourceWarning"
+        }
+      ],
+      "controllerNamespace": "argocd",
+      "health": {
+        "lastTransitionTime": "2026-08-30T17:48:41Z",
+        "status": "Healthy"
+      },
+      "history": [
+        {
+          "deployStartedAt": "2026-08-30T17:48:40Z",
+          "deployedAt": "2026-08-30T17:48:41Z",
+          "id": 0,
+          "initiatedBy": {
+            "username": "atlas-security-allowed"
+          },
+          "revisions": [
+            "32238803403f2d8ad837104d9ad32b8724b277c1",
+            "32238803403f2d8ad837104d9ad32b8724b277c1"
+          ],
+          "source": {
+            "repoURL": ""
+          },
+          "sources": [
+            {
+              "path": "apps/security-001/source-a",
+              "repoURL": "http://source-server.argocd-atlas-source.svc.cluster.local/repo.git",
+              "targetRevision": "32238803403f2d8ad837104d9ad32b8724b277c1"
+            },
+            {
+              "path": "apps/security-001/source-b",
+              "repoURL": "http://source-server.argocd-atlas-source.svc.cluster.local/repo.git",
+              "targetRevision": "32238803403f2d8ad837104d9ad32b8724b277c1"
+            }
+          ]
+        }
+      ],
+      "operationState": {
+        "finishedAt": "2026-08-30T17:48:41Z",
+        "message": "successfully synced (all tasks run)",
+        "operation": {
+          "initiatedBy": {
+            "username": "atlas-security-allowed"
+          },
+          "retry": {},
+          "sync": {
+            "prune": true
+          }
+        },
+        "phase": "Succeeded",
+        "startedAt": "2026-08-30T17:48:40Z",
+        "syncResult": {
+          "resources": [
+            {
+              "group": "",
+              "hookPhase": "Running",
+              "kind": "ConfigMap",
+              "message": "configmap/atlas-security-shared created",
+              "name": "atlas-security-shared",
+              "namespace": "atlas-security-workloads",
+              "status": "Synced",
+              "syncPhase": "Sync",
+              "version": "v1"
+            },
+            {
+              "group": "",
+              "hookPhase": "Running",
+              "kind": "ConfigMap",
+              "message": "configmap/atlas-security-source-a created",
+              "name": "atlas-security-source-a",
+              "namespace": "atlas-security-workloads",
+              "status": "Synced",
+              "syncPhase": "Sync",
+              "version": "v1"
+            },
+            {
+              "group": "",
+              "hookPhase": "Running",
+              "kind": "ConfigMap",
+              "message": "configmap/atlas-security-source-b created",
+              "name": "atlas-security-source-b",
+              "namespace": "atlas-security-workloads",
+              "status": "Synced",
+              "syncPhase": "Sync",
+              "version": "v1"
+            }
+          ],
+          "revision": "",
+          "revisions": [
+            "32238803403f2d8ad837104d9ad32b8724b277c1",
+            "32238803403f2d8ad837104d9ad32b8724b277c1"
+          ],
+          "source": {
+            "path": "apps/security-001/source-a",
+            "repoURL": "http://source-server.argocd-atlas-source.svc.cluster.local/repo.git",
+            "targetRevision": "32238803403f2d8ad837104d9ad32b8724b277c1"
+          },
+          "sources": [
+            {
+              "path": "apps/security-001/source-a",
+              "repoURL": "http://source-server.argocd-atlas-source.svc.cluster.local/repo.git",
+              "targetRevision": "32238803403f2d8ad837104d9ad32b8724b277c1"
+            },
+            {
+              "path": "apps/security-001/source-b",
+              "repoURL": "http://source-server.argocd-atlas-source.svc.cluster.local/repo.git",
+              "targetRevision": "32238803403f2d8ad837104d9ad32b8724b277c1"
+            }
+          ]
+        }
+      },
+      "reconciledAt": "2026-08-30T17:48:41Z",
+      "resourceHealthSource": "appTree",
+      "resources": [
+        {
+          "kind": "ConfigMap",
+          "name": "atlas-security-shared",
+          "namespace": "atlas-security-workloads",
+          "status": "Synced",
+          "version": "v1"
+        },
+        {
+          "kind": "ConfigMap",
+          "name": "atlas-security-source-a",
+          "namespace": "atlas-security-workloads",
+          "status": "Synced",
+          "version": "v1"
+        },
+        {
+          "kind": "ConfigMap",
+          "name": "atlas-security-source-b",
+          "namespace": "atlas-security-workloads",
+          "status": "Synced",
+          "version": "v1"
+        }
+      ],
+      "sourceTypes": [
+        "Directory",
+        "Directory"
+      ],
+      "sync": {
+        "comparedTo": {
+          "destination": {
+            "namespace": "atlas-security-workloads",
+            "server": "https://kubernetes.default.svc"
+          },
+          "sources": [
+            {
+              "path": "apps/security-001/source-a",
+              "repoURL": "http://source-server.argocd-atlas-source.svc.cluster.local/repo.git",
+              "targetRevision": "32238803403f2d8ad837104d9ad32b8724b277c1"
+            },
+            {
+              "path": "apps/security-001/source-b",
+              "repoURL": "http://source-server.argocd-atlas-source.svc.cluster.local/repo.git",
+              "targetRevision": "32238803403f2d8ad837104d9ad32b8724b277c1"
+            }
+          ]
+        },
+        "revisions": [
+          "32238803403f2d8ad837104d9ad32b8724b277c1",
+          "32238803403f2d8ad837104d9ad32b8724b277c1"
+        ],
+        "status": "Synced"
+      }
+    }
+  },
+  "configmaps": {
+    "atlas-security-operations": {
+      "apiVersion": "v1",
+      "data": {
+        "release": "v1"
+      },
+      "kind": "ConfigMap",
+      "metadata": {
+        "annotations": {
+          "argocd.argoproj.io/tracking-id": "atlas-security-operations:/ConfigMap:atlas-security-workloads/atlas-security-operations",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"data\":{\"release\":\"v1\"},\"kind\":\"ConfigMap\",\"metadata\":{\"annotations\":{\"argocd.argoproj.io/tracking-id\":\"atlas-security-operations:/ConfigMap:atlas-security-workloads/atlas-security-operations\"},\"name\":\"atlas-security-operations\",\"namespace\":\"atlas-security-workloads\"}}\n"
+        },
+        "creationTimestamp": "2026-08-30T17:48:42Z",
+        "name": "atlas-security-operations",
+        "namespace": "atlas-security-workloads",
+        "resourceVersion": "4199",
+        "uid": "1329076b-924a-47f9-a2df-297f25570404"
+      }
+    },
+    "atlas-security-shared": {
+      "apiVersion": "v1",
+      "data": {
+        "selected_source": "source-b"
+      },
+      "kind": "ConfigMap",
+      "metadata": {
+        "annotations": {
+          "argocd.argoproj.io/tracking-id": "atlas-security-multi-source:/ConfigMap:atlas-security-workloads/atlas-security-shared",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"data\":{\"selected_source\":\"source-b\"},\"kind\":\"ConfigMap\",\"metadata\":{\"annotations\":{\"argocd.argoproj.io/tracking-id\":\"atlas-security-multi-source:/ConfigMap:atlas-security-workloads/atlas-security-shared\"},\"name\":\"atlas-security-shared\",\"namespace\":\"atlas-security-workloads\"}}\n"
+        },
+        "creationTimestamp": "2026-08-30T17:48:41Z",
+        "name": "atlas-security-shared",
+        "namespace": "atlas-security-workloads",
+        "resourceVersion": "4185",
+        "uid": "56612ff1-21f1-49c3-9aa8-1820df227aae"
+      }
+    },
+    "atlas-security-source-a": {
+      "apiVersion": "v1",
+      "data": {
+        "present": "true"
+      },
+      "kind": "ConfigMap",
+      "metadata": {
+        "annotations": {
+          "argocd.argoproj.io/tracking-id": "atlas-security-multi-source:/ConfigMap:atlas-security-workloads/atlas-security-source-a",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"data\":{\"present\":\"true\"},\"kind\":\"ConfigMap\",\"metadata\":{\"annotations\":{\"argocd.argoproj.io/tracking-id\":\"atlas-security-multi-source:/ConfigMap:atlas-security-workloads/atlas-security-source-a\"},\"name\":\"atlas-security-source-a\",\"namespace\":\"atlas-security-workloads\"}}\n"
+        },
+        "creationTimestamp": "2026-08-30T17:48:41Z",
+        "name": "atlas-security-source-a",
+        "namespace": "atlas-security-workloads",
+        "resourceVersion": "4186",
+        "uid": "d5cc877e-3e50-4eb1-a9f6-0b5ab5ba6b0d"
+      }
+    },
+    "atlas-security-source-b": {
+      "apiVersion": "v1",
+      "data": {
+        "present": "true"
+      },
+      "kind": "ConfigMap",
+      "metadata": {
+        "annotations": {
+          "argocd.argoproj.io/tracking-id": "atlas-security-multi-source:/ConfigMap:atlas-security-workloads/atlas-security-source-b",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"data\":{\"present\":\"true\"},\"kind\":\"ConfigMap\",\"metadata\":{\"annotations\":{\"argocd.argoproj.io/tracking-id\":\"atlas-security-multi-source:/ConfigMap:atlas-security-workloads/atlas-security-source-b\"},\"name\":\"atlas-security-source-b\",\"namespace\":\"atlas-security-workloads\"}}\n"
+        },
+        "creationTimestamp": "2026-08-30T17:48:41Z",
+        "name": "atlas-security-source-b",
+        "namespace": "atlas-security-workloads",
+        "resourceVersion": "4187",
+        "uid": "d15455de-2505-4e34-ad23-6aa034647daf"
+      }
+    },
+    "kube-root-ca.crt": {
+      "apiVersion": "v1",
+      "data": {
+        "ca.crt": "-----BEGIN CERTIFICATE-----\nMIIDBTCCAe2gAwIBAgIIV8iEed7Bmf0wDQYJKoZIhvcNAQELBQAwFTETMBEGA1UE\nAxMKa3ViZXJuZXRlczAeFw0yNjA4MzAxNzEzNDhaFw0zNjA4MjcxNzE4NDhaMBUx\nEzARBgNVBAMTCmt1YmVybmV0ZXMwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEK\nAoIBAQC4/gCDl92aVEeRtf87+qe7HROsWD7K26FM65LZAtrX35FOxJa6n88UUZty\nx6XkEIYSR/LIFvth10gUlItadaUWuuHb5E1vIYHnADS5xRB3jnoWmzJ4P8hGUKnl\nxy6VA2tWM3qFKfH4VO7TK2xTnDLXdBhuLcZ+bxTPkiiAk+kDTXjlsgbbCpkK/e2j\nTNflZWafES8s6/r1OaPDS8H6ZowtTeus7hkZEkx/kb+qz6vvn6mSRACdLrXo+CGA\nUC35VGAjNuImeo9QypFAuttUYmEe285mCZ6FhvdP/YvSyqM8D9eVUMFG+EPSiNpZ\n/fa8pF/foeXOhEAlejBFTwu9Fl3TAgMBAAGjWTBXMA4GA1UdDwEB/wQEAwICpDAP\nBgNVHRMBAf8EBTADAQH/MB0GA1UdDgQWBBQxhRa6luqTAAZteGpAITL5MPH12zAV\nBgNVHREEDjAMggprdWJlcm5ldGVzMA0GCSqGSIb3DQEBCwUAA4IBAQBqTu2jnWhD\nHjG+pBEL9u0ivtOADbHTcX2TjdDGO4orExcShpphWugofTZGjVOkYjbAyQ5F4L1J\nmhbEtvCA26dhO2pKlmNpgb3ZZnIIIGBAJIhOve3XFnvgX79ATcc38YPyApOJ0gsE\nivyjxFlurE0g7acxuV+pgscnMqXo/Vi+2Tel8YdriS8nFoBsQU++5o+R9/WFvlgU\ntBasObNdK8+rM97luxCxQJpdav23lK4f/d7h81vK7/MegCpQwPxKcnIynlcetAbt\nsVYtF8hX08ym8/5Cz0ORCpyoGpUvRfx+hpGNqvJ7lvtp5xL6ySrOZLaQzVsKJ5Q/\nLZcboViYpIha\n-----END CERTIFICATE-----\n"
+      },
+      "kind": "ConfigMap",
+      "metadata": {
+        "annotations": {
+          "kubernetes.io/description": "Contains a CA bundle that can be used to verify the kube-apiserver when using internal endpoints such as the internal service IP or kubernetes.default.svc. No other usage is guaranteed across distributions of Kubernetes clusters."
+        },
+        "creationTimestamp": "2026-08-30T17:48:39Z",
+        "name": "kube-root-ca.crt",
+        "namespace": "atlas-security-workloads",
+        "resourceVersion": "4171",
+        "uid": "50055f19-ac17-407a-a274-bc4cb1f1bd8f"
+      }
+    }
+  },
+  "rbac": null,
+  "security": {
+    "synthetic_credential_present_in_captured_state": false,
+    "secret_scan_hits": 0
+  }
+}

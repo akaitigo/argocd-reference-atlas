@@ -1,0 +1,512 @@
+{
+  "schema_version": 1,
+  "id": "proof.behavior.application.spec.sync-policy.normal",
+  "atlas_id": "argocd-reference-atlas",
+  "generated_at": "2026-08-28T00:00:00+09:00",
+  "behavior_scope": "current-surface-not-human-reviewed-authority-atomic",
+  "behavior_id": "application.spec.sync-policy",
+  "pattern_id": "application.spec.sync-policy",
+  "area": "application",
+  "kind": "crd",
+  "target_id": "application.declarative-model",
+  "target_set": "control-loop",
+  "source_bindings": [],
+  "surface_state": "partial",
+  "scenario": "normal",
+  "attempts": 1,
+  "status": "scenario-gap-open",
+  "supporting_evidence_assessment": {
+    "status": "supporting-runtime-artifact",
+    "closure_credit": false,
+    "reason": "既存Lab Artifactは専用Surface×Scenario×全Variant Runtime reportではないためClosureへ算入しない。"
+  },
+  "authority_binding": {
+    "status": "locked-source-candidate",
+    "source_id": "argocd-source-tree",
+    "source_digest": "sha256:9c5446776f2ed6dd2a7ba18d942d41fe3107fffdae58ab204ad330361b11460e",
+    "candidate_locator": "manifests/crds/application-crd.yaml",
+    "locator_scope": "locked-argocd-source-tree-candidate",
+    "authority_gap": "人手Review DecisionがなくSource locator候補からAtomic behaviorへ昇格していない。",
+    "review_decision_id": null,
+    "human_reviewed": false,
+    "authority_atomic_binding": false
+  },
+  "controller_kubernetes_behavior": {
+    "expected_argocd_components": [
+      "argocd-application-controller",
+      "argocd-repo-server"
+    ],
+    "observed_argocd_components": [
+      "argocd-application-controller",
+      "argocd-repo-server"
+    ],
+    "component_identity_status": "complete",
+    "component_identity_complete": true,
+    "component_identity_gap": null,
+    "kubernetes_behavior": "application-custom-resource-reconciliation"
+  },
+  "runtime_identity": {
+    "status": "complete",
+    "argocd_versions": [
+      "v3.5.2"
+    ],
+    "kubernetes_api_server_versions": [
+      "v1.34.1"
+    ],
+    "kubernetes_kubelet_versions": [
+      "v1.34.0"
+    ],
+    "profiles": [
+      "cluster"
+    ],
+    "artifact_evidence_ids": [
+      "evidence.application.v3-5-2"
+    ],
+    "gap": null
+  },
+  "runtime_identities": [
+    {
+      "profile": "cluster",
+      "producer": "argocd-atlas-kind-harness",
+      "command": "make lab-application",
+      "manifest_digest": "sha256:c7c7fb796abc20741fc9c71e4ec8553e70a32783aab5faf9ea4789d3e1d8e1ee",
+      "cluster_name": "argocd-atlas-v3-5-2",
+      "kubernetes_context": "kind-argocd-atlas-v3-5-2",
+      "argocd_version": "v3.5.2",
+      "kubernetes_api_server_versions": [
+        "v1.34.1"
+      ],
+      "kubernetes_kubelet_versions": [
+        "v1.34.0"
+      ],
+      "kubernetes_node_image_version": "v1.34.0",
+      "kubernetes_environment_lock": {
+        "path": "environments/kind/argocd-v3.5.2.lock",
+        "digest": "sha256:91f435bad9af7bb58e403882efa4e0c874d7bcb8703081733da5bbfd0ab48a2c",
+        "bytes": 573
+      },
+      "observed_components": [
+        "argocd-application-controller",
+        "argocd-repo-server"
+      ],
+      "real_kubernetes_runtime": true,
+      "version_identity_complete": true
+    }
+  ],
+  "evidence_bindings": [
+    {
+      "evidence_id": "evidence.application.v3-5-2",
+      "record": {
+        "path": "evidence/records/evidence.application.v3-5-2.evidence.yaml",
+        "digest": "sha256:b6038745ad5cdc089070a8df74e1d461a4042ca7d030e8da5aa4ce2d8ef6ea99",
+        "bytes": 925
+      },
+      "artifact": {
+        "path": "evidence/raw/evidence.application.v3-5-2/result.json",
+        "digest": "sha256:0a05bcd6a68a6d839c85ecd3b8d1a0015d2b863df39ef87112c81ace6922e922",
+        "bytes": 51127
+      },
+      "artifact_matches_record": true,
+      "role": "supporting-historical-not-scenario-gap-closure",
+      "closure_credit": false
+    }
+  ],
+  "observations": {
+    "resource_state": {
+      "status": "artifact",
+      "artifact_kind": "resource-state-json",
+      "artifacts": [
+        {
+          "evidence_id": "evidence.application.v3-5-2",
+          "artifact": {
+            "path": "evidence/raw/evidence.application.v3-5-2/result.json",
+            "digest": "sha256:0a05bcd6a68a6d839c85ecd3b8d1a0015d2b863df39ef87112c81ace6922e922",
+            "bytes": 51127
+          },
+          "json_pointers": [
+            "/application",
+            "/application/status",
+            "/application/status/health/status",
+            "/application/status/operationState",
+            "/application/status/operationState/syncResult/resources",
+            "/application/status/operationState/syncResult/resources/0/status",
+            "/application/status/resources",
+            "/application/status/resources/0/status"
+          ]
+        }
+      ],
+      "gap": null
+    },
+    "controller_log": {
+      "status": "explicit-gap",
+      "artifact_kind": null,
+      "artifacts": [],
+      "gap": "Behavior固有controller log Artifactがない。"
+    },
+    "metric": {
+      "status": "explicit-gap",
+      "artifact_kind": null,
+      "artifacts": [],
+      "gap": "Behavior固有metric Artifactがない。"
+    },
+    "trace": {
+      "status": "explicit-gap",
+      "artifact_kind": null,
+      "artifacts": [],
+      "gap": "Behavior固有trace Artifactがない。OTLP traceは別Gapとして未Closure。"
+    }
+  },
+  "observation_role": "supporting-historical-not-scenario-gap-closure",
+  "scenario_gap_closure": {
+    "status": "open",
+    "scenario_gap_closed": false,
+    "dedicated_runtime_execution_complete": true,
+    "variant_contract": {
+      "source": {
+        "path": "definitive/scenario-variant-contract.yaml",
+        "digest": "sha256:b2c76378113d3145a77d019d5f490e333a554188773501e68de6ac685cc583dd",
+        "bytes": 6097
+      },
+      "status": "runtime-declared-pending-authority-human-review",
+      "expected_variant_ids": [
+        "fixed-revision-manual-sync",
+        "fixed-revision-automated-self-heal"
+      ],
+      "exhaustive": false,
+      "gap": "Authority人手Review済みの非空かつexhaustiveなSurface Variant分母がない。"
+    },
+    "dedicated_runtime_report": {
+      "path": "evidence/scenarios/runtime/reports/runtime.application-spec-sync-policy.normal.v3-5-2.json",
+      "digest": "sha256:55827f3ed6e43d1dc373f6228acb66d04fd3da29f346b0d14ad00909d2db6e5f",
+      "bytes": 9480
+    },
+    "dedicated_runtime_record_ids": [
+      "runtime.application-spec-sync-policy.normal.v3-5-2:fixed-revision-manual-sync",
+      "runtime.application-spec-sync-policy.normal.v3-5-2:fixed-revision-automated-self-heal"
+    ],
+    "source_bindings": [
+      {
+        "variant_id": "fixed-revision-manual-sync",
+        "source": {
+          "path": "fixtures/scenarios/application-sync-policy-normal/configmap.yaml",
+          "digest": "sha256:afa1d4696e14c643d39305bb0c8b89b06baa8b0623921c004be52c9ce52ebb2a",
+          "bytes": 87,
+          "owner": "runtime.application-spec-sync-policy.normal.v3-5-2:fixed-revision-manual-sync:source"
+        }
+      },
+      {
+        "variant_id": "fixed-revision-automated-self-heal",
+        "source": {
+          "path": "fixtures/scenarios/application-sync-policy-normal/configmap.yaml",
+          "digest": "sha256:afa1d4696e14c643d39305bb0c8b89b06baa8b0623921c004be52c9ce52ebb2a",
+          "bytes": 87,
+          "owner": "runtime.application-spec-sync-policy.normal.v3-5-2:fixed-revision-automated-self-heal:source"
+        }
+      }
+    ],
+    "harness_bindings": [
+      {
+        "variant_id": "fixed-revision-manual-sync",
+        "harness": {
+          "path": "scripts/scenarios/run_application_sync_policy_normal.py",
+          "digest": "sha256:802d5e20ab87a0ffa6052898905fb0cbdc7ed4cbc84d4f6382cae5eae77905c1",
+          "bytes": 17837,
+          "owner": "runtime.application-spec-sync-policy.normal.v3-5-2:fixed-revision-manual-sync:harness"
+        }
+      },
+      {
+        "variant_id": "fixed-revision-automated-self-heal",
+        "harness": {
+          "path": "scripts/scenarios/run_application_sync_policy_normal.py",
+          "digest": "sha256:802d5e20ab87a0ffa6052898905fb0cbdc7ed4cbc84d4f6382cae5eae77905c1",
+          "bytes": 17837,
+          "owner": "runtime.application-spec-sync-policy.normal.v3-5-2:fixed-revision-automated-self-heal:harness"
+        }
+      }
+    ],
+    "runtime_identity": {
+      "profile": "cluster",
+      "real_argocd_kubernetes_runtime": true,
+      "cluster_name": "argocd-atlas-v3-5-2",
+      "kubernetes_context": "kind-argocd-atlas-v3-5-2",
+      "argocd_version": "3.5.2",
+      "kubernetes_api_server_version": "v1.34.0",
+      "kubernetes_kubelet_version": "v1.34.0",
+      "cluster_uid": "00b2b62c-ba60-4520-b48e-fa9e550c859d",
+      "topology_digest": "sha256:f27cd86ff879333619bd84e57f310afb261727da44dd06ae2c5e931d6f74dd9e",
+      "observed_argocd_components": [
+        "argocd-application-controller",
+        "argocd-repo-server"
+      ]
+    },
+    "oracle_records": [
+      {
+        "variant_id": "fixed-revision-manual-sync",
+        "oracle": {
+          "status": "pass",
+          "assertions": [
+            {
+              "channel": "resource_state",
+              "pointer": "/application/status/sync/status",
+              "operator": "equals",
+              "expected": "Synced"
+            },
+            {
+              "channel": "resource_state",
+              "pointer": "/application/status/health/status",
+              "operator": "equals",
+              "expected": "Healthy"
+            },
+            {
+              "channel": "resource_state",
+              "pointer": "/configmap/data/release",
+              "operator": "equals",
+              "expected": "v1"
+            },
+            {
+              "channel": "controller_log",
+              "pointer": "/entries/0/application",
+              "operator": "equals",
+              "expected": "atlas-application"
+            },
+            {
+              "channel": "metric",
+              "pointer": "/app_info/labels/autosync_enabled",
+              "operator": "equals",
+              "expected": "false"
+            },
+            {
+              "channel": "trace",
+              "pointer": "/result/first_attempt",
+              "operator": "equals",
+              "expected": true
+            }
+          ]
+        }
+      },
+      {
+        "variant_id": "fixed-revision-automated-self-heal",
+        "oracle": {
+          "status": "pass",
+          "assertions": [
+            {
+              "channel": "resource_state",
+              "pointer": "/application/status/sync/status",
+              "operator": "equals",
+              "expected": "Synced"
+            },
+            {
+              "channel": "resource_state",
+              "pointer": "/application/status/health/status",
+              "operator": "equals",
+              "expected": "Healthy"
+            },
+            {
+              "channel": "resource_state",
+              "pointer": "/configmap/data/release",
+              "operator": "equals",
+              "expected": "v1"
+            },
+            {
+              "channel": "controller_log",
+              "pointer": "/entries/0/application",
+              "operator": "equals",
+              "expected": "atlas-application"
+            },
+            {
+              "channel": "metric",
+              "pointer": "/app_info/labels/autosync_enabled",
+              "operator": "equals",
+              "expected": "true"
+            },
+            {
+              "channel": "trace",
+              "pointer": "/result/first_attempt",
+              "operator": "equals",
+              "expected": true
+            },
+            {
+              "channel": "resource_state",
+              "pointer": "/application/spec/syncPolicy/automated/selfHeal",
+              "operator": "equals",
+              "expected": true
+            }
+          ]
+        }
+      }
+    ],
+    "artifacts": {
+      "resource_state": {
+        "status": "artifact",
+        "artifacts": [
+          {
+            "variant_id": "fixed-revision-manual-sync",
+            "artifact": {
+              "path": "evidence/scenarios/runtime/artifacts/runtime.application-spec-sync-policy.normal.v3-5-2/fixed-revision-manual-sync/resource_state.json",
+              "digest": "sha256:8b2e6209de3da9c9c7eb9dbc288113a9a03bd3a05e22bd990e1647aea28c41c3",
+              "bytes": 5195,
+              "kind": "kubernetes-resource-state",
+              "owner": "runtime.application-spec-sync-policy.normal.v3-5-2:fixed-revision-manual-sync:resource_state"
+            }
+          },
+          {
+            "variant_id": "fixed-revision-automated-self-heal",
+            "artifact": {
+              "path": "evidence/scenarios/runtime/artifacts/runtime.application-spec-sync-policy.normal.v3-5-2/fixed-revision-automated-self-heal/resource_state.json",
+              "digest": "sha256:04dc49d278b3768d7d3cf41e088f53e7295dfba32c3e7dcc3bd53bcf4b6fe831",
+              "bytes": 5982,
+              "kind": "kubernetes-resource-state",
+              "owner": "runtime.application-spec-sync-policy.normal.v3-5-2:fixed-revision-automated-self-heal:resource_state"
+            }
+          }
+        ],
+        "gap": null
+      },
+      "controller_log": {
+        "status": "artifact",
+        "artifacts": [
+          {
+            "variant_id": "fixed-revision-manual-sync",
+            "artifact": {
+              "path": "evidence/scenarios/runtime/artifacts/runtime.application-spec-sync-policy.normal.v3-5-2/fixed-revision-manual-sync/controller_log.json",
+              "digest": "sha256:7b25d5043fa8c6933d1ad2725b90427c273388974e519242fc5cfa421a0210c9",
+              "bytes": 48948,
+              "kind": "argocd-controller-log",
+              "owner": "runtime.application-spec-sync-policy.normal.v3-5-2:fixed-revision-manual-sync:controller_log"
+            }
+          },
+          {
+            "variant_id": "fixed-revision-automated-self-heal",
+            "artifact": {
+              "path": "evidence/scenarios/runtime/artifacts/runtime.application-spec-sync-policy.normal.v3-5-2/fixed-revision-automated-self-heal/controller_log.json",
+              "digest": "sha256:a64f59bc6c1b1965f07c44cbae1bd22d11e04a03b7122b74df4300cd0f53c75c",
+              "bytes": 69723,
+              "kind": "argocd-controller-log",
+              "owner": "runtime.application-spec-sync-policy.normal.v3-5-2:fixed-revision-automated-self-heal:controller_log"
+            }
+          }
+        ],
+        "gap": null
+      },
+      "metric": {
+        "status": "artifact",
+        "artifacts": [
+          {
+            "variant_id": "fixed-revision-manual-sync",
+            "artifact": {
+              "path": "evidence/scenarios/runtime/artifacts/runtime.application-spec-sync-policy.normal.v3-5-2/fixed-revision-manual-sync/metric.json",
+              "digest": "sha256:e828ee35640fa88221ba651785fd34b500996339cd24416b2bc1c2cf9683238a",
+              "bytes": 1018,
+              "kind": "argocd-prometheus-metric",
+              "owner": "runtime.application-spec-sync-policy.normal.v3-5-2:fixed-revision-manual-sync:metric"
+            }
+          },
+          {
+            "variant_id": "fixed-revision-automated-self-heal",
+            "artifact": {
+              "path": "evidence/scenarios/runtime/artifacts/runtime.application-spec-sync-policy.normal.v3-5-2/fixed-revision-automated-self-heal/metric.json",
+              "digest": "sha256:34ad12108eff580529dbe4c7a12ff2992aeb30a0f7e717e21910b590f8fed388",
+              "bytes": 1024,
+              "kind": "argocd-prometheus-metric",
+              "owner": "runtime.application-spec-sync-policy.normal.v3-5-2:fixed-revision-automated-self-heal:metric"
+            }
+          }
+        ],
+        "gap": null
+      },
+      "trace": {
+        "status": "artifact",
+        "artifacts": [
+          {
+            "variant_id": "fixed-revision-manual-sync",
+            "artifact": {
+              "path": "evidence/scenarios/runtime/artifacts/runtime.application-spec-sync-policy.normal.v3-5-2/fixed-revision-manual-sync/trace.json",
+              "digest": "sha256:2d3f734575499a092447ea5710ec3291e010c253f075dc678aa7d400da0308d8",
+              "bytes": 727,
+              "kind": "scenario-execution-trace",
+              "owner": "runtime.application-spec-sync-policy.normal.v3-5-2:fixed-revision-manual-sync:trace"
+            }
+          },
+          {
+            "variant_id": "fixed-revision-automated-self-heal",
+            "artifact": {
+              "path": "evidence/scenarios/runtime/artifacts/runtime.application-spec-sync-policy.normal.v3-5-2/fixed-revision-automated-self-heal/trace.json",
+              "digest": "sha256:4acc7ac2c3a1009769230665f01f6f2f91c133f45f6119af5b32cee6ec761797",
+              "bytes": 724,
+              "kind": "scenario-execution-trace",
+              "owner": "runtime.application-spec-sync-policy.normal.v3-5-2:fixed-revision-automated-self-heal:trace"
+            }
+          }
+        ],
+        "gap": null
+      }
+    },
+    "conditions": {
+      "variant_denominator_exhaustive": false,
+      "exact_surface_scenario_scope": true,
+      "all_variants_driven": true,
+      "real_argocd_kubernetes_runtime": true,
+      "retry_zero": true,
+      "first_attempt_pass": true,
+      "oracle_pass": true,
+      "source_digest_bound": true,
+      "harness_digest_bound": true,
+      "runtime_identity_complete": true,
+      "per_variant_resource_state_artifact": true,
+      "per_variant_controller_log_artifact": true,
+      "per_variant_metric_artifact": true,
+      "per_variant_trace_artifact": true,
+      "artifact_paths_dedicated_and_distinct": true,
+      "integrated_or_other_metadata_reuse_absent": true
+    },
+    "failed_conditions": [
+      "variant_denominator_exhaustive"
+    ],
+    "closure_evidence_source": "dedicated-surface-scenario-runtime-registry-only",
+    "prohibited_substitutions": [
+      "integrated-reference-result",
+      "historical-bundle-evidence",
+      "other-surface-scenario-variant-artifact-metadata",
+      "mock-or-static-runtime"
+    ]
+  },
+  "integrated_reference": {
+    "manifest": {
+      "path": "integrations/reference-system/manifest.yaml",
+      "digest": "sha256:ca3e64e1255d4f81d68102aea59fa07009416b499fa16b16633c6e2ddaeddab0",
+      "bytes": 5536
+    },
+    "result": {
+      "path": "evidence/reference-system/results.json",
+      "digest": "sha256:460eea63270e47cb4dd47c59f96713145c8b5b00fb0a336bd82ccff60d737c35",
+      "bytes": 125588
+    },
+    "scenario_row_id": "reference.scenario.normal",
+    "outcome": "bounded-evidence-audit",
+    "attempts": 1,
+    "final_status": "evaluated",
+    "runtime_attempts": 0,
+    "scenario_evaluated": true,
+    "single_topology_execution": false,
+    "used_as_behavior_specific_evidence": false
+  },
+  "closure": {
+    "dedicated_row": true,
+    "dedicated_artifact": true,
+    "supporting_behavior_specific_evidence": true,
+    "supporting_real_kubernetes_runtime": true,
+    "supporting_runtime_identity_complete": true,
+    "scenario_gap_closed": false,
+    "dedicated_runtime_execution_complete": true,
+    "authority_atomic_binding": false,
+    "completion_eligible": false
+  },
+  "gaps": [
+    "controller_log: Behavior固有controller log Artifactがない。",
+    "metric: Behavior固有metric Artifactがない。",
+    "trace: Behavior固有trace Artifactがない。OTLP traceは別Gapとして未Closure。",
+    "closure-condition: variant_denominator_exhaustive",
+    "統合Scenario AuditをBehavior固有Proofへ流用しない。",
+    "Authority raw anchorの人手DecisionがなくAtomic behaviorへ昇格していない。"
+  ]
+}

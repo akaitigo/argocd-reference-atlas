@@ -1,4 +1,77 @@
 {
   "schema_version": 1,
-  "artifacts": []
+  "artifacts": [
+    {
+      "id": "authority-body-inventory-applicationset-crd-v1",
+      "name": "ApplicationSet CRD raw anchor inventory",
+      "kind": "generated-artifact",
+      "source_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/manifests/crds/applicationset-crd.yaml",
+      "version": "v3.5.2 / selector-v1",
+      "retrieved_at": "2026-08-28",
+      "license": "Apache-2.0",
+      "copyright_holder": "Argo Project authors and Nakayama Ryusei",
+      "redistribution": "allowed",
+      "modified": true,
+      "files": [
+        "authority/body-inventory-draft/document-argocd-applicationset-crd.json"
+      ],
+      "digest": "sha256:f979a791d00cd9f0fe537e53cdc60b31c1cedb66107c021fcb5cb2d1e8d824ef",
+      "size_bytes": 13749250,
+      "notes": "第三者本文を含まず、固定selectorのURL、digest、locator、byte offset、pending-human状態だけを保持する。"
+    },
+    {
+      "id": "authority-body-inventory-install-manifest-v1",
+      "name": "Argo CD install manifest raw anchor inventory",
+      "kind": "generated-artifact",
+      "source_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/manifests/install.yaml",
+      "version": "v3.5.2 / selector-v1",
+      "retrieved_at": "2026-08-28",
+      "license": "Apache-2.0",
+      "copyright_holder": "Argo Project authors and Nakayama Ryusei",
+      "redistribution": "allowed",
+      "modified": true,
+      "files": [
+        "authority/body-inventory-draft/document-argocd-install-manifest.json"
+      ],
+      "digest": "sha256:ccf82475f0e33de01b6dee905b5f5611046b4bac00f62c8268b2a7f92c788737",
+      "size_bytes": 18942037,
+      "notes": "第三者本文を含まず、固定selectorのURL、digest、locator、byte offset、pending-human状態だけを保持する。"
+    },
+    {
+      "id": "core-v2-non-regression-baseline-090ea3a",
+      "name": "Core v2 non-regression baseline",
+      "kind": "generated-artifact",
+      "source_url": "https://github.com/akaitigo/reference-atlas-core/tree/072d7ca77981f51754e824d70c6d4ecd55ea67e5",
+      "version": "072d7ca77981f51754e824d70c6d4ecd55ea67e5 / 090ea3a",
+      "retrieved_at": "2026-08-30",
+      "license": "Apache-2.0",
+      "copyright_holder": "Nakayama Ryusei",
+      "redistribution": "allowed",
+      "modified": false,
+      "files": [
+        "baselines/main-090ea3a.core-v2.non-regression-baseline.json"
+      ],
+      "digest": "sha256:10462fde94181e3079a0da2d13cf30250448f0a9c9845fad32090d944f01c3e5",
+      "size_bytes": 17524898,
+      "notes": "Core正式mainのcapture contractでclean commit 090ea3aから生成した機械可読baseline。Runtime Evidenceの代替には使用しない。"
+    },
+    {
+      "id": "core-v2-evidence-dependency-graph-v1",
+      "name": "Core v2 evidence dependency graph",
+      "kind": "generated-artifact",
+      "source_url": "https://github.com/akaitigo/argocd-reference-atlas",
+      "version": "Core v2 / graph-v1 / Argo CD v3.5.2",
+      "retrieved_at": "2026-08-31",
+      "license": "Apache-2.0",
+      "copyright_holder": "Nakayama Ryusei",
+      "redistribution": "allowed",
+      "modified": true,
+      "files": [
+        "evidence/dependency-graph.json"
+      ],
+      "digest": "sha256:06ac53583224babe5bd836e22a47d7aa00e2c2a1ac5be5dc64e83410166fa4b8",
+      "size_bytes": 18444487,
+      "notes": "Core v2 Evidence Dependency Graph契約に従いSubject入力と実Runtime Evidenceから生成した機械可読成果物。第三者本文や秘密情報を含めず、Runtime Evidenceの代替には使用しない。"
+    }
+  ]
 }

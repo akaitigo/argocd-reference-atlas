@@ -30,7 +30,12 @@
 - `promotion.git-mediated-change`: Gitを介した環境間Promotionと承認境界を設計する。
 - `security.secret-boundary`: Repository、Argo CD、Cluster間のSecret境界を設計する。
 - `security.rbac-sso-access-boundary`: Identity、RBAC、Credential accessを分離する。
+- `security.external-idp-interactive-sso`: 実IdP login、session、MFA、group lifecycleのmissing Gapへ案内する。
 - `availability.high-availability`: Component冗長化、Shard、Stateful dependencyを比較する。
+- `performance.capacity-cost-baseline`: Application／Repository／Cluster／Shard規模とCost基準のmissing Gapへ案内する。
+- `availability.host-network-rto-rpo`: Host／Node／Network faultと測定RTO/RPOのmissing Gapへ案内する。
+- `architecture.evidence-backed-comparison`: 同一入力・環境・metric・failure oracleでの比較がmissingであることを返す。
+- `system.integrated-reference-gitops`: 個別Labを横断する統合Reference Systemがmissingであることを返す。
 
 出力では、候補、選択理由、前提、禁止境界、検証に使うLabを分けます。
 
@@ -44,6 +49,7 @@
 - `promotion.git-mediated-change`: Environment差分をGit上の変更として実装する。
 - `security.secret-boundary`: 実Credentialを記録せずSecret参照境界を実装する。
 - `recovery.automated-resynchronization`: Automated sync、prune、selfHeal、retryの明示Policyを構成する。
+- `operations.notifications-delivery`: Notification Trigger、Template、Subscription、local receiver deliveryのpartial Evidenceと、global subscription、外部provider認証、rate limit、controller再起動時deduplication、全Serviceの未証明Gapへ案内する。
 
 利用可能なLabの`setup`から`cleanup`までを一つのHarnessとして扱い、途中のコマンドだけを成功証拠にしません。
 
@@ -73,7 +79,8 @@ Runbookの前提、停止条件、Rollback、復旧判定、残留影響を示�
 - `promotion.git-mediated-change`: Gitに記録する段階的変更とRollback点を確認する。
 - `application.declarative-model`: Manifest契約の変更範囲を確認する。
 - `migration.version-upgrade`: 移行元／先Version、Preflight、Backup、Verification、Rollbackを確認する。
-- Coverageに互換性／Version固有Targetが追加されている場合だけ、そのTargetを利用する。
+- `migration.multi-version-rollback-matrix`: 複数Versionの実Rollback／Restore Matrixがmissingであることを返す。
+- `compatibility.broad-version-generator-matrix`: Argo CD／Kubernetes／Generator／Extension互換Matrixがmissingであることを返す。
 
 `v3.5.2`外の移行先を既知の互換対象とせず、該当VersionのAuthority LockとCompatibility Evidenceが必要だと明示します。
 
@@ -95,7 +102,10 @@ Mastery Outcome/Surface -> Coverage Target Set -> Coverage Target
 - 成功、拒否、障害、復旧のObservable Outcomeが区別されているか。
 - Secret、権限、公開の境界を越えていないか。
 - `status: complete`をGate通過前に宣言していないか。
+- `authority/body-inventory.snapshot.json`の全raw anchorが`authority/review-queue.snapshot.json`へ欠落なく入り、priority／cluster／batchが提案だけに留まるか。`authority/reviews/decisions.json`に人の一次資料確認、reviewer／time／reason、source/tool/context digest、locator offset、旧anchor→新Controller／Behavior item Mapping、resultの整合がなければ昇格を認めない。staleはholdし、Queue件数をSemantic Surface／Depth達成へ算入しない。stable IDの縮小は専用baselineとMigration Mappingで検査する。
 - `skill.router-evaluation`が独立Agentの採点Evidenceへ接続されているか。
+- `observability.distributed-trace-incident-capacity`がOTLP、Incident rehearsal、SLO、Retention、Cardinality、RedactionのArtifact Evidenceを持つか。
+- `evals/argocd-atlas-router.definitive-skill-eval.json`の8 Outcome × 14 Surface、mutation authorization、人手Authority／stale relock停止、曖昧／未知Query、Source／Runtime Evidence binding、routing gap、全Target state、独立Forward Evalを確認する。Matrix passだけをTargetまたはAtlasの完成へ算入しない。
 
 ## Route不能
 

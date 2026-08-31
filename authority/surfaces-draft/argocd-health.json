@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "source_id": "argocd-health",
+  "source_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/operator-manual/health.md",
+  "locked_source_digest": "sha256:74cb9f3cd98e8ddd06e71b6a430706412a2d7d9d6c5c7817495c9351eba0f3b2",
+  "fetch": {
+    "status": "matched",
+    "fetched_digest": "sha256:74cb9f3cd98e8ddd06e71b6a430706412a2d7d9d6c5c7817495c9351eba0f3b2",
+    "locked_digest_match": true,
+    "http_status": null,
+    "final_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/operator-manual/health.md",
+    "content_type": "text/markdown; charset=utf-8",
+    "fetched_bytes": 13989,
+    "error_digest": null
+  },
+  "extraction": {
+    "method": "locked-body-locator-context-digest",
+    "tool": "argocd-reference-atlas-authority-locator-v1",
+    "tool_digest": "sha256:baffc5d0a81bbdd637eef2c3c4d535fcbb01d2566492cd7a6e4de6620df8ca23",
+    "review_status": "automated-unreviewed",
+    "body_storage": "digest-and-locator-context-digest-only"
+  },
+  "candidate_surfaces": [
+    {
+      "edge_id": "edge.health.built-in.argocd-health",
+      "source_id": "argocd-health",
+      "reference_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/operator-manual/health.md",
+      "locator": "document-root",
+      "pattern_id": "health/health-built-in",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.health.built-in.argocd-health",
+      "capability_id": "capability.health.resource-assessment",
+      "target_id": "health.resource-assessment",
+      "claim_id": "claim.health.aggregate-status",
+      "variant_ids": [
+        "variant.health.built-in.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "implementation-construction",
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:4ad35f6d79cc193b5db02ad7e4d3b4d8b48a27fd00c96ad63ceee0709fa5065c",
+      "locator_status": "root-document",
+      "context_digest": "sha256:74cb9f3cd98e8ddd06e71b6a430706412a2d7d9d6c5c7817495c9351eba0f3b2",
+      "context_start": 0,
+      "context_end": 13947,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    },
+    {
+      "edge_id": "edge.health.lua-customization.argocd-health",
+      "source_id": "argocd-health",
+      "reference_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/operator-manual/health.md",
+      "locator": "document-root",
+      "pattern_id": "health/health-lua-customization",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.health.lua-customization.argocd-health",
+      "capability_id": "capability.health.resource-assessment",
+      "target_id": "health.resource-assessment",
+      "claim_id": "claim.health.aggregate-status",
+      "variant_ids": [
+        "variant.health.lua-customization.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "implementation-construction",
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:106f03f5a27ab3295aa5c39ece0ec7edf514c91a73f66e178e0c98861762a1e9",
+      "locator_status": "root-document",
+      "context_digest": "sha256:74cb9f3cd98e8ddd06e71b6a430706412a2d7d9d6c5c7817495c9351eba0f3b2",
+      "context_start": 0,
+      "context_end": 13947,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    }
+  ]
+}

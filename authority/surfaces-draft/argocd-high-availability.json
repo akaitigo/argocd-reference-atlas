@@ -1,0 +1,142 @@
+{
+  "schema_version": 1,
+  "source_id": "argocd-high-availability",
+  "source_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/operator-manual/high_availability.md",
+  "locked_source_digest": "sha256:b3a02563a4e2fe9d7d0240d93f428609628b1dd07c6806655ca301df7f97d229",
+  "fetch": {
+    "status": "matched",
+    "fetched_digest": "sha256:b3a02563a4e2fe9d7d0240d93f428609628b1dd07c6806655ca301df7f97d229",
+    "locked_digest_match": true,
+    "http_status": null,
+    "final_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/operator-manual/high_availability.md",
+    "content_type": "text/markdown; charset=utf-8",
+    "fetched_bytes": 37033,
+    "error_digest": null
+  },
+  "extraction": {
+    "method": "locked-body-locator-context-digest",
+    "tool": "argocd-reference-atlas-authority-locator-v1",
+    "tool_digest": "sha256:baffc5d0a81bbdd637eef2c3c4d535fcbb01d2566492cd7a6e4de6620df8ca23",
+    "review_status": "automated-unreviewed",
+    "body_storage": "digest-and-locator-context-digest-only"
+  },
+  "candidate_surfaces": [
+    {
+      "edge_id": "edge.connection.cluster-shard.argocd-high-availability",
+      "source_id": "argocd-high-availability",
+      "reference_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/operator-manual/high_availability.md",
+      "locator": "document-root",
+      "pattern_id": "connection/connection-cluster-shard",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.connection.cluster-shard.argocd-high-availability",
+      "capability_id": "capability.availability.component-redundancy",
+      "target_id": "availability.high-availability",
+      "claim_id": "claim.availability.component-redundancy",
+      "variant_ids": [
+        "variant.connection.cluster-shard.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "architecture-design",
+        "implementation-construction",
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:639c016be486d6d5508ecc153000aa63fab0726faa6b73d768a91d9128eab156",
+      "locator_status": "root-document",
+      "context_digest": "sha256:b3a02563a4e2fe9d7d0240d93f428609628b1dd07c6806655ca301df7f97d229",
+      "context_start": 0,
+      "context_end": 37016,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    },
+    {
+      "edge_id": "edge.ha.application-controller.argocd-high-availability",
+      "source_id": "argocd-high-availability",
+      "reference_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/operator-manual/high_availability.md",
+      "locator": "document-root",
+      "pattern_id": "availability/ha-application-controller",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.ha.application-controller.argocd-high-availability",
+      "capability_id": "capability.availability.component-redundancy",
+      "target_id": "availability.high-availability",
+      "claim_id": "claim.availability.component-redundancy",
+      "variant_ids": [
+        "variant.ha.application-controller.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "implementation-construction",
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:7d5d254d7fc95c71bf6533293ac174a7618064f13199e732cd0f33cf45c473ea",
+      "locator_status": "root-document",
+      "context_digest": "sha256:b3a02563a4e2fe9d7d0240d93f428609628b1dd07c6806655ca301df7f97d229",
+      "context_start": 0,
+      "context_end": 37016,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    },
+    {
+      "edge_id": "edge.ha.cache.argocd-high-availability",
+      "source_id": "argocd-high-availability",
+      "reference_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/operator-manual/high_availability.md",
+      "locator": "document-root",
+      "pattern_id": "availability/ha-cache",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.ha.cache.argocd-high-availability",
+      "capability_id": "unclassified.capability.performance.capacity-cost-baseline",
+      "target_id": "performance.capacity-cost-baseline",
+      "claim_id": "unclassified.claim.performance.capacity-cost-baseline",
+      "variant_ids": [
+        "variant.ha.cache.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "implementation-construction",
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:c7316b6ebc8c9b2e38389c5a37dbd2ffa5dc1a4ae5834cd0108c560ee510665e",
+      "locator_status": "root-document",
+      "context_digest": "sha256:b3a02563a4e2fe9d7d0240d93f428609628b1dd07c6806655ca301df7f97d229",
+      "context_start": 0,
+      "context_end": 37016,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    },
+    {
+      "edge_id": "edge.ha.sharding.argocd-high-availability",
+      "source_id": "argocd-high-availability",
+      "reference_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/operator-manual/high_availability.md",
+      "locator": "document-root",
+      "pattern_id": "availability/ha-sharding",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.ha.sharding.argocd-high-availability",
+      "capability_id": "capability.availability.component-redundancy",
+      "target_id": "availability.high-availability",
+      "claim_id": "claim.availability.component-redundancy",
+      "variant_ids": [
+        "variant.ha.sharding.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "implementation-construction",
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:3c7bb2082b49803f8330d1fd6b0a9e113c07dc29d227fc904a706d6221bed9ee",
+      "locator_status": "root-document",
+      "context_digest": "sha256:b3a02563a4e2fe9d7d0240d93f428609628b1dd07c6806655ca301df7f97d229",
+      "context_start": 0,
+      "context_end": 37016,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    }
+  ]
+}

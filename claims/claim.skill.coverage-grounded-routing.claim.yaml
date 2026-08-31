@@ -14,3 +14,10 @@ proof_obligations:
   - Architecture、構築、診断、運用、移行のEvalが期待するTarget IDへ到達する。
   - v3.5.2外または未証明の質問に存在しないEvidenceを返さない。
   - 外部環境への破壊操作やSecret開示を要求するEvalを拒否する。
+- id: proof.skill.definitive-mastery-routing
+  statement: 8 Outcomeと14 Surfaceの全組合せ、境界Case、全Target state、独立Agent Forward回答を現行AuthorityとRuntime Evidenceへ照合する。
+  acceptance_criteria:
+  - 112セルすべてが実在Target、固定Source、実Kubernetes／Argo CD controller Evidenceまたは明示的routing gapへ接続する。
+  - mutation未許可、人手Authority判断、stale relock、曖昧・未知Queryをfail-closedで停止する。
+  - 全30 Targetのcovered、partial、missingを正確に記録し、Matrix passをCompletionへ算入しない。
+  - 独立Agentが8 Outcomeを含むForward Caseを処理し、現行Coverage、Source、Evidence、権限境界と一致する。

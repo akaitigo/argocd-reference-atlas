@@ -128,3 +128,9 @@ capabilities:
     description: v3.5.2の質問をCoverageとClaimへ分類し、根拠、Lab、EvidenceまたはGapへ案内する。
     source_ids: [argocd-version, argocd-architecture]
     claim_ids: [claim.skill.coverage-grounded-routing]
+  - id: capability.notifications.local-webhook-delivery
+    title: Notification local webhook配信
+    coverage_target_id: operations.notifications-delivery
+    description: Application annotation subscriptionをNotification controllerが評価し、固定Templateをlocal webhookへ配信して5xx再試行とendpoint回復を観測する。
+    source_ids: [argocd-source-tree]
+    claim_ids: [claim.notifications.local-webhook-delivery]

@@ -1,0 +1,229 @@
+{
+  "schema_version": 1,
+  "id": "runtime.application-spec-sources.security.v3-5-2",
+  "atlas_id": "argocd-reference-atlas",
+  "surface_id": "application.spec.sources",
+  "scenario": "security",
+  "status": "passed-runtime-execution-pending-authority-review",
+  "execution": {
+    "command": "make scenario-runtime-security-003",
+    "attempts": 1,
+    "retries": 0,
+    "first_attempt": true
+  },
+  "runtime_identity": {
+    "profile": "cluster",
+    "real_argocd_kubernetes_runtime": true,
+    "cluster_name": "argocd-atlas-v3-5-2",
+    "kubernetes_context": "kind-argocd-atlas-v3-5-2",
+    "argocd_version": "3.5.2",
+    "kubernetes_api_server_version": "v1.34.0",
+    "kubernetes_kubelet_version": "v1.34.0",
+    "cluster_uid": "72ccbe2b-84df-443c-8a36-b27ccd178635",
+    "topology_digest": "sha256:c801daf9153ab9cb3b3b9f736218a1a039abfa92adf37afc99813ba8383bb7f1",
+    "observed_argocd_components": [
+      "argocd-application-controller",
+      "argocd-applicationset-controller",
+      "argocd-repo-server"
+    ]
+  },
+  "variant_denominator": {
+    "source": "definitive/scenario-variant-contract.yaml",
+    "status": "runtime-declared-pending-authority-human-review",
+    "declared_variant_ids": [
+      "project-denied-multi-source",
+      "project-allowed-multi-source"
+    ],
+    "all_declared_variants_executed": true,
+    "authority_exhaustive": false,
+    "completion_eligible": false
+  },
+  "variants": [
+    {
+      "variant_id": "project-denied-multi-source",
+      "attempts": 1,
+      "outcome": "expected",
+      "final_status": "passed",
+      "error": null,
+      "oracle": {
+        "status": "pass",
+        "assertions": [
+          {
+            "channel": "resource_state",
+            "pointer": "/security/secret_scan_hits",
+            "operator": "equals",
+            "expected": 0
+          },
+          {
+            "channel": "controller_log",
+            "pointer": "/entries/0/application",
+            "operator": "equals",
+            "expected": "atlas-security-003-sources"
+          },
+          {
+            "channel": "metric",
+            "pointer": "/app_info/labels/name",
+            "operator": "equals",
+            "expected": "atlas-security-003-sources"
+          },
+          {
+            "channel": "trace",
+            "pointer": "/result/first_attempt",
+            "operator": "equals",
+            "expected": true
+          },
+          {
+            "channel": "resource_state",
+            "pointer": "/observation/source_count",
+            "operator": "equals",
+            "expected": 2
+          },
+          {
+            "channel": "resource_state",
+            "pointer": "/observation/invalid_spec_error",
+            "operator": "equals",
+            "expected": true
+          }
+        ]
+      },
+      "source": {
+        "path": "fixtures/scenarios/security-003/sources-a/configmap.yaml",
+        "digest": "sha256:b5919bab5c4520f5b3bbe2a6db4b3a87a8229e3f1f9e673092ff74be26890b5a",
+        "bytes": 95,
+        "owner": "runtime.application-spec-sources.security.v3-5-2:project-denied-multi-source:source"
+      },
+      "harness": {
+        "path": "scripts/scenarios/run_security_003.py",
+        "digest": "sha256:227bc77f6ea536661cc5eafc57248b10588fcdc46668e2c26434b5765a6bde73",
+        "bytes": 42581,
+        "owner": "runtime.application-spec-sources.security.v3-5-2:project-denied-multi-source:harness"
+      },
+      "artifacts": {
+        "resource_state": {
+          "path": "evidence/scenarios/runtime/artifacts/runtime.application-spec-sources.security.v3-5-2/project-denied-multi-source/resource_state.json",
+          "digest": "sha256:257d8f0422a121f184d589832bba9753eab6a0eaf9430992f89d3b2263e4b0a6",
+          "bytes": 14286,
+          "kind": "kubernetes-resource-state",
+          "owner": "runtime.application-spec-sources.security.v3-5-2:project-denied-multi-source:resource_state"
+        },
+        "controller_log": {
+          "path": "evidence/scenarios/runtime/artifacts/runtime.application-spec-sources.security.v3-5-2/project-denied-multi-source/controller_log.json",
+          "digest": "sha256:dbd6b4f9853ce67f9fc412a080697949a000b24eb8bf1f20876e52009c74dbb1",
+          "bytes": 3185,
+          "kind": "argocd-controller-log",
+          "owner": "runtime.application-spec-sources.security.v3-5-2:project-denied-multi-source:controller_log"
+        },
+        "metric": {
+          "path": "evidence/scenarios/runtime/artifacts/runtime.application-spec-sources.security.v3-5-2/project-denied-multi-source/metric.json",
+          "digest": "sha256:e17bf92e29b4c64a25dd27af1035c3905240b3ed7a6fe155206ba278b8fbc9c2",
+          "bytes": 1105,
+          "kind": "argocd-prometheus-metric",
+          "owner": "runtime.application-spec-sources.security.v3-5-2:project-denied-multi-source:metric"
+        },
+        "trace": {
+          "path": "evidence/scenarios/runtime/artifacts/runtime.application-spec-sources.security.v3-5-2/project-denied-multi-source/trace.json",
+          "digest": "sha256:096face81f173867c0b37da02f42ae33d46ea0d2de7227c246a0ca6264843457",
+          "bytes": 579,
+          "kind": "scenario-execution-trace",
+          "owner": "runtime.application-spec-sources.security.v3-5-2:project-denied-multi-source:trace"
+        }
+      }
+    },
+    {
+      "variant_id": "project-allowed-multi-source",
+      "attempts": 1,
+      "outcome": "expected",
+      "final_status": "passed",
+      "error": null,
+      "oracle": {
+        "status": "pass",
+        "assertions": [
+          {
+            "channel": "resource_state",
+            "pointer": "/security/secret_scan_hits",
+            "operator": "equals",
+            "expected": 0
+          },
+          {
+            "channel": "controller_log",
+            "pointer": "/entries/0/application",
+            "operator": "equals",
+            "expected": "atlas-security-003-sources"
+          },
+          {
+            "channel": "metric",
+            "pointer": "/app_info/labels/name",
+            "operator": "equals",
+            "expected": "atlas-security-003-sources"
+          },
+          {
+            "channel": "trace",
+            "pointer": "/result/first_attempt",
+            "operator": "equals",
+            "expected": true
+          },
+          {
+            "channel": "resource_state",
+            "pointer": "/observation/source_count",
+            "operator": "equals",
+            "expected": 2
+          },
+          {
+            "channel": "resource_state",
+            "pointer": "/observation/source_a_present",
+            "operator": "equals",
+            "expected": true
+          },
+          {
+            "channel": "resource_state",
+            "pointer": "/observation/source_b_present",
+            "operator": "equals",
+            "expected": true
+          }
+        ]
+      },
+      "source": {
+        "path": "fixtures/scenarios/security-003/sources-a/configmap.yaml",
+        "digest": "sha256:b5919bab5c4520f5b3bbe2a6db4b3a87a8229e3f1f9e673092ff74be26890b5a",
+        "bytes": 95,
+        "owner": "runtime.application-spec-sources.security.v3-5-2:project-allowed-multi-source:source"
+      },
+      "harness": {
+        "path": "scripts/scenarios/run_security_003.py",
+        "digest": "sha256:227bc77f6ea536661cc5eafc57248b10588fcdc46668e2c26434b5765a6bde73",
+        "bytes": 42581,
+        "owner": "runtime.application-spec-sources.security.v3-5-2:project-allowed-multi-source:harness"
+      },
+      "artifacts": {
+        "resource_state": {
+          "path": "evidence/scenarios/runtime/artifacts/runtime.application-spec-sources.security.v3-5-2/project-allowed-multi-source/resource_state.json",
+          "digest": "sha256:8442e6f8781e32113673da7f92e1dbf05e9a6b9ae4a16d469982fe28ca7f01c3",
+          "bytes": 21347,
+          "kind": "kubernetes-resource-state",
+          "owner": "runtime.application-spec-sources.security.v3-5-2:project-allowed-multi-source:resource_state"
+        },
+        "controller_log": {
+          "path": "evidence/scenarios/runtime/artifacts/runtime.application-spec-sources.security.v3-5-2/project-allowed-multi-source/controller_log.json",
+          "digest": "sha256:8fc66e8529f78a6bfd1796102db3425be3bfa53d006b7d80023254f462caa88d",
+          "bytes": 19876,
+          "kind": "argocd-controller-log",
+          "owner": "runtime.application-spec-sources.security.v3-5-2:project-allowed-multi-source:controller_log"
+        },
+        "metric": {
+          "path": "evidence/scenarios/runtime/artifacts/runtime.application-spec-sources.security.v3-5-2/project-allowed-multi-source/metric.json",
+          "digest": "sha256:c1e30f13146dcdc81d0e70e59da4922b5a7eb16ecc125bbb7a5d24d67ba34c2e",
+          "bytes": 1104,
+          "kind": "argocd-prometheus-metric",
+          "owner": "runtime.application-spec-sources.security.v3-5-2:project-allowed-multi-source:metric"
+        },
+        "trace": {
+          "path": "evidence/scenarios/runtime/artifacts/runtime.application-spec-sources.security.v3-5-2/project-allowed-multi-source/trace.json",
+          "digest": "sha256:a8230f5c2a301a89adbb24d7356fe220d9154ab2313719bffc9944f7c5f46087",
+          "bytes": 640,
+          "kind": "scenario-execution-trace",
+          "owner": "runtime.application-spec-sources.security.v3-5-2:project-allowed-multi-source:trace"
+        }
+      }
+    }
+  ]
+}

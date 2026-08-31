@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "queue_id": "authority-review-4899835d8716e9eb45f6",
+  "batch_id": "review-p0-document-root-00",
+  "status": "pending-human",
+  "machine_assistance": "priority-cluster-and-batch-proposals-only",
+  "semantic_decisions": "none",
+  "items": [
+    {
+      "anchor_id": "anchor-75527509e9b5df5a9c7f",
+      "document_id": "document-argocd-sync-waves",
+      "document_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/user-guide/sync-waves.md",
+      "source_ids": [
+        "argocd-sync-waves"
+      ],
+      "locked_source_digest": "sha256:2f6dea5a6e4e05c48d45f291d43cc4bd946cb8a7bfdf8dcc37af5b7eaf06d87e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "document-root",
+      "locator_kind": "document-root",
+      "raw_selector": "document-root",
+      "element_name": "document-root",
+      "parent_anchor_id": null,
+      "context_start": 0,
+      "context_end": 13495,
+      "context_unit": "byte",
+      "context_digest": "sha256:2f6dea5a6e4e05c48d45f291d43cc4bd946cb8a7bfdf8dcc37af5b7eaf06d87e",
+      "label_digest": null,
+      "existing_mapping_candidate_ids": [
+        "edge.sync.hooks.argocd-sync-waves",
+        "edge.sync.waves.argocd-sync-waves"
+      ],
+      "priority": 0,
+      "priority_reasons": [
+        "existing-domain-reference-locator-match"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p0-document-root-00",
+      "state": "pending-human"
+    }
+  ]
+}

@@ -1,0 +1,131 @@
+schema_version: 1
+id: argocd-scenario-variant-contract-v1
+atlas_id: argocd-reference-atlas
+status: incomplete-pending-authority-derived-variant-denominator
+reference:
+  repository: frontend-behavior-atlas
+  commit: f2e4c4b19156f8e993f48cdcbce23679ad881924
+denominator:
+  source: human-reviewed-authority-atomic-surface-and-domain-variant-contract
+  default_status: pending-authority-human-review
+  exhaustive: false
+  surface_overrides:
+    - surface_id: application.spec.sync-policy
+      status: runtime-declared-pending-authority-human-review
+      exhaustive_for_completion: false
+      declaration_scope: bounded-local-runtime-execution-only
+      variants:
+        - id: fixed-revision-manual-sync
+        - id: fixed-revision-automated-self-heal
+    - surface_id: application.multi-source
+      status: runtime-declared-pending-authority-human-review
+      exhaustive_for_completion: false
+      declaration_scope: bounded-local-runtime-execution-only
+      variants:
+        - id: source-order-a-then-b
+        - id: source-order-b-then-a
+    - surface_id: application.operation.refresh
+      status: runtime-declared-pending-authority-human-review
+      exhaustive_for_completion: false
+      declaration_scope: bounded-local-runtime-execution-only
+      variants:
+        - id: rbac-denied-hard-refresh
+        - id: rbac-allowed-hard-refresh
+    - surface_id: application.operation.rollback
+      status: runtime-declared-pending-authority-human-review
+      exhaustive_for_completion: false
+      declaration_scope: bounded-local-runtime-execution-only
+      variants:
+        - id: rbac-denied-rollback
+        - id: rbac-allowed-rollback
+    - surface_id: application.operation.sync
+      status: runtime-declared-pending-authority-human-review
+      exhaustive_for_completion: false
+      declaration_scope: bounded-local-runtime-execution-only
+      variants:
+        - id: rbac-denied-sync
+        - id: rbac-allowed-sync
+    - surface_id: application.operation.terminate
+      status: runtime-declared-pending-authority-human-review
+      exhaustive_for_completion: false
+      declaration_scope: bounded-local-runtime-execution-only
+      variants:
+        - id: rbac-denied-terminate
+        - id: rbac-allowed-terminate
+    - surface_id: application.operation.wait
+      status: runtime-declared-pending-authority-human-review
+      exhaustive_for_completion: false
+      declaration_scope: bounded-local-runtime-execution-only
+      variants:
+        - id: rbac-denied-wait
+        - id: rbac-allowed-wait
+    - surface_id: application.resource-actions
+      status: runtime-declared-pending-authority-human-review
+      exhaustive_for_completion: false
+      declaration_scope: bounded-local-runtime-execution-only
+      variants:
+        - id: rbac-denied-deployment-restart
+        - id: rbac-allowed-deployment-restart
+    - surface_id: application.spec.destination
+      status: runtime-declared-pending-authority-human-review
+      exhaustive_for_completion: false
+      declaration_scope: bounded-local-runtime-execution-only
+      variants:
+        - id: project-denied-destination
+        - id: project-allowed-destination
+    - surface_id: application.spec.project
+      status: runtime-declared-pending-authority-human-review
+      exhaustive_for_completion: false
+      declaration_scope: bounded-local-runtime-execution-only
+      variants:
+        - id: restricted-project-binding
+        - id: authorized-project-binding
+    - surface_id: application.spec.sources
+      status: runtime-declared-pending-authority-human-review
+      exhaustive_for_completion: false
+      declaration_scope: bounded-local-runtime-execution-only
+      variants:
+        - id: project-denied-multi-source
+        - id: project-allowed-multi-source
+    - surface_id: applicationset.any-namespace
+      status: runtime-declared-pending-authority-human-review
+      exhaustive_for_completion: false
+      declaration_scope: bounded-local-runtime-execution-only
+      variants:
+        - id: namespace-not-allowlisted
+        - id: namespace-allowlisted
+    - surface_id: applicationset.deletion
+      status: runtime-declared-pending-authority-human-review
+      exhaustive_for_completion: false
+      declaration_scope: bounded-local-runtime-execution-only
+      variants:
+        - id: resources-pruned-on-deletion
+        - id: resources-preserved-on-deletion
+    - surface_id: applicationset.generator.cluster
+      status: runtime-declared-pending-authority-human-review
+      exhaustive_for_completion: false
+      declaration_scope: bounded-local-runtime-execution-only
+      variants:
+        - id: restricted-cluster-excluded
+        - id: approved-cluster-selected
+    - surface_id: applicationset.generator.cluster-decision-resource
+      status: runtime-declared-pending-authority-human-review
+      exhaustive_for_completion: false
+      declaration_scope: bounded-local-runtime-execution-only
+      variants:
+        - id: unregistered-decision-rejected
+        - id: registered-decision-selected
+    - surface_id: applicationset.generator.git-directory
+      status: runtime-declared-pending-authority-human-review
+      exhaustive_for_completion: false
+      declaration_scope: bounded-local-runtime-execution-only
+      variants:
+        - id: restricted-directory-excluded
+        - id: approved-directory-selected
+rules:
+  - Surfaceごとに人手確認済みの非空Variant集合がapproved-exhaustiveになるまでScenario gapを閉じない。
+  - Surface、Scenario、Variantの完全一致を持つ専用実Argo CD／Kubernetes Runtime recordだけを算入する。
+  - 全Variantがretry 0かつfirst-attempt passでなければ行全体を閉じない。
+  - 各VariantはOracle、Source digest、Harness digest、Runtime identity、4種の専用Artifactを持つ。
+  - 統合Reference結果、既存Lab bundle、別Surface／Scenario／VariantのArtifact metadataを代用しない。
+  - runtime-declared Variant集合は専用実行の完了判定にだけ用い、人手Authority Review済みexhaustive分母またはCompletionへ昇格しない。

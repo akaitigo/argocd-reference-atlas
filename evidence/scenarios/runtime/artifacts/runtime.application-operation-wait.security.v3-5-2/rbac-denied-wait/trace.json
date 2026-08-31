@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "surface_id": "application.operation.wait",
+  "scenario": "security",
+  "variant_id": "rbac-denied-wait",
+  "started_at": "2026-08-30T17:49:37.601699Z",
+  "completed_at": "2026-08-30T17:49:38.097377Z",
+  "attempt": 1,
+  "retries": 0,
+  "actions": [
+    {
+      "action": "invoke-argocd-app-wait",
+      "subject": "atlas-security-002-read-denied",
+      "status": "permission-denied"
+    }
+  ],
+  "result": {
+    "first_attempt": true,
+    "ephemeral_token_leak": false,
+    "rbac_decision": "No",
+    "wait_exit_code": 20,
+    "wait_error": "permission-denied",
+    "synced_healthy": true
+  }
+}

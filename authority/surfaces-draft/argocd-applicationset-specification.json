@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "source_id": "argocd-applicationset-specification",
+  "source_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/operator-manual/applicationset/applicationset-specification.md",
+  "locked_source_digest": "sha256:7a549b3fc929d57a0408d35659e03dd57bde0aaf1a32956a806990bafd1dc946",
+  "fetch": {
+    "status": "matched",
+    "fetched_digest": "sha256:7a549b3fc929d57a0408d35659e03dd57bde0aaf1a32956a806990bafd1dc946",
+    "locked_digest_match": true,
+    "http_status": null,
+    "final_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/operator-manual/applicationset/applicationset-specification.md",
+    "content_type": "text/markdown; charset=utf-8",
+    "fetched_bytes": 161,
+    "error_digest": null
+  },
+  "extraction": {
+    "method": "locked-body-locator-context-digest",
+    "tool": "argocd-reference-atlas-authority-locator-v1",
+    "tool_digest": "sha256:baffc5d0a81bbdd637eef2c3c4d535fcbb01d2566492cd7a6e4de6620df8ca23",
+    "review_status": "automated-unreviewed",
+    "body_storage": "digest-and-locator-context-digest-only"
+  },
+  "candidate_surfaces": [
+    {
+      "edge_id": "edge.source.argocd-applicationset-specification.claim.applicationset.generated-applications",
+      "source_id": "argocd-applicationset-specification",
+      "reference_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/operator-manual/applicationset/applicationset-specification.md",
+      "locator": "document-root",
+      "pattern_id": "authority/argocd-applicationset-specification",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.source.argocd-applicationset-specification.claim.applicationset.generated-applications",
+      "capability_id": "capability.applicationset.generator-templating",
+      "target_id": "applicationset.generator-templating",
+      "claim_id": "claim.applicationset.generated-applications",
+      "variant_ids": [
+        "variant.source.argocd-applicationset-specification.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "provenance-rights"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:6803b2ebcec047098e79829f8d3b7b75ffa97a95783188cd06a5e60225ecac8f",
+      "locator_status": "root-document",
+      "context_digest": "sha256:7a549b3fc929d57a0408d35659e03dd57bde0aaf1a32956a806990bafd1dc946",
+      "context_start": 0,
+      "context_end": 161,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    }
+  ]
+}

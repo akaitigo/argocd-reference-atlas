@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "id": "argocd-scenario-row-id-migration-baseline-v1",
+  "source_commit": "7b2192335a66618a76fd932ad4f5c105a8b00f29",
+  "old_row_count": 1000,
+  "new_row_count": 1000,
+  "legacy_scenario_order": [
+    "normal",
+    "boundary",
+    "rejection",
+    "failure",
+    "recovery",
+    "migration",
+    "operations",
+    "security",
+    "performance",
+    "compatibility"
+  ],
+  "core_scenario_order": [
+    "normal",
+    "boundary",
+    "refusal",
+    "failure",
+    "recovery",
+    "migration",
+    "operations",
+    "security",
+    "performance",
+    "compatibility"
+  ],
+  "old_order_digest": "sha256:f3408c07292066378fee68931c093c03577250cbe23e0520a5bcb474f919ed34",
+  "old_set_digest": "sha256:3feb3d263f6aa5383b6529ff39fe8cf643e0b98e816daaba965018a1a9373bc5",
+  "new_order_digest": "sha256:387f5296e3d22c6ba8d3ac149a4103fb2e8bd69777f200260a34ecfd58765a62",
+  "new_set_digest": "sha256:7983c5e95c679d3461819528a9c2ebe347daccbaed34aeede96f4a2920aebfb1",
+  "renamed_row_count": 100,
+  "identity_row_count": 900,
+  "runtime_credit_floor": 0,
+  "completion_eligible_floor": 0
+}

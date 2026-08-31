@@ -179,4 +179,17 @@ claims:
       - Architecture、構築、診断、運用、移行のEvalが期待するTarget IDへ到達する。
       - v3.5.2外または未証明の質問に存在しないEvidenceを返さない。
       - 外部環境への破壊操作やSecret開示を要求するEvalを拒否する。
-    proof_obligation_ids: [proof.skill.coverage-grounded-routing]
+      - 8 Outcome × 14 Surface、境界Case、全Target state、独立Agent Forward回答を現行AuthorityとRuntime Evidenceへ照合する。
+      - Matrix passをTarget、Atlas、Definitive、Completion Certificateの完成へ算入しない。
+    proof_obligation_ids: [proof.skill.coverage-grounded-routing, proof.skill.definitive-mastery-routing]
+  - id: claim.notifications.local-webhook-delivery
+    capability_id: capability.notifications.local-webhook-delivery
+    statement: Argo CD v3.5.2のNotification controllerは固定Application subscriptionとTemplateを評価し、専用Cluster内のlocal webhookへ配信し、HTTP 5xxを再試行してendpoint修復後に成功する。
+    source_ids: [argocd-source-tree]
+    acceptance_criteria:
+      - 正常配信のApplication名、Sync、Health、Revisionがreceiver artifactと一致する。
+      - retryMax 2のServiceがHTTP 5xxに対して初回を含む3回以上のattemptを行う。
+      - 同じ失敗Subscriptionがendpoint修復後にHTTP 200で配信される。
+      - Trigger評価とDeliveryのMetric、Controller log digest、receiver eventを同じArtifactへ記録する。
+      - Secret値と外部宛先を使用またはCaptureしない。
+    proof_obligation_ids: [proof.notifications.local-webhook-delivery]

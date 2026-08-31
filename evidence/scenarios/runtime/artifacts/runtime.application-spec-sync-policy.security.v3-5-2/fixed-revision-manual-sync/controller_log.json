@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "component": "argocd-application-controller",
+  "surface_id": "application.spec.sync-policy",
+  "scenario": "security",
+  "variant_id": "fixed-revision-manual-sync",
+  "entries": [
+    {
+      "app-namespace": "argocd",
+      "application": "atlas-security-003-sync-policy",
+      "level": "info",
+      "msg": "Refreshing app status (spec.source differs), level (3)",
+      "project": "atlas-security-003-sync-policy",
+      "time": "2026-08-30T18:47:12Z"
+    },
+    {
+      "app-namespace": "argocd",
+      "application": "atlas-security-003-sync-policy",
+      "level": "info",
+      "msg": "Comparing app state (cluster: https://kubernetes.default.svc, namespace: atlas-security-003-workloads)",
+      "project": "atlas-security-003-sync-policy",
+      "time": "2026-08-30T18:47:12Z"
+    },
+    {
+      "app-namespace": "argocd",
+      "application": "atlas-security-003-sync-policy",
+      "build_options_ms": 0,
+      "level": "info",
+      "manifests_ms": 627,
+      "msg": "GetRepoObjs stats",
+      "plugins_ms": 0,
+      "project": "atlas-security-003-sync-policy",
+      "repo_ms": 0,
+      "time": "2026-08-30T18:47:12Z",
+      "time_ms": 628
+    },
+    {
+      "application": "atlas-security-003-sync-policy",
+      "dest-namespace": "atlas-security-003-workloads",
+      "dest-server": "https://kubernetes.default.svc",
+      "level": "info",
+      "msg": "Updated sync status:  -> OutOfSync",
+      "reason": "ResourceUpdated",
+      "time": "2026-08-30T18:47:12Z",
+      "type": "Normal"
+    },
+    {
+      "application": "atlas-security-003-sync-policy",
+      "dest-namespace": "atlas-security-003-workloads",
+      "dest-server": "https://kubernetes.default.svc",
+      "level": "info",
+      "msg": "Updated health status:  -> Missing",
+      "reason": "ResourceUpdated",
+      "time": "2026-08-30T18:47:12Z",
+      "type": "Normal"
+    },
+    {
+      "app-namespace": "argocd",
+      "application": "atlas-security-003-sync-policy",
+      "level": "info",
+      "msg": "Update successful",
+      "project": "atlas-security-003-sync-policy",
+      "time": "2026-08-30T18:47:12Z"
+    },
+    {
+      "app-namespace": "argocd",
+      "app_status_update_ms": 0,
+      "application": "atlas-security-003-sync-policy",
+      "auto_sync_ms": 0,
+      "compare_app_state_ms": 631,
+      "comparison-level": 3,
+      "comparison_with_nothing_ms": 0,
+      "dedup_ms": 0,
+      "dest-name": "",
+      "dest-namespace": "atlas-security-003-workloads",
+      "dest-server": "https://kubernetes.default.svc",
+      "diff_ms": 1,
+      "git_ms": 628,
+      "health_ms": 0,
+      "level": "info",
+      "live_ms": 0,
+      "msg": "Reconciliation completed",
+      "normalize_application_ms": 0,
+      "patch_ms": 6,
+      "persist_app_status_ms": 13,
+      "process_finalizers_ms": 0,
+      "project": "atlas-security-003-sync-policy",
+      "refresh_app_conditions_ms": 0,
+      "set_app_managed_resources_ms": 1,
+      "setop_ms": 0,
+      "settings_ms": 1,
+      "sync_ms": 0,
+      "time": "2026-08-30T18:47:12Z",
+      "time_ms": 647
+    }
+  ]
+}

@@ -24,7 +24,7 @@ jobs:
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
           repository: akaitigo/reference-atlas-core
-          ref: cf9e6e2d981305c83f970c1f21a1ddc9c1109263
+          ref: 072d7ca77981f51754e824d70c6d4ecd55ea67e5
           path: .atlas-core
 
       - name: Set up Go
@@ -39,13 +39,31 @@ jobs:
       - name: Validate Atlas graph and Lab contracts
         run: |
           python3 scripts/validate_graph.py
+          python3 scripts/validate_definitive_inventory.py
+          python3 scripts/generate_surface_inventory_readiness.py --check
+          python3 scripts/test_surface_inventory_readiness.py
+          python3 scripts/generate_root_surface_inventory.py --check
+          python3 scripts/test_root_surface_inventory.py
+          python3 scripts/generate_root_verification_matrix.py --check
+          python3 scripts/test_root_verification_matrix.py
+          python3 scripts/validate_scenario_proofs.py
+          python3 scripts/test_scenario_gap_closure.py
+          python3 scripts/test_atomic_evidence_publish.py
+          make ATLAS_CORE="$GITHUB_WORKSPACE/.atlas-core" evidence-dependency-validate
+          python3 scripts/validate_authority_locators.py
+          python3 scripts/validate_authority_body_inventory.py
+          python3 scripts/validate_authority_review_queue.py
+          python3 scripts/test_authority_review_queue.py
+          python3 scripts/validate_non_regression.py
           python3 scripts/validate_evidence_artifacts.py
           scripts/environment.sh dry-run
           tests/labs/static.sh
           tests/labs/extended-static.sh
 
       - name: Validate Router Skill and Evals
-        run: python3 scripts/validate_router_evals.py
+        run: |
+          python3 scripts/validate_router_evals.py
+          python3 scripts/validate_definitive_skill_eval.py
 
       - name: Validate legal and provenance gate
         run: |

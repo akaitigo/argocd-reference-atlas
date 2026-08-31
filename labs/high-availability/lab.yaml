@@ -2,7 +2,7 @@ schema_version: 1
 id: lab.high-availability
 target_id: availability.high-availability
 claim_id: claim.availability.component-redundancy
-title: HA可用性とLeader再選出
+title: HA Component障害回復とRedis master process復旧
 evidence_id: evidence.high-availability.v3-5-2
 environment: kind-argocd-atlas-ha-v3-5-2
 phases:
@@ -10,4 +10,4 @@ phases:
   execute: scripts/extended/run.sh high-availability execute
   verify: scripts/extended/run.sh high-availability verify
   cleanup: scripts/extended/run.sh high-availability cleanup
-acceptance: 公式HA manifestの複数replicaとRedis leader再選出後のApplication可用性を検証する。
+acceptance: 公式HA manifestでApplication Controllerとrepo-serverのPod UID交代、Controller復旧後のDrift再収束、repo-server復旧後のHard Refresh、Redis master Pod UID交代とApplication read pathを検証する。

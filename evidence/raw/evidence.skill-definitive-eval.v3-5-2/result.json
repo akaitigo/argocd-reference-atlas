@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "id": "evidence.skill-definitive-eval.v3-5-2",
+  "kind": "definitive-skill-eval",
+  "argocd_version": "v3.5.2",
+  "matrix_artifact": {
+    "path": "evals/argocd-atlas-router.definitive-skill-eval.json",
+    "digest": "sha256:47c6dbd8909ae6289b5a0e9977b2052fe5c42142c1e5cc593665133cc3eab20f",
+    "bytes": 651459
+  },
+  "independent_forward_eval": {
+    "status": "pass",
+    "path": "evals/argocd-atlas-router.definitive-forward-eval.json",
+    "digest": "sha256:be1084bd4008137f6a71d2a765f101e57da302f8e5fa772aebb904a53286b9a3",
+    "summary": {
+      "evaluator_role": "independent-agent",
+      "cases": 10,
+      "passed": 10,
+      "failed": 0,
+      "outcomes_covered": [
+        "build",
+        "choose",
+        "delegate",
+        "evolve",
+        "operate",
+        "troubleshoot",
+        "understand",
+        "verify"
+      ]
+    }
+  },
+  "summary": {
+    "outcomes": 8,
+    "surfaces": 14,
+    "matrix_cells": 112,
+    "matrix_contract_passed": 112,
+    "matrix_contract_failed": 0,
+    "routed": 111,
+    "mastery_routing_gaps": 1,
+    "supported_runtime_targets_routed": 21,
+    "uncovered_supported_runtime_targets": [],
+    "target_states": {
+      "covered": 8,
+      "missing": 8,
+      "partial": 14
+    },
+    "open_required_targets": 22,
+    "boundary_cases": 7,
+    "boundary_passed": 7,
+    "boundary_failed": 0,
+    "matrix_pass_is_completion": false
+  },
+  "verdict": "pass",
+  "completion_claim": false
+}

@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "source_id": "argocd-automated-sync",
+  "source_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/user-guide/auto_sync.md",
+  "locked_source_digest": "sha256:c0c61f455bbab02f09d82b15d9788c4d38badf38b70b478e31f263ab24fdde28",
+  "fetch": {
+    "status": "matched",
+    "fetched_digest": "sha256:c0c61f455bbab02f09d82b15d9788c4d38badf38b70b478e31f263ab24fdde28",
+    "locked_digest_match": true,
+    "http_status": null,
+    "final_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/user-guide/auto_sync.md",
+    "content_type": "text/markdown; charset=utf-8",
+    "fetched_bytes": 6037,
+    "error_digest": null
+  },
+  "extraction": {
+    "method": "locked-body-locator-context-digest",
+    "tool": "argocd-reference-atlas-authority-locator-v1",
+    "tool_digest": "sha256:baffc5d0a81bbdd637eef2c3c4d535fcbb01d2566492cd7a6e4de6620df8ca23",
+    "review_status": "automated-unreviewed",
+    "body_storage": "digest-and-locator-context-digest-only"
+  },
+  "candidate_surfaces": [
+    {
+      "edge_id": "edge.sync.automated-prune-selfheal.argocd-automated-sync",
+      "source_id": "argocd-automated-sync",
+      "reference_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/user-guide/auto_sync.md",
+      "locator": "document-root",
+      "pattern_id": "sync/sync-automated-prune-selfheal",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.sync.automated-prune-selfheal.argocd-automated-sync",
+      "capability_id": "capability.recovery.automated-self-heal",
+      "target_id": "recovery.automated-resynchronization",
+      "claim_id": "claim.recovery.automated-self-heal",
+      "variant_ids": [
+        "variant.sync.automated-prune-selfheal.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "implementation-construction",
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:1c376e0d44de0f1d28ab62b9f278c8edb6b4845e1c572758ac115696a20ea9ed",
+      "locator_status": "root-document",
+      "context_digest": "sha256:c0c61f455bbab02f09d82b15d9788c4d38badf38b70b478e31f263ab24fdde28",
+      "context_start": 0,
+      "context_end": 6037,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    }
+  ]
+}

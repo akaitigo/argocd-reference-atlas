@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "surface_id": "application.spec.project",
+  "scenario": "security",
+  "variant_id": "authorized-project-binding",
+  "started_at": "2026-08-30T18:47:17.603007Z",
+  "completed_at": "2026-08-30T18:47:17.603248Z",
+  "attempt": 1,
+  "retries": 0,
+  "actions": [
+    {
+      "action": "bind-authorized-project",
+      "status": "passed"
+    },
+    {
+      "action": "sync",
+      "status": "passed"
+    }
+  ],
+  "result": {
+    "first_attempt": true,
+    "ephemeral_token_leak": false,
+    "project": "atlas-security-003-project-allowed",
+    "invalid_spec_error": false,
+    "workload_present": true
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "source_id": "argocd-appproject-crd",
+  "source_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/manifests/crds/appproject-crd.yaml",
+  "locked_source_digest": "sha256:ab225266944322750136f1198d93786e4a79a0e43c8d149abfba44da30a3eac8",
+  "fetch": {
+    "status": "matched",
+    "observed_digest": "sha256:ab225266944322750136f1198d93786e4a79a0e43c8d149abfba44da30a3eac8",
+    "locked_digest_match": true,
+    "observed_bytes": 19431,
+    "content_type": "application/yaml",
+    "error_digest": null
+  },
+  "extraction": {
+    "method": "locked-body-file-locator-digest",
+    "tool": "argocd-reference-atlas-authority-locator-v1",
+    "review_status": "automated-unreviewed",
+    "body_storage": "metadata-digest-locator-offset-only"
+  },
+  "document_locator": {
+    "locator": "document-root",
+    "locator_kind": "file-root",
+    "locator_status": "root-document",
+    "context_digest": "sha256:ab225266944322750136f1198d93786e4a79a0e43c8d149abfba44da30a3eac8",
+    "context_start": 0,
+    "context_end": 19431,
+    "context_unit": "byte"
+  },
+  "candidate_surfaces": [
+    {
+      "edge_id": "edge.project.orphaned-resources.argocd-appproject-crd",
+      "source_id": "argocd-appproject-crd",
+      "inventory_item_id": "project.orphaned-resources",
+      "area": "project",
+      "target_id": "drift.tracking-and-refresh",
+      "locator": "manifests/crds/appproject-crd.yaml",
+      "locator_status": "file-found",
+      "context_digest": "sha256:ab225266944322750136f1198d93786e4a79a0e43c8d149abfba44da30a3eac8",
+      "context_start": 0,
+      "context_end": 19431,
+      "context_unit": "byte",
+      "heading_digest": null,
+      "classification_basis": "domain-inventory-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:1dfca24c1ce216ec6814bacb644e8868c17d92cb138d483e1c565640694e4cd9",
+      "classification": "candidate-included-unreviewed"
+    },
+    {
+      "edge_id": "edge.project.source-boundary.argocd-appproject-crd",
+      "source_id": "argocd-appproject-crd",
+      "inventory_item_id": "project.source-boundary",
+      "area": "project",
+      "target_id": "security.rbac-sso-access-boundary",
+      "locator": "manifests/crds/appproject-crd.yaml",
+      "locator_status": "file-found",
+      "context_digest": "sha256:ab225266944322750136f1198d93786e4a79a0e43c8d149abfba44da30a3eac8",
+      "context_start": 0,
+      "context_end": 19431,
+      "context_unit": "byte",
+      "heading_digest": null,
+      "classification_basis": "domain-inventory-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:da1187d306ac827a89ce8b0afc4ed1ed1a30dadd92405fc6429d75a079f41708",
+      "classification": "candidate-included-unreviewed"
+    }
+  ]
+}

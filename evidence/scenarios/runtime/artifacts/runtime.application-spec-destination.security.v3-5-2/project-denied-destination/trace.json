@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "surface_id": "application.spec.destination",
+  "scenario": "security",
+  "variant_id": "project-denied-destination",
+  "started_at": "2026-08-30T17:49:28.847623Z",
+  "completed_at": "2026-08-30T17:49:29.546247Z",
+  "attempt": 1,
+  "retries": 0,
+  "actions": [
+    {
+      "action": "reconcile-project-denied-destination",
+      "condition": "InvalidSpecError",
+      "status": "passed"
+    }
+  ],
+  "result": {
+    "first_attempt": true,
+    "ephemeral_token_leak": false,
+    "project_destination_allowed": false,
+    "invalid_spec_error": true,
+    "destination_configmap_present": false
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "source_id": "argocd-cluster-management",
+  "source_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/operator-manual/cluster-management.md",
+  "locked_source_digest": "sha256:371c75bdc483062d34e3c5835ce925f1927e0e7d2d04af121425f3c8ef73e74a",
+  "fetch": {
+    "status": "matched",
+    "observed_digest": "sha256:371c75bdc483062d34e3c5835ce925f1927e0e7d2d04af121425f3c8ef73e74a",
+    "locked_digest_match": true,
+    "observed_bytes": 1698,
+    "content_type": "text/markdown; charset=utf-8",
+    "error_digest": null
+  },
+  "extraction": {
+    "method": "locked-body-file-locator-digest",
+    "tool": "argocd-reference-atlas-authority-locator-v1",
+    "review_status": "automated-unreviewed",
+    "body_storage": "metadata-digest-locator-offset-only"
+  },
+  "document_locator": {
+    "locator": "document-root",
+    "locator_kind": "file-root",
+    "locator_status": "root-document",
+    "context_digest": "sha256:371c75bdc483062d34e3c5835ce925f1927e0e7d2d04af121425f3c8ef73e74a",
+    "context_start": 0,
+    "context_end": 1698,
+    "context_unit": "byte"
+  },
+  "candidate_surfaces": [
+    {
+      "edge_id": "edge.connection.cluster-secret.argocd-cluster-management",
+      "source_id": "argocd-cluster-management",
+      "inventory_item_id": "connection.cluster-secret",
+      "area": "connection",
+      "target_id": "connection.repository-cluster-registration",
+      "locator": "docs/operator-manual/cluster-management.md",
+      "locator_status": "file-found",
+      "context_digest": "sha256:371c75bdc483062d34e3c5835ce925f1927e0e7d2d04af121425f3c8ef73e74a",
+      "context_start": 0,
+      "context_end": 1698,
+      "context_unit": "byte",
+      "heading_digest": null,
+      "classification_basis": "domain-inventory-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:b52de29f1bcda4ea4ca9bc1e5afdabdb4d681cb9e76056963aad34333386bf1c",
+      "classification": "candidate-included-unreviewed"
+    }
+  ]
+}

@@ -1,13 +1,14 @@
 LABS := application reconciliation sync diff health promotion security failure recovery
-EXTENDED_LABS := architecture applicationset connection hook-wave access-boundary observability drift auto-recovery operations
+EXTENDED_LABS := architecture applicationset connection hook-wave access-boundary observability drift auto-recovery operations notifications
 ISOLATED_LABS := high-availability upgrade-migration
 ATLAS_CORE ?= ../reference-atlas-core
 EVIDENCE_FILES := $(shell find evidence/records -type f -name '*.evidence.yaml' -print 2>/dev/null | sort)
 CLAIM_FILES := $(shell find claims -type f -name '*.claim.yaml' -print 2>/dev/null | sort)
 SKILL_EVAL_FILES := $(shell find evals -type f -name '*.skill-eval.json' -print 2>/dev/null | sort)
 CORE_V1_FILES := migrations/core-v1.yaml provenance.yaml $(wildcard evidence/completion-certificate.json)
+CORE_V2_FILES := definitive.yaml migrations/definitive-v2.yaml evidence/dependency-graph.json depth.parity.yaml $(wildcard non-regression.yaml)
 
-.PHONY: atlas-validate atlas-audit graph-validate evidence-validate skill-validate legal-validate sbom sbom-validate core-v1-graph core-v1-provenance validate check lab-env lab-clean labs labs-dry-run labs-static extended-labs isolated-labs extended-labs-dry-run skill-forward-eval $(addprefix lab-,$(LABS)) $(addprefix extended-lab-,$(EXTENDED_LABS) $(ISOLATED_LABS))
+.PHONY: atlas-validate atlas-audit graph-validate definitive-validate surface-inventory-readiness root-surface-inventory root-verification-matrix root-depth-parity root-contract-adapter-gap core-standard-artifacts scenario-proof-index-adapter core-v2-scenario-plan-gap core-v2-static scenario-proofs scenario-proofs-validate scenario-runtime-application-sync-policy-normal scenario-runtime-security-001 scenario-runtime-security-002 scenario-runtime-security-003 scenario-runtime-security-004 evidence-dependency evidence-dependency-validate authority-locators authority-validate non-regression-validate evidence-validate skill-validate skill-definitive-eval legal-validate sbom sbom-validate core-v1-graph core-v1-provenance validate check lab-env lab-clean labs labs-dry-run labs-static extended-labs isolated-labs extended-labs-dry-run skill-forward-eval $(addprefix lab-,$(LABS)) $(addprefix extended-lab-,$(EXTENDED_LABS) $(ISOLATED_LABS))
 
 atlas-validate:
 	test -f "$(ATLAS_CORE)/cmd/atlas/main.go"
@@ -17,7 +18,7 @@ atlas-validate:
 		"$(CURDIR)/sources.lock.yaml" \
 		"$(CURDIR)/coverage.yaml" \
 		"$(CURDIR)/skill.package.yaml" \
-		$(foreach file,$(CLAIM_FILES) $(EVIDENCE_FILES) $(SKILL_EVAL_FILES) $(CORE_V1_FILES),"$(CURDIR)/$(file)")
+		$(foreach file,$(CLAIM_FILES) $(EVIDENCE_FILES) $(SKILL_EVAL_FILES) $(CORE_V1_FILES) $(CORE_V2_FILES),"$(CURDIR)/$(file)")
 
 atlas-audit:
 	cd "$(ATLAS_CORE)" && GOCACHE="$(CURDIR)/.cache/go-build" go run ./cmd/atlas audit "$(CURDIR)"
@@ -25,11 +26,132 @@ atlas-audit:
 graph-validate:
 	python3 scripts/validate_graph.py
 
+definitive-validate:
+	python3 scripts/validate_definitive_inventory.py
+	python3 scripts/generate_surface_inventory_readiness.py
+	python3 scripts/test_surface_inventory_readiness.py
+	python3 scripts/generate_root_surface_inventory.py
+	python3 scripts/test_root_surface_inventory.py
+	python3 scripts/generate_root_verification_matrix.py
+	python3 scripts/test_root_verification_matrix.py
+	python3 scripts/generate_root_depth_parity.py
+	python3 scripts/test_root_depth_parity.py
+	python3 scripts/validate_scenario_proofs.py
+	python3 scripts/test_scenario_gap_closure.py
+	python3 scripts/test_atomic_evidence_publish.py
+	python3 scripts/test_security_004_preflight.py
+
+
+surface-inventory-readiness:
+	python3 scripts/generate_surface_inventory_readiness.py
+	python3 scripts/test_surface_inventory_readiness.py
+
+root-surface-inventory:
+	python3 scripts/generate_root_surface_inventory.py
+	python3 scripts/test_root_surface_inventory.py
+
+root-verification-matrix:
+	python3 scripts/generate_root_verification_matrix.py
+	python3 scripts/test_root_verification_matrix.py
+
+root-depth-parity:
+	python3 scripts/generate_root_depth_parity.py
+	python3 scripts/test_root_depth_parity.py
+
+root-contract-adapter-gap:
+	python3 scripts/generate_core_v2_root_contract_gap.py
+	python3 scripts/test_core_v2_root_contract_gap.py
+
+core-standard-artifacts:
+	python3 scripts/generate_core_standard_artifacts.py
+	python3 scripts/validate_core_standard_artifacts.py
+	python3 scripts/test_core_standard_artifacts.py
+	cd "$(ATLAS_CORE)" && GOCACHE="$(CURDIR)/.cache/go-build" go run ./cmd/atlas validate \
+		"$(CURDIR)/integrations/reference-system/manifest.json" \
+		"$(CURDIR)/artifacts/reference-system/results.json" \
+		"$(CURDIR)/artifacts/pattern-scenarios/results.json"
+
+scenario-proof-index-adapter:
+	python3 scripts/generate_core_v2_scenario_schema_gap.py --stage
+	cd "$(ATLAS_CORE)" && GOCACHE="$(CURDIR)/.cache/go-build" go build -o "$(CURDIR)/.cache/atlas-core" ./cmd/atlas
+	python3 scripts/generate_core_v2_scenario_schema_gap.py --validate-candidate
+	python3 scripts/generate_core_v2_scenario_schema_gap.py --record-schema-pass
+	python3 scripts/generate_core_v2_scenario_schema_gap.py --publish-report
+	python3 scripts/test_core_v2_scenario_schema_gap.py
+
+core-v2-scenario-plan-gap:
+	python3 scripts/generate_core_v2_scenario_plan_gap.py
+	python3 scripts/validate_core_v2_scenario_plan_gap.py
+	python3 scripts/test_core_v2_scenario_plan_gap.py
+
+core-v2-static: core-standard-artifacts scenario-proof-index-adapter core-v2-scenario-plan-gap
+	python3 scripts/generate_core_v2_skill_router.py
+	python3 scripts/test_core_v2_skill_router.py
+	python3 scripts/generate_root_depth_parity.py
+	python3 scripts/test_root_depth_parity.py
+	python3 scripts/generate_core_v2_root_contract_gap.py
+	python3 scripts/test_core_v2_root_contract_gap.py
+	python3 scripts/generate_core_v2_dependency_extension.py
+	python3 scripts/test_core_v2_evidence_dependency_extensions.py
+
+scenario-proofs:
+	python3 scripts/generate_scenario_proofs.py
+
+scenario-proofs-validate:
+	python3 scripts/validate_scenario_proofs.py
+	python3 scripts/test_scenario_gap_closure.py
+	python3 scripts/test_atomic_evidence_publish.py
+
+scenario-runtime-application-sync-policy-normal: lab-env
+	python3 scripts/scenarios/run_application_sync_policy_normal.py
+
+scenario-runtime-security-001: lab-env
+	python3 scripts/scenarios/run_security_001.py
+
+scenario-runtime-security-002: lab-env
+	python3 scripts/scenarios/run_security_002.py
+
+scenario-runtime-security-003: lab-env
+	python3 scripts/scenarios/run_security_003.py
+
+scenario-runtime-security-004: lab-env
+	python3 scripts/scenarios/run_security_004.py
+
+evidence-dependency:
+	python3 scripts/evidence_dependency_graph.py generate
+
+evidence-dependency-validate:
+	python3 scripts/evidence_dependency_graph.py validate
+	python3 scripts/test_evidence_dependency_graph.py
+	cd "$(ATLAS_CORE)" && GOCACHE="$(CURDIR)/.cache/go-build" go run ./cmd/atlas audit "$(CURDIR)" --gate evidence-dependency
+
+authority-locators:
+	python3 scripts/generate_authority_locators.py --source-tree /private/tmp/argo-cd-v3.5.2-source
+	python3 scripts/generate_authority_body_inventory.py --source-tree /private/tmp/argo-cd-v3.5.2-source
+	python3 scripts/generate_authority_review_queue.py
+
+authority-validate:
+	python3 scripts/validate_authority_locators.py
+	python3 scripts/test_authority_locator_denominator.py
+	python3 scripts/validate_authority_body_inventory.py
+	python3 scripts/validate_authority_review_queue.py
+	python3 scripts/test_authority_review_queue.py
+
+non-regression-validate:
+	python3 scripts/test_content_policy_scope.py
+	python3 scripts/validate_non_regression.py
+
 evidence-validate:
 	python3 scripts/validate_evidence_artifacts.py
 
 skill-validate:
 	python3 scripts/validate_router_evals.py
+	python3 scripts/validate_definitive_skill_eval.py
+
+skill-definitive-eval:
+	python3 scripts/generate_skill_mastery_contract.py
+	python3 scripts/generate_definitive_skill_eval.py
+	python3 scripts/generate_definitive_skill_evidence.py
 
 legal-validate:
 	python3 scripts/validate_legal.py
@@ -46,7 +168,7 @@ core-v1-graph:
 core-v1-provenance:
 	python3 scripts/generate_core_v1_metadata.py provenance
 
-validate: atlas-validate atlas-audit graph-validate evidence-validate skill-validate legal-validate sbom-validate labs-static
+validate: atlas-validate atlas-audit graph-validate definitive-validate core-v2-static evidence-dependency-validate authority-validate non-regression-validate evidence-validate skill-validate legal-validate sbom-validate labs-static
 
 check: validate
 

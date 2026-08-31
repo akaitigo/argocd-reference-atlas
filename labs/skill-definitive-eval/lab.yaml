@@ -1,0 +1,15 @@
+schema_version: 1
+id: skill-definitive-eval
+title: Router SkillのDefinitive Mastery評価
+target_id: skill.router-evaluation
+claim_id: claim.skill.coverage-grounded-routing
+evidence_id: evidence.skill-definitive-eval.v3-5-2
+environment: local-independent-agent
+source_ref: repository-head
+revision_policy: bind-current-coverage-authority-runtime-evidence
+phases:
+  setup: 8 Outcome、14 Surface、Coverage、Authority、Runtime Evidence、独立Forward Caseを固定する
+  execute: 決定的112セルと境界Caseを実行し、期待値を渡していない独立Agent回答を採点する
+  verify: Target state、Claim、Source Lock、実Kubernetes controller Evidence、権限停止、routing gapをdigest込みで照合する
+  cleanup: 一時候補をRepositoryへ保存せず採点済みartifactと非Completion判定を保持する
+acceptance: 112セルと境界Caseが契約を満たし独立Forward Evalが全8 Outcomeで合格しても、未Closure Targetまたはrouting gapがあればAtlasをcompleteにしない。

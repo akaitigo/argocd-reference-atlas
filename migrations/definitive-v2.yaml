@@ -1,0 +1,32 @@
+schema_version: 2
+atlas_id: argocd-reference-atlas
+from: bounded-complete-v1
+to: subject-definitive-v2
+generated_at: "2026-08-28T15:48:00Z"
+historical_certificate:
+  path: evidence/history/v0.1.0/completion-certificate.json
+  digest: sha256:f05d12a5a24603ff5bfc9be7256e9b863eb4b9a3acb9e340f4ca9d49147fb8a8
+  classification: bounded-complete
+status: inventory-required
+required_actions:
+  - lock-authority-artifacts
+  - extract-authority-locators
+  - inventory-authority-body-anchors
+  - review-authority-body-anchors
+  - lock-authority-body-baseline
+  - review-stale-relock-explicitly
+  - review-authority-text-surfaces
+  - lock-non-regression-baseline
+  - classify-all-surfaces
+  - split-behavior-proofs
+  - complete-scenario-matrix
+  - complete-integrated-scenario-trace-closure
+  - execute-bounded-scenario-closure-plan
+  - verify-evidence-durability
+  - verify-evidence-dependency-reruns
+  - collect-runtime-evidence
+  - add-reference-system-if-applicable
+  - add-comparisons-if-applicable
+  - upgrade-skill-eval
+  - complete-skill-router-forward-eval
+  - issue-definitive-certificate

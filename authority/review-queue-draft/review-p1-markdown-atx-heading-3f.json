@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "queue_id": "authority-review-4899835d8716e9eb45f6",
+  "batch_id": "review-p1-markdown-atx-heading-3f",
+  "status": "pending-human",
+  "machine_assistance": "priority-cluster-and-batch-proposals-only",
+  "semantic_decisions": "none",
+  "items": [
+    {
+      "anchor_id": "anchor-6b5894c61c5e77bf75d7",
+      "document_id": "document-argocd-cluster-management",
+      "document_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/operator-manual/cluster-management.md",
+      "source_ids": [
+        "argocd-cluster-management"
+      ],
+      "locked_source_digest": "sha256:371c75bdc483062d34e3c5835ce925f1927e0e7d2d04af121425f3c8ef73e74a",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "line:1",
+      "locator_kind": "locked-body-offset",
+      "raw_selector": "markdown-atx-heading-line",
+      "element_name": "line",
+      "parent_anchor_id": "anchor-811e5ed128ed135a5491",
+      "context_start": 0,
+      "context_end": 21,
+      "context_unit": "byte",
+      "context_digest": "sha256:0b741e20079e8931aa1d0b3a8ef706dbb3a2a938294c9307df75d8616c82bae9",
+      "label_digest": "sha256:c370098615c3e370e10b21988815f38c5b2a74e5bf1ef8a9bd39a4213747b85a",
+      "existing_mapping_candidate_ids": [],
+      "priority": 1,
+      "priority_reasons": [
+        "semantic-label-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p1-markdown-atx-heading-3f",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-9afc03bcff10382ffe05",
+      "document_id": "document-argocd-sync-waves",
+      "document_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/user-guide/sync-waves.md",
+      "source_ids": [
+        "argocd-sync-waves"
+      ],
+      "locked_source_digest": "sha256:2f6dea5a6e4e05c48d45f291d43cc4bd946cb8a7bfdf8dcc37af5b7eaf06d87e",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "line:162",
+      "locator_kind": "locked-body-offset",
+      "raw_selector": "markdown-atx-heading-line",
+      "element_name": "line",
+      "parent_anchor_id": "anchor-75527509e9b5df5a9c7f",
+      "context_start": 10633,
+      "context_end": 10679,
+      "context_unit": "byte",
+      "context_digest": "sha256:870f429505cbc71bdeafd45dbc2b2172e995f566e75a020ba776671b5b75074f",
+      "label_digest": "sha256:42c03dd654531e23c658134d8a97c203f84fe960196ea32f6046e2d688a4c14d",
+      "existing_mapping_candidate_ids": [],
+      "priority": 1,
+      "priority_reasons": [
+        "semantic-label-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p1-markdown-atx-heading-3f",
+      "state": "pending-human"
+    },
+    {
+      "anchor_id": "anchor-b8d4db9345c2ece6c23e",
+      "document_id": "document-argocd-automated-sync",
+      "document_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/user-guide/auto_sync.md",
+      "source_ids": [
+        "argocd-automated-sync"
+      ],
+      "locked_source_digest": "sha256:c0c61f455bbab02f09d82b15d9788c4d38badf38b70b478e31f263ab24fdde28",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "line:117",
+      "locator_kind": "locked-body-offset",
+      "raw_selector": "markdown-atx-heading-line",
+      "element_name": "line",
+      "parent_anchor_id": "anchor-52bc761aaeb220d26e9e",
+      "context_start": 4398,
+      "context_end": 4442,
+      "context_unit": "byte",
+      "context_digest": "sha256:a36e9310d851e9557d73b76c0633269325dc2df80a39a25111e53e790ebfc282",
+      "label_digest": "sha256:19c8c2ea612957fdc97053e8f3347f53e01aaa28c1c5c4c0bc7ed4ea8da18d09",
+      "existing_mapping_candidate_ids": [],
+      "priority": 1,
+      "priority_reasons": [
+        "semantic-label-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p1-markdown-atx-heading-3f",
+      "state": "pending-human"
+    }
+  ]
+}

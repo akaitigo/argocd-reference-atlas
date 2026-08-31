@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "surface_id": "applicationset.any-namespace",
+  "scenario": "security",
+  "variant_id": "namespace-not-allowlisted",
+  "started_at": "2026-08-30T18:47:36.830167Z",
+  "completed_at": "2026-08-30T18:47:36.830199Z",
+  "attempt": 1,
+  "retries": 0,
+  "actions": [
+    {
+      "action": "observe-unconfigured-tenant-applicationset",
+      "status": "not-reconciled"
+    }
+  ],
+  "result": {
+    "first_attempt": true,
+    "ephemeral_token_leak": false,
+    "namespace_allowlisted": false,
+    "child_application_count": 0,
+    "workload_present": false
+  }
+}

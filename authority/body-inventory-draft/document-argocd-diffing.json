@@ -1,0 +1,142 @@
+{
+  "schema_version": 1,
+  "document_id": "document-argocd-diffing",
+  "source_ids": [
+    "argocd-diffing"
+  ],
+  "fetch_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/user-guide/diffing.md",
+  "locked_body_digest": "sha256:0f8e49ca633f070181e1e54051a34a2ee1ee2dbb6903f0d273eaff0fc51808fd",
+  "fetch": {
+    "status": "matched",
+    "fetched_digest": "sha256:0f8e49ca633f070181e1e54051a34a2ee1ee2dbb6903f0d273eaff0fc51808fd",
+    "locked_digest_match": true,
+    "http_status": null,
+    "final_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/user-guide/diffing.md",
+    "content_type": null,
+    "fetched_bytes": 8136,
+    "error_digest": null
+  },
+  "extraction": {
+    "method": "fixed-selector-raw-anchor-v1",
+    "tool": "argocd-reference-atlas-authority-body-inventory-v1",
+    "tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+    "selector_contract": [
+      "document-root",
+      "git-tar-regular-file",
+      "markdown-atx-heading-line",
+      "yaml-mapping-key-line",
+      "plain-nonempty-line"
+    ],
+    "selector_exhaustive_for_locked_body": true,
+    "authority_semantics_exhaustive": false,
+    "review_status": "automated-unreviewed",
+    "body_storage": "digest-locator-and-offset-only"
+  },
+  "anchors": [
+    {
+      "id": "anchor-62e7e049ccfa250b4a6b",
+      "locator": "document-root",
+      "locator_kind": "document-root",
+      "raw_selector": "document-root",
+      "element_name": "document-root",
+      "parent_anchor_id": null,
+      "context_start": 0,
+      "context_end": 8136,
+      "context_unit": "byte",
+      "context_digest": "sha256:0f8e49ca633f070181e1e54051a34a2ee1ee2dbb6903f0d273eaff0fc51808fd",
+      "label_digest": null,
+      "classification_status": "pending-human",
+      "surface_ids": []
+    },
+    {
+      "id": "anchor-886d4c85afc8537dbe96",
+      "locator": "line:1",
+      "locator_kind": "locked-body-offset",
+      "raw_selector": "markdown-atx-heading-line",
+      "element_name": "line",
+      "parent_anchor_id": "anchor-62e7e049ccfa250b4a6b",
+      "context_start": 0,
+      "context_end": 24,
+      "context_unit": "byte",
+      "context_digest": "sha256:4a12adf0c13a21d412cabd2d26e99ccec270c72fa359dce109dca2a7e3ab1287",
+      "label_digest": "sha256:388026cd2400b2200852afd6902bb1e3cb704120f6847a1564ce4a95e0d6281f",
+      "classification_status": "pending-human",
+      "surface_ids": []
+    },
+    {
+      "id": "anchor-41a77bed512a89ebe550",
+      "locator": "line:20",
+      "locator_kind": "locked-body-offset",
+      "raw_selector": "markdown-atx-heading-line",
+      "element_name": "line",
+      "parent_anchor_id": "anchor-62e7e049ccfa250b4a6b",
+      "context_start": 1547,
+      "context_end": 1582,
+      "context_unit": "byte",
+      "context_digest": "sha256:11013ccb0a89f56f1628c87a372cdf026416178feee5d3c523e9979aacd46043",
+      "label_digest": "sha256:e40bc46d0822dca13bef2d2b032da19e4ec1d2df68d21fa3c76ca8dbd7bafb76",
+      "classification_status": "pending-human",
+      "surface_ids": []
+    },
+    {
+      "id": "anchor-0a41903643b0b88a115f",
+      "locator": "line:83",
+      "locator_kind": "locked-body-offset",
+      "raw_selector": "markdown-atx-heading-line",
+      "element_name": "line",
+      "parent_anchor_id": "anchor-62e7e049ccfa250b4a6b",
+      "context_start": 3511,
+      "context_end": 3541,
+      "context_unit": "byte",
+      "context_digest": "sha256:38679c6f3fa39e20bf6deb92c20d7679c4199cccccadff72efc3c3d146687475",
+      "label_digest": "sha256:e80b1b2fd7b3da31728cfabe3756728931d367aa06c04648fb9069cbcf425eab",
+      "classification_status": "pending-human",
+      "surface_ids": []
+    },
+    {
+      "id": "anchor-c0931b99f991bb92fc77",
+      "locator": "line:135",
+      "locator_kind": "locked-body-offset",
+      "raw_selector": "markdown-atx-heading-line",
+      "element_name": "line",
+      "parent_anchor_id": "anchor-62e7e049ccfa250b4a6b",
+      "context_start": 5697,
+      "context_end": 5746,
+      "context_unit": "byte",
+      "context_digest": "sha256:0eca7b92495572830b01d0ba5797c7bac4c437c503193c9677d6161dba53bf97",
+      "label_digest": "sha256:8a2549983f0875c858033bacd666b9b20257f3f18f73ef86f079d8a83551ea81",
+      "classification_status": "pending-human",
+      "surface_ids": []
+    },
+    {
+      "id": "anchor-a1987e73ceb10c2d6f1c",
+      "locator": "line:150",
+      "locator_kind": "locked-body-offset",
+      "raw_selector": "markdown-atx-heading-line",
+      "element_name": "line",
+      "parent_anchor_id": "anchor-62e7e049ccfa250b4a6b",
+      "context_start": 6295,
+      "context_end": 6366,
+      "context_unit": "byte",
+      "context_digest": "sha256:42e42145532f04b2b87531d6d902e9362e64ccb5920b0e810d9097d2d0617486",
+      "label_digest": "sha256:c2c536090dbceaa07e5e4f21b2e2fe8dd30480fdf01b592b870d0f335a53bb36",
+      "classification_status": "pending-human",
+      "surface_ids": []
+    },
+    {
+      "id": "anchor-34800d2aeb027002f5f0",
+      "locator": "line:198",
+      "locator_kind": "locked-body-offset",
+      "raw_selector": "markdown-atx-heading-line",
+      "element_name": "line",
+      "parent_anchor_id": "anchor-62e7e049ccfa250b4a6b",
+      "context_start": 7631,
+      "context_end": 7662,
+      "context_unit": "byte",
+      "context_digest": "sha256:479d744380d1e102fabd834a785796af0507cb6e9fd765bcab12c350c6b07ca7",
+      "label_digest": "sha256:ccfcafd1422acc6081f66fb6c769e1f3e00ebac70d057093b3ec19f4597689aa",
+      "classification_status": "pending-human",
+      "surface_ids": []
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "source_id": "argocd-diffing",
+  "source_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/user-guide/diffing.md",
+  "locked_source_digest": "sha256:0f8e49ca633f070181e1e54051a34a2ee1ee2dbb6903f0d273eaff0fc51808fd",
+  "fetch": {
+    "status": "matched",
+    "observed_digest": "sha256:0f8e49ca633f070181e1e54051a34a2ee1ee2dbb6903f0d273eaff0fc51808fd",
+    "locked_digest_match": true,
+    "observed_bytes": 8136,
+    "content_type": "text/markdown; charset=utf-8",
+    "error_digest": null
+  },
+  "extraction": {
+    "method": "locked-body-file-locator-digest",
+    "tool": "argocd-reference-atlas-authority-locator-v1",
+    "review_status": "automated-unreviewed",
+    "body_storage": "metadata-digest-locator-offset-only"
+  },
+  "document_locator": {
+    "locator": "document-root",
+    "locator_kind": "file-root",
+    "locator_status": "root-document",
+    "context_digest": "sha256:0f8e49ca633f070181e1e54051a34a2ee1ee2dbb6903f0d273eaff0fc51808fd",
+    "context_start": 0,
+    "context_end": 8136,
+    "context_unit": "byte"
+  },
+  "candidate_surfaces": [
+    {
+      "edge_id": "edge.diff.ignore-rules.argocd-diffing",
+      "source_id": "argocd-diffing",
+      "inventory_item_id": "diff.ignore-rules",
+      "area": "diff",
+      "target_id": "diff.desired-live-comparison",
+      "locator": "docs/user-guide/diffing.md",
+      "locator_status": "file-found",
+      "context_digest": "sha256:0f8e49ca633f070181e1e54051a34a2ee1ee2dbb6903f0d273eaff0fc51808fd",
+      "context_start": 0,
+      "context_end": 8136,
+      "context_unit": "byte",
+      "heading_digest": null,
+      "classification_basis": "domain-inventory-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:285203fc45c4cd42f22ff48427de85ea70b87efd07e7be3bee32fb265e5a1213",
+      "classification": "candidate-included-unreviewed"
+    }
+  ]
+}

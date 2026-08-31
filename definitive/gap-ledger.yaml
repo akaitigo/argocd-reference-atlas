@@ -1,0 +1,90 @@
+schema_version: 1
+atlas_id: argocd-reference-atlas
+release: v3.5.2
+status: incomplete
+scenario_types: [normal, boundary, rejection, failure, recovery, migration, operations, security, performance, compatibility]
+gaps:
+  - id: gap.applicationset-generators
+    target_ids: [applicationset.generator-templating, compatibility.broad-version-generator-matrix]
+    required_scenarios: [normal, boundary, rejection, failure, recovery, compatibility]
+    missing: Git directory/file、Cluster、SCM Provider、Pull Request、Cluster Decision Resource、Matrix、Merge、Plugin、selector、Go templateを実Controllerで個別検証し、外部API障害とscaleを含める。
+  - id: gap.project-boundaries
+    target_ids: [security.rbac-sso-access-boundary, sync.order-and-policy, drift.tracking-and-refresh]
+    required_scenarios: [normal, boundary, rejection, security, operations]
+    missing: source/destination/resource allow-deny、Project role/JWT/group、sync window、orphan監視を正と拒否の両方で実証する。
+  - id: gap.repository-connections
+    target_ids: [connection.repository-cluster-registration]
+    required_scenarios: [normal, boundary, rejection, failure, recovery, security]
+    missing: HTTPS/SSH/GitHub App/Helm/OCI、credential template、TLS/SSH trust、rotation、複数repository、断続障害を実証する。
+  - id: gap.cluster-connections
+    target_ids: [connection.repository-cluster-registration, failure.degraded-dependency]
+    required_scenarios: [normal, boundary, rejection, failure, recovery, security]
+    missing: 正常登録済みremote clusterの停止、auth rotation、namespace boundary、復旧後再収束を実証する。
+  - id: gap.interactive-sso
+    target_ids: [security.external-idp-interactive-sso, security.rbac-sso-access-boundary]
+    required_scenarios: [normal, boundary, rejection, failure, recovery, security]
+    missing: 実login、token/session expiry、claim mapping、group変更、MFA、IdP outage中の既存sessionと復旧を実証する。
+  - id: gap.sync-diff-health
+    target_ids: [sync.order-and-policy, sync.hook-wave-lifecycle, diff.desired-live-comparison, health.resource-assessment]
+    required_scenarios: [normal, boundary, rejection, failure, recovery, operations]
+    missing: 全主要Sync option、全Hook phase、server-side diff、normalizer timeout、built-in/Lua healthの負と回復を実証する。
+  - id: gap.tracking-multi-source
+    target_ids: [application.declarative-model, drift.tracking-and-refresh]
+    required_scenarios: [normal, boundary, rejection, failure, recovery]
+    missing: tracking method切替、installation ID、multi-source precedence、RepeatedResourceWarning、source outageの部分失敗を実証する。
+  - id: gap.secret-extensions
+    target_ids: [security.secret-boundary, compatibility.broad-version-generator-matrix]
+    required_scenarios: [normal, boundary, rejection, failure, recovery, security, compatibility]
+    missing: CMP、proxy/UI extension、repository/cluster credentialのredaction、権限分離、extension version compatibilityを実証する。
+  - id: gap.control-plane-failures
+    target_ids: [failure.degraded-dependency, availability.high-availability]
+    required_scenarios: [failure, recovery, operations]
+    missing: Controller Podとrepo-server単一PodのUID交代は実証済み。controller shard/leader交代、repo-server全replica停止、Redis全停止/データ損失、ApplicationSet controller障害をfailure window付きで実証する。
+  - id: gap.host-network-rto-rpo
+    target_ids: [availability.host-network-rto-rpo]
+    required_scenarios: [boundary, failure, recovery, operations]
+    missing: node/host分離、network partition/latency/loss、dependency間partitionを注入し、RTO/RPOとデータ不変条件を測定する。
+  - id: gap.observability-trace-incident
+    target_ids: [observability.metrics-logs, observability.distributed-trace-incident-capacity]
+    required_scenarios: [normal, failure, recovery, operations, performance, security]
+    missing: OTLP trace、metric/log/trace correlation、incident rehearsal、SLO、retention、cardinality、redaction、容量影響をArtifact化する。
+  - id: gap.backup-disaster-recovery
+    target_ids: [recovery.control-plane-restore, availability.host-network-rto-rpo]
+    required_scenarios: [boundary, failure, recovery, operations, security]
+    missing: backup欠損/古さ/secret取扱、別cluster restore、host喪失からの復旧、測定RTO/RPOを実証する。
+  - id: gap.upgrade-rollback
+    target_ids: [migration.version-upgrade, migration.multi-version-rollback-matrix]
+    required_scenarios: [boundary, rejection, failure, recovery, migration, compatibility]
+    missing: 複数patch/minorのpreflight、実rollback、CRD/API compatibility、extensionを含む失敗時restoreを実証する。
+  - id: gap.version-kubernetes-matrix
+    target_ids: [compatibility.broad-version-generator-matrix]
+    required_scenarios: [normal, boundary, rejection, failure, recovery, migration, compatibility]
+    missing: 複数Argo CD Versionと複数Kubernetes Versionを同一ScenarioとAssertionで比較する。
+  - id: gap.capacity-benchmark
+    target_ids: [performance.capacity-cost-baseline]
+    required_scenarios: [normal, boundary, failure, recovery, operations, performance]
+    missing: Application/repository/cluster/shard規模別にreconcile latency、queue、generation throughput、CPU、memory、storage、networkを測定し回帰基準を固定する。
+  - id: gap.skill-definitive-eval
+    target_ids: [skill.router-evaluation]
+    required_scenarios: [normal, boundary, rejection, failure, recovery, migration, operations, security, performance, compatibility]
+    missing: covered/partial/missing/historicalを区別し、全Gap ID、複合診断、permission boundary、Evidence freshnessをblind semantic Evalで採点する。
+  - id: gap.notifications-delivery
+    target_ids: [operations.notifications-delivery]
+    required_scenarios: [normal, boundary, rejection, failure, recovery, operations, security, performance, compatibility]
+    missing: Application annotation、local receiver正常配信、HTTP 503 retry、endpoint修復後配信、trigger/delivery metricは実証済み。Global subscription、provider固有認証、Secret参照/redaction、rate limit、controller再起動をまたぐdeduplication、全Service互換を追加実証する。
+  - id: gap.integrated-reference-system
+    target_ids: [system.integrated-reference-gitops]
+    required_scenarios: [normal, boundary, rejection, failure, recovery, migration, operations, security, performance, compatibility]
+    missing: ApplicationSet、Project、multi-source、CMP、RBAC/SSO、Secret、Notification、Metric/Log/Trace、Promotion、Backup/Restoreを同一RepositoryとCluster topologyへ接続し横断不変条件を実証する。
+  - id: gap.evidence-backed-comparison
+    target_ids: [architecture.evidence-backed-comparison]
+    required_scenarios: [normal, boundary, rejection, failure, recovery, migration, operations, security, performance, compatibility]
+    missing: Application構成、Generator、tracking、sync policy、HA/sharding/cache、auth方式、promotion/rollback方式を同一条件・同一metric・同一failure oracleで比較する。
+  - id: gap.core-v2-domain-neutral-authority-contract
+    target_ids: [system.integrated-reference-gitops]
+    required_scenarios: [operations, compatibility]
+    missing: Core v2のAuthority/Surface areaとruntime platformをKubernetes/Product domainで正確に表せるdomain-neutral Schemaへ固定する。
+  - id: gap.core-v2-contract
+    target_ids: [system.integrated-reference-gitops, skill.router-evaluation]
+    required_scenarios: [operations, compatibility]
+    missing: Core v2のSchema、CLI、audit、migration、Skill Eval routing、Certificate generatorを一致させた固定commitで全Gateを実行する。

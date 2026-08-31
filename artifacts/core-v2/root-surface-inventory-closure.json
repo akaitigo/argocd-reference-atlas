@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "id": "argocd-root-surface-inventory-closure-v1",
+  "status": "blocked-human-authority-and-proof-closure",
+  "inputs": {
+    "definitive/root-surface-inventory-bindings.yaml": "sha256:dfd8b94b10b1cfa769f09af942727982513e07970e79b61b30f47c3c40fb0de1",
+    "artifacts/core-v2/surface-inventory-readiness.json": "sha256:5a3bb9164d8e897de0cd5d58ad768fcca41fd899e0d0f1c95d581a171ecd416b",
+    "authority/reviews/decisions.json": "sha256:6305c95ff8a719f4bded040447874814bec28afd2b9c9e81c3088488f3d4988b",
+    "authority/extraction.snapshot.json": "sha256:a2d97d0482539ca30946ea49b13b3c700f1afb4311cb6c3232c2473be96eb4e0",
+    "authority/body-inventory.snapshot.json": "sha256:e57ad68b946b1c3ff446ed4ba3e34888ef49f959793863185b554b6954a7bef8",
+    "authority/review-queue.snapshot.json": "sha256:fb2e64d35042921dc001af36fb7042a7ba6c9a253589599e0acac8776ad0cb6a",
+    "evidence/scenarios/index.json": "sha256:925134b7591c25117a1ca964b509a621e893fd5bd6e03a86e3fe8c83d1fed325",
+    "coverage.yaml": "sha256:7fdd4890ce4fd2e21bccd84cb06bb8ca3d55ba4dbeaa4e9f8af9673f5944bc9d"
+  },
+  "dependency_contract": {
+    "graph_output": "artifacts/core-v2/root-surface-inventory-closure.json",
+    "tracked_input_paths": [
+      "definitive/root-surface-inventory-bindings.yaml",
+      "artifacts/core-v2/surface-inventory-readiness.json",
+      "authority/reviews/decisions.json",
+      "authority/extraction.snapshot.json",
+      "authority/body-inventory.snapshot.json",
+      "authority/review-queue.snapshot.json",
+      "evidence/scenarios/index.json",
+      "coverage.yaml"
+    ],
+    "stale_on_any_input_digest_change": true,
+    "required_rerun": "python3 scripts/generate_root_surface_inventory.py && python3 scripts/test_root_surface_inventory.py",
+    "digest_only_closure_forbidden": true
+  },
+  "policy": {
+    "emit_only_when_all_blockers_closed": true,
+    "unreviewed_candidate_promotion_forbidden": true,
+    "machine_human_review_substitution_forbidden": true,
+    "baseline_or_scope_reduction_forbidden": true,
+    "real_evidence_binding_required": true
+  },
+  "denominator": {
+    "authority_raw_anchors": 63889,
+    "authority_pending_human": 63889,
+    "candidate_edges": 91,
+    "candidate_inventory_unmapped": 0,
+    "scenario_rows": 1000
+  },
+  "closure": {
+    "human_decisions": 0,
+    "reviewed_surfaces": 0,
+    "reviewed_atomic_behaviors": 0,
+    "core_v2_eligible_surfaces": 0,
+    "final_authority_artifacts": 0,
+    "root_binding_items": 0,
+    "dedicated_runtime_rows": 13,
+    "completion_eligible_scenario_rows": 0,
+    "semantic_credit": 0
+  },
+  "root_inventory": {
+    "path": "surface.inventory.yaml",
+    "present": false,
+    "emission_eligible": false,
+    "blockers": [
+      "authority-text-not-exhaustive",
+      "authority-semantics-not-exhaustive",
+      "authority-human-decisions-not-closed",
+      "reviewed-surface-or-atomic-behavior-zero",
+      "core-v2-eligible-surfaces-zero",
+      "final-authority-artifacts-zero",
+      "root-inventory-bindings-zero",
+      "completion-eligible-scenario-rows-zero"
+    ]
+  }
+}

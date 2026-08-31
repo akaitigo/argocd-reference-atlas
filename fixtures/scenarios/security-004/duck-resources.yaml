@@ -1,0 +1,72 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: atlasdecisions.atlas.argocd.io
+spec:
+  group: atlas.argocd.io
+  scope: Namespaced
+  names:
+    plural: atlasdecisions
+    singular: atlasdecision
+    kind: AtlasDecision
+  versions:
+    - name: v1alpha1
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          x-kubernetes-preserve-unknown-fields: true
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: atlas-security-004-duck-type
+  namespace: argocd
+data:
+  apiVersion: atlas.argocd.io/v1alpha1
+  kind: atlasdecisions
+  statusListKey: decisions
+  matchKey: clusterName
+---
+apiVersion: atlas.argocd.io/v1alpha1
+kind: AtlasDecision
+metadata:
+  name: unregistered
+  namespace: argocd
+status:
+  decisions:
+    - clusterName: not-registered
+---
+apiVersion: atlas.argocd.io/v1alpha1
+kind: AtlasDecision
+metadata:
+  name: registered
+  namespace: argocd
+status:
+  decisions:
+    - clusterName: atlas-security-004-in-cluster
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: atlas-security-004-duck-reader
+  namespace: argocd
+rules:
+  - apiGroups: [atlas.argocd.io]
+    resources: [atlasdecisions]
+    verbs: [get, list, watch]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: atlas-security-004-duck-reader
+  namespace: argocd
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: atlas-security-004-duck-reader
+subjects:
+  - kind: ServiceAccount
+    name: argocd-applicationset-controller
+    namespace: argocd

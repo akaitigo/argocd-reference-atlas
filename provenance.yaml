@@ -87,7 +87,7 @@ artifacts:
   - argocd-application-crd
   generated_by: make lab-health
 - path: evidence/raw/evidence.high-availability.v3-5-2/result.json
-  digest: sha256:775c6f17c2c6b9d414ae6c07266fa1ff152a330a78ae9107a4bf32e3ba1eeab6
+  digest: sha256:6fe217a67aa7f956f53f627a06cce1a982ee77cf2264ecc31b1fc88d49b8f249
   kind: capture
   license: Apache-2.0
   source_ids:
@@ -102,6 +102,13 @@ artifacts:
   - argocd-sync-waves
   - argocd-sync-options
   generated_by: make extended-lab-hook-wave
+- path: evidence/raw/evidence.notifications.v3-5-2/result.json
+  digest: sha256:25af7045326cb82ff7c5556f12840183b443e49a2d1a14200661a250a7eb6550
+  kind: capture
+  license: Apache-2.0
+  source_ids:
+  - argocd-source-tree
+  generated_by: make extended-lab-notifications
 - path: evidence/raw/evidence.observability.v3-5-2/result.json
   digest: sha256:098cf152a2c95f7c82311a6e2d29b0f46da85e267bccd03cc6bb1399e9e454d1
   kind: capture
@@ -155,13 +162,19 @@ artifacts:
   - argocd-secret-management
   - argocd-application-specification
   generated_by: make lab-security
+- path: evidence/raw/evidence.skill-definitive-eval.v3-5-2/result.json
+  digest: sha256:db059e3835332e197d7ccf679854e26e13a2e5fcde77f824ed6d1a18ca5aac0f
+  kind: skill-eval
+  license: Apache-2.0
+  source_ids: &id001
+  - argocd-version
+  - argocd-architecture
+  generated_by: make skill-definitive-eval
 - path: evidence/raw/evidence.skill-eval.v3-5-2/result.json
   digest: sha256:38ff58c91a99726f59368669cfcc607615b10b238613af33ec20d18f9d5ca0a0
   kind: skill-eval
   license: Apache-2.0
-  source_ids:
-  - argocd-version
-  - argocd-architecture
+  source_ids: *id001
   generated_by: make skill-forward-eval
 - path: evidence/raw/evidence.sync.v3-5-2/result.json
   digest: sha256:04e188eaa1c8cfca6c90c7a1b87494166a6eb67c95ba4b9cbf69021cc934bcad
@@ -189,7 +202,7 @@ artifacts:
   - argocd-architecture
   generated_by: scripts/generate_core_v1_metadata.py graph
 - path: sbom.spdx.json
-  digest: sha256:c0b3871fdf0b78f8ac04a652e7f4394fffebee9c4d158515563e6f825a0c1264
+  digest: sha256:43d08284760e5cab6fc22d16a228fbd9bdb66136e5c1d19b933da68aa81a8def
   kind: sbom
   license: CC0-1.0
   source_ids: []

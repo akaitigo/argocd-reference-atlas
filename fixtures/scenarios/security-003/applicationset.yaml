@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: atlas-security-003-appset
+  namespace: atlas-security-003-tenant
+spec:
+  generators:
+    - list:
+        elements:
+          - suffix: generated
+  template:
+    metadata:
+      name: atlas-security-003-{{suffix}}
+    spec:
+      project: atlas-security-003-appset
+      source:
+        repoURL: http://source-server.argocd-atlas-source.svc.cluster.local/repo.git
+        targetRevision: main
+        path: apps/security-003/appset-workload
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: atlas-security-003-workloads
+      syncPolicy:
+        automated: {}

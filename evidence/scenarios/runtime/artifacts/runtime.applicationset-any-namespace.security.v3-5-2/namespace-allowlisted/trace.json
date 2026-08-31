@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "surface_id": "applicationset.any-namespace",
+  "scenario": "security",
+  "variant_id": "namespace-allowlisted",
+  "started_at": "2026-08-30T18:48:19.385591Z",
+  "completed_at": "2026-08-30T18:48:19.385622Z",
+  "attempt": 1,
+  "retries": 0,
+  "actions": [
+    {
+      "action": "configure-application-and-applicationset-namespaces",
+      "status": "passed"
+    },
+    {
+      "action": "disable-scm-providers-for-tenant-boundary",
+      "status": "passed"
+    },
+    {
+      "action": "restart-controllers",
+      "status": "passed"
+    },
+    {
+      "action": "reconcile-tenant-applicationset",
+      "status": "passed"
+    }
+  ],
+  "result": {
+    "first_attempt": true,
+    "ephemeral_token_leak": false,
+    "namespace_allowlisted": true,
+    "scm_providers_enabled": false,
+    "child_application_count": 1,
+    "workload_present": true
+  }
+}

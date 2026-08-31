@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "queue_id": "authority-review-4899835d8716e9eb45f6",
+  "batch_id": "review-p1-plain-nonempty-04",
+  "status": "pending-human",
+  "machine_assistance": "priority-cluster-and-batch-proposals-only",
+  "semantic_decisions": "none",
+  "items": [
+    {
+      "anchor_id": "anchor-2a7a057a09289ad2feb9",
+      "document_id": "document-argocd-version",
+      "document_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/VERSION",
+      "source_ids": [
+        "argocd-version"
+      ],
+      "locked_source_digest": "sha256:36e68867ce939b2464649670eb1b3f9759d1a99e7326dac3c79d0942e01f5d65",
+      "inventory_tool_digest": "sha256:46bd28fe5c20a48cc652d4719c0231bff12ee885583bd6576dd97958adaff83c",
+      "review_queue_tool_digest": "sha256:ea6e9abe6e7ed0f7c4606e58a3c3f861296cb59bdf3d4f0c4d12a41835b195d7",
+      "locator": "line:1",
+      "locator_kind": "locked-body-offset",
+      "raw_selector": "plain-nonempty-line",
+      "element_name": "line",
+      "parent_anchor_id": "anchor-9795a93b3972934b3833",
+      "context_start": 0,
+      "context_end": 6,
+      "context_unit": "byte",
+      "context_digest": "sha256:36e68867ce939b2464649670eb1b3f9759d1a99e7326dac3c79d0942e01f5d65",
+      "label_digest": "sha256:d653f63bceb81ce54e243688df0bc06d5a2f908f296cb7309dd6a29f8011027f",
+      "existing_mapping_candidate_ids": [],
+      "priority": 1,
+      "priority_reasons": [
+        "semantic-label-anchor-candidate"
+      ],
+      "candidate_cluster_id": null,
+      "batch_id": "review-p1-plain-nonempty-04",
+      "state": "pending-human"
+    }
+  ]
+}

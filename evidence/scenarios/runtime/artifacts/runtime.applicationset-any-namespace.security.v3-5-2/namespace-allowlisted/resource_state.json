@@ -1,0 +1,307 @@
+{
+  "schema_version": 1,
+  "surface_id": "applicationset.any-namespace",
+  "scenario": "security",
+  "variant_id": "namespace-allowlisted",
+  "application_set": {
+    "apiVersion": "argoproj.io/v1alpha1",
+    "kind": "ApplicationSet",
+    "metadata": {
+      "annotations": {
+        "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"argoproj.io/v1alpha1\",\"kind\":\"ApplicationSet\",\"metadata\":{\"annotations\":{},\"name\":\"atlas-security-003-appset\",\"namespace\":\"atlas-security-003-tenant\"},\"spec\":{\"generators\":[{\"list\":{\"elements\":[{\"suffix\":\"generated\"}]}}],\"template\":{\"metadata\":{\"name\":\"atlas-security-003-{{suffix}}\"},\"spec\":{\"destination\":{\"namespace\":\"atlas-security-003-workloads\",\"server\":\"https://kubernetes.default.svc\"},\"project\":\"atlas-security-003-appset\",\"source\":{\"path\":\"apps/security-003/appset-workload\",\"repoURL\":\"http://source-server.argocd-atlas-source.svc.cluster.local/repo.git\",\"targetRevision\":\"7b510e59dd71ee2526ad7fdd55ffedb7028aa832\"},\"syncPolicy\":{\"automated\":{}}}}}}\n"
+      },
+      "creationTimestamp": "2026-08-30T18:48:12Z",
+      "generation": 1,
+      "name": "atlas-security-003-appset",
+      "namespace": "atlas-security-003-tenant",
+      "resourceVersion": "4468",
+      "uid": "aa8fe3c9-5272-4389-9558-84bd1771d011"
+    },
+    "spec": {
+      "generators": [
+        {
+          "list": {
+            "elements": [
+              {
+                "suffix": "generated"
+              }
+            ]
+          }
+        }
+      ],
+      "template": {
+        "metadata": {
+          "name": "atlas-security-003-{{suffix}}"
+        },
+        "spec": {
+          "destination": {
+            "namespace": "atlas-security-003-workloads",
+            "server": "https://kubernetes.default.svc"
+          },
+          "project": "atlas-security-003-appset",
+          "source": {
+            "path": "apps/security-003/appset-workload",
+            "repoURL": "http://source-server.argocd-atlas-source.svc.cluster.local/repo.git",
+            "targetRevision": "7b510e59dd71ee2526ad7fdd55ffedb7028aa832"
+          },
+          "syncPolicy": {
+            "automated": {}
+          }
+        }
+      }
+    },
+    "status": {
+      "conditions": [
+        {
+          "lastTransitionTime": "2026-08-30T18:48:12Z",
+          "message": "All applications have been generated successfully",
+          "reason": "ApplicationSetUpToDate",
+          "status": "False",
+          "type": "ErrorOccurred"
+        },
+        {
+          "lastTransitionTime": "2026-08-30T18:48:12Z",
+          "message": "Successfully generated parameters for all Applications",
+          "reason": "ParametersGenerated",
+          "status": "True",
+          "type": "ParametersGenerated"
+        },
+        {
+          "lastTransitionTime": "2026-08-30T18:48:12Z",
+          "message": "All applications have been generated successfully",
+          "reason": "ApplicationSetUpToDate",
+          "status": "True",
+          "type": "ResourcesUpToDate"
+        }
+      ],
+      "health": {
+        "message": "All applications have been generated successfully",
+        "status": "Healthy"
+      },
+      "resources": [
+        {
+          "group": "argoproj.io",
+          "health": {},
+          "kind": "Application",
+          "name": "atlas-security-003-generated",
+          "namespace": "atlas-security-003-tenant",
+          "version": "v1alpha1"
+        }
+      ],
+      "resourcesCount": 1
+    }
+  },
+  "tenant_applications": [
+    {
+      "apiVersion": "argoproj.io/v1alpha1",
+      "kind": "Application",
+      "metadata": {
+        "creationTimestamp": "2026-08-30T18:48:12Z",
+        "finalizers": [
+          "resources-finalizer.argocd.argoproj.io"
+        ],
+        "generation": 8,
+        "name": "atlas-security-003-generated",
+        "namespace": "atlas-security-003-tenant",
+        "ownerReferences": [
+          {
+            "apiVersion": "argoproj.io/v1alpha1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "ApplicationSet",
+            "name": "atlas-security-003-appset",
+            "uid": "aa8fe3c9-5272-4389-9558-84bd1771d011"
+          }
+        ],
+        "resourceVersion": "4491",
+        "uid": "795d8192-f423-48b2-819e-f8672b79cbdd"
+      },
+      "spec": {
+        "destination": {
+          "namespace": "atlas-security-003-workloads",
+          "server": "https://kubernetes.default.svc"
+        },
+        "project": "atlas-security-003-appset",
+        "source": {
+          "path": "apps/security-003/appset-workload",
+          "repoURL": "http://source-server.argocd-atlas-source.svc.cluster.local/repo.git",
+          "targetRevision": "7b510e59dd71ee2526ad7fdd55ffedb7028aa832"
+        },
+        "syncPolicy": {
+          "automated": {}
+        }
+      },
+      "status": {
+        "controllerNamespace": "argocd",
+        "health": {
+          "lastTransitionTime": "2026-08-30T18:48:17Z",
+          "status": "Healthy"
+        },
+        "history": [
+          {
+            "deployStartedAt": "2026-08-30T18:48:17Z",
+            "deployedAt": "2026-08-30T18:48:17Z",
+            "id": 0,
+            "initiatedBy": {
+              "automated": true
+            },
+            "revision": "7b510e59dd71ee2526ad7fdd55ffedb7028aa832",
+            "source": {
+              "path": "apps/security-003/appset-workload",
+              "repoURL": "http://source-server.argocd-atlas-source.svc.cluster.local/repo.git",
+              "targetRevision": "7b510e59dd71ee2526ad7fdd55ffedb7028aa832"
+            }
+          }
+        ],
+        "operationState": {
+          "finishedAt": "2026-08-30T18:48:17Z",
+          "message": "successfully synced (all tasks run)",
+          "operation": {
+            "initiatedBy": {
+              "automated": true
+            },
+            "retry": {
+              "limit": 5
+            },
+            "sync": {
+              "revision": "7b510e59dd71ee2526ad7fdd55ffedb7028aa832",
+              "source": {
+                "path": "apps/security-003/appset-workload",
+                "repoURL": "http://source-server.argocd-atlas-source.svc.cluster.local/repo.git",
+                "targetRevision": "7b510e59dd71ee2526ad7fdd55ffedb7028aa832"
+              }
+            }
+          },
+          "phase": "Succeeded",
+          "startedAt": "2026-08-30T18:48:17Z",
+          "syncResult": {
+            "resources": [
+              {
+                "group": "",
+                "hookPhase": "Running",
+                "kind": "ConfigMap",
+                "message": "configmap/atlas-security-003-appset created",
+                "name": "atlas-security-003-appset",
+                "namespace": "atlas-security-003-workloads",
+                "status": "Synced",
+                "syncPhase": "Sync",
+                "version": "v1"
+              }
+            ],
+            "revision": "7b510e59dd71ee2526ad7fdd55ffedb7028aa832",
+            "source": {
+              "path": "apps/security-003/appset-workload",
+              "repoURL": "http://source-server.argocd-atlas-source.svc.cluster.local/repo.git",
+              "targetRevision": "7b510e59dd71ee2526ad7fdd55ffedb7028aa832"
+            }
+          }
+        },
+        "reconciledAt": "2026-08-30T18:48:17Z",
+        "resourceHealthSource": "appTree",
+        "resources": [
+          {
+            "kind": "ConfigMap",
+            "name": "atlas-security-003-appset",
+            "namespace": "atlas-security-003-workloads",
+            "status": "Synced",
+            "version": "v1"
+          }
+        ],
+        "sourceHydrator": {},
+        "sourceType": "Directory",
+        "summary": {},
+        "sync": {
+          "comparedTo": {
+            "destination": {
+              "namespace": "atlas-security-003-workloads",
+              "server": "https://kubernetes.default.svc"
+            },
+            "source": {
+              "path": "apps/security-003/appset-workload",
+              "repoURL": "http://source-server.argocd-atlas-source.svc.cluster.local/repo.git",
+              "targetRevision": "7b510e59dd71ee2526ad7fdd55ffedb7028aa832"
+            }
+          },
+          "revision": "7b510e59dd71ee2526ad7fdd55ffedb7028aa832",
+          "status": "Synced"
+        }
+      }
+    }
+  ],
+  "tenant_application_names": [
+    "atlas-security-003-generated"
+  ],
+  "app_project": {
+    "apiVersion": "argoproj.io/v1alpha1",
+    "kind": "AppProject",
+    "metadata": {
+      "annotations": {
+        "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"argoproj.io/v1alpha1\",\"kind\":\"AppProject\",\"metadata\":{\"annotations\":{},\"name\":\"atlas-security-003-appset\",\"namespace\":\"argocd\"},\"spec\":{\"destinations\":[{\"namespace\":\"atlas-security-003-workloads\",\"server\":\"https://kubernetes.default.svc\"}],\"namespaceResourceWhitelist\":[{\"group\":\"*\",\"kind\":\"*\"}],\"sourceNamespaces\":[\"atlas-security-003-tenant\"],\"sourceRepos\":[\"http://source-server.argocd-atlas-source.svc.cluster.local/repo.git\"]}}\n"
+      },
+      "creationTimestamp": "2026-08-30T18:47:12Z",
+      "generation": 1,
+      "name": "atlas-security-003-appset",
+      "namespace": "argocd",
+      "resourceVersion": "4201",
+      "uid": "9cd1f2f7-fb56-4dcb-81b0-ca9e470668ab"
+    },
+    "spec": {
+      "destinations": [
+        {
+          "namespace": "atlas-security-003-workloads",
+          "server": "https://kubernetes.default.svc"
+        }
+      ],
+      "namespaceResourceWhitelist": [
+        {
+          "group": "*",
+          "kind": "*"
+        }
+      ],
+      "sourceNamespaces": [
+        "atlas-security-003-tenant"
+      ],
+      "sourceRepos": [
+        "http://source-server.argocd-atlas-source.svc.cluster.local/repo.git"
+      ]
+    }
+  },
+  "cmd_params": {
+    "apiVersion": "v1",
+    "data": {
+      "application.namespaces": "atlas-security-003-tenant",
+      "applicationsetcontroller.enable.scm.providers": "false",
+      "applicationsetcontroller.namespaces": "atlas-security-003-tenant"
+    },
+    "kind": "ConfigMap",
+    "metadata": {
+      "creationTimestamp": "2026-08-30T18:19:07Z",
+      "labels": {
+        "app.kubernetes.io/name": "argocd-cmd-params-cm",
+        "app.kubernetes.io/part-of": "argocd"
+      },
+      "name": "argocd-cmd-params-cm",
+      "namespace": "argocd",
+      "resourceVersion": "4301",
+      "uid": "c4993a26-9eff-455b-bf01-76ab7824c5ab"
+    }
+  },
+  "workload_configmap_names": [
+    "atlas-security-003-appset",
+    "atlas-security-003-project",
+    "atlas-security-003-source-a",
+    "atlas-security-003-source-b",
+    "atlas-security-003-sync-policy",
+    "kube-root-ca.crt"
+  ],
+  "observation": {
+    "namespace_allowlisted": true,
+    "scm_providers_enabled": false,
+    "child_application_count": 1,
+    "workload_present": true
+  },
+  "security": {
+    "ephemeral_token_present_in_captured_state": false,
+    "secret_scan_hits": 0
+  }
+}

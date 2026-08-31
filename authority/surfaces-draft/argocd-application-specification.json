@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "source_id": "argocd-application-specification",
+  "source_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/user-guide/application-specification.md",
+  "locked_source_digest": "sha256:653cbb03f015e8662a355046ab0d82a98da51ce890f47ace194c37d53cf93bf1",
+  "fetch": {
+    "status": "matched",
+    "fetched_digest": "sha256:653cbb03f015e8662a355046ab0d82a98da51ce890f47ace194c37d53cf93bf1",
+    "locked_digest_match": true,
+    "http_status": null,
+    "final_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/user-guide/application-specification.md",
+    "content_type": "text/markdown; charset=utf-8",
+    "fetched_bytes": 152,
+    "error_digest": null
+  },
+  "extraction": {
+    "method": "locked-body-locator-context-digest",
+    "tool": "argocd-reference-atlas-authority-locator-v1",
+    "tool_digest": "sha256:baffc5d0a81bbdd637eef2c3c4d535fcbb01d2566492cd7a6e4de6620df8ca23",
+    "review_status": "automated-unreviewed",
+    "body_storage": "digest-and-locator-context-digest-only"
+  },
+  "candidate_surfaces": [
+    {
+      "edge_id": "edge.source.argocd-application-specification.claim.application.desired-state",
+      "source_id": "argocd-application-specification",
+      "reference_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/user-guide/application-specification.md",
+      "locator": "document-root",
+      "pattern_id": "authority/argocd-application-specification",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.source.argocd-application-specification.claim.application.desired-state",
+      "capability_id": "capability.application.declarative-model",
+      "target_id": "application.declarative-model",
+      "claim_id": "claim.application.desired-state",
+      "variant_ids": [
+        "variant.source.argocd-application-specification.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "provenance-rights"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:62062de0ac57062ae4d8a5f3c5af1debee87f48ca0d94d55323ddad0282faba1",
+      "locator_status": "root-document",
+      "context_digest": "sha256:653cbb03f015e8662a355046ab0d82a98da51ce890f47ace194c37d53cf93bf1",
+      "context_start": 0,
+      "context_end": 152,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    }
+  ]
+}

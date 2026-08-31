@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "id": "argocd-root-depth-parity-closure-v1",
+  "status": "blocked-human-authority-and-proof-closure",
+  "inputs": {
+    "definitive/argocd-depth-parity.json": "sha256:9e6cba899ff9c5dc62c00afea745889c76b8fd86e358b8bf90b66ba2142bc666",
+    "authority/FE_DEPTH_REFERENCE.json": "sha256:2452696f9807b7d4a8ffb22b3ba37f079a25a34ac2370d78423445b96064582a",
+    "depth.parity.yaml": "sha256:15a5d884d80537fc45c2482351522fae297f3b7e78282f89d517ab54f3b5d917"
+  },
+  "dependency_contract": {
+    "graph_output": "artifacts/core-v2/root-depth-parity-closure.json",
+    "tracked_input_paths": [
+      "definitive/argocd-depth-parity.json",
+      "authority/FE_DEPTH_REFERENCE.json",
+      "depth.parity.yaml"
+    ],
+    "stale_on_any_input_digest_change": true,
+    "required_rerun": "python3 scripts/generate_root_depth_parity.py && python3 scripts/test_root_depth_parity.py",
+    "digest_only_closure_forbidden": true
+  },
+  "policy": {
+    "root_file_required": true,
+    "reference_commit_pinned": true,
+    "root_completion_status_must_remain_incomplete_until_gap_zero": true,
+    "authority_absolute_counts_transplant_forbidden": true,
+    "runtime_credit_requires_dedicated_rows": true
+  },
+  "source_depth_parity": {
+    "path": "definitive/argocd-depth-parity.json",
+    "status": "incomplete",
+    "summary": {
+      "satisfied": 1,
+      "partial": 15,
+      "missing": 2
+    },
+    "open_axes": [
+      "authority-body-digestion",
+      "surface-atomic-behavior-variant",
+      "real-runtime-lab",
+      "scenario-normal",
+      "scenario-boundary",
+      "scenario-refusal",
+      "scenario-failure",
+      "scenario-recovery",
+      "scenario-migration",
+      "scenario-operations",
+      "scenario-security",
+      "scenario-performance",
+      "scenario-compatibility",
+      "artifact-trace",
+      "integrated-reference-system",
+      "skill-eval",
+      "rights-provenance"
+    ],
+    "axis_status": {
+      "authority-body-digestion": "partial",
+      "surface-atomic-behavior-variant": "partial",
+      "real-runtime-lab": "partial",
+      "scenario-normal": "partial",
+      "scenario-boundary": "partial",
+      "scenario-refusal": "partial",
+      "scenario-failure": "partial",
+      "scenario-recovery": "partial",
+      "scenario-migration": "partial",
+      "scenario-operations": "partial",
+      "scenario-security": "partial",
+      "scenario-performance": "missing",
+      "scenario-compatibility": "partial",
+      "artifact-trace": "partial",
+      "integrated-reference-system": "missing",
+      "skill-eval": "partial",
+      "rights-provenance": "partial",
+      "non-regression-gate": "satisfied"
+    },
+    "completion_claim": "neither-bounded-complete-nor-subject-definitive"
+  },
+  "root_depth_parity": {
+    "path": "depth.parity.yaml",
+    "present": true,
+    "completion_status": "incomplete",
+    "row_count": 0,
+    "reference_path": "authority/FE_DEPTH_REFERENCE.json",
+    "reference_digest": "sha256:2452696f9807b7d4a8ffb22b3ba37f079a25a34ac2370d78423445b96064582a",
+    "reference_commit": "4a0b2df8e2091a963bd0e0e1bbccef9c84b49a45"
+  },
+  "credit": {
+    "semantic": 0,
+    "runtime": 0,
+    "completion": 0
+  },
+  "blockers": [
+    "depth-parity-incomplete",
+    "authority-semantic-review-zero",
+    "approved-variant-denominator-zero",
+    "dedicated-runtime-rows-remaining"
+  ]
+}

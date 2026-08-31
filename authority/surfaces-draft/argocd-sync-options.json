@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "source_id": "argocd-sync-options",
+  "source_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/user-guide/sync-options.md",
+  "locked_source_digest": "sha256:b73932fd902571771ba8389dc8fce11b458fa6b3b7a9712e49c13ab8854312d2",
+  "fetch": {
+    "status": "matched",
+    "fetched_digest": "sha256:b73932fd902571771ba8389dc8fce11b458fa6b3b7a9712e49c13ab8854312d2",
+    "locked_digest_match": true,
+    "http_status": null,
+    "final_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/user-guide/sync-options.md",
+    "content_type": "text/markdown; charset=utf-8",
+    "fetched_bytes": 20919,
+    "error_digest": null
+  },
+  "extraction": {
+    "method": "locked-body-locator-context-digest",
+    "tool": "argocd-reference-atlas-authority-locator-v1",
+    "tool_digest": "sha256:baffc5d0a81bbdd637eef2c3c4d535fcbb01d2566492cd7a6e4de6620df8ca23",
+    "review_status": "automated-unreviewed",
+    "body_storage": "digest-and-locator-context-digest-only"
+  },
+  "candidate_surfaces": [
+    {
+      "edge_id": "edge.sync.options.argocd-sync-options",
+      "source_id": "argocd-sync-options",
+      "reference_url": "https://raw.githubusercontent.com/argoproj/argo-cd/v3.5.2/docs/user-guide/sync-options.md",
+      "locator": "document-root",
+      "pattern_id": "sync/sync-options",
+      "pattern_kind": "atomic",
+      "candidate_behavior_id": "candidate.sync.options.argocd-sync-options",
+      "capability_id": "capability.sync.order-and-policy",
+      "target_id": "sync.order-and-policy",
+      "claim_id": "claim.sync.deterministic-order",
+      "variant_ids": [
+        "variant.sync.options.argocd-v3-5-2"
+      ],
+      "surface_ids": [
+        "implementation-construction",
+        "orientation-scope",
+        "provenance-rights"
+      ],
+      "classification_basis": "domain-contract-projection-unreviewed",
+      "domain_reference_metadata_digest": "sha256:394677a76471db8ebdec6e38e07cd968bb482782a361bf4c2d4a2858216dfe36",
+      "locator_status": "root-document",
+      "context_digest": "sha256:b73932fd902571771ba8389dc8fce11b458fa6b3b7a9712e49c13ab8854312d2",
+      "context_start": 0,
+      "context_end": 20915,
+      "context_unit": "utf16-code-unit",
+      "heading_digest": null,
+      "classification": "candidate-included-unreviewed"
+    }
+  ]
+}

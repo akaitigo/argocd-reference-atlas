@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "surface_id": "application.operation.terminate",
+  "scenario": "security",
+  "variant_id": "rbac-denied-terminate",
+  "started_at": "2026-08-30T17:49:44.284376Z",
+  "completed_at": "2026-08-30T17:49:44.655847Z",
+  "attempt": 1,
+  "retries": 0,
+  "actions": [
+    {
+      "action": "invoke-terminate-op",
+      "subject": "atlas-security-002-sync-denied",
+      "status": "permission-denied"
+    }
+  ],
+  "result": {
+    "first_attempt": true,
+    "ephemeral_token_leak": false,
+    "rbac_decision": "No",
+    "terminate_error": "permission-denied",
+    "operation_running": true,
+    "operation_terminated": false
+  }
+}
