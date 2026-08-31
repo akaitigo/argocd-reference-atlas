@@ -112,6 +112,22 @@ INPUT_SPECS = {
             ".github/workflows/atlas-validate.yml",
         ],
     },
+    "source.root-depth-parity": {
+        "kind": "source",
+        "members": [
+            "definitive/argocd-depth-parity.json",
+            "authority/FE_DEPTH_REFERENCE.json",
+            "depth.parity.yaml",
+        ],
+    },
+    "harness.root-depth-parity": {
+        "kind": "harness",
+        "members": [
+            "scripts/generate_root_depth_parity.py",
+            "scripts/test_root_depth_parity.py",
+            ".github/workflows/atlas-validate.yml",
+        ],
+    },
     "harness.core-v2-dependency-extension": {
         "kind": "harness",
         "members": ["scripts/generate_core_v2_dependency_extension.py", "scripts/test_core_v2_evidence_dependency_extensions.py"],
@@ -139,6 +155,7 @@ CORE_V2_OUTPUT_PATHS = {
     "artifacts/core-v2/surface-inventory-readiness.json",
     "artifacts/core-v2/root-surface-inventory-closure.json",
     "artifacts/core-v2/root-verification-matrix-closure.json",
+    "artifacts/core-v2/root-depth-parity-closure.json",
     "artifacts/core-v2/root-contract-adapter-gap.json",
     "artifacts/core-v2/scenario-proof-index-schema-gap.json",
     "artifacts/core-v2/evidence-dependency-extension.json",
@@ -177,6 +194,7 @@ def validate_extension(graph: dict) -> None:
         "artifacts/core-v2/surface-inventory-readiness.json": "harness.surface-inventory-readiness",
         "artifacts/core-v2/root-surface-inventory-closure.json": "harness.root-surface-inventory",
         "artifacts/core-v2/root-verification-matrix-closure.json": "harness.root-verification-matrix",
+        "artifacts/core-v2/root-depth-parity-closure.json": "harness.root-depth-parity",
         "artifacts/core-v2/root-contract-adapter-gap.json": "harness.core-v2-root-contract-gap",
         "artifacts/core-v2/scenario-proof-index-schema-gap.json": "harness.core-v2-scenario-schema-gap",
         "artifacts/core-v2/evidence-dependency-extension.json": "harness.core-v2-dependency-extension",
@@ -188,10 +206,14 @@ def validate_extension(graph: dict) -> None:
         run = runs.get(output["run_id"])
         if run is None or run["attempts"] != 1 or run["result"] != "passed" or output["id"] not in run["output_ids"]:
             raise ValueError(f"Core v2 first-attempt run is invalid: {path}")
+    root_depth = outputs["artifacts/core-v2/root-depth-parity-closure.json"]
+    if not {"source.root-depth-parity", "harness.root-depth-parity"} <= set(root_depth["depends_on"]):
+        raise ValueError("root depth parity input binding is incomplete")
     root_gap = outputs["artifacts/core-v2/root-contract-adapter-gap.json"]
     root_gap_required_paths = {
         "artifacts/core-v2/root-surface-inventory-closure.json",
         "artifacts/core-v2/root-verification-matrix-closure.json",
+        "artifacts/core-v2/root-depth-parity-closure.json",
         "integrations/reference-system/manifest.json",
         "artifacts/reference-system/results.json",
         "artifacts/pattern-scenarios/results.json",
@@ -412,10 +434,15 @@ def generate() -> None:
         [root_inventory_id, output_by_path["evidence/scenarios/index.json"], review_snapshot_id, "source.authority-human-decisions", "source.authority-lock-inventory", "harness.root-verification-matrix"],
         "run.root-verification-matrix-closure",
     )
+    root_depth_id = contract.add_output(
+        outputs, "artifacts/core-v2/root-depth-parity-closure.json", "closure-plan",
+        ["source.root-depth-parity", output_by_path["evidence/scenarios/index.json"], "harness.root-depth-parity"],
+        "run.root-depth-parity-closure",
+    )
     root_contract_gap_id = contract.add_output(
         outputs, "artifacts/core-v2/root-contract-adapter-gap.json", "closure-plan",
         [
-            root_inventory_id, root_matrix_id,
+            root_inventory_id, root_matrix_id, root_depth_id,
             standard_ids[manifest_path], standard_ids[reference_path], standard_ids[pattern_path],
             standard_ids[migration_path], standard_ids[baseline_path],
             scenario_schema_gap_id,
@@ -437,7 +464,7 @@ def generate() -> None:
     )
     report_id = contract.add_output(
         outputs, "artifacts/core-v2/evidence-dependency-extension.json", "derived-evidence",
-        [router_id, plan_id, readiness_id, root_inventory_id, root_matrix_id, root_contract_gap_id, standard_ids[publish_path], *authority_ids, *body_ids, *review_batch_ids, review_snapshot_id, "source.repository-contract", "harness.content-policy", "harness.core-v2-dependency-extension"],
+        [router_id, plan_id, readiness_id, root_inventory_id, root_matrix_id, root_depth_id, root_contract_gap_id, standard_ids[publish_path], *authority_ids, *body_ids, *review_batch_ids, review_snapshot_id, "source.repository-contract", "harness.content-policy", "harness.core-v2-dependency-extension"],
         "run.core-v2-dependency-extension",
     )
     new_runs = [
@@ -450,6 +477,7 @@ def generate() -> None:
         contract.run_document("run.surface-inventory-readiness", "derived", "python3 scripts/generate_surface_inventory_readiness.py && python3 scripts/test_surface_inventory_readiness.py", graph["generated_at"], [readiness_id]),
         contract.run_document("run.root-surface-inventory-closure", "derived", "python3 scripts/generate_root_surface_inventory.py && python3 scripts/test_root_surface_inventory.py", graph["generated_at"], [root_inventory_id]),
         contract.run_document("run.root-verification-matrix-closure", "derived", "python3 scripts/generate_root_verification_matrix.py && python3 scripts/test_root_verification_matrix.py", graph["generated_at"], [root_matrix_id]),
+        contract.run_document("run.root-depth-parity-closure", "derived", "python3 scripts/generate_root_depth_parity.py && python3 scripts/test_root_depth_parity.py", graph["generated_at"], [root_depth_id]),
         contract.run_document("run.core-v2-dependency-extension", "derived", "python3 scripts/generate_core_v2_dependency_extension.py && python3 scripts/test_core_v2_evidence_dependency_extensions.py", graph["generated_at"], [report_id]),
     ]
     graph["runs"].extend(new_runs)

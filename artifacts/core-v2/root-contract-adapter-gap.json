@@ -6,6 +6,7 @@
     "contracts/core-v2-root-admission-lock.json": "sha256:38af98759fa11f31710cc8b1bb193f6060ae947dea99eab28ef85d4ddd0cbb2e",
     "artifacts/core-v2/root-surface-inventory-closure.json": "sha256:f798f4d7c3f2a30e90b58f6f160e4fb83b25cc909b8610591e43c782ba6c0f70",
     "artifacts/core-v2/root-verification-matrix-closure.json": "sha256:7fb5c32d2e98872bf5d2a6e53d288f7817a9c7adfb28cf83a13e52277ee4a2e1",
+    "artifacts/core-v2/root-depth-parity-closure.json": "sha256:7b4f9afa7b711005e3af33f99557f74d095970adaa5509904ff4cd4d30c33831",
     "integrations/reference-system/manifest.json": "sha256:401d26221be4557ca82a7cfdd9d604ede4ff932283b5d546d3650d662e7f19d2",
     "artifacts/reference-system/results.json": "sha256:8e6e6f0a61b4458703e4b35bb585e820021ec6b49b807abe5b405734eb044705",
     "artifacts/pattern-scenarios/results.json": "sha256:202032bc06f4f4b2c99a4a67063a295b0ff83614f01b36716262662cdff644f4",
@@ -208,6 +209,39 @@
         "reviewed-matrix-cell-denominator-zero",
         "authority-human-decisions-not-closed"
       ]
+    },
+    "depth_parity": {
+      "path": "artifacts/core-v2/root-depth-parity-closure.json",
+      "status": "blocked-human-authority-and-proof-closure",
+      "root_path": "depth.parity.yaml",
+      "present": true,
+      "completion_status": "incomplete",
+      "row_count": 0,
+      "open_axes": [
+        "authority-body-digestion",
+        "surface-atomic-behavior-variant",
+        "real-runtime-lab",
+        "scenario-normal",
+        "scenario-boundary",
+        "scenario-refusal",
+        "scenario-failure",
+        "scenario-recovery",
+        "scenario-migration",
+        "scenario-operations",
+        "scenario-security",
+        "scenario-performance",
+        "scenario-compatibility",
+        "artifact-trace",
+        "integrated-reference-system",
+        "skill-eval",
+        "rights-provenance"
+      ],
+      "blockers": [
+        "depth-parity-incomplete",
+        "authority-semantic-review-zero",
+        "approved-variant-denominator-zero",
+        "dedicated-runtime-rows-remaining"
+      ]
     }
   },
   "scenario_migration": {
@@ -253,7 +287,8 @@
     "semantic": 0,
     "completion": 0,
     "root_surface_inventory_emitted": false,
-    "root_verification_matrix_emitted": false
+    "root_verification_matrix_emitted": false,
+    "root_depth_parity_completion": false
   },
   "blockers": [
     "core-reference-system-runtime-not-run",
@@ -272,6 +307,10 @@
     "root-matrix:authority-atomic-bindings-zero",
     "root-matrix:completion-eligible-scenario-rows-zero",
     "root-matrix:reviewed-matrix-cell-denominator-zero",
-    "root-matrix:authority-human-decisions-not-closed"
+    "root-matrix:authority-human-decisions-not-closed",
+    "root-depth:depth-parity-incomplete",
+    "root-depth:authority-semantic-review-zero",
+    "root-depth:approved-variant-denominator-zero",
+    "root-depth:dedicated-runtime-rows-remaining"
   ]
 }

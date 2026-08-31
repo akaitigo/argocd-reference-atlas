@@ -6,9 +6,9 @@ EVIDENCE_FILES := $(shell find evidence/records -type f -name '*.evidence.yaml' 
 CLAIM_FILES := $(shell find claims -type f -name '*.claim.yaml' -print 2>/dev/null | sort)
 SKILL_EVAL_FILES := $(shell find evals -type f -name '*.skill-eval.json' -print 2>/dev/null | sort)
 CORE_V1_FILES := migrations/core-v1.yaml provenance.yaml $(wildcard evidence/completion-certificate.json)
-CORE_V2_FILES := definitive.yaml migrations/definitive-v2.yaml evidence/dependency-graph.json $(wildcard non-regression.yaml)
+CORE_V2_FILES := definitive.yaml migrations/definitive-v2.yaml evidence/dependency-graph.json depth.parity.yaml $(wildcard non-regression.yaml)
 
-.PHONY: atlas-validate atlas-audit graph-validate definitive-validate surface-inventory-readiness root-surface-inventory root-verification-matrix root-contract-adapter-gap core-standard-artifacts scenario-proof-index-adapter core-v2-static scenario-proofs scenario-proofs-validate scenario-runtime-application-sync-policy-normal scenario-runtime-security-001 scenario-runtime-security-002 scenario-runtime-security-003 scenario-runtime-security-004 evidence-dependency evidence-dependency-validate authority-locators authority-validate non-regression-validate evidence-validate skill-validate skill-definitive-eval legal-validate sbom sbom-validate core-v1-graph core-v1-provenance validate check lab-env lab-clean labs labs-dry-run labs-static extended-labs isolated-labs extended-labs-dry-run skill-forward-eval $(addprefix lab-,$(LABS)) $(addprefix extended-lab-,$(EXTENDED_LABS) $(ISOLATED_LABS))
+.PHONY: atlas-validate atlas-audit graph-validate definitive-validate surface-inventory-readiness root-surface-inventory root-verification-matrix root-depth-parity root-contract-adapter-gap core-standard-artifacts scenario-proof-index-adapter core-v2-static scenario-proofs scenario-proofs-validate scenario-runtime-application-sync-policy-normal scenario-runtime-security-001 scenario-runtime-security-002 scenario-runtime-security-003 scenario-runtime-security-004 evidence-dependency evidence-dependency-validate authority-locators authority-validate non-regression-validate evidence-validate skill-validate skill-definitive-eval legal-validate sbom sbom-validate core-v1-graph core-v1-provenance validate check lab-env lab-clean labs labs-dry-run labs-static extended-labs isolated-labs extended-labs-dry-run skill-forward-eval $(addprefix lab-,$(LABS)) $(addprefix extended-lab-,$(EXTENDED_LABS) $(ISOLATED_LABS))
 
 atlas-validate:
 	test -f "$(ATLAS_CORE)/cmd/atlas/main.go"
@@ -34,6 +34,8 @@ definitive-validate:
 	python3 scripts/test_root_surface_inventory.py
 	python3 scripts/generate_root_verification_matrix.py
 	python3 scripts/test_root_verification_matrix.py
+	python3 scripts/generate_root_depth_parity.py
+	python3 scripts/test_root_depth_parity.py
 	python3 scripts/validate_scenario_proofs.py
 	python3 scripts/test_scenario_gap_closure.py
 	python3 scripts/test_atomic_evidence_publish.py
@@ -50,6 +52,10 @@ root-surface-inventory:
 root-verification-matrix:
 	python3 scripts/generate_root_verification_matrix.py
 	python3 scripts/test_root_verification_matrix.py
+
+root-depth-parity:
+	python3 scripts/generate_root_depth_parity.py
+	python3 scripts/test_root_depth_parity.py
 
 root-contract-adapter-gap:
 	python3 scripts/generate_core_v2_root_contract_gap.py
@@ -75,6 +81,8 @@ scenario-proof-index-adapter:
 core-v2-static: core-standard-artifacts scenario-proof-index-adapter
 	python3 scripts/generate_core_v2_skill_router.py
 	python3 scripts/test_core_v2_skill_router.py
+	python3 scripts/generate_root_depth_parity.py
+	python3 scripts/test_root_depth_parity.py
 	python3 scripts/generate_core_v2_root_contract_gap.py
 	python3 scripts/test_core_v2_root_contract_gap.py
 	python3 scripts/generate_core_v2_scenario_plan_gap.py

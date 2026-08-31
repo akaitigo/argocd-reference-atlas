@@ -15,6 +15,7 @@ ROOT = Path(__file__).resolve().parents[1]
 CORE_LOCK = Path("contracts/core-v2-root-admission-lock.json")
 ROOT_SURFACE = Path("artifacts/core-v2/root-surface-inventory-closure.json")
 ROOT_MATRIX = Path("artifacts/core-v2/root-verification-matrix-closure.json")
+ROOT_DEPTH = Path("artifacts/core-v2/root-depth-parity-closure.json")
 CORE_MANIFEST = Path("integrations/reference-system/manifest.json")
 REFERENCE_RESULTS = Path("artifacts/reference-system/results.json")
 PATTERN_RESULTS = Path("artifacts/pattern-scenarios/results.json")
@@ -111,6 +112,7 @@ def build() -> dict[str, Any]:
     schema_admission = core_schema_admission()
     surface = load(ROOT_SURFACE)
     matrix = load(ROOT_MATRIX)
+    depth = load(ROOT_DEPTH)
     manifest = load(CORE_MANIFEST)
     reference = load(REFERENCE_RESULTS)
     pattern = load(PATTERN_RESULTS)
@@ -133,6 +135,7 @@ def build() -> dict[str, Any]:
         "pattern-scenario-runtime-incomplete",
         *[f"root-surface:{item}" for item in surface["root_inventory"]["blockers"]],
         *[f"root-matrix:{item}" for item in matrix["root_matrix"]["blockers"]],
+        *[f"root-depth:{item}" for item in depth["blockers"]],
     ]
     return {
         "schema_version": 1,
@@ -142,7 +145,7 @@ def build() -> dict[str, Any]:
             path.as_posix(): digest(path)
             for path in (
                 CORE_LOCK,
-                ROOT_SURFACE, ROOT_MATRIX, CORE_MANIFEST, REFERENCE_RESULTS,
+                ROOT_SURFACE, ROOT_MATRIX, ROOT_DEPTH, CORE_MANIFEST, REFERENCE_RESULTS,
                 PATTERN_RESULTS, MIGRATION, MIGRATION_BASELINE, SCENARIO_INDEX,
                 SCENARIO_SCHEMA_ADAPTER,
             )
@@ -198,6 +201,16 @@ def build() -> dict[str, Any]:
                 "scenario_classes": matrix_classes,
                 "blockers": matrix["root_matrix"]["blockers"],
             },
+            "depth_parity": {
+                "path": ROOT_DEPTH.as_posix(),
+                "status": depth["status"],
+                "root_path": depth["root_depth_parity"]["path"],
+                "present": depth["root_depth_parity"]["present"],
+                "completion_status": depth["root_depth_parity"]["completion_status"],
+                "row_count": depth["root_depth_parity"]["row_count"],
+                "open_axes": depth["source_depth_parity"]["open_axes"],
+                "blockers": depth["blockers"],
+            },
         },
         "scenario_migration": {
             "path": MIGRATION.as_posix(),
@@ -225,6 +238,7 @@ def build() -> dict[str, Any]:
             "completion": 0,
             "root_surface_inventory_emitted": False,
             "root_verification_matrix_emitted": False,
+            "root_depth_parity_completion": False,
         },
         "blockers": blockers,
     }
@@ -255,12 +269,16 @@ def validate(document: dict[str, Any]) -> None:
         adapter = adapters[name]
         require(adapter["status"] == "blocked-human-authority-and-proof-closure", f"root adapterが未Closureを隠しています: {name}")
         require(adapter["present"] is False and adapter["emission_eligible"] is False and bool(adapter["blockers"]), f"root出力を早期発行しています: {name}")
+    depth = adapters["depth_parity"]
+    require(depth["status"] == "blocked-human-authority-and-proof-closure", "root depth parityが未Closureを隠しています")
+    require(depth["present"] is True and depth["completion_status"] == "incomplete" and depth["row_count"] == 0, "root depth parityがfail-closed shapeを失っています")
+    require(len(depth["open_axes"]) == 17 and bool(depth["blockers"]), "root depth parityの未解消軸を隠しています")
     classes = adapters["verification_matrix"]["scenario_classes"]
     require(len(classes) == 10 and [item["core"] for item in classes] == list(CORE_SCENARIOS), "Core 10 Scenario class mappingが不正です")
     require(len({item["core"] for item in classes}) == 10 and all(item["status"] == "gap" for item in classes), "Core Scenario classが重複または昇格しています")
     require(migration["mapping"] == LEGACY_TO_CORE and migration["counts"] == {"old_rows": 1000, "new_rows": 1000, "identity": 900, "renamed_rejection_to_refusal": 100, "runtime_credit": 0, "completion_eligible": 0}, "rejection→refusal全件mappingが非後退ではありません")
     require(schema_adapter == {"path": "artifacts/core-v2/scenario-proof-index-schema-gap.json", "status": "incomplete-schema-valid-staging-not-published", "validated_files": 1001, "validated_rows": 1000, "pattern_specific_gaps": 1000, "canonical_emitted": False, "legacy_index_preserved": True, "runtime_credit": 0, "semantic_credit": 0, "completion_credit": 0}, "Scenario Schema adapterが縮小または早期発行されています")
-    require(credit == {"runtime": 0, "semantic": 0, "completion": 0, "root_surface_inventory_emitted": False, "root_verification_matrix_emitted": False}, "adapterが証明creditを持っています")
+    require(credit == {"runtime": 0, "semantic": 0, "completion": 0, "root_surface_inventory_emitted": False, "root_verification_matrix_emitted": False, "root_depth_parity_completion": False}, "adapterが証明creditを持っています")
     require(document == build(), "root契約Gapが現在inputからの決定論的導出値と一致しません")
 
 

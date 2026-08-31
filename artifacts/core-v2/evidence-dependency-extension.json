@@ -3,7 +3,7 @@
   "id": "argocd-evidence-dependency-core-v2-extension-v1",
   "status": "current-additive-extension",
   "core_commit": "072d7ca77981f51754e824d70c6d4ecd55ea67e5",
-  "base_graph_digest": "sha256:c93d0d46418d46ba5d5b26178fc95e8b85a4663c196cbd364288a2169dc6a275",
+  "base_graph_digest": "sha256:6a37b31ed90f975b06f1dcfb821f4454fb565fd4b06014d8615a3ec95e66822f",
   "baseline_input_mutations": 0,
   "added_input_ids": [
     "harness.authority-body-review",
@@ -15,6 +15,7 @@
     "harness.core-v2-scenario-plan",
     "harness.core-v2-scenario-schema-gap",
     "harness.core-v2-skill-router",
+    "harness.root-depth-parity",
     "harness.root-surface-inventory",
     "harness.root-verification-matrix",
     "harness.surface-inventory-readiness",
@@ -23,12 +24,14 @@
     "source.authority-lock-inventory",
     "source.core-standard-legacy-scenarios",
     "source.core-v2-root-admission-lock",
-    "source.repository-contract"
+    "source.repository-contract",
+    "source.root-depth-parity"
   ],
   "added_output_paths": [
     "artifacts/core-v2/core-standard-artifacts-publish.json",
     "artifacts/core-v2/evidence-dependency-extension.json",
     "artifacts/core-v2/root-contract-adapter-gap.json",
+    "artifacts/core-v2/root-depth-parity-closure.json",
     "artifacts/core-v2/root-surface-inventory-closure.json",
     "artifacts/core-v2/root-verification-matrix-closure.json",
     "artifacts/core-v2/scenario-plan-gap.json",
